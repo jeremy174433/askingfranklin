@@ -1,0 +1,39 @@
+$input: '.input-primary';
+
+#{$input}-wrapper {
+
+    // Replace icon if label is hidden
+    #{$input}-label.d-none + #{$input} + #{$input}-icon { top: 10px; }
+
+    #{$input} {
+        min-height: 48px;
+        height: 48px;
+        padding: 12px;
+        border: 1px solid $theme-terthiary;
+        background-color: $theme-secondary;
+        border-radius: 4px;
+        transition: .2s ease-in-out;
+    
+        &:focus {
+            outline: none;
+            border-left: 4px solid $primary;
+        }
+    
+        &[disabled] {
+            cursor: not-allowed;
+            background-color: $bg-disabled;
+        }
+
+        + #{$input}-icon {
+            position: absolute;
+            right: 8px;
+            top: 41px;
+            padding: 2px 5px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: .2s ease-in-out;
+    
+            &:hover { background-color: rgba($md-grey, .35); }
+        }
+    }
+}

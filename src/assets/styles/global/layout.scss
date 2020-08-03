@@ -1,0 +1,11 @@
+#globalTag { margin-top: $header-mh; }
+
+.layout-style { 
+    @include layout-style($header-mh, 6rem, 1.5rem, 3rem,);
+    min-height: 100vh;
+}
+
+.container {
+    @media all and (min-width: 1200px) { max-width: 1360px !important; }
+    @media all and (max-width: 991px) { max-width: 100% !important; }
+}

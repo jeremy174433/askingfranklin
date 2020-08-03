@@ -1,0 +1,102 @@
+.mobile-menu-wrapper {
+
+    .nav-link { color: $theme-color-secondary !important; }
+
+    // Open
+    &.mobile-menu-open {
+
+        .mobile-menu-background {
+            background-color: $primary;
+            transform: scale(100);
+        }
+
+        #mobileMenuNavigation {
+
+            .bar { background-color: $theme-color-secondary; }
+            .bar:nth-of-type(1) { 
+                top: 4px; 
+                transform: translateY(12.5px) rotate(45deg); 
+            }
+            .bar:nth-of-type(2) { transform: translateX(75px); }
+            .bar:nth-of-type(3) { 
+                top: 24px; 
+                transform: translateY(-7.5px) rotate(135deg); 
+            }
+        }
+
+        .mobile-menu-items {
+            visibility: visible;
+            opacity: 1;
+            z-index: 101;
+
+            li {
+                transition: 1.4s;
+                transition-delay: 200ms;
+                transform: translateX(0);
+            }
+        }
+    }
+
+    // Default
+    .mobile-menu-background {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        position: fixed;
+        z-index: 100;
+        transition: all 1s;
+        background-color: transparent;
+    }
+
+    #mobileMenuNavigation {
+        height: 30px;
+        width: 30px;
+        z-index: 102;
+        cursor: pointer;
+
+        .bar {
+            position: absolute;
+            margin: 0 auto;
+            width: 30px;
+            height: 2px;
+            background-color: $primary;
+            border-radius: 4px;
+            transition: all .6s;
+    
+            &:nth-of-type(1) { top: 4px; }
+            &:nth-of-type(2) { top: 14px; }
+            &:nth-of-type(3) { top: 24px; }
+        }
+    }
+    .mobile-menu-items {
+        visibility: hidden;
+        opacity: 0;
+        color: $theme-secondary;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transition: all 1.4s;
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        @include scroll-y(auto);
+
+        ul {
+            li {
+                transform: translateX(-600px);
+                &:not(:last-child) { margin-bottom: 1.5rem; }
+
+                a {
+                    color: $theme-color-secondary;
+                    @media all and (max-width: 575px) { width: max-content; }
+                        
+                    &:hover, &:focus { 
+                        text-decoration: none;
+                        outline: none;
+                        background-color: $md-grey-35;
+                    }
+                }
+            }
+        }
+    }
+}

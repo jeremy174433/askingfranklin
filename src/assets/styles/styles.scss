@@ -1,0 +1,29 @@
+@import 'partials/var';
+@import 'partials/colors';
+@import 'partials/fz';
+@import 'partials/mixins';
+
+@import 'global/reset';
+@import 'global/global';
+@import 'global/layout';
+
+@import 'components/partials/navbar';
+@import 'components/partials/mobile-menu';
+@import 'components/partials/footer';
+
+@import 'components/elements/loader';
+@import 'components/elements/back-to-top';
+@import 'components/elements/alert';
+
+@import 'components/button/pmy-btn';
+
+@import 'components/form/input';
+@import 'components/form/checkbox';
+
+@import 'components/table/asking-franklin';
+
+@import 'components/dataviz/radial-dendrogram';
+
+@import 'pages/home';
+@import 'pages/asking-franklin';
+@import 'pages//pricing';

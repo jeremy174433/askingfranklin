@@ -1,0 +1,61 @@
+#askingFranklin {
+
+    > main { 
+        max-width: 1920px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    #stickyMenu {
+        height: min-content;
+        top: 6rem;
+        margin-top: 6rem;
+        @media all and (min-width: 1200px) { flex-basis: calc(25% - 48px) !important; }
+        @media all and (max-width: 1199px) { position: initial !important; }
+
+        h1 {
+            word-break: break-all;
+            &::first-letter { text-transform: uppercase; }
+        }
+        
+        ul > li {
+
+            a.nav-link-style {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding: .5rem 1.5rem;
+                color: $theme-color-primary;
+                transition: .2s ease-in-out;
+                
+                &:hover, &:focus { 
+                    background-color: $md-grey-35;
+                    color: $theme-color-primary;
+                    text-decoration: none;
+                }
+            }
+
+            &.nav-link-style-active {
+                a {
+                    background-color: $md-grey-75 !important;
+                    color: $primary !important;
+                }
+            }
+        }
+    }
+
+    .block-wrapper { 
+        padding-top: 6rem;
+
+        button[disabled]:hover { color: $theme-color-secondary !important; } // Override
+       
+        .asking-franklin-body { @include scroll-x(auto); }
+        .asking-franklin-dataviz {
+            min-height: 1000px;
+            > div {
+                @media all and (max-width: 1366px) { padding: 0 6rem!important; }
+            }
+        }
+    }
+
+}

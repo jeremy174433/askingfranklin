@@ -1,0 +1,22 @@
+#navbar {
+    height: $header-mh;
+    background-color: $white;
+    border-bottom: 1px solid $theme-terthiary;
+    top: 0;
+    right: 0;
+    z-index: 99;
+
+    a {
+        transition: .2s ease-in-out;
+        @include fz-18;
+        &:hover { text-decoration: none; }
+
+        &.nav-link {
+            color: $theme-color-primary;
+            &:hover { background-color: $md-grey-35; }
+        }
+    }
+
+    .nav-btn-cta a { height: $header-mh; }
+
+}

@@ -1,0 +1,58 @@
+@keyframes alert-anim {
+    from { opacity: 0; top: 0; }
+    to { opacity: 1; top: $header-mh; }
+}
+
+.alert-msg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    min-height: 42px;
+    color: $theme-color-secondary;
+    padding: 1rem 1.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    @include fz-18;
+    z-index: 50;
+    transition: .6s ease-in-out;
+    @media all and (min-width: 1200px) { padding: 1rem 3rem; }
+
+    &-visible { 
+        opacity: 1;
+        top: $header-mh;
+        animation: alert-anim .6s ease-in-out;
+    }
+
+    &#successMessage { background-color: $success; }
+    &#errorMessage { background-color: $danger; }
+
+    a {
+        color: $theme-color-secondary;
+        text-decoration: underline;
+    }
+
+    .close-alert {
+        cursor: pointer;
+
+        &::before {
+            content: '';
+            display: block;
+            background-color: $md-grey-35;
+            padding: 1rem;
+            border-radius: 50%;
+            position: absolute;
+            transform: translate(-25%, -25%);
+            opacity: 0;
+            z-index: -1;
+            transition: .2s ease-in-out;
+        }
+        &:hover::before { 
+            transform: translate(-25%, -25%);
+            opacity: 1;
+        }
+    }
+}

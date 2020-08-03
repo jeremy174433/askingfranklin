@@ -1,0 +1,128 @@
+#pricing {
+
+    @mixin price {
+        $fz-price: 64px;
+        font-size: $fz-price;
+        line-height: calc(#{$fz-price} + #{$lh-default});
+        font-weight: 600;
+        > span { @include fz-18; }
+    }
+
+    @keyframes tick-anim {
+        from { opacity: 0; transform: scale(0); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    @mixin circle {
+        border: 1px solid $theme-terthiary;
+        position: absolute;
+        cursor: pointer;
+        transition: .2s ease-in-out;
+        height: 28px;
+        width: 28px;
+        border-radius: 50%;
+        
+        > div { 
+            opacity: 0;
+            transform: scale(0);
+        }    
+
+        &.circle-checked {
+            border-color: $success;
+            background-color: $success;
+            transform: scale(1);
+            box-shadow: 2px 2px 4px $black-25;
+
+            > div { 
+                opacity: 1;
+                transform: scale(1);
+                animation: tick-anim .4s ease-in-out;
+            }
+        }
+    }
+
+    @mixin plan-preselected($dir) {
+        @media all and (min-width: 992px) {
+            #{$dir}: -96px;
+            z-index: 1;
+        }
+    }
+    @mixin plan-blur($pos) {
+        @media all and (min-width: 992px) { text-align: $pos; }
+        @media all and (min-width: 576px) { transform: scale(.75); }
+        filter: blur(4px);
+        cursor: pointer;
+    }
+
+    .circle { @include circle; }
+
+    ul.features-list {
+        li { 
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+            margin-bottom: 1rem;
+            &:last-child { margin-bottom: 0; }
+
+            svg { min-width: 16px; }
+            span { margin-left: 1rem; }
+        }
+    }
+
+    .block-pricing {
+        @media all and (min-width: 992px) and (max-width: 1199px) { max-width: calc(50% - 24px); }
+
+        &-free {
+            border: 1px solid $theme-terthiary;
+            height: max-content;
+    
+            .price { @include price; }
+        }
+    
+        &-pro {
+            border: 2px solid $primary;
+            border-top-width: 16px; 
+    
+            .block-prices {
+    
+                h3 { @include fz-18; }
+    
+                > .monthly-plan, .annual-plan {
+                    border: 1px solid $theme-terthiary;
+                    cursor: pointer;
+                }
+    
+                .price { @include price; }
+                .price-before-reduction { text-decoration: line-through; }
+            }
+        }
+
+        &-choose-plan {
+            @media all and (min-width: 992px) and (max-width: 1199px) { max-width: calc(50% - 3rem); }
+        }
+    }
+
+    .plan-preselected {
+        .block-pricing-choose-plan {
+            margin-right: 0 !important;
+            margin-left: 0 !important;
+            transition: .6s ease-in-out;
+        }
+
+        &-monthly {
+            .block-pricing-choose-plan-monthly { @include plan-preselected(right); }
+            .block-pricing-choose-plan-annual { 
+                left: 0;
+                @include plan-blur(right);
+            }
+        }
+        &-annual {
+            .block-pricing-choose-plan-annual { @include plan-preselected(left); }
+            .block-pricing-choose-plan-monthly { 
+                right: 0; 
+                @include plan-blur(left);
+            }
+        }
+    }
+
+}

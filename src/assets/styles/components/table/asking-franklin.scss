@@ -1,0 +1,33 @@
+.asking-franklin-table {
+
+    table {
+
+        thead {
+            th {
+                color: $theme-color-secondary;
+                background-color: $theme-color-primary;
+                height: 48px;
+                padding: 0 .5rem !important;
+                &::first-letter { text-transform: capitalize; }
+                &:first-child { border-radius:  4px 0 0 4px; }
+                &:last-child { border-radius: 0 4px 4px 0; }
+            }
+        }
+
+        tbody {
+            tr {
+                border-bottom: 1px solid $theme-terthiary;
+                &:last-child { border-bottom: none; }
+                &:nth-child(odd) { background-color: $light-grey; }
+
+                td { padding: .25rem .5rem !important; }
+
+                a {
+                    transition: .2s ease-in-out;
+                    &:hover { background-color: $md-grey-35; }
+                }
+            }
+        }
+    }
+
+}

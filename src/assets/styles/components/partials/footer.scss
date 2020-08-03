@@ -1,0 +1,27 @@
+#footer {
+    background-color: $theme-color-primary;
+
+    .container > div:last-child { border-top: 1px solid $white-50; }
+
+    p { color: $theme-color-secondary; }
+
+    ul {
+        a {
+            transition: .2s ease-in-out;
+            &:hover, &:focus { text-decoration: none; }
+    
+            &.footer-link {
+                color: $theme-color-secondary;
+                &:hover, &:focus { background-color: $md-grey-35; }
+            }
+        }
+
+        &.social-media-wrapper {
+            a {
+                width: 32px;
+                height: 32px;
+                &:hover, &:focus { background-color: $md-grey-35 }
+            }
+        }
+    }
+}

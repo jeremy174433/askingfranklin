@@ -1,0 +1,31 @@
+$primary: #673AB7;
+$primary-75: rgba($primary, .75);
+$primary-50: rgba($primary, .5);
+$primary-25: rgba($primary, .25);
+
+$black: #000;
+$black-50: rgba($black, .5);
+$black-25: rgba($black, .25);
+
+$white: #FFF;
+$white-50: rgba($white, .5);
+$white-25: rgba($white, .25);
+
+$md-grey: #D3DDEF;
+$md-grey-75: rgba($md-grey, .75);
+$md-grey-35: rgba($md-grey, .35);
+$light-grey: #F8F9FA;
+
+$bg-disabled: #EEE;
+$text-disabled: #9A9A9A;
+
+$link: #4285F4;
+$success: #00C851;
+$danger: #FF4444;
+
+// Light theme
+$theme-primary: #FCFCFC;
+$theme-secondary: $white;
+$theme-terthiary: #E3E4F1;
+$theme-color-primary: #2B2B2B;
+$theme-color-secondary: $white;

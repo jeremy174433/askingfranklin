@@ -1,0 +1,59 @@
+.pmy-btn {
+    padding: .5rem 1rem;
+    background-color: transparent;
+    color: $primary;
+    border: none;
+    outline: none !important;
+    transition: .2s ease-in-out;
+    
+    &:hover { text-decoration: none !important; }
+
+    &-outline-light {
+        border: 1px solid $primary;
+        color: $primary;
+
+        svg { fill: $primary; }
+
+        &:hover, &:active { 
+            background-color: $primary-25;
+            color: $primary;
+        }
+        &:focus { 
+            background-color: $primary-25;
+            box-shadow: none !important;
+            outline: none;
+        }
+    }
+
+    &-outline-full {
+        border: 1px solid $primary;
+        color: $primary;
+
+        svg { fill: $primary; }
+
+        &:hover, &:active { 
+            background-color: rgba($primary, .9);
+            color: $theme-color-secondary;
+            box-shadow: 0 0 8px $black-25;
+
+            svg { fill: $theme-color-secondary; }
+        }
+    }
+
+    &-full {
+        background-color: $primary;
+        color: $theme-color-secondary;
+
+        svg { fill: $theme-color-secondary; }
+
+        &:hover, &:active { 
+            background-color: rgba($primary, .9);
+            box-shadow: 0 0 8px $black-25; 
+        }
+
+        &[disabled]:hover, &[disabled]:active {
+            background-color: $primary;
+            box-shadow: none;
+        }
+    } 
+}

@@ -1,0 +1,53 @@
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: $ff-primary, sans-serif;
+    color: $theme-color-primary;
+    @include fz-16; 
+    background-color: $theme-primary;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+a { @include link-style; }
+
+button { 
+    background-color: transparent;
+    &:focus { outline: none; }
+}
+
+.block-style {
+    background-color: $theme-secondary;
+    border: 1px solid $theme-terthiary;
+    padding: 16px 16px 32px 16px;
+    border-radius: 8px;
+    overflow: hidden;
+}           
+
+// Typography
+.fz-14 { @include fz-14; }
+.fz-16 { @include fz-16; }
+.fz-18 { @include fz-18; }
+.fz-24 { @include fz-24; }
+.fz-32 { @include fz-32; }
+.fz-36 { @include fz-36; }
+.fw-400 { font-weight: 400; }
+.fw-600 { font-weight: 600; }
+
+// Colors
+.color-primary { color: $primary; }
+.color-dark { color: $theme-color-primary; }
+.color-light { color: $theme-color-secondary !important; }
+
+// Background
+.bgc-primary { background-color: $primary; }
+.bgc-light { background-color: $theme-color-secondary; }
+
+// Width
+.w-max-content { width: max-content; }
+.w-md-100 { 
+    @media all and (max-width: 767px) { width: 100%; }
+}
+
+// Utilities
+.pt-6 { padding-top: 6rem; }

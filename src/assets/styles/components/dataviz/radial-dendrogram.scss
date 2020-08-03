@@ -1,0 +1,37 @@
+.asking-franklin-dataviz {
+
+    .node {
+
+        circle {
+            fill: $primary-50;
+            r: 3;
+        }
+        text {
+            font: 13px $ff-primary;
+            fill: $theme-color-primary;
+            cursor: pointer;
+
+            &:hover { text-decoration: underline; }
+        }
+
+        &--internal {
+            circle {
+                r: 5;
+                fill: $primary-75;
+            }
+            text {
+                font: 16px $ff-primary;
+                fill: $theme-color-primary;
+                font-weight: 600;
+            }
+        }
+    }
+      
+    .link {
+        fill: none;
+        stroke: #BDCCD4;
+        stroke-opacity: 0.3;
+        stroke-width: 1.5px;
+    }
+
+}

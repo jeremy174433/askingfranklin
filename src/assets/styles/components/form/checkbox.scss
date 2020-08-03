@@ -1,0 +1,71 @@
+@mixin state-input-checkbox($bd-bg, $bg) {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 3px;
+    width: 16px;
+    height: 16px;
+    border: 1px solid;
+    border-color: $bd-bg;
+    background-color: $bg;
+    border-radius: 2px;
+}
+@mixin state-tick-checkbox($size) {
+    content: '✓';
+    position: absolute;
+    top: .25rem;
+    left: .15rem;
+    font-size: 1rem;
+    line-height: 1;
+    color: $white;
+    transition: .2s ease-out;
+    transform: scale($size);
+}
+
+.checkbox-primary {
+
+    + label {
+        position: relative;
+        padding-left: 1.75rem;
+        cursor: pointer;
+
+        .checkbox-primary-checked-circle {
+            position: absolute;
+            top: -3px;
+            left: -6px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            transform: scale(0.75);
+            transition: .2s ease-out;
+        }
+    }
+
+    &:checked, &:not(:checked) {
+        position: absolute;
+        top: 3px;
+        opacity: 0;
+        width: 16px;
+        height: 16px;
+    }
+    
+    &:checked {
+        + label {
+            &:before { @include state-input-checkbox($primary, $primary); }
+            &:after { @include state-tick-checkbox(1); }
+            .checkbox-primary-checked-circle {
+                box-shadow: 0 0 4px $primary-25;
+                background-color: $primary-25;
+                transform: scale(1);
+            }
+        }
+        
+    }
+
+    &:not(:checked) {
+        + label {
+            &:before { @include state-input-checkbox($theme-color-primary, transparent); }
+            &:after { @include state-tick-checkbox(0); }
+        }
+    }
+}
