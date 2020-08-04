@@ -85,7 +85,7 @@ export default class SignUp extends React.Component {
                 {this.state.success && 
                     <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg={['Votre compte a bien été créé. Vous pouvez maintenant ', <Link to="/connexion">vous connecter</Link>]}/>
                 }
-                <Container className="px-0 mt-5 pt-5">
+                <Container className="px-0 mt-6">
                     <H1 className="mb-5 pb-5" title="Créer un compte Asking Franklin"/>
                     <p class="mb-5 pb-5">Vous pouvez aussi continuer à utiliser Asking Franklin en accédant à la <Link to="/">version gratuite</Link> sans avoir besoin de vous inscrire</p>
                     <form onSubmit={this.handleSubmit} method="POST">

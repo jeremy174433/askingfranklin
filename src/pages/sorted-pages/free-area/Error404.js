@@ -8,7 +8,7 @@ export default class Error404 extends React.Component {
 
     render() {
         return (
-            <Container className="px-0 pt-5 mt-5 w-100 text-center d-flex flex-column align-items-center">
+            <Container className="px-0 mt-6 w-100 text-center d-flex flex-column align-items-center">
                 <H1 className="mb-5" title="Oups, la page demandée semble introuvable..."/>
                 <ErrorImg/>
                 <PmyBtn redirectTo="/" linkIsLargePmyFull textLink="Retourner à l'accueil" containerStyle="mt-5 pt-5"/>

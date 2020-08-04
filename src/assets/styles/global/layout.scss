@@ -1,7 +1,7 @@
 #globalTag { margin-top: $header-mh; }
 
 .layout-style { 
-    @include layout-style($header-mh, 6rem, 1.5rem, 3rem,);
+    @include layout-style($header-mh, 6rem, 1.5rem, 3rem);
     min-height: 100vh;
 }
 

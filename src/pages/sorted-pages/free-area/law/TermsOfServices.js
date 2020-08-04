@@ -8,7 +8,7 @@ export default class TermsOfServices extends React.Component {
 
     render() {
         return (
-            <Container className="px-0 pt-5 mt-5">
+            <Container className="px-0 mt-6">
                 <H1 className="mb-5" title="Conditions Générales d'Utilisation"/>
                 <p class="fz-24 mb-4">Sommaire :</p>
                 <ul>

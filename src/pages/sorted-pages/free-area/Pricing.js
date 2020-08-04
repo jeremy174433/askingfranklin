@@ -7,7 +7,8 @@ import {
     Col 
 } 
 from 'react-bootstrap';
-import FeaturesList from '../../../assets/img/svg/switch/FeaturesList';
+import FeaturesList from '../../components/elements/FeaturesList';
+import FeaturesIcons from '../../../assets/img/svg/switch/FeaturesIcons';
 import Tick from '../../../assets/img/svg/Tick';
 import PmyBtn from '../../components/button/PmyBtn';
 
@@ -35,7 +36,7 @@ export default class Pricing extends React.Component {
 
     render() {
         return (
-            <Container id="pricing" className="px-0 pt-5 mt-5">
+            <Container id="pricing" className="px-0 mt-6">
                 <H1 className="text-center" title="Un outil aux services exceptionnels à un prix juste"/>
                 <Row className="col-12 d-flex justify-content-around mx-0 mt-5 pt-5 px-0">
                     <Col sm="12" lg="6" xl="5" className="block-pricing block-pricing-free mb-5 mb-lg-0 mr-0 mr-lg-5 p-4 bgc-light rounded">
@@ -43,7 +44,7 @@ export default class Pricing extends React.Component {
                         <p class="mb-3 pb-3">Convient pour les blogueurs et marketeurs indépendants cherchant à savoir quelles sont les requêtes des utilisateurs les plus observées par Google.</p>
                         <p class="price">0€</p>
                         <ul class="features-list my-5 d-flex flex-column">
-                            <li><FeaturesList icon="search"/><span>Nombre de recherches par jour limitées <em class="fz-14">(3 maximum)</em></span></li>
+                            <li><FeaturesIcons icon="search"/><span>Nombre limité de recherches par jour <em class="fz-14">(3 maximum)</em></span></li>
                         </ul>
                         <PmyBtn redirectTo="/" linkIsLargePmyOutlineLight textLink="Continuer avec la version gratuite" containerStyle="mb-4" customBtnClass="w-100"/>
                     </Col>
@@ -81,12 +82,7 @@ export default class Pricing extends React.Component {
                                 <p><span class="fz-18 fw-600">468€/an</span>&nbsp; &nbsp;<span class="price-before-reduction">588€/an</span></p>
                             </div>
                         </div>
-                        <ul class="features-list my-5 d-flex flex-column">
-                            <li><FeaturesList icon="search"/><span>Nombre de recherches illimitées</span></li>
-                            <li><FeaturesList icon="filter"/><span>Requêtes filtrées par langues et pays</span></li>
-                            <li><FeaturesList icon="support"/><span>Réponse prioritaire de l'équipe support</span></li>
-                            <li><FeaturesList icon="image"/><span>Export des images en haute résolution</span></li>
-                        </ul>
+                        <FeaturesList className="my-5"/>
                         <PmyBtn redirectTo="/inscription" linkIsLargePmyFull textLink="Passer à la version Pro" containerStyle="mb-4" customBtnClass="w-100"/>
                     </Col>
                 </Row>

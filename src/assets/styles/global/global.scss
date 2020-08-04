@@ -22,7 +22,9 @@ button {
     padding: 16px 16px 32px 16px;
     border-radius: 8px;
     overflow: hidden;
-}           
+}        
+ 
+@include features-list;
 
 // Typography
 .fz-14 { @include fz-14; }
@@ -49,5 +51,9 @@ button {
     @media all and (max-width: 767px) { width: 100%; }
 }
 
-// Utilities
+// Padding & Margin
+.mt-6 { margin-top: 6rem; }
 .pt-6 { padding-top: 6rem; }
+
+// Utilities
+.overflow-visible { overflow: visible !important; }

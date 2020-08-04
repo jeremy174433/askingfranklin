@@ -56,7 +56,7 @@ export default class SignIn extends React.Component {
                 {this.state.error && 
                     <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="La combinaison « email / mot de passe » est incorrect"/>
                 }
-                <Container className="px-0 mt-5 pt-5">
+                <Container className="px-0 mt-6">
                     <H1 className="mb-5 pb-5" title="Connexion à votre compte Asking Franklin"/>
                     <p class="mb-3">La connexion est réservée aux membres pro. <Link to="/tarifs">Découvrir les avantages Asking Franklin Pro</Link></p>
                     <p class="mb-5 pb-5">Vous pouvez continuer à utiliser Asking Franklin en accédant à la <Link to="/">version gratuite</Link></p>

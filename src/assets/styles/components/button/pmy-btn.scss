@@ -51,9 +51,10 @@
             box-shadow: 0 0 8px $black-25; 
         }
 
-        &[disabled]:hover, &[disabled]:active {
-            background-color: $primary;
-            box-shadow: none;
+        &[disabled] { 
+            background-color: $primary-75; 
+            border-color: transparent; 
+            &:hover, &:active { box-shadow: none; }
         }
     } 
 }

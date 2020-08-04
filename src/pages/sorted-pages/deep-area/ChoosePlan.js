@@ -71,7 +71,7 @@ export default class ChoosePlan extends React.Component {
         const customColPlan2 = ' block-pricing-choose-plan-annual ml-0 ml-lg-5';
 
         return (
-            <Container id="pricing" className="px-0 pt-5 mt-5">
+            <Container id="pricing" className="px-0 mt-6">
                 <H1 className="text-center" title="Passez à la vitesse supérieure en choisissant l'offre mensuel ou annuel"/>
                 {this.state.selectedPlan !== 0 &&
                     <p className={this.state.countClick >= 1 ? 'invisible text-center mt-5 fz-18' : 'text-center mt-5 fz-18'}>

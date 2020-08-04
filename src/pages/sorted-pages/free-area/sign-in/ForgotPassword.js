@@ -47,7 +47,7 @@ export default class ForgotPassword extends React.Component {
                 {this.state.success && 
                     <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre demande a bien été prise en compte. Vous allez recevoir un email de réinitialisation si l'adresse saisie existe bien. Pensez à vérifier vos spams"/>
                 }
-                <Container className="px-0 mt-5 pt-5">
+                <Container className="px-0 mt-6">
                     <H1 className="mb-5 pb-5" title="Mot de passe oublié"/>
                     <form onSubmit={this.handleSubmit} method="POST">
                         <Col sm="12" lg="8" xl="6" className="px-0 d-flex flex-column">

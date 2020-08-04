@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class FeaturesList extends React.Component {
+export default class FeaturesIcons extends React.Component {
 
     render() {
         switch(this.props.icon) {

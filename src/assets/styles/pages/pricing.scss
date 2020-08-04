@@ -56,19 +56,6 @@
 
     .circle { @include circle; }
 
-    ul.features-list {
-        li { 
-            display: flex;
-            flex-direction: row;
-            align-items: baseline;
-            margin-bottom: 1rem;
-            &:last-child { margin-bottom: 0; }
-
-            svg { min-width: 16px; }
-            span { margin-left: 1rem; }
-        }
-    }
-
     .block-pricing {
         @media all and (min-width: 992px) and (max-width: 1199px) { max-width: calc(50% - 24px); }
 

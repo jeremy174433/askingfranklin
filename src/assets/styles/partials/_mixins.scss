@@ -12,9 +12,21 @@
     font-size: $fz-18;
     line-height: calc(#{$fz-18} + #{$lh-default});
 }
+@mixin fz-20 {
+    font-size: $fz-20;
+    line-height: calc(#{$fz-20} + #{$lh-default});
+}
+@mixin fz-22 {
+    font-size: $fz-22 !important;
+    line-height: calc(#{$fz-22} + #{$lh-default}) !important;
+}
 @mixin fz-24 {
     font-size: $fz-24;
     line-height: calc(#{$fz-24} + #{$lh-default});
+}
+@mixin fz-26 {
+    font-size: $fz-26 !important;
+    line-height: calc(#{$fz-26} + #{$lh-default}) !important;
 }
 @mixin fz-32 {
     font-size: $fz-32;
@@ -70,4 +82,21 @@
     right: 0;
     bottom: 0;
     left: 0;
+}
+
+// Features list
+@mixin features-list {
+    ul.features-list {
+        li { 
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 1rem;
+            &:last-child { margin-bottom: 0; }
+            @media all and (max-width: 575px) { align-items: baseline; }
+    
+            svg { min-width: 16px; }
+            span { margin-left: 1rem; }
+        }
+    }
 }

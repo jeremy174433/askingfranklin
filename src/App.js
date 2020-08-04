@@ -13,6 +13,7 @@ import Error404 from './pages/sorted-pages/free-area/Error404';
 import SignIn from './pages/sorted-pages/free-area/sign-in/SignIn';
 import SignUp from './pages/sorted-pages/free-area/sign-in/SignUp';
 import ForgotPassword from './pages/sorted-pages/free-area/sign-in/ForgotPassword';
+import MaximumRequests from './pages/sorted-pages/free-area/MaximumRequests';
 import LegalNotices from './pages/sorted-pages/free-area/law/LegalNotices';
 import TermsOfServices from './pages/sorted-pages/free-area/law/TermsOfServices';
 import TermsOfSales from './pages/sorted-pages/free-area/law/TermsOfSales';
@@ -36,6 +37,7 @@ export default class App extends React.Component {
                             <Route exact path='/' component={Home}/>
                             <Route exact path='/tarifs' component={Pricing}/>
                             <Route exact path='/plans' component={ChoosePlan}/>
+                            <Route path="/limite-de-recherches" component={MaximumRequests}/>
                             <Route path="/mentions-legales" component={LegalNotices}/>
                             <Route path="/conditions-generales-d-utilisation" component={TermsOfServices}/>
                             <Route path="/conditions-generales-de-vente" component={TermsOfSales}/>

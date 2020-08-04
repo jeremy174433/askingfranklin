@@ -1,3 +1,25 @@
 #home {
 
+    .blob {
+        position: absolute;
+        z-index: -1;
+
+        &-1 {
+            top: -85px;
+            left: -100px;
+        }
+        &-2 {
+            top: 100%;
+            right: calc(100% * 1.1275);
+        }
+        &-3 {
+            top: calc(100% - 60px);
+            left: 50%;
+        }
+        &-4 {
+            left: calc(100% * 1.1);
+            top: 100px;
+        }
+    }
+
 }
