@@ -7,7 +7,6 @@ import {
 } from 'react-bootstrap';
 import AFWrapper from '../../components/asking-franklin/AFWrapper';
 import FormRequestFranklin from '../../components/form/FormRequestFranklin';
-import { Redirect } from 'react-router-dom';
 
 export default class AskingFranklin extends React.Component {
     constructor(props) {
@@ -19,20 +18,21 @@ export default class AskingFranklin extends React.Component {
             selectedPanel: 0,
             nbResults: 0,
             keywordSearch: '',
-            newKeywordSearch:''
+            newKeywordSearch: ''
         }
         this.switchSelectedPanel = this.switchSelectedPanel.bind(this);
         this.handleKeywordChange = this.handleKeywordChange.bind(this);
         this.requestFanklin = this.requestFanklin.bind(this);
         this.fetchFranklin = this.fetchFranklin.bind(this);
     }
-    fetchFranklin(keyword){
+
+    fetchFranklin(keyword) {
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
         this.setState({
-            isLoading:true,
-            dataIsLoaded:false,
-            keywordSearch:keyword
-        },()=>{
+            isLoading: true,
+            dataIsLoaded: false,
+            keywordSearch: keyword
+        }, () => {
             fetch('https://98w123ci8c.execute-api.eu-west-1.amazonaws.com/prod/suggestions?keyword=' + keyword)
             .then((res) => res.json())
             .then((res) => {
@@ -48,16 +48,18 @@ export default class AskingFranklin extends React.Component {
                 });
             });
         })
- 
     }
+
     componentDidMount() {
-        this.fetchFranklin(this.props.match.params.keyword)
+        this.fetchFranklin(this.props.match.params.keyword);
     }
+
     componentDidUpdate(prevProps) {
-        if(prevProps.match.params.keyword !== this.props.match.params.keyword){
-          this.fetchFranklin(this.props.match.params.keyword)
+        if(prevProps.match.params.keyword !== this.props.match.params.keyword) {
+          this.fetchFranklin(this.props.match.params.keyword);
         }
-      }
+    }
+
     switchSelectedPanel() {
         this.setState({
             selectedPanel: this.state.selectedPanel === 0 ? 1 : 0
@@ -71,8 +73,8 @@ export default class AskingFranklin extends React.Component {
     }
 
     requestFanklin = (e) => {
-        e.preventDefault()
-        this.props.history.push("/recherche/"+this.state.newKeywordSearch);
+        e.preventDefault();
+        this.props.history.push('/recherche/' + this.state.newKeywordSearch);
     }
 
     render() {
@@ -84,7 +86,7 @@ export default class AskingFranklin extends React.Component {
                                             onChange={this.handleKeywordChange}
                                             value={this.state.newKeywordSearch} 
                                             keyword={this.state.newKeywordSearch} 
-                                            isDisabled={this.state.newKeywordSearch.length <= 1}
+                                            isDisabled={this.state.newKeywordSearch.length <= 1 || this.state.newKeywordSearch === this.state.keywordSearch}
                                         />
                                     </Col>
                                 </Container>;
