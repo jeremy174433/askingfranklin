@@ -18,31 +18,46 @@ export default class AskingFranklin extends React.Component {
             dataIsLoaded: false,
             selectedPanel: 0,
             nbResults: 0,
-            keywordSearch: ''
+            keywordSearch: '',
+            newKeywordSearch:''
         }
         this.switchSelectedPanel = this.switchSelectedPanel.bind(this);
         this.handleKeywordChange = this.handleKeywordChange.bind(this);
         this.requestFanklin = this.requestFanklin.bind(this);
+        this.fetchFranklin = this.fetchFranklin.bind(this);
     }
-
-    componentDidMount() {
+    fetchFranklin(keyword){
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
-        fetch('https://98w123ci8c.execute-api.eu-west-1.amazonaws.com/prod/suggestions?keyword=' + this.props.match.params.keyword)
-        .then((res) => res.json())
-        .then((res) => {
-            var nbResults = 0;
-            {res.data.map((x, index) => {
-                nbResults += x.data.map((x) => x.suggestions.length).reduce(reducer);
-            })}
-            this.setState({
-                isLoading: false,
-                dataKw: res,
-                nbResults: nbResults,
-                dataIsLoaded: true
-            }, () => { console.log(res.data); });
-        });
+        this.setState({
+            isLoading:true,
+            dataIsLoaded:false,
+            keywordSearch:keyword
+        },()=>{
+            fetch('https://98w123ci8c.execute-api.eu-west-1.amazonaws.com/prod/suggestions?keyword=' + keyword)
+            .then((res) => res.json())
+            .then((res) => {
+                var nbResults = 0;
+                {res.data.map((x, index) => {
+                    nbResults += x.data.map((x) => x.suggestions.length).reduce(reducer);
+                })}
+                this.setState({
+                    isLoading: false,
+                    dataKw: res,
+                    nbResults: nbResults,
+                    dataIsLoaded: true
+                });
+            });
+        })
+ 
     }
-
+    componentDidMount() {
+        this.fetchFranklin(this.props.match.params.keyword)
+    }
+    componentDidUpdate(prevProps) {
+        if(prevProps.match.params.keyword !== this.props.match.params.keyword){
+          this.fetchFranklin(this.props.match.params.keyword)
+        }
+      }
     switchSelectedPanel() {
         this.setState({
             selectedPanel: this.state.selectedPanel === 0 ? 1 : 0
@@ -51,14 +66,13 @@ export default class AskingFranklin extends React.Component {
 
     handleKeywordChange(e) {
         this.setState({
-            keywordSearch: e.target.value
+            newKeywordSearch: e.target.value
         });
     }
 
-    requestFanklin = () => {
-        this.setState({
-            redirect: true
-        });
+    requestFanklin = (e) => {
+        e.preventDefault()
+        this.props.history.push("/recherche/"+this.state.newKeywordSearch);
     }
 
     render() {
@@ -68,17 +82,13 @@ export default class AskingFranklin extends React.Component {
                                         <FormRequestFranklin 
                                             onSubmit={this.requestFanklin} 
                                             onChange={this.handleKeywordChange}
-                                            value={this.state.keywordSearch} 
-                                            keyword={this.state.keywordSearch} 
-                                            isDisabled={this.state.keywordSearch.length <= 1}
+                                            value={this.state.newKeywordSearch} 
+                                            keyword={this.state.newKeywordSearch} 
+                                            isDisabled={this.state.newKeywordSearch.length <= 1}
                                         />
                                     </Col>
                                 </Container>;
     
-        if(this.state.redirect) {
-            return <Redirect to={'/recherche/' + this.state.keywordSearch}/>
-        }
-
         if(this.state.isLoading) {
             return  <div id="askingFranklin">
                         <Loader loaderDisplayed content="Chargement en cours"/>
@@ -92,10 +102,10 @@ export default class AskingFranklin extends React.Component {
         else if(this.state.dataIsLoaded) {
             return  <div id="askingFranklin">
                         <main class="d-flex flex-column flex-xl-row">
-                            <AFStickyMenu searchContent={this.props.match.params.keyword} dataNumber={this.state.dataKw} handleNoData={this.handleNoData}/>
+                            <AFStickyMenu searchContent={this.state.keywordSearch} dataNumber={this.state.dataKw} handleNoData={this.handleNoData}/>
                             <Col className="col-12 col-xl-9 px-0 mb-5 w-100">
                                 {this.state.dataKw.data.map((x) => {
-                                    return <AFWrapper keywordSearch={this.props.match.params.keyword} data={x}/>
+                                    return <AFWrapper keywordSearch={this.state.keywordSearch} data={x}/>
                                 })}
                             </Col>
                         </main>
