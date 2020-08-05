@@ -7,6 +7,10 @@ import PmyBtn from '../button/PmyBtn';
 
 
 export default class AFStickyMenu extends React.Component {
+    constructor(props) {
+        super(props)
+        this.handleExportCSV = this.handleExportCSV.bind(this);
+    }
 
     shouldComponentUpdate() {
         return false;
