@@ -2,6 +2,9 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 import Scrollspy from 'react-scrollspy';
 import AFStickyMenuList from './AFStickyMenuList';
+import { CSVLink, CSVDownload } from "react-csv";
+import PmyBtn from '../button/PmyBtn';
+
 
 export default class AFStickyMenu extends React.Component {
 
@@ -9,8 +12,21 @@ export default class AFStickyMenu extends React.Component {
         return false;
     }
 
+    exportCSV(){
+        var data = [
+            ["Type","prepo","suggestions"]
+        ]
+        for(var x = 0; x < this.props.dataNumber.data.length; x++){
+            for(var i = 0; i < this.props.dataNumber.data[x].data.length; i++){
+                for(var j = 0; j < this.props.dataNumber.data[x].data[i].suggestions.length; j++){
+                    var to_push = [this.props.dataNumber.data[x].type,this.props.dataNumber.data[0].data[i].word,this.props.dataNumber.data[0].data[i].suggestions[j]]
+                    data.push(to_push)
+                }
+            }
+        }
+        return data
+    }
     render() {
-
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
         return ( 
@@ -26,6 +42,10 @@ export default class AFStickyMenu extends React.Component {
                         })}
                     </Scrollspy>
                 </div>
+                <div class="sticky-menu-footer pb-3 px-3">
+                <CSVLink data={this.exportCSV()} filename={this.props.searchContent +"_askingFranklin.csv"} target="_blank" ><PmyBtn onClick={this.handleExportCSV} btnIsMediumPmyOutlineFull textBtn="Exporter en CSV"/></CSVLink>
+                </div>
+
             </Col>
         )
     }
