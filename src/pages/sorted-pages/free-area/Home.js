@@ -50,7 +50,7 @@ export default class Home extends React.Component {
                         onChange={this.handleKeywordChange} 
                         value={this.state.keywordSearch} 
                         keyword={this.state.keywordSearch} 
-                        isDisabled={this.state.keywordSearch.length <= 1}
+                        isDisabled={this.state.keywordSearch.trim().length <= 1}
                     />
                 </Col>
                 <Col md="12" lg="6" className="px-0 d-flex align-items-center justify-content-center">

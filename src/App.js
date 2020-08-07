@@ -35,7 +35,7 @@ export default class App extends React.Component {
                             <Route path='/connexion' component={SignIn}/>
                             <Route path='/inscription' component={SignUp}/>
                             <Route path='/mot-de-passe-oublie' component={ForgotPassword}/>
-                            <Route exact path='/recherche/:keyword' component={AskingFranklin}/>
+                            <Route path='/recherche/:keyword' component={AskingFranklin}/>
                             <Route exact path='/' component={Home}/>
                             <Route exact path='/tarifs' component={Pricing}/>
                             <Route exact path='/plans' component={ChoosePlan}/>

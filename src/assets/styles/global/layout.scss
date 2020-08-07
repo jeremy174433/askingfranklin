@@ -6,6 +6,6 @@
 }
 
 .container {
-    @media all and (min-width: 1200px) { max-width: 1360px !important; }
-    @media all and (max-width: 991px) { max-width: 100% !important; }
+    @include min-xl-rwd { max-width: 1360px !important; }
+    @include max-lg-rwd { max-width: 100% !important; }
 }

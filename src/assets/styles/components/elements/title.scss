@@ -1,7 +1,7 @@
 h1 {
-    @media all and (max-width: 991px) { @include fz-26; }
+    @include max-lg-rwd { @include fz-26; }
 }
 
 h2 {
-    @media all and (max-width: 991px) { @include fz-22; }
+    @include max-lg-rwd { @include fz-22; }
 }

@@ -1,47 +1,8 @@
-// ---------- FONT SIZE ---------- //
-
-@mixin fz-14 {
-    font-size: $fz-14;
-    line-height: calc(#{$fz-14} + #{$lh-default});
-}
-@mixin fz-16 {
-    font-size: $fz-16;
-    line-height: calc(#{$fz-16} + #{$lh-default});
-}
-@mixin fz-18 {
-    font-size: $fz-18;
-    line-height: calc(#{$fz-18} + #{$lh-default});
-}
-@mixin fz-20 {
-    font-size: $fz-20;
-    line-height: calc(#{$fz-20} + #{$lh-default});
-}
-@mixin fz-22 {
-    font-size: $fz-22 !important;
-    line-height: calc(#{$fz-22} + #{$lh-default}) !important;
-}
-@mixin fz-24 {
-    font-size: $fz-24;
-    line-height: calc(#{$fz-24} + #{$lh-default});
-}
-@mixin fz-26 {
-    font-size: $fz-26 !important;
-    line-height: calc(#{$fz-26} + #{$lh-default}) !important;
-}
-@mixin fz-32 {
-    font-size: $fz-32;
-    line-height: calc(#{$fz-32} + #{$lh-default});
-}
-@mixin fz-36 {
-    font-size: $fz-36;
-    line-height: calc(#{$fz-36} + #{$lh-default});
-}
-
 // ---------- LAYOUT ---------- //
 
 @mixin layout-style($pt, $pb, $px, $px-lg) {
     padding: $pt $px $pb $px;
-    @media all and (min-width: 1200px) {
+    @include min-xl-rwd {
         padding-right: $px-lg; 
         padding-left: $px-lg; 
     }
@@ -93,7 +54,7 @@
             align-items: center;
             margin-bottom: 1rem;
             &:last-child { margin-bottom: 0; }
-            @media all and (max-width: 575px) { align-items: baseline; }
+            @include max-sm-rwd { align-items: baseline; }
     
             svg { min-width: 16px; }
             span { margin-left: 1rem; }

@@ -27,6 +27,7 @@ button {
 @include features-list;
 
 // Typography
+.fz-12 { @include fz-12; }
 .fz-14 { @include fz-14; }
 .fz-16 { @include fz-16; }
 .fz-18 { @include fz-18; }
@@ -43,12 +44,13 @@ button {
 
 // Background
 .bgc-primary { background-color: $primary; }
+.bgc-dark { background-color: $theme-color-primary; }
 .bgc-light { background-color: $theme-color-secondary; }
 
 // Width
 .w-max-content { width: max-content; }
 .w-md-100 { 
-    @media all and (max-width: 767px) { width: 100%; }
+    @include max-md-rwd { width: 100%; }
 }
 
 // Padding & Margin

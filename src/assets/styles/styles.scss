@@ -1,6 +1,8 @@
 @import 'partials/var';
 @import 'partials/colors';
 @import 'partials/fz';
+@import 'partials/breakpoints';
+@import 'partials/media';
 @import 'partials/mixins';
 
 @import 'global/reset';
@@ -29,4 +31,4 @@
 
 @import 'pages/home';
 @import 'pages/asking-franklin';
-@import 'pages//pricing';
+@import 'pages/pricing';

@@ -18,6 +18,16 @@ export default class FeaturesIcons extends React.Component {
                 return  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 19.5" width="16" height="19.5" fill="#2B2B2B">
                             <path d="M12,22a2.006,2.006,0,0,0,2-2H10A2.006,2.006,0,0,0,12,22Zm6-6V11c0-3.07-1.63-5.64-4.5-6.32V4a1.5,1.5,0,1,0-3,0v.68C7.64,5.36,6,7.92,6,11v5L4,18v1H20V18Zm-2,1H8V11c0-2.48,1.51-4.5,4-4.5s4,2.02,4,4.5Z" transform="translate(-4 -2.5)"/>
                         </svg>
+                
+            case 'file':
+                return  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 21" width="16" height="20" fill="#2B2B2B">
+                            <g transform="translate(-873.5 -675.5)">
+                                <path d="M14,2H6A2,2,0,0,0,4.01,4L4,20a2,2,0,0,0,1.99,2H18a2.006,2.006,0,0,0,2-2V8Z" transform="translate(870 674)" fill="transparent" stroke="#2B2B2B" stroke-width="2"/>
+                                <rect width="8" height="2" transform="translate(878 690)"/>
+                                <rect width="8" height="2" transform="translate(878 686)"/>
+                                <path d="M3.878.314,8.7,3.095,1.113,5.1Z" transform="translate(884.652 686.531) rotate(-120)"/>
+                            </g>
+                        </svg>
 
             case 'image':
                 return  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="#2B2B2B">
