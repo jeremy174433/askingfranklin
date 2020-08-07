@@ -62,7 +62,8 @@ export default class SignUp extends React.Component {
         console.log('submit');
         if(this.state.email && this.state.password && this.state.privacy) {
             this.setState({
-                redirect: true
+                success: true,
+                alertIsShowed:true
             });
         }
     }

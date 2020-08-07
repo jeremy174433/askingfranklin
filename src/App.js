@@ -18,6 +18,8 @@ import LegalNotices from './pages/sorted-pages/free-area/law/LegalNotices';
 import TermsOfServices from './pages/sorted-pages/free-area/law/TermsOfServices';
 import TermsOfSales from './pages/sorted-pages/free-area/law/TermsOfSales';
 import ChoosePlan from './pages/sorted-pages/deep-area/ChoosePlan';
+import Payment from './pages/sorted-pages/deep-area/Payment';
+
 import BackToTop from 'react-back-to-top-button';
 import ArrowLight from './assets/img/svg/ArrowLight';
 
@@ -37,6 +39,7 @@ export default class App extends React.Component {
                             <Route exact path='/' component={Home}/>
                             <Route exact path='/tarifs' component={Pricing}/>
                             <Route exact path='/plans' component={ChoosePlan}/>
+                            <Route exact path='/paiement' component={Payment}/>
                             <Route path="/limite-de-recherches" component={MaximumRequests}/>
                             <Route path="/mentions-legales" component={LegalNotices}/>
                             <Route path="/conditions-generales-d-utilisation" component={TermsOfServices}/>

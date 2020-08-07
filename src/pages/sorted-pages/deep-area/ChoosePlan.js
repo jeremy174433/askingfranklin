@@ -27,12 +27,14 @@ export default class ChoosePlan extends React.Component {
     }
 
     handleSelectedMonthlyPlan() {
+        localStorage.setItem("product","plan_GoMTkakY0I0kwN")
         this.setState({ 
             redirectSelectedMonthly: true
         });
     }
 
     handleSelectedAnnualPlan() {
+        localStorage.setItem("product","price_1HAYTSLB03GdYRbhIt2Rqm9G")
         this.setState({ 
             redirectSelectedAnnual: true
         });
@@ -58,11 +60,8 @@ export default class ChoosePlan extends React.Component {
 
     render() {
 
-        if (this.state.redirectSelectedMonthly) { 
-            return <Redirect to='/'/>
-        }
-        if (this.state.redirectSelectedAnnual) { 
-            return <Redirect to='/'/>
+        if (this.state.redirectSelectedMonthly || this.state.redirectSelectedAnnual) { 
+            return <Redirect to='/paiement'/>
         }
 
         const classListRow = ' col-12 d-flex flex-row justify-content-center mx-0 mt-5 pt-5 px-0';
