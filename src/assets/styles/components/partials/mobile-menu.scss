@@ -88,7 +88,7 @@
 
                 a {
                     color: $theme-color-secondary;
-                    @media all and (max-width: 575px) { width: max-content; }
+                    @include max-sm-rwd { width: max-content; }
                         
                     &:hover, &:focus { 
                         text-decoration: none;

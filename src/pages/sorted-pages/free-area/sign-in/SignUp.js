@@ -21,7 +21,8 @@ export default class SignUp extends React.Component {
         this.state = {
             email: '',
             password: '',
-            privacy: 'privacyChecked',
+            privacy: '',
+            checkboxChecked: false,
             pwdDefaultType: 'password',
             success: false,
             alertIsShowed: false,
@@ -51,10 +52,8 @@ export default class SignUp extends React.Component {
         });
     }
 
-    handlePrivacy(e) {
-        this.setState({
-            privacy: e.target.value
-        });
+    handlePrivacy() {
+        this.setState({ privacy: this.state.privacy === '' ? 'privacyChecked' : '' });
     }
 
     handleSubmit(event) {
@@ -77,13 +76,13 @@ export default class SignUp extends React.Component {
     render() {
 
         if (this.state.redirect) { 
-            return <Redirect to='/plans'/>
+            return <Redirect to='/connexion'/>
         }
 
         return (
             <div id="signUp">
                 {this.state.success && 
-                    <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg={['Votre compte a bien été créé. Vous pouvez maintenant ', <Link to="/connexion">vous connecter</Link>]}/>
+                    <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre compte a bien été créé. Vous allez recevoir un email de confirmation. Pensez à vérifier vos spams"/>
                 }
                 <Container className="px-0 mt-6">
                     <H1 className="mb-5 pb-5" title="Créer un compte Asking Franklin"/>
@@ -93,16 +92,16 @@ export default class SignUp extends React.Component {
                             <Input onChange={this.handleEmail} type="email" label="Votre email" for="email" name={this.for} id={this.for} required={true}/>
                             <Input onChange={this.handlePassword} type={this.state.pwdDefaultType} label="Votre mot de passe" labelInfo="8 caractères minimum" minLength={8} for="password" name={this.for} id={this.for} onClick={this.handleInputType} inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>} required={true}/>
                             <Checkbox 
-                                label={['J\'ai lu et j\'accepte les ', <Link to="/conditions-generales-d-utilisation" class="fz-16">CGU</Link>,' et ', <Link to="/conditions-generales-de-vente" class="fz-16">CGV</Link>]} 
-                                for="checkPrivacy" name={this.for} id={this.for} value={this.state.privacy} required={true} className="mb-3 pb-3"
+                                label={['J\'ai lu et j\'accepte les ', <Link to="/conditions-generales-d-utilisation" target="_blank" rel="noopener" class="fz-16">CGU</Link>]} 
+                                onChange={this.handlePrivacy} for="checkPrivacy" name={this.for} id={this.for} value={this.state.privacy} required={true} className="mb-3 pb-3"
                             />
-                            <PmyBtn type="submit" btnIsMediumPmyFull textBtn="Créer mon compte" className="w-md-100"/>
+                            <PmyBtn type="submit" isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.password.length < 8 || this.state.privacy === ''} btnIsMediumPmyFull textBtn="Créer mon compte" className="w-md-100"/>
                         </Col>
                     </form>
                     <div class="d-flex flex-column mt-3 pt-3">
                         <Link to="/connexion" class="w-max-content">
                             <ArrowLight width="16" fill="#4285F4" style={{ transform: 'rotate(180deg)', marginRight: '1rem' }}/>
-                            Se connecter à Asking Franklin
+                            J'ai déjà un compte Asking Franklin
                         </Link>
                     </div>
                 </Container>

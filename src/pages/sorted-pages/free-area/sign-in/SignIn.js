@@ -65,7 +65,7 @@ export default class SignIn extends React.Component {
                             <Input onChange={this.handleEmail} type="email" label="Votre email" for="email" name={this.for} id={this.for} required={true}/>
                             <Input onChange={this.handlePassword} type="password" label="Votre mot de passe" for="password" name={this.for} id={this.for} required={true}/>
                             <Checkbox label="Se souvenir de moi" for="rememberMe" name={this.for} id={this.for} value="rememberMe" className="mb-3 pb-3"/>
-                            <PmyBtn type="submit" btnIsMediumPmyFull textBtn="Se connecter" className="w-md-100"/>
+                            <PmyBtn type="submit" isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.password.length < 8} btnIsMediumPmyFull textBtn="Se connecter" className="w-md-100"/>
                         </Col>
                     </form>
                     <div class="d-flex flex-column mt-3 pt-3">

@@ -7,6 +7,7 @@
     transition: .2s ease-in-out;
     
     &:hover { text-decoration: none !important; }
+    &[disabled] { cursor: not-allowed; }
 
     &-outline-light {
         border: 1px solid $primary;

@@ -42,14 +42,14 @@
     }
 
     @mixin plan-preselected($dir) {
-        @media all and (min-width: 992px) {
+        @include min-lg-rwd {
             #{$dir}: -96px;
             z-index: 1;
         }
     }
     @mixin plan-blur($pos) {
-        @media all and (min-width: 992px) { text-align: $pos; }
-        @media all and (min-width: 576px) { transform: scale(.75); }
+        @include min-lg-rwd { text-align: $pos; }
+        @include min-sm-rwd { transform: scale(.75); }
         filter: blur(4px);
         cursor: pointer;
     }
@@ -57,7 +57,7 @@
     .circle { @include circle; }
 
     .block-pricing {
-        @media all and (min-width: 992px) and (max-width: 1199px) { max-width: calc(50% - 24px); }
+        @media all and (min-width: #{$screen-lg-min}) and (max-width: #{$screen-xl-max}) { max-width: calc(50% - 24px); }
 
         &-free {
             border: 1px solid $theme-terthiary;
@@ -85,7 +85,7 @@
         }
 
         &-choose-plan {
-            @media all and (min-width: 992px) and (max-width: 1199px) { max-width: calc(50% - 3rem); }
+            @media all and (min-width: #{$screen-lg-min}) and (max-width: #{$screen-xl-max}) { max-width: calc(50% - 3rem); }
         }
     }
 

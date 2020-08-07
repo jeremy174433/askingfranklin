@@ -1,0 +1,39 @@
+// Small devices
+@mixin min-sm-rwd {
+    @media all and (min-width: #{$screen-sm-min}) { @content; }
+}
+@mixin max-sm-rwd {
+    @media all and (max-width: #{$screen-sm-max}) { @content; }
+}
+  
+// Medium devices
+@mixin min-md-rwd {
+    @media all and (min-width: #{$screen-md-min}) { @content; }
+}
+@mixin max-md-rwd {
+    @media all and (max-width: #{$screen-md-max}) { @content; }
+}
+
+// Large devices
+@mixin min-lg-rwd {
+    @media all and (min-width: #{$screen-lg-min}) { @content; }
+}
+@mixin max-lg-rwd {
+    @media all and (max-width: #{$screen-lg-max}) { @content; }
+}
+  
+// Extra large devices
+@mixin min-xl-rwd {
+    @media all and (min-width: #{$screen-xl-min}) { @content; }
+}
+@mixin max-xl-rwd {
+    @media all and (max-width: #{$screen-xl-max}) { @content; }
+}
+
+// Custom devices
+@mixin min-custom-rwd($screen) {
+    @media all and (min-width: $screen + 'px' ) { @content; }
+}
+@mixin max-custom-rwd($screen) {
+    @media all and (max-width: $screen + 'px' ) { @content; }
+}

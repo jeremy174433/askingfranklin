@@ -19,7 +19,7 @@
     @include fz-18;
     z-index: 50;
     transition: .6s ease-in-out;
-    @media all and (min-width: 1200px) { padding: 1rem 3rem; }
+    @include min-xl-rwd { padding: 1rem 3rem; }
 
     &-visible { 
         opacity: 1;

@@ -86,7 +86,7 @@ export default class AskingFranklin extends React.Component {
                                             onChange={this.handleKeywordChange}
                                             value={this.state.newKeywordSearch} 
                                             keyword={this.state.newKeywordSearch} 
-                                            isDisabled={this.state.newKeywordSearch.length <= 1 || this.state.newKeywordSearch === this.state.keywordSearch}
+                                            isDisabled={this.state.newKeywordSearch.trim().length <= 1 || this.state.newKeywordSearch === this.state.keywordSearch}
                                         />
                                     </Col>
                                 </Container>;

@@ -30,7 +30,8 @@ export default class Navbar extends React.Component {
         return (
             <nav id="navbar" class="px-4 px-xl-5 py-2 w-100 d-flex justify-content-center position-fixed overflow-hidden">
                 <Container className="px-0 d-flex flex-lg-row align-items-center justify-content-lg-center">
-                    <Link to="/" class="mr-md-5">
+                    <Link to="/" class="mr-4 
+                    mr-md-5">
                         <Logo width="171"/>
                     </Link>
                     <div class="d-none d-md-block ml-auto">

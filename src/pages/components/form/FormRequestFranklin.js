@@ -16,7 +16,7 @@ export default class FormRequestFranklin extends React.Component {
                     value={this.props.value}
                     placeholder="Saisissez un mot clé, un produit, une marque..."
                 />
-                <PmyBtn onClick={this.props.onSubmit} type="submit" isDisabled={this.props.isDisabled} textBtn="Explorer" btnIsLargePmyFull className="w-100 h-100"/>
+                <PmyBtn type="submit" isDisabled={this.props.isDisabled} textBtn="Explorer" btnIsLargePmyFull className="w-100 h-100"/>
             </form>
         )
     }

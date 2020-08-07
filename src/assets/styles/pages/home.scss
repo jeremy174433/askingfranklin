@@ -3,6 +3,7 @@
     .blob {
         position: absolute;
         z-index: -1;
+        transition: .2s ease-in-out;
 
         &-1 {
             top: -85px;
@@ -11,6 +12,7 @@
         &-2 {
             top: 100%;
             right: calc(100% * 1.1275);
+            @include max-custom-rwd(1800) { right: calc(100% - 20px); }
         }
         &-3 {
             top: calc(100% - 60px);
@@ -19,6 +21,7 @@
         &-4 {
             left: calc(100% * 1.1);
             top: 100px;
+            @include max-custom-rwd(1800) { left: calc(100% - 100px); }
         }
     }
 
