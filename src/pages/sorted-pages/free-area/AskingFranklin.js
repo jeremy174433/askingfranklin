@@ -5,6 +5,9 @@ import {
     Container, 
     Col 
 } from 'react-bootstrap';
+import { 
+    Redirect 
+} from 'react-router-dom';
 import AFWrapper from '../../components/asking-franklin/AFWrapper';
 import FormRequestFranklin from '../../components/form/FormRequestFranklin';
 
@@ -18,7 +21,8 @@ export default class AskingFranklin extends React.Component {
             selectedPanel: 0,
             nbResults: 0,
             keywordSearch: '',
-            newKeywordSearch: ''
+            newKeywordSearch: '',
+            redirectBlocked: false
         }
         this.switchSelectedPanel = this.switchSelectedPanel.bind(this);
         this.handleKeywordChange = this.handleKeywordChange.bind(this);
@@ -33,19 +37,25 @@ export default class AskingFranklin extends React.Component {
             dataIsLoaded: false,
             keywordSearch: keyword
         }, () => {
-            fetch('https://98w123ci8c.execute-api.eu-west-1.amazonaws.com/prod/suggestions?keyword=' + keyword)
+            fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/suggestions?keyword=' + keyword)
             .then((res) => res.json())
             .then((res) => {
-                var nbResults = 0;
-                {res.data.map((x, index) => {
-                    nbResults += x.data.map((x) => x.suggestions.length).reduce(reducer);
-                })}
-                this.setState({
-                    isLoading: false,
-                    dataKw: res,
-                    nbResults: nbResults,
-                    dataIsLoaded: true
-                });
+                if (res.blocked){
+                    this.setState({
+                        redirectBlocked:true
+                    })
+                } else {
+                    var nbResults = 0;
+                    {res.data.map((x, index) => {
+                        nbResults += x.data.map((x) => x.suggestions.length).reduce(reducer);
+                    })}
+                    this.setState({
+                        isLoading: false,
+                        dataKw: res,
+                        nbResults: nbResults,
+                        dataIsLoaded: true
+                    });
+                }
             });
         })
     }
@@ -90,7 +100,9 @@ export default class AskingFranklin extends React.Component {
                                         />
                                     </Col>
                                 </Container>;
-    
+        if(this.state.redirectBlocked){
+            return <Redirect to="/limite-de-recherches"/>
+        }
         if(this.state.isLoading) {
             return  <div id="askingFranklin">
                         <Loader loaderDisplayed content="Chargement en cours"/>

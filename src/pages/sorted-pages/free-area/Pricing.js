@@ -21,14 +21,18 @@ export default class Pricing extends React.Component {
         this.selectFirstPlan = this.selectFirstPlan.bind(this);
         this.selectSecondPlan = this.selectSecondPlan.bind(this);
     }
-
+    componentDidMount(){
+        this.selectFirstPlan()
+    }
     selectFirstPlan() {
+        localStorage.setItem("product","price_1HEaGeLB03GdYRbhWsbdlFcx")
         this.setState({
-            selectedPlan: 0
+            selectedPlan: 0,
         });
     }
 
     selectSecondPlan() {
+        localStorage.setItem("product","price_1HAYTSLB03GdYRbhIt2Rqm9G")
         this.setState({
             selectedPlan: 1
         });
@@ -83,7 +87,7 @@ export default class Pricing extends React.Component {
                             </div>
                         </div>
                         <FeaturesList className="my-5"/>
-                        <PmyBtn redirectTo="/inscription" linkIsLargePmyFull textLink="Passer à la version Pro" containerStyle="mb-4" customBtnClass="w-100"/>
+                        <PmyBtn redirectTo="/inscription?ctx=buy" linkIsLargePmyFull textLink="Passer à la version Pro" containerStyle="mb-4" customBtnClass="w-100"/>
                     </Col>
                 </Row>
             </Container>

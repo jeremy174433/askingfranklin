@@ -15,21 +15,50 @@ export default class Payment extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      redirect:false
+      redirect:false,
+      product:{}
     }
   }
   componentDidMount(){
-    if (!localStorage.getItem('product')){
+    if (!localStorage.getItem('product') || !localStorage.getItem('af_token')){
       this.setState(
         {
           redirect:true
         }
       )
+    } else {
+      var token = localStorage.getItem("af_token")
+      var product = localStorage.getItem("product")
+      fetch("https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-product", {
+        headers:{
+            "Authorization":token
+        },
+        body: JSON.stringify({
+          product_id: product,
+        }),
+        method: "POST",
+      })
+      .then(res=>{
+          return res.json()
+      })
+      .then(res=>{
+          if(res.message == "Unauthorized"){
+            this.setState({
+                redirect:true
+            })
+          } else {
+            this.setState({
+                product:res.message,
+            })
+          }
+      })
     }
   }
     render(){
       return(this.state.redirect ? <Redirect to="/plans"/> :
             <Elements stripe={stripePromise}>
+
+              produit prix : {this.state.product ? this.state.product.unit_amount : ""}
               <CheckoutForm />
             </Elements>)
           

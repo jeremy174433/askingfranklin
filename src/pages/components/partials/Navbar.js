@@ -16,10 +16,23 @@ export default class Navbar extends React.Component {
         }
         this.handleLogOut = this.handleLogOut.bind(this);
     }
-
+    componentDidMount(){
+        var token = localStorage.getItem('af_token')
+        if(token){
+            this.setState({
+                isConnected:true
+            })
+        }
+    }
+    componentWillReceiveProps(nextProps){
+        console.log(nextProps)
+        this.setState({
+            isConnected:nextProps.isConnected
+        })
+    }
     handleLogOut(event) {
         event.preventDefault();
-        localStorage.removeItem('token_name');
+        localStorage.removeItem('af_token');
         window.location.replace('/');
         this.setState({
             isConnected: false
