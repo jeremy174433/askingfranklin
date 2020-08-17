@@ -2,7 +2,7 @@ import React from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import CardSection from './CardSection';
 
-export default function CheckoutForm() {
+export default function CheckoutForm(props) {
   const stripe = useStripe();
   const elements = useElements();
   const handleRequiresPaymentMethod = async ({
@@ -42,8 +42,12 @@ export default function CheckoutForm() {
       return { subscription, priceId, paymentMethodId };
     }
     // If it's a first payment attempt, the payment intent is on the subscription latest invoice.
-    // If it's a retry, the payment intent will be on the invoice itself.
-    let paymentIntent = invoice ? invoice.payment_intent : subscription.latest_invoice.payment_intent;
+    try{
+      var paymentIntent = invoice ? invoice.payment_intent : subscription.latest_invoice.payment_intent;
+    }
+    catch(e){
+      throw subscription
+    }
   
     if (
       paymentIntent.status === 'requires_action' ||
@@ -61,9 +65,7 @@ export default function CheckoutForm() {
             throw result;
           } else {
             if (result.paymentIntent.status === 'succeeded') {
-              // Show a success message to your customer.
-              // There's a risk of the customer closing the window before the callback.
-              // We recommend setting up webhook endpoints later in this guide.
+              window.location.replace("/paiement/confirmation")
               return {
                 priceId: priceId,
                 subscription: subscription,
@@ -74,7 +76,7 @@ export default function CheckoutForm() {
           }
         })
         .catch((error) => {
-          console.log(error);
+          throw error
         });
     } else {
       // No customer action needed.
@@ -127,9 +129,7 @@ export default function CheckoutForm() {
         // No more actions required. Provision your service for the user.
         .then(onSubscriptionComplete)
         .catch((error) => {
-          // An error has happened. Display the failure to the user here.
-          // We utilize the HTML element we created.
-          console.log(error);
+          props.handlePaymentError(error)
         })
     );
   }
@@ -184,9 +184,7 @@ export default function CheckoutForm() {
         // No more actions required. Provision your service for the user.
         .then(onSubscriptionComplete)
         .catch((error) => {
-          // An error has happened. Display the failure to the user here.
-          // We utilize the HTML element we created.
-          console.log(error);
+          props.handlePaymentError(error)
         })
     );
   }
@@ -228,7 +226,6 @@ export default function CheckoutForm() {
           priceId,
         });
       } else {
-        // Create the subscription
         createSubscription({paymentMethodId, priceId });
       }
     }
@@ -236,7 +233,7 @@ export default function CheckoutForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <CardSection />
+      <CardSection hidePostalCode={true}/>
       <button disabled={!stripe}>Confirm order</button>
     </form>
   );

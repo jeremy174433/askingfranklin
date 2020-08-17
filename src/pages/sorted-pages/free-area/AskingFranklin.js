@@ -32,12 +32,14 @@ export default class AskingFranklin extends React.Component {
 
     fetchFranklin(keyword) {
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
+        const token = localStorage.getItem("af_token")
+        var headers = token != null ? {headers:{Authorization:token}} : {headers:{}}
         this.setState({
             isLoading: true,
             dataIsLoaded: false,
             keywordSearch: keyword
         }, () => {
-            fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/suggestions?keyword=' + keyword)
+            fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/suggestions?keyword=' + keyword,headers)
             .then((res) => res.json())
             .then((res) => {
                 if (res.blocked){
