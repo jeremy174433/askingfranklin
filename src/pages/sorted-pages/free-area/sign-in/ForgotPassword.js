@@ -81,11 +81,9 @@ export default class ForgotPassword extends React.Component {
               return res.json()
           })
           .then(res=>{
-              if(res.message === "Please check your Registered email id for validation code") {
                 this.setState({
                     emailSent:true
                 })
-              }
           })
     }
 
