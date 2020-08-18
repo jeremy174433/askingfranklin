@@ -1,13 +1,5 @@
 #pricing {
 
-    @mixin price {
-        $fz-price: 64px;
-        font-size: $fz-price;
-        line-height: calc(#{$fz-price} + #{$lh-default});
-        font-weight: 600;
-        > span { @include fz-18; }
-    }
-
     @keyframes tick-anim {
         from { opacity: 0; transform: scale(0); }
         to { opacity: 1; transform: scale(1); }

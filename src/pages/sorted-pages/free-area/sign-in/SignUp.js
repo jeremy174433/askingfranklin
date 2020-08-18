@@ -26,7 +26,7 @@ export default class SignUp extends React.Component {
             pwdDefaultType: 'password',
             success: false,
             alertIsShowed: false,
-            emailIsAlreadyTaken:false,
+            emailIsAlreadyTaken: false,
             redirect: false
         }
         this.handleInputType = this.handleInputType.bind(this);
@@ -36,10 +36,11 @@ export default class SignUp extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCloseAlert = this.handleCloseAlert.bind(this);
     }
-    componentDidMount(){
-        var token = localStorage.getItem('af_token')
-        if(token){
-            this.props.history.push('/plans')
+
+    componentDidMount() {
+        var token = localStorage.getItem('af_token');
+        if(token) {
+            this.props.history.push('/plans');
         }
     }
 
@@ -66,30 +67,32 @@ export default class SignUp extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         if(this.state.email && this.state.password && this.state.privacy) {
-            fetch("https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/signup", {
-                method: "POST",
+            fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/signup', {
+                method: 'POST',
                 body: JSON.stringify({email:this.state.email, password:this.state.password})
-              })
-              .then(res=>{
-                  return res.json()
-              })
-              .then(res=>{
-                  if(res.error){
-                    console.log(res.error)
-                  } else {
-                      if(res.message == "This username already exist"){
+            })
+            .then(res=>{
+                return res.json();
+            })
+            .then(res => {
+                if(res.error) {
+                    console.log(res.error);
+                } 
+                else {
+                    if(res.message === 'This email already exist') {
                         this.setState({
-                            alertIsShowed:true,
-                            emailIsAlreadyTaken:true
+                            alertIsShowed: true,
+                            emailIsAlreadyTaken: true
                         })
-                      } else {
+                    }
+                    else {
                         this.setState({
                             success: true,
                             alertIsShowed: true
-                        })
-                      }
-                  }
-              })
+                        });
+                    }
+                }
+            })
         }
     }
 
@@ -102,18 +105,16 @@ export default class SignUp extends React.Component {
     }
 
     render() {
-
-        if (this.state.redirect) { 
-            return <Redirect to={this.props.location.search != "?ctx=buy" ? '/connexion' : '/connexion?ctx=buy'}/>
+        if(this.state.redirect) { 
+            return <Redirect to={this.props.location.search != '?ctx=buy' ? '/connexion' : '/connexion?ctx=buy'}/>
         }
-        console.log(this.props.location.search == "?ctx=buy")
         return (
             <div id="signUp">
                 {this.state.success && 
-                    <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre compte a bien été créé. Vous allez recevoir un email de confirmation."/>
+                    <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre compte a bien été créé. Vous allez recevoir un email de confirmation"/>
                 }
                 {this.state.emailIsAlreadyTaken && 
-                    <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="Cet email est déja utilisé par un autre compte..."/>
+                    <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="L'email choisi est déjà utilisé par un autre compte"/>
                 }
                 <Container className="px-0 mt-6">
                     <H1 className="mb-5 pb-5" title="Créer un compte Asking Franklin"/>
@@ -130,7 +131,7 @@ export default class SignUp extends React.Component {
                         </Col>
                     </form>
                     <div class="d-flex flex-column mt-3 pt-3">
-                        <Link to={this.props.location.search != "?ctx=buy" ? '/connexion' : '/connexion?ctx=buy'} class="w-max-content">
+                        <Link to={this.props.location.search !== '?ctx=buy' ? '/connexion' : '/connexion?ctx=buy'} class="w-max-content">
                             <ArrowLight width="16" fill="#4285F4" style={{ transform: 'rotate(180deg)', marginRight: '1rem' }}/>
                             J'ai déjà un compte Asking Franklin
                         </Link>

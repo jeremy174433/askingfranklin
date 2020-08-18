@@ -1,0 +1,36 @@
+#payment {
+
+    @mixin price {
+        $fz-price: 64px;
+        font-size: $fz-price;
+        line-height: calc(#{$fz-price} + #{$lh-default});
+        font-weight: 600;
+        > span { @include fz-18; }
+    }
+
+    .block-ctn-elements {
+        @include min-xl-rwd { flex-basis: calc(66.666667% - 24px); }
+
+        height: fit-content;
+
+        .block-elements {
+            &-header { border-bottom: 1px solid $theme-terthiary; }
+        }
+    }
+
+    .block-ctn-summary {
+        @include min-xl-rwd { flex-basis: calc(33.333333% - 24px); }
+
+        height: fit-content;
+
+        .block-summary {
+            &-header { border-bottom: 1px solid $theme-terthiary; }
+            &-body {
+                background-color: $primary-25;
+                .price { @include price; }
+            }
+            &-footer { border-top: 1px solid $theme-terthiary; }
+        }
+    }
+
+}

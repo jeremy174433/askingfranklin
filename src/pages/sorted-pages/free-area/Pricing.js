@@ -5,8 +5,7 @@ import {
     Container,
     Row, 
     Col 
-} 
-from 'react-bootstrap';
+} from 'react-bootstrap';
 import FeaturesList from '../../components/elements/FeaturesList';
 import FeaturesIcons from '../../../assets/img/svg/switch/FeaturesIcons';
 import Tick from '../../../assets/img/svg/Tick';

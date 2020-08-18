@@ -1,6 +1,9 @@
 import React from 'react';
 import H1 from '../../../components/elements/title/H1';
-import { Link, Redirect } from 'react-router-dom';
+import { 
+    Link, 
+    Redirect 
+} from 'react-router-dom';
 import { 
     Container,
     Col 
@@ -19,21 +22,23 @@ export default class SignIn extends React.Component {
             password: '',
             error: false,
             alertIsShowed: false,
-            redirect:false
+            redirect: false
         }
         this.handleEmail = this.handleEmail.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCloseAlert = this.handleCloseAlert.bind(this);
     }
-    componentDidMount(){
-        var token = localStorage.getItem('af_token')
-        if(token){
+
+    componentDidMount() {
+        var token = localStorage.getItem('af_token');
+        if(token) {
             this.setState({
                 redirect:true
-            })
+            });
         }
     }
+
     handleEmail(e) {
         this.setState({
             email: e.target.value
@@ -49,30 +54,31 @@ export default class SignIn extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         this.setState({
-            alertIsShowed:false,
-            error:false
+            alertIsShowed: false,
+            error: false
         })
-        fetch("https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/auth", {
-            method: "POST",
-            body: JSON.stringify({username:this.state.email, password:this.state.password})
-          })
-          .then(res=>{
-              return res.json()
-          })
-          .then(res=>{
-              if(res.error){
+        fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/auth', {
+            method: 'POST',
+            body: JSON.stringify({ username: this.state.email, password: this.state.password })
+        })
+        .then(res => {
+            return res.json();
+        })
+        .then(res => {
+            if(res.error) {
                 this.setState({
                     error: true,
                     alertIsShowed: true
-                })
-              } else {
-                localStorage.setItem('af_token',res.token)
+                });
+            } 
+            else {
+                localStorage.setItem('af_token', res.token);
                 this.setState({
-                    redirect:true
-                })
-                this.props.handleConnect(event)
-              }
-          })
+                    redirect: true
+                });
+                this.props.handleConnect(event);
+            }
+        });
     }
 
     handleCloseAlert() {
@@ -83,9 +89,10 @@ export default class SignIn extends React.Component {
     }
 
     render() {
-        if(this.state.redirect){
-            return <Redirect to={this.props.location.search == "?ctx=buy" ? "/plans" : "/" }/>
-        } else {
+        if(this.state.redirect) {
+            return <Redirect to={this.props.location.search === '?ctx=buy' ? '/plans' : '/' }/>
+        } 
+        else {
             return (
                 <div id="signIn">
                     {this.state.error && 
@@ -117,6 +124,5 @@ export default class SignIn extends React.Component {
                 </div>
             )
         }
-
     }
 }

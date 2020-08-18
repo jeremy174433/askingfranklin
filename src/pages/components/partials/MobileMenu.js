@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import People from '../../../assets/img/svg/People';
-import Rocket from '../../../assets/img/svg/Rocket';
-import LogOut from '../../../assets/img/svg/LogOut';
+import People from '../../../assets/img/svg/navigation/People';
+import Rocket from '../../../assets/img/svg/navigation/Rocket';
+import Settings from '../../../assets/img/svg/navigation/Settings';
+import LogOut from '../../../assets/img/svg/navigation/LogOut';
 
 export default class MobileMenu extends React.Component {
     constructor(props) {
@@ -42,6 +43,12 @@ export default class MobileMenu extends React.Component {
                     {
                         this.props.userConnected === true ?
                             <ul class="d-flex flex-column align-items-center">
+                                <li>
+                                    <Link to="/profil" onClick={this.handleMobileMenuClicked} class="nav-link d-flex flex-row py-2 px-3 rounded">
+                                        <Settings width="16" fill="#FFF"/>
+                                        <span class="ml-3">Paramètres</span>
+                                    </Link>
+                                </li>
                                 <li>
                                     <Link to="/" onClick={this.props.onClickLogOut} class="nav-link d-flex flex-row py-2 px-3 rounded">
                                         <LogOut width="16" fill="#FFF"/>

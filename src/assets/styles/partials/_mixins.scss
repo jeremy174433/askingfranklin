@@ -54,10 +54,18 @@
             align-items: center;
             margin-bottom: 1rem;
             &:last-child { margin-bottom: 0; }
-            @include max-sm-rwd { align-items: baseline; }
     
             svg { min-width: 16px; }
             span { margin-left: 1rem; }
         }
     }
+}
+
+// Pricing V. Pro
+@mixin price {
+    $fz-price: 64px;
+    font-size: $fz-price;
+    line-height: calc(#{$fz-price} + #{$lh-default});
+    font-weight: 600;
+    > span { @include fz-18; }
 }

@@ -6,6 +6,12 @@
 }
 
 .container {
+    padding-right: 0;
+    padding-left: 0;
     @include min-xl-rwd { max-width: 1360px !important; }
     @include max-lg-rwd { max-width: 100% !important; }
+}
+.row {
+    margin-right: 0;
+    margin-left: 0;
 }

@@ -1,0 +1,58 @@
+.btn-profile {
+
+    > .pmy-btn:focus { 
+        background-color: $primary;
+        color: $theme-color-secondary;
+
+        svg {
+            fill: $theme-color-secondary;
+            transition: .2s ease-in-out; 
+        }
+    }
+
+    + .btn-profile-dropwdown { 
+        display: none; 
+        position: absolute;
+        right: 0;
+    }
+
+    &.btn-profile-open {
+
+        svg { transform: rotate(-180deg); }
+
+        + .btn-profile-dropwdown {
+            background-color: $theme-secondary;
+            border: 1px solid $theme-terthiary;
+            box-shadow: 0 0 4px $black-25;
+            display: block;
+            z-index: 2;
+
+            li {
+                &:not(:last-child)::after {
+                    content: '';
+                    display: block;
+                    border-bottom: 1px solid $theme-terthiary;
+                    margin: 8px 16px;
+                }
+
+                a { 
+                    min-width: 200px;
+                    text-decoration: none;
+                    color: $theme-color-primary;
+
+                    &:hover { background-color: $md-grey-35; }
+
+                    &.link-active {
+                        background-color: $md-grey-75;
+                        
+                        svg, span {
+                            fill: $primary;
+                            color: $primary;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

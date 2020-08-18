@@ -1,27 +1,17 @@
-
-
 .StripeElement {
-    height: 40px;
-    padding: 10px 12px;
+    min-height: 48px;
+    height: 48px;
+    padding: 12px;
     width: 100%;
-    color: #32325d;
-    background-color: white;
-    border: 1px solid transparent;
+    color: $theme-color-primary;
+    background-color: $theme-secondary;
+    border: 1px solid $theme-terthiary;
     border-radius: 4px;
+    box-sizing: border-box;
+    transition: .2s ease-in-out;
+
+    &--focus { border-left: 4px solid $primary; }
+    &--invalid { border-color: $danger; }
+    &--webkit-autofill { background-color: $theme-secondary; }
+}
   
-    box-shadow: 0 1px 3px 0 #e6ebf1;
-    -webkit-transition: box-shadow 150ms ease;
-    transition: box-shadow 150ms ease;
-  }
-  
-  .StripeElement--focus {
-    box-shadow: 0 1px 3px 0 #cfd7df;
-  }
-  
-  .StripeElement--invalid {
-    border-color: #fa755a;
-  }
-  
-  .StripeElement--webkit-autofill {
-    background-color: #fefde5 !important;
-  }

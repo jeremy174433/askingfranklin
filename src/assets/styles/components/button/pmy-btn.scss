@@ -49,6 +49,7 @@
 
         &:hover, &:active { 
             background-color: rgba($primary, .9);
+            color: $theme-color-secondary;
             box-shadow: 0 0 8px $black-25; 
         }
 
