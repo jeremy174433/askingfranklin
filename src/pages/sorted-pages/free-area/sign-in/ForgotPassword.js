@@ -40,13 +40,13 @@ export default class ForgotPassword extends React.Component {
             email: e.target.value
         });
     }
-
+    
     handleCode(e) {
         this.setState({
             code: e.target.value
         });
     }
-
+    
     handleNewPassword(e) {
         this.setState({
             newPassword: e.target.value
@@ -92,11 +92,9 @@ export default class ForgotPassword extends React.Component {
             return res.json();
         })
         .then(res => {
-            if(res.message === 'Please check your registered email ID for validation code') {
-                this.setState({
-                    emailSent: true
-                });
-            }
+            this.setState({
+                emailSent: true
+            });
         })
     }
 
@@ -106,7 +104,7 @@ export default class ForgotPassword extends React.Component {
             alertIsShowed: false
         });
     }
-
+    
     handleCloseAlertError() {
         this.setState({
             error: false,
