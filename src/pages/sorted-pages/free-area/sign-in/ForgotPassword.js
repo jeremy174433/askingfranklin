@@ -15,12 +15,22 @@ export default class ForgotPassword extends React.Component {
         super(props)
         this.state = {
             email: '',
+            code:"",
+            newPassword:"",
             success: false,
-            alertIsShowed: false
+            alertIsShowed: false,
+            error: false,
+            alertIsShowedError: false,
+            emailSent:false
         }
         this.handleEmail = this.handleEmail.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCloseAlert = this.handleCloseAlert.bind(this);
+        this.handleCode = this.handleCode.bind(this);
+        this.handleNewPassword = this.handleNewPassword.bind(this);
+        this.handleSubmitConfirm = this.handleSubmitConfirm.bind(this);
+        this.handleCloseAlertError = this.handleCloseAlertError.bind(this);
+
     }
 
     handleEmail(e) {
@@ -28,10 +38,55 @@ export default class ForgotPassword extends React.Component {
             email: e.target.value
         });
     }
-
+    handleCode(e) {
+        this.setState({
+            code: e.target.value
+        });
+    }
+    handleNewPassword(e) {
+        this.setState({
+            newPassword: e.target.value
+        });
+    }
+    handleSubmitConfirm(event) {
+        event.preventDefault();
+        fetch("https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/confirm-forgot-password", {
+            method: "POST",
+            body: JSON.stringify({code:this.state.code, password:this.state.newPassword, username:this.state.email})
+          })
+          .then(res=>{
+              return res.json()
+          })
+          .then(res=>{
+              if(res.message === "Password has been changed successfully"){
+                this.setState({
+                    success:true,
+                    alertIsShowed:true
+                })
+              } else {
+                this.setState({
+                    error:true,
+                    alertIsShowedError:true
+                })
+              }
+          })
+    }
     handleSubmit(event) {
         event.preventDefault();
-        console.log('submit');
+        fetch("https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/forgot-password", {
+            method: "POST",
+            body: JSON.stringify({username:this.state.email})
+          })
+          .then(res=>{
+              return res.json()
+          })
+          .then(res=>{
+              if(res.message === "Please check your Registered email id for validation code") {
+                this.setState({
+                    emailSent:true
+                })
+              }
+          })
     }
 
     handleCloseAlert() {
@@ -40,19 +95,36 @@ export default class ForgotPassword extends React.Component {
             alertIsShowed: false
         });
     }
-
+    handleCloseAlertError() {
+        this.setState({
+            error: false,
+            alertIsShowedError: false
+        });
+    }
     render() {
         return (
             <div id="forgotPassword">
                 {this.state.success && 
-                    <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre demande a bien été prise en compte. Vous allez recevoir un email de réinitialisation si l'adresse saisie existe bien. Pensez à vérifier vos spams"/>
+                    <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre mot de passe a bien été changé ! Vous pouvez maintenant vous connecter."/>
                 }
-                <Container className="px-0 mt-6">
+                {this.state.error && 
+                    <Alert onClick={this.handleCloseAlertError} className={this.state.alertIsShowedError ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="Une erreur est survenue. Vérifiez votre code et votre nouveau mot de passe..."/>
+                }
+                {!this.state.emailSent ? <Container className="px-0 mt-6">
                     <H1 className="mb-5 pb-5" title="Mot de passe oublié"/>
                     <form onSubmit={this.handleSubmit} method="POST">
                         <Col sm="12" lg="8" xl="6" className="px-0 d-flex flex-column">
-                            <Input onChange={this.handleEmail} type="email" label="Votre email" for="email" name={this.for} id={this.for} required={true}/>
-                            <PmyBtn type="submit" isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)} btnIsMediumPmyFull textBtn="Réinitialiser le mot de passe" className="w-md-100"/>
+                            <Input onChange={this.handleEmail} type="email" label="Votre email" for="email" required={true}/>
+                            <PmyBtn type="submit" isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)} btnIsMediumPmyFull textBtn="Recevoir un mail de réinitialisation" className="w-md-100"/>
+                        </Col>
+                    </form>
+                </Container> :<Container className="px-0 mt-6">
+                    <H1 className="mb-5 pb-5" title="Mot de passe oublié"/>
+                    <form onSubmit={this.handleSubmitConfirm} method="POST">
+                        <Col sm="12" lg="8" xl="6" className="px-0 d-flex flex-column">
+                            <Input onChange={this.handleCode} value={this.state.code} type="text" label={"Le code envoyé par mail à " + this.state.email} required={true} maxlength="6" minlength="6"/>
+                            <Input onChange={this.handleNewPassword} value={this.state.newPassword} type="password" label="Votre nouveau mot de passe" required={true}/>
+                            <PmyBtn type="submit"  btnIsMediumPmyFull textBtn="Réinitialiser le mot de passe" className="w-md-100"/>
                         </Col>
                     </form>
                     <div class="d-flex flex-column mt-3 pt-3">
@@ -61,7 +133,7 @@ export default class ForgotPassword extends React.Component {
                             Se connecter à Asking Franklin
                         </Link>
                     </div>
-                </Container>
+                </Container> }
             </div>
         )
     }
