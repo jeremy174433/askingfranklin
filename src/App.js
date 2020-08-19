@@ -1,4 +1,5 @@
 import React from 'react';
+import CookieConsent from 'react-cookie-consent';
 import {
   BrowserRouter as Router,
   Switch,
@@ -28,7 +29,7 @@ export default class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            isConnected:false
+            isConnected: false
         }
         this.handleConnect = this.handleConnect.bind(this);
     }
@@ -68,6 +69,9 @@ export default class App extends React.Component {
                 <BackToTop showAt={2500} speed={1000} easing="easeOutSine">
                     <ArrowLight width="22" fill="#FFF"/>
                 </BackToTop>
+                <CookieConsent location="bottom" acceptOnScroll={true} buttonText="Accepter" cookieName="user-has-accepted-cookies" expires={182}>
+                    Ce site web utilise des cookies afin d'améliorer votre expérience de navigation. &nbsp;<a href="conditions-generales-d-utilisation">En savoir plus</a>
+                </CookieConsent>
             </div>
         )
     }
