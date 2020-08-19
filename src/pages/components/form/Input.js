@@ -8,9 +8,9 @@ export default class Input extends React.Component {
 
         return (
             <div className={this.props.spacingReduce ? this.props.spacingReduce + classListWrapper : 'mb-3 pb-3' + classListWrapper}>
-                <label for={this.props.for} className={this.props.hideLabel ? 'input-primary-label d-none' : 'input-primary-label mb-2'}>
-                    {this.props.label}
-                    {this.props.labelInfo && <span class="fz-14">&nbsp; ({this.props.labelInfo})</span>}
+                <label for={this.props.for} className={this.props.hideLabel ? 'input-primary-label d-none' : 'input-primary-label d-flex flex-column flex-sm-row align-items-start justify-content-start mb-2'}>
+                    {this.props.label} &nbsp;
+                    {this.props.labelInfo && <span class="fz-14">({this.props.labelInfo})</span>}
                 </label>
                 <input 
                     type={this.props.type} 

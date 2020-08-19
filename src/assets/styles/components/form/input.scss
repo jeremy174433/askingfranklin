@@ -36,6 +36,8 @@ $input: '.input-primary';
             transition: .2s ease-in-out;
     
             &:hover { background-color: rgba($md-grey, .35); }
+
+            @include max-sm-rwd { top: 58px; }
         }
     }
 }

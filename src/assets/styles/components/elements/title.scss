@@ -1,7 +1,7 @@
-h1 {
+.h1 {
     @include max-lg-rwd { @include fz-26; }
 }
 
-h2 {
+.h2 {
     @include max-lg-rwd { @include fz-22; }
 }

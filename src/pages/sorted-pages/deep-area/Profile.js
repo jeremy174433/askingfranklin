@@ -109,91 +109,90 @@ export default class Profile extends React.Component {
                 {this.state.emailIsAlreadyTaken && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="L'email choisi est déjà utilisé par un autre compte"/> }
                 {this.state.actualPasswordDidntMatch && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="Votre mot de passe actuelle ne semble pas correct"/> }
                 {this.state.subscriptionState && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg={['Votre désabonnement a bien été enregistré. Vous restez Pro jusqu\'à la fin de votre abonnement en cours le : ', <span>31/08/2020</span>]}/> }
-              
                 <div class="block-style">
-                    <H1 className="mb-5" title="Paramètres"/>
-                    <ul class="d-flex flex-row align-items-center ml-5">
-                        <li class={this.state.tabActive === 0 ? 'link-active mr-5' : 'mr-5'}>
+                    <H1 className="mb-3" title="Paramètres"/>
+                    <ul class="d-flex flex-row align-items-center flex-wrap">
+                        <li class={this.state.tabActive === 0 ? 'link-active mt-4 mr-4' : 'mt-4 mr-4'}>
                             <PmyBtn onClick={this.handleSelectAccount} isDisabled={this.state.tabActive === 0} btnIsMediumPmyOutlineLight textBtn="Compte" className={this.state.tabActive === 0 && 'pmy-btn-full'}/>
                         </li>
-                        <li class={this.state.tabActive === 1 ? 'link-active' : null}>
+                        <li class={this.state.tabActive === 1 ? 'link-active mt-4' : 'mt-4'}>
                             <PmyBtn onClick={this.handleSelectSubscription} isDisabled={this.state.tabActive === 1} btnIsMediumPmyOutlineLight textBtn="Abonnement" className={this.state.tabActive === 1 && 'pmy-btn-full'}/>
                         </li>
                     </ul>
-                </div>
-                <main>
-                    {
-                        this.state.tabActive === 0 ?
-                            <section class="mt-6">
-                                <form onSubmit={this.handleSubmitEmail} method="" class="block-style d-flex flex-column">
-                                    <Title title="Votre email"/>
-                                    <Input
-                                        label="Adresse email actuelle"
-                                        for="actualEmail"
+                    <main class="px-md-3 mx-md-3 mb-3">
+                        {
+                            this.state.tabActive === 0 ?
+                                <section class="mt-6">
+                                    <form onSubmit={this.handleSubmitEmail} method="" class="block-style d-flex flex-column">
+                                        <Title title="Votre email"/>
+                                        <Input
+                                            label="Adresse email actuelle"
+                                            for="actualEmail"
+                                            name={this.for}
+                                            id={this.for}
+                                            type="email"
+                                            value="olivier.durand@entreprise.com"
+                                            disabled={true}
+                                        />
+                                        <Input
+                                            label="Votre nouvelle adresse email"
+                                            for="newEmail"
+                                            name={this.for}
+                                            id={this.for}
+                                            value={this.state.newEmail}
+                                            type="email"
+                                            required={true}
+                                            onChange={this.handleNewEmail}
+                                        />
+                                        <PmyBtn type="submit" isDisabled={!this.state.newEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)} btnIsMediumPmyFull textBtn="Sauvegarder" title="Sauvegarder"/>
+                                    </form>
+                                    <form onSubmit={this.handleSubmitPassword} method="" class="block-style d-flex flex-column mt-6">
+                                        <Title title="Votre mot de passe"/>
+                                        <Input
+                                            label="Votre mot de passe actuel"
+                                            for="actualPassword"
+                                            name={this.for}
+                                            id={this.for}
+                                            value={this.state.actualPassword}
+                                            type="password"
+                                            required={true}
+                                            onChange={this.handleActualPassword}
+                                        />
+                                        <Input
+                                            label="Votre nouveau mot de passe"
+                                            labelInfo="8 caractères minimum"
+                                            minLength={8}
+                                            for="newPassword"
+                                            name={this.for}
+                                            id={this.for}
+                                            value={this.state.newPassword}
+                                            type={this.state.pwdDefaultType}
+                                            onClick={this.handleInputType}
+                                            inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>}
+                                            required={true}
+                                            onChange={this.handleNewPassword}
+                                        />                        
+                                        <PmyBtn type="submit" isDisabled={this.state.actualPassword.length < 8 || this.state.newPassword.length < 8} btnIsMediumPmyFull textBtn="Sauvegarder" title="Sauvegarder"/>
+                                    </form>
+                                </section>
+                            : this.state.tabActive === 1 &&
+                                <form onSubmit={this.handleSubmitCheckbox} method="" class="block-style d-flex flex-column mt-6">
+                                    <Title title="Votre abonnement"/>
+                                    <Checkbox
+                                        label="Abonné(e) à Asking Franklin Pro"
+                                        for="subscription"
                                         name={this.for}
                                         id={this.for}
-                                        type="email"
-                                        value="olivier.durand@entreprise.com"
-                                        disabled={true}
+                                        value="subscription"
+                                        checked={this.state.subscriptionInProgress}
+                                        onChange={this.handleSubscriptionState}
                                     />
-                                    <Input
-                                        label="Nouvelle adresse email"
-                                        for="newEmail"
-                                        name={this.for}
-                                        id={this.for}
-                                        value={this.state.newEmail}
-                                        type="email"
-                                        required={true}
-                                        onChange={this.handleNewEmail}
-                                    />
-                                    <PmyBtn type="submit" isDisabled={!this.state.newEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)} btnIsMediumPmyFull textBtn="Sauvegarder" title="Sauvegarder"/>
+                                    <p class="mt-1 mb-3 pb-3 pl-1 ml-4 fz-14">Décocher la case puis cliquez sur Sauvegarder pour annuler le renouvellement automatique de votre abonnement (celui-ci prendra fin au terme de sa période de validité)</p>
+                                    <PmyBtn type="submit" isDisabled={this.state.subscriptionInProgress === true} btnIsMediumPmyFull textBtn="Sauvegarder" title="Sauvegarder"/>
                                 </form>
-                                <form onSubmit={this.handleSubmitPassword} method="" class="block-style d-flex flex-column mt-6">
-                                    <Title title="Changer votre mot de passe"/>
-                                    <Input
-                                        label="Mot de passe actuel"
-                                        for="actualPassword"
-                                        name={this.for}
-                                        id={this.for}
-                                        value={this.state.actualPassword}
-                                        type="password"
-                                        required={true}
-                                        onChange={this.handleActualPassword}
-                                    />
-                                    <Input
-                                        label="Nouveau mot de passe"
-                                        labelInfo="8 caractères minimum"
-                                        minLength={8}
-                                        for="newPassword"
-                                        name={this.for}
-                                        id={this.for}
-                                        value={this.state.newPassword}
-                                        type={this.state.pwdDefaultType}
-                                        onClick={this.handleInputType}
-                                        inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>}
-                                        required={true}
-                                        onChange={this.handleNewPassword}
-                                    />                        
-                                    <PmyBtn type="submit" isDisabled={this.state.actualPassword.length < 8 || this.state.newPassword.length < 8} btnIsMediumPmyFull textBtn="Sauvegarder" title="Sauvegarder"/>
-                                </form>
-                            </section>
-                        : this.state.tabActive === 1 &&
-                            <form onSubmit={this.handleSubmitCheckbox} method="" class="block-style d-flex flex-column mt-6">
-                                <Title title="Abonnement"/>
-                                <Checkbox
-                                    label="Abonné(e) à Asking Franklin Pro"
-                                    for="subscription"
-                                    name={this.for}
-                                    id={this.for}
-                                    value="subscription"
-                                    checked={this.state.subscriptionInProgress}
-                                    onChange={this.handleSubscriptionState}
-                                />
-                                <p class="mt-1 mb-3 pb-3 pl-1 ml-4 fz-14">Décocher la case puis cliquez sur Sauvegarder pour annuler le renouvellement automatique de votre abonnement (celui-ci prendra fin au terme de sa période de validité)</p>
-                                <PmyBtn type="submit" isDisabled={this.state.subscriptionInProgress === true} btnIsMediumPmyFull textBtn="Sauvegarder" title="Sauvegarder"/>
-                            </form>
                         }
-                </main>
+                    </main>
+                </div>
             </Container>
         )
     }
