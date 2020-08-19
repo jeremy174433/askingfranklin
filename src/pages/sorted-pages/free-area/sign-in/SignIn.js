@@ -11,7 +11,7 @@ import {
 import Input from '../../../components/form/Input';
 import Checkbox from '../../../components/form/Checkbox';
 import PmyBtn from '../../../components/button/PmyBtn';
-import ArrowLight from '../../../../assets/img/svg/ArrowLight';
+import ArrowTextLink from '../../../components/elements/link/ArrowTextLink';
 import Alert from '../../../components/elements/Alert';
 
 export default class SignIn extends React.Component {
@@ -89,9 +89,10 @@ export default class SignIn extends React.Component {
     }
 
     render() {
+
         if(this.state.redirect) {
             return <Redirect to={this.props.location.search === '?ctx=buy' ? '/plans' : '/' }/>
-        } 
+        }
         else {
             return (
                 <div id="signIn">
@@ -104,21 +105,46 @@ export default class SignIn extends React.Component {
                         <p class="mb-5 pb-5">Vous pouvez continuer à utiliser Asking Franklin en accédant à la <Link to="/">version gratuite</Link></p>
                         <form onSubmit={this.handleSubmit} method="POST">
                             <Col sm="12" lg="8" xl="6" className="px-0 d-flex flex-column">
-                                <Input onChange={this.handleEmail} type="email" label="Votre email" for="email" name={this.for} id={this.for} required={true}/>
-                                <Input onChange={this.handlePassword} type="password" label="Votre mot de passe" for="password" name={this.for} id={this.for} required={true}/>
-                                <Checkbox label="Se souvenir de moi" for="rememberMe" name={this.for} id={this.for} value="rememberMe" className="mb-3 pb-3"/>
-                                <PmyBtn type="submit" isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.password.length < 8} btnIsMediumPmyFull textBtn="Se connecter" className="w-md-100"/>
+                                <Input 
+                                    onChange={this.handleEmail} 
+                                    type="email" 
+                                    label="Votre email" 
+                                    for="email" 
+                                    name={this.for} 
+                                    id={this.for} 
+                                    required={true} 
+                                    infoMsg={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
+                                />
+                                <Input 
+                                    onChange={this.handlePassword} 
+                                    type="password" 
+                                    label="Votre mot de passe" 
+                                    for="password" 
+                                    name={this.for} 
+                                    id={this.for} 
+                                    required={true} 
+                                    infoMsg={this.state.password.length < 8 && 'Le mot de passe doit contenir au moins 8 caractères'}
+                                />
+                                <Checkbox 
+                                    label="Se souvenir de moi" 
+                                    for="rememberMe" 
+                                    name={this.for} 
+                                    id={this.for} 
+                                    value="rememberMe" 
+                                    className="mb-3 pb-3"
+                                />
+                                <PmyBtn 
+                                    type="submit" 
+                                    isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.password.length < 8} 
+                                    btnIsMediumPmyFull 
+                                    textBtn="Se connecter" 
+                                    className="w-md-100"
+                                />
                             </Col>
                         </form>
                         <div class="d-flex flex-column mt-3 pt-3">
-                            <Link to="/mot-de-passe-oublie" class="mb-3 w-max-content">
-                                <ArrowLight width="16" fill="#4285F4" style={{ transform: 'rotate(180deg)', marginRight: '1rem' }}/>
-                                Mot de passe oublié ?
-                            </Link>
-                            <Link to="/inscription" class="w-max-content">
-                                <ArrowLight width="16" fill="#4285F4" style={{ transform: 'rotate(180deg)', marginRight: '1rem' }}/>
-                                Créer un compte et passer à la version Pro
-                            </Link>
+                            <ArrowTextLink redirectTo="/mot-de-passe-oublie" textLink="Mot de passe oublié ?" className="mb-3"/>
+                            <ArrowTextLink redirectTo="/inscription" textLink="Créer un compte et passer à la version Pro"/>
                         </div>
                     </Container>
                 </div>

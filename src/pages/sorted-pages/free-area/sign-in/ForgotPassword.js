@@ -7,7 +7,7 @@ import {
 import { Link } from 'react-router-dom';
 import Input from '../../../components/form/Input';
 import PmyBtn from '../../../components/button/PmyBtn';
-import ArrowLight from '../../../../assets/img/svg/ArrowLight';
+import ArrowTextLink from '../../../components/elements/link/ArrowTextLink';
 import EyeShowHide from '../../../../assets/img/svg/switch/EyeShowHide';
 import Alert from '../../../components/elements/Alert';
 
@@ -136,15 +136,25 @@ export default class ForgotPassword extends React.Component {
                             <H1 className="mb-5 pb-5" title="Mot de passe oublié"/>
                             <form onSubmit={this.handleSubmit} method="POST">
                                 <Col sm="12" lg="8" xl="6" className="px-0 d-flex flex-column">
-                                    <Input onChange={this.handleEmail} type="email" label="Votre email" for="email" required={true}/>
-                                    <PmyBtn type="submit" isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)} btnIsMediumPmyFull textBtn="Recevoir un email de réinitialisation" className="w-md-100"/>
+                                    <Input 
+                                        onChange={this.handleEmail} 
+                                        type="email" 
+                                        label="Votre email" 
+                                        for="email" 
+                                        required={true} 
+                                        infoMsg={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
+                                    />
+                                    <PmyBtn 
+                                        type="submit" 
+                                        isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)} 
+                                        btnIsMediumPmyFull 
+                                        textBtn="Recevoir un email de réinitialisation" 
+                                        className="w-md-100"
+                                    />
                                 </Col>
                             </form>
                             <div class="d-flex flex-column mt-3 pt-3">
-                                <Link to="/connexion" class="w-max-content">
-                                    <ArrowLight width="16" fill="#4285F4" style={{ transform: 'rotate(180deg)', marginRight: '1rem' }}/>
-                                    Se connecter à Asking Franklin
-                                </Link>
+                                <ArrowTextLink redirectTo="/connexion" textLink="Se connecter à Asking Franklin"/>
                             </div>
                         </Container>
                     :
@@ -152,16 +162,47 @@ export default class ForgotPassword extends React.Component {
                             <H1 className="mb-5 pb-5" title="Mot de passe oublié"/>
                             <form onSubmit={this.handleSubmitConfirm} method="POST">
                                 <Col sm="12" lg="8" xl="6" className="px-0 d-flex flex-column">
-                                    <Input onChange={this.handleCode} disabled={this.state.passwordIsChanged === true} type="text" value={this.state.code} label={'Le code envoyé par mail à ' + this.state.email} for="codeToken" name={this.for} id={this.for} maxlength={6} minlength={6} required={true}/>
-                                    <Input onChange={this.handleNewPassword} disabled={this.state.passwordIsChanged === true} type={this.state.pwdDefaultType} value={this.state.newPassword} label="Votre nouveau mot de passe" labelInfo="8 caractères minimum" minLength={8} for="newPassword" name={this.for} id={this.for} onClick={this.handleInputType} inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>} required={true}/>
-                                    <PmyBtn type="submit" isDisabled={this.state.code.length !== 6 || this.state.newPassword.length < 8 || this.state.passwordIsChanged === true} btnIsMediumPmyFull textBtn="Réinitialiser le mot de passe" className="w-md-100"/>
+                                    <Input 
+                                        onChange={this.handleCode} 
+                                        disabled={this.state.passwordIsChanged === true} 
+                                        type="text" 
+                                        value={this.state.code} 
+                                        label={'Le code envoyé par mail à ' + this.state.email} 
+                                        for="codeToken" 
+                                        name={this.for} 
+                                        id={this.for} 
+                                        maxlength={6} 
+                                        minlength={6} 
+                                        required={true} 
+                                        infoMsg={this.state.code.length !== 6 && 'Le code doit contenir 6 caractères'}
+                                    />
+                                    <Input 
+                                        onChange={this.handleNewPassword} 
+                                        disabled={this.state.passwordIsChanged === true} 
+                                        type={this.state.pwdDefaultType} 
+                                        value={this.state.newPassword} 
+                                        label="Votre nouveau mot de passe" 
+                                        labelInfo="8 caractères minimum" 
+                                        minLength={8} 
+                                        for="newPassword" 
+                                        name={this.for} 
+                                        id={this.for} 
+                                        onClick={this.handleInputType} 
+                                        inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>} 
+                                        required={true} 
+                                        infoMsg={this.state.newPassword.length < 8 && 'Le mot de passe doit contenir au moins 8 caractères'}
+                                    />
+                                    <PmyBtn 
+                                        type="submit" 
+                                        isDisabled={this.state.code.length !== 6 || this.state.newPassword.length < 8 || this.state.passwordIsChanged === true} 
+                                        btnIsMediumPmyFull 
+                                        textBtn="Réinitialiser le mot de passe" 
+                                        className="w-md-100"
+                                    />
                                 </Col>
                             </form>
                             <div class="d-flex flex-column mt-3 pt-3">
-                                <Link to="/connexion" class="w-max-content">
-                                    <ArrowLight width="16" fill="#4285F4" style={{ transform: 'rotate(180deg)', marginRight: '1rem' }}/>
-                                    Se connecter à Asking Franklin
-                                </Link>
+                                <ArrowTextLink redirectTo="/connexion" textLink="Se connecter à Asking Franklin"/>
                             </div>
                         </Container>
                 }

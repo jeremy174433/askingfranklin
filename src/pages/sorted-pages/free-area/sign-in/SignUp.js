@@ -12,7 +12,7 @@ import Input from '../../../components/form/Input';
 import Checkbox from '../../../components/form/Checkbox';
 import PmyBtn from '../../../components/button/PmyBtn';
 import EyeShowHide from '../../../../assets/img/svg/switch/EyeShowHide';
-import ArrowLight from '../../../../assets/img/svg/ArrowLight';
+import ArrowTextLink from '../../../components/elements/link/ArrowTextLink';
 import Alert from '../../../components/elements/Alert';
 
 export default class SignUp extends React.Component {
@@ -110,31 +110,59 @@ export default class SignUp extends React.Component {
         }
         return (
             <div id="signUp">
-                {this.state.success && 
-                    <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre compte a bien été créé. Vous allez recevoir un email de confirmation"/>
-                }
-                {this.state.emailIsAlreadyTaken && 
-                    <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="L'email choisi est déjà utilisé par un autre compte"/>
-                }
+                {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && 'alert-msg-visible'} alertId="successMessage" msg="Votre compte a bien été créé. Vous allez recevoir un email de confirmation"/> }
+                {this.state.emailIsAlreadyTaken && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && 'alert-msg-visible'} alertId="errorMessage" msg="L'email choisi est déjà utilisé par un autre compte"/> }
                 <Container className="px-0 mt-6">
                     <H1 className="mb-5 pb-5" title="Créer un compte Asking Franklin"/>
                     <p class="mb-5 pb-5">Vous pouvez aussi continuer à utiliser Asking Franklin en accédant à la <Link to="/">version gratuite</Link> sans avoir besoin de vous inscrire</p>
                     <form onSubmit={this.handleSubmit} method="POST">
                         <Col sm="12" lg="8" xl="6" className="px-0 d-flex flex-column">
-                            <Input onChange={this.handleEmail} type="email" label="Votre email" for="email" name={this.for} id={this.for} required={true}/>
-                            <Input onChange={this.handlePassword} type={this.state.pwdDefaultType} label="Votre mot de passe" labelInfo="8 caractères minimum" minLength={8} for="password" name={this.for} id={this.for} onClick={this.handleInputType} inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>} required={true}/>
+                            <Input 
+                                onChange={this.handleEmail} 
+                                type="email" 
+                                label="Votre email" 
+                                for="email" 
+                                name={this.for} 
+                                id={this.for} 
+                                required={true}
+                                infoMsg={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
+                            />
+                            <Input 
+                                onChange={this.handlePassword} 
+                                type={this.state.pwdDefaultType} 
+                                label="Votre mot de passe" 
+                                labelInfo="8 caractères minimum" 
+                                minLength={8} 
+                                for="password" 
+                                name={this.for} 
+                                id={this.for} 
+                                onClick={this.handleInputType} 
+                                inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>} 
+                                required={true}
+                                infoMsg={this.state.password.length < 8 && 'Le mot de passe doit contenir au moins 8 caractères'}
+                            />
                             <Checkbox 
                                 label={['J\'ai lu et j\'accepte les ', <Link to="/conditions-generales-d-utilisation" target="_blank" rel="noopener" class="fz-16">CGU</Link>]} 
-                                onChange={this.handlePrivacy} for="checkPrivacy" name={this.for} id={this.for} value={this.state.privacy} required={true} className="mb-3 pb-3"
+                                onChange={this.handlePrivacy} 
+                                for="checkPrivacy" 
+                                name={this.for} 
+                                id={this.for} 
+                                value={this.state.privacy} 
+                                required={true} 
+                                className="mb-3 pb-3"
                             />
-                            <PmyBtn type="submit" isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.password.length < 8 || this.state.privacy === ''} btnIsMediumPmyFull textBtn="Créer mon compte" className="w-md-100"/>
+                            <PmyBtn 
+                                type="submit" 
+                                title={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.password.length < 8 || this.state.privacy === '' ? 'Il est nécessaire de renseigner tous les champs et d\'accepter les CGU pour s\'inscrire' : 'Créer mon compte'}
+                                isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.password.length < 8 || this.state.privacy === ''} 
+                                btnIsMediumPmyFull 
+                                textBtn="Créer mon compte" 
+                                className="w-md-100"
+                            />
                         </Col>
                     </form>
                     <div class="d-flex flex-column mt-3 pt-3">
-                        <Link to={this.props.location.search !== '?ctx=buy' ? '/connexion' : '/connexion?ctx=buy'} class="w-max-content">
-                            <ArrowLight width="16" fill="#4285F4" style={{ transform: 'rotate(180deg)', marginRight: '1rem' }}/>
-                            J'ai déjà un compte Asking Franklin
-                        </Link>
+                        <ArrowTextLink redirectTo={this.props.location.search !== '?ctx=buy' ? '/connexion' : '/connexion?ctx=buy'} textLink="J'ai déjà un compte Asking Franklin"/>
                     </div>
                 </Container>
             </div>

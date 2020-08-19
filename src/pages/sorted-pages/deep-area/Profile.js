@@ -143,6 +143,7 @@ export default class Profile extends React.Component {
                                             type="email"
                                             required={true}
                                             onChange={this.handleNewEmail}
+                                            infoMsg={!this.state.newEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
                                         />
                                         <PmyBtn type="submit" isDisabled={!this.state.newEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)} btnIsMediumPmyFull textBtn="Sauvegarder" title="Sauvegarder"/>
                                     </form>
@@ -171,6 +172,7 @@ export default class Profile extends React.Component {
                                             inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>}
                                             required={true}
                                             onChange={this.handleNewPassword}
+                                            infoMsg={this.state.newPassword.length < 8 && 'Le mot de passe doit contenir au moins 8 caractères'}
                                         />                        
                                         <PmyBtn type="submit" isDisabled={this.state.actualPassword.length < 8 || this.state.newPassword.length < 8} btnIsMediumPmyFull textBtn="Sauvegarder" title="Sauvegarder"/>
                                     </form>

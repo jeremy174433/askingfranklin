@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Home from '../../../assets/img/svg/navigation/Home';
 import People from '../../../assets/img/svg/navigation/People';
 import Rocket from '../../../assets/img/svg/navigation/Rocket';
 import Settings from '../../../assets/img/svg/navigation/Settings';
@@ -59,7 +60,10 @@ export default class MobileMenu extends React.Component {
                         : this.props.userConnected === false &&
                             <ul class="d-flex flex-column align-items-center">
                                 <li>
-                                    <Link to="/" onClick={this.handleMobileMenuClicked} class="nav-link d-flex flex-row py-2 px-3 rounded">Accueil</Link>
+                                    <Link to="/" onClick={this.handleMobileMenuClicked} class="nav-link d-flex flex-row py-2 px-3 rounded">
+                                        <Home width="16" fill="#FFF"/>
+                                        <span class="ml-3">Accueil</span>
+                                    </Link>
                                 </li>
                                 <li>
                                     <Link to="/connexion" onClick={this.handleMobileMenuClicked} class="nav-link d-flex flex-row py-2 px-3 rounded">
