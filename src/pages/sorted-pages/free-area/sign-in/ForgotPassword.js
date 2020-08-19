@@ -137,7 +137,7 @@ export default class ForgotPassword extends React.Component {
                             <form onSubmit={this.handleSubmit} method="POST">
                                 <Col sm="12" lg="8" xl="6" className="px-0 d-flex flex-column">
                                     <Input onChange={this.handleEmail} type="email" label="Votre email" for="email" required={true}/>
-                                    <PmyBtn type="submit" isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)} btnIsMediumPmyFull textBtn="Recevoir un mail de réinitialisation" className="w-md-100"/>
+                                    <PmyBtn type="submit" isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)} btnIsMediumPmyFull textBtn="Recevoir un email de réinitialisation" className="w-md-100"/>
                                 </Col>
                             </form>
                             <div class="d-flex flex-column mt-3 pt-3">
