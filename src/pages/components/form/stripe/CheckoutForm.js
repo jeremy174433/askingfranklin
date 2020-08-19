@@ -43,7 +43,7 @@ export default function CheckoutForm(props) {
 			// Store the latest invoice ID and status.
 			localStorage.setItem('latestInvoiceId', subscription.latest_invoice.id);
 			localStorage.setItem('latestInvoicePaymentIntentStatus', subscription.latest_invoice.payment_intent.status);
-			throw { error: { message: 'Votre carte a été refusée' } };
+			throw { error: { message: 'Your card was declined.' } };
 		} 
 		else {
 			return { subscription, priceId, paymentMethodId };
