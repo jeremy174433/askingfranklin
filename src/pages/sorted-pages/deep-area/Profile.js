@@ -17,12 +17,12 @@ export default class Profile extends React.Component {
             pwdDefaultType: 'password',
             actualPassword: '',
             newPassword: '',
-            subscriptionInProgress: true,
+            subscriptionInProgress: false,
             success: false,
             emailIsAlreadyTaken: false,
             actualPasswordDidntMatch: false,
             subscriptionState: false,
-            alertIsShowed: false,
+            alertIsShowed: false
         }
         this.handleSelectAccount = this.handleSelectAccount.bind(this);
         this.handleSelectSubscription = this.handleSelectSubscription.bind(this);
@@ -36,7 +36,24 @@ export default class Profile extends React.Component {
         this.handleSubmitCheckbox = this.handleSubmitCheckbox.bind(this);
         this.handleCloseAlert = this.handleCloseAlert.bind(this);
     }
-
+    componentDidMount() {
+        var token = localStorage.getItem("af_token");
+        fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-plan', {
+            headers: {
+                'Authorization': token
+            },
+            method: 'GET',
+            })
+            .then(res => {
+                return res.json();
+            })
+            .then(res => {
+                console.log(res.message.length)
+            this.setState({
+                subscriptionInProgress: res.message.length > 0 ? true : false,
+            });
+            });
+    }
     handleSelectAccount() {
         this.setState({
             tabActive: 0
@@ -88,8 +105,24 @@ export default class Profile extends React.Component {
         console.log(this.state.newPassword);
     }
 
-    handleSubmitCheckbox() { 
-        console.log('désabonnement effectué');
+    handleSubmitCheckbox(e) {
+        e.preventDefault();
+        var token = localStorage.getItem("af_token");
+        fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/cancel-subscription', {
+            headers: {
+                'Authorization': token
+            },
+            method: 'GET',
+            })
+            .then(res => {
+                return res.json();
+            })
+            .then(res => {
+                this.setState({
+                    subscriptionState:true,
+                    subscriptionInProgress:false
+                })
+            });
     }
 
     handleCloseAlert() {
@@ -176,20 +209,18 @@ export default class Profile extends React.Component {
                                     </form>
                                 </section>
                             : this.state.tabActive === 1 &&
-                                <form onSubmit={this.handleSubmitCheckbox} method="" class="block-style d-flex flex-column mt-6">
+                                true ? <form onSubmit={this.handleSubmitCheckbox} method="" class="block-style d-flex flex-column mt-6">
                                     <Title title="Votre abonnement"/>
                                     <Checkbox
                                         label="Abonné(e) à Asking Franklin Pro"
                                         for="subscription"
-                                        name={this.for}
-                                        id={this.for}
                                         value="subscription"
                                         checked={this.state.subscriptionInProgress}
                                         onChange={this.handleSubscriptionState}
                                     />
                                     <p class="mt-1 mb-3 pb-3 pl-1 ml-4 fz-14">Décocher la case puis cliquez sur Sauvegarder pour annuler le renouvellement automatique de votre abonnement (celui-ci prendra fin au terme de sa période de validité)</p>
                                     <PmyBtn type="submit" isDisabled={this.state.subscriptionInProgress === true} btnIsMediumPmyFull textBtn="Sauvegarder" title="Sauvegarder"/>
-                                </form>
+                                </form> : <div className="block-style d-flex flex-column mt-6">Vous n'avez pas d'abonnement actif Asking Franklin.</div>
                         }
                     </main>
                 </div>

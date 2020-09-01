@@ -22,7 +22,8 @@ export default class AskingFranklin extends React.Component {
             nbResults: 0,
             keywordSearch: '',
             newKeywordSearch: '',
-            redirectBlocked: false
+            redirectBlocked: false,
+            redirectLogin:false
         }
         this.switchSelectedPanel = this.switchSelectedPanel.bind(this);
         this.handleKeywordChange = this.handleKeywordChange.bind(this);
@@ -42,11 +43,19 @@ export default class AskingFranklin extends React.Component {
             fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/suggestions?keyword=' + keyword, headers)
             .then((res) => res.json())
             .then((res) => {
+
+                console.log(res)
                 if (res.blocked){
                     this.setState({
                         redirectBlocked:true
                     })
-                } else {
+                }
+                if (res.invalidToken){
+                    this.setState({
+                        redirectLogin:true
+                    })
+                }
+                 else {
                     var nbResults = 0;
                     {res.data.map((x, index) => {
                         nbResults += x.data.map((x) => x.suggestions.length).reduce(reducer);
@@ -104,6 +113,9 @@ export default class AskingFranklin extends React.Component {
                                 </Container>;
         if(this.state.redirectBlocked){
             return <Redirect to="/limite-de-recherches"/>
+        }
+        if(this.state.redirectLogin){
+            return <Redirect to="/connexion"/>
         }
         if(this.state.isLoading) {
             return  <div id="askingFranklin">

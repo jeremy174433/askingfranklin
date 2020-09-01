@@ -27,7 +27,6 @@ export default class Navbar extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
         this.setState({
             isConnected: nextProps.isConnected
         });

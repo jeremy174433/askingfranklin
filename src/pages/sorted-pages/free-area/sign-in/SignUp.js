@@ -79,7 +79,7 @@ export default class SignUp extends React.Component {
                     console.log(res.error);
                 } 
                 else {
-                    if(res.message === 'This email already exist') {
+                    if(res.message === 'This username already exist') {
                         this.setState({
                             alertIsShowed: true,
                             emailIsAlreadyTaken: true
@@ -106,12 +106,12 @@ export default class SignUp extends React.Component {
 
     render() {
         if(this.state.redirect) { 
-            return <Redirect to={this.props.location.search != '?ctx=buy' ? '/connexion' : '/connexion?ctx=buy'}/>
+            return <Redirect to={'/connexion'}/>
         }
         return (
             <div id="signUp">
                 {this.state.success && 
-                    <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre compte a bien été créé. Vous allez recevoir un email de confirmation"/>
+                    <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg={["Votre compte a bien été créé. Vous allez recevoir un email de confirmation. Après la confirmation, cliquez ici pour ", <Link to="/connexion">vous connecter</Link>]}/>
                 }
                 {this.state.emailIsAlreadyTaken && 
                     <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="L'email choisi est déjà utilisé par un autre compte"/>
@@ -131,7 +131,7 @@ export default class SignUp extends React.Component {
                         </Col>
                     </form>
                     <div class="d-flex flex-column mt-3 pt-3">
-                        <Link to={this.props.location.search !== '?ctx=buy' ? '/connexion' : '/connexion?ctx=buy'} class="w-max-content">
+                        <Link to={'/connexion'} class="w-max-content">
                             <ArrowLight width="16" fill="#4285F4" style={{ transform: 'rotate(180deg)', marginRight: '1rem' }}/>
                             J'ai déjà un compte Asking Franklin
                         </Link>

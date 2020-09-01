@@ -74,7 +74,8 @@ export default class SignIn extends React.Component {
             else {
                 localStorage.setItem('af_token', res.token);
                 this.setState({
-                    redirect: true
+                    redirect: true,
+                    toPlan:res.is_sub[0] == null ? true : false
                 });
                 this.props.handleConnect(event);
             }
@@ -90,7 +91,7 @@ export default class SignIn extends React.Component {
 
     render() {
         if(this.state.redirect) {
-            return <Redirect to={this.props.location.search === '?ctx=buy' ? '/plans' : '/' }/>
+            return <Redirect to={this.state.toPlan ? '/plans' : '/' }/>
         } 
         else {
             return (
