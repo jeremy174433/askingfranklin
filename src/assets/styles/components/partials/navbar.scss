@@ -6,6 +6,8 @@
     right: 0;
     z-index: 99;
 
+    > .container { margin-top: inherit; }
+
     a {
         transition: .2s ease-in-out;
         @include fz-18;

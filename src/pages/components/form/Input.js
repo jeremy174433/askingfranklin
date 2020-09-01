@@ -1,6 +1,20 @@
 import React from 'react';
+import InformationInput from './elements/InformationInput';
 
 export default class Input extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            displayTooltip: false
+        }
+        this.onBlur = this.onBlur.bind(this);
+    }
+
+    onBlur() {
+        this.setState({
+            displayTooltip: true
+        });
+    }
 
     render() {
 
@@ -23,7 +37,7 @@ export default class Input extends React.Component {
                     disabled={this.props.disabled}
                     minLength={this.props.minLength}
                     onFocus={this.props.onFocus}
-                    onBlur={this.props.onBlur}
+                    onBlur={this.props.infoMsg ? this.onBlur : this.props.onBlur}
                     onChange={this.props.onChange}
                 /> 
                 {this.props.inputHasIcon &&
@@ -31,6 +45,7 @@ export default class Input extends React.Component {
                         {this.props.inputHasIcon}
                     </div>
                 }
+                {this.state.displayTooltip && <InformationInput infoMsg={this.props.infoMsg}/> }
             </div>
         )
     }
