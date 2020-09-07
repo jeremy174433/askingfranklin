@@ -49,11 +49,13 @@ export default class AskingFranklin extends React.Component {
                     this.setState({
                         redirectBlocked:true
                     })
+                    localStorage.removeItem("af_token")
                 }
-                if (res.invalidToken){
+                else if (res.invalid_token){
                     this.setState({
                         redirectLogin:true
                     })
+                    localStorage.removeItem("af_token")
                 }
                  else {
                     var nbResults = 0;

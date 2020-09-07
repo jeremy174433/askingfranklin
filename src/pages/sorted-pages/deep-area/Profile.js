@@ -38,21 +38,25 @@ export default class Profile extends React.Component {
     }
     componentDidMount() {
         var token = localStorage.getItem("af_token");
-        fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-plan', {
-            headers: {
-                'Authorization': token
-            },
-            method: 'GET',
-            })
-            .then(res => {
-                return res.json();
-            })
-            .then(res => {
+        if(token) {
+            fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-plan', {
+                headers: {
+                    'Authorization': token
+                },
+                method: 'GET',
+                })
+                .then(res => {
+                    return res.json();
+                })
+                .then(res => {
                 console.log(res.message.length)
-            this.setState({
-                subscriptionInProgress: res.message.length > 0 ? true : false,
-            });
-            });
+                this.setState({
+                    subscriptionInProgress: res.message.length > 0 ? true : false,
+                });
+                });
+        } else {
+            this.props.history.push('/plans');
+        }
     }
     handleSelectAccount() {
         this.setState({

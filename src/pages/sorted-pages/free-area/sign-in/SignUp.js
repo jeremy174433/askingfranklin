@@ -167,7 +167,7 @@ export default class SignUp extends React.Component {
                     </form>
                     <div class="d-flex flex-column mt-3 pt-3">
                         <Link to={'/connexion'} class="w-max-content">
-                            <ArrowLight width="16" fill="#4285F4" style={{ transform: 'rotate(180deg)', marginRight: '1rem' }}/>
+                            <ArrowTextLink width="16" fill="#4285F4" style={{ transform: 'rotate(180deg)', marginRight: '1rem' }}/>
                             J'ai déjà un compte Asking Franklin
                         </Link>
                     </div>
