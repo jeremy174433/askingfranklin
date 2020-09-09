@@ -4,7 +4,7 @@ export default class Checkbox extends React.Component {
     
     render() {
         return (
-            <div onClick={this.props.onClick} onChange={this.props.onChange} class={'position-relative ' + this.props.className}>
+            <div onClick={this.props.onClick} onChange={this.props.onChange} class={this.props.className ? this.props.className + ' position-relative' : 'position-relative'}>
                 <input 
                     type="checkbox" 
                     class="checkbox-primary"

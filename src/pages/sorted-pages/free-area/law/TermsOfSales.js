@@ -116,7 +116,7 @@ export default class TermsOfSales extends React.Component {
                         Si le Client souscrit l’offre mensuelle, l’Abonnement lui sera facturé 49€ par mois et sera prélevé chaque mois, par tacite reconduction. <br/>
                         Si le Client souscrit l’offre annuelle, l’Abonnement lui sera facturé 39€ par mois et sera payé en une fois par carte bancaire, soit 468€, lors de la Commande. Il sera ensuite prélevé chaque année par tacite reconduction. <br/>
                         Le montant de l’Abonnement s'entend hors taxes, telles que ces taxes sont fixées à la date de l'acceptation de l'Offre par l'Adhérent. <br/>
-                        Le Prestataire se réserve le droit de modifier ses prix à tout moment mais s’engage à appliquerles tarifs en vigueur indiqués au moment de la Commande. <br/>
+                        Le Prestataire se réserve le droit de modifier ses prix à tout moment mais s’engage à appliquer les tarifs en vigueur indiqués au moment de la Commande. <br/>
                         Si une ou plusieurs taxes ou contributions venaient à être créées ou modifiées, en hausse comme en baisse, ce changement pourra être répercuté sur le prix de vente des produits.
                     </p>
                 </section>

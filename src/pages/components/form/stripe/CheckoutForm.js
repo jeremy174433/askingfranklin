@@ -1,9 +1,16 @@
 import React from 'react';
 import { 
+	Row,
+	Col 
+} from 'react-bootstrap';
+import Input from '../Input';
+import { 
   useStripe, 
   useElements, 
   CardElement 
 } from '@stripe/react-stripe-js';
+import { Link } from 'react-router-dom';
+import Checkbox from '../Checkbox';
 import PmyBtn from '../../button/PmyBtn';
 
 const CARD_ELEMENT_OPTIONS = {
@@ -271,7 +278,86 @@ export default function CheckoutForm(props) {
 
 	return (
 		<form onSubmit={handleSubmit}>
+			<Row className="d-flex flex-row mx-0">
+				<Col sm="12" md="6" className="px-sm-0 pl-md-0 pr-md-3">
+					<Input
+						label="Nom complet ou raison sociale"
+						for="owner"
+						name={props.for}
+						id={props.for}
+						type="text"
+						placeholder="Jenny Rosen"
+						value={props.owner}
+						onChange={props.handleOwner}
+						required={true}
+					/>
+				</Col>
+				<Col sm="12" md="6" className="px-sm-0 pr-md-0 pl-md-3">
+					<Input
+						label="Email"
+						for="email"
+						name={props.for}
+						id={props.for}
+						type="email"
+						placeholder="olivier.durand@entreprise.fr"
+						value={props.email}
+						onChange={props.handleEmail}
+						required={true}
+					/>
+				</Col>
+			</Row>
+			<Row className="d-flex flex-row mx-0">
+				<Col sm="12" md="6" className="px-sm-0 pl-md-0 pr-md-3">
+					<Input
+						label="Adresse de facturation"
+						for="address"
+						name={props.for}
+						id={props.for}
+						type="text"
+						placeholder="23 Quai des Queyries"
+						value={props.owner}
+						onChange={props.handleOwner}
+						required={true}
+					/>
+				</Col>
+				<Col sm="12" md="4" className="px-sm-0 px-md-3">
+					<Input
+						label="Ville"
+						for="city"
+						name={props.for}
+						id={props.for}
+						type="text"
+						placeholder="Bordeaux"
+						value={props.city}
+						onChange={props.handleCity}
+						required={true}
+					/>
+				</Col>
+				<Col sm="12" md="2" className="px-sm-0 pl-md-3 pr-md-0">
+					<Input
+						label="Code postal"
+						for="zip"
+						name={props.for}
+						id={props.for}
+						type="text"
+						placeholder="33150"
+						value={props.zip}
+						onChange={props.handleZip}
+						required={true}
+					/>
+				</Col>
+			</Row>
 			<CardElement options={CARD_ELEMENT_OPTIONS}/>
+			<Checkbox 
+				label={['J\'ai lu et j\'accepte les ', <Link to="/conditions-generales-de-vente" target="_blank" rel="noopener" class="fz-16">CGV</Link>]} 
+				onChange={props.handleTermsOfSales} 
+				for="checkTermsOfSales" 
+				name={props.for} 
+				id={props.for} 
+				value={props.termsOfSales} 
+				required={true} 
+				className="my-3 py-3"
+			/>
 			<PmyBtn type="submit" isDisabled={!stripe} btnIsMediumPmyFull textBtn={props.pricing ? 'Payer ' + props.pricing.unit_amount + ' €' : 'Confirmer l\'achat'} className="w-md-100 ml-auto mt-4"/>
 		</form>
 	);
