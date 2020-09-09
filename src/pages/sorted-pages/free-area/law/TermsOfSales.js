@@ -189,7 +189,7 @@ export default class TermsOfSales extends React.Component {
                     <ul class="ml-3 ml-md-5 mt-5">
                         <li class="mb-3"><span class="mr-2">&bull;</span> Quand le Client utilise les services de paiement, pour la mise en œuvre de ces services,le Prestataire est en relation avec des sociétés bancaires et financières tierces avec lesquelles il a passé des contrats ;</li>
                         <li class="mb-3"><span class="mr-2">&bull;</span> Si la loi l’exige, le Prestataire peut effectuer la transmission de données pour donner suite aux réclamations présentées contre la SAS Sortvoices et se conformer aux procédures administratives et judiciaires ;</li>
-                        <li><span class="mr-2">&bull;</span> Si le Prestataire est impliqué dans une opération de fusion, acquisition, cession d’actifsou procédure de redressement judiciaire, il pourra être amené à céder ou partager tout ou partie de ses actifs, y compris les données à caractère personnel. Dans ce cas, les Clients seraient informés, avant que les données à caractère personnel ne soient transférées à une tierce partie.</li>
+                        <li><span class="mr-2">&bull;</span> Si le Prestataire est impliqué dans une opération de fusion, acquisition, cession d’actifs ou procédure de redressement judiciaire, il pourra être amené à céder ou partager tout ou partie de ses actifs, y compris les données à caractère personnel. Dans ce cas, les Clients seraient informés, avant que les données à caractère personnel ne soient transférées à une tierce partie.</li>
                     </ul>
                 </section>
 

@@ -76,7 +76,7 @@ export default class Payment extends React.Component {
 
 		const classListCol = 'block-ctn-summary block-style block-pricing pt-4 ';
 
-		return(
+		return (
 			this.state.redirect ? 
 				<Redirect to='/plans'/>
 			: this.state.isLoading ?
@@ -110,7 +110,7 @@ export default class Payment extends React.Component {
 										: this.state.selectedPlan === 2 &&
 											<div>
 												<p class="fz-18 fw-600">Abonnement Annuel</p>
-												<p class="price">{this.state.product.unit_amount}€<span> /mois <span class="fw-400">(soit</span> 468€ <span class="fw-400">l'année)</span></span></p>
+												<p class="price">{this.state.product.unit_amount}€<span> /mois <span class="fw-400">(soit</span> {this.state.product.unit_amount * 12}€ <span class="fw-400">l'année)</span></span></p>
 												<p>Économisez <span class="fw-600">120€</span> par rapport à la version mensuel</p>
 											</div>
 										}

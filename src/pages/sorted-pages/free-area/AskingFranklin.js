@@ -86,7 +86,7 @@ export default class AskingFranklin extends React.Component {
 
     requestFanklin = (e) => {
         e.preventDefault();
-        this.props.history.push('/recherche/' + this.state.newKeywordSearch);
+        this.props.history.push('/recherche/' + this.state.newKeywordSearch.replace(/ /g, '-'));
     }
 
     render() {
@@ -106,31 +106,31 @@ export default class AskingFranklin extends React.Component {
             return <Redirect to="/limite-de-recherches"/>
         }
         if(this.state.isLoading) {
-            return  <div id="askingFranklin">
+            return  <Container id="askingFranklin" className="px-0">
                         <Loader loaderDisplayed content="Chargement en cours"/>
-                    </div>
+                        </Container>
         }
         else if(this.state.nbResults === 0) {
-            return  <div id="askingFranklin">
+            return  <Container id="askingFranklin" className="px-0">
                         <div>{launchNewRequest}</div>
-                    </div>
+                    </Container>
         }
         else if(this.state.dataIsLoaded) {
-            return  <div id="askingFranklin">
+            return  <Container id="askingFranklin" className="px-0">
                         <main class="d-flex flex-column flex-xl-row">
-                            <AFStickyMenu searchContent={this.state.keywordSearch} dataNumber={this.state.dataKw} handleNoData={this.handleNoData}/>
+                            <AFStickyMenu searchContent={this.state.keywordSearch.replace(/-/g, ' ')} dataNumber={this.state.dataKw} handleNoData={this.handleNoData}/>
                             <Col className="col-12 col-xl-9 px-0 mb-5 w-100">
                                 {this.state.dataKw.data.map((x) => {
                                     return <AFWrapper keywordSearch={this.state.keywordSearch} data={x}/>
                                 })}
                             </Col>
                         </main>
-                    </div>
+                    </Container>
         }
         else {
-            return  <div id="askingFranklin">
+            return  <Container id="askingFranklin" className="px-0">
                         <div>{launchNewRequest}</div>
-                    </div>
+                    </Container>
         }
     }
 }
