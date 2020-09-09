@@ -86,7 +86,7 @@ export default class Pricing extends React.Component {
                             </div>
                         </div>
                         <FeaturesList className="my-5"/>
-                        <PmyBtn redirectTo="/inscription?ctx=buy" linkIsLargePmyFull textLink="Passer à la version Pro" containerStyle="mb-4" customBtnClass="w-100"/>
+                        <PmyBtn redirectTo="/inscription" linkIsLargePmyFull textLink="Passer à la version Pro" containerStyle="mb-4" customBtnClass="w-100"/>
                     </Col>
                 </Row>
             </Container>

@@ -155,10 +155,23 @@ export default function CheckoutForm(props) {
 	}
 
 	const onSubscriptionComplete = async (result) => {
-		// Payment was successful.
-		if (result.subscription.status === 'active') {
-			window.location.replace('/paiement/confirmation');
-		}
+		var token = localStorage.getItem('af_token');
+		fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/register-db-subscription', {
+			method: 'post',
+			headers: {
+				'Content-type': 'application/json',
+				'Authorization':token
+			},
+			body: JSON.stringify({
+				id_price: result.priceId,
+				id_subscription: result.subscription.id
+			}),
+		}).then((res)=>res.json())
+		.then((res)=>{
+			if (result.subscription.status === 'active') {
+				window.location.replace('/paiement/confirmation');
+			}
+		})
 	}
 
 	const createSubscription = async ({ paymentMethodId, priceId }) => {
@@ -239,7 +252,6 @@ export default function CheckoutForm(props) {
 			console.log('[createPaymentMethod error]', error);
 		} 
 		else {
-			console.log('[PaymentMethod]', paymentMethod);
 			const paymentMethodId = paymentMethod.id;
 			if (latestInvoicePaymentIntentStatus === 'requires_payment_method') {
 				// Update the payment method and retry invoice payment

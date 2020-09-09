@@ -15,7 +15,7 @@ export default class AFDataviz extends React.Component {
             for(var j = 0; j < propsData.length; j++) {
                 if(propsData[j].suggestions.length > 0) {
                     for(var x = 0; x < propsData[j].suggestions.length; x++) {
-                        var curr_suggest = propsData[j].suggestions[x].replace('.', ' ');
+                        var curr_suggest = propsData[j].suggestions[x];
                         dataret.push({id: this.props.keywordSearch + "." + curr_suggest, value: ""});
                     }
                 } 
@@ -29,7 +29,7 @@ export default class AFDataviz extends React.Component {
                 dataret.push({id: this.props.keywordSearch + "." + propsData[j].word, value: ""});
                 if(propsData[j].suggestions.length > 0) {
                     for(var x = 0; x < propsData[j].suggestions.length; x++) {
-                        var curr_suggest = propsData[j].suggestions[x].replace('.', ' ');
+                        var curr_suggest = propsData[j].suggestions[x];
                         dataret.push({id: this.props.keywordSearch + "." + propsData[j].word + "." + curr_suggest, value: ""});
                     }
                 } 
