@@ -23,7 +23,7 @@ export default class AskingFranklin extends React.Component {
             keywordSearch: '',
             newKeywordSearch: '',
             redirectBlocked: false,
-            redirectLogin:false
+            redirectLogin: false
         }
         this.switchSelectedPanel = this.switchSelectedPanel.bind(this);
         this.handleKeywordChange = this.handleKeywordChange.bind(this);

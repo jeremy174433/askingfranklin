@@ -286,7 +286,6 @@ export default function CheckoutForm(props) {
 						name={props.for}
 						id={props.for}
 						type="text"
-						placeholder="Jenny Rosen"
 						value={props.owner}
 						onChange={props.handleOwner}
 						required={true}
@@ -299,7 +298,6 @@ export default function CheckoutForm(props) {
 						name={props.for}
 						id={props.for}
 						type="email"
-						placeholder="olivier.durand@entreprise.fr"
 						value={props.email}
 						onChange={props.handleEmail}
 						required={true}
@@ -314,7 +312,6 @@ export default function CheckoutForm(props) {
 						name={props.for}
 						id={props.for}
 						type="text"
-						placeholder="23 Quai des Queyries"
 						value={props.owner}
 						onChange={props.handleOwner}
 						required={true}
@@ -327,7 +324,6 @@ export default function CheckoutForm(props) {
 						name={props.for}
 						id={props.for}
 						type="text"
-						placeholder="Bordeaux"
 						value={props.city}
 						onChange={props.handleCity}
 						required={true}
@@ -340,7 +336,6 @@ export default function CheckoutForm(props) {
 						name={props.for}
 						id={props.for}
 						type="text"
-						placeholder="33150"
 						value={props.zip}
 						onChange={props.handleZip}
 						required={true}

@@ -112,12 +112,8 @@ export default class SignUp extends React.Component {
 
         return (
             <div id="signUp">
-                {this.state.success && 
-                    <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg={["Votre compte a bien été créé. Vous allez recevoir un email de confirmation. Après la confirmation, cliquez ici pour ", <Link to="/connexion">vous connecter</Link>]}/>
-                }
-                {this.state.emailIsAlreadyTaken && 
-                    <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="L'email choisi est déjà utilisé par un autre compte"/>
-                }
+                {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre compte a bien été créé. Vous allez recevoir un email de confirmation, merci de le valider"/> }
+                {this.state.emailIsAlreadyTaken && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="L'email choisi est déjà utilisé par un autre compte"/> }
                 <Container className="px-0 mt-6">
                     <H1 className="mb-5 pb-5" title="Créer un compte Asking Franklin"/>
                     <p class="mb-5 pb-5">Vous pouvez aussi continuer à utiliser Asking Franklin en accédant à la <Link to="/">version gratuite</Link> sans avoir besoin de vous inscrire</p>
