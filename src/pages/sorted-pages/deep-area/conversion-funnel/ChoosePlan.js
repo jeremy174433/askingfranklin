@@ -47,6 +47,7 @@ export default class ChoosePlan extends React.Component {
                     return res.json();
               })
               .then(res => {
+                  console.log(res)
                     if(res.message === 'Unauthorized') {
                         this.setState({
                             redirectToLogin: true

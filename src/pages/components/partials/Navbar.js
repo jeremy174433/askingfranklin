@@ -35,6 +35,8 @@ export default class Navbar extends React.Component {
     handleLogOut(event) {
         event.preventDefault();
         localStorage.removeItem('af_token');
+        localStorage.removeItem('af_refresh_token')
+        localStorage.removeItem('af_username')
         window.location.replace('/');
         this.setState({
             isConnected: false

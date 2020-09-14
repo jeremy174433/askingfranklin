@@ -92,7 +92,7 @@ export default function CheckoutForm(props) {
 				}
 			})
 			.catch((error) => {
-				console.log(error);
+				props.handlePaymentError();
 			});
 		} 
 		else {
@@ -131,6 +131,7 @@ export default function CheckoutForm(props) {
 			// Normalize the result to contain the object returned by Stripe.
 			// Add the additional details we need.
 			.then((result) => {
+				console.log(result)
 				return {
 					// Use the Stripe 'object' property on the
 					// returned result to understand what object is returned.
@@ -149,7 +150,7 @@ export default function CheckoutForm(props) {
 			.catch((error) => {
 				// An error has happened. Display the failure to the user here.
 				// We utilize the HTML element we created.
-				console.log(error);
+				props.handlePaymentError()
 			})
     	);
 	}
@@ -198,15 +199,17 @@ export default function CheckoutForm(props) {
 					// The card had an error when trying to attach it to a customer.
 					throw result;
 				}
-				return result.message;
+				return result;
 			})
 			// Normalize the result to contain the object returned by Stripe.
 			// Add the additional details we need.
 			.then((result) => {
+				console.log(result)
+
 				return {
 					paymentMethodId: paymentMethodId,
 					priceId: priceId,
-					subscription: result
+					subscription: result.message
 				};
 			})
 			// Some payment methods require a customer to be on session
@@ -220,9 +223,7 @@ export default function CheckoutForm(props) {
 			// No more actions required. Provision your service for the user.
 			.then(onSubscriptionComplete)
 			.catch((error) => {
-				// An error has happened. Display the failure to the user here.
-				// We utilize the HTML element we created.
-				console.log(error);
+				props.handlePaymentError()
 			})
 		);
 	}

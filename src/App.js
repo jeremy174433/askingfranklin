@@ -24,6 +24,7 @@ import Payment from './pages/sorted-pages/deep-area/conversion-funnel/Payment';
 import ConfirmationPayment from './pages/sorted-pages/deep-area/conversion-funnel/ConfirmationPayment';
 import BackToTop from 'react-back-to-top-button';
 import ArrowLight from './assets/img/svg/ArrowLight';
+import ConfirmationSignup from './pages/sorted-pages/free-area/sign-in/SignupConfirmation';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -48,6 +49,7 @@ export default class App extends React.Component {
                         <Navbar isConnected={this.state.isConnected}/>
                         <Switch>
                             <Route path='/connexion' component={(props) => <SignIn {...props} handleConnect={this.handleConnect}/>}/>
+                            <Route exact path='/inscription/confirmation' component={ConfirmationSignup}/>
                             <Route path='/inscription' component={SignUp}/>
                             <Route path='/mot-de-passe-oublie' component={ForgotPassword}/>
                             <Route path='/recherche/:keyword' component={AskingFranklin}/>

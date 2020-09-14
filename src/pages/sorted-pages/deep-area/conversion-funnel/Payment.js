@@ -11,6 +11,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from '../../../components/form/stripe/CheckoutForm';
 import H2 from '../../../components/elements/title/H2';
 import FeaturesList from '../../../components/elements/FeaturesList';
+import Alert from '../../../components/elements/Alert';
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -23,8 +24,11 @@ export default class Payment extends React.Component {
 			isLoading: true,
 			redirect: false,
 			product: {},
-			selectedPlan: 1
+			selectedPlan: 1,
+			errorPayment:false,
 		}
+		this.handleCloseAlert = this.handleCloseAlert.bind(this)
+		this.handlePaymentError = this.handlePaymentError.bind(this)
 	}
 
 	componentDidMount() {
@@ -71,18 +75,29 @@ export default class Payment extends React.Component {
 			);
 		}
 	}
-
+	handlePaymentError(){
+		this.setState({
+			errorPayment:true
+		})
+	}
+    handleCloseAlert() {
+        this.setState({
+            errorPayment: false
+        });
+    }
 	render() {
 
 		const classListCol = 'block-ctn-summary block-style block-pricing pt-4 ';
-
+		
 		return(
+
 			this.state.redirect ? 
 				<Redirect to='/plans'/>
 			: this.state.isLoading ?
 				<Loader loaderDisplayed content="Chargement en cours"/>
 			:
 				<Container id="payment" className="px-0 mt-6">
+					{this.state.errorPayment && <Alert onClick={this.handleCloseAlert} className={'alert-msg-visible'} alertId="errorMessage" msg="Le paiement a échoué"/>}
 					<Row className="mx-0">
 						<Col lg="12" xl="8" className="block-ctn-elements block-style pt-4 mr-0 mr-xl-5 mt-5 mt-xl-0 order-1 order-xl-0">
 							<div class="block-elements-header">
@@ -90,7 +105,7 @@ export default class Payment extends React.Component {
 							</div>
 							<div class="block-elements-body mt-4">
 								<Elements stripe={stripePromise}>
-									<CheckoutForm pricing={this.state.product}/>
+									<CheckoutForm pricing={this.state.product} handlePaymentError={this.handlePaymentError}/>
 								</Elements>
 							</div>
 						</Col>

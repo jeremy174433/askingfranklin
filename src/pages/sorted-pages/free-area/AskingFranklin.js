@@ -10,7 +10,7 @@ import {
 } from 'react-router-dom';
 import AFWrapper from '../../components/asking-franklin/AFWrapper';
 import FormRequestFranklin from '../../components/form/FormRequestFranklin';
-
+import {refreshTokenFnc} from '../../../utils/refreshToken'
 export default class AskingFranklin extends React.Component {
     constructor(props) {
         super(props)
@@ -43,8 +43,6 @@ export default class AskingFranklin extends React.Component {
             fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/suggestions?keyword=' + keyword, headers)
             .then((res) => res.json())
             .then((res) => {
-
-                console.log(res)
                 if (res.blocked){
                     this.setState({
                         redirectBlocked:true
@@ -52,10 +50,12 @@ export default class AskingFranklin extends React.Component {
                     localStorage.removeItem("af_token")
                 }
                 else if (res.invalid_token){
-                    this.setState({
+                    /*this.setState({
                         redirectLogin:true
                     })
                     localStorage.removeItem("af_token")
+                    */
+                    refreshTokenFnc()
                 }
                  else {
                     var nbResults = 0;

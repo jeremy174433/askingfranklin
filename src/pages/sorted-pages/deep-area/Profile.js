@@ -7,7 +7,7 @@ import EyeShowHide from '../../../assets/img/svg/switch/EyeShowHide';
 import Checkbox from '../../components/form/Checkbox';
 import PmyBtn from '../../components/button/PmyBtn';
 import Alert from '../../components/elements/Alert';
-
+import {Link} from 'react-router-dom'
 export default class Profile extends React.Component {
     constructor(props) {
         super(props)
@@ -22,7 +22,8 @@ export default class Profile extends React.Component {
             emailIsAlreadyTaken: false,
             actualPasswordDidntMatch: false,
             subscriptionState: false,
-            alertIsShowed: false
+            alertIsShowed: false,
+            noSubscription:true
         }
         this.handleSelectAccount = this.handleSelectAccount.bind(this);
         this.handleSelectSubscription = this.handleSelectSubscription.bind(this);
@@ -49,10 +50,16 @@ export default class Profile extends React.Component {
                     return res.json();
                 })
                 .then(res => {
-                console.log(res.message.length)
                 this.setState({
-                    subscriptionInProgress: res.message.length > 0 ? true : false,
+                    subscriptionInProgress: res.message.length > 0  && !res.message[0].cancel_at_period_end ? true : false,
+                    noSubscription: res.message.length == 0 ? true : false
                 });
+                if(res.message[0] && res.message[0].cancel_at_period_end) {
+                    var s = new Date(res.message[0].cancel_at * 1000).toLocaleDateString("fr-FR")
+                    this.setState({
+                        subscriptionEnd:s
+                    })
+                }
                 });
         } else {
             this.props.history.push('/plans');
@@ -112,21 +119,41 @@ export default class Profile extends React.Component {
     handleSubmitCheckbox(e) {
         e.preventDefault();
         var token = localStorage.getItem("af_token");
-        fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/cancel-subscription', {
-            headers: {
-                'Authorization': token
-            },
-            method: 'GET',
-            })
-            .then(res => {
-                return res.json();
-            })
-            .then(res => {
-                this.setState({
-                    subscriptionState:true,
-                    subscriptionInProgress:false
+        if(this.state.subscriptionEnd){
+            fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/reactivate-subscription', {
+                headers: {
+                    'Authorization': token
+                },
+                method: 'GET',
                 })
-            });
+                .then(res => {
+                    return res.json();
+                })
+                .then(res => {
+                    this.setState({
+                        subscriptionState:true,
+                        subscriptionInProgress:true,
+                        subscriptionEnd:null
+                    })
+                });
+        } else {
+            fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/cancel-subscription', {
+                headers: {
+                    'Authorization': token
+                },
+                method: 'GET',
+                })
+                .then(res => {
+                    return res.json();
+                })
+                .then(res => {
+                    this.setState({
+                        subscriptionState:true,
+                        subscriptionInProgress:false,
+                        subscriptionEnd: new Date(res.message.cancel_at * 1000).toLocaleDateString("fr-FR")
+                    })
+                });
+        }
     }
 
     handleCloseAlert() {
@@ -215,18 +242,18 @@ export default class Profile extends React.Component {
                                     </form>
                                 </section>
                             : this.state.tabActive === 1 &&
-                                true ? <form onSubmit={this.handleSubmitCheckbox} method="" class="block-style d-flex flex-column mt-6">
-                                    <Title title="Votre abonnement"/>
+                                true ? !this.state.noSubscription ?<form onSubmit={this.handleSubmitCheckbox} method="" class="block-style d-flex flex-column mt-6">
+                                    <Title title={"Votre abonnement"}/>
                                     <Checkbox
-                                        label="Abonné(e) à Asking Franklin Pro"
+                                        label={this.state.subscriptionEnd ? "Vous avez désactivé votre abonnement, il prendra fin le " + this.state.subscriptionEnd  : "Abonné(e) à Asking Franklin Pro"}
                                         for="subscription"
                                         value="subscription"
                                         checked={this.state.subscriptionInProgress}
                                         onChange={this.handleSubscriptionState}
                                     />
                                     <p class="mt-1 mb-3 pb-3 pl-1 ml-4 fz-14">Décocher la case puis cliquez sur Sauvegarder pour annuler le renouvellement automatique de votre abonnement (celui-ci prendra fin au terme de sa période de validité)</p>
-                                    <PmyBtn type="submit" isDisabled={this.state.subscriptionInProgress === true} btnIsMediumPmyFull textBtn="Sauvegarder" title="Sauvegarder"/>
-                                </form> : <div className="block-style d-flex flex-column mt-6">Vous n'avez pas d'abonnement actif Asking Franklin.</div>
+                                    <PmyBtn type="submit" btnIsMediumPmyFull textBtn="Sauvegarder" title="Sauvegarder"/>
+                                </form> : <div class="block-style d-flex flex-column mt-6"><p class="mt-1 mb-3 pb-3 pl-1 ml-4 fz-14">Vous n'avez pas d'abonnement Asking Franklin. <Link to="/plans">Devenir pro</Link></p></div> : <div className="block-style d-flex flex-column mt-6">Vous n'avez pas d'abonnement actif Asking Franklin.</div>
                         }
                     </main>
                 </div>

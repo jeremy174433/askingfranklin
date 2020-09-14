@@ -73,6 +73,8 @@ export default class SignIn extends React.Component {
             } 
             else {
                 localStorage.setItem('af_token', res.token);
+                localStorage.setItem('af_refresh_token', res.refresh_token);
+                localStorage.setItem('af_username', res.username)
                 this.setState({
                     redirect: true,
                     toPlan:res.is_sub[0] == null ? true : false
