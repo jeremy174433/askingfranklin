@@ -4,7 +4,8 @@ export default class PmyBtn extends React.Component {
 
     render() {
 
-        const defaultClass = this.props.className + ' d-flex flex-row align-items-center justify-content-center rounded fw-600 fz-18 ';
+        const baseDefaultClass = ' d-flex flex-row align-items-center justify-content-center rounded fw-600 fz-18 ';
+        const defaultClass = this.props.className ? this.props.className + baseDefaultClass : baseDefaultClass;
 
         const defaultPmyOutlineLight = ' pmy-btn pmy-btn-outline-light ';
         const defaultPmyOutlineFull = ' pmy-btn pmy-btn-outline-full ';
@@ -41,7 +42,7 @@ export default class PmyBtn extends React.Component {
                         : this.props.btnIsLargePmyOutlineLight ? largeOutlineLight
                         : this.props.btnIsLargePmyOutlineFull ? largeOutlineFull
                         : this.props.btnIsLargePmyFull ? largeFull
-                        : this.props.customBtnClass + ' p-0 border-0'
+                        : this.props.customBtnClass ? this.props.customBtnClass + ' p-0 border-0' : 'p-0 border-0'
                     }
                 >
 
@@ -61,7 +62,7 @@ export default class PmyBtn extends React.Component {
                                 : this.props.linkIsLargePmyOutlineLight ? largeOutlineLight
                                 : this.props.linkIsLargePmyOutlineFull ? largeOutlineFull
                                 : this.props.linkIsLargePmyFull ? largeFull
-                                : this.props.customLinkClass
+                                : this.props.customLinkClass && this.props.customLinkClass
                             }
                         >
                             {this.props.iconLinkBefore && <span class="mr-3">{this.props.iconLinkBefore}</span> }

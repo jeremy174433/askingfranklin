@@ -37,9 +37,10 @@ export default class Profile extends React.Component {
         this.handleSubmitCheckbox = this.handleSubmitCheckbox.bind(this);
         this.handleCloseAlert = this.handleCloseAlert.bind(this);
     }
+
     componentDidMount() {
-        var token = localStorage.getItem("af_token");
-        if(token) {
+        var token = localStorage.getItem('af_token');
+        if (token) {
             fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-plan', {
                 headers: {
                     'Authorization': token
@@ -65,6 +66,7 @@ export default class Profile extends React.Component {
             this.props.history.push('/plans');
         }
     }
+
     handleSelectAccount() {
         this.setState({
             tabActive: 0

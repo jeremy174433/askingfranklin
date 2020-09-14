@@ -38,7 +38,7 @@ export default class Home extends React.Component {
     render() {
 
         if(this.state.redirect) {
-            return <Redirect to={'/recherche/' + this.state.keywordSearch}/>
+            return <Redirect to={'/recherche/' + this.state.keywordSearch.replace(/ /g, '-')}/>
         }
 
         return (
@@ -58,10 +58,10 @@ export default class Home extends React.Component {
                         <source src={VideoHome} type="video/mp4"/>
                     </video>
                 </Col>
-                <img src={BlobRed} class="blob blob-1"/>
-                <img src={BlobYellow} class="blob blob-2"/>
-                <img src={BlobPurple} class="blob blob-3"/>
-                <img src={BlobBlue} class="blob blob-4"/>
+                <img src={BlobRed} class="blob blob-1" alt=""/>
+                <img src={BlobYellow} class="blob blob-2" alt=""/>
+                <img src={BlobPurple} class="blob blob-3" alt=""/>
+                <img src={BlobBlue} class="blob blob-4" alt=""/>
             </Container>
         )
     }

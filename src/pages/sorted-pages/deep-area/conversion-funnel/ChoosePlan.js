@@ -5,6 +5,7 @@ import {
     Col 
 } 
 from 'react-bootstrap';
+import StepperFunnel from '../../../components/form/elements/StepperFunnel';
 import H1 from '../../../components/elements/title/H1';
 import H2 from '../../../components/elements/title/H2';
 import PmyBtn from '../../../components/button/PmyBtn';
@@ -35,8 +36,8 @@ export default class ChoosePlan extends React.Component {
             });
         } 
         else {
-            var token = localStorage.getItem("af_token");
-            var product = localStorage.getItem("product");
+            var token = localStorage.getItem('af_token');
+            var product = localStorage.getItem('product');
             fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-plan', {
                 headers: {
                     'Authorization': token
@@ -112,9 +113,11 @@ export default class ChoosePlan extends React.Component {
         return this.state.plans.length > 0 ? 
             <Container id="pricing" className="px-0 mt-6">
                 <H1 className="text-center" title="Vous avez déja un abonnement Asking Franklin Pro actif"/>
+                <PmyBtn redirectTo="/" linkIsLargePmyFull textLink="Retourner à l'accueil" containerStyle="pt-5 mt-5 text-center"/>
             </Container>
-            : 
+            :
             <Container id="pricing" className="px-0 mt-6">
+                <StepperFunnel activeStep={0}/>
                 <H1 className="text-center" title="Passez à la vitesse supérieure en choisissant l'offre mensuel ou annuel"/>
                 {this.state.selectedPlan !== 0 &&
                     <p className={this.state.countClick >= 1 ? 'invisible text-center mt-5 fz-18' : 'text-center mt-5 fz-18'}>

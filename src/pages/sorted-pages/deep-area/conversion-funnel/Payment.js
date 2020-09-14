@@ -6,6 +6,7 @@ import {
 	Row,
 	Col
 } from 'react-bootstrap';
+import StepperFunnel from '../../../components/form/elements/StepperFunnel';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from '../../../components/form/stripe/CheckoutForm';
@@ -97,11 +98,11 @@ export default class Payment extends React.Component {
 				<Loader loaderDisplayed content="Chargement en cours"/>
 			:
 				<Container id="payment" className="px-0 mt-6">
-					{this.state.errorPayment && <Alert onClick={this.handleCloseAlert} className={'alert-msg-visible'} alertId="errorMessage" msg="Le paiement a échoué"/>}
+					<StepperFunnel activeStep={1}/>
 					<Row className="mx-0">
-						<Col lg="12" xl="8" className="block-ctn-elements block-style pt-4 mr-0 mr-xl-5 mt-5 mt-xl-0 order-1 order-xl-0">
+						<Col lg="12" xl="8" className="block-ctn-elements block-style pt-4 mr-0 mr-xl-5 mb-5 mb-xl-0">
 							<div class="block-elements-header">
-								<p class="d-flex flex-row align-items-center pb-3 fw-600"><span class="d-block d-xl-none">2&nbsp;-&nbsp;</span>Abonnement Pro</p>
+								<p class="d-flex flex-row align-items-center pb-3 fw-600">Abonnement Pro</p>
 							</div>
 							<div class="block-elements-body mt-4">
 								<Elements stripe={stripePromise}>
@@ -109,10 +110,10 @@ export default class Payment extends React.Component {
 								</Elements>
 							</div>
 						</Col>
-						<Col lg="12" xl="4" className={classListCol + 'mb-5 mb-xl-0'}>
+						<Col lg="12" xl="4" className={classListCol + 'mt-5 mt-xl-0'}>
 								<div class="block-summary">
 									<div class="block-summary-header">
-										<p class="d-flex flex-row align-items-center pb-3 fw-600"><span class="d-block d-xl-none">1&nbsp;-&nbsp;</span>Récapitulatif</p>
+										<p class="d-flex flex-row align-items-center pb-3 fw-600">Récapitulatif</p>
 									</div>
 									<div class="block-summary-body rounded p-3 my-4">
 										<H2 className="mb-3" title="Asking Franklin Pro"/>
@@ -125,7 +126,7 @@ export default class Payment extends React.Component {
 										: this.state.selectedPlan === 2 &&
 											<div>
 												<p class="fz-18 fw-600">Abonnement Annuel</p>
-												<p class="price">{this.state.product.unit_amount}€<span> /mois <span class="fw-400">(soit</span> 468€ <span class="fw-400">l'année)</span></span></p>
+												<p class="price">{this.state.product.unit_amount}€<span> /mois <span class="fw-400">(soit</span> {this.state.product.unit_amount * 12}€ <span class="fw-400">l'année)</span></span></p>
 												<p>Économisez <span class="fw-600">120€</span> par rapport à la version mensuel</p>
 											</div>
 										}

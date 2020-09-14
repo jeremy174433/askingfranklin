@@ -105,17 +105,15 @@ export default class SignUp extends React.Component {
     }
 
     render() {
+        
         if(this.state.redirect) { 
-            return <Redirect to={'/connexion'}/>
+            return <Redirect to={this.props.location.search !== '?ctx=buy' ? '/connexion' : '/connexion?ctx=buy'}/>
         }
+
         return (
             <div id="signUp">
-                {this.state.success && 
-                    <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg={["Votre compte a bien été créé. Vous allez recevoir un email de confirmation. Après la confirmation, cliquez ici pour ", <Link to="/connexion">vous connecter</Link>]}/>
-                }
-                {this.state.emailIsAlreadyTaken && 
-                    <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="L'email choisi est déjà utilisé par un autre compte"/>
-                }
+                {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre compte a bien été créé. Vous allez recevoir un email de confirmation, merci de le valider"/> }
+                {this.state.emailIsAlreadyTaken && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="L'email choisi est déjà utilisé par un autre compte"/> }
                 <Container className="px-0 mt-6">
                     <H1 className="mb-5 pb-5" title="Créer un compte Asking Franklin"/>
                     <p class="mb-5 pb-5">Vous pouvez aussi continuer à utiliser Asking Franklin en accédant à la <Link to="/">version gratuite</Link> sans avoir besoin de vous inscrire</p>
@@ -127,7 +125,7 @@ export default class SignUp extends React.Component {
                                 label="Votre email" 
                                 for="email" 
                                 name={this.for} 
-                                id={this.for} 
+                                id={this.for}
                                 required={true}
                                 infoMsg={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
                             />
@@ -140,7 +138,7 @@ export default class SignUp extends React.Component {
                                 for="password" 
                                 name={this.for} 
                                 id={this.for} 
-                                onClick={this.handleInputType} 
+                                onClick={this.handleInputType}
                                 inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>} 
                                 required={true}
                                 infoMsg={this.state.password.length < 8 && 'Le mot de passe doit contenir au moins 8 caractères'}
@@ -166,10 +164,7 @@ export default class SignUp extends React.Component {
                         </Col>
                     </form>
                     <div class="d-flex flex-column mt-3 pt-3">
-                        <Link to={'/connexion'} class="w-max-content">
-                            <ArrowTextLink width="16" fill="#4285F4" style={{ transform: 'rotate(180deg)', marginRight: '1rem' }}/>
-                            J'ai déjà un compte Asking Franklin
-                        </Link>
+                        <ArrowTextLink redirectTo="/connexion" textLink="J'ai déjà un compte Asking Franklin"/>
                     </div>
                 </Container>
             </div>

@@ -30,7 +30,7 @@ export default class Input extends React.Component {
                     type={this.props.type} 
                     name={this.props.for} 
                     id={this.props.for}
-                    class="input-primary"
+                    className={this.props.inputStyle ? this.props.inputStyle + ' input-primary' : 'input-primary'}
                     placeholder={this.props.placeholder}
                     value={this.props.value}
                     required={this.props.required}

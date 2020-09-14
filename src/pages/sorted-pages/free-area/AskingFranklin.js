@@ -23,7 +23,7 @@ export default class AskingFranklin extends React.Component {
             keywordSearch: '',
             newKeywordSearch: '',
             redirectBlocked: false,
-            redirectLogin:false
+            redirectLogin: false
         }
         this.switchSelectedPanel = this.switchSelectedPanel.bind(this);
         this.handleKeywordChange = this.handleKeywordChange.bind(this);
@@ -43,11 +43,11 @@ export default class AskingFranklin extends React.Component {
             fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/suggestions?keyword=' + keyword, headers)
             .then((res) => res.json())
             .then((res) => {
-                if (res.blocked){
+                if (res.blocked) {
                     this.setState({
-                        redirectBlocked:true
-                    })
-                    localStorage.removeItem("af_token")
+                        redirectBlocked: true
+                    });
+                    localStorage.removeItem('af_token');
                 }
                 else if (res.invalid_token){
                     /*this.setState({
@@ -57,7 +57,7 @@ export default class AskingFranklin extends React.Component {
                     */
                     refreshTokenFnc()
                 }
-                 else {
+                else {
                     var nbResults = 0;
                     {res.data.map((x, index) => {
                         nbResults += x.data.map((x) => x.suggestions.length).reduce(reducer);
@@ -78,7 +78,7 @@ export default class AskingFranklin extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if(prevProps.match.params.keyword !== this.props.match.params.keyword) {
+        if (prevProps.match.params.keyword !== this.props.match.params.keyword) {
           this.fetchFranklin(this.props.match.params.keyword);
         }
     }
@@ -97,7 +97,7 @@ export default class AskingFranklin extends React.Component {
 
     requestFanklin = (e) => {
         e.preventDefault();
-        this.props.history.push('/recherche/' + this.state.newKeywordSearch);
+        this.props.history.push('/recherche/' + this.state.newKeywordSearch.replace(/ /g, '-'));
     }
 
     render() {
@@ -120,31 +120,31 @@ export default class AskingFranklin extends React.Component {
             return <Redirect to="/connexion"/>
         }
         if(this.state.isLoading) {
-            return  <div id="askingFranklin">
+            return  <Container id="askingFranklin" className="px-0">
                         <Loader loaderDisplayed content="Chargement en cours"/>
-                    </div>
+                        </Container>
         }
         else if(this.state.nbResults === 0) {
-            return  <div id="askingFranklin">
+            return  <Container id="askingFranklin" className="px-0">
                         <div>{launchNewRequest}</div>
-                    </div>
+                    </Container>
         }
         else if(this.state.dataIsLoaded) {
-            return  <div id="askingFranklin">
+            return  <Container id="askingFranklin" className="px-0">
                         <main class="d-flex flex-column flex-xl-row">
-                            <AFStickyMenu searchContent={this.state.keywordSearch} dataNumber={this.state.dataKw} handleNoData={this.handleNoData}/>
+                            <AFStickyMenu searchContent={this.state.keywordSearch.replace(/-/g, ' ')} dataNumber={this.state.dataKw} handleNoData={this.handleNoData}/>
                             <Col className="col-12 col-xl-9 px-0 mb-5 w-100">
                                 {this.state.dataKw.data.map((x) => {
                                     return <AFWrapper keywordSearch={this.state.keywordSearch} data={x}/>
                                 })}
                             </Col>
                         </main>
-                    </div>
+                    </Container>
         }
         else {
-            return  <div id="askingFranklin">
+            return  <Container id="askingFranklin" className="px-0">
                         <div>{launchNewRequest}</div>
-                    </div>
+                    </Container>
         }
     }
 }
