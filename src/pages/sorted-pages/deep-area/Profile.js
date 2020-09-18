@@ -8,6 +8,7 @@ import Checkbox from '../../components/form/Checkbox';
 import PmyBtn from '../../components/button/PmyBtn';
 import Alert from '../../components/elements/Alert';
 import {Link} from 'react-router-dom'
+import { csvParse } from 'd3';
 export default class Profile extends React.Component {
     constructor(props) {
         super(props)
@@ -15,20 +16,21 @@ export default class Profile extends React.Component {
             tabActive: 0,
             newEmail: '',
             pwdDefaultType: 'password',
-            actualPassword: '',
+            newPasswordConfirmation: '',
             newPassword: '',
             subscriptionInProgress: false,
             success: false,
             emailIsAlreadyTaken: false,
-            actualPasswordDidntMatch: false,
             subscriptionState: false,
             alertIsShowed: false,
-            noSubscription:true
+            noSubscription:true,
+            passwordChanged:false,
+            emailChanged:false
         }
         this.handleSelectAccount = this.handleSelectAccount.bind(this);
         this.handleSelectSubscription = this.handleSelectSubscription.bind(this);
         this.handleNewEmail = this.handleNewEmail.bind(this);
-        this.handleActualPassword = this.handleActualPassword.bind(this);
+        this.handleNewPasswordConfirmation = this.handleNewPasswordConfirmation.bind(this);
         this.handleNewPassword = this.handleNewPassword.bind(this);
         this.handleInputType = this.handleInputType.bind(this);
         this.handleSubscriptionState = this.handleSubscriptionState.bind(this);
@@ -62,6 +64,20 @@ export default class Profile extends React.Component {
                     })
                 }
                 });
+            fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-email', {
+                headers: {
+                    'Authorization': token
+                },
+                method: 'GET',
+                })
+                .then(res => {
+                    return res.json();
+                })
+                .then(res => {
+                    this.setState({
+                        curr_email:res.message[0]
+                    })
+                });
         } else {
             this.props.history.push('/plans');
         }
@@ -85,15 +101,15 @@ export default class Profile extends React.Component {
         });
     }
 
-    handleActualPassword(e) {
-        this.setState({
-            actualPassword: e.target.value
-        });
-    }
-
     handleNewPassword(e) {
         this.setState({
             newPassword: e.target.value
+        });
+    }
+
+    handleNewPasswordConfirmation(e) {
+        this.setState({
+            newPasswordConfirmation: e.target.value
         });
     }
 
@@ -109,13 +125,67 @@ export default class Profile extends React.Component {
         });
     }
 
-    handleSubmitEmail() { 
-        console.log(this.state.newEmail);
+    handleSubmitEmail(event) { 
+        event.preventDefault()
+        var username = localStorage.getItem('af_username');
+        var token = localStorage.getItem('af_token');
+        fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/change-email', {
+            headers: {
+                'Authorization': token
+            },
+            method: 'POST',
+            body: JSON.stringify({username:username, new_email:this.state.newEmail})
+            })
+            .then(res => {
+                return res.json();
+            })
+            .then(res => {
+                console.log(res)
+                if(res.message == "Email as been changed successfully"){
+                    this.setState({
+                        alertIsShowed:true,
+                        emailChanged:true
+                    })
+                    fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-email', {
+                        headers: {
+                            'Authorization': token
+                        },
+                        method: 'GET',
+                        })
+                        .then(res => {
+                            return res.json();
+                        })
+                        .then(res => {
+                            this.setState({
+                                curr_email:res.message[0]
+                            })
+                        });
+                }
+            });
     }
 
-    handleSubmitPassword() { 
-        console.log(this.state.actualPassword);
-        console.log(this.state.newPassword);
+    handleSubmitPassword(event) {
+        event.preventDefault()
+        var username = localStorage.getItem('af_username');
+        var token = localStorage.getItem('af_token');
+        fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/change-password', {
+            headers: {
+                'Authorization': token
+            },
+            method: 'POST',
+            body: JSON.stringify({username:username, proposed_password:this.state.newPassword})
+            })
+            .then(res => {
+                return res.json();
+            })
+            .then(res => {
+                if(res.message == "Password has been changed successfully"){
+                    this.setState({
+                        alertIsShowed:true,
+                        passwordChanged:true
+                    })
+                }
+            });
     }
 
     handleSubmitCheckbox(e) {
@@ -162,7 +232,6 @@ export default class Profile extends React.Component {
         this.setState({
             success: false,
             emailIsAlreadyTaken: false,
-            actualPasswordDidntMatch: false,
             subscriptionState: false,
             alertIsShowed: false
         });
@@ -173,7 +242,8 @@ export default class Profile extends React.Component {
             <Container className="px-0 mt-6">
                 {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="La modification a été appliquée avec succès"/> }
                 {this.state.emailIsAlreadyTaken && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="L'email choisi est déjà utilisé par un autre compte"/> }
-                {this.state.actualPasswordDidntMatch && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="Votre mot de passe actuelle ne semble pas correct"/> }
+                {this.state.passwordChanged && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre mot de passe a bien été modifié"/> }
+                {this.state.emailChanged && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre email a bien été modifié"/> }
                 {this.state.subscriptionState && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg={['Votre désabonnement a bien été enregistré. Vous restez Pro jusqu\'à la fin de votre abonnement en cours le : ', <span>31/08/2020</span>]}/> }
                 <div class="block-style">
                     <H1 className="mb-3" title="Paramètres"/>
@@ -194,17 +264,13 @@ export default class Profile extends React.Component {
                                         <Input
                                             label="Adresse email actuelle"
                                             for="actualEmail"
-                                            name={this.for}
-                                            id={this.for}
                                             type="email"
-                                            value="olivier.durand@entreprise.com"
+                                            value={this.state.curr_email}
                                             disabled={true}
                                         />
                                         <Input
                                             label="Votre nouvelle adresse email"
                                             for="newEmail"
-                                            name={this.for}
-                                            id={this.for}
                                             value={this.state.newEmail}
                                             type="email"
                                             required={true}
@@ -216,31 +282,31 @@ export default class Profile extends React.Component {
                                     <form onSubmit={this.handleSubmitPassword} method="" class="block-style d-flex flex-column mt-6">
                                         <Title title="Votre mot de passe"/>
                                         <Input
-                                            label="Votre mot de passe actuel"
-                                            for="actualPassword"
-                                            name={this.for}
-                                            id={this.for}
-                                            value={this.state.actualPassword}
-                                            type="password"
-                                            required={true}
-                                            onChange={this.handleActualPassword}
-                                        />
-                                        <Input
                                             label="Votre nouveau mot de passe"
                                             labelInfo="8 caractères minimum"
+                                            for="actualPassword"
                                             minLength={8}
-                                            for="newPassword"
-                                            name={this.for}
-                                            id={this.for}
                                             value={this.state.newPassword}
-                                            type={this.state.pwdDefaultType}
+                                            type="password"
                                             onClick={this.handleInputType}
                                             inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>}
                                             required={true}
                                             onChange={this.handleNewPassword}
                                             infoMsg={this.state.newPassword.length < 8 && 'Le mot de passe doit contenir au moins 8 caractères'}
+                                        />
+                                        <Input
+                                            label="Confirmation de votre nouveau mot de passe"
+                                            minLength={8}
+                                            for="newPassword"
+                                            value={this.state.newPasswordConfirmation}
+                                            type={this.state.pwdDefaultType}
+                                            onClick={this.handleInputType}
+                                            inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>}
+                                            required={true}
+                                            onChange={this.handleNewPasswordConfirmation}
+                                            infoMsg={this.state.newPassword !==  this.state.newPasswordConfirmation && 'Les deux mots de passe ne correspondent pas'}
                                         />                        
-                                        <PmyBtn type="submit" isDisabled={this.state.actualPassword.length < 8 || this.state.newPassword.length < 8} btnIsMediumPmyFull textBtn="Sauvegarder" title="Sauvegarder"/>
+                                        <PmyBtn type="submit" isDisabled={(this.state.newPasswordConfirmation !==  this.state.newPassword) || this.state.newPassword.length < 8} btnIsMediumPmyFull textBtn="Sauvegarder" title="Sauvegarder"/>
                                     </form>
                                 </section>
                             : this.state.tabActive === 1 &&

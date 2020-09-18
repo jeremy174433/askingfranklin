@@ -354,7 +354,7 @@ export default function CheckoutForm(props) {
 				required={true} 
 				className="my-3 py-3"
 			/>
-			<PmyBtn type="submit" isDisabled={!stripe} btnIsMediumPmyFull textBtn={props.pricing ? 'Payer ' + props.pricing.unit_amount + ' €' : 'Confirmer l\'achat'} className="w-md-100 ml-auto mt-4"/>
+			<PmyBtn type="submit" isDisabled={!stripe} btnIsMediumPmyFull textBtn={props.pricing ? 'Payer ' + Math.floor(props.pricing.unit_amount / 100) + ' €' : 'Confirmer l\'achat'} className="w-md-100 ml-auto mt-4"/>
 		</form>
 	);
 }
