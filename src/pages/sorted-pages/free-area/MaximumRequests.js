@@ -3,7 +3,7 @@ import {
     Container,
     Col 
 } from 'react-bootstrap';
-import VideoMaximumRequests from '../../../assets/video/VideoMaximumRequests.mp4';
+import VideoSecondary from '../../../assets/video/VideoSecondary.mp4';
 import H1 from '../../components/elements/title/H1';
 import FeaturesList from '../../components/elements/FeaturesList';
 import PmyBtn from '../../components/button/PmyBtn';
@@ -24,7 +24,7 @@ export default class MaximumRequests extends React.Component {
                 </Col>
                 <Col md="12" lg="6" className="px-0 d-flex align-items-center justify-content-center">
                     <video loop autoPlay muted style={{ width: '100%', height: '100%', backgroundColor: '#FFF' }}>
-                        <source src={VideoMaximumRequests} type="video/mp4"/>
+                        <source src={VideoSecondary} type="video/mp4"/>
                     </video>
                 </Col>
             </Container>
