@@ -23,8 +23,6 @@ $input: '.input-primary';
             cursor: not-allowed;
             background-color: $bg-disabled;
         }
-
-        &:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active { box-shadow: 0 0 0 99px $theme-secondary inset; }
   
         + #{$input}-icon {
             position: absolute;
@@ -40,6 +38,10 @@ $input: '.input-primary';
             @include max-sm-rwd { top: 58px; }
         }
     }
+    
 }
 
-#signUp #{$input}-wrapper #{$input} { padding-right: 3rem; }
+#signUp #{$input}-wrapper #{$input},
+#profilePage #{$input}-wrapper #{$input} { 
+    padding-right: 3rem; 
+}

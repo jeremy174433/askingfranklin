@@ -16,6 +16,11 @@ button {
     &:focus { outline: none; }
 }
 
+blockquote {
+    border-left: 4px solid $primary;
+    padding-left: .5rem;
+}
+
 .block-style {
     background-color: $theme-secondary;
     border: 1px solid $theme-terthiary;
@@ -49,9 +54,8 @@ button {
 
 // Width
 .w-max-content { width: max-content; }
-.w-md-100 { 
-    @include max-md-rwd { width: 100%; }
-}
+.w-md-100 { @include max-md-rwd { width: 100%; } }
+.w-sm-100 { @include max-sm-rwd { width: 100%; } }
 
 // Padding & Margin
 .mt-6 { margin-top: 6rem; }

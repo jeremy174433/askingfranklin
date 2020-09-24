@@ -280,7 +280,7 @@ export default function CheckoutForm(props) {
 	return (
 		<form onSubmit={handleSubmit}>
 			<Row className="d-flex flex-row mx-0">
-				<Col sm="12" md="6" className="px-sm-0 pl-md-0 pr-md-3">
+				<Col sm="12" md="6" className="px-0 pl-md-0 pr-md-3">
 					<Input
 						label="Nom complet ou raison sociale"
 						for="owner"
@@ -292,21 +292,7 @@ export default function CheckoutForm(props) {
 						required={true}
 					/>
 				</Col>
-				<Col sm="12" md="6" className="px-sm-0 pr-md-0 pl-md-3">
-					<Input
-						label="Email"
-						for="email"
-						name={props.for}
-						id={props.for}
-						type="email"
-						value={props.email}
-						onChange={props.handleEmail}
-						required={true}
-					/>
-				</Col>
-			</Row>
-			<Row className="d-flex flex-row mx-0">
-				<Col sm="12" md="6" className="px-sm-0 pl-md-0 pr-md-3">
+				<Col sm="12" md="6" className="px-0 pr-md-0 pl-md-3">
 					<Input
 						label="Adresse de facturation"
 						for="address"
@@ -318,7 +304,9 @@ export default function CheckoutForm(props) {
 						required={true}
 					/>
 				</Col>
-				<Col sm="12" md="4" className="px-sm-0 px-md-3">
+			</Row>
+			<Row className="d-flex flex-row mx-0">
+				<Col sm="12" md="6" className="px-0 pl-md-0 pr-md-3">
 					<Input
 						label="Ville"
 						for="city"
@@ -330,7 +318,7 @@ export default function CheckoutForm(props) {
 						required={true}
 					/>
 				</Col>
-				<Col sm="12" md="2" className="px-sm-0 pl-md-3 pr-md-0">
+				<Col sm="12" md="6" className="px-0 pr-md-0 pl-md-3">
 					<Input
 						label="Code postal"
 						for="zip"
@@ -354,7 +342,10 @@ export default function CheckoutForm(props) {
 				required={true} 
 				className="my-3 py-3"
 			/>
-			<PmyBtn type="submit" isDisabled={!stripe} btnIsMediumPmyFull textBtn={props.pricing ? 'Payer ' + Math.floor(props.pricing.unit_amount / 100) + ' €' : 'Confirmer l\'achat'} className="w-md-100 ml-auto mt-4"/>
+			<div class="d-flex flex-column flex-sm-row justify-content-end align-items-center">
+				<PmyBtn redirectTo="/plans" linkIsMediumPmyOutlineLight textLink="Précédent" containerStyle="w-sm-100 mr-0 mr-sm-4 mt-4" customBtnClass="w-sm-100"/>
+				<PmyBtn type="submit" isDisabled={!stripe} btnIsMediumPmyFull textBtn={props.pricing ? 'Payer ' + Math.floor(props.pricing.unit_amount / 100) + ' €' : 'Confirmer l\'achat'} containerStyle="w-sm-100 mt-4" className="w-sm-100"/>
+			</div>
 		</form>
 	);
 }

@@ -47,14 +47,23 @@ export default class Navbar extends React.Component {
         return (
             <nav id="navbar" class="px-4 px-xl-5 py-2 w-100 d-flex justify-content-center position-fixed">
                 <Container className="px-0 d-flex flex-lg-row align-items-center justify-content-lg-center">
-                    <Link to="/" class="mr-4 
-                    mr-md-5">
+                    <Link to="/" class="mr-4 mr-md-5">
                         <Logo width="171"/>
                     </Link>
                     <div class="d-none d-md-block ml-auto">
                             {
                                 this.state.isConnected === true ?
-                                    <ProfileAccess onClickLogOut={this.handleLogOut}/>
+                                    <ul class="d-flex flex-row align-items-center">
+                                        <li>
+                                            <Link to="/tarifs" class="nav-link d-flex flex-row py-2 px-3 rounded">
+                                                <Rocket width="16" fill="#2B2B2B"/>
+                                                <span class="ml-3">Devenir Pro</span>
+                                            </Link>
+                                        </li>
+                                        <li class="ml-5">
+                                            <ProfileAccess onClickLogOut={this.handleLogOut}/>
+                                        </li>
+                                    </ul>
                                 : this.state.isConnected === false &&
                                     <ul class="d-flex flex-row align-items-center">
                                         <li>

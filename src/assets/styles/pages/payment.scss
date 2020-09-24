@@ -11,8 +11,6 @@
     .block-ctn-elements {
         @include min-xl-rwd { flex-basis: calc(66.666667% - 24px); }
 
-        height: fit-content;
-
         .block-elements {
             &-header { border-bottom: 1px solid $theme-terthiary; }
         }

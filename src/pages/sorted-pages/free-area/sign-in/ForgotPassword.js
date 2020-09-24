@@ -126,13 +126,13 @@ export default class ForgotPassword extends React.Component {
 
     render() {
         return (
-            <div id="forgotPassword">
+            <div id="forgotPassword" class="layout-style">
                 {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg={['Votre mot de passe a bien été changé. Vous pouvez maintenant ', <Link to='/connexion'>vous connecter</Link>]}/> }
                 {this.state.error && <Alert onClick={this.handleCloseAlertError} className={this.state.alertIsShowedError ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="Une erreur est survenue. Vérifiez votre code et votre nouveau mot de passe"/> }
                 {this.state.error && <Alert onClick={this.handleCloseAlertError} className={this.state.alertIsShowedLimit ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="Une erreur est survenue. La limite de requête a été atteinte, réessayez dans quelques minutes"/> }
                 {!this.state.emailSent ? 
                     <Container className="px-0 mt-6">
-                        <H1 className="mb-5 pb-5" title="Mot de passe oublié"/>
+                        <H1 className="mb-5" title="Mot de passe oublié"/>
                         <form onSubmit={this.handleSubmit} method="POST">
                             <Col sm="12" lg="8" xl="6" className="px-0 d-flex flex-column">
                                 <Input 

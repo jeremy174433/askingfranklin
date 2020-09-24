@@ -12,6 +12,7 @@ import AskingFranklin from './pages/sorted-pages/free-area/AskingFranklin';
 import Pricing from './pages/sorted-pages/free-area/Pricing';
 import SignIn from './pages/sorted-pages/free-area/sign-in/SignIn';
 import SignUp from './pages/sorted-pages/free-area/sign-in/SignUp';
+import ConfirmationSignup from './pages/sorted-pages/free-area/sign-in/SignupConfirmation';
 import ForgotPassword from './pages/sorted-pages/free-area/sign-in/ForgotPassword';
 import MaximumRequests from './pages/sorted-pages/free-area/MaximumRequests';
 import LegalNotices from './pages/sorted-pages/free-area/law/LegalNotices';
@@ -24,7 +25,6 @@ import Payment from './pages/sorted-pages/deep-area/conversion-funnel/Payment';
 import ConfirmationPayment from './pages/sorted-pages/deep-area/conversion-funnel/ConfirmationPayment';
 import BackToTop from 'react-back-to-top-button';
 import ArrowLight from './assets/img/svg/ArrowLight';
-import ConfirmationSignup from './pages/sorted-pages/free-area/sign-in/SignupConfirmation';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -44,29 +44,27 @@ export default class App extends React.Component {
     render() {
         return (
             <div id="App">
-                <div class="layout-style">
-                    <Router>
-                        <Navbar isConnected={this.state.isConnected}/>
-                        <Switch>
-                            <Route path='/connexion' component={(props) => <SignIn {...props} handleConnect={this.handleConnect}/>}/>
-                            <Route exact path='/inscription/confirmation' component={ConfirmationSignup}/>
-                            <Route path='/inscription' component={SignUp}/>
-                            <Route path='/mot-de-passe-oublie' component={ForgotPassword}/>
-                            <Route path='/recherche/:keyword' component={AskingFranklin}/>
-                            <Route path="/limite-de-recherches" component={MaximumRequests}/>
-                            <Route exact path='/' component={Home}/>
-                            <Route exact path='/tarifs' component={Pricing}/>
-                            <Route exact path='/profil' component={Profile}/>
-                            <Route exact path='/plans' component={ChoosePlan}/>
-                            <Route exact path='/paiement' component={Payment}/>
-                            <Route exact path='/paiement/confirmation' component={ConfirmationPayment}/>
-                            <Route path="/mentions-legales" component={LegalNotices}/>
-                            <Route path="/conditions-generales-d-utilisation" component={TermsOfServices}/>
-                            <Route path="/conditions-generales-de-vente" component={TermsOfSales}/>
-                            <Route path="*" component={Error404}/>
-                        </Switch>
-                    </Router>
-                </div>
+                <Router>
+                    <Navbar isConnected={this.state.isConnected}/>
+                    <Switch>
+                        <Route path='/connexion' component={(props) => <SignIn {...props} handleConnect={this.handleConnect}/>}/>
+                        <Route exact path='/inscription/confirmation' component={ConfirmationSignup}/>
+                        <Route path='/inscription' component={SignUp}/>
+                        <Route path='/mot-de-passe-oublie' component={ForgotPassword}/>
+                        <Route path='/recherche/:keyword' component={AskingFranklin}/>
+                        <Route path="/limite-de-recherches" component={MaximumRequests}/>
+                        <Route exact path='/' component={Home}/>
+                        <Route exact path='/tarifs' component={Pricing}/>
+                        <Route exact path='/profil' component={Profile}/>
+                        <Route exact path='/plans' component={ChoosePlan}/>
+                        <Route exact path='/paiement' component={Payment}/>
+                        <Route exact path='/paiement/confirmation' component={ConfirmationPayment}/>
+                        <Route path="/mentions-legales" component={LegalNotices}/>
+                        <Route path="/conditions-generales-d-utilisation" component={TermsOfServices}/>
+                        <Route path="/conditions-generales-de-vente" component={TermsOfSales}/>
+                        <Route path="*" component={Error404}/>
+                    </Switch>
+                </Router>
                 <Footer/>
                 <BackToTop showAt={2500} speed={1000} easing="easeOutSine">
                     <ArrowLight width="22" fill="#FFF"/>

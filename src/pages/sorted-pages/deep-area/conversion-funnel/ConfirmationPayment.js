@@ -12,11 +12,11 @@ export default class ConfirmationPayment extends React.Component {
 
     render() {
         return (
-            <div class="mt-6">
+            <div class="layout-style mt-6">
                 <Container>
                     <StepperFunnel activeStep={2}/>
                 </Container>
-                <Container id="maximumRequests" className="d-flex flex-column flex-lg-row px-4 py-5 p-md-5 block-style position-relative overflow-visible">
+                <Container className="d-flex flex-column flex-lg-row px-4 py-5 p-md-5 block-style position-relative overflow-visible">
                     <Col md="12" lg="6" className="mt-0 mb-5 my-md-5 px-0">
                         <H1 className="mb-5" title="Votre paiement a été accepté"/>
                         <p class="mb-5 d-flex flex-column fw-600">Vous pouvez à présent accéder aux avantages Pro de Asking Franklin, en illimité.</p>

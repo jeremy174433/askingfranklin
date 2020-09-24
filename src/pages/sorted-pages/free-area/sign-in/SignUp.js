@@ -66,10 +66,11 @@ export default class SignUp extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        this.handleCloseAlert();
         if(this.state.email && this.state.password && this.state.privacy) {
             fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/signup', {
                 method: 'POST',
-                body: JSON.stringify({email:this.state.email, password:this.state.password})
+                body: JSON.stringify({ email:this.state.email, password:this.state.password })
             })
             .then(res=>{
                 return res.json();
@@ -111,26 +112,29 @@ export default class SignUp extends React.Component {
         }
 
         return (
-            <div id="signUp">
+            <div id="signUp" class="layout-style">
                 {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre compte a bien été créé. Vous allez recevoir un email de confirmation, merci de le valider"/> }
                 {this.state.emailIsAlreadyTaken && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="L'email choisi est déjà utilisé par un autre compte"/> }
                 <Container className="px-0 mt-6">
-                    <H1 className="mb-5 pb-5" title="Créer un compte Asking Franklin"/>
-                    <p class="mb-5 pb-5">Vous pouvez aussi continuer à utiliser Asking Franklin en accédant à la <Link to="/">version gratuite</Link> sans avoir besoin de vous inscrire</p>
-                    <form onSubmit={this.handleSubmit} method="POST">
+                    <H1 className="mb-5" title="Créer un compte Asking Franklin"/>
+                    <p class="mb-5">Vous pouvez aussi continuer à utiliser Asking Franklin en accédant à la <Link to="/">version gratuite</Link> sans avoir besoin de vous inscrire</p>
+                    <form onSubmit={this.handleSubmit} method="POST" id="signUpForm">
                         <Col sm="12" lg="8" xl="6" className="px-0 d-flex flex-column">
                             <Input 
                                 onChange={this.handleEmail} 
+                                value={this.state.email}
                                 type="email" 
                                 label="Votre email" 
                                 for="email" 
                                 name={this.for} 
                                 id={this.for}
                                 required={true}
+                                disabled={this.state.success}
                                 infoMsg={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
                             />
                             <Input 
                                 onChange={this.handlePassword} 
+                                value={this.state.password}
                                 type={this.state.pwdDefaultType} 
                                 label="Votre mot de passe" 
                                 labelInfo="8 caractères minimum" 
@@ -141,6 +145,7 @@ export default class SignUp extends React.Component {
                                 onClick={this.handleInputType}
                                 inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>} 
                                 required={true}
+                                disabled={this.state.success}
                                 infoMsg={this.state.password.length < 8 && 'Le mot de passe doit contenir au moins 8 caractères'}
                             />
                             <Checkbox 
@@ -151,6 +156,7 @@ export default class SignUp extends React.Component {
                                 id={this.for} 
                                 value={this.state.privacy} 
                                 required={true} 
+                                disabled={this.state.success}
                                 className="mb-3 pb-3"
                             />
                             <PmyBtn 

@@ -1,28 +1,145 @@
+@mixin bg-img($pos, $size, $height, $top, $right, $bottom, $left, $index) {
+    content: '';
+    background-repeat: no-repeat;
+    background-position: $pos;
+    background-size: $size;
+    width: 100%;
+    height: $height;
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    z-index: $index;
+}
+@mixin decoration($top, $right, $bottom, $left, $index) {
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    z-index: $index;
+}
+@mixin waveSeparator($top, $bottom, $rotate) {
+    position: absolute;
+    top: $top;
+    right: 0;
+    bottom: $bottom;
+    left: 0;
+    width: 100%;
+    height: fit-content;
+    z-index: 1;
+    overflow: visible;
+    transform: rotate($rotate + deg);
+}
+
 #home {
 
-    .blob {
-        position: absolute;
-        z-index: -1;
-        transition: .2s ease-in-out;
+    [class*=home-section-] {
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+        @include min-xl-rwd {
+            padding-right: 3rem;
+            padding-left: 3rem;
+        }
+    }
 
-        &-1 {
-            top: -85px;
-            left: -100px;
+    /* ----- BLOB ----- */
+    .blob-1 { @include decoration(initial, initial, initial, -75px, -1); }
+    .blob-2 { @include decoration(-150px, 75px, initial, initial, -3); }
+    .blob-3 { @include decoration(initial, initial, -50%, -75px, 0); }
+    .blob-4 { @include decoration(-45px, initial, initial, -75px, -1); }
+    .blob-5 { @include decoration(-175px, -50px, initial, initial, 1); }
+    .blob-6 { @include decoration(initial, 33%, -115px, initial, 2); }
+    .blob-7 { @include decoration(-125px, initial, initial, -85px, -1); }
+    .blob-8 { @include decoration(initial, -15px, -85px, initial, -1); }
+
+    /* ----- DOTS ----- */
+    .dots-1 { 
+        @include decoration(initial, 200px, -130px, initial, -4);
+        @include max-lg-rwd { right: -45px; }
+    }
+    .dots-2 { 
+        @include decoration(initial, initial, -75px, 15px, -1);
+        @include max-custom-rwd(1440) { left: 0; }
+        @include max-sm-rwd { left: -15px; }
+    }
+    .dots-3 {
+        @include decoration(initial, initial, -160px, 150px, -1);
+    }
+    .dots-4 {
+        @include decoration(initial, initial, 100px, 55%, -1);
+        @include max-xl-rwd { bottom: -50px; }
+    }
+
+    /* ----- SECTION 1 ----- */
+    .home-section-1 {
+        padding-top: calc(9rem + #{$header-mh});
+        @include max-custom-rwd(1440) { padding-top: calc(6rem + #{$header-mh}); }
+        &::before {
+            @include bg-img(0 0, contain, 1543px, 0, initial, initial, 0, -2);
+            background-image: url(../../img/svg/decorating/waves/wave-primary.svg);
         }
-        &-2 {
-            top: 100%;
-            right: calc(100% * 1.1275);
-            @include max-custom-rwd(1800) { right: calc(100% - 20px); }
+        .container > div:first-of-type { @include max-custom-rwd(1440) { padding: 0 !important; } }
+    }
+
+    /* ----- SECTION 2 ----- */
+    .home-section-2 {
+        @include min-lg-rwd { margin-top: 15rem; }
+        @include max-lg-rwd { margin-top: 9rem; }
+        img {
+            opacity: .5;
+            pointer-events: none;
+            &:not(:last-child) { @include min-lg-rwd { margin-right: 3rem; } }
+            &:not(:last-child) { @include max-lg-rwd { margin-bottom: 1.5rem; } }
         }
-        &-3 {
-            top: calc(100% - 60px);
-            left: 50%;
+    }
+
+    /* ----- SECTION 3 ----- */
+    .home-section-3 { margin-top: 9rem; }
+
+    /* ----- SECTION 4 ----- */
+    .home-section-4 {
+        margin-top: 18rem;
+        background-color: $theme-secondary;
+
+        .wave-top-4 { @include waveSeparator(-149px, initial, 0); }
+        .wave-bottom-4 { @include waveSeparator(initial, -149px, 180); }
+    }
+
+    /* ----- SECTION 5 ----- */
+    .home-section-5 { margin-top: 15rem; }
+
+    /* ----- SECTION 6 ----- */
+    .home-section-6 { 
+        margin-top: 15rem;
+
+        .slider-container {
+            @include max-lg-rwd { 
+                @include scroll-x(auto);
+                overflow-y: hidden;
+            }
+            .slider-item {
+                @media all and (min-width: $screen-lg-min) and (max-width: $screen-xl-max) {
+                    max-width: calc(33.333333% - 16px);
+                    &:not(:last-of-type) { margin-right: 1.5rem; }
+                }
+                @include max-lg-rwd { 
+                    margin-top: 0 !important;
+                    padding-right: 1.5rem !important;
+                    min-width: 85%;
+                    max-width: 85%;
+                    &:first-of-type { margin-left: 1.5rem; }
+                }
+            }
         }
-        &-4 {
-            left: calc(100% * 1.1);
-            top: 100px;
-            @include max-custom-rwd(1800) { left: calc(100% - 100px); }
-        }
+    }
+
+    /* ----- SECTION 7 ----- */
+    .home-section-7 { 
+        margin-top: 9rem;
+        padding-bottom: 9rem;
+        background-color: $theme-secondary;
     }
 
 }

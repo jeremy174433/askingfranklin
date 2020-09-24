@@ -53,10 +53,7 @@ export default class SignIn extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.setState({
-            alertIsShowed: false,
-            error: false
-        })
+        this.handleCloseAlert();
         fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/auth', {
             method: 'POST',
             body: JSON.stringify({ username: this.state.email, password: this.state.password })
@@ -75,7 +72,7 @@ export default class SignIn extends React.Component {
                 localStorage.setItem('af_token', res.token);
                 localStorage.setItem('af_refresh_token', res.refresh_token);
                 localStorage.setItem('af_username', res.username)
-                console.log(res)
+                // console.log(res);
                 this.setState({
                     redirect: true,
                     toPlan:res.is_sub === null ? true : false
@@ -99,14 +96,12 @@ export default class SignIn extends React.Component {
         } 
         else {
             return (
-                <div id="signIn">
-                    {this.state.error && 
-                        <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="La combinaison « email / mot de passe » est incorrect"/>
-                    }
+                <div id="signIn" class="layout-style">
+                    {this.state.error && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="La combinaison « email / mot de passe » est incorrect"/> }
                     <Container className="px-0 mt-6">
-                        <H1 className="mb-5 pb-5" title="Connexion à votre compte Asking Franklin"/>
+                        <H1 className="mb-5" title="Connexion à votre compte Asking Franklin"/>
                         <p class="mb-3">La connexion est réservée aux membres pro. <Link to="/tarifs">Découvrir les avantages Asking Franklin Pro</Link></p>
-                        <p class="mb-5 pb-5">Vous pouvez continuer à utiliser Asking Franklin en accédant à la <Link to="/">version gratuite</Link></p>
+                        <p class="mb-5">Vous pouvez continuer à utiliser Asking Franklin en accédant à la <Link to="/">version gratuite</Link></p>
                         <form onSubmit={this.handleSubmit} method="POST">
                             <Col sm="12" lg="8" xl="6" className="px-0 d-flex flex-column">
                                 <Input 
@@ -128,14 +123,6 @@ export default class SignIn extends React.Component {
                                     id={this.for} 
                                     required={true} 
                                     infoMsg={this.state.password.length < 8 && 'Le mot de passe doit contenir au moins 8 caractères'}
-                                />
-                                <Checkbox 
-                                    label="Se souvenir de moi" 
-                                    for="rememberMe" 
-                                    name={this.for} 
-                                    id={this.for} 
-                                    value="rememberMe" 
-                                    className="mb-3 pb-3"
                                 />
                                 <PmyBtn 
                                     type="submit" 

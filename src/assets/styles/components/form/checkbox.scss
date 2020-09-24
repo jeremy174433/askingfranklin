@@ -51,21 +51,35 @@
     
     &:checked {
         + label {
-            &:before { @include state-input-checkbox($primary, $primary); }
-            &:after { @include state-tick-checkbox(1); }
+            &::before { @include state-input-checkbox($primary, $primary); }
+            &::after { @include state-tick-checkbox(1); }
             .checkbox-primary-checked-circle {
                 box-shadow: 0 0 4px $primary-25;
                 background-color: $primary-25;
                 transform: scale(1);
             }
         }
-        
+
+        &[disabled] {
+            + label {
+                cursor: not-allowed;
+                &::before { 
+                    background-color: $bg-disabled;
+                    border-color: $theme-color-primary;
+                }
+                &::after { color: $theme-color-primary; }
+                .checkbox-primary-checked-circle { 
+                    background-color: transparent;
+                    transform: scale(0);
+                }
+            }
+        }
     }
 
     &:not(:checked) {
         + label {
-            &:before { @include state-input-checkbox($theme-color-primary, transparent); }
-            &:after { @include state-tick-checkbox(0); }
+            &::before { @include state-input-checkbox($theme-color-primary, transparent); }
+            &::after { @include state-tick-checkbox(0); }
         }
     }
 }

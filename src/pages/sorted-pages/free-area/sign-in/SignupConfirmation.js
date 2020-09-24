@@ -26,18 +26,20 @@ export default class SignUpConfirmation extends React.Component {
 
     render() {
         return (
-            <Container className="d-flex flex-column flex-lg-row px-4 py-5 p-md-5 mt-6 block-style position-relative overflow-visible">
-                <Col md="12" lg="6" className="mt-0 mb-5 my-md-5 px-0">
-                    <H1 className="mb-5" title="Votre compte est validé 🚀"/>
-                    <p class="mb-5 d-flex flex-column fw-600">Vous pouvez maintenant souscrire à Asking Franklin Pro.</p>
-                    <PmyBtn redirectTo="/plans" linkIsLargePmyFull textLink="Se connecter et s'abonner à Asking Franklin" customBtnClass="w-md-100"/>
-                </Col>
-                <Col md="12" lg="6" className="px-0 d-flex align-items-center justify-content-center">
-                    <video loop autoPlay muted style={{ width: '100%', height: '100%', backgroundColor: '#FFF' }}>
-                        <source src={VideoSecondary} type="video/mp4"/>
-                    </video>
-                </Col>
-            </Container>
+            <div class="layout-style">
+                <Container className="d-flex flex-column flex-lg-row px-4 py-5 p-md-5 mt-6 block-style position-relative overflow-visible">
+                    <Col md="12" lg="6" className="mt-0 mb-5 my-md-5 px-0">
+                        <H1 className="mb-5" title="Votre compte est validé 🚀"/>
+                        <p class="mb-5 d-flex flex-column fw-600">Vous pouvez maintenant souscrire à Asking Franklin Pro.</p>
+                        <PmyBtn redirectTo="/plans" linkIsLargePmyFull textLink="Se connecter et s'abonner à Asking Franklin" customBtnClass="w-md-100"/>
+                    </Col>
+                    <Col md="12" lg="6" className="px-0 d-flex align-items-center justify-content-center">
+                        <video loop autoPlay muted style={{ width: '100%', height: '100%', backgroundColor: '#FFF' }}>
+                            <source src={VideoSecondary} type="video/mp4"/>
+                        </video>
+                    </Col>
+                </Container>
+            </div>
         )
     }
 }

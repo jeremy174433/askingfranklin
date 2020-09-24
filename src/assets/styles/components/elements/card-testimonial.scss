@@ -1,0 +1,29 @@
+.card-testimonial {
+    background-color: $theme-secondary;
+    border: 1px solid $theme-terthiary;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 0 8px rgba($black, .04);
+
+    img {
+        width: 125px;
+        height: 125px;
+        border: 1px solid $theme-color-primary;
+        border-radius: 50%;
+        display: flex;
+        margin: 0 auto;
+    }
+
+    .quote {
+        position: absolute;
+        top: 160px;
+        left: 25px;
+    }
+
+    .sm-link {
+        width: 26px;
+        height: 26px;
+        transition: .2s ease-in-out;
+        &:hover, &:focus { background-color: $md-grey-35; }
+    }
+}

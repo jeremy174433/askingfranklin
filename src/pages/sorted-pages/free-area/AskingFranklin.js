@@ -50,10 +50,11 @@ export default class AskingFranklin extends React.Component {
                     localStorage.removeItem('af_token');
                 }
                 else if (res.invalid_token){
-                    /*this.setState({
-                        redirectLogin:true
-                    })
-                    localStorage.removeItem("af_token")
+                    /*
+                    this.setState({
+                        redirectLogin: true
+                    });
+                    localStorage.removeItem('af_token');
                     */
                     refreshTokenFnc()
                 }
@@ -101,6 +102,7 @@ export default class AskingFranklin extends React.Component {
     }
 
     render() {
+
         const launchNewRequest = <Container className="d-flex flex-column px-0">
                                     <Loader imgNoDataDisplayed content="Aucun résultat trouvé, tenter de lancer une nouvelle recherche avec un mot clé différent"/>
                                     <Col md="12" lg="8" className="mx-auto px-0">
@@ -113,38 +115,52 @@ export default class AskingFranklin extends React.Component {
                                         />
                                     </Col>
                                 </Container>;
-        if(this.state.redirectBlocked){
+
+        if (this.state.redirectBlocked) {
             return <Redirect to="/limite-de-recherches"/>
         }
-        if(this.state.redirectLogin){
+
+        if (this.state.redirectLogin) {
             return <Redirect to="/connexion"/>
         }
-        if(this.state.isLoading) {
-            return  <Container id="askingFranklin" className="px-0">
-                        <Loader loaderDisplayed content="Chargement en cours"/>
+
+        if (this.state.isLoading) {
+            return  <div class="layout-style"> 
+                        <Container id="askingFranklin" className="px-0">
+                            <Loader loaderDisplayed content="Chargement en cours"/>
                         </Container>
+                    </div>
         }
-        else if(this.state.nbResults === 0) {
-            return  <Container id="askingFranklin" className="px-0">
-                        <div>{launchNewRequest}</div>
-                    </Container>
+
+        else if (this.state.nbResults === 0) {
+            return  <div class="layout-style"> 
+                        <Container id="askingFranklin" className="layout-style px-0">
+                            <div>{launchNewRequest}</div>
+                        </Container>
+                    </div>
         }
-        else if(this.state.dataIsLoaded) {
-            return  <Container id="askingFranklin" className="px-0">
-                        <main class="d-flex flex-column flex-xl-row">
-                            <AFStickyMenu searchContent={this.state.keywordSearch.replace(/-/g, ' ')} dataNumber={this.state.dataKw} handleNoData={this.handleNoData}/>
-                            <Col className="col-12 col-xl-9 px-0 mb-5 w-100">
-                                {this.state.dataKw.data.map((x) => {
-                                    return <AFWrapper keywordSearch={this.state.keywordSearch} data={x}/>
-                                })}
-                            </Col>
-                        </main>
-                    </Container>
+
+        else if (this.state.dataIsLoaded) {
+            return  <div class="layout-style"> 
+                        <Container id="askingFranklin" className="layout-style px-0">
+                            <main class="d-flex flex-column flex-xl-row">
+                                <AFStickyMenu searchContent={this.state.keywordSearch.replace(/-/g, ' ')} dataNumber={this.state.dataKw} handleNoData={this.handleNoData}/>
+                                <Col className="col-12 col-xl-9 px-0 mb-5 w-100">
+                                    {this.state.dataKw.data.map((x) => {
+                                        return <AFWrapper keywordSearch={this.state.keywordSearch} data={x}/>
+                                    })}
+                                </Col>
+                            </main>
+                        </Container>
+                    </div>
         }
+
         else {
-            return  <Container id="askingFranklin" className="px-0">
-                        <div>{launchNewRequest}</div>
-                    </Container>
+            return  <div class="layout-style"> 
+                        <Container id="askingFranklin" className="layout-style px-0">
+                            <div>{launchNewRequest}</div>
+                        </Container>
+                    </div>
         }
     }
 }

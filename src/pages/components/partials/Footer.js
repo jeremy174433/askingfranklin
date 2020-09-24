@@ -28,7 +28,7 @@ export default class Footer extends React.Component {
                         </ul>
                     </div>
                     <div class="d-flex flex-column flex-md-row justify-content-between pt-5">
-                        <p class="text-center order-1 order-md-0">Asking Franklin, par <a href="https://sortvoices.fr" target="_blank" rel="noopener" title="Ouvrir dans un nouvel onglet : sortvoices.fr">Sortvoices</a>. tous droits réservés.</p>
+                        <p class="text-center order-1 order-md-0">Asking Franklin, par <a href="https://sortvoices.fr" target="_blank" title="Ouvrir dans un nouvel onglet : sortvoices.fr">Sortvoices</a>. tous droits réservés.</p>
                         <ul class="social-media-wrapper d-flex flex-row justify-content-center order-0 order-md-1 mb-5 mb-md-0">
                             <li>
                                 <a href="https://www.facebook.com/sortvoices" target="_blank" class="d-flex align-items-center justify-content-center mr-4 rounded" rel="nofollow noopener" title="Ouvrir dans un nouvel onglet : Facebook">

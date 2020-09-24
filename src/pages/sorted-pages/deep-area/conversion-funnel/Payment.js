@@ -6,13 +6,14 @@ import {
 	Row,
 	Col
 } from 'react-bootstrap';
+import H1 from '../../../components/elements/title/H1';
+import H2 from '../../../components/elements/title/H2';
+import PmyBtn from '../../../components/button/PmyBtn';
 import StepperFunnel from '../../../components/form/elements/StepperFunnel';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from '../../../components/form/stripe/CheckoutForm';
-import H2 from '../../../components/elements/title/H2';
 import FeaturesList from '../../../components/elements/FeaturesList';
-import Alert from '../../../components/elements/Alert';
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -25,11 +26,12 @@ export default class Payment extends React.Component {
 			isLoading: true,
 			redirect: false,
 			product: {},
+			plans: [],
 			selectedPlan: 1,
-			errorPayment:false,
+			errorPayment: false,
 		}
-		this.handleCloseAlert = this.handleCloseAlert.bind(this)
-		this.handlePaymentError = this.handlePaymentError.bind(this)
+		this.handleCloseAlert = this.handleCloseAlert.bind(this);
+		this.handlePaymentError = this.handlePaymentError.bind(this);
 	}
 
 	componentDidMount() {
@@ -41,6 +43,30 @@ export default class Payment extends React.Component {
 		else {
 			var token = localStorage.getItem('af_token');
 			var product = localStorage.getItem('product');
+			fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-plan', {
+			headers: {
+				'Authorization': token
+			},
+			method: 'GET',
+			})
+			.then(res => {
+				return res.json();
+			})
+			.then(res => {
+				// console.log(res);
+				if(res.message === 'Unauthorized') {
+					this.setState({
+						redirectToLogin: true
+					});
+				} 
+				else {
+					this.setState({
+						plans: res.message,
+						selectedPlan: product === 'price_1HEaGeLB03GdYRbhWsbdlFcx' ? 1 : 0,
+						countClick: this.state.countClick + 1
+					});
+				}
+			});
 			fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-product', {
 				headers: {
 					'Authorization': token
@@ -76,40 +102,49 @@ export default class Payment extends React.Component {
 			);
 		}
 	}
-	handlePaymentError(){
+
+	handlePaymentError() {
 		this.setState({
-			errorPayment:true
-		})
+			errorPayment: true
+		});
 	}
+
     handleCloseAlert() {
         this.setState({
             errorPayment: false
         });
-    }
+	}
+	
 	render() {
+
 		const classListCol = 'block-ctn-summary block-style block-pricing pt-4 ';
 		
-		return(
-
-			this.state.redirect ? 
-				<Redirect to='/plans'/>
-			: this.state.isLoading ?
-				<Loader loaderDisplayed content="Chargement en cours"/>
-			:
-				<Container id="payment" className="px-0 mt-6">
-					<StepperFunnel activeStep={1}/>
-					<Row className="mx-0">
-						<Col lg="12" xl="8" className="block-ctn-elements block-style pt-4 mr-0 mr-xl-5 mb-5 mb-xl-0">
-							<div class="block-elements-header">
-								<p class="d-flex flex-row align-items-center pb-3 fw-600">Abonnement Pro</p>
-							</div>
-							<div class="block-elements-body mt-4">
-								<Elements stripe={stripePromise}>
-									<CheckoutForm pricing={this.state.product} handlePaymentError={this.handlePaymentError}/>
-								</Elements>
-							</div>
-						</Col>
-						<Col lg="12" xl="4" className={classListCol + 'mt-5 mt-xl-0'}>
+		return (
+			<div class="layout-style">
+				{this.state.redirect ? 
+					<Redirect to='/plans'/>
+				: this.state.isLoading ?
+					<Loader loaderDisplayed content="Chargement en cours"/>
+				: this.state.plans.length > 0 ? 
+					<Container id="payment" className="px-0 mt-6">
+						<H1 className="text-center" title="Vous avez déja un abonnement Asking Franklin Pro actif"/>
+						<PmyBtn redirectTo="/" linkIsLargePmyFull textLink="Retourner à l'accueil" containerStyle="pt-5 mt-5 text-center"/>
+					</Container>
+				:
+					<Container id="payment" className="px-0 mt-6">
+						<StepperFunnel activeStep={1}/>
+						<Row className="mx-0">
+							<Col lg="12" xl="8" className="block-ctn-elements block-style pt-4 mr-0 mr-xl-5 mb-5 mb-xl-0">
+								<div class="block-elements-header">
+									<p class="d-flex flex-row align-items-center pb-3 fw-600">Abonnement Pro</p>
+								</div>
+								<div class="block-elements-body mt-4">
+									<Elements stripe={stripePromise}>
+										<CheckoutForm pricing={this.state.product} handlePaymentError={this.handlePaymentError}/>
+									</Elements>
+								</div>
+							</Col>
+							<Col lg="12" xl="4" className={classListCol + 'mt-5 mt-xl-0'}>
 								<div class="block-summary">
 									<div class="block-summary-header">
 										<p class="d-flex flex-row align-items-center pb-3 fw-600">Récapitulatif</p>
@@ -135,9 +170,11 @@ export default class Payment extends React.Component {
 										<FeaturesList/>
 									</div>
 								</div>
-						</Col>
-					</Row>
-				</Container>
+							</Col>
+						</Row>
+					</Container>
+				}
+			</div>
 		)
 	}
 }
