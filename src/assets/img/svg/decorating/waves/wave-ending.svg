@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 736" width="1920" height="736" fill="#FFF">
+    <defs>
+        <filter id="C78DW37Myyjs" x="0" y="0" width="200%" height="200%">
+            <feOffset result="offOut" in="SourceGraphic" dx="-20" dy="-20" />
+            <feColorMatrix result="matrixOut" in="offOut" type="matrix" values="0.9 0 0 0 0 0 0.9 0 0 0 0 0 0.9 0 0 0 0 0 9 0" />
+            <feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="10" />
+            <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+        </filter>
+    </defs>
+    <path filter="url(#C78DW37Myyjs)" transform="translate(692.922 72.024)" d="M756.4,56.194c175.415-98.26,470.677-128.217,470.677-128.217v736l-1920-.482h0s88.445-53.322,369.7-72.37c173.5-11.75,531.424-13.582,660.149-27.859,84.715-9.4,192.4-109.526,202.036-121.9C642.939,307.887,601.838,142.774,756.4,56.194Z"/>
+</svg>

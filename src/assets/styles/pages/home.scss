@@ -71,6 +71,13 @@
         @include decoration(initial, initial, 100px, 55%, -1);
         @include max-xl-rwd { bottom: -50px; }
     }
+    .dots-5 {
+        @include decoration(initial, initial, 75px, -75px, 0);
+        @include max-sm-rwd { 
+            bottom: 0;
+            left: -150px;
+        }
+    }
 
     /* ----- SECTION 1 ----- */
     .home-section-1 {
@@ -88,6 +95,7 @@
         @include min-lg-rwd { margin-top: 15rem; }
         @include max-lg-rwd { margin-top: 9rem; }
         img {
+            max-width: 100px;
             opacity: .5;
             pointer-events: none;
             &:not(:last-child) { @include min-lg-rwd { margin-right: 3rem; } }
@@ -113,6 +121,7 @@
     /* ----- SECTION 6 ----- */
     .home-section-6 { 
         margin-top: 15rem;
+        @include max-lg-rwd { padding-bottom: 6rem; }
 
         .slider-container {
             @include max-lg-rwd { 
@@ -137,9 +146,13 @@
 
     /* ----- SECTION 7 ----- */
     .home-section-7 { 
-        margin-top: 9rem;
         padding-bottom: 9rem;
+        margin-top: 9rem;
         background-color: $theme-secondary;
+        &::before {
+            background-image: url(../../img/svg/decorating/waves/wave-ending.svg);
+            @include bg-img(100% 100%, contain, 736px, -736px, 0, initial, initial, -2);
+        }
     }
 
 }

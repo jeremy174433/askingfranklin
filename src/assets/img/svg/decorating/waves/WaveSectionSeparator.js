@@ -13,7 +13,7 @@ export default class WaveSectionSeparator extends React.Component {
                         <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
                     </filter>
                 </defs>
-                <path filter="url(#uDrq43S5B2jT)" d="M0-124.96S310.388-30.166,790.388-10.821,1920-59.186,1920-59.186V25.04H0Z" transform="translate(0 124.96)"/>
+                <path filter="url(#uDrq43S5B2jT)" transform="translate(0 124.96)" d="M0-124.96S310.388-30.166,790.388-10.821,1920-59.186,1920-59.186V25.04H0Z"/>
             </svg>
         )
     }

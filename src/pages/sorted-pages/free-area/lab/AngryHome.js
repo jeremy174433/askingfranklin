@@ -4,33 +4,28 @@ import {
     Col
 } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom'; 
-import VideoHome from '../../../assets/video/VideoHome.mp4';
-import H1 from '../../components/elements/title/H1';
-import H2 from '../../components/elements/title/H2';
-import PmyBtn from '../../components/button/PmyBtn';
-import FormRequestFranklin from '../../components/form/FormRequestFranklin';
-import CardTestimonial from '../../components/elements/CardTestimonial';
-import LogoFrenchTech from '../../../assets/img/png/partners/french-tech-logo.png';
-import Logo1Kubator from '../../../assets/img/png/partners/1kubator-logo.png';
-import LogoDigitalCampus from '../../../assets/img/png/partners/digital-campus-logo.png';
-import LogoReunionIsland from '../../../assets/img/png/partners/ile-de-la-reunion-logo.png';
-import LogoGRDF from '../../../assets/img/png/partners/grdf-logo.png';
-import GoogleSearch from '../../../assets/img/svg/illustrations/GoogleSearch';
-import Control from '../../../assets/img/png/illustrations/illustration-control.png';
-import Ideas from '../../../assets/img/png/illustrations/illustration-ideas.png';
-import JeffBezos from '../../../assets/img/png/testimonials/jeff-bezos.jpg';
-import TatianaSilva from '../../../assets/img/png/testimonials/tatiana-silva.jpg';
-import PaulVanHecke from '../../../assets/img/png/testimonials/paul-van-hecke.jpg';
-import Dots from '../../../assets/img/svg/decorating/Dots';
-import WaveSectionSeparator from '../../../assets/img/svg/decorating/waves/WaveSectionSeparator';
-import Blob1 from '../../../assets/img/svg/decorating/blob/Blob1';
-import Blob2 from '../../../assets/img/svg/decorating/blob/Blob2';
-import Blob3 from '../../../assets/img/svg/decorating/blob/Blob3';
-import Blob4 from '../../../assets/img/svg/decorating/blob/Blob4';
-import Blob5 from '../../../assets/img/svg/decorating/blob/Blob5';
-import Blob6 from '../../../assets/img/svg/decorating/blob/Blob6';
-import Blob7 from '../../../assets/img/svg/decorating/blob/Blob7';
-import Blob8 from '../../../assets/img/svg/decorating/blob/Blob8';
+import VideoHome from '../../../../assets/video/VideoHome.mp4';
+import H1 from '../../../components/elements/title/H1';
+import H2 from '../../../components/elements/title/H2';
+import PmyBtn from '../../../components/button/PmyBtn';
+import FormRequestFranklin from '../../../components/form/FormRequestFranklin';
+import CardTestimonial from '../../../components/elements/CardTestimonial';
+import GoogleSearch from '../../../../assets/img/svg/illustrations/GoogleSearch';
+import Control from '../../../../assets/img/png/illustrations/illustration-control.png';
+import Ideas from '../../../../assets/img/png/illustrations/illustration-ideas.png';
+import JeffBezos from '../../../../assets/img/png/testimonials/jeff-bezos.jpg';
+import TatianaSilva from '../../../../assets/img/png/testimonials/tatiana-silva.jpg';
+import PaulVanHecke from '../../../../assets/img/png/testimonials/paul-van-hecke.jpg';
+import Dots from '../../../../assets/img/svg/decorating/Dots';
+import WaveSectionSeparator from '../../../../assets/img/svg/decorating/waves/WaveSectionSeparator';
+import Blob1 from '../../../../assets/img/svg/decorating/blob/Blob1';
+import Blob2 from '../../../../assets/img/svg/decorating/blob/Blob2';
+import Blob3 from '../../../../assets/img/svg/decorating/blob/Blob3';
+import Blob4 from '../../../../assets/img/svg/decorating/blob/Blob4';
+import Blob5 from '../../../../assets/img/svg/decorating/blob/Blob5';
+import Blob6 from '../../../../assets/img/svg/decorating/blob/Blob6';
+import Blob7 from '../../../../assets/img/svg/decorating/blob/Blob7';
+import Blob8 from '../../../../assets/img/svg/decorating/blob/Blob8';
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -91,12 +86,9 @@ export default class Home extends React.Component {
 
                 <section class="home-section-2">
                     <Container>
-                        <Col md="12" lg="6" className="px-0 ml-auto d-flex flex-column flex-lg-row align-items-center justify-content-end">
-                            <img src={LogoFrenchTech} alt="Logo French Tech"/>
-                            <img src={Logo1Kubator} alt="Logo 1Kubator"/>
-                            <img src={LogoDigitalCampus} alt="Logo Digital Campus"/>
-                            <img src={LogoReunionIsland} alt="Logo Ile de la Réunion"/>
-                            <img src={LogoGRDF} alt="Logo GRDF"/>
+                        <Col xl="12" className="px-0 ml-auto d-flex flex-column align-items-center">
+                            <H2 className="mb-5" title="Vous connaissez AnswerThePublic ?"/>
+                            <p class="fz-18 fw-600">Et bien nous faisons exactement la même chose, moins cher. Et on est français !</p>
                         </Col>
                     </Container>
                 </section>
@@ -105,7 +97,7 @@ export default class Home extends React.Component {
                     <Container className="d-flex flex-column flex-lg-row pt-0 pt-lg-5">
                         <Col md="12" lg="6" className="px-0">
                             <Blob4 className="blob-4 d-none d-xl-block"/>
-                            <H2 className="mb-5" title="Partez à la découverte de ce que recherche votre audience sur Google"/>
+                            <H2 className="mb-5" title="Bien sûr comme chez AnswerThePublic vous avez accès à une source d’idées de contenus venant directement des recherches Google de votre audience"/>
                             <p class="fz-18">Tapez le mot-clé que vous souhaitez et Asking Franklin ira chercher toutes les questions, les recherches et sujets connexes en relation avec ce dernier.</p>
                         </Col>
                         <Col md="12" lg="6" className="d-flex justify-content-center justify-content-lg-end px-0 pl-lg-5">
@@ -123,7 +115,7 @@ export default class Home extends React.Component {
                             <img src={Control} alt="Prenez les devants" class="img-fluid"/>
                         </Col>
                         <Col md="12" lg="6" className="d-flex flex-column justify-content-center order-0 order-lg-1 pt-5 pt-lg-0">
-                            <H2 className="mb-5" title="Prenez les devants et proposez des produits, services et contenus que cherchent vos consommateurs"/>
+                            <H2 className="mb-5" title="Prenez les devants et proposez des produits, services et des contenus que cherchent vos consommateurs"/>
                             <p class="fz-18">Asking Franklin vous fournit une ressource illimité de mots-clés mais aussi d’idées pour booster votre SEO et nourrir votre stratégie de contenus.</p>
                         </Col>
                     </Container>
@@ -181,7 +173,7 @@ export default class Home extends React.Component {
 
                 <section class="home-section-7 position-relative">
                     <Container className="px-0">
-                        <H2 className="pt-6 text-center" title="Découvrez un outil clés en main et répondez au mieux aux attentes de votre audience"/>
+                        <H2 className="pt-6 text-center" title="Pourquoi payer plus cher pour la même chose ?"/>
                         <div class="mt-6 d-flex flex-column flex-md-row justify-content-center align-items-center">
                             <PmyBtn redirectTo="/#top" linkIsLargePmyFull textLink="Essayer gratuitement" containerStyle="text-center mb-5 mb-md-0 mr-md-5" style={{zIndex: 1}}/>
                             <PmyBtn redirectTo="/tarifs" linkIsLargePmyOutlineLight textLink="Voir les avantages Pro" containerStyle="text-center" style={{zIndex: 1}}/>

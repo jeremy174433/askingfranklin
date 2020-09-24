@@ -8,6 +8,7 @@ import {
 import Navbar from './pages/components/partials/Navbar';
 import Footer from './pages/components/partials/Footer';
 import Home from './pages/sorted-pages/free-area/Home';
+import AngryHome from './pages/sorted-pages/free-area/lab/AngryHome';
 import AskingFranklin from './pages/sorted-pages/free-area/AskingFranklin';
 import Pricing from './pages/sorted-pages/free-area/Pricing';
 import SignIn from './pages/sorted-pages/free-area/sign-in/SignIn';
@@ -54,6 +55,7 @@ export default class App extends React.Component {
                         <Route path='/recherche/:keyword' component={AskingFranklin}/>
                         <Route path="/limite-de-recherches" component={MaximumRequests}/>
                         <Route exact path='/' component={Home}/>
+                        <Route exact path='/accueil' component={AngryHome}/>
                         <Route exact path='/tarifs' component={Pricing}/>
                         <Route exact path='/profil' component={Profile}/>
                         <Route exact path='/plans' component={ChoosePlan}/>

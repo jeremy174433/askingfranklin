@@ -26,7 +26,7 @@ export default class PmyBtn extends React.Component {
         const largeFull = sizeLarge + defaultPmyFull + defaultClass;
 
         return (
-            <div class={this.props.containerStyle}>
+            <div class={this.props.containerStyle} style={this.props.style}>
                 <button 
                     type={this.props.type} 
                     disabled={this.props.isDisabled} 
