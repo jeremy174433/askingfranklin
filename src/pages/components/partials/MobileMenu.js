@@ -44,12 +44,12 @@ export default class MobileMenu extends React.Component {
                     {
                         this.props.userConnected === true ?
                             <ul class="d-flex flex-column align-items-center">
-                                <li>
+                                {localStorage.getItem('af_is_sub') == 0 && <li>
                                     <Link to="/tarifs" onClick={this.handleMobileMenuClicked} class="nav-link d-flex flex-row py-2 px-3 rounded">
                                         <Rocket width="16" fill="#FFF"/>
                                         <span class="ml-3">Devenir Pro</span>
                                     </Link>
-                                </li>
+                                </li>}
                                 <li>
                                     <Link to="/profil" onClick={this.handleMobileMenuClicked} class="nav-link d-flex flex-row py-2 px-3 rounded">
                                         <Settings width="16" fill="#FFF"/>
