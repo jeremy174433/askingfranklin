@@ -14,8 +14,8 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from '../../../components/form/stripe/CheckoutForm';
 import FeaturesList from '../../../components/elements/FeaturesList';
-import {refreshTokenFnc} from '../../../../utils/refreshToken'
 import Alert from '../../../components/elements/Alert';
+import { refreshTokenFnc } from '../../../../utils/refreshToken'
 
 const stripePromise = loadStripe('pk_test_IHTunL8Iumhmuvbs095NhSyP00F3UiY2Hd');
 
@@ -55,14 +55,8 @@ export default class Payment extends React.Component {
 				return res.json();
 			})
 			.then(res => {
-				if (res.message === "The incoming token has expired"){
-                    /*
-                    this.setState({
-                        redirectLogin: true
-                    });
-                    localStorage.removeItem('af_token');
-                    */
-                    refreshTokenFnc(this.componentDidMount,false)
+				if (res.message === 'The incoming token has expired') {
+                    refreshTokenFnc(this.componentDidMount, false);
                 }
 				else if(res.message === 'Unauthorized') {
 					this.setState({
@@ -77,8 +71,8 @@ export default class Payment extends React.Component {
 					});
 				}
 			}).catch(error=>{
-                if(error === "TypeError: Failed to fetch"){
-                    refreshTokenFnc(this.componentDidMount,false)
+                if(error === 'TypeError: Failed to fetch') {
+                    refreshTokenFnc(this.componentDidMount, false);
                 }
             })
 			fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-product', {
@@ -94,14 +88,8 @@ export default class Payment extends React.Component {
 				return res.json();
 			})
 			.then(res => {
-				if (res.message === "The incoming token has expired"){
-                    /*
-                    this.setState({
-                        redirectLogin: true
-                    });
-                    localStorage.removeItem('af_token');
-                    */
-                    refreshTokenFnc(this.componentDidMount,false)
+				if (res.message === 'The incoming token has expired') {
+                    refreshTokenFnc(this.componentDidMount, false);
                 } 
 				else if(res.message === 'Unauthorized') {
 					this.setState({
@@ -114,8 +102,8 @@ export default class Payment extends React.Component {
 					});
 				}
 			}).catch(error=>{
-                if(error === "TypeError: Failed to fetch"){
-                    refreshTokenFnc(this.componentDidMount,false)
+                if(error === 'TypeError: Failed to fetch') {
+                    refreshTokenFnc(this.componentDidMount, false);
                 }
             })
 
@@ -132,8 +120,12 @@ export default class Payment extends React.Component {
 
 	handlePaymentError() {
 		this.setState({
-			errorPayment: true,
-			isLoadingPayment:false
+            errorPayment: false
+        }, () => {
+			this.setState({
+				errorPayment: true,
+				isLoadingPayment:false
+			});
 		});
 	}
 
@@ -142,16 +134,18 @@ export default class Payment extends React.Component {
             errorPayment: false
         });
 	}
+
 	handleLoading(){
 		this.setState({
 			isLoadingPayment: this.state.isLoadingPayment ? false : true
-		})
+		});
 	}
+
 	render() {
 		const classListCol = 'block-ctn-summary block-style block-pricing pt-4 ';
 		return (
 			<div class="layout-style">
-				{this.state.errorPayment && <Alert onClick={this.handleCloseAlert} className={'alert-msg-visible'} alertId="errorMessage" msg="Erreur de paiement."/>}
+				{this.state.errorPayment && <Alert onClick={this.handleCloseAlert} className="alert-msg-visible" alertId="errorMessage" msg="Erreur de paiement."/> }
 				{this.state.redirect ? 
 					<Redirect to='/plans'/>
 				: this.state.isLoading ?
@@ -169,10 +163,12 @@ export default class Payment extends React.Component {
 								<div class="block-elements-header">
 									<p class="d-flex flex-row align-items-center pb-3 fw-600">Abonnement Pro</p>
 								</div>
-								{this.state.isLoadingPayment && <div style={{position:"absolute", width:"100%",height:"100%", backgroundColor:"white", zIndex:10000}}>
-									<Loader loaderDisplayed content="Chargement en cours"/>
-								</div>}
-								<div class="block-elements-body mt-4">
+								{this.state.isLoadingPayment &&
+									<div class="mb-5">
+										<Loader loaderDisplayed content="Chargement en cours"/>
+									</div>
+								}
+								<div className={this.state.isLoadingPayment ? 'd-none' : 'block-elements-body mt-4'}>
 									<Elements stripe={stripePromise}>
 										<CheckoutForm pricing={this.state.product} handlePaymentError={this.handlePaymentError} handleLoading={this.handleLoading} />
 									</Elements>
@@ -194,7 +190,7 @@ export default class Payment extends React.Component {
 										: this.state.selectedPlan === 0 &&
 											<div>
 												<p class="fz-18 fw-600">Abonnement Annuel</p>
-												<p class="price">{Math.floor((this.state.product.unit_amount / 100) /12)}€<span> /mois <span class="fw-400">(soit</span> {Math.floor(this.state.product.unit_amount / 100)}€ <span class="fw-400">l'année)</span></span></p>
+												<p class="price">{Math.floor((this.state.product.unit_amount / 100) / 12)}€<span> /mois <span class="fw-400">(soit</span> {Math.floor(this.state.product.unit_amount / 100)}€ <span class="fw-400">l'année)</span></span></p>
 												<p>Économisez <span class="fw-600">120€</span> par rapport à la version mensuel</p>
 											</div>
 										}

@@ -16,7 +16,7 @@ export default class ChoosePlan extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            alreadySelected:0,
+            alreadySelected: 0,
             selectedPlan: 0,
             redirectSelectedMonthly: false,
             redirectSelectedAnnual: false,
