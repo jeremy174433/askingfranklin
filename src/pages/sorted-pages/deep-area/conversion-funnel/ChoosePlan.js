@@ -16,6 +16,7 @@ export default class ChoosePlan extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            alreadySelected:0,
             selectedPlan: 0,
             redirectSelectedMonthly: false,
             redirectSelectedAnnual: false,
@@ -61,6 +62,7 @@ export default class ChoosePlan extends React.Component {
                 else {
                     this.setState({
                         plans: res.message,
+                        alreadySelected: product === 'price_1HEaGeLB03GdYRbhWsbdlFcx' ? 1 : 0,
                         selectedPlan: product === 'price_1HEaGeLB03GdYRbhWsbdlFcx' ? 1 : 0,
                         countClick: this.state.countClick + 1
                     });
@@ -134,8 +136,8 @@ export default class ChoosePlan extends React.Component {
                         {this.state.selectedPlan !== 0 &&
                             <p class='text-center mt-5 fz-18'>
                                 Vous aviez sélectionné l'offre&nbsp;
-                                {this.state.selectedPlan === 1 && <span class="fw-600">Mensuel</span>}
-                                {this.state.selectedPlan === 2 && <span class="fw-600">Annuel</span>}
+                                {this.state.alreadySelected === 1 && <span class="fw-600">Mensuel</span>}
+                                {this.state.alreadySelected === 2 && <span class="fw-600">Annuel</span>}
                             </p>
                         }
                         <Row className={this.state.selectedPlan === 0 ? classListRow

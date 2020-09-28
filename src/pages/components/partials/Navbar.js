@@ -12,18 +12,23 @@ export default class Navbar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            isConnected: false
+            isConnected: false,
+            is_sub:0
         }
         this.handleLogOut = this.handleLogOut.bind(this);
     }
 
     componentDidMount(){
         var token = localStorage.getItem('af_token');
+        var is_sub = localStorage.getItem('af_is_sub')
+        console.log(is_sub)
         if(token) {
             this.setState({
-                isConnected:true
+                isConnected:true,
+                is_sub:is_sub
             });
         }
+        
     }
 
     componentWillReceiveProps(nextProps) {
@@ -35,8 +40,9 @@ export default class Navbar extends React.Component {
     handleLogOut(event) {
         event.preventDefault();
         localStorage.removeItem('af_token');
-        localStorage.removeItem('af_refresh_token')
-        localStorage.removeItem('af_username')
+        localStorage.removeItem('af_refresh_token');
+        localStorage.removeItem('af_username');
+        localStorage.removeItem('af_is_sub');
         window.location.replace('/');
         this.setState({
             isConnected: false
