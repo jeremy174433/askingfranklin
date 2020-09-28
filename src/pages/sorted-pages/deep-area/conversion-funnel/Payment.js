@@ -15,9 +15,8 @@ import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from '../../../components/form/stripe/CheckoutForm';
 import FeaturesList from '../../../components/elements/FeaturesList';
 import {refreshTokenFnc} from '../../../../utils/refreshToken'
+import Alert from '../../../components/elements/Alert';
 
-// Make sure to call `loadStripe` outside of a component’s render to avoid
-// recreating the `Stripe` object on every render.
 const stripePromise = loadStripe('pk_test_IHTunL8Iumhmuvbs095NhSyP00F3UiY2Hd');
 
 export default class Payment extends React.Component {
@@ -133,7 +132,8 @@ export default class Payment extends React.Component {
 
 	handlePaymentError() {
 		this.setState({
-			errorPayment: true
+			errorPayment: true,
+			isLoadingPayment:false
 		});
 	}
 
@@ -152,6 +152,7 @@ export default class Payment extends React.Component {
 		const classListCol = 'block-ctn-summary block-style block-pricing pt-4 ';
 		return (
 			<div class="layout-style">
+				{this.state.errorPayment && <Alert onClick={this.handleCloseAlert} className={'alert-msg-visible'} alertId="errorMessage" msg="Erreur de paiement."/>}
 				{this.state.redirect ? 
 					<Redirect to='/plans'/>
 				: this.state.isLoading ?
@@ -169,7 +170,9 @@ export default class Payment extends React.Component {
 								<div class="block-elements-header">
 									<p class="d-flex flex-row align-items-center pb-3 fw-600">Abonnement Pro</p>
 								</div>
-								{this.state.isLoadingPayment && "chargement"}
+								{this.state.isLoadingPayment && <div style={{position:"absolute", width:"100%",height:"100%", backgroundColor:"white", zIndex:10000}}>
+									<Loader loaderDisplayed content="Chargement en cours"/>
+								</div>}
 								<div class="block-elements-body mt-4">
 									<Elements stripe={stripePromise}>
 										<CheckoutForm pricing={this.state.product} handlePaymentError={this.handlePaymentError} handleLoading={this.handleLoading} />

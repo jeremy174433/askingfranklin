@@ -12,18 +12,23 @@ export default class Navbar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            isConnected: false
+            isConnected: false,
+            is_sub:0
         }
         this.handleLogOut = this.handleLogOut.bind(this);
     }
 
     componentDidMount(){
         var token = localStorage.getItem('af_token');
+        var is_sub = localStorage.getItem('af_is_sub')
+        console.log(is_sub)
         if(token) {
             this.setState({
-                isConnected:true
+                isConnected:true,
+                is_sub:is_sub
             });
         }
+        
     }
 
     componentWillReceiveProps(nextProps) {
@@ -35,8 +40,9 @@ export default class Navbar extends React.Component {
     handleLogOut(event) {
         event.preventDefault();
         localStorage.removeItem('af_token');
-        localStorage.removeItem('af_refresh_token')
-        localStorage.removeItem('af_username')
+        localStorage.removeItem('af_refresh_token');
+        localStorage.removeItem('af_username');
+        localStorage.removeItem('af_is_sub');
         window.location.replace('/');
         this.setState({
             isConnected: false
@@ -54,7 +60,7 @@ export default class Navbar extends React.Component {
                             {
                                 this.state.isConnected === true ?
                                     <ul class="d-flex flex-row align-items-center">
-                                        {localStorage.getItem('af_is_sub') === 0 && <li>
+                                        {this.state.is_sub === 0 && <li>
                                             <Link to="/tarifs" class="nav-link d-flex flex-row py-2 px-3 rounded">
                                                 <Rocket width="16" fill="#2B2B2B"/>
                                                 <span class="ml-3">Devenir Pro</span>

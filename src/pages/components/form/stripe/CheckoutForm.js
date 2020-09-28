@@ -271,6 +271,7 @@ export default function CheckoutForm(props) {
 			// No more actions required. Provision your service for the user.
 			.then(onSubscriptionComplete)
 			.catch((error) => {
+				console.log(error)
 				props.handlePaymentError()
 			})
 		);

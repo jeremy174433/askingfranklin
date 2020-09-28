@@ -1,8 +1,22 @@
+import { tickStep } from 'd3';
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import SocialMedia from '../../../assets/img/svg/switch/SocialMedia';
 
 export default class Footer extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            is_sub:0
+        }
+    }
+    componentDidMount(){
+        var is_sub = localStorage.getItem('af_is_sub')
+        console.log(is_sub)
+            this.setState({
+                is_sub:is_sub
+            });
+        }
 
     render() {
         return (
@@ -13,7 +27,7 @@ export default class Footer extends React.Component {
                             <li>
                                 <a href="/" class="footer-link d-block py-2 px-3 mr-0 mr-md-3 mb-3 mb-md-0 rounded">Accueil</a>
                             </li>
-                            {localStorage.getItem('af_is_sub') === 0 && <li>
+                            {this.state.is_sub == 0 && <li>
                                 <a href="/tarifs" class="footer-link d-block py-2 px-3 mr-0 mr-md-3 mb-3 mb-md-0 rounded">Devenir Pro</a>
                             </li> }
                             <li>
