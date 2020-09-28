@@ -54,7 +54,7 @@ export default class Profile extends React.Component {
                 return res.json();
             })
             .then(res => {
-                if (res.message == "The incoming token has expired"){
+                if (res.message === "The incoming token has expired"){
                     /*
                     this.setState({
                         redirectLogin: true
@@ -74,7 +74,7 @@ export default class Profile extends React.Component {
                     });
                 }
             }).catch(error=>{
-                if(error == "TypeError: Failed to fetch"){
+                if(error === "TypeError: Failed to fetch"){
                     refreshTokenFnc(this.loadPageData,false)
                 }
             })
@@ -88,7 +88,7 @@ export default class Profile extends React.Component {
                 return res.json();
             })
             .then(res => {
-                if (res.message == "The incoming token has expired"){
+                if (res.message === "The incoming token has expired"){
                     /*
                     this.setState({
                         redirectLogin: true
@@ -103,7 +103,7 @@ export default class Profile extends React.Component {
                 }
  
             }).catch(error=>{
-                if(error == "TypeError: Failed to fetch"){
+                if(error === "TypeError: Failed to fetch"){
                     refreshTokenFnc(this.loadPageData,false)
                 }
             })
@@ -176,7 +176,7 @@ export default class Profile extends React.Component {
         })
         .then(res => {
             console.log(res)
-            if (res.message == "The incoming token has expired"){
+            if (res.message === "The incoming token has expired"){
                 /*
                 this.setState({
                     redirectLogin: true
@@ -207,7 +207,7 @@ export default class Profile extends React.Component {
                     return res.json();
                 })
                 .then(res => {
-                    if (res.message == "The incoming token has expired"){
+                    if (res.message === "The incoming token has expired"){
                         /*
                         this.setState({
                             redirectLogin: true
@@ -222,13 +222,13 @@ export default class Profile extends React.Component {
                         });
                     }
                 }).catch(error=>{
-                    if(error == "TypeError: Failed to fetch"){
+                    if(error === "TypeError: Failed to fetch"){
                         refreshTokenFnc(this.componentDidMount,false)
                     }
                 })
             }
         }).catch(error=>{
-            if(error == "TypeError: Failed to fetch"){
+            if(error === "TypeError: Failed to fetch"){
                 refreshTokenFnc(this.componentDidMount,false)
             }
         })
@@ -250,7 +250,7 @@ export default class Profile extends React.Component {
             return res.json();
         })
         .then(res => {
-            if (res.message == "The incoming token has expired"){
+            if (res.message === "The incoming token has expired"){
                 /*
                 this.setState({
                     redirectLogin: true
@@ -268,7 +268,7 @@ export default class Profile extends React.Component {
                 });
             }
         }).catch(error=>{
-            if(error == "TypeError: Failed to fetch"){
+            if(error === "TypeError: Failed to fetch"){
                 refreshTokenFnc(this.componentDidMount,false)
             }
         })
@@ -289,7 +289,7 @@ export default class Profile extends React.Component {
                 return res.json();
             })
             .then(res => {
-                if (res.message == "The incoming token has expired"){
+                if (res.message === "The incoming token has expired"){
                     /*
                     this.setState({
                         redirectLogin: true
@@ -308,7 +308,7 @@ export default class Profile extends React.Component {
                 });
             }
             }).catch(error=>{
-                if(error == "TypeError: Failed to fetch"){
+                if(error === "TypeError: Failed to fetch"){
                     refreshTokenFnc(this.componentDidMount,false)
                 }
             })
@@ -324,7 +324,7 @@ export default class Profile extends React.Component {
                 return res.json();
             })
             .then(res => {
-                if (res.message == "The incoming token has expired"){
+                if (res.message === "The incoming token has expired"){
                     /*
                     this.setState({
                         redirectLogin: true
@@ -344,7 +344,7 @@ export default class Profile extends React.Component {
                 });
             }
             }).catch(error=>{
-                if(error == "TypeError: Failed to fetch"){
+                if(error === "TypeError: Failed to fetch"){
                     refreshTokenFnc(this.componentDidMount,false)
                 }
             })
