@@ -27,7 +27,8 @@ export default class SignUp extends React.Component {
             success: false,
             alertIsShowed: false,
             emailIsAlreadyTaken: false,
-            redirect: false
+            redirect: false,
+            passwordNotSecure:false
         }
         this.handleInputType = this.handleInputType.bind(this);
         this.handleEmail = this.handleEmail.bind(this);
@@ -86,6 +87,12 @@ export default class SignUp extends React.Component {
                             emailIsAlreadyTaken: true
                         })
                     }
+                    if (res.message === "Password should have Caps,                          Special chars, Numbers"){
+                        this.setState({
+                            alertIsShowed: true,
+                            passwordNotSecure: true
+                        })
+                    }
                     else {
                         this.setState({
                             success: true,
@@ -115,6 +122,8 @@ export default class SignUp extends React.Component {
             <div id="signUp" class="layout-style">
                 {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre compte a bien été créé. Vous allez recevoir un email de confirmation, merci de le valider"/> }
                 {this.state.emailIsAlreadyTaken && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="L'email choisi est déjà utilisé par un autre compte"/> }
+                {this.state.passwordNotSecure && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="Votre mot de passe doit comporter des chiffres et faire plus de 8 caractères."/> }
+
                 <Container className="px-0 mt-6">
                     <H1 className="mb-5" title="Créer un compte Asking Franklin"/>
                     <p class="mb-5">Vous pouvez aussi continuer à utiliser Asking Franklin en accédant à la <Link to="/">version gratuite</Link> sans avoir besoin de vous inscrire</p>

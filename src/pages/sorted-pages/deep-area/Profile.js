@@ -8,6 +8,7 @@ import Checkbox from '../../components/form/Checkbox';
 import PmyBtn from '../../components/button/PmyBtn';
 import Alert from '../../components/elements/Alert';
 import FeaturesList from '../../components/elements/FeaturesList';
+import {refreshTokenFnc} from '../../../utils/refreshToken'
 
 export default class Profile extends React.Component {
     constructor(props) {
@@ -38,9 +39,9 @@ export default class Profile extends React.Component {
         this.handleSubmitPassword = this.handleSubmitPassword.bind(this);
         this.handleSubmitCheckbox = this.handleSubmitCheckbox.bind(this);
         this.handleCloseAlert = this.handleCloseAlert.bind(this);
+        this.loadPageData = this.loadPageData.bind(this);
     }
-
-    componentDidMount() {
+    loadPageData(){
         var token = localStorage.getItem('af_token');
         if (token) {
             fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-plan', {
@@ -53,6 +54,15 @@ export default class Profile extends React.Component {
                 return res.json();
             })
             .then(res => {
+                if (res.message == "The incoming token has expired"){
+                    /*
+                    this.setState({
+                        redirectLogin: true
+                    });
+                    localStorage.removeItem('af_token');
+                    */
+                    refreshTokenFnc(this.loadPageData,false)
+                }
                 this.setState({
                     subscriptionInProgress: res.message.length > 0  && !res.message[0].cancel_at_period_end ? true : false,
                     noSubscription: res.message.length === 0 ? true : false
@@ -63,7 +73,11 @@ export default class Profile extends React.Component {
                         subscriptionEnd: s
                     });
                 }
-            });
+            }).catch(error=>{
+                if(error == "TypeError: Failed to fetch"){
+                    refreshTokenFnc(this.loadPageData,false)
+                }
+            })
             fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-email', {
                 headers: {
                     'Authorization': token
@@ -74,14 +88,32 @@ export default class Profile extends React.Component {
                 return res.json();
             })
             .then(res => {
-                this.setState({
-                    curr_email: res.message[0]
-                });
-            });
+                if (res.message == "The incoming token has expired"){
+                    /*
+                    this.setState({
+                        redirectLogin: true
+                    });
+                    localStorage.removeItem('af_token');
+                    */
+                    refreshTokenFnc(this.loadPageData,false)
+                } else {
+                    this.setState({
+                        curr_email: res.message[0]
+                    });
+                }
+ 
+            }).catch(error=>{
+                if(error == "TypeError: Failed to fetch"){
+                    refreshTokenFnc(this.loadPageData,false)
+                }
+            })
         } 
         else {
             this.props.history.push('/plans');
         }
+    }
+    componentDidMount() {
+        this.loadPageData()
     }
 
     handleSelectAccount() {
@@ -143,14 +175,23 @@ export default class Profile extends React.Component {
             return res.json();
         })
         .then(res => {
-            // console.log(res);
-            if(res.message === 'Unknown error An error occurred (AliasExistsException) when calling the AdminUpdateUserAttributes operation: An account with the given email already exists. ') {
+            console.log(res)
+            if (res.message == "The incoming token has expired"){
+                /*
+                this.setState({
+                    redirectLogin: true
+                });
+                localStorage.removeItem('af_token');
+                */
+                refreshTokenFnc(this.handleSubmitEmail,event)
+            }
+            else if(res.message === 'Unknown error An error occurred (AliasExistsException) when calling the AdminUpdateUserAttributes operation: An account with the given email already exists. ') {
                 this.setState({
                     alertIsShowed: true,
                     emailIsAlreadyTaken: true
                 });
             }
-            if(res.message === 'Email as been changed successfully') {
+            else if(res.message === 'Email as been changed successfully') {
                 this.setState({
                     alertIsShowed: true,
                     emailChanged: true,
@@ -166,12 +207,31 @@ export default class Profile extends React.Component {
                     return res.json();
                 })
                 .then(res => {
-                    this.setState({
-                        curr_email: res.message[0]
-                    });
-                });
+                    if (res.message == "The incoming token has expired"){
+                        /*
+                        this.setState({
+                            redirectLogin: true
+                        });
+                        localStorage.removeItem('af_token');
+                        */
+                        refreshTokenFnc(this.handleSubmitEmail,event)
+                    }
+                    else {
+                        this.setState({
+                            curr_email: res.message[0]
+                        });
+                    }
+                }).catch(error=>{
+                    if(error == "TypeError: Failed to fetch"){
+                        refreshTokenFnc(this.componentDidMount,false)
+                    }
+                })
             }
-        });
+        }).catch(error=>{
+            if(error == "TypeError: Failed to fetch"){
+                refreshTokenFnc(this.componentDidMount,false)
+            }
+        })
     }
 
     handleSubmitPassword(event) {
@@ -190,7 +250,16 @@ export default class Profile extends React.Component {
             return res.json();
         })
         .then(res => {
-            if(res.message === 'Password has been changed successfully') {
+            if (res.message == "The incoming token has expired"){
+                /*
+                this.setState({
+                    redirectLogin: true
+                });
+                localStorage.removeItem('af_token');
+                */
+                refreshTokenFnc(this.handleSubmitPassword,event)
+            }
+            else if(res.message === 'Password has been changed successfully') {
                 this.setState({
                     alertIsShowed: true,
                     passwordChanged: true,
@@ -198,7 +267,11 @@ export default class Profile extends React.Component {
                     newPasswordConfirmation: ''
                 });
             }
-        });
+        }).catch(error=>{
+            if(error == "TypeError: Failed to fetch"){
+                refreshTokenFnc(this.componentDidMount,false)
+            }
+        })
     }
 
     handleSubmitCheckbox(e) {
@@ -216,6 +289,16 @@ export default class Profile extends React.Component {
                 return res.json();
             })
             .then(res => {
+                if (res.message == "The incoming token has expired"){
+                    /*
+                    this.setState({
+                        redirectLogin: true
+                    });
+                    localStorage.removeItem('af_token');
+                    */
+                    refreshTokenFnc(this.handleSubmitCheckbox,e)
+                }
+                else{
                 this.setState({
                     alertIsShowed: true,
                     subscriptionState: true,
@@ -223,7 +306,12 @@ export default class Profile extends React.Component {
                     subscriptionEnd: null,
                     countClickCheckbox: 0
                 });
-            });
+            }
+            }).catch(error=>{
+                if(error == "TypeError: Failed to fetch"){
+                    refreshTokenFnc(this.componentDidMount,false)
+                }
+            })
         } 
         else {
             fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/cancel-subscription', {
@@ -236,6 +324,17 @@ export default class Profile extends React.Component {
                 return res.json();
             })
             .then(res => {
+                if (res.message == "The incoming token has expired"){
+                    /*
+                    this.setState({
+                        redirectLogin: true
+                    });
+                    localStorage.removeItem('af_token');
+                    */
+                    refreshTokenFnc(this.handleSubmitCheckbox,e)
+                } else{
+
+                
                 this.setState({
                     alertIsShowed: true,
                     subscriptionState: true,
@@ -243,7 +342,12 @@ export default class Profile extends React.Component {
                     subscriptionEnd: new Date(res.message.cancel_at * 1000).toLocaleDateString('fr-FR'),
                     countClickCheckbox: 0
                 });
-            });
+            }
+            }).catch(error=>{
+                if(error == "TypeError: Failed to fetch"){
+                    refreshTokenFnc(this.componentDidMount,false)
+                }
+            })
         }
     }
 

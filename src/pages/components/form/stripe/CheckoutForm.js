@@ -12,6 +12,7 @@ import {
 import { Link } from 'react-router-dom';
 import Checkbox from '../Checkbox';
 import PmyBtn from '../../button/PmyBtn';
+import {refreshTokenFnc} from '../../../../utils/refreshToken'
 
 const CARD_ELEMENT_OPTIONS = {
 	style: {
@@ -138,16 +139,30 @@ export default function CheckoutForm(props) {
 			// Normalize the result to contain the object returned by Stripe.
 			// Add the additional details we need.
 			.then((result) => {
-				console.log(result)
-				return {
-					// Use the Stripe 'object' property on the
-					// returned result to understand what object is returned.
-					invoice: result,
-					paymentMethodId: paymentMethodId,
-					priceId: priceId,
-					isRetry: true
-				};
-			})
+				if (result.message == "The incoming token has expired"){
+                    /*
+                    this.setState({
+                        redirectLogin: true
+                    });
+                    localStorage.removeItem('af_token');
+                    */
+                    refreshTokenFnc(this.componentDidMount())
+                } else {
+					return {
+						// Use the Stripe 'object' property on the
+						// returned result to understand what object is returned.
+						invoice: result,
+						paymentMethodId: paymentMethodId,
+						priceId: priceId,
+						isRetry: true
+					};
+				}
+
+			}).catch(error=>{
+                if(error == "TypeError: Failed to fetch"){
+                    refreshTokenFnc(this.componentDidMount,false)
+                }
+            })
 			// Some payment methods require a customer to be on session
 			// to complete the payment process. Check the status of the
 			// payment intent to handle these actions.
@@ -176,15 +191,28 @@ export default function CheckoutForm(props) {
 			}),
 		}).then((res)=>res.json())
 		.then((res)=>{
-			if (result.subscription.status === 'active') {
+			if (res.message == "The incoming token has expired"){
+				/*
+				this.setState({
+					redirectLogin: true
+				});
+				localStorage.removeItem('af_token');
+				*/
+				refreshTokenFnc(this.componentDidMount())
+			}
+			else if (result.subscription.status === 'active') {
+				localStorage.setItem('af_is_sub', 1)
 				window.location.replace('/paiement/confirmation');
+			}
+		}).catch(error=>{
+			if(error == "TypeError: Failed to fetch"){
+				refreshTokenFnc(this.componentDidMount,false)
 			}
 		})
 	}
 
 	const createSubscription = async ({ paymentMethodId, priceId }) => {
 	var token = localStorage.getItem('af_token');
-
 	return (
 		fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/create-subscription', {
 			method: 'post',
@@ -211,14 +239,27 @@ export default function CheckoutForm(props) {
 			// Normalize the result to contain the object returned by Stripe.
 			// Add the additional details we need.
 			.then((result) => {
-				console.log(result)
+				if (result.message == "The incoming token has expired"){
+                    /*
+                    this.setState({
+                        redirectLogin: true
+                    });
+                    localStorage.removeItem('af_token');
+                    */
+                    refreshTokenFnc(this.componentDidMount())
+                } else {
+					return {
+						paymentMethodId: paymentMethodId,
+						priceId: priceId,
+						subscription: result.message
+					};
+				}
 
-				return {
-					paymentMethodId: paymentMethodId,
-					priceId: priceId,
-					subscription: result.message
-				};
-			})
+			}).catch(error=>{
+                if(error == "TypeError: Failed to fetch"){
+                    refreshTokenFnc(this.componentDidMount,false)
+                }
+            })
 			// Some payment methods require a customer to be on session
 			// to complete the payment process. Check the status of the
 			// payment intent to handle these actions.
@@ -236,9 +277,11 @@ export default function CheckoutForm(props) {
 	}
 
 	const handleSubmit = async (event) => {
+		event.preventDefault();
+		props.handleLoading()
+
 		// We don't want to let default form submission happen here,
 		// which would refresh the page.
-		event.preventDefault();
 		if (!stripe || !elements) {
 			// Stripe.js has not yet loaded.
 			// Make sure to disable form submission until Stripe.js has loaded.

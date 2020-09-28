@@ -56,7 +56,7 @@ export default class AskingFranklin extends React.Component {
                     });
                     localStorage.removeItem('af_token');
                     */
-                    refreshTokenFnc()
+                    refreshTokenFnc(this.fetchFranklin,keyword)
                 }
                 else {
                     var nbResults = 0;

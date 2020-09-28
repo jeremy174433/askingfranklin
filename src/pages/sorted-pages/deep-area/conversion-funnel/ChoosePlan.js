@@ -10,6 +10,7 @@ import H1 from '../../../components/elements/title/H1';
 import H2 from '../../../components/elements/title/H2';
 import PmyBtn from '../../../components/button/PmyBtn';
 import { Redirect } from 'react-router-dom';
+import {refreshTokenFnc} from '../../../../utils/refreshToken'
 
 export default class ChoosePlan extends React.Component {
     constructor(props) {
@@ -48,8 +49,17 @@ export default class ChoosePlan extends React.Component {
                 return res.json();
             })
             .then(res => {
-                // console.log(res);
-                if(res.message === 'Unauthorized') {
+                
+                if (res.message == "The incoming token has expired"){
+                    /*
+                    this.setState({
+                        redirectLogin: true
+                    });
+                    localStorage.removeItem('af_token');
+                    */
+                    refreshTokenFnc(this.componentDidMount,false)
+                }
+                else if(res.message === 'Unauthorized') {
                     this.setState({
                         redirectToLogin: true
                     });
@@ -61,7 +71,11 @@ export default class ChoosePlan extends React.Component {
                         countClick: this.state.countClick + 1
                     });
                 }
-            });
+            }).catch(error=>{
+                if(error == "TypeError: Failed to fetch"){
+                    refreshTokenFnc(this.componentDidMount,false)
+                }
+            })
         }
     }
     
@@ -123,7 +137,7 @@ export default class ChoosePlan extends React.Component {
                         <StepperFunnel activeStep={0}/>
                         <H1 className="text-center" title="Passez à la vitesse supérieure en choisissant l'offre mensuel ou annuel"/>
                         {this.state.selectedPlan !== 0 &&
-                            <p className={this.state.countClick >= 1 ? 'invisible text-center mt-5 fz-18' : 'text-center mt-5 fz-18'}>
+                            <p class='text-center mt-5 fz-18'>
                                 Vous aviez sélectionné l'offre&nbsp;
                                 {this.state.selectedPlan === 1 && <span class="fw-600">Mensuel</span>}
                                 {this.state.selectedPlan === 2 && <span class="fw-600">Annuel</span>}
