@@ -139,7 +139,7 @@ export default function CheckoutForm(props) {
 			// Normalize the result to contain the object returned by Stripe.
 			// Add the additional details we need.
 			.then((result) => {
-				if (result.message == "The incoming token has expired"){
+				if (result.message === "The incoming token has expired"){
                     /*
                     this.setState({
                         redirectLogin: true
@@ -159,7 +159,7 @@ export default function CheckoutForm(props) {
 				}
 
 			}).catch(error=>{
-                if(error == "TypeError: Failed to fetch"){
+                if(error === "TypeError: Failed to fetch"){
                     refreshTokenFnc(this.componentDidMount,false)
                 }
             })
@@ -191,7 +191,7 @@ export default function CheckoutForm(props) {
 			}),
 		}).then((res)=>res.json())
 		.then((res)=>{
-			if (res.message == "The incoming token has expired"){
+			if (res.message === "The incoming token has expired"){
 				/*
 				this.setState({
 					redirectLogin: true
@@ -205,7 +205,7 @@ export default function CheckoutForm(props) {
 				window.location.replace('/paiement/confirmation');
 			}
 		}).catch(error=>{
-			if(error == "TypeError: Failed to fetch"){
+			if(error === "TypeError: Failed to fetch"){
 				refreshTokenFnc(this.componentDidMount,false)
 			}
 		})
@@ -239,7 +239,7 @@ export default function CheckoutForm(props) {
 			// Normalize the result to contain the object returned by Stripe.
 			// Add the additional details we need.
 			.then((result) => {
-				if (result.message == "The incoming token has expired"){
+				if (result.message === "The incoming token has expired"){
                     /*
                     this.setState({
                         redirectLogin: true
@@ -256,7 +256,7 @@ export default function CheckoutForm(props) {
 				}
 
 			}).catch(error=>{
-                if(error == "TypeError: Failed to fetch"){
+                if(error === "TypeError: Failed to fetch"){
                     refreshTokenFnc(this.componentDidMount,false)
                 }
             })

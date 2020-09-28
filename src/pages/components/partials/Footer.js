@@ -13,7 +13,7 @@ export default class Footer extends React.Component {
                             <li>
                                 <a href="/" class="footer-link d-block py-2 px-3 mr-0 mr-md-3 mb-3 mb-md-0 rounded">Accueil</a>
                             </li>
-                            {localStorage.getItem('af_is_sub') == 0 && <li>
+                            {localStorage.getItem('af_is_sub') === 0 && <li>
                                 <a href="/tarifs" class="footer-link d-block py-2 px-3 mr-0 mr-md-3 mb-3 mb-md-0 rounded">Devenir Pro</a>
                             </li> }
                             <li>

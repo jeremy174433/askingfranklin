@@ -50,7 +50,7 @@ export default class ChoosePlan extends React.Component {
             })
             .then(res => {
                 
-                if (res.message == "The incoming token has expired"){
+                if (res.message === "The incoming token has expired"){
                     /*
                     this.setState({
                         redirectLogin: true
@@ -72,7 +72,7 @@ export default class ChoosePlan extends React.Component {
                     });
                 }
             }).catch(error=>{
-                if(error == "TypeError: Failed to fetch"){
+                if(error === "TypeError: Failed to fetch"){
                     refreshTokenFnc(this.componentDidMount,false)
                 }
             })

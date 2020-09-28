@@ -54,7 +54,7 @@ export default class Navbar extends React.Component {
                             {
                                 this.state.isConnected === true ?
                                     <ul class="d-flex flex-row align-items-center">
-                                        {localStorage.getItem('af_is_sub') == 0 && <li>
+                                        {localStorage.getItem('af_is_sub') === 0 && <li>
                                             <Link to="/tarifs" class="nav-link d-flex flex-row py-2 px-3 rounded">
                                                 <Rocket width="16" fill="#2B2B2B"/>
                                                 <span class="ml-3">Devenir Pro</span>
