@@ -10,7 +10,7 @@ import H1 from '../../../components/elements/title/H1';
 import H2 from '../../../components/elements/title/H2';
 import PmyBtn from '../../../components/button/PmyBtn';
 import { Redirect } from 'react-router-dom';
-import {refreshTokenFnc} from '../../../../utils/refreshToken'
+import { refreshTokenFnc } from '../../../../utils/refreshToken';
 
 export default class ChoosePlan extends React.Component {
     constructor(props) {
@@ -50,14 +50,8 @@ export default class ChoosePlan extends React.Component {
             })
             .then(res => {
                 
-                if (res.message === "The incoming token has expired"){
-                    /*
-                    this.setState({
-                        redirectLogin: true
-                    });
-                    localStorage.removeItem('af_token');
-                    */
-                    refreshTokenFnc(this.componentDidMount,false)
+                if (res.message === 'The incoming token has expired') {
+                    refreshTokenFnc(this.componentDidMount, false);
                 }
                 else if(res.message === 'Unauthorized') {
                     this.setState({
@@ -71,9 +65,10 @@ export default class ChoosePlan extends React.Component {
                         countClick: this.state.countClick + 1
                     });
                 }
-            }).catch(error=>{
-                if(error === "TypeError: Failed to fetch"){
-                    refreshTokenFnc(this.componentDidMount,false)
+            })
+            .catch(error => {
+                if(error === 'TypeError: Failed to fetch') {
+                    refreshTokenFnc(this.componentDidMount, false);
                 }
             })
         }

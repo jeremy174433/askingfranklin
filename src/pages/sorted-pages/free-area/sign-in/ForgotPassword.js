@@ -176,12 +176,13 @@ export default class ForgotPassword extends React.Component {
                                     infoMsg={this.state.code.length !== 6 && 'Le code doit contenir 6 caractères'}
                                 />
                                 <Input 
+                                    containerStyle="input-password-column"
                                     onChange={this.handleNewPassword} 
                                     disabled={this.state.passwordIsChanged === true} 
                                     type={this.state.pwdDefaultType} 
                                     value={this.state.newPassword} 
                                     label="Votre nouveau mot de passe" 
-                                    labelInfo="8 caractères minimum" 
+                                    labelInfo={['8 caractères minimum, ', <br class="d-block d-sm-none"/>, 'dont au moins 1 chiffre']}
                                     minLength={8} 
                                     for="newPassword" 
                                     name={this.for} 
@@ -189,11 +190,11 @@ export default class ForgotPassword extends React.Component {
                                     onClick={this.handleInputType} 
                                     inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>} 
                                     required={true} 
-                                    infoMsg={this.state.newPassword.length < 8 && 'Le mot de passe doit contenir au moins 8 caractères'}
+                                    infoMsg={!this.state.newPassword.match(/^(?=.*?[0-9])[a-zA-Z0-9âäàéèùêëîïôöñç#$%&'"()*+.°²\/:;,<=>!?§@\[\\\]^_`{|}~-]{8,}$/) && 'Le mot de passe doit contenir au moins 8 caractères dont 1 chiffre'}
                                 />
                                 <PmyBtn 
                                     type="submit" 
-                                    isDisabled={this.state.code.length !== 6 || this.state.newPassword.length < 8 || this.state.passwordIsChanged === true} 
+                                    isDisabled={this.state.code.length !== 6 || !this.state.newPassword.match(/^(?=.*?[0-9])[a-zA-Z0-9âäàéèùêëîïôöñç#$%&'"()*+.°²\/:;,<=>!?§@\[\\\]^_`{|}~-]{8,}$/) || this.state.passwordIsChanged === true} 
                                     btnIsMediumPmyFull 
                                     textBtn="Réinitialiser le mot de passe" 
                                     className="w-md-100"

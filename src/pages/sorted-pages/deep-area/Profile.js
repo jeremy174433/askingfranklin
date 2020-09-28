@@ -8,7 +8,7 @@ import Checkbox from '../../components/form/Checkbox';
 import PmyBtn from '../../components/button/PmyBtn';
 import Alert from '../../components/elements/Alert';
 import FeaturesList from '../../components/elements/FeaturesList';
-import {refreshTokenFnc} from '../../../utils/refreshToken'
+import { refreshTokenFnc } from '../../../utils/refreshToken';
 
 export default class Profile extends React.Component {
     constructor(props) {
@@ -41,7 +41,8 @@ export default class Profile extends React.Component {
         this.handleCloseAlert = this.handleCloseAlert.bind(this);
         this.loadPageData = this.loadPageData.bind(this);
     }
-    loadPageData(){
+
+    loadPageData() {
         var token = localStorage.getItem('af_token');
         if (token) {
             fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-plan', {
@@ -54,14 +55,8 @@ export default class Profile extends React.Component {
                 return res.json();
             })
             .then(res => {
-                if (res.message === "The incoming token has expired"){
-                    /*
-                    this.setState({
-                        redirectLogin: true
-                    });
-                    localStorage.removeItem('af_token');
-                    */
-                    refreshTokenFnc(this.loadPageData,false)
+                if (res.message === 'The incoming token has expired') {
+                    refreshTokenFnc(this.loadPageData, false);
                 }
                 this.setState({
                     subscriptionInProgress: res.message.length > 0  && !res.message[0].cancel_at_period_end ? true : false,
@@ -73,10 +68,11 @@ export default class Profile extends React.Component {
                         subscriptionEnd: s
                     });
                 }
-            }).catch(error=>{
-                if(error === "TypeError: Failed to fetch"){
-                    refreshTokenFnc(this.loadPageData,false)
-                }
+            })
+            .catch(error => {
+                if(error === 'TypeError: Failed to fetch') {
+                    refreshTokenFnc(this.loadPageData, false)
+                };
             })
             fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-email', {
                 headers: {
@@ -88,23 +84,19 @@ export default class Profile extends React.Component {
                 return res.json();
             })
             .then(res => {
-                if (res.message === "The incoming token has expired"){
-                    /*
-                    this.setState({
-                        redirectLogin: true
-                    });
-                    localStorage.removeItem('af_token');
-                    */
-                    refreshTokenFnc(this.loadPageData,false)
-                } else {
+                if (res.message === 'The incoming token has expired') {
+                    refreshTokenFnc(this.loadPageData, false);
+                }
+                else {
                     this.setState({
                         curr_email: res.message[0]
                     });
                 }
  
-            }).catch(error=>{
-                if(error === "TypeError: Failed to fetch"){
-                    refreshTokenFnc(this.loadPageData,false)
+            })
+            .catch(error => {
+                if(error === 'TypeError: Failed to fetch') {
+                    refreshTokenFnc(this.loadPageData, false);
                 }
             })
         } 
@@ -112,8 +104,9 @@ export default class Profile extends React.Component {
             this.props.history.push('/plans');
         }
     }
+
     componentDidMount() {
-        this.loadPageData()
+        this.loadPageData();
     }
 
     handleSelectAccount() {
@@ -176,14 +169,8 @@ export default class Profile extends React.Component {
         })
         .then(res => {
             console.log(res)
-            if (res.message === "The incoming token has expired"){
-                /*
-                this.setState({
-                    redirectLogin: true
-                });
-                localStorage.removeItem('af_token');
-                */
-                refreshTokenFnc(this.handleSubmitEmail,event)
+            if (res.message === 'The incoming token has expired') {
+                refreshTokenFnc(this.handleSubmitEmail, event);
             }
             else if(res.message === 'Unknown error An error occurred (AliasExistsException) when calling the AdminUpdateUserAttributes operation: An account with the given email already exists. ') {
                 this.setState({
@@ -207,29 +194,25 @@ export default class Profile extends React.Component {
                     return res.json();
                 })
                 .then(res => {
-                    if (res.message === "The incoming token has expired"){
-                        /*
-                        this.setState({
-                            redirectLogin: true
-                        });
-                        localStorage.removeItem('af_token');
-                        */
-                        refreshTokenFnc(this.handleSubmitEmail,event)
+                    if (res.message === 'The incoming token has expired') {
+                        refreshTokenFnc(this.handleSubmitEmail, event);
                     }
                     else {
                         this.setState({
                             curr_email: res.message[0]
                         });
                     }
-                }).catch(error=>{
-                    if(error === "TypeError: Failed to fetch"){
-                        refreshTokenFnc(this.componentDidMount,false)
+                })
+                .catch(error => {
+                    if(error === 'TypeError: Failed to fetch') {
+                        refreshTokenFnc(this.componentDidMount, false);
                     }
                 })
             }
-        }).catch(error=>{
-            if(error === "TypeError: Failed to fetch"){
-                refreshTokenFnc(this.componentDidMount,false)
+        })
+        .catch(error => {
+            if(error === 'TypeError: Failed to fetch') {
+                refreshTokenFnc(this.componentDidMount, false);
             }
         })
     }
@@ -250,14 +233,8 @@ export default class Profile extends React.Component {
             return res.json();
         })
         .then(res => {
-            if (res.message === "The incoming token has expired"){
-                /*
-                this.setState({
-                    redirectLogin: true
-                });
-                localStorage.removeItem('af_token');
-                */
-                refreshTokenFnc(this.handleSubmitPassword,event)
+            if (res.message === 'The incoming token has expired') {
+                refreshTokenFnc(this.handleSubmitPassword, event);
             }
             else if(res.message === 'Password has been changed successfully') {
                 this.setState({
@@ -267,9 +244,10 @@ export default class Profile extends React.Component {
                     newPasswordConfirmation: ''
                 });
             }
-        }).catch(error=>{
-            if(error === "TypeError: Failed to fetch"){
-                refreshTokenFnc(this.componentDidMount,false)
+        })
+        .catch(error => {
+            if(error === 'TypeError: Failed to fetch') {
+                refreshTokenFnc(this.componentDidMount, false);
             }
         })
     }
@@ -289,27 +267,22 @@ export default class Profile extends React.Component {
                 return res.json();
             })
             .then(res => {
-                if (res.message === "The incoming token has expired"){
-                    /*
+                if (res.message === 'The incoming token has expired') {
+                    refreshTokenFnc(this.handleSubmitCheckbox, e);
+                } 
+                else {
                     this.setState({
-                        redirectLogin: true
+                        alertIsShowed: true,
+                        subscriptionState: true,
+                        subscriptionInProgress: true,
+                        subscriptionEnd: null,
+                        countClickCheckbox: 0
                     });
-                    localStorage.removeItem('af_token');
-                    */
-                    refreshTokenFnc(this.handleSubmitCheckbox,e)
                 }
-                else{
-                this.setState({
-                    alertIsShowed: true,
-                    subscriptionState: true,
-                    subscriptionInProgress: true,
-                    subscriptionEnd: null,
-                    countClickCheckbox: 0
-                });
-            }
-            }).catch(error=>{
-                if(error === "TypeError: Failed to fetch"){
-                    refreshTokenFnc(this.componentDidMount,false)
+            })
+            .catch(error => {
+                if(error === 'TypeError: Failed to fetch') {
+                    refreshTokenFnc(this.componentDidMount, false);
                 }
             })
         } 
@@ -324,28 +297,22 @@ export default class Profile extends React.Component {
                 return res.json();
             })
             .then(res => {
-                if (res.message === "The incoming token has expired"){
-                    /*
+                if (res.message === 'The incoming token has expired') {
+                    refreshTokenFnc(this.handleSubmitCheckbox, e)
+                }
+                else {
                     this.setState({
-                        redirectLogin: true
+                        alertIsShowed: true,
+                        subscriptionState: true,
+                        subscriptionInProgress: false,
+                        subscriptionEnd: new Date(res.message.cancel_at * 1000).toLocaleDateString('fr-FR'),
+                        countClickCheckbox: 0
                     });
-                    localStorage.removeItem('af_token');
-                    */
-                    refreshTokenFnc(this.handleSubmitCheckbox,e)
-                } else{
-
-                
-                this.setState({
-                    alertIsShowed: true,
-                    subscriptionState: true,
-                    subscriptionInProgress: false,
-                    subscriptionEnd: new Date(res.message.cancel_at * 1000).toLocaleDateString('fr-FR'),
-                    countClickCheckbox: 0
-                });
-            }
-            }).catch(error=>{
-                if(error === "TypeError: Failed to fetch"){
-                    refreshTokenFnc(this.componentDidMount,false)
+                }
+            })
+            .catch(error => {
+                if(error === 'TypeError: Failed to fetch') {
+                    refreshTokenFnc(this.componentDidMount, false);
                 }
             })
         }
@@ -400,13 +367,14 @@ export default class Profile extends React.Component {
                                             onChange={this.handleNewEmail}
                                             infoMsg={!this.state.newEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct' || this.state.newEmail === this.state.curr_email && 'L\'email ne peut pas être identique au précédent utilisé'}
                                         />
-                                        <PmyBtn type="submit" isDisabled={!this.state.newEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.newEmail === this.state.curr_email} btnIsMediumPmyFull textBtn="Sauvegarder" title="Sauvegarder"/>
+                                        <PmyBtn type="submit" isDisabled={!this.state.newEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.newEmail === this.state.curr_email} btnIsMediumPmyFull className="w-sm-100" textBtn="Sauvegarder" title="Sauvegarder"/>
                                     </form>
                                     <form onSubmit={this.handleSubmitPassword} method="POST" class="block-style d-flex flex-column mt-6">
                                         <Title title="Votre mot de passe"/>
                                         <Input
+                                            containerStyle="input-password-column"
                                             label="Votre nouveau mot de passe"
-                                            labelInfo="8 caractères minimum"
+                                            labelInfo={['8 caractères minimum, ', <br class="d-block d-sm-none"/>, 'dont au moins 1 chiffre']}
                                             for="newPassword"
                                             minLength={8}
                                             value={this.state.newPassword}
@@ -415,7 +383,7 @@ export default class Profile extends React.Component {
                                             inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>}
                                             required={true}
                                             onChange={this.handleNewPassword}
-                                            infoMsg={this.state.newPassword.length < 8 && 'Le mot de passe doit contenir au moins 8 caractères'}
+                                            infoMsg={!this.state.newPassword.match(/^(?=.*?[0-9])[a-zA-Z0-9âäàéèùêëîïôöñç#$%&'"()*+.°²\/:;,<=>!?§@\[\\\]^_`{|}~-]{8,}$/) && 'Le mot de passe doit contenir au moins 8 caractères dont 1 chiffre'}
                                         />
                                         <Input
                                             label="Confirmation de votre nouveau mot de passe"
@@ -429,7 +397,7 @@ export default class Profile extends React.Component {
                                             onChange={this.handleNewPasswordConfirmation}
                                             infoMsg={this.state.newPassword !== this.state.newPasswordConfirmation && 'Les deux mots de passe ne correspondent pas'}
                                         />                        
-                                        <PmyBtn type="submit" isDisabled={(this.state.newPasswordConfirmation !== this.state.newPassword) || this.state.newPassword.length < 8} btnIsMediumPmyFull textBtn="Sauvegarder" title="Sauvegarder"/>
+                                        <PmyBtn type="submit" isDisabled={(this.state.newPasswordConfirmation !== this.state.newPassword) || !this.state.newPassword.match(/^(?=.*?[0-9])[a-zA-Z0-9âäàéèùêëîïôöñç#$%&'"()*+.°²\/:;,<=>!?§@\[\\\]^_`{|}~-]{8,}$/)} btnIsMediumPmyFull className="w-sm-100" textBtn="Sauvegarder" title="Sauvegarder"/>
                                     </form>
                                 </section>
                             : this.state.tabActive === 1 && true && !this.state.noSubscription ?
@@ -449,7 +417,7 @@ export default class Profile extends React.Component {
                                             'Vous pouvez réactiver simplement votre abonnement tant que celui-ci n\'est pas arrivé à son terme en cochant la case puis en cliquant sur sauvegarder'
                                         }
                                     </p>
-                                    <PmyBtn type="submit" isDisabled={this.state.countClickCheckbox === 0} btnIsMediumPmyFull textBtn="Sauvegarder" title="Sauvegarder"/>
+                                    <PmyBtn type="submit" isDisabled={this.state.countClickCheckbox === 0} btnIsMediumPmyFull className="w-sm-100" textBtn="Sauvegarder" title="Sauvegarder"/>
                                 </form>
                             : 
                                 <div class="block-style d-flex flex-column mt-6">

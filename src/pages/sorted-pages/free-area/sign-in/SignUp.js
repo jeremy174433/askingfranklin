@@ -28,7 +28,6 @@ export default class SignUp extends React.Component {
             alertIsShowed: false,
             emailIsAlreadyTaken: false,
             redirect: false,
-            passwordNotSecure:false
         }
         this.handleInputType = this.handleInputType.bind(this);
         this.handleEmail = this.handleEmail.bind(this);
@@ -85,13 +84,12 @@ export default class SignUp extends React.Component {
                         this.setState({
                             alertIsShowed: true,
                             emailIsAlreadyTaken: true
-                        })
+                        });
                     }
-                    if (res.message === "Password should have Caps,                          Special chars, Numbers"){
+                    if (res.message === 'Password should have Caps,                          Special chars, Numbers') {
                         this.setState({
-                            alertIsShowed: true,
-                            passwordNotSecure: true
-                        })
+                            alertIsShowed: true
+                        });
                     }
                     else {
                         this.setState({
@@ -122,8 +120,6 @@ export default class SignUp extends React.Component {
             <div id="signUp" class="layout-style">
                 {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre compte a bien été créé. Vous allez recevoir un email de confirmation, merci de le valider"/> }
                 {this.state.emailIsAlreadyTaken && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="L'email choisi est déjà utilisé par un autre compte"/> }
-                {this.state.passwordNotSecure && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="Votre mot de passe doit comporter des chiffres et faire plus de 8 caractères."/> }
-
                 <Container className="px-0 mt-6">
                     <H1 className="mb-5" title="Créer un compte Asking Franklin"/>
                     <p class="mb-5">Vous pouvez aussi continuer à utiliser Asking Franklin en accédant à la <Link to="/">version gratuite</Link> sans avoir besoin de vous inscrire</p>
@@ -138,15 +134,15 @@ export default class SignUp extends React.Component {
                                 name={this.for} 
                                 id={this.for}
                                 required={true}
-                                disabled={this.state.success}
                                 infoMsg={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
                             />
                             <Input 
+                                containerStyle="input-password-column"
                                 onChange={this.handlePassword} 
                                 value={this.state.password}
                                 type={this.state.pwdDefaultType} 
                                 label="Votre mot de passe" 
-                                labelInfo="8 caractères minimum" 
+                                labelInfo={['8 caractères minimum, ', <br class="d-block d-sm-none"/>, 'dont au moins 1 chiffre']}
                                 minLength={8} 
                                 for="password" 
                                 name={this.for} 
@@ -154,8 +150,7 @@ export default class SignUp extends React.Component {
                                 onClick={this.handleInputType}
                                 inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>} 
                                 required={true}
-                                disabled={this.state.success}
-                                infoMsg={this.state.password.length < 8 && 'Le mot de passe doit contenir au moins 8 caractères'}
+                                infoMsg={!this.state.password.match(/^(?=.*?[0-9])[a-zA-Z0-9âäàéèùêëîïôöñç#$%&'"()*+.°²\/:;,<=>!?§@\[\\\]^_`{|}~-]{8,}$/) && 'Le mot de passe doit contenir au moins 8 caractères dont 1 chiffre'}
                             />
                             <Checkbox 
                                 label={['J\'ai lu et j\'accepte les ', <Link to="/conditions-generales-d-utilisation" target="_blank" rel="noopener" class="fz-16">CGU</Link>]} 
@@ -164,14 +159,13 @@ export default class SignUp extends React.Component {
                                 name={this.for} 
                                 id={this.for} 
                                 value={this.state.privacy} 
-                                required={true} 
-                                disabled={this.state.success}
+                                required={true}
                                 className="mb-3 pb-3"
                             />
                             <PmyBtn 
                                 type="submit" 
-                                title={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.password.length < 8 || this.state.privacy === '' ? 'Il est nécessaire de renseigner tous les champs et d\'accepter les CGU pour s\'inscrire' : 'Créer mon compte'}
-                                isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.password.length < 8 || this.state.privacy === ''} 
+                                title={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || !this.state.password.match(/^(?=.*?[0-9])[a-zA-Z0-9âäàéèùêëîïôöñç#$%&'"()*+.°²\/:;,<=>!?§@\[\\\]^_`{|}~-]{8,}$/) || this.state.privacy === '' ? 'Il est nécessaire de renseigner tous les champs et d\'accepter les CGU pour s\'inscrire' : 'Créer mon compte'}
+                                isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || !this.state.password.match(/^(?=.*?[0-9])[a-zA-Z0-9âäàéèùêëîïôöñç#$%&'"()*+.°²\/:;,<=>!?§@\[\\\]^_`{|}~-]{8,}$/) || this.state.privacy === ''} 
                                 btnIsMediumPmyFull 
                                 textBtn="Créer mon compte" 
                                 className="w-md-100"

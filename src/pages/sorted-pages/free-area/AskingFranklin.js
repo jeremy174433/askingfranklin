@@ -49,14 +49,8 @@ export default class AskingFranklin extends React.Component {
                     });
                     localStorage.removeItem('af_token');
                 }
-                else if (res.invalid_token){
-                    /*
-                    this.setState({
-                        redirectLogin: true
-                    });
-                    localStorage.removeItem('af_token');
-                    */
-                    refreshTokenFnc(this.fetchFranklin,keyword)
+                else if (res.invalid_token) {
+                    refreshTokenFnc(this.fetchFranklin, keyword);
                 }
                 else {
                     var nbResults = 0;
@@ -110,8 +104,7 @@ export default class AskingFranklin extends React.Component {
                                             onSubmit={this.requestFanklin} 
                                             onChange={this.handleKeywordChange}
                                             value={this.state.newKeywordSearch} 
-                                            keyword={this.state.newKeywordSearch} 
-                                            isDisabled={this.state.newKeywordSearch.trim().length <= 1 || this.state.newKeywordSearch === this.state.keywordSearch}
+                                            keyword={this.state.newKeywordSearch}
                                         />
                                     </Col>
                                 </Container>;
@@ -134,7 +127,7 @@ export default class AskingFranklin extends React.Component {
 
         else if (this.state.nbResults === 0) {
             return  <div class="layout-style"> 
-                        <Container id="askingFranklin" className="layout-style px-0">
+                        <Container id="askingFranklin" className="px-0">
                             <div>{launchNewRequest}</div>
                         </Container>
                     </div>
@@ -142,7 +135,7 @@ export default class AskingFranklin extends React.Component {
 
         else if (this.state.dataIsLoaded) {
             return  <div class="layout-style"> 
-                        <Container id="askingFranklin" className="layout-style px-0">
+                        <Container id="askingFranklin" className="px-0">
                             <main class="d-flex flex-column flex-xl-row">
                                 <AFStickyMenu searchContent={this.state.keywordSearch.replace(/-/g, ' ')} dataNumber={this.state.dataKw} handleNoData={this.handleNoData}/>
                                 <Col className="col-12 col-xl-9 px-0 mb-5 w-100">
@@ -157,7 +150,7 @@ export default class AskingFranklin extends React.Component {
 
         else {
             return  <div class="layout-style"> 
-                        <Container id="askingFranklin" className="layout-style px-0">
+                        <Container id="askingFranklin" className="px-0">
                             <div>{launchNewRequest}</div>
                         </Container>
                     </div>

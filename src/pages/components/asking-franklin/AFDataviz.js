@@ -86,7 +86,7 @@ export default class AFDataviz extends React.Component {
     }
 
     componentDidMount() {
-        this.drawChart(this.props.data)
+        this.drawChart(this.props.data);
     }
 
     render() {

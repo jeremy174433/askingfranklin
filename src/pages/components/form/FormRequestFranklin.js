@@ -8,7 +8,7 @@ export default class FormRequestFranklin extends React.Component {
         return (
             <form id="formRequestFranklin" autoComplete="off" method="get" onSubmit={this.props.onSubmit} class="d-flex flex-column flex-md-row flex-lg-column flex-xl-row mt-5">
                 <Input
-                    spacingReduce="mr-0 mr-md-4 mr-lg-0 mr-xl-4 mb-4 mb-md-0 mb-lg-4 mb-xl-0 w-100"
+                    containerStyle="mr-0 mr-md-4 mr-lg-0 mr-xl-4 mb-4 mb-md-0 mb-lg-4 mb-xl-0 pb-0 w-100"
                     hideLabel
                     for="inputKeywords"
                     onChange={this.props.onChange}
@@ -16,7 +16,7 @@ export default class FormRequestFranklin extends React.Component {
                     value={this.props.value}
                     placeholder="Saisissez un mot clé, un produit, une marque..."
                 />
-                <PmyBtn type="submit" isDisabled={this.props.isDisabled} textBtn="Explorer" btnIsLargePmyFull className="w-100 h-100"/>
+                <PmyBtn type="submit" redirectTo={true} rel="nofollow" textLink="Explorer" linkIsLargePmyFull customBtnClass="w-100 h-100"/>
             </form>
         )
     }

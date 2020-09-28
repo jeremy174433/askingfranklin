@@ -77,8 +77,7 @@ export default class Home extends React.Component {
                                 onSubmit={this.requestFanklin} 
                                 onChange={this.handleKeywordChange} 
                                 value={this.state.keywordSearch} 
-                                keyword={this.state.keywordSearch} 
-                                isDisabled={this.state.keywordSearch.trim().length <= 1}
+                                keyword={this.state.keywordSearch}
                             />
                         </Col>
                         <Col md="12" lg="6" className="px-0 d-flex align-items-center justify-content-center">

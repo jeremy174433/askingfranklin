@@ -1,6 +1,17 @@
 $input: '.input-primary';
 
 #{$input}-wrapper {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+
+    // Display
+    &.input-password-column {
+        #{$input}-label { flex-direction: column !important; }
+        #{$input} + #{$input}-icon { 
+            top: 58px;
+            @include max-sm-rwd { top: 78px; }
+        }
+    }
 
     // Replace icon if label is hidden
     #{$input}-label.d-none + #{$input} + #{$input}-icon { top: 10px; }
@@ -42,6 +53,6 @@ $input: '.input-primary';
 }
 
 #signUp #{$input}-wrapper #{$input},
-#profilePage #{$input}-wrapper #{$input} { 
+#profilePage #{$input}-wrapper[class*=input-password-] #{$input} { 
     padding-right: 3rem; 
 }

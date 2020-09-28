@@ -9,7 +9,6 @@ import {
     Col 
 } from 'react-bootstrap';
 import Input from '../../../components/form/Input';
-import Checkbox from '../../../components/form/Checkbox';
 import PmyBtn from '../../../components/button/PmyBtn';
 import ArrowTextLink from '../../../components/elements/link/ArrowTextLink';
 import Alert from '../../../components/elements/Alert';
@@ -69,7 +68,7 @@ export default class SignIn extends React.Component {
                 });
             } 
             else {
-                console.log(res.is_sub)
+                // console.log(res.is_sub)
                 localStorage.setItem('af_token', res.token);
                 localStorage.setItem('af_refresh_token', res.refresh_token);
                 localStorage.setItem('af_username', res.username)
