@@ -148,7 +148,6 @@ export default class Payment extends React.Component {
 		})
 	}
 	render() {
-
 		const classListCol = 'block-ctn-summary block-style block-pricing pt-4 ';
 		return (
 			<div class="layout-style">
@@ -195,7 +194,7 @@ export default class Payment extends React.Component {
 										: this.state.selectedPlan === 0 &&
 											<div>
 												<p class="fz-18 fw-600">Abonnement Annuel</p>
-												<p class="price">{Math.floor(this.state.product.unit_amount / 100)}€<span> /mois <span class="fw-400">(soit</span> {Math.floor(this.state.product.unit_amount / 100) * 12}€ <span class="fw-400">l'année)</span></span></p>
+												<p class="price">{Math.floor((this.state.product.unit_amount / 100) /12)}€<span> /mois <span class="fw-400">(soit</span> {Math.floor(this.state.product.unit_amount / 100)}€ <span class="fw-400">l'année)</span></span></p>
 												<p>Économisez <span class="fw-600">120€</span> par rapport à la version mensuel</p>
 											</div>
 										}

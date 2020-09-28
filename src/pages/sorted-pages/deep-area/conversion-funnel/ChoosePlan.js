@@ -62,8 +62,8 @@ export default class ChoosePlan extends React.Component {
                 else {
                     this.setState({
                         plans: res.message,
-                        alreadySelected: product === 'price_1HEaGeLB03GdYRbhWsbdlFcx' ? 1 : 0,
-                        selectedPlan: product === 'price_1HEaGeLB03GdYRbhWsbdlFcx' ? 1 : 0,
+                        alreadySelected: product !== null ? product === 'price_1HEaGeLB03GdYRbhWsbdlFcx' ? 1 : 2 : 0,
+                        selectedPlan: product !== null ? product === 'price_1HEaGeLB03GdYRbhWsbdlFcx' ? 1 : 2 : 0,
                         countClick: this.state.countClick + 1
                     });
                 }
