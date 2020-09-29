@@ -70,7 +70,7 @@ export default class Profile extends React.Component {
                 }
             })
             .catch(error => {
-                if(error === 'TypeError: Failed to fetch') {
+                if(error == 'TypeError: Failed to fetch') {
                     refreshTokenFnc(this.loadPageData, false)
                 };
             })
@@ -95,7 +95,7 @@ export default class Profile extends React.Component {
  
             })
             .catch(error => {
-                if(error === 'TypeError: Failed to fetch') {
+                if(error == 'TypeError: Failed to fetch') {
                     refreshTokenFnc(this.loadPageData, false);
                 }
             })
@@ -204,14 +204,14 @@ export default class Profile extends React.Component {
                     }
                 })
                 .catch(error => {
-                    if(error === 'TypeError: Failed to fetch') {
+                    if(error == 'TypeError: Failed to fetch') {
                         refreshTokenFnc(this.componentDidMount, false);
                     }
                 })
             }
         })
         .catch(error => {
-            if(error === 'TypeError: Failed to fetch') {
+            if(error == 'TypeError: Failed to fetch') {
                 refreshTokenFnc(this.componentDidMount, false);
             }
         })
@@ -246,7 +246,7 @@ export default class Profile extends React.Component {
             }
         })
         .catch(error => {
-            if(error === 'TypeError: Failed to fetch') {
+            if(error == 'TypeError: Failed to fetch') {
                 refreshTokenFnc(this.componentDidMount, false);
             }
         })
@@ -281,7 +281,7 @@ export default class Profile extends React.Component {
                 }
             })
             .catch(error => {
-                if(error === 'TypeError: Failed to fetch') {
+                if(error == 'TypeError: Failed to fetch') {
                     refreshTokenFnc(this.componentDidMount, false);
                 }
             })
@@ -311,7 +311,7 @@ export default class Profile extends React.Component {
                 }
             })
             .catch(error => {
-                if(error === 'TypeError: Failed to fetch') {
+                if(error == 'TypeError: Failed to fetch') {
                     refreshTokenFnc(this.componentDidMount, false);
                 }
             })

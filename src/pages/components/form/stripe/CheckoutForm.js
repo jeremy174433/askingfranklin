@@ -64,6 +64,9 @@ export default function CheckoutForm(props) {
 		if (subscription && subscription.status === 'active') {
 			return { subscription, priceId, paymentMethodId };
 		}
+		if (typeof subscription == "string"){
+			throw subscription
+		}
     	let paymentIntent = invoice ? invoice.payment_intent : subscription.latest_invoice.payment_intent;
 		if (paymentIntent.status === 'requires_action' || (isRetry === true && paymentIntent.status === 'requires_payment_method')) {
 			return stripe
@@ -86,7 +89,7 @@ export default function CheckoutForm(props) {
 				}
 			})
 			.catch((error) => {
-				props.handlePaymentError();
+				props.handlePaymentError(error);
 			});
 		} 
 		else {
@@ -161,10 +164,18 @@ export default function CheckoutForm(props) {
 		})
 		.then((res) => res.json())
 		.then((res) => {
+			console.log(res)
+			if(res.message === "User registered"){
+				localStorage.setItem('af_is_sub', 1);
+				window.location.replace('/paiement/confirmation');
+			}
 			if (res.message === 'The incoming token has expired') {
 				refreshTokenFnc(this.componentDidMount());
 			}
-			else if (result.subscription.status === 'active') {
+			if (res.message === 'The incoming token has expired') {
+				refreshTokenFnc(this.componentDidMount());
+			}
+			else if (res.subscription.status === 'active') {
 				localStorage.setItem('af_is_sub', 1);
 				window.location.replace('/paiement/confirmation');
 			}
@@ -201,7 +212,7 @@ export default function CheckoutForm(props) {
 			})
 			.then((result) => {
 				if (result.message === 'The incoming token has expired') {
-					refreshTokenFnc(this.componentDidMount());
+					refreshTokenFnc(this.componentDidMount, false);
 				} 
 				else {
 					return {
@@ -221,7 +232,7 @@ export default function CheckoutForm(props) {
 			.then(handleRequiresPaymentMethod)
 			.then(onSubscriptionComplete)
 			.catch((error) => {
-				props.handlePaymentError();
+				props.handlePaymentError(error);
 			})
 		);
 	}

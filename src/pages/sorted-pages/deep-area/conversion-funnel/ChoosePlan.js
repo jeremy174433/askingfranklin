@@ -69,7 +69,7 @@ export default class ChoosePlan extends React.Component {
                 }
             })
             .catch(error => {
-                if(error === 'TypeError: Failed to fetch') {
+                if(error == 'TypeError: Failed to fetch') {
                     refreshTokenFnc(this.componentDidMount, false);
                 }
             })

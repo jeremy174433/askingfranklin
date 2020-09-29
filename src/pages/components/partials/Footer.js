@@ -12,10 +12,9 @@ export default class Footer extends React.Component {
     }
     componentDidMount(){
         var is_sub = localStorage.getItem('af_is_sub')
-        console.log(is_sub)
-            this.setState({
-                is_sub:is_sub
-            });
+        this.setState({
+            is_sub:is_sub
+        });
         }
 
     render() {

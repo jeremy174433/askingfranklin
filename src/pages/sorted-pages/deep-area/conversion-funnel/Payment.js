@@ -77,7 +77,7 @@ export default class Payment extends React.Component {
 					});
 				}
 			}).catch(error=>{
-                if(error === "TypeError: Failed to fetch"){
+                if(error == "TypeError: Failed to fetch"){
                     refreshTokenFnc(this.componentDidMount,false)
                 }
             })
@@ -95,13 +95,7 @@ export default class Payment extends React.Component {
 			})
 			.then(res => {
 				if (res.message === "The incoming token has expired"){
-                    /*
-                    this.setState({
-                        redirectLogin: true
-                    });
-                    localStorage.removeItem('af_token');
-                    */
-                    refreshTokenFnc(this.componentDidMount,false)
+                  refreshTokenFnc(this.componentDidMount,false)
                 } 
 				else if(res.message === 'Unauthorized') {
 					this.setState({
@@ -114,7 +108,7 @@ export default class Payment extends React.Component {
 					});
 				}
 			}).catch(error=>{
-                if(error === "TypeError: Failed to fetch"){
+                if(error == "TypeError: Failed to fetch"){
                     refreshTokenFnc(this.componentDidMount,false)
                 }
             })
@@ -130,9 +124,10 @@ export default class Payment extends React.Component {
 		}
 	}
 
-	handlePaymentError() {
+	handlePaymentError(reason) {
+		console.log(reason)
 		this.setState({
-			errorPayment: true,
+			errorPayment:reason,
 			isLoadingPayment:false
 		});
 	}
@@ -151,7 +146,7 @@ export default class Payment extends React.Component {
 		const classListCol = 'block-ctn-summary block-style block-pricing pt-4 ';
 		return (
 			<div class="layout-style">
-				{this.state.errorPayment && <Alert onClick={this.handleCloseAlert} className={'alert-msg-visible'} alertId="errorMessage" msg="Erreur de paiement."/>}
+				{this.state.errorPayment && <Alert onClick={this.handleCloseAlert} className={'alert-msg-visible'} alertId="errorMessage" msg={"Erreur de paiement : " + this.state.errorPayment}/>}
 				{this.state.redirect ? 
 					<Redirect to='/plans'/>
 				: this.state.isLoading ?

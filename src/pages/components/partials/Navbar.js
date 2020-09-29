@@ -21,7 +21,6 @@ export default class Navbar extends React.Component {
     componentDidMount(){
         var token = localStorage.getItem('af_token');
         var is_sub = localStorage.getItem('af_is_sub')
-        console.log(is_sub)
         if(token) {
             this.setState({
                 isConnected:true,
