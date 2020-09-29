@@ -123,7 +123,7 @@ export default class Home extends React.Component {
                         </Col>
                         <Col md="12" lg="6" className="d-flex flex-column justify-content-center order-0 order-lg-1 pt-5 pt-lg-0">
                             <H2 className="mb-5" title="Prenez les devants et proposez des produits, services et contenus que cherchent vos consommateurs"/>
-                            <p class="fz-18">Asking Franklin vous fournit une ressource illimité de mots-clés mais aussi d’idées pour booster votre SEO et nourrir votre stratégie de contenus.</p>
+                            <p class="fz-18">Asking Franklin vous fournit une ressource illimitée de mots-clés mais aussi d’idées pour booster votre SEO et nourrir votre stratégie de contenus.</p>
                         </Col>
                     </Container>
                     <Blob6 className="blob-6 d-none d-lg-block"/>

@@ -10,6 +10,7 @@ import H2 from '../../../components/elements/title/H2';
 import PmyBtn from '../../../components/button/PmyBtn';
 import FormRequestFranklin from '../../../components/form/FormRequestFranklin';
 import CardTestimonial from '../../../components/elements/CardTestimonial';
+import FrenchFlag from '../../../../assets/img/svg/FrenchFlag';
 import GoogleSearch from '../../../../assets/img/svg/illustrations/GoogleSearch';
 import Control from '../../../../assets/img/png/illustrations/illustration-control.png';
 import Ideas from '../../../../assets/img/png/illustrations/illustration-ideas.png';
@@ -87,8 +88,11 @@ export default class Home extends React.Component {
                 <section class="home-section-2">
                     <Container>
                         <Col xl="12" className="px-0 ml-auto d-flex flex-column align-items-center">
-                            <H2 className="mb-5" title="Vous connaissez AnswerThePublic ?"/>
-                            <p class="fz-18 fw-600">Et bien nous faisons exactement la même chose, moins cher. Et on est français !</p>
+                            <H2 className="mb-5 text-center" title="Vous connaissez AnswerThePublic ?"/>
+                            <p class="fz-18 fw-600 text-center">
+                                Et bien nous faisons exactement la même chose, moins cher. <br/>
+                                <span class="d-flex justify-content-center align-items-center mt-2">Et on est français ! <FrenchFlag/></span>
+                            </p>
                         </Col>
                     </Container>
                 </section>
@@ -116,7 +120,7 @@ export default class Home extends React.Component {
                         </Col>
                         <Col md="12" lg="6" className="d-flex flex-column justify-content-center order-0 order-lg-1 pt-5 pt-lg-0">
                             <H2 className="mb-5" title="Prenez les devants et proposez des produits, services et des contenus que cherchent vos consommateurs"/>
-                            <p class="fz-18">Asking Franklin vous fournit une ressource illimité de mots-clés mais aussi d’idées pour booster votre SEO et nourrir votre stratégie de contenus.</p>
+                            <p class="fz-18">Asking Franklin vous fournit une ressource illimitée de mots-clés mais aussi d’idées pour booster votre SEO et nourrir votre stratégie de contenus.</p>
                         </Col>
                     </Container>
                     <Blob6 className="blob-6 d-none d-lg-block"/>
@@ -124,23 +128,7 @@ export default class Home extends React.Component {
                     <WaveSectionSeparator className="wave-bottom-4"/>
                 </section>
 
-                <section class="home-section-5">
-                    <Container className="d-flex flex-column flex-lg-row">
-                        <Col md="12" lg="6" className="d-flex flex-column justify-content-center">
-                            <H2 className="mb-5" title="En un clic vous avez accès à une source d’idées de contenus venant directement des recherches de votre audience"/>
-                            <blockquote>
-                                <p class="fz-18 fw-600">Une nouvelle tendance de consommation émerge ? <br/> Une nouvelle mode ?</p>
-                            </blockquote>
-                            <p class="fz-18 mt-3 pt-3">Grâce à Asking Franklin, prenez une longueur d’avance sur vos concurrents en étant le premier au courant des nouveautés qui arrivent sur le marché.</p>
-                        </Col>
-                        <Col md="12" lg="6" className="d-flex justify-content-center justify-content-lg-start px-0 pl-lg-5 mt-5 mt-lg-0">
-                            <img src={Ideas} alt="Source d'idées de contenus" class="img-fluid"/>
-                        </Col>
-                    </Container>
-                </section>
-
                 <section class="home-section-6 position-relative px-0 px-lg-4 px-xl-5">
-                    <Blob7 className="blob-7"/>
                     <Container className="slider-container position-relative d-flex flex-row justify-content-xl-around pb-3 pb-lg-0 px-0 px-xl-0">
                         <Col md="12" lg="4" xl="3" className="slider-item px-0">
                             <CardTestimonial 
@@ -175,8 +163,7 @@ export default class Home extends React.Component {
                     <Container className="px-0">
                         <H2 className="pt-6 text-center" title="Pourquoi payer plus cher pour la même chose ?"/>
                         <div class="mt-6 d-flex flex-column flex-md-row justify-content-center align-items-center">
-                            <PmyBtn redirectTo="/#top" linkIsLargePmyFull textLink="Essayer gratuitement" containerStyle="text-center mb-5 mb-md-0 mr-md-5" style={{zIndex: 1}}/>
-                            <PmyBtn redirectTo="/tarifs" linkIsLargePmyOutlineLight textLink="Voir les avantages Pro" containerStyle="text-center" style={{zIndex: 1}}/>
+                            <PmyBtn redirectTo="/#top" linkIsLargePmyFull textLink="Essayer gratuitement" containerStyle="text-center" style={{zIndex: 1}}/>
                         </div>
                     </Container>
                     <Dots className="dots-5"/>
