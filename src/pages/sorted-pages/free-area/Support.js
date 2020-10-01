@@ -28,7 +28,7 @@ export default class Faq extends React.Component {
                     <main class="container-fluid layout-style">
                         {/*
                         <form onSubmit={this.handleSubmitForm} method="get" class="block-style d-flex flex-column">
-                            <Title title="Votre message"/>
+                            <H4 title="Votre message"/>
                             <Input
                                 label="Sujet"
                                 for="supportSubject"

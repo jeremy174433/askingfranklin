@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import H1 from '../../components/elements/title/H1';
-import Title from '../../components/elements/title/Title';
+import H4 from '../../components/elements/title/H4';
 import Input from '../../components/form/Input';
 import EyeShowHide from '../../../assets/img/svg/switch/EyeShowHide';
 import Checkbox from '../../components/form/Checkbox';
@@ -351,7 +351,7 @@ export default class Profile extends React.Component {
                             {this.state.tabActive === 0 ?
                                 <section class="mt-6">
                                     <form onSubmit={this.handleSubmitEmail} method="POST" class="block-style d-flex flex-column">
-                                        <Title title="Votre email"/>
+                                        <H4 className="mb-3 pb-3 fw-600" title="Votre email"/>
                                         <Input
                                             label="Adresse email actuelle"
                                             for="actualEmail"
@@ -371,7 +371,7 @@ export default class Profile extends React.Component {
                                         <PmyBtn type="submit" isDisabled={!this.state.newEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.newEmail === this.state.curr_email} btnIsMediumPmyFull className="w-sm-100" textBtn="Sauvegarder" title="Sauvegarder"/>
                                     </form>
                                     <form onSubmit={this.handleSubmitPassword} method="POST" class="block-style d-flex flex-column mt-6">
-                                        <Title title="Votre mot de passe"/>
+                                        <H4 className="mb-3 pb-3 fw-600" title="Votre mot de passe"/>
                                         <Input
                                             containerStyle="input-password-column"
                                             label="Votre nouveau mot de passe"
@@ -403,7 +403,7 @@ export default class Profile extends React.Component {
                                 </section>
                             : this.state.tabActive === 1 && true && !this.state.noSubscription ?
                                 <form onSubmit={this.handleSubmitCheckbox} class="block-style d-flex flex-column mt-6">
-                                    <Title title="Votre abonnement"/>
+                                    <H4 className="mb-3 pb-3 fw-600" title="Votre abonnement"/>
                                     <Checkbox
                                         label={this.state.subscriptionEnd ? ['Vous avez désactivé votre abonnement, il prendra automatiquement fin le ', <span class="fw-600">{this.state.subscriptionEnd}</span>] : 'Abonné(e) à Asking Franklin Pro'}
                                         for="subscription"

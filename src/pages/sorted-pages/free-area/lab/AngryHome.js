@@ -105,7 +105,7 @@ export default class Home extends React.Component {
                     <Container className="d-flex flex-column flex-lg-row pt-0 pt-lg-5">
                         <Col md="12" lg="6" className="px-0">
                             <Blob4 className="blob-4 d-none d-xl-block"/>
-                            <H2 className="mb-5" title="Bien sûr comme chez AnswerThePublic vous avez accès à une source d’idées de contenus venant directement des recherches Google de votre audience"/>
+                            <H2 className="mb-5" title="Comme chez AnswerThePublic vous avez accès à une source d’idées de contenus venant directement des recherches Google"/>
                             <p class="fz-18">Tapez le mot-clé que vous souhaitez et Asking Franklin ira chercher toutes les questions, les recherches et sujets connexes en relation avec ce dernier.</p>
                         </Col>
                         <Col md="12" lg="6" className="d-flex justify-content-center justify-content-lg-end px-0 pl-lg-5">

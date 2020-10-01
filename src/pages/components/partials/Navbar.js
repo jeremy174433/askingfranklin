@@ -5,6 +5,7 @@ import Logo from '../../../assets/img/svg/Logo';
 import People from '../../../assets/img/svg/navigation/People';
 import Rocket from '../../../assets/img/svg/navigation/Rocket';
 import PmyBtn from '../button/PmyBtn';
+import CrownPro from '../../../assets/img/svg/CrownPro';
 import ProfileAccess from '../elements/ProfileAccess';
 import MobileMenu from './MobileMenu';
 
@@ -66,6 +67,11 @@ export default class Navbar extends React.Component {
                                                     <Rocket width="16" fill="#2B2B2B"/>
                                                     <span class="ml-3">Devenir Pro</span>
                                                 </Link>
+                                            </li>
+                                        }
+                                        {localStorage.getItem('af_is_sub') != 0 &&
+                                            <li>
+                                                <CrownPro width="20"/>
                                             </li>
                                         }
                                         <li class="ml-5">

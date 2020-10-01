@@ -44,7 +44,7 @@ export default class Pricing extends React.Component {
         return (
             <div class="layout-style">
                 <Container id="pricing" className="px-0 mt-6">
-                    <H1 className="text-center" title="Un outil aux services exceptionnels à un prix juste"/>
+                    <H1 className="text-center" title="Découvrez un outil clés en main pour booster votre SEO et votre stratégie de contenu"/>
                     <Row className="col-12 d-flex justify-content-around mx-0 mt-5 pt-5 px-0">
                         <Col sm="12" lg="6" xl="5" className="block-pricing block-pricing-free mb-5 mb-lg-0 mr-0 mr-lg-5 p-4 bgc-light rounded">
                             <H2 className="mb-3" title="Gratuit"/>

@@ -10,7 +10,8 @@ import {
 } from 'react-router-dom';
 import AFWrapper from '../../components/asking-franklin/AFWrapper';
 import FormRequestFranklin from '../../components/form/FormRequestFranklin';
-import {refreshTokenFnc} from '../../../utils/refreshToken'
+import { refreshTokenFnc } from '../../../utils/refreshToken';
+
 export default class AskingFranklin extends React.Component {
     constructor(props) {
         super(props)
@@ -99,7 +100,7 @@ export default class AskingFranklin extends React.Component {
     render() {
 
         const launchNewRequest = <Container className="d-flex flex-column px-0">
-                                    <Loader imgNoDataDisplayed content="Aucun résultat trouvé, tenter de lancer une nouvelle recherche avec un mot clé différent"/>
+                                    <Loader imgNoDataDisplayed content="Aucun résultat trouvé, tentez de lancer une nouvelle recherche avec un mot clé différent"/>
                                     <Col md="12" lg="8" className="mx-auto px-0">
                                         <FormRequestFranklin 
                                             onSubmit={this.requestFanklin} 

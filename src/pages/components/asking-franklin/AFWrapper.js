@@ -1,6 +1,6 @@
 import React from 'react';
 import PrimaryButton from '../button/PrimaryButton';
-import Title from '../elements/title/Title';
+import H4 from '../elements/title/H4';
 import AFDataviz from './AFDataviz';
 import AFTable from './AFTable';
 
@@ -60,12 +60,12 @@ export default class AFWrapper extends React.Component {
                     <div class="asking-franklin-container block-style p-0">
                         <div class="asking-franklin-header px-3 pt-3 mb-5">
                             <div class="d-flex flex-row align-items-center">
-                                <Title title={this.state.title}/>
+                                <H4 className="pb-3 mb-3 fw-600" title={this.state.title}/>
                                 <span class="d-block d-lg-none ml-2 mb-3 pb-3 fz-14">({this.props.data.data.map((x) => x.suggestions.length).reduce(reducer)})</span>
                             </div>
                             <div class="d-flex flex-row flex-wrap">
                                 <PrimaryButton handleChange={this.selectFirst} isSelected={this.state.selectedPanel === 0 && true} text="Graphique"/>
-                                <PrimaryButton handleChange={this.selectSecond} isSelected={this.state.selectedPanel === 1 && true} text="Textuel"/>
+                                <PrimaryButton handleChange={this.selectSecond} isSelected={this.state.selectedPanel === 1 && true} text="Tableau"/>
                             </div>
                         </div>
                         <div class="asking-franklin-body">
