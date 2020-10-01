@@ -1,4 +1,3 @@
-import { tickStep } from 'd3';
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import SocialMedia from '../../../assets/img/svg/switch/SocialMedia';
@@ -7,15 +6,16 @@ export default class Footer extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            is_sub:0
+            is_sub: 0
         }
     }
+
     componentDidMount(){
-        var is_sub = localStorage.getItem('af_is_sub')
+        var is_sub = localStorage.getItem('af_is_sub');
         this.setState({
-            is_sub:is_sub
+            is_sub: is_sub
         });
-        }
+    }
 
     render() {
         return (

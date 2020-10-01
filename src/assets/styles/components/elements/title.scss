@@ -5,3 +5,11 @@
 .h2 {
     @include max-lg-rwd { @include fz-22; }
 }
+
+.h3 {
+    @include max-lg-rwd { @include fz-20; }
+}
+
+.h4 {
+    @include max-lg-rwd { @include fz-18; }
+}

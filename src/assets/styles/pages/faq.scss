@@ -1,0 +1,61 @@
+#faq {
+
+    .categorie-list-faq {
+        background-color: $theme-secondary;
+        border: 1px solid $theme-terthiary;
+        padding: 1.5rem;
+        border-radius: .25rem;
+        margin-bottom: 1.5rem;
+        cursor: pointer;
+        @include min-lg-rwd { 
+            max-width: calc(25% - 18px) !important; 
+            &:not(:last-child) { margin-right: 1.5rem; }
+        }
+        @include min-md-rwd { 
+            max-width: calc(50% - 12px); 
+            &:nth-child(odd) { margin-right: 1.5rem; }
+        }
+
+        &-selected {
+            border-color: $primary;
+            color: $primary;
+            svg { fill: $primary; }
+        }
+    }
+
+    .accordion {
+
+        .card {
+            background-color: $theme-secondary;
+            border: 1px solid $theme-terthiary;
+            &:not(:last-child) { margin-bottom: 2rem; }
+
+            &-header {
+                background-color: $theme-secondary;
+                &:hover {
+                    cursor: pointer;
+                    .btn-collapsible { background-color: $md-grey-35; }
+                }
+                .btn-collapsible {
+                    min-width: 28px;
+                    width: 28px;
+                    min-height: 28px;
+                    height: 28px;
+                    @include fz-26;
+                    cursor: pointer;
+                    transition: .2s ease-in-out;
+                    &:hover { background-color: $md-grey-35; }
+                }
+            }
+
+            &-body {
+                border-top: 1px solid $theme-terthiary;
+            }
+        }       
+    }
+
+    .faq-contact-infos {
+        background-color: $theme-secondary;
+        border: 1px solid $theme-terthiary;
+    }
+}

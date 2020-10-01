@@ -49,7 +49,10 @@
     .blob-2 { @include decoration(-150px, 75px, initial, initial, -3); }
     .blob-3 { @include decoration(initial, initial, -50%, -75px, 0); }
     .blob-4 { @include decoration(-45px, initial, initial, -75px, -1); }
-    .blob-5 { @include decoration(-175px, -50px, initial, initial, 1); }
+    .blob-5 { 
+        @include decoration(-175px, -50px, initial, initial, 1);
+        @include max-lg-rwd { right: auto; }
+    }
     .blob-6 { @include decoration(initial, 33%, -115px, initial, 2); }
     .blob-7 { @include decoration(-125px, initial, initial, -85px, -1); }
     .blob-8 { @include decoration(initial, -15px, -85px, initial, -1); }

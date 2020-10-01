@@ -1,0 +1,105 @@
+import React from 'react';
+import { 
+    Container,
+    Row,
+    Col
+} from 'react-bootstrap';
+import H1 from '../../components/elements/title/H1';
+import H2 from '../../components/elements/title/H2';
+import H3 from '../../components/elements/title/H3';
+import Input from '../../components/form/Input';
+import PmyBtn from '../../components/button/PmyBtn';
+import FaqIcons from '../../../assets/img/svg/switch/FaqIcons';
+import Accordion from 'react-bootstrap/Accordion';
+import AccordionItem from '../../components/elements/AccordionItem';
+
+var accordionItems = [
+    {
+        key: "0",
+        question: "Morbi non nulla cursus",
+        content: "Integer mauris enim, sodales at ultricies eget, pulvinar a purus. Donec eu nulla eu metus convallis tempor eu ac odio. Maecenas convallis neque id sem sodales lobortis ut non augue."
+    },
+    {
+        key: "1",
+        question: "Nullam et sem ut felis maximus dapibus in nec lectus",
+        content: "Cras non porttitor erat. Morbi porttitor ligula ipsum, ut feugiat leo bibendum ut. In eu ante mollis, molestie orci vitae, finibus arcu. Pellentesque vel quam eget metus euismod facilisis. Curabitur nibh mauris, auctor nec leo et, facilisis auctor purus. Cras at lorem euismod, laoreet sem in, fringilla diam. Aenean facilisis nunc quis ipsum condimentum egestas"
+    },
+    {
+        key: "2",
+        question: "Orci varius natoque penatibus et magnis dis parturient ?",
+        content: "Ut porttitor metus velit, a fringilla odio mattis quis. Vestibulum turpis arcu, finibus eget tempus vel, gravida nec eros. Donec convallis, ex in ultricies efficitur, nulla arcu imperdiet odio, et elementum tellus ante vel est. Donec eget ligula sit amet nibh pretium iaculis. Sed id posuere ante. Vivamus tempor, nisi porta sagittis cursus, lacus arcu luctus quam facilisis auctor purus. Cras at lorem euismod sodales at ultricies eget, pulvinar a purus."
+    }
+]
+
+export default class Faq extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            searchTopic: ''
+        }
+        this.handleSearchTopic = this.handleSearchTopic.bind(this);
+    }
+
+    handleSearchTopic(e) {
+        this.setState({
+            searchTopic: e.target.value
+        });
+    }
+
+    handleSubmitResearch() {
+        console.log('research topic');
+    }
+
+    render() {
+        return (
+            <div class="layout-style">
+                <Container id="faq" className="px-0 mt-6 w-100 text-center d-flex flex-column align-items-center">
+                    <Row className="mx-0 mb-5">
+                        <Col sm="12" className="px-0 d-flex flex-column">
+                            <H1 className="mb-5" title="Bonjour, comment pouvons-nous vous aider ?"/>
+                            <div class="d-flex flex-column flex-sm-row">
+                                <Input onChange={this.handleSearchTopic} hideLabel={true} type="text" placeholder="Rechercher un sujet ou posez une question..." containerStyle="w-100 mr-0 mr-sm-4 mb-4 mb-sm-0 pb-0"/>
+                                <PmyBtn onClick={this.handleSubmitResearch} type="button" btnIsMediumPmyFull textBtn="Rechercher" isDisabled={this.state.searchTopic.length < 2} className="h-100 w-sm-100"/>
+                            </div>
+                            <p class="mt-5">Ou sélectionnez une catégorie pour trouver rapidement la réponse à votre question</p>
+                        </Col>
+                    </Row>
+                    <Row className="mx-0 mb-5 w-100 d-flex flex-row">
+                        <Col sm="12" md="6" lg="3" className="categorie-list-faq categorie-list-faq-selected">
+                            <FaqIcons icon="start" height="24"/>
+                            <p class="mt-4">Pour commencer</p>
+                        </Col>
+                        <Col sm="12" md="6" lg="3" className="categorie-list-faq">
+                            <FaqIcons icon="pricing" height="24"/>
+                            <p class="mt-4">Plans &amp; Tarifs</p>
+                        </Col>
+                        <Col sm="12" md="6" lg="3" className="categorie-list-faq">
+                            <FaqIcons icon="sales" height="24"/>
+                            <p class="mt-4">Questions sur la vente</p>
+                        </Col>
+                        <Col sm="12" md="6" lg="3" className="categorie-list-faq">
+                            <FaqIcons icon="guides" height="24"/>
+                            <p class="mt-4">Guide d'usage</p>
+                        </Col>
+                    </Row>
+                    <Col sm="12" className="px-0 mb-5">
+                        <H2 className="mb-4" title="Pour commencer"/>
+                        <H3 title="Bien débuter son utilisation de l'outil Asking Franklin"/>
+                    </Col>
+                    <Row className="mx-0 my-5 w-100 d-flex flex-column">
+                        <Col sm="12" className="question-faq d-flex flex-column text-left px-0 ">
+                            <Accordion defaultActiveKey="-1">
+                                {accordionItems.map((accordionItem) =>
+                                    <AccordionItem eventKey={accordionItem.key} title={accordionItem.question} content={accordionItem.content}></AccordionItem>
+                                )}
+                            </Accordion>
+                        </Col>
+                    </Row>
+                    <Row className="faq-contact-infos mx-0 mt-5 p-4 w-100 rounded">
+                        <p>Vous n'avez pas trouvé l'information que vous cherchez ?</p>
+                    </Row>
+                </Container>
+            </div>
+        )
+    }
+}
