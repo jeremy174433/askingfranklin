@@ -12,6 +12,7 @@ import queryString from 'query-string';
 export default class SignUpConfirmation extends React.Component {
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         const parsed = queryString.parse(window.location.search);
         fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/confirm-signup', {
             method: 'POST',

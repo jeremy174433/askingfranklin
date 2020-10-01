@@ -107,6 +107,7 @@ export default class Profile extends React.Component {
 
     componentDidMount() {
         this.loadPageData();
+        window.scrollTo(0, 0);
     }
 
     handleSelectAccount() {

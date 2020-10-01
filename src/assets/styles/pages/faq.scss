@@ -7,6 +7,8 @@
         border-radius: .25rem;
         margin-bottom: 1.5rem;
         cursor: pointer;
+        transition: .2s ease-in-out;
+
         @include min-lg-rwd { 
             max-width: calc(25% - 18px) !important; 
             &:not(:last-child) { margin-right: 1.5rem; }
@@ -16,10 +18,12 @@
             &:nth-child(odd) { margin-right: 1.5rem; }
         }
 
+        &:hover, &:focus { border-color: $primary-75; }
+
         &-selected {
-            border-color: $primary;
-            color: $primary;
-            svg { fill: $primary; }
+            border-color: $primary !important;
+            color: $primary !important;
+            svg { fill: $primary !important; }
         }
     }
 
@@ -44,7 +48,7 @@
                     @include fz-26;
                     cursor: pointer;
                     transition: .2s ease-in-out;
-                    &:hover { background-color: $md-grey-35; }
+                    &:hover, &:focus { background-color: $md-grey-35; }
                 }
             }
 
@@ -57,5 +61,22 @@
     .faq-contact-infos {
         background-color: $theme-secondary;
         border: 1px solid $theme-terthiary;
+
+        .faq-contact-infos-block { 
+            height: fit-content;
+
+            a {
+                color: $theme-color-primary;
+                border: 1px solid $theme-terthiary;
+                transition: .2s ease-in-out;
+                
+                &:hover, &:focus {
+                    text-decoration: none;
+                    border-color: $primary !important;
+                    color: $primary;
+                    svg { fill: $primary; }
+                }
+            }
+        }
     }
 }

@@ -37,6 +37,10 @@ export default class ForgotPassword extends React.Component {
         this.handleInputType = this.handleInputType.bind(this);
     }
 
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
     handleEmail(e) {
         this.setState({
             email: e.target.value

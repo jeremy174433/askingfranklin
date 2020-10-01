@@ -38,6 +38,7 @@ export default class SignUp extends React.Component {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         var token = localStorage.getItem('af_token');
         if(token) {
             this.props.history.push('/plans');
@@ -122,7 +123,10 @@ export default class SignUp extends React.Component {
                 {this.state.emailIsAlreadyTaken && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="L'email choisi est déjà utilisé par un autre compte"/> }
                 <Container className="px-0 mt-6">
                     <H1 className="mb-5" title="Créer un compte Asking Franklin"/>
-                    <p class="mb-5">Vous pouvez aussi continuer à utiliser Asking Franklin en accédant à la <Link to="/">version gratuite</Link> sans avoir besoin de vous inscrire</p>
+                    <p class="mb-5">
+                        <span class="d-block mb-3">En utilisant la version gratuite vous êtes limités à 3 recherches maximum par jour</span>
+                        <ArrowTextLink redirectTo="/tarifs" textLink="Passez dès maintenant aux recherches illimitées avec Asking Franklin Pro"/>
+                    </p>
                     <form onSubmit={this.handleSubmit} method="POST" id="signUpForm">
                         <Col sm="12" lg="8" xl="6" className="px-0 d-flex flex-column">
                             <Input 

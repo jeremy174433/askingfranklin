@@ -70,6 +70,7 @@ export default class AskingFranklin extends React.Component {
 
     componentDidMount() {
         this.fetchFranklin(this.props.match.params.keyword);
+        window.scrollTo(0, 0);
     }
 
     componentDidUpdate(prevProps) {

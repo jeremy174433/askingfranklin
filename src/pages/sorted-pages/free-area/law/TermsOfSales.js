@@ -7,6 +7,10 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 export default class TermsOfSales extends React.Component {
 
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
     render() {
 
         const siteURL = <Link to="/">www.askingfranklin.com</Link>;

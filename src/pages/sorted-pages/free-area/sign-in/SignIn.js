@@ -30,6 +30,7 @@ export default class SignIn extends React.Component {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         var token = localStorage.getItem('af_token');
         if(token) {
             this.setState({
@@ -101,8 +102,10 @@ export default class SignIn extends React.Component {
                     {this.state.error && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="La combinaison « email / mot de passe » est incorrect"/> }
                     <Container className="px-0 mt-6">
                         <H1 className="mb-5" title="Connexion à votre compte Asking Franklin"/>
-                        <p class="mb-3">La connexion est réservée aux membres pro. <Link to="/tarifs">Découvrir les avantages Asking Franklin Pro</Link></p>
-                        <p class="mb-5">Vous pouvez continuer à utiliser Asking Franklin en accédant à la <Link to="/">version gratuite</Link></p>
+                        <p class="mb-5">
+                            <span class="d-block mb-3">En utilisant la version gratuite vous êtes limités à 3 recherches maximum par jour</span>
+                            <ArrowTextLink redirectTo="/tarifs" textLink="Passez dès maintenant aux recherches illimitées avec Asking Franklin Pro"/>
+                        </p>
                         <form onSubmit={this.handleSubmit} method="POST">
                             <Col sm="12" lg="8" xl="6" className="px-0 d-flex flex-column">
                                 <Input 

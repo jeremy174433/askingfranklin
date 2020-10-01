@@ -7,10 +7,10 @@ export default class FeaturesList extends React.Component {
 
         const classFeatures = ' features-list d-flex flex-column';
 
-        return (
+        return (     
             <ul class={this.props.className ? this.props.className + classFeatures : classFeatures}>
                 <li><FeaturesIcons icon="search"/><span>Nombre illimité de recherches</span></li>
-                <li><FeaturesIcons icon="filter"/><span>Requêtes filtrées par langues et pays</span></li>
+                {/* <li><FeaturesIcons icon="filter"/><span>Requêtes filtrées par langues et pays</span></li> */}
                 <li><FeaturesIcons icon="support"/><span>Réponse prioritaire de l'équipe support</span></li>
                 <li><FeaturesIcons icon="file"/><span>Export en CSV illimité</span></li>
             </ul>

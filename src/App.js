@@ -17,6 +17,7 @@ import ConfirmationSignup from './pages/sorted-pages/free-area/sign-in/SignupCon
 import ForgotPassword from './pages/sorted-pages/free-area/sign-in/ForgotPassword';
 import MaximumRequests from './pages/sorted-pages/free-area/MaximumRequests';
 import Faq from './pages/sorted-pages/free-area/Faq';
+import Support from './pages/sorted-pages/free-area/Support';
 import LegalNotices from './pages/sorted-pages/free-area/law/LegalNotices';
 import TermsOfServices from './pages/sorted-pages/free-area/law/TermsOfServices';
 import TermsOfSales from './pages/sorted-pages/free-area/law/TermsOfSales';
@@ -56,6 +57,7 @@ export default class App extends React.Component {
                         <Route path='/recherche/:keyword' component={AskingFranklin}/>
                         <Route path="/limite-de-recherches" component={MaximumRequests}/>
                         <Route path="/faq" component={Faq}/>
+                        <Route path="/support" component={Support}/>
                         <Route exact path='/' component={Home}/>
                         <Route exact path='/l/01' component={AngryHome}/>
                         <Route exact path='/tarifs' component={Pricing}/>

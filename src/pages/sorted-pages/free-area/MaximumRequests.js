@@ -10,6 +10,10 @@ import PmyBtn from '../../components/button/PmyBtn';
 
 export default class MaximumRequests extends React.Component {
 
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
     render() {
         return (
             <div class="layout-style">

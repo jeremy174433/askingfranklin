@@ -42,6 +42,10 @@ export default class Home extends React.Component {
         this.handleKeywordChange = this.handleKeywordChange.bind(this);
         this.requestFanklin = this.requestFanklin.bind(this);
     }
+    
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
 
     handleKeywordChange(e) {
         this.setState({
@@ -72,7 +76,7 @@ export default class Home extends React.Component {
                         <Blob2 className="blob-2"/>
                         <Dots className="dots-1"/>
                         <Col md="12" lg="6" className="mt-0 mb-5 py-0 my-md-5 py-md-5 px-0">
-                            <H1 title="Découvrez les tendances de recherches des internautes sur le web à propos d'un terme clé"/>
+                            <H1 title="Asking Franklin est un outil Français de recherche de questions et mots-clés basés sur les requêtes Google"/>
                             <FormRequestFranklin 
                                 onSubmit={this.requestFanklin} 
                                 onChange={this.handleKeywordChange} 
@@ -123,7 +127,8 @@ export default class Home extends React.Component {
                         </Col>
                         <Col md="12" lg="6" className="d-flex flex-column justify-content-center order-0 order-lg-1 pt-5 pt-lg-0">
                             <H2 className="mb-5" title="Prenez les devants et proposez des produits, services et contenus que cherchent vos consommateurs"/>
-                            <p class="fz-18">Asking Franklin vous fournit une ressource illimitée de mots-clés mais aussi d’idées pour booster votre SEO et nourrir votre stratégie de contenus.</p>
+                            <p class="fz-18 mb-5">Asking Franklin vous fournit une ressource illimitée de mots-clés mais aussi d’idées pour booster votre SEO et nourrir votre stratégie de contenus.</p>
+                            <PmyBtn redirectTo="/tarifs" linkIsMediumPmyOutlineLight textLink="Voir les avantages Pro" customBtnClass="w-sm-100"/>
                         </Col>
                     </Container>
                     <Blob6 className="blob-6 d-none d-lg-block"/>
@@ -134,11 +139,12 @@ export default class Home extends React.Component {
                 <section class="home-section-5">
                     <Container className="d-flex flex-column flex-lg-row">
                         <Col md="12" lg="6" className="d-flex flex-column justify-content-center">
-                            <H2 className="mb-5" title="En un clic vous avez accès à une source d’idées de contenus venant directement des recherches de votre audience"/>
+                            <H2 className="mb-5" title="En un clic, vous avez accès à une source d’idées de contenus venant directement des recherches de votre audience"/>
                             <blockquote>
                                 <p class="fz-18 fw-600">Une nouvelle tendance de consommation émerge ? <br/> Une nouvelle mode ?</p>
                             </blockquote>
-                            <p class="fz-18 mt-3 pt-3">Grâce à Asking Franklin, prenez une longueur d’avance sur vos concurrents en étant le premier au courant des nouveautés qui arrivent sur le marché.</p>
+                            <p class="fz-18 mt-3 mb-5 pt-3">Grâce à Asking Franklin, prenez une longueur d’avance sur vos concurrents en étant le premier au courant des nouveautés qui arrivent sur le marché.</p>
+                            <PmyBtn redirectTo="/#top" linkIsMediumPmyOutlineLight textLink="Essayer gratuitement" customBtnClass="w-sm-100"/>
                         </Col>
                         <Col md="12" lg="6" className="d-flex justify-content-center justify-content-lg-start px-0 pl-lg-5 mt-5 mt-lg-0">
                             <img src={Ideas} alt="Source d'idées de contenus" class="img-fluid"/>

@@ -12,24 +12,21 @@ import PmyBtn from '../../components/button/PmyBtn';
 import FaqIcons from '../../../assets/img/svg/switch/FaqIcons';
 import Accordion from 'react-bootstrap/Accordion';
 import AccordionItem from '../../components/elements/AccordionItem';
+import { Link } from 'react-router-dom'; 
 
-var accordionItems = [
-    {
+var accordionItems = [{
         key: "0",
         question: "Morbi non nulla cursus",
         content: "Integer mauris enim, sodales at ultricies eget, pulvinar a purus. Donec eu nulla eu metus convallis tempor eu ac odio. Maecenas convallis neque id sem sodales lobortis ut non augue."
-    },
-    {
+    }, {
         key: "1",
         question: "Nullam et sem ut felis maximus dapibus in nec lectus",
         content: "Cras non porttitor erat. Morbi porttitor ligula ipsum, ut feugiat leo bibendum ut. In eu ante mollis, molestie orci vitae, finibus arcu. Pellentesque vel quam eget metus euismod facilisis. Curabitur nibh mauris, auctor nec leo et, facilisis auctor purus. Cras at lorem euismod, laoreet sem in, fringilla diam. Aenean facilisis nunc quis ipsum condimentum egestas"
-    },
-    {
+    }, {
         key: "2",
         question: "Orci varius natoque penatibus et magnis dis parturient ?",
         content: "Ut porttitor metus velit, a fringilla odio mattis quis. Vestibulum turpis arcu, finibus eget tempus vel, gravida nec eros. Donec convallis, ex in ultricies efficitur, nulla arcu imperdiet odio, et elementum tellus ante vel est. Donec eget ligula sit amet nibh pretium iaculis. Sed id posuere ante. Vivamus tempor, nisi porta sagittis cursus, lacus arcu luctus quam facilisis auctor purus. Cras at lorem euismod sodales at ultricies eget, pulvinar a purus."
-    }
-]
+}]
 
 export default class Faq extends React.Component {
     constructor(props) {
@@ -38,6 +35,10 @@ export default class Faq extends React.Component {
             searchTopic: ''
         }
         this.handleSearchTopic = this.handleSearchTopic.bind(this);
+    }
+
+    componentDidMount() {
+        window.scrollTo(0, 0);
     }
 
     handleSearchTopic(e) {
@@ -95,8 +96,24 @@ export default class Faq extends React.Component {
                             </Accordion>
                         </Col>
                     </Row>
-                    <Row className="faq-contact-infos mx-0 mt-5 p-4 w-100 rounded">
-                        <p>Vous n'avez pas trouvé l'information que vous cherchez ?</p>
+                    <Row className="faq-contact-infos mx-0 mt-5 pt-4 pb-4 pb-md-5 px-3 w-100 d-flex flex-column flex-nowrap rounded">
+                        <p class="text-left">Vous n'avez pas trouvé l'information que vous cherchez ? Contactez-nous.</p>
+                        <div class="d-flex flex-row justify-content-center flex-wrap mt-5">
+                            <Col sm="12" md="4" lg="3" className="faq-contact-infos-block px-0 mr-0 mr-md-5 mb-4 mb-md-0">
+                                <Link to="/support" class="d-flex flex-column p-3 rounded">
+                                    <FaqIcons icon="start" height="16"/>
+                                    <span class="mt-3 mb-2 fw-600">Support client</span>
+                                    <span>Laissez-nous un message</span>
+                                </Link>
+                            </Col>
+                            <Col sm="12" md="4" lg="3" className="faq-contact-infos-block px-0">
+                                <a href="javascript:void(Tawk_API.toggle())" class="d-flex flex-column p-3 rounded">
+                                    <FaqIcons icon="start" height="16"/>
+                                    <span class="mt-3 mb-2 fw-600">Chattez avec nous</span>
+                                    <span>Posez-nous votre question</span>
+                                </a>
+                            </Col>
+                        </div>
                     </Row>
                 </Container>
             </div>

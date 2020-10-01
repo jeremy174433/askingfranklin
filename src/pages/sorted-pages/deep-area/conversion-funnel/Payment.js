@@ -37,6 +37,7 @@ export default class Payment extends React.Component {
 	}
 
 	componentDidMount() {
+		window.scrollTo(0, 0);
 		if (!localStorage.getItem('product') || !localStorage.getItem('af_token')) {
 			this.setState({
 				redirect: true
