@@ -32,13 +32,16 @@ export default class Footer extends React.Component {
                                 </li>
                             }
                             <li>
-                                <a href="/mentions-legales" class="footer-link d-block py-2 px-3 mr-0 mr-md-3 mb-3 mb-md-0 rounded">Mentions légales</a>
+                                <a href="/assistance" class="footer-link d-block py-2 px-3 mr-0 mr-md-3 mb-3 mb-md-0 rounded">Assistance</a>
                             </li>
                             <li>
-                                <a href="/conditions-generales-d-utilisation" class="footer-link d-block py-2 px-3 mr-0 mr-md-3 mb-3 mb-md-0 rounded">CGU</a>
+                                <a href="/mentions-legales" class="footer-link d-block py-2 px-3 mr-0 mr-md-3 mb-3 mb-md-0 rounded" rel="nofollow">Mentions légales</a>
                             </li>
                             <li>
-                                <a href="/conditions-generales-de-vente" class="footer-link d-block py-2 px-3 rounded">CGV</a>
+                                <a href="/conditions-generales-d-utilisation" class="footer-link d-block py-2 px-3 mr-0 mr-md-3 mb-3 mb-md-0 rounded" rel="nofollow">CGU</a>
+                            </li>
+                            <li>
+                                <a href="/conditions-generales-de-vente" class="footer-link d-block py-2 px-3 rounded" rel="nofollow">CGV</a>
                             </li>
                         </ul>
                     </div>

@@ -1,15 +1,19 @@
-.h1 {
+h1, .h1 {
     @include max-lg-rwd { @include fz-26; }
+    margin-bottom: 0;
 }
 
-.h2 {
+h2, .h2 {
     @include max-lg-rwd { @include fz-22; }
+    margin-bottom: 0;
 }
 
-.h3 {
+h3, .h3 {
     @include max-lg-rwd { @include fz-20; }
+    margin-bottom: 0;
 }
 
-.h4 {
+h4, .h4 {
     @include max-lg-rwd { @include fz-18; }
+    margin-bottom: 0;
 }

@@ -56,7 +56,10 @@ export default class SignIn extends React.Component {
         this.handleCloseAlert();
         fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/auth', {
             method: 'POST',
-            body: JSON.stringify({ username: this.state.email, password: this.state.password })
+            body: JSON.stringify({ 
+                username: this.state.email, 
+                password: this.state.password
+            })
         })
         .then(res => {
             return res.json();
@@ -116,7 +119,7 @@ export default class SignIn extends React.Component {
                                     name={this.for} 
                                     id={this.for} 
                                     required={true} 
-                                    infoMsg={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
+                                    infoMsg={this.state.email.length < 1 ? 'Ce champ est requis' : !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
                                 />
                                 <Input 
                                     onChange={this.handlePassword} 

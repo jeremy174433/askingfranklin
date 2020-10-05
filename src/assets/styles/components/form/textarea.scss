@@ -1,0 +1,21 @@
+.textarea-wrapper {
+
+    .input-textarea {
+        min-height: 180px;
+        padding: 12px;
+        border: 1px solid $theme-terthiary;
+        background-color: $theme-secondary;
+        border-radius: .25rem;
+        transition: .2s ease-in-out;
+
+        @include max-lg-rwd { min-height: 300px; }
+        @include scroll-y(auto);
+        
+        &::placeholder { @include fz-14; }
+
+        &:focus {
+            outline: none;
+            border-left: 4px solid $primary;
+        }
+    }
+}
