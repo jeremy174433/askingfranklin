@@ -41,7 +41,7 @@ export default class ChoosePlan extends React.Component {
         else {
             var token = localStorage.getItem('af_token');
             var product = localStorage.getItem('product');
-            fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-plan', {
+            fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-plan', {
                 headers: {
                     'Authorization': token
                 },

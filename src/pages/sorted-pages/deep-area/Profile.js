@@ -45,7 +45,7 @@ export default class Profile extends React.Component {
     loadPageData() {
         var token = localStorage.getItem('af_token');
         if (token) {
-            fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-plan', {
+            fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-plan', {
                 headers: {
                     'Authorization': token
                 },
@@ -74,7 +74,7 @@ export default class Profile extends React.Component {
                     refreshTokenFnc(this.loadPageData, false)
                 };
             })
-            fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-email', {
+            fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-email', {
                 headers: {
                     'Authorization': token
                 },
@@ -158,7 +158,7 @@ export default class Profile extends React.Component {
         this.handleCloseAlert();
         var username = localStorage.getItem('af_username');
         var token = localStorage.getItem('af_token');
-        fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/change-email', {
+        fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/change-email', {
             headers: {
                 'Authorization': token
             },
@@ -185,7 +185,7 @@ export default class Profile extends React.Component {
                     emailChanged: true,
                     newEmail: ''
                 });
-                fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-email', {
+                fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-email', {
                     headers: {
                         'Authorization': token
                     },
@@ -223,7 +223,7 @@ export default class Profile extends React.Component {
         this.handleCloseAlert();
         var username = localStorage.getItem('af_username');
         var token = localStorage.getItem('af_token');
-        fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/change-password', {
+        fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/change-password', {
             headers: {
                 'Authorization': token
             },
@@ -258,7 +258,7 @@ export default class Profile extends React.Component {
         this.handleCloseAlert();
         var token = localStorage.getItem('af_token');
         if(this.state.subscriptionEnd) {
-            fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/reactivate-subscription', {
+            fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/reactivate-subscription', {
                 headers: {
                     'Authorization': token
                 },
@@ -288,7 +288,7 @@ export default class Profile extends React.Component {
             })
         } 
         else {
-            fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/cancel-subscription', {
+            fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/cancel-subscription', {
                 headers: {
                     'Authorization': token
                 },
