@@ -103,7 +103,7 @@ export default function CheckoutForm(props) {
 		priceId
 	}) => {
     	return (
-      		fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/retry-invoice', {
+      		fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/retry-invoice', {
 				method: 'post',
 				headers: {
 					'Content-type': 'application/json'
@@ -151,7 +151,7 @@ export default function CheckoutForm(props) {
 
 	const onSubscriptionComplete = async (result) => {
 		var token = localStorage.getItem('af_token');
-		fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/register-db-subscription', {
+		fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/register-db-subscription', {
 			method: 'post',
 			headers: {
 				'Content-type': 'application/json',
@@ -187,10 +187,10 @@ export default function CheckoutForm(props) {
 		})
 	}
 
-	const createSubscription = async ({ paymentMethodId, priceId }) => {
+	const createSubscription = async ({ paymentMethodId, priceId, name, line1, city, postalCode}) => {
 		var token = localStorage.getItem('af_token');
 		return (
-			fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/create-subscription', {
+			fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/create-subscription', {
 				method: 'post',
 				headers: {
 					'Content-type': 'application/json',
@@ -198,7 +198,11 @@ export default function CheckoutForm(props) {
 				},
 				body: JSON.stringify({
 					paymentMethodId: paymentMethodId,
-					priceId: priceId
+					priceId: priceId,
+					name:name,
+					line1:line1,
+					city:city,
+					postal_code:postalCode
 				}),
 			})
 			.then((response) => {
@@ -243,6 +247,10 @@ export default function CheckoutForm(props) {
 		if (!stripe || !elements) {
 			return;
 		}
+		var name = event.target.elements.name.value
+		var line1 = event.target.elements.line1.value
+		var city = event.target.elements.city.value
+		var postalCode = event.target.elements.postal_code.value
 		const cardElement = elements.getElement(CardElement);
 		const latestInvoicePaymentIntentStatus = localStorage.getItem('latestInvoicePaymentIntentStatus');
 		const priceId = localStorage.getItem('product');
@@ -265,7 +273,7 @@ export default function CheckoutForm(props) {
 				});
 			} 
 			else {
-				createSubscription({ paymentMethodId, priceId });
+				createSubscription({ paymentMethodId, priceId, name, line1, city, postalCode});
 			}
 		}
 	};
@@ -276,24 +284,19 @@ export default function CheckoutForm(props) {
 				<Col sm="12" md="6" className="px-0 pl-md-0 pr-md-3">
 					<Input
 						label="Nom complet ou raison sociale"
-						for="owner"
-						name={props.for}
-						id={props.for}
+						for="name"
+						name="name"
+						id="name"
 						type="text"
-						value={props.owner}
-						onChange={props.handleOwner}
 						required={true}
 					/>
 				</Col>
 				<Col sm="12" md="6" className="px-0 pr-md-0 pl-md-3">
 					<Input
 						label="Adresse de facturation"
-						for="address"
-						name={props.for}
-						id={props.for}
+						for="line1"
+						name="line1"
 						type="text"
-						value={props.owner}
-						onChange={props.handleOwner}
 						required={true}
 					/>
 				</Col>
@@ -303,23 +306,18 @@ export default function CheckoutForm(props) {
 					<Input
 						label="Ville"
 						for="city"
-						name={props.for}
-						id={props.for}
+						name="city"
 						type="text"
-						value={props.city}
-						onChange={props.handleCity}
 						required={true}
 					/>
 				</Col>
 				<Col sm="12" md="6" className="px-0 pr-md-0 pl-md-3">
 					<Input
 						label="Code postal"
-						for="zip"
-						name={props.for}
-						id={props.for}
+						for="postal_code"
+						name="postal_code"
+						id="postal_code"
 						type="text"
-						value={props.zip}
-						onChange={props.handleZip}
 						required={true}
 					/>
 				</Col>

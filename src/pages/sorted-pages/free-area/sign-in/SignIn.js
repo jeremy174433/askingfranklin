@@ -54,7 +54,7 @@ export default class SignIn extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         this.handleCloseAlert();
-        fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/auth', {
+        fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/auth', {
             method: 'POST',
             body: JSON.stringify({ 
                 username: this.state.email, 

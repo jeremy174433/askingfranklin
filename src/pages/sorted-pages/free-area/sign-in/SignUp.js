@@ -69,7 +69,7 @@ export default class SignUp extends React.Component {
         event.preventDefault();
         this.handleCloseAlert();
         if(this.state.email && this.state.password && this.state.privacy) {
-            fetch('https://78fhc2ffoc.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/signup', {
+            fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/signup', {
                 method: 'POST',
                 body: JSON.stringify({ 
                     email: this.state.email, 
