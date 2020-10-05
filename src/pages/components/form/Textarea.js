@@ -1,6 +1,20 @@
 import React from 'react';
+import InformationInput from './elements/InformationInput';
 
 export default class Textarea extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            displayTooltip: false
+        }
+        this.onBlur = this.onBlur.bind(this);
+    }
+
+    onBlur() {
+        this.setState({
+            displayTooltip: true
+        });
+    }
 
     render() {
 

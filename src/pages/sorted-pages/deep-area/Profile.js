@@ -366,7 +366,7 @@ export default class Profile extends React.Component {
                                             type="email"
                                             required={true}
                                             onChange={this.handleNewEmail}
-                                            infoMsg={!this.state.newEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct' || this.state.newEmail === this.state.curr_email && 'L\'email ne peut pas être identique au précédent utilisé'}
+                                            infoMsg={this.state.newEmail.length < 1 ? 'Ce champ est requis' : !this.state.newEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct' || this.state.newEmail === this.state.curr_email && 'L\'email ne peut pas être identique au précédent utilisé'}
                                         />
                                         <PmyBtn type="submit" isDisabled={!this.state.newEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.newEmail === this.state.curr_email} btnIsMediumPmyFull className="w-sm-100" textBtn="Sauvegarder" title="Sauvegarder"/>
                                     </form>

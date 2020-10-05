@@ -24,6 +24,8 @@ $input: '.input-primary';
         background-color: $theme-secondary;
         border-radius: 4px;
         transition: .2s ease-in-out;
+
+        &::placeholder { @include fz-14; }
     
         &:focus {
             outline: none;
@@ -33,6 +35,16 @@ $input: '.input-primary';
         &[disabled] {
             cursor: not-allowed;
             background-color: $bg-disabled;
+        }
+
+        &[type=search] {
+            padding-right: 24px;
+            &::-webkit-search-cancel-button {
+                position: relative;
+                right: -12px;
+                cursor: pointer;
+                opacity: 1;
+            }
         }
   
         + #{$input}-icon {

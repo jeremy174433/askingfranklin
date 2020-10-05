@@ -71,7 +71,7 @@ export default class Navbar extends React.Component {
                                         }
                                         {localStorage.getItem('af_is_sub') != 0 &&
                                             <li>
-                                                <CrownPro width="20"/>
+                                                <CrownPro width="52"/>
                                             </li>
                                         }
                                         <li class="ml-5">

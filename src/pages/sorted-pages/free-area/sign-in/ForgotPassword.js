@@ -145,7 +145,7 @@ export default class ForgotPassword extends React.Component {
                                     label="Votre email" 
                                     for="email" 
                                     required={true} 
-                                    infoMsg={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
+                                    infoMsg={this.state.email.length < 1 ? 'Ce champ est requis' : !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
                                 />
                                 <PmyBtn 
                                     type="submit" 

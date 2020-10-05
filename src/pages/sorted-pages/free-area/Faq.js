@@ -59,8 +59,8 @@ export default class Faq extends React.Component {
                         <Col sm="12" className="px-0 d-flex flex-column">
                             <H1 className="mb-5" title="Bonjour, comment pouvons-nous vous aider ?"/>
                             <div class="d-flex flex-column flex-sm-row">
-                                <Input onChange={this.handleSearchTopic} hideLabel={true} type="text" placeholder="Rechercher un sujet ou posez une question..." containerStyle="w-100 mr-0 mr-sm-4 mb-4 mb-sm-0 pb-0"/>
-                                <PmyBtn onClick={this.handleSubmitResearch} type="button" btnIsMediumPmyFull textBtn="Rechercher" isDisabled={this.state.searchTopic.length < 2} className="h-100 w-sm-100"/>
+                                <Input onChange={this.handleSearchTopic} hideLabel={true} type="search" placeholder="Rechercher un sujet ou posez une question..." containerStyle="w-100 mr-0 mr-sm-4 mb-4 mb-sm-0 pb-0"/>
+                                <PmyBtn onClick={this.handleSubmitResearch} type="button" btnIsMediumPmyFull textBtn="Rechercher" isDisabled={this.state.searchTopic.length < 1} className="h-100 w-sm-100"/>
                             </div>
                             <p class="mt-5">Ou sélectionnez une catégorie pour trouver rapidement la réponse à votre question</p>
                         </Col>
@@ -102,7 +102,7 @@ export default class Faq extends React.Component {
                             <Col sm="12" md="4" lg="3" className="faq-contact-infos-block px-0 mr-0 mr-md-5 mb-4 mb-md-0">
                                 <Link to="/support" class="d-flex flex-column p-3 rounded">
                                     <FaqIcons icon="start" height="16"/>
-                                    <span class="mt-3 mb-2 fw-600">Support client</span>
+                                    <span class="mt-3 mb-2 fw-600">Assistance</span>
                                     <span>Laissez-nous un message</span>
                                 </Link>
                             </Col>
