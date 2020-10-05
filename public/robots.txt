@@ -1,3 +1,11 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Disallow: /conditions-generales-d-utilisation
+Disallow: /conditions-generales-de-vente
+Disallow: /paiement/confirmation
+Disallow: /mentions-legales
+Disallow: /recherche
+Disallow: /recherche/*
+Disallow: /mot-de-passe-oublie
+Disallow: /limite-de-recherches
+Disallow: /faq

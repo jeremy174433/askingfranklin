@@ -32,11 +32,20 @@ export default class Faq extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            searchTopic: ''
+            searchTopic: '',
+            toShow:[]
         }
         this.handleSearchTopic = this.handleSearchTopic.bind(this);
     }
-
+    search(searchTopic, questions){
+        var results = []
+        for (var i=0; i < questions.length; i++) {
+            if (questions[i].content.includes(searchTopic) || questions[i].question.includes(searchTopic)) {
+                 results.push(questions[i])
+            }
+        }
+        return results
+    }
     componentDidMount() {
         window.scrollTo(0, 0);
     }
@@ -48,7 +57,6 @@ export default class Faq extends React.Component {
     }
 
     handleSubmitResearch() {
-        console.log('research topic');
     }
 
     render() {
