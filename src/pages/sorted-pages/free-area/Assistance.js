@@ -58,7 +58,7 @@ export default class Assistance extends React.Component {
             alertIsShowed: false
         });
         
-        fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/send-mail-support', {
+        fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/send-mail-support', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify({

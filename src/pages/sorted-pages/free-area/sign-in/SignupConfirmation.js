@@ -14,7 +14,7 @@ export default class SignUpConfirmation extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0);
         const parsed = queryString.parse(window.location.search);
-        fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/confirm-signup', {
+        fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/confirm-signup', {
             method: 'POST',
             body: JSON.stringify({ code: parsed.code, username: parsed.username})
         })

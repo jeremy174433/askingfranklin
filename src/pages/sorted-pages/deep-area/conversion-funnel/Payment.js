@@ -46,7 +46,7 @@ export default class Payment extends React.Component {
 		else {
 			var token = localStorage.getItem('af_token');
 			var product = localStorage.getItem('product');
-			fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-plan', {
+			fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-plan', {
 			headers: {
 				'Authorization': token
 			},
@@ -76,7 +76,7 @@ export default class Payment extends React.Component {
                     refreshTokenFnc(this.componentDidMount,false)
                 }
             })
-			fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-product', {
+			fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-product', {
 				headers: {
 					'Authorization': token
 				},

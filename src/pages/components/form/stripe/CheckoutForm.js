@@ -103,7 +103,7 @@ export default function CheckoutForm(props) {
 		priceId
 	}) => {
     	return (
-      		fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/retry-invoice', {
+      		fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/retry-invoice', {
 				method: 'post',
 				headers: {
 					'Content-type': 'application/json'
@@ -151,7 +151,7 @@ export default function CheckoutForm(props) {
 
 	const onSubscriptionComplete = async (result) => {
 		var token = localStorage.getItem('af_token');
-		fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/register-db-subscription', {
+		fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/register-db-subscription', {
 			method: 'post',
 			headers: {
 				'Content-type': 'application/json',
@@ -190,7 +190,7 @@ export default function CheckoutForm(props) {
 	const createSubscription = async ({ paymentMethodId, priceId, name, line1, city, postalCode}) => {
 		var token = localStorage.getItem('af_token');
 		return (
-			fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/create-subscription', {
+			fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/create-subscription', {
 				method: 'post',
 				headers: {
 					'Content-type': 'application/json',

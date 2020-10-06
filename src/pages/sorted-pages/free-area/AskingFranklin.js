@@ -41,7 +41,7 @@ export default class AskingFranklin extends React.Component {
             dataIsLoaded: false,
             keywordSearch: keyword
         }, () => {
-            fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/suggestions?keyword=' + keyword, headers)
+            fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/suggestions?keyword=' + keyword, headers)
             .then((res) => res.json())
             .then((res) => {
                 if (res.blocked) {
