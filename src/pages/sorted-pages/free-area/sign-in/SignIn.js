@@ -1,13 +1,10 @@
 import React from 'react';
-import H1 from '../../../components/elements/title/H1';
-import { 
-    Link, 
-    Redirect 
-} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { 
     Container,
     Col 
 } from 'react-bootstrap';
+import H1 from '../../../components/elements/title/H1';
 import Input from '../../../components/form/Input';
 import PmyBtn from '../../../components/button/PmyBtn';
 import ArrowTextLink from '../../../components/elements/link/ArrowTextLink';
@@ -54,7 +51,7 @@ export default class SignIn extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         this.handleCloseAlert();
-        fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/auth', {
+        fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/auth', {
             method: 'POST',
             body: JSON.stringify({ 
                 username: this.state.email, 

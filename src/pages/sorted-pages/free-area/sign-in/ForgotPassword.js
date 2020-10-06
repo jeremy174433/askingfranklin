@@ -1,10 +1,10 @@
 import React from 'react';
-import H1 from '../../../components/elements/title/H1';
 import { 
     Container,
     Col 
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import H1 from '../../../components/elements/title/H1';
 import Input from '../../../components/form/Input';
 import PmyBtn from '../../../components/button/PmyBtn';
 import ArrowTextLink from '../../../components/elements/link/ArrowTextLink';
@@ -65,7 +65,7 @@ export default class ForgotPassword extends React.Component {
 
     handleSubmitConfirm(event) {
         event.preventDefault();
-        fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/confirm-forgot-password', {
+        fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/confirm-forgot-password', {
             method: 'POST',
             body: JSON.stringify({ code: this.state.code, password: this.state.newPassword, username: this.state.email })
         })
@@ -100,7 +100,7 @@ export default class ForgotPassword extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        fetch('https://7t9s9zg4jl.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/forgot-password', {
+        fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/forgot-password', {
             method: 'POST',
             body: JSON.stringify({ username: this.state.email })
         })
