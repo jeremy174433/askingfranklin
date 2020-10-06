@@ -12,6 +12,8 @@ import PmyBtn from '../../components/button/PmyBtn';
 import FaqIcons from '../../../assets/img/svg/switch/FaqIcons';
 import Accordion from 'react-bootstrap/Accordion';
 import AccordionItem from '../../components/elements/AccordionItem';
+import LifeSaver from '../../../assets/img/svg//LifeSaver';
+import SpeechBubble from '../../../assets/img/svg//SpeechBubble';
 import { Link } from 'react-router-dom'; 
 
 var accordionItems = [{
@@ -108,15 +110,15 @@ export default class Faq extends React.Component {
                         <p class="text-left">Vous n'avez pas trouvé l'information que vous cherchez ? Contactez-nous.</p>
                         <div class="d-flex flex-row justify-content-center flex-wrap mt-5">
                             <Col sm="12" md="4" lg="3" className="faq-contact-infos-block px-0 mr-0 mr-md-5 mb-4 mb-md-0">
-                                <Link to="/support" class="d-flex flex-column p-3 rounded">
-                                    <FaqIcons icon="start" height="16"/>
+                                <Link to="/assistance" class="d-flex flex-column align-items-center p-3 rounded">
+                                    <LifeSaver height="20" fill="#2B2B2B"/>
                                     <span class="mt-3 mb-2 fw-600">Assistance</span>
                                     <span>Laissez-nous un message</span>
                                 </Link>
                             </Col>
                             <Col sm="12" md="4" lg="3" className="faq-contact-infos-block px-0">
-                                <a href="javascript:void(Tawk_API.toggle())" class="d-flex flex-column p-3 rounded">
-                                    <FaqIcons icon="start" height="16"/>
+                                <a href="javascript:void(Tawk_API.toggle())" class="d-flex flex-column align-items-center p-3 rounded">
+                                    <SpeechBubble height="20" fill="#2B2B2B"/>
                                     <span class="mt-3 mb-2 fw-600">Chattez avec nous</span>
                                     <span>Posez-nous votre question</span>
                                 </a>
