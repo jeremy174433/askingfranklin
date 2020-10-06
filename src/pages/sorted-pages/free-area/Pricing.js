@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import H1 from '../../components/elements/title/H1';
 import H2 from '../../components/elements/title/H2';
 import { 
@@ -26,6 +27,15 @@ export default class Pricing extends React.Component {
         this.selectFirstPlan();
     }
 
+    customHeadElement() {
+        return (
+            <Helmet>
+                <title>Tarifs - Asking Franklin</title>
+                <meta name="description" content="Découvrez les tarifs de l'outil Asking Franklin"/>
+            </Helmet>
+        );
+    }
+
     selectFirstPlan() {
         localStorage.setItem('product', 'price_1HEaGeLB03GdYRbhWsbdlFcx');
         this.setState({
@@ -43,6 +53,7 @@ export default class Pricing extends React.Component {
     render() {
         return (
             <div class="layout-style">
+                {this.customHeadElement()}
                 <Container id="pricing" className="px-0 mt-6">
                     <H1 className="text-center" title="Découvrez un outil clés en main pour booster votre SEO et votre stratégie de contenu"/>
                     <Row className="col-12 d-flex justify-content-around mx-0 mt-5 pt-5 px-0">

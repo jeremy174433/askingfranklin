@@ -18,16 +18,48 @@ import { Link } from 'react-router-dom';
 
 var accordionItems = [{
         key: "0",
-        question: "Morbi non nulla cursus",
-        content: "Integer mauris enim, sodales at ultricies eget, pulvinar a purus. Donec eu nulla eu metus convallis tempor eu ac odio. Maecenas convallis neque id sem sodales lobortis ut non augue."
+        question: "Quel type de termes dois-je rechercher ?",
+        content: "Vous pouvez rechercher n’importe quel terme: un objet, un secteur, un marché, un concurrent, un produit, un animal... etc. La seule limite étant que le mot doit être français, ou en tout cas utilisé dans le langage français (par exemple «call» est un mot anglais, mais utilisé par de nombreux français).Vous ne pouvez pas taper de phrase complète ou d’ensembles de mots car il n’y aurait pas de résultats associés."
     }, {
         key: "1",
-        question: "Nullam et sem ut felis maximus dapibus in nec lectus",
-        content: "Cras non porttitor erat. Morbi porttitor ligula ipsum, ut feugiat leo bibendum ut. In eu ante mollis, molestie orci vitae, finibus arcu. Pellentesque vel quam eget metus euismod facilisis. Curabitur nibh mauris, auctor nec leo et, facilisis auctor purus. Cras at lorem euismod, laoreet sem in, fringilla diam. Aenean facilisis nunc quis ipsum condimentum egestas"
+        question: "Puis-je modifier les résultats dans la roue ?",
+        content: "Vous ne pouvez pas modifier les résultats dans la roue mais vous pouvez cependant modifier la représentation des résultats, en cliquant simplement sur le bouton «texte» à côté de «data»."
     }, {
         key: "2",
-        question: "Orci varius natoque penatibus et magnis dis parturient ?",
-        content: "Ut porttitor metus velit, a fringilla odio mattis quis. Vestibulum turpis arcu, finibus eget tempus vel, gravida nec eros. Donec convallis, ex in ultricies efficitur, nulla arcu imperdiet odio, et elementum tellus ante vel est. Donec eget ligula sit amet nibh pretium iaculis. Sed id posuere ante. Vivamus tempor, nisi porta sagittis cursus, lacus arcu luctus quam facilisis auctor purus. Cras at lorem euismod sodales at ultricies eget, pulvinar a purus."
+        question: "De quelle période proviennent vos données ?",
+        content: "Les données sont affichées en temps réel car nous envoyons une requête au moment où vous recherchez le mot clé.Cela signifie que les résultats peuvent être différents d’un jour sur l’autre ou même d’une heure sur l’autre."
+    }, {
+        key: "3",
+        question: "Puis-je changer mon adresse e-mail ?",
+        content: "Vous pouvez changer votre adresse e-mail, en cliquant sur «mon compte» en haut à droite, puis dans «mon profil» et enfin en cliquant sur«modifier mon adresse e-mail»."
+    }, {
+        key: "4",
+        question: "Comment est-ce que je change mon mot de passe ?",
+        content: "Vous pouvez changer votre mot de passe, en cliquant sur «mon compte» en haut à droite, puis dans «mon profil» et enfin en cliquant sur «modifier mon mot de passe»."
+    }, {
+        key: "5",
+        question: "Suis-je engagé ?",
+        content: "Il n’y a pas d’engagement de durée quand vous souscrivez un abonnement sur Asking Franklin. Vous pouvez donc arrêter votre abonnement à tout moment, la résiliation sera effective à l’issue du mois entamé. Vous pourrez dès lors continuer à utiliser votre compte en offre gratuite."
+    }, {
+        key: "6",
+        question: "Comment exporter en CSV ?",
+        content: "Pour exporter les résultats en CSV, rien de plus simple, il vous suffit de cliquer sur le bouton «export CSV» sur la page des résultats de recherche."
+    }, {
+        key: "7",
+        question: "Combien de recherches ai-je le droit de faire chaque mois ?",
+        content: "Vous pouvez effectuer autant de recherches que vous le souhaitez chaquemois grâce à notre offre payante.Bien sûr, vous pouvez également profiter de Asking Franklin gratuitement,vous pourrez effectuer jusqu’à 3 recherches par jour."
+    }, {
+        key: "8",
+        question: "Le paiement est-il sécurisé ?",
+        content: "Le paiement est entièrement sécurisé grâce à notre prestataire agréé."
+    }, {
+        key: "9",
+        question: "Quels sont les moyens de paiement ?",
+        content: "Vous pouvez payer par carte bancaire: CB, MasterCard, Visa, American Express... etcToutes les cartes dans le monde entier sont supportées."
+    }, {
+        key: "10",
+        question: "Comment trouvez-vous les résultats ?",
+        content: "Nous sommes directement connectés à l’API de Google, ainsi les résultats sont affichés avec une certitude de 100%."
 }]
 
 export default class Faq extends React.Component {

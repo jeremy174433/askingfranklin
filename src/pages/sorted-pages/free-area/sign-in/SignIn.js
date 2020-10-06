@@ -65,6 +65,7 @@ export default class SignIn extends React.Component {
             return res.json();
         })
         .then(res => {
+            // console.log(res);
             if(res.error) {
                 this.setState({
                     error: true,

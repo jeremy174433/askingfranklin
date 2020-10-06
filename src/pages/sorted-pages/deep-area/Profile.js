@@ -333,7 +333,7 @@ export default class Profile extends React.Component {
         return (
             <div class="layout-style">
                 <Container id="profilePage" className="px-0 mt-6">
-                    {this.state.emailIsAlreadyTaken && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="L'email choisi est déjà utilisé par un autre compte"/> }
+                    {this.state.emailIsAlreadyTaken && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="L'email choisi n'est pas disponible, veuillez en choisir un différent"/> }
                     {this.state.emailChanged && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="La modification de votre email a été effectuée avec succès"/> }
                     {this.state.passwordChanged && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="La modification de votre mot de passe a été effectuée avec succès"/> }
                     {this.state.subscriptionState && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="La modification de votre abonnement a été effectuée avec succès"/> }
