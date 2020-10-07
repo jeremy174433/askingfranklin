@@ -170,8 +170,8 @@ export default class Faq extends React.Component {
                     <Row className="mx-0 my-5 w-100 d-flex flex-column">
                         <Col sm="12" className="question-faq d-flex flex-column text-left px-0 ">
                             <Accordion defaultActiveKey="-1">
-                                {accordionItems.map((accordionItem) =>
-                                    <AccordionItem eventKey={accordionItem.questions.key} title={accordionItem.questions.question} content={accordionItem.questions.content}></AccordionItem>
+                                {accordionItems[0].questions.map((accordionItem) =>
+                                    <AccordionItem eventKey={accordionItem.key} title={accordionItem.question} content={accordionItem.content}></AccordionItem>
                                 )}
                             </Accordion>
                         </Col>
