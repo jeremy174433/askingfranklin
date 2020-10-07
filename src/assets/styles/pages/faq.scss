@@ -9,13 +9,9 @@
         cursor: pointer;
         transition: .2s ease-in-out;
 
-        @include min-lg-rwd { 
-            max-width: calc(25% - 18px) !important; 
-            &:not(:last-child) { margin-right: 1.5rem; }
-        }
         @include min-md-rwd { 
-            max-width: calc(50% - 12px); 
-            &:nth-child(odd) { margin-right: 1.5rem; }
+            max-width: calc(33.33333% - 16px) !important; 
+            &:not(:last-child) { margin-right: 1.5rem; }
         }
 
         &:hover, &:focus { border-color: $primary-75; }
