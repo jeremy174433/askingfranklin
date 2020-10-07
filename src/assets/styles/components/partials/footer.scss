@@ -5,22 +5,55 @@
 
     p { color: $theme-color-secondary; }
 
+    .footer-title {
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+        @include fz-18;
+    }
+
     ul {
-        a {
-            transition: .2s ease-in-out;
-            &:hover, &:focus { text-decoration: none; }
-    
-            &.footer-link {
-                color: $theme-color-secondary;
-                &:hover, &:focus { background-color: $md-grey-35; }
+        li {
+            margin-left: -.5rem;
+            &:not(:last-child) { margin-bottom: .5rem; }
+            @include max-lg-rwd { 
+                text-align: center;
+                margin: 0 auto;
+            }
+
+            a {
+                display: block;
+                border-radius: .25rem;
+                padding: .5rem;
+                transition: .2s ease-in-out;
+                @include min-lg-rwd { width: fit-content; }
+                
+                &:hover, &:focus { text-decoration: none; }
+
+                &:not(:last-child) { margin-bottom: 1rem; }
+        
+                &.footer-link {
+                    color: $theme-color-secondary;
+                    &:hover, &:focus { background-color: $md-grey-35; }
+                }
             }
         }
 
         &.social-media-wrapper {
-            a {
-                width: 32px;
-                height: 32px;
-                &:hover, &:focus { background-color: $md-grey-35 }
+            li {
+                margin-bottom: 0;
+                &:not(:last-child) { margin-right: 1.5rem; }
+
+                a {
+                    width: 32px;
+                    height: 32px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    &:hover, &:focus { background-color: $md-grey-35; }
+
+                    svg { min-width: 18px; }
+                }
             }
         }
     }

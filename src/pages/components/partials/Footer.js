@@ -1,16 +1,21 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { 
+    Container,
+    Row,
+    Col
+} from 'react-bootstrap';
+import Logo from '../../../assets/img/svg/switch/Logo';
 import SocialMedia from '../../../assets/img/svg/switch/SocialMedia';
 
 export default class Footer extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
             is_sub: 0
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         var is_sub = localStorage.getItem('af_is_sub');
         this.setState({
             is_sub: is_sub
@@ -20,50 +25,69 @@ export default class Footer extends React.Component {
     render() {
         return (
             <footer id="footer" class="px-4 px-xl-5 py-5">
-                <Container className="px-0">
-                    <div class="pb-5">
-                        <ul class="d-flex flex-column flex-md-row align-items-center">
-                            <li>
-                                <a href="/" class="footer-link d-block py-2 px-3 mr-0 mr-md-3 mb-3 mb-md-0 rounded">Accueil</a>
-                            </li>
-                            {localStorage.getItem('af_is_sub') == 0 &&
+                <Container className="px-0 pt-5">
+                    <Row className="mx-0 pb-5 d-flex flex-column flex-lg-row">
+                        <Col lg="3" className="d-flex align-items-center align-items-lg-start pl-lg-0 mb-5 mb-lg-0 pb-5 pb-lg-0">
+                            <a href="/" class="mx-auto mx-lg-0">
+                                <Logo icon="white" width="200"/>
+                            </a>
+                        </Col>
+                        <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start mb-5 mb-lg-0">
+                            <p class="footer-title">Liens utiles</p>
+                            <ul class="d-flex flex-column">
                                 <li>
-                                    <a href="/tarifs" class="footer-link d-block py-2 px-3 mr-0 mr-md-3 mb-3 mb-md-0 rounded">Tarifs</a>
+                                    <a href="/" class="footer-link">Accueil</a>
                                 </li>
-                            }
-                            <li>
-                                <a href="/assistance" class="footer-link d-block py-2 px-3 mr-0 mr-md-3 mb-3 mb-md-0 rounded">Assistance</a>
-                            </li>
-                            <li>
-                                <a href="/mentions-legales" class="footer-link d-block py-2 px-3 mr-0 mr-md-3 mb-3 mb-md-0 rounded" rel="nofollow">Mentions légales</a>
-                            </li>
-                            <li>
-                                <a href="/conditions-generales-d-utilisation" class="footer-link d-block py-2 px-3 mr-0 mr-md-3 mb-3 mb-md-0 rounded" rel="nofollow">CGU</a>
-                            </li>
-                            <li>
-                                <a href="/conditions-generales-de-vente" class="footer-link d-block py-2 px-3 rounded" rel="nofollow">CGV</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between pt-5">
-                        <p class="text-center order-1 order-md-0">Asking Franklin, par <a href="https://sortvoices.fr" target="_blank" title="Ouvrir dans un nouvel onglet : sortvoices.fr">Sortvoices</a>. tous droits réservés.</p>
-                        <ul class="social-media-wrapper d-flex flex-row justify-content-center order-0 order-md-1 mb-5 mb-md-0">
-                            <li>
-                                <a href="https://www.facebook.com/sortvoices" target="_blank" class="d-flex align-items-center justify-content-center mr-4 rounded" rel="nofollow noopener" title="Ouvrir dans un nouvel onglet : Facebook">
-                                    <SocialMedia icon="facebook" height="18" fill="#FFF"/>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://twitter.com/sortvoices" target="_blank" class="d-flex align-items-center justify-content-center mr-4 rounded" rel="nofollow noopener" title="Ouvrir dans un nouvel onglet : Twitter">
-                                    <SocialMedia icon="twitter" width="18" fill="#FFF"/>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.linkedin.com/company/sortvoices/" target="_blank" class="d-flex align-items-center justify-content-center rounded" rel="nofollow noopener" title="Ouvrir dans un nouvel onglet : LinkedIn">
-                                    <SocialMedia icon="linkedin" width="18" fill="#FFF"/>
-                                </a>
-                            </li>
-                        </ul>
+                               
+                                    <li>
+                                        <a href="/tarifs" class="footer-link">Tarifs</a>
+                                    </li>
+                              
+                                <li>
+                                    <a href="/faq" class="footer-link">FAQ</a>
+                                </li>
+                                <li>
+                                    <a href="/contact" class="footer-link">Contact</a>
+                                </li>
+                            </ul>
+                        </Col>
+                        <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start mb-5 mb-lg-0">
+                            <p class="footer-title">La société</p>
+                            <ul class="d-flex flex-column">
+                                <li>
+                                    <a href="/mentions-legales" rel="nofollow" class="footer-link">Mentions légales</a>
+                                </li>
+                                <li>
+                                    <a href="/conditions-generales-d-utilisation"  rel="nofollow" class="footer-link">CGU</a>
+                                </li>
+                                <li>
+                                    <a href="/conditions-generales-de-vente" rel="nofollow" class="footer-link">CGV</a>
+                                </li>
+                            </ul>
+                        </Col>
+                        <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start">
+                            <p class="footer-title">Nos réseaux</p>
+                            <ul class="social-media-wrapper d-flex flex-row">
+                                <li>
+                                    <a href="https://www.facebook.com/askingfranklin/" target="_blank" rel="nofollow noopener" title="Ouvrir dans un nouvel onglet : Facebook">
+                                        <SocialMedia icon="facebook" height="18" fill="#FFF"/>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://twitter.com/AskingFranklin" target="_blank" rel="nofollow noopener" title="Ouvrir dans un nouvel onglet : Twitter">
+                                        <SocialMedia icon="twitter" width="18" fill="#FFF"/>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/company/asking-franklin/" target="_blank" rel="nofollow noopener" title="Ouvrir dans un nouvel onglet : LinkedIn">
+                                        <SocialMedia icon="linkedin" width="18" fill="#FFF"/>
+                                    </a>
+                                </li>
+                            </ul>
+                        </Col>
+                    </Row>
+                    <div class="d-flex justify-content-center pb-5 pb-sm-0 pt-5">
+                        <p class="fz-14">Asking Franklin, par <a href="https://sortvoices.fr" target="_blank" title="Ouvrir dans un nouvel onglet : sortvoices.fr">Sortvoices</a>. Tous droits réservés.</p>
                     </div>
                 </Container>
             </footer>

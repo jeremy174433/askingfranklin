@@ -23,7 +23,7 @@ export default class LegalNotices extends React.Component {
                         <p class="mb-3">
                             <span class="fw-600">Propriétaire du site :</span> <br/>
                             SAS Sortvoices, 75 avenue du 11 novembre – 33290 Blanquefort <br/>
-                            contact : <a href="tel:+33771592516">07 71 59 25 16</a> - <a href="mailto:contact@sortvoices.fr">contact@sortvoices.fr</a> <br/>
+                            contact : <a href="tel:+33771592516">07 71 59 25 16</a> - <a href="mailto:contact@sortvoices.fr">contact@askingfranklin.com</a> <br/>
                             RCS : 835 152 620 <br/>
                             SIRET : 83515262000018 <br/>
                             capital social : 1000€ <br/>

@@ -11,7 +11,7 @@ import Input from '../../components/form/Input';
 import FaqIcons from '../../../assets/img/svg/switch/FaqIcons';
 import Accordion from 'react-bootstrap/Accordion';
 import AccordionItem from '../../components/elements/AccordionItem';
-import LifeSaver from '../../../assets/img/svg//LifeSaver';
+import PaperPlane from '../../../assets/img/svg/PaperPlane';
 import SpeechBubble from '../../../assets/img/svg//SpeechBubble';
 import { Link } from 'react-router-dom'; 
 
@@ -177,12 +177,12 @@ export default class Faq extends React.Component {
                         </Col>
                     </Row>
                     <Row className="faq-contact-infos mx-0 mt-5 pt-4 pb-4 pb-md-5 px-3 w-100 d-flex flex-column flex-nowrap rounded">
-                        <p class="text-left">Vous n'avez pas trouvé l'information que vous cherchez ? Contactez-nous.</p>
+                        <p class="text-left fw-600">Vous n'avez pas trouvé l'information que vous cherchez ?</p>
                         <div class="d-flex flex-row justify-content-center flex-wrap mt-5">
                             <Col sm="12" md="4" lg="3" className="faq-contact-infos-block px-0 mr-0 mr-md-5 mb-4 mb-md-0">
-                                <Link to="/assistance" class="d-flex flex-column align-items-center p-3 rounded">
-                                    <LifeSaver height="20" fill="#2B2B2B"/>
-                                    <span class="mt-3 mb-2 fw-600">Assistance</span>
+                                <Link to="/contact" class="d-flex flex-column align-items-center p-3 rounded">
+                                    <PaperPlane height="20" fill="#2B2B2B"/>
+                                    <span class="mt-3 mb-2 fw-600">Contactez-nous</span>
                                     <span>Laissez-nous un message</span>
                                 </Link>
                             </Col>

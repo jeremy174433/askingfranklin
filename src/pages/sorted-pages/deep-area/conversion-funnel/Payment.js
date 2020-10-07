@@ -29,7 +29,7 @@ export default class Payment extends React.Component {
 			plans: [],
 			selectedPlan: 1,
 			errorPayment: false,
-			isLoadingPayment:false
+			isLoadingPayment: false
 		}
 		this.handleCloseAlert = this.handleCloseAlert.bind(this);
 		this.handlePaymentError = this.handlePaymentError.bind(this);
@@ -72,8 +72,8 @@ export default class Payment extends React.Component {
 					});
 				}
 			}).catch(error=>{
-                if(error == "TypeError: Failed to fetch"){
-                    refreshTokenFnc(this.componentDidMount,false)
+                if(error == "TypeError: Failed to fetch") {
+                    refreshTokenFnc(this.componentDidMount, false);
                 }
             })
 			fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-product', {
@@ -89,8 +89,8 @@ export default class Payment extends React.Component {
 				return res.json();
 			})
 			.then(res => {
-				if (res.message === "The incoming token has expired"){
-                  refreshTokenFnc(this.componentDidMount,false)
+				if (res.message === "The incoming token has expired") {
+                  refreshTokenFnc(this.componentDidMount, false)
                 } 
 				else if(res.message === 'Unauthorized') {
 					this.setState({
@@ -102,28 +102,28 @@ export default class Payment extends React.Component {
 						product: res.message
 					});
 				}
-			}).catch(error=>{
-                if(error == "TypeError: Failed to fetch"){
-                    refreshTokenFnc(this.componentDidMount,false)
+			}).catch(error => {
+                if(error === "TypeError: Failed to fetch") {
+                    refreshTokenFnc(this.componentDidMount, false);
                 }
-            })
-
+			})
+			
 			setTimeout(
 				function() {
 					this.setState({ 
 						isLoading: false
 					});
 				}
-				.bind(this), 3000
+				.bind(this), 1000
 			);
 		}
 	}
 
 	handlePaymentError(reason) {
-		console.log(reason)
+		console.log(reason);
 		this.setState({
-			errorPayment:reason,
-			isLoadingPayment:false
+			errorPayment: reason,
+			isLoadingPayment: false
 		});
 	}
 

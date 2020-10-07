@@ -10,7 +10,10 @@
         height: min-content;
         top: 6rem;
         margin-top: 6rem;
-        @include min-xl-rwd { flex-basis: calc(25% - 48px) !important; }
+        @include min-xl-rwd { 
+            flex-basis: calc(25% - 48px) !important;
+            margin-bottom: 3rem;
+        }
         @include max-xl-rwd { position: initial !important; }
 
         h1 {

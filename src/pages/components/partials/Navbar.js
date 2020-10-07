@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Logo from '../../../assets/img/svg/Logo';
+import Logo from '../../../assets/img/svg/switch/Logo';
 import People from '../../../assets/img/svg/navigation/People';
 import Rocket from '../../../assets/img/svg/navigation/Rocket';
 import PmyBtn from '../button/PmyBtn';
@@ -55,7 +55,7 @@ export default class Navbar extends React.Component {
             <nav id="navbar" class="px-4 px-xl-5 py-2 w-100 d-flex justify-content-center position-fixed">
                 <Container className="px-0 d-flex flex-lg-row align-items-center justify-content-lg-center">
                     <Link to="/" class="mr-4 mr-md-5">
-                        <Logo width="200"/>
+                        <Logo icon="global" width="200"/>
                     </Link>
                     <div class="d-none d-md-block ml-auto">
                             {
