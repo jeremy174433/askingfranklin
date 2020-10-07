@@ -69,6 +69,7 @@ export default class Assistance extends React.Component {
         })
         .then((res) => res.json())
         .then(res => {
+            console.log(res)
             if(res.err === null) {
                 this.setState({
                     alertIsShowed: true,

@@ -22,7 +22,7 @@ export default class SignUpConfirmation extends React.Component {
             return res.json();
         })
         .then(res => {
-            // console.log(res);
+            console.log(res);
         })
     }
 
