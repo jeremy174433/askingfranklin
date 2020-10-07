@@ -1,13 +1,10 @@
 import React from 'react';
-import H1 from '../../../components/elements/title/H1';
-import { 
-    Link, 
-    Redirect 
-} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { 
     Container,
     Col 
 } from 'react-bootstrap';
+import H1 from '../../../components/elements/title/H1';
 import Input from '../../../components/form/Input';
 import PmyBtn from '../../../components/button/PmyBtn';
 import ArrowTextLink from '../../../components/elements/link/ArrowTextLink';
@@ -65,7 +62,7 @@ export default class SignIn extends React.Component {
             return res.json();
         })
         .then(res => {
-            console.log(res)
+            // console.log(res);
             if(res.error) {
                 this.setState({
                     error: true,

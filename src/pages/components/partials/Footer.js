@@ -28,7 +28,7 @@ export default class Footer extends React.Component {
                             </li>
                             {localStorage.getItem('af_is_sub') == 0 &&
                                 <li>
-                                    <a href="/tarifs" class="footer-link d-block py-2 px-3 mr-0 mr-md-3 mb-3 mb-md-0 rounded">Devenir Pro</a>
+                                    <a href="/tarifs" class="footer-link d-block py-2 px-3 mr-0 mr-md-3 mb-3 mb-md-0 rounded">Tarifs</a>
                                 </li>
                             }
                             <li>

@@ -1,10 +1,10 @@
 import React from 'react';
-import H1 from '../../../components/elements/title/H1';
 import { 
     Container,
     Col 
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import H1 from '../../../components/elements/title/H1';
 import Input from '../../../components/form/Input';
 import PmyBtn from '../../../components/button/PmyBtn';
 import ArrowTextLink from '../../../components/elements/link/ArrowTextLink';
