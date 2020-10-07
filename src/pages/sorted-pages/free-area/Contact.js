@@ -10,7 +10,7 @@ import Textarea from '../../components/form/Textarea';
 import PmyBtn from '../../components/button/PmyBtn';
 import Alert from '../../components/elements/Alert';
 
-export default class Assistance extends React.Component {
+export default class Contact extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -94,7 +94,7 @@ export default class Assistance extends React.Component {
         return (
             <div class="layout-style">
                 {this.state.alertIsShowed && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre message a bien été envoyé, nous reviendrons rapidement vers vous"/> }
-                <Container id="assistance" className="px-0 mt-6 w-100 text-center d-flex flex-column align-items-center">
+                <Container id="contact" className="px-0 mt-6 w-100 text-center d-flex flex-column align-items-center">
                     <H1 title="Contact &amp; Assistance"/>
                     <form onSubmit={this.handleSubmitForm} method="POST" class="block-style d-flex flex-column w-100 mt-5">
                         <Row className="mx-0 d-flex flex-column flex-lg-row">
@@ -102,7 +102,7 @@ export default class Assistance extends React.Component {
                                 <Input
                                     type="email"
                                     label="Votre adresse email"
-                                    for="assistanceEmail"
+                                    for="contactEmail"
                                     name={this.for}
                                     id={this.for}
                                     onChange={this.handleEmailChange}
@@ -116,7 +116,7 @@ export default class Assistance extends React.Component {
                                 <Input
                                     type="text"
                                     label="Sujet"
-                                    for="assistanceSubject"
+                                    for="contactSubject"
                                     name={this.for}
                                     id={this.for}
                                     onChange={this.handleSubjectChange}
@@ -131,7 +131,7 @@ export default class Assistance extends React.Component {
                             <Textarea
                                 label="Votre message"
                                 placeholder="Une demande, une question, laissez nous votre message..."
-                                for="assistanceMessage"
+                                for="contactMessage"
                                 name={this.for}
                                 id={this.for}
                                 onChange={this.handleContentChange}

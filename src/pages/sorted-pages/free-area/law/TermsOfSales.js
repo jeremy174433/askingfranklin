@@ -14,7 +14,7 @@ export default class TermsOfSales extends React.Component {
     render() {
 
         const siteURL = <Link to="/">www.askingfranklin.com</Link>;
-        const contactEmail = <a href="mailto:contact@sortvoices.fr">contact@sortvoices.fr</a>;
+        const contactEmail = <a href="mailto:contact@askingfranklin.com">contact@askingfranklin.com</a>;
 
         const article1 = 'Article 1 : Définitions';
         const article2 = 'Article 2 : Abonnement';
