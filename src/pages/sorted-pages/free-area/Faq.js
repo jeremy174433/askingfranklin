@@ -135,7 +135,7 @@ export default class Faq extends React.Component {
             var ret = []
             for (var i= 0; i < accordionItems.length; i++) {
                 for(var j= 0; j < accordionItems[i].questions.length; j++){
-                    if (accordionItems[i].questions[j].question.includes(e.target.value) || accordionItems[i].questions[j].content.includes(e.target.value)){
+                    if (accordionItems[i].questions[j].question.toLowerCase().includes(e.target.value.toLowerCase()) || accordionItems[i].questions[j].content.toLowerCase().includes(e.target.value.toLowerCase())){
                         ret.push(accordionItems[i].questions[j])
                     }
                 }
@@ -172,7 +172,7 @@ export default class Faq extends React.Component {
                     </Row>
                     {!this.state.useFiltered && <Row className="mx-0 mb-5 w-100 d-flex flex-row">
                         {accordionItems.map((accordionItem,idx) =>
-                            <Col num={idx} sm="12" md="4" className="categorie-list-faq" onClick={this.changeCategory}>
+                            <Col num={idx} sm="12" md="4" className={idx === this.state.selectedCategoryIndex ? "categorie-list-faq categorie-list-faq-selected" : "categorie-list-faq"} onClick={this.changeCategory}>
                                 <FaqIcons icon={accordionItem.categoryIcon} height="24"/>
                                 <p class="mt-4">{accordionItem.category}</p>
                             </Col>
