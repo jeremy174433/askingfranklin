@@ -9,7 +9,6 @@ import * as d3 from 'd3';
 export default class AFDataviz extends React.Component {
 
     drawChart(propsData) {
-
         var dataret = [{id: this.props.keywordSearch, value: ""}];
 
         if(this.props.related) {
@@ -70,7 +69,8 @@ export default class AFDataviz extends React.Component {
         .attr("transform", function(d) { return "translate(" + project(d.x, d.y) + ")"; });
 
         node.append("circle")
-        .attr("r", 2.5);
+        .attr("r", 3)
+        .attr("fill","rgba('#673AB7', .5)")
 
         node.append("text")
         .attr("dy", "0.30em")
@@ -91,9 +91,8 @@ export default class AFDataviz extends React.Component {
     }
 
     render() {
-
         return (
-            <Row className="asking-franklin-dataviz px-3 pb-3 mx-0">
+            <Row id={this.props.idSvg} className="asking-franklin-dataviz px-3 pb-3 mx-0">
                 <Col sm="12" className="d-flex justify-content-center align-items-center p-0" style={{ minWidth: 'max-content' }}>
                     <svg style={{ overflow: 'visible' }} height="700" width="700" ref={el => (this.svg = el)}/>
                     <Logo icon="picto" width="32" colorPrimary="#BDCCD4" colorSecondary="#FFF" className="position-absolute mt-5" style={{ opacity: '.75' }}/>

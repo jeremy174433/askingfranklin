@@ -5,6 +5,7 @@ import FeaturesIcons from '../../../assets/img/svg/switch/FeaturesIcons';
 import H4 from '../elements/title/H4';
 import AFDataviz from './AFDataviz';
 import AFTable from './AFTable';
+import * as saveSvgAsPng from 'save-svg-as-png';
 
 export default class AFWrapper extends React.Component {
     constructor(props) {
@@ -15,6 +16,8 @@ export default class AFWrapper extends React.Component {
         }
         this.selectFirst = this.selectFirst.bind(this);
         this.selectSecond = this.selectSecond.bind(this);
+        this.componentRef = React.createRef();
+        this.exportPng = this.exportPng.bind(this);
     }
 
     componentDidMount() {
@@ -52,6 +55,11 @@ export default class AFWrapper extends React.Component {
         });
     }
 
+    exportPng() {
+        saveSvgAsPng(this.componentRef, 'diagram.png');
+    };
+    
+    
     render() {
 
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
@@ -76,7 +84,7 @@ export default class AFWrapper extends React.Component {
                         <div class="asking-franklin-body">
                             {
                                 this.state.selectedPanel === 0 ?
-                                    <AFDataviz related={this.props.data.type === 'related' ? true : false} keywordSearch={this.props.keywordSearch} data={this.props.data.data}/>
+                                    <AFDataviz ref={this.componentRef} idSvg={'dataviz-' + this.props.data.type} related={this.props.data.type === 'related' ? true : false} keywordSearch={this.props.keywordSearch} data={this.props.data.data}/>
                                 :
                                     <AFTable data={this.props.data.data}/>
                             }

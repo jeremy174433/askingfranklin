@@ -70,11 +70,6 @@ export default class Profile extends React.Component {
                     });
                 }
             })
-            .catch(error => {
-                if(error == 'TypeError: Failed to fetch') {
-                    refreshTokenFnc(this.loadPageData, false)
-                };
-            })
             fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-email', {
                 headers: {
                     'Authorization': token
