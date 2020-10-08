@@ -166,7 +166,7 @@ export default class Faq extends React.Component {
             <div class="layout-style">
                 <Container id="faq" className="px-0 mt-6 w-100 text-center d-flex flex-column align-items-center">
 
-                    <Row className="mx-0 w-md-100">
+                    <Row className="mx-0 mb-5 w-md-100">
                         <Col sm="12" className="px-0 d-flex flex-column">
                             <H1 className="mb-5" title="Bonjour, comment pouvons-nous vous aider ?"/>
                             <Input onChange={this.handleSearchTopic} hideLabel={true} type="search" placeholder="Rechercher un sujet ou posez une question..." containerStyle="w-100 mr-0 mr-sm-4 mb-4 mb-sm-0 pb-0"/>
@@ -177,7 +177,7 @@ export default class Faq extends React.Component {
                     </Row>
 
                     {!this.state.useFiltered && 
-                        <Row className="mx-0 my-5 w-100 d-flex flex-row">
+                        <Row className="mx-0 mb-5 w-100 d-flex flex-row">
                             {accordionItems.map((accordionItem,idx) =>
                                 <Col onClick={this.changeCategory} num={idx} sm="12" md="4" className={idx === this.state.selectedCategoryIndex ? 'categorie-list-faq categorie-list-faq-selected' : 'categorie-list-faq'}>
                                     <FaqIcons icon={accordionItem.categoryIcon} height="24"/>
@@ -194,10 +194,16 @@ export default class Faq extends React.Component {
                         </Col>
                     }
                     {(!this.state.noResult && this.state.useFiltered) &&  
-                        <H2 className="mb-5" title={this.state.toShow.length + " résultats dans la FAQ"}/>
+                        <p class="fz-24 fw-600">
+                            {this.state.toShow.length === 1 ? 
+                                [this.state.toShow.length, <span class="pl-1 fz-20 fw-400"> résultat a été trouvé</span>] 
+                            :
+                                [this.state.toShow.length, <span class="pl-1 fz-20 fw-400"> résultats ont étés trouvés</span>]
+                            }
+                        </p>
                     }
                     {this.state.noResult &&  
-                        <p class="mt-4">Aucun résultat n'a pu être trouvé, essayer avec un autre terme</p>
+                        <p class="fz-20">Aucun résultat n'a pu être trouvé, essayer avec un autre terme</p>
                     }
 
                     <Row className="mx-0 my-5 w-100 d-flex flex-column">
