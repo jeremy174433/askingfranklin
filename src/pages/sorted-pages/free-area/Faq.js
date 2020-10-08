@@ -117,9 +117,13 @@ export default class Faq extends React.Component {
         super(props)
         this.state = {
             searchTopic: '',
-            toShow: []
+            toShow: [],
+            selectedCategoryIndex:0,
+            useFiltered:false,
+            noResult:false
         }
         this.handleSearchTopic = this.handleSearchTopic.bind(this);
+        this.changeCategory = this.changeCategory.bind(this)
     }
 
     componentDidMount() {
@@ -127,19 +131,32 @@ export default class Faq extends React.Component {
     }
 
     handleSearchTopic(e) {
-        this.setState({
-            searchTopic: e.target.value
-        });
-    }
-
-    search(searchTopic, questions){
-        var results = [];
-        for (var i= 0; i < questions.length; i++) {
-            if (questions[i].content.includes(searchTopic) || questions[i].question.includes(searchTopic)) {
-                results.push(questions[i]);
+        if(e.target.value.length > 4){
+            var ret = []
+            for (var i= 0; i < accordionItems.length; i++) {
+                for(var j= 0; j < accordionItems[i].questions.length; j++){
+                    if (accordionItems[i].questions[j].question.includes(e.target.value) || accordionItems[i].questions[j].content.includes(e.target.value)){
+                        ret.push(accordionItems[i].questions[j])
+                    }
+                }
             }
+            this.setState({
+                useFiltered:true,
+                toShow:ret,
+                noResult: ret.length == 0 ? true : false
+            })
+        } else {
+            this.setState({
+                useFiltered:false,
+                toShow:[]
+            })
         }
-        return results;
+
+    }
+    changeCategory(e){
+        this.setState({
+            selectedCategoryIndex:e.currentTarget.getAttribute('num')
+        })
     }
 
     render() {
@@ -150,29 +167,32 @@ export default class Faq extends React.Component {
                         <Col sm="12" className="px-0 d-flex flex-column">
                             <H1 className="mb-5" title="Bonjour, comment pouvons-nous vous aider ?"/>
                             <Input onChange={this.handleSearchTopic} hideLabel={true} type="search" placeholder="Rechercher un sujet ou posez une question..." containerStyle="w-100 mr-0 mr-sm-4 mb-4 mb-sm-0 pb-0"/>
-                            <p class="mt-5">Ou sélectionnez une catégorie pour trouver rapidement la réponse à votre question</p>
+                            {!this.state.useFiltered && <p class="mt-5">Ou sélectionnez une catégorie pour trouver rapidement la réponse à votre question</p>}
                         </Col>
                     </Row>
-                    <Row className="mx-0 mb-5 w-100 d-flex flex-row">
-                        {accordionItems.map((accordionItem) =>
-                            <Col sm="12" md="4" className="categorie-list-faq">
+                    {!this.state.useFiltered && <Row className="mx-0 mb-5 w-100 d-flex flex-row">
+                        {accordionItems.map((accordionItem,idx) =>
+                            <Col num={idx} sm="12" md="4" className="categorie-list-faq" onClick={this.changeCategory}>
                                 <FaqIcons icon={accordionItem.categoryIcon} height="24"/>
                                 <p class="mt-4">{accordionItem.category}</p>
                             </Col>
                         )}
-                    </Row>
-                    {accordionItems.map((accordionItem) =>
-                        <Col sm="12" className="px-0 mb-5">
-                            <H2 className="mb-4" title={accordionItem.categoryTitle}/>
-                            <H3 title={accordionItem.categorySubtitle}/>
-                        </Col>
-                    )}
+                    </Row> }
+                    {!this.state.useFiltered && <Col sm="12" className="px-0 mb-5">
+                        <H2 className="mb-4" title={accordionItems[this.state.selectedCategoryIndex].categoryTitle}/>
+                        <H3 title={accordionItems[this.state.selectedCategoryIndex].categorySubtitle}/>
+                    </Col> }
+                    {this.state.noResult &&  <H2 className="mb-4" title="Pas de résultats dans la FAQ"/>}
+                    {(!this.state.noResult && this.state.useFiltered) &&  <H2 className="mb-4" title={this.state.toShow.length + " résultats dans la FAQ"}/>}
                     <Row className="mx-0 my-5 w-100 d-flex flex-column">
                         <Col sm="12" className="question-faq d-flex flex-column text-left px-0 ">
                             <Accordion defaultActiveKey="-1">
-                                {accordionItems[0].questions.map((accordionItem) =>
+                                {!this.state.useFiltered ? accordionItems[this.state.selectedCategoryIndex].questions.map((accordionItem) =>
                                     <AccordionItem eventKey={accordionItem.key} title={accordionItem.question} content={accordionItem.content}></AccordionItem>
-                                )}
+                                ) : this.state.toShow.map((accordionItem) =>
+                                <AccordionItem eventKey={accordionItem.key} title={accordionItem.question} content={accordionItem.content}></AccordionItem>
+                            )}
+                                
                             </Accordion>
                         </Col>
                     </Row>

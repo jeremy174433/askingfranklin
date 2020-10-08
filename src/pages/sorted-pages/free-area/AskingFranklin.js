@@ -39,7 +39,7 @@ export default class AskingFranklin extends React.Component {
         this.setState({
             isLoading: true,
             dataIsLoaded: false,
-            keywordSearch: keyword
+            keywordSearch: keyword.replace(/-/g, ' ')
         }, () => {
             fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/suggestions?keyword=' + keyword, headers)
             .then((res) => res.json())
@@ -88,7 +88,7 @@ export default class AskingFranklin extends React.Component {
 
     handleKeywordChange(e) {
         this.setState({
-            newKeywordSearch: e.target.value
+            newKeywordSearch: e.target.value.replace(/-/g, ' ')
         });
     }
 
@@ -139,7 +139,7 @@ export default class AskingFranklin extends React.Component {
             return  <div class="layout-style"> 
                         <Container id="askingFranklin" className="px-0">
                             <main class="d-flex flex-column flex-xl-row">
-                                <AFStickyMenu searchContent={this.state.keywordSearch.replace(/-/g, ' ')} dataNumber={this.state.dataKw} handleNoData={this.handleNoData}/>
+                                <AFStickyMenu searchContent={this.state.keywordSearch} dataNumber={this.state.dataKw} handleNoData={this.handleNoData}/>
                                 <Col className="col-12 col-xl-9 px-0 mb-5 w-100">
                                     {this.state.dataKw.data.map((x) => {
                                         return <AFWrapper keywordSearch={this.state.keywordSearch} data={x}/>
