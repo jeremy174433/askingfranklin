@@ -20,6 +20,7 @@ export default class ForgotPassword extends React.Component {
             newPassword: '',
             pwdDefaultType: 'password',
             success: false,
+            alertIsShowedCodeSent: false,
             alertIsShowed: false,
             error: false,
             alertIsShowedError: false,
@@ -33,7 +34,6 @@ export default class ForgotPassword extends React.Component {
         this.handleCode = this.handleCode.bind(this);
         this.handleNewPassword = this.handleNewPassword.bind(this);
         this.handleSubmitConfirm = this.handleSubmitConfirm.bind(this);
-        this.handleCloseAlertError = this.handleCloseAlertError.bind(this);
         this.handleInputType = this.handleInputType.bind(this);
     }
 
@@ -65,6 +65,7 @@ export default class ForgotPassword extends React.Component {
 
     handleSubmitConfirm(event) {
         event.preventDefault();
+        this.handleCloseAlert();
         fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/confirm-forgot-password', {
             method: 'POST',
             body: JSON.stringify({ code: this.state.code, password: this.state.newPassword, username: this.state.email })
@@ -100,6 +101,7 @@ export default class ForgotPassword extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        this.handleCloseAlert();
         fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/forgot-password', {
             method: 'POST',
             body: JSON.stringify({ username: this.state.email })
@@ -109,6 +111,8 @@ export default class ForgotPassword extends React.Component {
         })
         .then(res => {
             this.setState({
+                success: true,
+                alertIsShowedCodeSent: true,
                 emailSent: true
             });
         })
@@ -117,12 +121,8 @@ export default class ForgotPassword extends React.Component {
     handleCloseAlert() {
         this.setState({
             success: false,
-            alertIsShowed: false
-        });
-    }
-    
-    handleCloseAlertError() {
-        this.setState({
+            alertIsShowedCodeSent: false,
+            alertIsShowed: false,
             error: false,
             alertIsShowedError: false
         });
@@ -131,9 +131,10 @@ export default class ForgotPassword extends React.Component {
     render() {
         return (
             <div id="forgotPassword" class="layout-style">
+                {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowedCodeSent ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Un code de vérification vient d'être envoyé sur l'email associée à votre compte"/> }
                 {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg={['Votre mot de passe a bien été changé. Vous pouvez maintenant ', <Link to='/connexion'>vous connecter</Link>]}/> }
-                {this.state.error && <Alert onClick={this.handleCloseAlertError} className={this.state.alertIsShowedError ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="Une erreur est survenue. Vérifiez votre code et votre nouveau mot de passe"/> }
-                {this.state.error && <Alert onClick={this.handleCloseAlertError} className={this.state.alertIsShowedLimit ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="Une erreur est survenue. La limite de requête a été atteinte, réessayez dans quelques minutes"/> }
+                {this.state.error && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowedError ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="Une erreur est survenue. Vérifiez votre code et votre nouveau mot de passe"/> }
+                {this.state.error && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowedLimit ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="Une erreur est survenue. La limite de requête a été atteinte, réessayez dans quelques minutes"/> }
                 {!this.state.emailSent ? 
                     <Container className="px-0 mt-6">
                         <H1 className="mb-5" title="Mot de passe oublié"/>
@@ -162,7 +163,7 @@ export default class ForgotPassword extends React.Component {
                     </Container>
                 :
                     <Container className="px-0 mt-6">
-                        <H1 className="mb-5 pb-5" title="Mot de passe oublié"/>
+                        <H1 className="mb-5" title="Mot de passe oublié"/>
                         <form onSubmit={this.handleSubmitConfirm} method="POST">
                             <Col sm="12" lg="8" xl="6" className="px-0 d-flex flex-column">
                                 <Input 

@@ -50,14 +50,14 @@
     .block-wrapper { 
         padding-top: 6rem;
 
-        button[disabled]:hover { color: $theme-color-secondary !important; } // Override
-       
+        
+        .asking-franklin-header {
+            .btn-export-to-png { @include min-md-rwd { top: -56px; } }
+        }
         .asking-franklin-body { @include scroll-x(auto); }
         .asking-franklin-dataviz {
             min-height: 1000px;
-            > div {
-                @include max-custom-rwd(1366){ padding: 0 6rem!important; }
-            }
+            > div { @include max-custom-rwd(1366) { padding: 0 6rem !important; } } 
         }
     }
 

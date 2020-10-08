@@ -2,10 +2,11 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import H1 from '../../components/elements/title/H1';
 import H4 from '../../components/elements/title/H4';
+import Tabs from '../../components/button/Tabs';
+import PmyBtn from '../../components/button/PmyBtn';
 import Input from '../../components/form/Input';
 import EyeShowHide from '../../../assets/img/svg/switch/EyeShowHide';
 import Checkbox from '../../components/form/Checkbox';
-import PmyBtn from '../../components/button/PmyBtn';
 import Alert from '../../components/elements/Alert';
 import FeaturesList from '../../components/elements/FeaturesList';
 import { refreshTokenFnc } from '../../../utils/refreshToken';
@@ -339,14 +340,10 @@ export default class Profile extends React.Component {
                     {this.state.subscriptionState && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="La modification de votre abonnement a été effectuée avec succès"/> }
                     <div class="block-style">
                         <H1 className="mb-3" title="Paramètres"/>
-                        <ul class="d-flex flex-row align-items-center flex-wrap">
-                            <li class={this.state.tabActive === 0 ? 'link-active mt-4 mr-0 mr-sm-4 w-sm-100' : 'mt-4 mr-0 mr-sm-4 w-sm-100'}>
-                                <PmyBtn onClick={this.handleSelectAccount} isDisabled={this.state.tabActive === 0} btnIsMediumPmyOutlineLight textBtn="Compte" className={this.state.tabActive === 0 ? 'pmy-btn-full w-sm-100' : 'w-sm-100'} containerStyle="w-sm-100"/>
-                            </li>
-                            <li class={this.state.tabActive === 1 ? 'link-active mt-4 w-sm-100' : 'mt-4 w-sm-100'}>
-                                <PmyBtn onClick={this.handleSelectSubscription} isDisabled={this.state.tabActive === 1} btnIsMediumPmyOutlineLight textBtn="Abonnement" className={this.state.tabActive === 1 ? 'pmy-btn-full w-sm-100' : 'w-sm-100'} containerStyle="w-sm-100"/>
-                            </li>
-                        </ul>
+                        <div class="d-flex flex-row flex-wrap mt-5">
+                            <Tabs onClick={this.handleSelectAccount} isDisabled={this.state.tabActive === 0} textTab="Compte" title="Compte" className={this.state.tabActive === 0 ? 'pmy-tab-selected' : ''}/>
+                            <Tabs onClick={this.handleSelectSubscription} isDisabled={this.state.tabActive === 1} textTab="Abonnement" title="Abonnement" className={this.state.tabActive === 1 ? 'pmy-tab-selected' : ''}/>
+                        </div>
                         <main class="px-md-3 mx-md-3 mb-3">
                             {this.state.tabActive === 0 ?
                                 <section class="mt-6">

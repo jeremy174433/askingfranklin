@@ -70,8 +70,8 @@ export default class App extends React.Component {
                         <Route path="/conditions-generales-de-vente" component={TermsOfSales}/>
                         <Route path="*" component={Error404}/>
                     </Switch>
+                    <Footer/>
                 </Router>
-                <Footer/>
                 <BackToTop showAt={2500} speed={1000} easing="easeOutSine">
                     <ArrowLight width="22" fill="#FFF"/>
                 </BackToTop>
