@@ -134,7 +134,7 @@ export default class Faq extends React.Component {
         if(e.target.value.length > 2) {
             var ret = [];
             for (var i= 0; i < accordionItems.length; i++) {
-                for(var j= 0; j < accordionItems[i].questions.length; j++) {
+                for(var j= 0; j < accordionItems[i].questions.length; j++){
                     if (accordionItems[i].questions[j].question.toLowerCase().includes(e.target.value.toLowerCase()) || accordionItems[i].questions[j].content.toLowerCase().includes(e.target.value.toLowerCase())){
                         ret.push(accordionItems[i].questions[j])
                     }
@@ -157,7 +157,7 @@ export default class Faq extends React.Component {
 
     changeCategory(e) {
         this.setState({
-            selectedCategoryIndex: e.currentTarget.getAttribute('num')
+            selectedCategoryIndex: parseInt(e.currentTarget.getAttribute('num'))
         });
     }
 
