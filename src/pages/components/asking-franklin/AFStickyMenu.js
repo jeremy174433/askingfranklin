@@ -4,6 +4,7 @@ import Scrollspy from 'react-scrollspy';
 import AFStickyMenuList from './AFStickyMenuList';
 import { CSVLink } from 'react-csv';
 import PmyBtn from '../button/PmyBtn';
+import FeaturesIcons from '../../../assets/img/svg/switch/FeaturesIcons';
 
 export default class AFStickyMenu extends React.Component {
 
@@ -44,7 +45,7 @@ export default class AFStickyMenu extends React.Component {
                 </div>
                 <div class="sticky-menu-footer pb-3 px-3">
                     <CSVLink data={this.exportCSV()} filename={this.props.searchContent + "_AskingFranklin.csv"} className="text-decoration-none">
-                        <PmyBtn btnIsMediumPmyOutlineFull textBtn="Exporter en CSV"/>
+                        <PmyBtn type="button" btnIsMediumPmyOutlineFull textBtn="Exporter en CSV" title="Exporter en CSV" iconBtnBefore={<FeaturesIcons icon="file"/>}/>
                     </CSVLink>
                 </div>
             </Col>

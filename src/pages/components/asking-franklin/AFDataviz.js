@@ -9,7 +9,6 @@ import * as d3 from 'd3';
 export default class AFDataviz extends React.Component {
 
     drawChart(propsData) {
-        console.log(this.props.keywordSearch)
         var dataret = [{id: this.props.keywordSearch, value: ""}];
 
         if(this.props.related) {

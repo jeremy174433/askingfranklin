@@ -1,13 +1,11 @@
 import React from 'react';
 import Loader from '../../components/elements/Loader';
+import { Redirect } from 'react-router-dom';
 import AFStickyMenu from '../../components/asking-franklin/AFStickyMenu';
 import { 
     Container, 
     Col 
 } from 'react-bootstrap';
-import { 
-    Redirect 
-} from 'react-router-dom';
 import AFWrapper from '../../components/asking-franklin/AFWrapper';
 import FormRequestFranklin from '../../components/form/FormRequestFranklin';
 import { refreshTokenFnc } from '../../../utils/refreshToken';

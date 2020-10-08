@@ -48,7 +48,7 @@ export default class MobileMenu extends React.Component {
                                     <li>
                                         <Link to="/tarifs" onClick={this.handleMobileMenuClicked} class="nav-link d-flex flex-row py-2 px-3 rounded">
                                             <Rocket width="16" fill="#FFF"/>
-                                            <span class="ml-3">Devenir Pro</span>
+                                            <span class="ml-3">Tarifs</span>
                                         </Link>
                                     </li>
                                 }

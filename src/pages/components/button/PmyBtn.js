@@ -4,7 +4,7 @@ export default class PmyBtn extends React.Component {
 
     render() {
 
-        const baseDefaultClass = ' d-flex flex-row align-items-center justify-content-center rounded fw-600 fz-18 ';
+        const baseDefaultClass = ' d-flex flex-row align-items-center justify-content-center rounded fw-600 fz-18';
         const defaultClass = this.props.className ? this.props.className + baseDefaultClass : baseDefaultClass;
 
         const defaultPmyOutlineLight = ' pmy-btn pmy-btn-outline-light ';
@@ -65,15 +65,15 @@ export default class PmyBtn extends React.Component {
                                 : this.props.customLinkClass && this.props.customLinkClass
                             }
                         >
-                            {this.props.iconLinkBefore && <span class="mr-3">{this.props.iconLinkBefore}</span> }
+                            {this.props.iconLinkBefore && <span class="d-flex align-items-center mr-3">{this.props.iconLinkBefore}</span> }
                             {this.props.textLink}
-                            {this.props.iconLinkAfter && <span class="ml-3">{this.props.iconLinkAfter}</span> }
+                            {this.props.iconLinkAfter && <span class="d-flex align-items-center ml-3">{this.props.iconLinkAfter}</span> }
                         </a>
                     }
 
-                    {this.props.iconBtnBefore && <span class="mr-3">{this.props.iconBtnBefore}</span> }
+                    {this.props.iconBtnBefore && <span class="d-flex align-items-center mr-3">{this.props.iconBtnBefore}</span> }
                     {this.props.textBtn && <span>{this.props.textBtn}</span> }
-                    {this.props.iconBtnAfter && <span class="ml-3">{this.props.iconBtnAfter}</span> }
+                    {this.props.iconBtnAfter && <span class="d-flex align-items-center ml-3">{this.props.iconBtnAfter}</span> }
 
                 </button>
             </div>

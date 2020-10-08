@@ -4,6 +4,7 @@ import {
     Row,
     Col
 } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Logo from '../../../assets/img/svg/switch/Logo';
 import SocialMedia from '../../../assets/img/svg/switch/SocialMedia';
 
@@ -28,26 +29,26 @@ export default class Footer extends React.Component {
                 <Container className="px-0 pt-5">
                     <Row className="mx-0 pb-5 d-flex flex-column flex-lg-row">
                         <Col lg="3" className="d-flex align-items-center align-items-lg-start pl-lg-0 mb-5 mb-lg-0 pb-5 pb-lg-0">
-                            <a href="/" class="mx-auto mx-lg-0">
+                            <Link to="/" class="mx-auto mx-lg-0">
                                 <Logo icon="white" width="200"/>
-                            </a>
+                            </Link>
                         </Col>
                         <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start mb-5 mb-lg-0">
                             <p class="footer-title">Liens utiles</p>
                             <ul class="d-flex flex-column">
                                 <li>
-                                    <a href="/" class="footer-link">Accueil</a>
+                                    <Link to="/" class="footer-link">Accueil</Link>
                                 </li>
-                               
+                                {localStorage.getItem('af_is_sub') == 0 &&
                                     <li>
-                                        <a href="/tarifs" class="footer-link">Tarifs</a>
+                                        <Link to="/tarifs" class="footer-link">Tarifs</Link>
                                     </li>
-                              
+                                }
                                 <li>
-                                    <a href="/faq" class="footer-link">FAQ</a>
+                                    <Link to="/faq" class="footer-link">FAQ</Link>
                                 </li>
                                 <li>
-                                    <a href="/contact" class="footer-link">Contact</a>
+                                    <Link to="/contact" class="footer-link">Contact</Link>
                                 </li>
                             </ul>
                         </Col>
@@ -55,13 +56,13 @@ export default class Footer extends React.Component {
                             <p class="footer-title">La société</p>
                             <ul class="d-flex flex-column">
                                 <li>
-                                    <a href="/mentions-legales" rel="nofollow" class="footer-link">Mentions légales</a>
+                                    <Link to="/mentions-legales" rel="nofollow" class="footer-link">Mentions légales</Link>
                                 </li>
                                 <li>
-                                    <a href="/conditions-generales-d-utilisation"  rel="nofollow" class="footer-link">CGU</a>
+                                    <Link to="/conditions-generales-d-utilisation"  rel="nofollow" class="footer-link">CGU</Link>
                                 </li>
                                 <li>
-                                    <a href="/conditions-generales-de-vente" rel="nofollow" class="footer-link">CGV</a>
+                                    <Link to="/conditions-generales-de-vente" rel="nofollow" class="footer-link">CGV</Link>
                                 </li>
                             </ul>
                         </Col>
@@ -87,7 +88,7 @@ export default class Footer extends React.Component {
                         </Col>
                     </Row>
                     <div class="d-flex justify-content-center pb-5 pb-sm-0 pt-5">
-                        <p class="fz-14">Asking Franklin, par <a href="https://sortvoices.fr" target="_blank" title="Ouvrir dans un nouvel onglet : sortvoices.fr">Sortvoices</a>. Tous droits réservés.</p>
+                        <p class="fz-14">Asking Franklin {(new Date().getFullYear())}, par <a href="https://sortvoices.fr" target="_blank" title="Ouvrir dans un nouvel onglet : sortvoices.fr">Sortvoices</a>. Tous droits réservés.</p>
                     </div>
                 </Container>
             </footer>

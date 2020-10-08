@@ -1,6 +1,7 @@
 import React from 'react';
+import Tabs from '../button/Tabs';
 import PmyBtn from '../button/PmyBtn';
-import PrimaryButton from '../button/PrimaryButton';
+import FeaturesIcons from '../../../assets/img/svg/switch/FeaturesIcons';
 import H4 from '../elements/title/H4';
 import AFDataviz from './AFDataviz';
 import AFTable from './AFTable';
@@ -16,8 +17,7 @@ export default class AFWrapper extends React.Component {
         this.selectFirst = this.selectFirst.bind(this);
         this.selectSecond = this.selectSecond.bind(this);
         this.componentRef = React.createRef();
-        this.exportPng = this.exportPng.bind(this)
-
+        this.exportPng = this.exportPng.bind(this);
     }
 
     componentDidMount() {
@@ -54,9 +54,10 @@ export default class AFWrapper extends React.Component {
             selectedPanel: 1
         });
     }
+
     exportPng() {
-        saveSvgAsPng(this.componentRef, "diagram.png")
-      };
+        saveSvgAsPng(this.componentRef, 'diagram.png');
+    };
     
     
     render() {
@@ -72,16 +73,18 @@ export default class AFWrapper extends React.Component {
                                 <H4 className="pb-3 mb-3 fw-600" title={this.state.title}/>
                                 <span class="d-block d-lg-none ml-2 mb-3 pb-3 fz-14">({this.props.data.data.map((x) => x.suggestions.length).reduce(reducer)})</span>
                             </div>
-                            <div class="d-flex flex-row flex-wrap">
-                                <PrimaryButton handleChange={this.selectFirst} isSelected={this.state.selectedPanel === 0 && true} text="Graphique"/>
-                                <PrimaryButton handleChange={this.selectSecond} isSelected={this.state.selectedPanel === 1 && true} text="Tableau"/>
-                                <PmyBtn onClick={this.exportPng} textBtn="Exporter en PNG" btnIsMediumPmyOutlineLight/>
+                            <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between">
+                                <div class="d-flex flex-row flex-wrap">
+                                    <Tabs onClick={this.selectFirst} isDisabled={this.state.selectedPanel === 0} textTab="Graphique" title="Graphique" className={this.state.selectedPanel === 0 && 'pmy-tab-selected'}/>
+                                    <Tabs onClick={this.selectSecond} isDisabled={this.state.selectedPanel === 1} textTab="Tableau" title="Tableau" className={this.state.selectedPanel === 1 && 'pmy-tab-selected'}/>
+                                </div>
+                                {this.state.selectedPanel === 0 && <PmyBtn type="button" btnIsMediumPmyOutlineFull textBtn="Exporter en PNG" title="Exporter le graphique en PNG" iconBtnBefore={<FeaturesIcons icon="image"/>} containerStyle="btn-export-to-png position-relative mt-5 mt-md-0"/> }
                             </div>
                         </div>
                         <div class="asking-franklin-body">
                             {
                                 this.state.selectedPanel === 0 ?
-                                    <AFDataviz ref={this.componentRef} idSvg={"dataviz-"+this.props.data.type} related={this.props.data.type === 'related' ? true : false} keywordSearch={this.props.keywordSearch} data={this.props.data.data}/>
+                                    <AFDataviz ref={this.componentRef} idSvg={'dataviz-' + this.props.data.type} related={this.props.data.type === 'related' ? true : false} keywordSearch={this.props.keywordSearch} data={this.props.data.data}/>
                                 :
                                     <AFTable data={this.props.data.data}/>
                             }

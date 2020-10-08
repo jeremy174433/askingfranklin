@@ -118,12 +118,12 @@ export default class Faq extends React.Component {
         this.state = {
             searchTopic: '',
             toShow: [],
-            selectedCategoryIndex:0,
-            useFiltered:false,
-            noResult:false
+            selectedCategoryIndex: 0,
+            useFiltered: false,
+            noResult: false
         }
         this.handleSearchTopic = this.handleSearchTopic.bind(this);
-        this.changeCategory = this.changeCategory.bind(this)
+        this.changeCategory = this.changeCategory.bind(this);
     }
 
     componentDidMount() {
@@ -131,71 +131,94 @@ export default class Faq extends React.Component {
     }
 
     handleSearchTopic(e) {
-        if(e.target.value.length > 4){
-            var ret = []
+        if(e.target.value.length > 2) {
+            var ret = [];
             for (var i= 0; i < accordionItems.length; i++) {
+<<<<<<< HEAD
                 for(var j= 0; j < accordionItems[i].questions.length; j++){
+=======
+                for(var j= 0; j < accordionItems[i].questions.length; j++) {
+>>>>>>> 157ce01946fcddf97a837cc87e6356ab93b54aa2
                     if (accordionItems[i].questions[j].question.toLowerCase().includes(e.target.value.toLowerCase()) || accordionItems[i].questions[j].content.toLowerCase().includes(e.target.value.toLowerCase())){
                         ret.push(accordionItems[i].questions[j])
                     }
                 }
             }
             this.setState({
-                useFiltered:true,
-                toShow:ret,
+                useFiltered: true,
+                toShow: ret,
                 noResult: ret.length == 0 ? true : false
-            })
-        } else {
+            });
+        } 
+        else {
             this.setState({
-                useFiltered:false,
-                toShow:[]
-            })
+                useFiltered: false,
+                toShow: []
+            });
         }
 
     }
-    changeCategory(e){
+
+    changeCategory(e) {
         this.setState({
-            selectedCategoryIndex:e.currentTarget.getAttribute('num')
-        })
+            selectedCategoryIndex: e.currentTarget.getAttribute('num')
+        });
     }
 
     render() {
         return (
             <div class="layout-style">
                 <Container id="faq" className="px-0 mt-6 w-100 text-center d-flex flex-column align-items-center">
-                    <Row className="mx-0 mb-5 w-md-100">
+
+                    <Row className="mx-0 w-md-100">
                         <Col sm="12" className="px-0 d-flex flex-column">
                             <H1 className="mb-5" title="Bonjour, comment pouvons-nous vous aider ?"/>
                             <Input onChange={this.handleSearchTopic} hideLabel={true} type="search" placeholder="Rechercher un sujet ou posez une question..." containerStyle="w-100 mr-0 mr-sm-4 mb-4 mb-sm-0 pb-0"/>
-                            {!this.state.useFiltered && <p class="mt-5">Ou sélectionnez une catégorie pour trouver rapidement la réponse à votre question</p>}
+                            {!this.state.useFiltered && 
+                                <p class="mt-5">Ou sélectionnez une catégorie pour trouver rapidement la réponse à votre question</p>
+                            }
                         </Col>
                     </Row>
-                    {!this.state.useFiltered && <Row className="mx-0 mb-5 w-100 d-flex flex-row">
-                        {accordionItems.map((accordionItem,idx) =>
-                            <Col num={idx} sm="12" md="4" className={idx === this.state.selectedCategoryIndex ? "categorie-list-faq categorie-list-faq-selected" : "categorie-list-faq"} onClick={this.changeCategory}>
-                                <FaqIcons icon={accordionItem.categoryIcon} height="24"/>
-                                <p class="mt-4">{accordionItem.category}</p>
-                            </Col>
-                        )}
-                    </Row> }
-                    {!this.state.useFiltered && <Col sm="12" className="px-0 mb-5">
-                        <H2 className="mb-4" title={accordionItems[this.state.selectedCategoryIndex].categoryTitle}/>
-                        <H3 title={accordionItems[this.state.selectedCategoryIndex].categorySubtitle}/>
-                    </Col> }
-                    {this.state.noResult &&  <H2 className="mb-4" title="Pas de résultats dans la FAQ"/>}
-                    {(!this.state.noResult && this.state.useFiltered) &&  <H2 className="mb-4" title={this.state.toShow.length + " résultats dans la FAQ"}/>}
-                    <Row className="mx-0 my-5 w-100 d-flex flex-column">
-                        <Col sm="12" className="question-faq d-flex flex-column text-left px-0 ">
-                            <Accordion defaultActiveKey="-1">
-                                {!this.state.useFiltered ? accordionItems[this.state.selectedCategoryIndex].questions.map((accordionItem) =>
-                                    <AccordionItem eventKey={accordionItem.key} title={accordionItem.question} content={accordionItem.content}></AccordionItem>
-                                ) : this.state.toShow.map((accordionItem) =>
-                                <AccordionItem eventKey={accordionItem.key} title={accordionItem.question} content={accordionItem.content}></AccordionItem>
+
+                    {!this.state.useFiltered && 
+                        <Row className="mx-0 my-5 w-100 d-flex flex-row">
+                            {accordionItems.map((accordionItem,idx) =>
+                                <Col onClick={this.changeCategory} num={idx} sm="12" md="4" className={idx === this.state.selectedCategoryIndex ? 'categorie-list-faq categorie-list-faq-selected' : 'categorie-list-faq'}>
+                                    <FaqIcons icon={accordionItem.categoryIcon} height="24"/>
+                                    <p class="mt-4">{accordionItem.category}</p>
+                                </Col>
                             )}
-                                
+                        </Row>
+                    }
+
+                    {!this.state.useFiltered &&
+                        <Col sm="12" className="px-0 mb-5">
+                            <H2 className="mb-4" title={accordionItems[this.state.selectedCategoryIndex].categoryTitle}/>
+                            <H3 title={accordionItems[this.state.selectedCategoryIndex].categorySubtitle}/>
+                        </Col>
+                    }
+                    {(!this.state.noResult && this.state.useFiltered) &&  
+                        <H2 className="mb-5" title={this.state.toShow.length + " résultats dans la FAQ"}/>
+                    }
+                    {this.state.noResult &&  
+                        <p class="mt-4">Aucun résultat n'a pu être trouvé, essayer avec un autre terme</p>
+                    }
+
+                    <Row className="mx-0 my-5 w-100 d-flex flex-column">
+                        <Col sm="12" className="question-faq d-flex flex-column text-left px-0">
+                            <Accordion defaultActiveKey="-1">
+                                {
+                                    !this.state.useFiltered ? accordionItems[this.state.selectedCategoryIndex].questions.map((accordionItem) =>
+                                        <AccordionItem eventKey={accordionItem.key} title={accordionItem.question} content={accordionItem.content}></AccordionItem>
+                                    )
+                                    : this.state.toShow.map((accordionItem) =>
+                                        <AccordionItem eventKey={accordionItem.key} title={accordionItem.question} content={accordionItem.content}></AccordionItem>
+                                    )
+                                }
                             </Accordion>
                         </Col>
                     </Row>
+
                     <Row className="faq-contact-infos mx-0 mt-5 pt-4 pb-4 pb-md-5 px-3 w-100 d-flex flex-column flex-nowrap rounded">
                         <p class="text-left fw-600">Vous n'avez pas trouvé l'information que vous cherchez ?</p>
                         <div class="d-flex flex-row justify-content-center flex-wrap mt-5">
@@ -215,6 +238,7 @@ export default class Faq extends React.Component {
                             </Col>
                         </div>
                     </Row>
+
                 </Container>
             </div>
         )

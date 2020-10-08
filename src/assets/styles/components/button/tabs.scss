@@ -1,0 +1,27 @@
+.pmy-tab {
+    padding: .5rem 2rem;
+    background-color: transparent;
+    color: $theme-color-primary;
+    border: none;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid $theme-terthiary;
+    outline: none !important;
+    transition: .2s ease-in-out;
+    @include max-sm-rwd { padding: .5rem 1rem; }
+
+    &:hover, &:focus { 
+        text-decoration: none !important;
+        background-color: $md-grey-35;
+    }
+    &[disabled] { cursor: not-allowed; }
+
+    svg { fill: $theme-color-primary; }
+
+    &-selected {
+        background-color: $primary-25 !important;
+        color: $primary !important;
+        border-bottom: 1px solid $primary !important;
+
+        svg { fill: $primary !important; }
+    }
+}
