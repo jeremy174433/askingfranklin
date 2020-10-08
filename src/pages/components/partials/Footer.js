@@ -39,7 +39,7 @@ export default class Footer extends React.Component {
                                 <li>
                                     <Link to="/" class="footer-link">Accueil</Link>
                                 </li>
-                                {localStorage.getItem('af_is_sub') == 0 &&
+                                {(localStorage.getItem('af_is_sub') == null || localStorage.getItem('af_is_sub') == 0) &&
                                     <li>
                                         <Link to="/tarifs" class="footer-link">Tarifs</Link>
                                     </li>
