@@ -35,7 +35,7 @@ export default class TermsOfServices extends React.Component {
                     {/* --- Préabule --- */}
                     <section>
                         <H2 className="mb-3" title="Préambule"/>
-                        <p class="mb-3">Les présentes conditions générales d'utilisation (dites « CGU ») ont pour objet l'encadrement juridique des modalités de mise à disposition du site et des services par Sortvoices et de définir les conditions d’accès et d’utilisation des services par « l'Utilisateur ».</p>
+                        <p class="mb-3">Les présentes Conditions Générales d'Utilisation (dites « CGU ») ont pour objet l'encadrement juridique des modalités de mise à disposition du site et des services par Sortvoices et de définir les conditions d’accès et d’utilisation des services par « l'Utilisateur ».</p>
                         <p class="mb-3">Les présentes CGU sont accessibles sur le site à la rubrique « CGU »</p>
                         <p class="mb-3">Toute inscription ou utilisation du site implique l'acceptation sans aucune réserve ni restriction des présentes CGU par l’utilisateur. Lors de l'inscription sur le site via le Formulaire d’inscription, chaque utilisateur accepte expressément les présentes CGU en cochant la case précédant le texte suivant : « J'ai lu et j'accepte les CGU ».</p>
                         <p class="mb-3">En cas de non-acceptation des CGU stipulées dans le présent contrat, l'Utilisateur se doit de renoncer à l'accès des services proposés par le site</p>
@@ -58,7 +58,7 @@ export default class TermsOfServices extends React.Component {
                     <section>
                         <H2 id="article-1" className="pt-6 mb-3" title={article1}/>
                         <p class="mb-3">L'édition du site {siteURL} est assurée par la Société SAS Sortvoices au capital de 1000 euros, immatriculée au RCS de Bordeaux sous le numéro 835152620, dont le siège social est situé au 75 avenue du 11 Novembre 33290 Blanquefort.</p>
-                        <p class="mb-3">Adresse e-mail : {contactEmail}</p>
+                        <p class="mb-3">Adresse email : {contactEmail}</p>
                         <p class="mb-3">Le Directeur de la publication est : Romain Cernik</p>
                         <p class="mb-3">Numéro de TVA intracommunautaire : FR58835152620</p>
                         <p>L'hébergeur du site {siteURL} est la société Amazon Web Services LLC, dont le siège social est situé au P.O. Box 81226 Seattle, WA 98108-1226.</p>
@@ -82,7 +82,7 @@ export default class TermsOfServices extends React.Component {
                     <section>
                         <H2 id="article-3" className="pt-6 mb-3" title={article3}/>
                         <p class="mb-3">Le site assure à l'Utilisateur une collecte et un traitement d'informations personnelles dans le respect de la vie privée conformément à la loi n°78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers et aux libertés.</p>
-                        <p>En vertu de la loi Informatique et Libertés, en date du 6 janvier 1978, l'Utilisateur dispose d'un droit d'accès, de rectification, de suppression et d'opposition de ses données personnelles. L'Utilisateur exerce ce droit par mail à l'adresse mail {contactEmail}.</p>
+                        <p>En vertu de la loi Informatique et Libertés, en date du 6 janvier 1978, l'Utilisateur dispose d'un droit d'accès, de rectification, de suppression et d'opposition de ses données personnelles. L'Utilisateur exerce ce droit par email à l'adresse email {contactEmail}.</p>
                     </section>
 
                     {/* --- Article 4 --- */}

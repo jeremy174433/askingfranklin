@@ -94,7 +94,7 @@ var accordionItems = [
             {
                 key: "104",
                 question: "Comment annuler le renouvellement automatique de mon abonnement ?",
-                content: "Lorem ipsum"
+                content: <p>Vous pouvez annuler le renouvellement automatique de votre abonnement, une fois connecté, en cliquant sur « <span class="fw-600">Mon compte</span> » en haut à droite, puis dans « <span class="fw-600">Paramètres</span> » et enfin dans l'onglet « <span class="fw-600">Abonnement</span> » en décochant la case dédiée à l'abonnement puis en cliquant sur sauvegarder.</p>
             }
         ]
     },

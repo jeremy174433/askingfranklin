@@ -41,7 +41,7 @@ export default class TermsOfSales extends React.Component {
                         <H2 className="mb-3" title="Préambule"/>
                         <p class="mb-3">Les présentes Conditions Générales de Vente s’appliquent à toutes les ventes conclues sur le site internet {siteURL}.</p>
                         <p class="mb-3">Le site internet {siteURL} est un service édité par la SAS Sortvoices et commercialise des Abonnements à son logiciel SaaS (Software as a Service / Logiciel en tant que service) d’optimisation SEO.</p>
-                        <p>Le client déclare avoir pris connaissance et avoir accepté les conditions générales de vente antérieurement à la passation de sa Commande, la validation de la Commande vaut donc acceptation des Conditions Générales de Vente.</p>
+                        <p>Le client déclare avoir pris connaissance et avoir accepté les Conditions Générales de Vente antérieurement à la passation de sa Commande, la validation de la Commande vaut donc acceptation des Conditions Générales de Vente.</p>
                     </section>
 
                     <p class="fz-24 mt-5 mb-4">Sommaire :</p>
@@ -65,7 +65,7 @@ export default class TermsOfSales extends React.Component {
                         <H2 id="article-1" className="pt-6 mb-3" title={article1}/>
                         <p>
                             Le terme « Prestataire » désigne la SAS Sortvoices. <br/>
-                            Le terme « Client » désigne l’utilisateur qui accède aux services payants de tout ou partie des services développés par la SAS Sortvoicessur le site {siteURL}. <br/>
+                            Le terme « Client » désigne l’utilisateur qui accède aux services payants de tout ou partie des services développés par la SAS Sortvoices sur le site {siteURL}. <br/>
                             Le terme « Abonnement » désigne le fait, pour un Client, de s’abonner aux services proposés sur le site {siteURL}. <br/>
                             Le terme « Commande » désigne le fait qu’un Client adhère aux services proposés. <br/>
                             Le terme « Offre » désigne les solutions et services développés par la SAS Sortvoices. <br/>
@@ -79,11 +79,11 @@ export default class TermsOfSales extends React.Component {
                         <p>
                             Le Client passe sa Commande en ligne au moyen du formulaire qui figure sur le site. <br/>
                             Pour que l’Abonnement soit validé, le Client devra accepter, en cliquant à l’endroit indiqué sur le site, les présentes Conditions Générales de Vente. <br/>
-                            Son acceptation entrainera l’envoi d’un mail de confirmation d’Abonnement dela part du Prestataire. <br/>
+                            Son acceptation entrainera l’envoi d’un email de confirmation d’Abonnement de la part du Prestataire. <br/>
                             Tout Abonnement vaut acceptation du prix et descriptions des offres. <br/>
                             Le paiement se fait par carte bancaire, l’Abonnement sera prélevé chaque mois ou chaque année, selon l’Offre, conformément aux présentes Conditions Générales de Vente. <br/>
                             L’Abonnement est conclu pour un mois ou douze mois au minimum selon l’offre choisie. <br/>
-                            Pour toute question relative à son Abonnement, le Client peut envoyer un mail sur {contactEmail}.
+                            Pour toute question relative à son Abonnement, le Client peut nous contacter via notre <Link to="contact">formulaire de contact</Link>, ou envoyer un email sur {contactEmail}.
                         </p>
                     </section>
 
@@ -99,17 +99,17 @@ export default class TermsOfSales extends React.Component {
                     {/* --- Article 4 --- */}
                     <section>
                         <H2 id="article-4" className="pt-6 mb-3" title={article4}/>
-                        <p>Les informations contractuelles feront l’objet d’une confirmation par voie d’email, à l’adressee-mail indiquée par l’acheteur dans le formulaire de Commande.</p>
+                        <p>Les informations contractuelles feront l’objet d’une confirmation par voie d’email, à l’adresse email utilisée par l’acheteur lors du passage de la Commande.</p>
                     </section>
 
                     {/* --- Article 5 --- */}
                     <section>
                         <H2 id="article-5" className="pt-6 mb-3" title={article5}/>
                         <p>
-                            L'offre est régie par les présentes conditions générales de vente. L'Abonnement est mensuel pour l’offre mensuelle ou annuel pour l’offre annuelle et fait l'objet d'une tacite reconduction. Le Client peut, par l’envoi d’un e-mail sur {contactEmail}, demander à résilier son Abonnement. <br/>
-                            La résiliation prendra effet au terme du mois en cours ou des douze mois. <br/>
+                            L'offre est régie par les présentes Conditions Générales de Vente. L'Abonnement est mensuel pour l’offre mensuelle ou annuel pour l’offre annuelle et fait l'objet d'une tacite reconduction. Le Client peut, via notre <Link to="contact">formulaire de contact</Link>, ou par l’envoi d’un email sur {contactEmail}, demander à résilier son Abonnement. Il peut également à partir du profil de son compte annuler le renouvellement automatique de son abonnement dans la section dédiée en décochant la case à cocher puis en cliquant sur sauvegarder. <br/>
+                            La résiliation prendra effet au terme de la période de validité du mois en cours ou des douze mois (en se basant sur la date de passage de la Commande). <br/>
                             Tout mois commencé est dû en intégralité. <br/>
-                            En cas de résiliation de l'Abonnement, Sortvoices s'engage soit à effacer et supprimer de son système les données appartenant au Client, soit à restituer les données au format fichier texte, par envoi d’e-mail sous 15 jours ouvrés, en fonction de la demande du Client. Dans l'hypothèse où aucune demande expresse du Client n'est formulée à la date de la résiliation, Sortvoices s'engage à effacer les données à l'expiration d'une période de 15 jours à compter decette date.
+                            En cas de résiliation de l'Abonnement, Sortvoices s'engage soit à effacer et supprimer de son système les données appartenant au Client, soit à restituer les données au format fichier texte, par envoi d’email sous 15 jours ouvrés, en fonction de la demande du Client. Dans l'hypothèse où aucune demande expresse du Client n'est formulée à la date de la résiliation, Sortvoices s'engage à effacer les données à l'expiration d'une période de 15 jours à compter de cette date.
                         </p>
                     </section>
 
@@ -144,7 +144,7 @@ export default class TermsOfSales extends React.Component {
                             Le Client peut accéder au service en se connectant, avec ses identifiants, sur le site {siteURL}. <br/>
                             Ces identifiants sont strictement personnels et confidentiels, ils ne peuvent en aucun cas être communiqués à un tiers. Le Client est seul responsable de l’utilisation de ses identifiants. <br/>
                             Le Prestataire se réserve le droit de procéder à la fermeture immédiate du compte du Client si ce dernier venait à faire une utilisation frauduleuse de ses identifiants. <br/>
-                            En cas de difficulté pour accéder aux services, le Client peut contacter Sortvoices sur l’adresse e-mail {contactEmail}. 
+                            En cas de difficulté pour accéder aux services, le Client peut contacter Sortvoices sur l’adresse email {contactEmail}. 
                         </p>
                     </section>
 
@@ -166,7 +166,7 @@ export default class TermsOfSales extends React.Component {
                     {/* --- Article 11 --- */}
                     <section>
                         <H2 id="article-11" className="pt-6 mb-3" title={article11}/>
-                        <p class="mb-3">Le Prestataire s'engage à respecter l'ensemble des dispositions qui lui sont applicables au titre de la réglementation relative à la protection des données à caractère personnel, notamment les dispositions de la loi n° 78-17 modifiée relative à l'informatique, aux fichiers et aux libertés etcelles du Règlement (UE) 2016/679 du Parlement européen et du Conseil du 27 avril 2016 relatif à la protection des personnes physiques à l'égard du traitement des données à caractère personnel et à la libre circulation de ces données.</p>
+                        <p class="mb-3">Le Prestataire s'engage à respecter l'ensemble des dispositions qui lui sont applicables au titre de la réglementation relative à la protection des données à caractère personnel, notamment les dispositions de la loi n° 78-17 modifiée relative à l'informatique, aux fichiers et aux libertés et celles du Règlement (UE) 2016/679 du Parlement européen et du Conseil du 27 avril 2016 relatif à la protection des personnes physiques à l'égard du traitement des données à caractère personnel et à la libre circulation de ces données.</p>
                         <p class="mb-3">Le Client dispose d'un droit d'accès, de modification, de rectification et de suppression des données qui le concerne (art. 34 de la loi "Informatique et Libertés"). Les Données appartenant au Client gérées par Sortvoices sont et demeurent la propriété du Client. Sortvoices s'engage à garder ces données confidentielles.</p>
                         <p>Les données récoltées par Sortvoices servent notamment à facturer le Client et à lui fournir des identifiants afin de lui permettre de se connecter sur le site {siteURL}.</p>
                     </section>
@@ -176,7 +176,7 @@ export default class TermsOfSales extends React.Component {
                         <H2 id="article-12" className="pt-6 mb-3" title={article12}/>
                         <p class="mb-3">Les données à caractère personnel qui sont collectées sur ce site sont les suivantes :</p>
                         <p class="mb-3">
-                            Ouverture de compte : lors de la création du compte du Client, ses nom(s), prénom, adresse e-mail, numéro de téléphone, adresse postale. <br/>
+                            Ouverture de compte : lors de la création du compte du Client, ses nom(s), prénom, adresse email, numéro de téléphone, adresse postale. <br/>
                             Connexion : lors de la connexion de l’utilisateur au site {siteURL}, celui-ci enregistre notamment ses nom(s), prénom, données de connexion et d’utilisation, données relatives au paiement. <br/>
                             Cookies : les cookies sont utilisés, dans le cadre de l’utilisation du site {siteURL}. <br/>
                             Le Client a la possibilité de désactiver les cookies à partir des paramètres de son navigateur, ce qui peut empêcher le Client d’accéder à certaines pages du site {siteURL}.
