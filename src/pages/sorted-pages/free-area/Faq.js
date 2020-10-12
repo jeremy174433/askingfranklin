@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { 
     Container,
     Row,
@@ -78,21 +79,26 @@ var accordionItems = [
             },
             {
                 key: "101",
+                question: "Combien coûte Asking Franklin ?",
+                content: <p>Deux types de plans sont proposés pour la version payante du produit : <br/> <blockquote class="d-block mt-3"><span class="d-block mb-2 fw-600">Plan mensuel : <br/> 49€/mois </span> (Souscription sans engagement)</blockquote> <br/> <blockquote class="d-block mt-3"><span class="d-block mb-2 fw-600">Plan Annuel : <br/> 39€/mois </span> (468€/an au lieu de 588€ soit 20% de réduction)</blockquote> <br/> Bien sûr, vous pouvez également profiter de Asking Franklin gratuitement, vous pourrez ainsi effectuer jusqu’à 3 recherches gratuitement par jour.</p>
+            },
+            {
+                key: "102",
                 question: "Est-ce que je suis forcément engagé si je souscris à une offre ?",
                 content: <p><blockquote>Il n’y a pas d’engagement de durée quand vous souscrivez un abonnement sur Asking Franklin. Vous pouvez donc arrêter votre abonnement à tout moment, la résiliation sera effective à l’issue du mois entamé.</blockquote> <br/> Vous pourrez dès lors continuer à utiliser votre compte en offre gratuite et limitée à 3 recherches par jour.</p>
             },
             {
-                key: "102",
+                key: "103",
                 question: "Le paiement en ligne est-il sécurisé ?",
                 content: <p>Le paiement par carte bancaire est entièrement sécurisé et crypté grâce à notre prestataire Stripe.</p>
             },
             {
-                key: "103",
+                key: "104",
                 question: "Quels sont les différents moyens de paiement disponibles ?",
                 content: <p>Vous pouvez payer par carte bancaire : <span class="fw-600">CB, MasterCard, Visa, American Express... etc.</span> Toutes les cartes dans le monde entier sont supportées.</p>
             },
             {
-                key: "104",
+                key: "105",
                 question: "Comment annuler le renouvellement automatique de mon abonnement ?",
                 content: <p>Vous pouvez annuler le renouvellement automatique de votre abonnement, une fois connecté, en cliquant sur « <span class="fw-600">Mon compte</span> » en haut à droite, puis dans « <span class="fw-600">Paramètres</span> » et enfin dans l'onglet « <span class="fw-600">Abonnement</span> » en décochant la case dédiée à l'abonnement puis en cliquant sur sauvegarder.</p>
             }
@@ -102,7 +108,7 @@ var accordionItems = [
         category: "Mon compte",
         categoryIcon: "account",
         categoryTitle: "Mon compte",
-        categorySubtitle: "Les questions sur la gestion de votre compte",
+        categorySubtitle: "Les questions relatives à la gestion de votre compte",
         questions: [
             {
                 key: "200",
@@ -134,6 +140,15 @@ export default class Faq extends React.Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
+    }
+    
+    customHeadElement() {
+        return (
+            <Helmet>
+                <title>FAQ - Asking Franklin, votre outil SEO Français</title>
+                <meta name="description" content="FAQ - Combien coûte la version Pro d’Asking Franklin ? Quelles sont les fonctionnalités Pro ? Combien de recherches puis-je faire par jour ?"/>
+            </Helmet>
+        );
     }
 
     handleSearchTopic(e) {
@@ -170,6 +185,7 @@ export default class Faq extends React.Component {
     render() {
         return (
             <div class="layout-style">
+                {this.customHeadElement()}
                 <Container id="faq" className="px-0 mt-6 w-100 text-center d-flex flex-column align-items-center">
 
                     <Row className="mx-0 mb-5 w-md-100">

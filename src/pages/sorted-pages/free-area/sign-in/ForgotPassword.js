@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { 
     Container,
     Col 
@@ -39,6 +40,15 @@ export default class ForgotPassword extends React.Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
+    }
+
+    customHeadElement() {
+        return (
+            <Helmet>
+                <title>Mot de passe oublié - Asking Franklin</title>
+                <meta name="description" content="Mot de passe oublié ? Changez le mot de passe de votre espace ici !"/>
+            </Helmet>
+        );
     }
 
     handleEmail(e) {
@@ -131,7 +141,8 @@ export default class ForgotPassword extends React.Component {
     render() {
         return (
             <div id="forgotPassword" class="layout-style">
-                {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowedCodeSent ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Un code de vérification vient d'être envoyé sur l'email associée à votre compte"/> }
+                {this.customHeadElement()}
+                {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowedCodeSent ? 'alert-msg-visible' : ''} alertId="successMessage" msg={['Un code de vérification vient d\'être envoyé à l\'email : ', <span class="fw-600">{this.state.email}</span>]}/> }
                 {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg={['Votre mot de passe a bien été changé. Vous pouvez maintenant ', <Link to='/connexion'>vous connecter</Link>]}/> }
                 {this.state.error && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowedError ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="Une erreur est survenue. Vérifiez votre code et votre nouveau mot de passe"/> }
                 {this.state.error && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowedLimit ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="Une erreur est survenue. La limite de requête a été atteinte, réessayez dans quelques minutes"/> }

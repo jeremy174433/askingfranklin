@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { 
     Container,
     Col
@@ -13,10 +14,9 @@ import CardTestimonial from '../../../components/elements/CardTestimonial';
 import FrenchFlag from '../../../../assets/img/svg/FrenchFlag';
 import GoogleSearch from '../../../../assets/img/svg/illustrations/GoogleSearch';
 import Control from '../../../../assets/img/png/illustrations/illustration-control.png';
-import Ideas from '../../../../assets/img/png/illustrations/illustration-ideas.png';
-import JeffBezos from '../../../../assets/img/png/testimonials/jeff-bezos.jpg';
-import TatianaSilva from '../../../../assets/img/png/testimonials/tatiana-silva.jpg';
-import PaulVanHecke from '../../../../assets/img/png/testimonials/paul-van-hecke.jpg';
+import PierreHusson from '../../../../assets/img/png/testimonials/pierre-husson.jpg';
+import MargauxMaziere from '../../../../assets/img/png/testimonials/margaux-maziere.jpg';
+import SofianeTazdait from '../../../../assets/img/png/testimonials/sofiane-tazdait.jpg';
 import Dots from '../../../../assets/img/svg/decorating/Dots';
 import WaveSectionSeparator from '../../../../assets/img/svg/decorating/waves/WaveSectionSeparator';
 import Blob1 from '../../../../assets/img/svg/decorating/blob/Blob1';
@@ -25,7 +25,6 @@ import Blob3 from '../../../../assets/img/svg/decorating/blob/Blob3';
 import Blob4 from '../../../../assets/img/svg/decorating/blob/Blob4';
 import Blob5 from '../../../../assets/img/svg/decorating/blob/Blob5';
 import Blob6 from '../../../../assets/img/svg/decorating/blob/Blob6';
-import Blob7 from '../../../../assets/img/svg/decorating/blob/Blob7';
 import Blob8 from '../../../../assets/img/svg/decorating/blob/Blob8';
 
 export default class Home extends React.Component {
@@ -41,6 +40,15 @@ export default class Home extends React.Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
+    }
+    
+    customHeadElement() {
+        return (
+            <Helmet>
+                <title>Asking Franklin - votre outil SEO Français</title>
+                <meta name="description" content="Découvrez ce que les internautes recherchent sur Google, optimisez votre contenu et gagnez en visibilité avec Asking Franklin, votre outil SEO Français !"/>
+            </Helmet>
+        );
     }
 
     handleKeywordChange(e) {
@@ -63,6 +71,7 @@ export default class Home extends React.Component {
 
         return (
             <div id="home">
+                {this.customHeadElement()}
                 <div id="top"></div>
 
                 <section class="home-section-1 position-relative">
@@ -72,13 +81,12 @@ export default class Home extends React.Component {
                         <Blob2 className="blob-2"/>
                         <Dots className="dots-1"/>
                         <Col md="12" lg="6" className="mt-0 mb-5 py-0 my-md-5 py-md-5 px-0">
-                            <H1 title="Découvrez les tendances de recherches des internautes sur le web à propos d'un terme clé"/>
+                            <H1 title="Asking Franklin est un outil Français de recherche de questions et mots clés basés sur les requêtes Google"/>
                             <FormRequestFranklin 
                                 onSubmit={this.requestFanklin} 
                                 onChange={this.handleKeywordChange} 
                                 value={this.state.keywordSearch} 
                                 keyword={this.state.keywordSearch} 
-                                isDisabled={this.state.keywordSearch.trim().length <= 1}
                             />
                         </Col>
                         <Col md="12" lg="6" className="px-0 d-flex align-items-center justify-content-center">
@@ -136,28 +144,25 @@ export default class Home extends React.Component {
                 <section class="home-section-6 position-relative px-0 px-lg-4 px-xl-5">
                     <Container className="slider-container position-relative d-flex flex-row justify-content-xl-around pb-3 pb-lg-0 px-0 px-xl-0">
                         <Col md="12" lg="4" xl="3" className="slider-item px-0">
-                            <CardTestimonial 
-                                img={JeffBezos} altImg="Jeff Bezos" 
-                                testimonial="Suspendisse nec metus sed diam congue hendrerit. Nulla ac metus fringilla, pellentesque dui ut, tempus odio. Vestibulum dapibus odio nec."
-                                fullname="Jeff Bezos" jobAndCompany="Directeur Général d'Amazon"
-                                redirectTo="https://www.linkedin.com/in/jeff-bezos-687b0283/"
+                            <CardTestimonial
+                                img={PierreHusson}
+                                testimonial="Grâce à Asking Franklin, je peux suivre simplement les tendances du marché de Rematch : le sport amateur ! News, concurrents, événements... tout y est !"
+                                fullname="Pierre Husson" jobAndCompany="CEO - Rematch"
                             />
                         </Col>
                         <Col md="12" lg="4" xl="3" className="slider-item px-0 mt-5">
                             <CardTestimonial   
-                                img={TatianaSilva} altImg="Jeff Bezos" 
-                                testimonial="Phasellus fringilla pellentesque lorem, ut porttitor magna varius eu. In vel risus purus. Nulla porta nunc ac tempor ultrices num."
-                                fullname="Tatiana Silva" jobAndCompany="Présentatrice météo à TF1"
-                                redirectTo="https://www.linkedin.com/in/tatianaasilva/"
+                                img={MargauxMaziere}
+                                testimonial="En tant que chef de projet, la plateforme Asking Franklin a été un réel atout pour répondre à mon besoin de création d’audits de l’image de marque. Je le recommande à toute personne active dans le marketing, le brand content, la conception de contenus."
+                                fullname="Margaux Mazière" jobAndCompany="Chef de projet - Journal Sud Ouest"
                             />
                         </Col>
                         <Col md="12" lg="4" xl="3" className="slider-item px-0 mt-6">
-                            <CardTestimonial   
-                                img={PaulVanHecke} altImg="Jeff Bezos" 
-                                testimonial="Praesent iaculis eros eget cursus gravida. Nunc id est vel eros auctor malesuada sed sit amet velit. Vivamus sit amet hendrerit risus, ac efficitur."
-                                fullname="Paul Van Hecke" jobAndCompany="Lead of Nothing à Paul Emploi"
-                                redirectTo="https://www.linkedin.com/in/paul-vanhecke/"
-                            />
+                            <CardTestimonial 
+                                img={SofianeTazdait}
+                                testimonial="Avant je tentais d'améliorer mon SEO via des suppositions. Désormais, Asking Franklin me permet de savoir quelles sont les requêtes tapées par les internautes pour mon secteur d’activité, ce qui m'aide beaucoup"
+                                fullname="Sofiane Tazdaït" jobAndCompany="Product Manager - Freelance"
+                            />  
                         </Col>
                         <Dots className="dots-4"/>
                         <Blob8 className="blob-8 d-none d-lg-block"/>

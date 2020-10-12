@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { 
     Container,
     Row, 
@@ -76,6 +77,14 @@ export default class ChoosePlan extends React.Component {
             })
         }
     }
+
+    customHeadElement() {
+        return (
+            <Helmet>
+                <title>Passez à la version Pro - Choix du plan - Asking Franklin, votre outil SEO français</title>
+            </Helmet>
+        );
+    }
     
     handleSelectedMonthlyPlan() {
         localStorage.setItem('product', 'price_1HEaGeLB03GdYRbhWsbdlFcx')
@@ -125,6 +134,7 @@ export default class ChoosePlan extends React.Component {
 
         return (
             <div class="layout-style">
+                {this.customHeadElement()}
                 {this.state.plans.length > 0 ?
                     <Container id="pricing" className="px-0 mt-6">
                         <H1 className="text-center" title="Vous avez déja un abonnement Asking Franklin Pro actif"/>

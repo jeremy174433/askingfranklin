@@ -30,8 +30,8 @@ export default class Pricing extends React.Component {
     customHeadElement() {
         return (
             <Helmet>
-                <title>Tarifs - Asking Franklin</title>
-                <meta name="description" content="Découvrez les tarifs de l'outil Asking Franklin"/>
+                <title>Passez à la version Pro - Asking Franklin, votre outil SEO français</title>
+                <meta name="description" content="Améliorez votre référencement et soyez visible en passant à la version Pro d’Asking Franklin ! Requêtes illimitées - Utilisateurs illimités en simultané - Export CSV..."/>
             </Helmet>
         );
     }
@@ -100,6 +100,7 @@ export default class Pricing extends React.Component {
                                     <p><span class="fz-18 fw-600">468€/an</span>&nbsp; &nbsp;<span class="price-before-reduction">588€/an</span></p>
                                 </div>
                             </div>
+                            <p class="block-pricing-vat mt-2 fz-12">Les prix indiqués sont en €, hors TVA et sont soumis au taux en vigueur.</p>
                             <FeaturesList className="my-5"/>
                             <PmyBtn redirectTo="/inscription" linkIsLargePmyFull textLink="Passer à la version Pro" containerStyle="mb-4" customBtnClass="w-100"/>
                         </Col>

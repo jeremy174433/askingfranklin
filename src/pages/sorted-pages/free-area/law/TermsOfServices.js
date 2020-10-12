@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Container } from 'react-bootstrap';
 import H1 from '../../../components/elements/title/H1';
 import H2 from '../../../components/elements/title/H2';
@@ -9,6 +10,15 @@ export default class TermsOfServices extends React.Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
+    }
+
+    customHeadElement() {
+        return (
+            <Helmet>
+                <title>Conditions Générales d'Utilisation - Asking Franklin</title>
+                <meta name="description" content="Conditions Générales d'Utilisation - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
+            </Helmet>
+        );
     }
 
     render() {
@@ -27,6 +37,7 @@ export default class TermsOfServices extends React.Component {
 
         return (
             <div class="layout-style">
+                {this.customHeadElement()}
                 <Container className="px-0 mt-6">
 
                     <H1 className="mb-4" title="Conditions Générales d'Utilisation"/>

@@ -76,6 +76,8 @@
             }
         }
 
+       &-vat { color: $text-disabled; }
+
         &-choose-plan {
             @media all and (min-width: #{$screen-lg-min}) and (max-width: #{$screen-xl-max}) { max-width: calc(50% - 3rem); }
         }

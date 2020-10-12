@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { 
     Container,
     Col 
@@ -14,9 +15,18 @@ export default class MaximumRequests extends React.Component {
         window.scrollTo(0, 0);
     }
 
+    customHeadElement() {
+        return (
+            <Helmet>
+                <title>Limite de recherches atteinte - Asking Franklin</title>
+            </Helmet>
+        );
+    }
+
     render() {
         return (
             <div class="layout-style">
+                {this.customHeadElement()}
                 <Container id="maximumRequests" className="d-flex flex-column flex-lg-row px-4 py-5 p-md-5 mt-6 block-style position-relative overflow-visible">
                     <Col md="12" lg="6" className="mt-0 mb-5 my-md-5 px-0">
                         <H1 className="mb-5" title="Vous avez atteint le nombre maximum de recherches gratuites pour aujourd'hui..."/>

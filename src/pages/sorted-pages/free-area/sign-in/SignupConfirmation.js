@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { 
     Container,
     Col 
@@ -16,7 +17,10 @@ export default class SignUpConfirmation extends React.Component {
         const parsed = queryString.parse(window.location.search);
         fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/confirm-signup', {
             method: 'POST',
-            body: JSON.stringify({ code: parsed.code, username: parsed.username})
+            body: JSON.stringify({ 
+                code: parsed.code, 
+                username: parsed.username
+            })
         })
         .then(res => {
             return res.json();
@@ -26,12 +30,21 @@ export default class SignUpConfirmation extends React.Component {
         })
     }
 
+    customHeadElement() {
+        return (
+            <Helmet>
+                <title>Inscription confirmée - Asking Franklin</title>
+            </Helmet>
+        );
+    }
+
     render() {
         return (
             <div class="layout-style">
+                {this.customHeadElement()}
                 <Container className="d-flex flex-column flex-lg-row px-4 py-5 p-md-5 mt-6 block-style position-relative overflow-visible">
                     <Col md="12" lg="6" className="mt-0 mb-5 my-md-5 px-0">
-                        <H1 className="mb-5" title="Votre compte est validé 🚀"/>
+                        <H1 className="mb-5" title="Votre compte est maintenant validé 🚀"/>
                         <p class="mb-5 d-flex flex-column fw-600">
                             <span class="mb-2">Vous avez désormais la possibilité de souscire à Asking Franklin.</span>
                             <span>Profiter ainsi de toute la puissance de la version Pro :</span>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import Loader from '../../components/elements/Loader';
 import { Redirect } from 'react-router-dom';
 import AFStickyMenu from '../../components/asking-franklin/AFStickyMenu';
@@ -119,6 +120,9 @@ export default class AskingFranklin extends React.Component {
 
         if (this.state.isLoading) {
             return  <div class="layout-style"> 
+                        <Helmet>
+                            <title>Chargement en cours...</title>
+                        </Helmet>
                         <Container id="askingFranklin" className="px-0">
                             <Loader loaderDisplayed content="Chargement en cours"/>
                         </Container>
@@ -127,6 +131,9 @@ export default class AskingFranklin extends React.Component {
 
         else if (this.state.nbResults === 0) {
             return  <div class="layout-style"> 
+                        <Helmet>
+                            <title>Aucun résultat trouvé - Asking Franklin</title>
+                        </Helmet>
                         <Container id="askingFranklin" className="px-0">
                             <div>{launchNewRequest}</div>
                         </Container>
@@ -134,7 +141,10 @@ export default class AskingFranklin extends React.Component {
         }
 
         else if (this.state.dataIsLoaded) {
-            return  <div class="layout-style"> 
+            return  <div class="layout-style">
+                        <Helmet>
+                            <title>{this.state.keywordSearch.charAt(0).toUpperCase() + this.state.keywordSearch.slice(1)} - Asking Franklin</title>
+                        </Helmet>
                         <Container id="askingFranklin" className="px-0">
                             <main class="d-flex flex-column flex-xl-row">
                                 <AFStickyMenu searchContent={this.state.keywordSearch} dataNumber={this.state.dataKw} handleNoData={this.handleNoData}/>
@@ -149,7 +159,10 @@ export default class AskingFranklin extends React.Component {
         }
 
         else {
-            return  <div class="layout-style"> 
+            return  <div class="layout-style">
+                        <Helmet>
+                            <title>Aucun résultat trouvé - Asking Franklin</title>
+                        </Helmet>
                         <Container id="askingFranklin" className="px-0">
                             <div>{launchNewRequest}</div>
                         </Container>

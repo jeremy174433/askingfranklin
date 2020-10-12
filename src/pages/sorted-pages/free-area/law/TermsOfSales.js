@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Container } from 'react-bootstrap';
 import H1 from '../../../components/elements/title/H1';
 import H2 from '../../../components/elements/title/H2';
@@ -9,6 +10,15 @@ export default class TermsOfSales extends React.Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
+    }
+
+    customHeadElement() {
+        return (
+            <Helmet>
+                <title>Conditions Générales de Vente - Asking Franklin</title>
+                <meta name="description" content="onditions Générales de Vente - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
+            </Helmet>
+        );
     }
 
     render() {
@@ -31,6 +41,7 @@ export default class TermsOfSales extends React.Component {
 
         return (
             <div class="layout-style">
+                {this.customHeadElement()}
                 <Container className="px-0 mt-6">
 
                     <H1 className="mb-4" title="Conditions Générales de Vente"/>
@@ -120,7 +131,7 @@ export default class TermsOfSales extends React.Component {
                             Les prix sont fixés par les présentes Conditions Générales de Vente. <br/>
                             Si le Client souscrit l’offre mensuelle, l’Abonnement lui sera facturé 49€ par mois et sera prélevé chaque mois, par tacite reconduction. <br/>
                             Si le Client souscrit l’offre annuelle, l’Abonnement lui sera facturé 39€ par mois et sera payé en une fois par carte bancaire, soit 468€, lors de la Commande. Il sera ensuite prélevé chaque année par tacite reconduction. <br/>
-                            Le montant de l’Abonnement s'entend hors taxes, telles que ces taxes sont fixées à la date de l'acceptation de l'Offre par l'Adhérent. <br/>
+                            Le montant de l’Abonnement s'entend hors taxes, telles que ces taxes sont fixées en fonction des taux en vigueur à la date de l'acceptation de l'Offre par l'Adhérent. <br/>
                             Le Prestataire se réserve le droit de modifier ses prix à tout moment mais s’engage à appliquer les tarifs en vigueur indiqués au moment de la Commande. <br/>
                             Si une ou plusieurs taxes ou contributions venaient à être créées ou modifiées, en hausse comme en baisse, ce changement pourra être répercuté sur le prix de vente des produits.
                         </p>

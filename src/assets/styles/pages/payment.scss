@@ -9,6 +9,7 @@
     }
 
     .block-ctn-elements {
+        height: fit-content;
         @include min-xl-rwd { flex-basis: calc(66.666667% - 24px); }
 
         .block-elements {
@@ -27,6 +28,7 @@
                 background-color: $primary-25;
                 .price { @include price; }
             }
+            &-vat { color: $text-disabled; }
             &-footer { border-top: 1px solid $theme-terthiary; }
         }
     }

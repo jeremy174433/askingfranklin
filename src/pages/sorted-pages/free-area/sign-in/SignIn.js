@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Redirect } from 'react-router-dom';
 import { 
     Container,
@@ -36,6 +37,15 @@ export default class SignIn extends React.Component {
         }
     }
 
+    customHeadElement() {
+        return (
+            <Helmet>
+                <title>Connexion à votre espace - Asking Franklin, votre outil SEO Français</title>
+                <meta name="description" content="Connexion - Asking Franklin - Nous sommes ravis de vous revoir ! Connectez-vous à votre espace ici."/>
+            </Helmet>
+        );
+    }
+
     handleEmail(e) {
         this.setState({
             email: e.target.value
@@ -70,15 +80,15 @@ export default class SignIn extends React.Component {
                 });
             } 
             else {
-                console.log(res.is_sub)
+                // console.log(res.is_sub)
                 localStorage.setItem('af_token', res.token);
                 localStorage.setItem('af_refresh_token', res.refresh_token);
-                localStorage.setItem('af_username', res.username)
-                localStorage.setItem('af_is_sub', (res.is_sub === null || res.is_sub[0] === null) ? 0 : 1)
+                localStorage.setItem('af_username', res.username);
+                localStorage.setItem('af_is_sub', (res.is_sub === null || res.is_sub[0] === null) ? 0 : 1);
                 // console.log(res);
                 this.setState({
                     redirect: true,
-                    toPlan:res.is_sub[0] === null ? true : false
+                    toPlan: (res.is_sub === null || res.is_sub[0] === null) ? true : false
                 });
                 this.props.handleConnect(event);
             }
@@ -100,6 +110,7 @@ export default class SignIn extends React.Component {
         else {
             return (
                 <div id="signIn" class="layout-style">
+                    {this.customHeadElement()}
                     {this.state.error && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="La combinaison « email / mot de passe » est incorrect"/> }
                     <Container className="px-0 mt-6">
                         <H1 className="mb-5" title="Connexion à votre compte Asking Franklin"/>

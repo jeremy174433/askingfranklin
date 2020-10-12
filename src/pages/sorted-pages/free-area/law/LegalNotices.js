@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Container } from 'react-bootstrap';
 import H1 from '../../../components/elements/title/H1';
 import { Link } from 'react-router-dom';
@@ -9,9 +10,19 @@ export default class LegalNotices extends React.Component {
         window.scrollTo(0, 0);
     }
 
+    customHeadElement() {
+        return (
+            <Helmet>
+                <title>Mentions légales - Asking Franklin</title>
+                <meta name="description" content="Mentions légales - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
+            </Helmet>
+        );
+    }
+
     render() {
         return (
             <div class="layout-style">
+                {this.customHeadElement()}
                 <Container className="px-0 mt-6">
                     <H1 className="mb-5" title="Mentions Légales"/>
                     <section>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { 
     Container,
     Col 
@@ -43,6 +44,15 @@ export default class SignUp extends React.Component {
         if(token) {
             this.props.history.push('/plans');
         }
+    }
+
+    customHeadElement() {
+        return (
+            <Helmet>
+                <title>Créer un compte - Asking Franklin</title>
+                <meta name="description" content="Créer un compte - Passez à la version Pro d’Asking Franklin en créant votre compte ici !"/>
+            </Helmet>
+        );
     }
 
     handleInputType() {
@@ -123,6 +133,7 @@ export default class SignUp extends React.Component {
 
         return (
             <div id="signUp" class="layout-style">
+                {this.customHeadElement()}
                 {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre compte a bien été créé. Vous allez recevoir un email de confirmation, merci de le valider"/> }
                 {this.state.emailIsAlreadyTaken && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="L'email choisi n'est pas disponible, veuillez en choisir un différent"/> }
                 <Container className="px-0 mt-6">

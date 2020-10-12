@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { 
     Container,
     Col 
@@ -14,9 +15,18 @@ export default class ConfirmationPayment extends React.Component {
         window.scrollTo(0, 0);
     }
 
+    customHeadElement() {
+        return (
+            <Helmet>
+                <title>Version Pro - Asking Franklin, votre outil SEO français</title>
+            </Helmet>
+        );
+    }
+
     render() {
         return (
             <div class="layout-style mt-6">
+                {this.customHeadElement()}
                 <Container>
                     <StepperFunnel activeStep={2}/>
                 </Container>

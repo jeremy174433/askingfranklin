@@ -53,7 +53,7 @@ export default class Footer extends React.Component {
                             </ul>
                         </Col>
                         <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start mb-5 mb-lg-0">
-                            <p class="footer-title">La société</p>
+                            <p class="footer-title">Informations</p>
                             <ul class="d-flex flex-column">
                                 <li>
                                     <Link to="/mentions-legales" rel="nofollow" class="footer-link">Mentions légales</Link>

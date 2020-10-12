@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Container } from 'react-bootstrap';
 import H1 from '../../components/elements/title/H1';
 import H4 from '../../components/elements/title/H4';
@@ -29,6 +30,7 @@ export default class Profile extends React.Component {
             emailChanged: false,
             countClickCheckbox: 0
         }
+        this.loadPageData = this.loadPageData.bind(this);
         this.handleSelectAccount = this.handleSelectAccount.bind(this);
         this.handleSelectSubscription = this.handleSelectSubscription.bind(this);
         this.handleNewEmail = this.handleNewEmail.bind(this);
@@ -40,7 +42,6 @@ export default class Profile extends React.Component {
         this.handleSubmitPassword = this.handleSubmitPassword.bind(this);
         this.handleSubmitCheckbox = this.handleSubmitCheckbox.bind(this);
         this.handleCloseAlert = this.handleCloseAlert.bind(this);
-        this.loadPageData = this.loadPageData.bind(this);
     }
 
     loadPageData() {
@@ -104,6 +105,14 @@ export default class Profile extends React.Component {
     componentDidMount() {
         this.loadPageData();
         window.scrollTo(0, 0);
+    }
+
+    customHeadElement() {
+        return (
+            <Helmet>
+                <title>Mon compte - Asking Franklin</title>
+            </Helmet>
+        );
     }
 
     handleSelectAccount() {
@@ -328,6 +337,7 @@ export default class Profile extends React.Component {
     render() {
         return (
             <div class="layout-style">
+                {this.customHeadElement()}
                 <Container id="profilePage" className="px-0 mt-6">
                     {this.state.emailIsAlreadyTaken && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="L'email choisi n'est pas disponible, veuillez en choisir un différent"/> }
                     {this.state.emailChanged && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="La modification de votre email a été effectuée avec succès"/> }

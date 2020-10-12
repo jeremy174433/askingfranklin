@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { 
     Container,
     Row,
@@ -28,6 +29,15 @@ export default class Contact extends React.Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
+    }
+
+    customHeadElement() {
+        return (
+            <Helmet>
+                <title>Contact - Asking Franklin, votre outil SEO Français</title>
+                <meta name="description" content="Contact - Asking Franklin, l’outil français créé à Bordeaux qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes. Contactez-nous !"/>
+            </Helmet>
+        );
     }
 
     handleEmailChange(e) {
@@ -94,6 +104,7 @@ export default class Contact extends React.Component {
     render() {
         return (
             <div class="layout-style">
+                {this.customHeadElement()}
                 {this.state.alertIsShowed && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre message a bien été envoyé, nous reviendrons rapidement vers vous"/> }
                 <Container id="contact" className="px-0 mt-6 w-100 text-center d-flex flex-column align-items-center">
                     <H1 title="Contact &amp; Assistance"/>
