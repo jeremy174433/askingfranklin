@@ -81,8 +81,8 @@ export default class AFDataviz extends React.Component {
         .on("click", function() { return window.open("http://google.com/search?q=" + this.innerHTML) })
 
         function project(x, y) {
-        var angle = (x - 90) / 180 * Math.PI, radius = y;
-        return [radius * Math.cos(angle), radius * Math.sin(angle)];
+            var angle = (x - 90) / 180 * Math.PI, radius = y;
+            return [radius * Math.cos(angle), radius * Math.sin(angle)];
         }
     }
 

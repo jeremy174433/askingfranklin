@@ -5,7 +5,7 @@ import FeaturesIcons from '../../../assets/img/svg/switch/FeaturesIcons';
 import H4 from '../elements/title/H4';
 import AFDataviz from './AFDataviz';
 import AFTable from './AFTable';
-import * as saveSvgAsPng from 'save-svg-as-png';
+import * as d3ToPng from 'd3-svg-to-png'
 
 export default class AFWrapper extends React.Component {
     constructor(props) {
@@ -56,7 +56,8 @@ export default class AFWrapper extends React.Component {
     }
 
     exportPng() {
-        saveSvgAsPng(this.componentRef, 'diagram.png');
+        d3ToPng('#'+'dataviz-' + this.props.data.type + " svg", "name")
+          .then((data)=>{console.log(data)});
     };
     
     
@@ -78,7 +79,7 @@ export default class AFWrapper extends React.Component {
                                     <Tabs onClick={this.selectFirst} isDisabled={this.state.selectedPanel === 0} textTab="Graphique" title="Graphique" className={this.state.selectedPanel === 0 && 'pmy-tab-selected'}/>
                                     <Tabs onClick={this.selectSecond} isDisabled={this.state.selectedPanel === 1} textTab="Tableau" title="Tableau" className={this.state.selectedPanel === 1 && 'pmy-tab-selected'}/>
                                 </div>
-                                {this.state.selectedPanel === 0 && <PmyBtn type="button" btnIsMediumPmyOutlineFull textBtn="Exporter en PNG" title="Exporter le graphique en PNG" iconBtnBefore={<FeaturesIcons icon="image"/>} containerStyle="btn-export-to-png position-relative mt-5 mt-md-0"/> }
+                                {this.state.selectedPanel === 0 && <PmyBtn onClick={this.exportPng} type="button" btnIsMediumPmyOutlineFull textBtn="Exporter en PNG" title="Exporter le graphique en PNG" iconBtnBefore={<FeaturesIcons icon="image"/>} containerStyle="btn-export-to-png position-relative mt-5 mt-md-0"/> }
                             </div>
                         </div>
                         <div class="asking-franklin-body">

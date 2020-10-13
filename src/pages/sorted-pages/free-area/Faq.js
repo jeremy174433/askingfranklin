@@ -47,7 +47,7 @@ var accordionItems = [
             {
                 key: "4",
                 question: "Comment bien comprendre les différentes parties des branches de résultat de la roue ?",
-                content: "Lorem ipsum"
+                content: <p>â ä à é è ù ê ë î ïöñç</p>
             },
             {
                 key: "5",
@@ -150,13 +150,17 @@ export default class Faq extends React.Component {
             </Helmet>
         );
     }
-
     handleSearchTopic(e) {
         if(e.target.value.length > 2) {
             var ret = [];
             for (var i = 0; i < accordionItems.length; i++) {
                 for(var j = 0; j < accordionItems[i].questions.length; j++) {
-                    if (accordionItems[i].questions[j].question.includes(e.target.value || accordionItems[i].questions[j].content.includes(e.target.value))) {
+                    if(typeof accordionItems[i].questions[j].content.props.children == "string"){
+                        var contentQ = accordionItems[i].questions[j].content.props.children
+                    } else {
+                        var contentQ = accordionItems[i].questions[j].content.props.children.join()
+                    }
+                    if ((accordionItems[i].questions[j].question.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(e.target.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")) || (contentQ.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(e.target.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))))) {
                         ret.push(accordionItems[i].questions[j]);
                     }
                 }
