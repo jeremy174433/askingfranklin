@@ -19,6 +19,7 @@ export default class ConfirmationPayment extends React.Component {
         return (
             <Helmet>
                 <title>Version Pro - Asking Franklin, votre outil SEO français</title>
+                <meta name="description" content="Vous êtes désormais un membre Pro - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
             </Helmet>
         );
     }

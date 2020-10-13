@@ -16,7 +16,7 @@ export default class TermsOfSales extends React.Component {
         return (
             <Helmet>
                 <title>Conditions Générales de Vente - Asking Franklin</title>
-                <meta name="description" content="onditions Générales de Vente - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
+                <meta name="description" content="Conditions Générales de Vente - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
             </Helmet>
         );
     }

@@ -82,6 +82,7 @@ export default class ChoosePlan extends React.Component {
         return (
             <Helmet>
                 <title>Passez à la version Pro - Choix du plan - Asking Franklin, votre outil SEO français</title>
+                <meta name="description" content="Version Pro - Choix du plan - Améliorez votre référencement et soyez visible en passant à la version Pro d’Asking Franklin !"/>
             </Helmet>
         );
     }

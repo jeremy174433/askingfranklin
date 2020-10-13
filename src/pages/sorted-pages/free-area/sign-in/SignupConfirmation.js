@@ -34,6 +34,7 @@ export default class SignUpConfirmation extends React.Component {
         return (
             <Helmet>
                 <title>Inscription confirmée - Asking Franklin</title>
+                <meta name="description" content="Inscription confirmée - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
             </Helmet>
         );
     }
