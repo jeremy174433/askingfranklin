@@ -16,8 +16,7 @@ export default class AFWrapper extends React.Component {
         }
         this.selectFirst = this.selectFirst.bind(this);
         this.selectSecond = this.selectSecond.bind(this);
-        this.componentRef = React.createRef();
-        this.exportPng = this.exportPng.bind(this);
+        this.handleExportPng = this.handleExportPng.bind(this);
     }
 
     componentDidMount() {
@@ -55,20 +54,17 @@ export default class AFWrapper extends React.Component {
         });
     }
 
-    exportPng() {
-        var svg = document.querySelector('#'+'dataviz-' + this.props.data.type + " svg")
-        var g = document.querySelector('#'+'dataviz-' + this.props.data.type + " svg g")
-        svg.setAttribute("width","1000")
-        svg.setAttribute("height","1000")
-        g.setAttribute("transform","translate(500,500)")
-        d3ToPng('#'+'dataviz-' + this.props.data.type + " svg", "askingfranklin-" + this.props.data.type,{scale:1}).then((data)=>{
-            console.log(data)
-        })
-        svg.setAttribute("width","700")
-        svg.setAttribute("height","700")
-        g.setAttribute("transform","translate(350,350)")
-    };
-    
+    handleExportPng() {
+        var svg = document.querySelector('#' + 'dataviz-' + this.props.data.type + ' svg');
+        var g = document.querySelector('#' + 'dataviz-' + this.props.data.type + ' svg g');
+        svg.setAttribute('width', '1000');
+        svg.setAttribute('height', '1000');
+        g.setAttribute('transform', 'translate(500, 500)');
+        d3ToPng('#' + 'dataviz-' + this.props.data.type + ' svg', 'askingfranklin-' + this.props.data.type, {scale: 1});
+        svg.setAttribute('width', '700');
+        svg.setAttribute('height', '700');
+        g.setAttribute('transform', 'translate(350, 350)');
+    }
     
     render() {
 
@@ -88,7 +84,7 @@ export default class AFWrapper extends React.Component {
                                     <Tabs onClick={this.selectFirst} isDisabled={this.state.selectedPanel === 0} textTab="Graphique" title="Graphique" className={this.state.selectedPanel === 0 && 'pmy-tab-selected'}/>
                                     <Tabs onClick={this.selectSecond} isDisabled={this.state.selectedPanel === 1} textTab="Tableau" title="Tableau" className={this.state.selectedPanel === 1 && 'pmy-tab-selected'}/>
                                 </div>
-                                {this.state.selectedPanel === 0 && <PmyBtn onClick={this.exportPng} type="button" btnIsMediumPmyOutlineFull textBtn="Exporter en PNG" title="Exporter le graphique en PNG" iconBtnBefore={<FeaturesIcons icon="image"/>} containerStyle="btn-export-to-png position-relative mt-5 mt-md-0"/> }
+                                {this.state.selectedPanel === 0 && <PmyBtn onClick={this.handleExportPng} type="button" btnIsMediumPmyOutlineFull textBtn="Exporter en PNG" title="Exporter le graphique en PNG" iconBtnBefore={<FeaturesIcons icon="image"/>} containerStyle="btn-export-to-png position-relative mt-5 mt-md-0"/> }
                             </div>
                         </div>
                         <div class="asking-franklin-body">
