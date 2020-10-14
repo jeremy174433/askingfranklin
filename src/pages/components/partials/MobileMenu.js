@@ -1,10 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Home from '../../../assets/img/svg/navigation/Home';
-import People from '../../../assets/img/svg/navigation/People';
-import Rocket from '../../../assets/img/svg/navigation/Rocket';
-import Settings from '../../../assets/img/svg/navigation/Settings';
-import LogOut from '../../../assets/img/svg/navigation/LogOut';
+import MenuLink from '../../components/elements/link/MenuLink';
 
 export default class MobileMenu extends React.Component {
     constructor(props) {
@@ -44,47 +40,18 @@ export default class MobileMenu extends React.Component {
                     {
                         this.props.userConnected === true ?
                             <ul class="d-flex flex-column align-items-center">
-                                {localStorage.getItem('af_is_sub') == 0 &&
-                                    <li>
-                                        <Link to="/tarifs" onClick={this.handleMobileMenuClicked} class="nav-link d-flex flex-row py-2 px-3 rounded">
-                                            <Rocket width="16" fill="#FFF"/>
-                                            <span class="ml-3">Tarifs</span>
-                                        </Link>
-                                    </li>
-                                }
-                                <li>
-                                    <Link to="/profil" onClick={this.handleMobileMenuClicked} class="nav-link d-flex flex-row py-2 px-3 rounded">
-                                        <Settings width="16" fill="#FFF"/>
-                                        <span class="ml-3">Paramètres</span>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/" onClick={this.props.onClickLogOut} class="nav-link d-flex flex-row py-2 px-3 rounded">
-                                        <LogOut width="16" fill="#FFF"/>
-                                        <span class="ml-3">Déconnexion</span>
-                                    </Link>
-                                </li>
+                                <MenuLink redirectTo="/" onClick={this.handleMobileMenuClicked} textLink="Accueil"/>
+                                {localStorage.getItem('af_is_sub') == 0 && <MenuLink redirectTo="/tarifs" onClick={this.handleMobileMenuClicked} textLink="Tarifs"/> }
+                                <MenuLink redirectTo="/faq" onClick={this.handleMobileMenuClicked} textLink="FAQ"/>
+                                <MenuLink redirectTo="/profil" onClick={this.handleMobileMenuClicked} textLink="Paramètres"/>
+                                <MenuLink redirectTo="/" onClick={this.props.onClickLogOut} textLink="Déconnexion"/>
                             </ul>
                         : this.props.userConnected === false &&
                             <ul class="d-flex flex-column align-items-center">
-                                <li>
-                                    <Link to="/" onClick={this.handleMobileMenuClicked} class="nav-link d-flex flex-row py-2 px-3 rounded">
-                                        <Home width="16" fill="#FFF"/>
-                                        <span class="ml-3">Accueil</span>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/connexion" onClick={this.handleMobileMenuClicked} class="nav-link d-flex flex-row py-2 px-3 rounded">
-                                        <People width="16" fill="#FFF"/>
-                                        <span class="ml-3">Connexion</span>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/tarifs" onClick={this.handleMobileMenuClicked} class="nav-link d-flex flex-row py-2 px-3 rounded">
-                                        <Rocket width="16" fill="#FFF"/>
-                                        <span class="ml-3">Tarifs</span>
-                                    </Link>
-                                </li>
+                                <MenuLink redirectTo="/" onClick={this.handleMobileMenuClicked} textLink="Accueil"/>
+                                <MenuLink redirectTo="/tarifs" onClick={this.handleMobileMenuClicked} textLink="Tarifs"/>
+                                <MenuLink redirectTo="/faq" onClick={this.handleMobileMenuClicked} textLink="FAQ"/>
+                                <MenuLink redirectTo="/connexion" onClick={this.handleMobileMenuClicked} textLink="Connexion"/>
                             </ul>
                     }
                 </div>

@@ -5,6 +5,7 @@ import {
     Col
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import MenuLink from '../../components/elements/link/MenuLink';
 import Logo from '../../../assets/img/svg/switch/Logo';
 import SocialMedia from '../../../assets/img/svg/switch/SocialMedia';
 
@@ -36,54 +37,26 @@ export default class Footer extends React.Component {
                         <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start mb-5 mb-lg-0">
                             <p class="footer-title">Liens utiles</p>
                             <ul class="d-flex flex-column">
-                                <li>
-                                    <Link to="/" class="footer-link">Accueil</Link>
-                                </li>
-                                {(localStorage.getItem('af_is_sub') == null || localStorage.getItem('af_is_sub') == 0) &&
-                                    <li>
-                                        <Link to="/tarifs" class="footer-link">Tarifs</Link>
-                                    </li>
-                                }
-                                <li>
-                                    <Link to="/faq" class="footer-link">FAQ</Link>
-                                </li>
-                                <li>
-                                    <Link to="/contact" class="footer-link">Contact</Link>
-                                </li>
+                                <MenuLink redirectTo="/" textLink="Accueil" linkLocation="footer-link"/>
+                                {(localStorage.getItem('af_is_sub') == null || localStorage.getItem('af_is_sub') == 0) && <MenuLink redirectTo="/tarifs" textLink="Tarifs" linkLocation="footer-link"/> }
+                                <MenuLink redirectTo="/faq" textLink="FAQ" linkLocation="footer-link"/>
+                                <MenuLink redirectTo="/contact" textLink="Contact" linkLocation="footer-link"/>
                             </ul>
                         </Col>
                         <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start mb-5 mb-lg-0">
                             <p class="footer-title">Informations</p>
                             <ul class="d-flex flex-column">
-                                <li>
-                                    <Link to="/mentions-legales" rel="nofollow" class="footer-link">Mentions légales</Link>
-                                </li>
-                                <li>
-                                    <Link to="/conditions-generales-d-utilisation"  rel="nofollow" class="footer-link">CGU</Link>
-                                </li>
-                                <li>
-                                    <Link to="/conditions-generales-de-vente" rel="nofollow" class="footer-link">CGV</Link>
-                                </li>
+                                <MenuLink redirectTo="/mentions-legales" textLink="Mentions légales"rel="nofollow"  linkLocation="footer-link"/>
+                                <MenuLink redirectTo="/conditions-generales-d-utilisation" textLink="CGU" rel="nofollow" linkLocation="footer-link"/>
+                                <MenuLink redirectTo="/conditions-generales-de-vente" textLink="CGV" rel="nofollow" linkLocation="footer-link"/>
                             </ul>
                         </Col>
                         <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start">
                             <p class="footer-title">Nos réseaux</p>
                             <ul class="social-media-wrapper d-flex flex-row">
-                                <li>
-                                    <a href="https://www.facebook.com/askingfranklin/" target="_blank" rel="nofollow noopener" title="Ouvrir dans un nouvel onglet : Facebook">
-                                        <SocialMedia icon="facebook" height="18" fill="#FFF"/>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://twitter.com/AskingFranklin" target="_blank" rel="nofollow noopener" title="Ouvrir dans un nouvel onglet : Twitter">
-                                        <SocialMedia icon="twitter" width="18" fill="#FFF"/>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.linkedin.com/company/asking-franklin/" target="_blank" rel="nofollow noopener" title="Ouvrir dans un nouvel onglet : LinkedIn">
-                                        <SocialMedia icon="linkedin" width="18" fill="#FFF"/>
-                                    </a>
-                                </li>
+                                <MenuLink linkHasIcon={<SocialMedia icon="facebook" height="18" fill="#FFF"/>} href="https://www.facebook.com/askingfranklin/" target="_blank" rel="nofollow noopener" title="Ouvrir dans un nouvel onglet : Facebook" className="icon-sm"/>
+                                <MenuLink linkHasIcon={<SocialMedia icon="twitter" width="18" fill="#FFF"/>} href="https://twitter.com/AskingFranklin" target="_blank" rel="nofollow noopener" title="Ouvrir dans un nouvel onglet : Twitter" className="icon-sm"/>
+                                <MenuLink linkHasIcon={<SocialMedia icon="linkedin" width="18" fill="#FFF"/>} href="https://www.linkedin.com/company/asking-franklin/" target="_blank" rel="nofollow noopener" title="Ouvrir dans un nouvel onglet : LinkedIn" className="icon-sm"/>
                             </ul>
                         </Col>
                     </Row>

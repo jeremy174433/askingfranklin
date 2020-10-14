@@ -41,15 +41,16 @@ export default class TermsOfServices extends React.Component {
                 <Container className="px-0 mt-6">
 
                     <H1 className="mb-4" title="Conditions Générales d'Utilisation"/>
-                    <p class="mb-5">En vigueur depuis le 06/08/2020</p>
+                    <p>En vigueur depuis le : 20/10//2020</p>
+                    <p class="mb-5">Dernière mise à jour le : 20/10/2020</p>
 
                     {/* --- Préabule --- */}
                     <section>
                         <H2 className="mb-3" title="Préambule"/>
-                        <p class="mb-3">Les présentes Conditions Générales d'Utilisation (dites « CGU ») ont pour objet l'encadrement juridique des modalités de mise à disposition du site et des services par Sortvoices et de définir les conditions d’accès et d’utilisation des services par « l'Utilisateur ».</p>
+                        <p class="mb-3">Les présentes Conditions Générales d'Utilisation (dites « CGU ») ont pour objet l'encadrement juridique des modalités de mise à disposition du site et des services par Asking Franklin et de définir les conditions d’accès et d’utilisation des services par « l'Utilisateur ».</p>
                         <p class="mb-3">Les présentes CGU sont accessibles sur le site à la rubrique « CGU »</p>
                         <p class="mb-3">Toute inscription ou utilisation du site implique l'acceptation sans aucune réserve ni restriction des présentes CGU par l’utilisateur. Lors de l'inscription sur le site via le Formulaire d’inscription, chaque utilisateur accepte expressément les présentes CGU en cochant la case précédant le texte suivant : « J'ai lu et j'accepte les CGU ».</p>
-                        <p class="mb-3">En cas de non-acceptation des CGU stipulées dans le présent contrat, l'Utilisateur se doit de renoncer à l'accès des services proposés par le site</p>
+                        <p class="mb-3">En cas de non-acceptation des CGU stipulées dans le présent contrat, l'Utilisateur se doit de renoncer à l'accès des services proposés par le site.</p>
                         <p>{siteURL} se réserve le droit de modifier unilatéralement et à tout moment le contenu des présentes CGU.</p>
                     </section>
 
@@ -82,10 +83,10 @@ export default class TermsOfServices extends React.Component {
                         <ul class="ml-3 ml-md-5 mt-5">
                             <li class="mb-3"><span class="mr-2">&bull;</span> SaaS d'optimisation SEO</li>
                             <li class="mb-3"><span class="mr-2">&bull;</span> Le site est accessible gratuitement en tout lieu à tout Utilisateur ayant un accès à Internet. Tous les frais supportés par l'Utilisateur pour accéder au service (matériel informatique, logiciels, connexion Internet, etc.) sont à sa charge.</li>
-                            <li class="mb-3"><span class="mr-2">&bull;</span> L’Utilisateur non membre n'a pas accès aux services réservés. Pour cela, il doit s’inscrire en remplissant le formulaire et en validant son paiement. En acceptant de s’inscrire aux services réservés, l’Utilisateur membre s’engage à fournir des informations sincères et exactes concernant son état civil et ses coordonnées, notamment son adresse email.</li>
-                            <li class="mb-3"><span class="mr-2">&bull;</span> Pour accéder aux services, l’Utilisateur doit ensuite s'identifier à l'aide de son identifiant et de son mot de passe qui lui seront communiqués après son inscription.</li>
-                            <li><span class="mr-2">&bull;</span> Tout événement dû à un cas de force majeure ayant pour conséquence un dysfonctionnement du site ou serveur et sous réserve de toute interruption ou modification en cas de maintenance, n'engage pas la responsabilité de {siteURL}. Dans ces cas, l’Utilisateur accepte ainsi ne pas tenir rigueur à l’éditeur de toute interruption ou suspension de service, même sans préavis.</li>
-                            <li><span class="mr-2">&bull;</span> L'Utilisateur a la possibilité de contacter le site par messagerie électronique à l’adresse email de l’éditeur communiqué à l'article 1.</li>
+                            <li class="mb-3"><span class="mr-2">&bull;</span> L’Utilisateur non membre n'a pas accès aux services réservés. Pour cela, il doit s’inscrire en remplissant le formulaire d'inscription puis souscrire aux services en validant son paiement. En acceptant de souscrire aux services réservés, l’Utilisateur membre s’engage à fournir des informations sincères et exactes concernant son état civil et ses coordonnées, notamment son adresse email.</li>
+                            <li class="mb-3"><span class="mr-2">&bull;</span> Pour accéder aux services, l’Utilisateur doit ensuite s'identifier à l'aide de son adresse email et de son mot de passe qui auront été préalablement choisi par lui-même au moment de son inscription.</li>
+                            <li class="mb-3"><span class="mr-2">&bull;</span> Tout événement dû à un cas de force majeure ayant pour conséquence un dysfonctionnement du site ou serveur et sous réserve de toute interruption ou modification en cas de maintenance, n'engage pas la responsabilité de {siteURL}. Dans ces cas, l’Utilisateur accepte ainsi ne pas tenir rigueur à l’éditeur de toute interruption ou suspension de service, même sans préavis.</li>
+                            <li><span class="mr-2">&bull;</span> L'Utilisateur a la possibilité de contacter le site par messagerie électronique à l’adresse email {contactEmail} ou via notre <Link to="/contact">formulaire de contact</Link>.</li>
                         </ul>
                     </section>
 
@@ -93,7 +94,7 @@ export default class TermsOfServices extends React.Component {
                     <section>
                         <H2 id="article-3" className="pt-6 mb-3" title={article3}/>
                         <p class="mb-3">Le site assure à l'Utilisateur une collecte et un traitement d'informations personnelles dans le respect de la vie privée conformément à la loi n°78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers et aux libertés.</p>
-                        <p>En vertu de la loi Informatique et Libertés, en date du 6 janvier 1978, l'Utilisateur dispose d'un droit d'accès, de rectification, de suppression et d'opposition de ses données personnelles. L'Utilisateur exerce ce droit par email à l'adresse email {contactEmail}.</p>
+                        <p>En vertu de la loi Informatique et Libertés, en date du 6 janvier 1978, l'Utilisateur dispose d'un droit d'accès, de rectification, de suppression et d'opposition de ses données personnelles. L'Utilisateur peut exercer ce droit par email à l'adresse {contactEmail} ou via notre <Link to="/contact">formulaire de contact</Link>.</p>
                     </section>
 
                     {/* --- Article 4 --- */}
@@ -109,8 +110,8 @@ export default class TermsOfServices extends React.Component {
                     {/* --- Article 5 --- */}
                     <section>
                         <H2 id="article-5" className="pt-6 mb-3" title={article5}/>
-                        <p class="mb-3">Les sources des informations diffusées sur le site {siteURL} sont réputées fiables mais le site ne garantit pasqu’il soit exempt de défauts, d’erreurs ou d’omissions.</p>
-                        <p class="mb-3">Les informations communiquées sont présentées à titre indicatif et général sans valeur contractuelle. Malgré des mises à jour régulières, le site {siteURL} ne peut être tenu responsable de la modification des dispositions administratives et juridiques survenant après la publication. De même, le site ne peut être tenue responsable de l’utilisation et de l’interprétation de l’information contenue dans ce site.</p>
+                        <p class="mb-3">Les sources des informations diffusées sur le site {siteURL} sont réputées fiables mais le site ne garantit pas qu’il soit exempt de défauts, d’erreurs ou d’omissions.</p>
+                        <p class="mb-3">Les informations communiquées sont présentées à titre indicatif et général sans valeur contractuelle. Malgré des mises à jour régulières, le site {siteURL} ne peut être tenu responsable de la modification des dispositions administratives et juridiques survenant après la publication. De même, le site ne peut être tenu responsable de l’utilisation et de l’interprétation de l’information contenue dans ce site.</p>
                         <p class="mb-3">L'Utilisateur s'assure de garder son mot de passe secret. Toute divulgation du mot de passe, quelle que soit sa forme, est interdite. Il assume les risques liés à l'utilisation de son identifiant et mot de passe. Le site décline toute responsabilité.</p>
                         <p class="mb-3">Le site {siteURL} ne peut être tenu pour responsable d’éventuels virus qui pourraient infecter l’ordinateur ou tout matériel informatique de l’Internaute, suite à une utilisation, à l’accès, ou au téléchargement provenant de ce site.</p>
                         <p>La responsabilité du site ne peut être engagée en cas de force majeure ou du fait imprévisible et insurmontable d'un tiers.</p>
@@ -125,20 +126,20 @@ export default class TermsOfServices extends React.Component {
                     {/* --- Article 7 --- */}
                     <section>
                         <H2 id="article-7" className="pt-6 mb-3" title={article7}/>
-                        <p class="mb-3">L’Utilisateur est informé que lors de ses visites sur le site, un cookie peut s’installer automatiquement sur son logiciel de navigation.</p>
+                        <p class="mb-3">L’Utilisateur est informé que lors de ses visites sur le site, un cookie peut s’installer automatiquement sur son navigateur web.</p>
                         <p class="mb-3">Les cookies sont de petits fichiers stockés temporairement sur le disque dur de l’ordinateur de l’Utilisateur par votre navigateur et qui sont nécessaires à l’utilisation du site {siteURL}. Les cookies ne contiennent pas d’information personnelle et ne peuvent pas être utilisés pour identifier quelqu’un. Un cookie contient un identifiant unique, généré aléatoirement et donc anonyme. Certains cookies expirent à la fin de la visite de l’Utilisateur, d’autres restent.</p>
-                        <p class="mb-3">L’information contenue dans les cookies est utilisée pour améliorer le site {siteURL}.</p>
+                        <p class="mb-3">L’information contenue dans les cookies est utilisée afin de contribuer à l'amélioration du site {siteURL}.</p>
                         <p class="mb-3">En naviguant sur le site, L’Utilisateur les acceptent.</p>
                         <p class="mb-3">L’Utilisateur doit toutefois donner son consentement quant à l’utilisation de certains cookies.</p>
                         <p class="mb-3">A défaut d’acceptation, l’Utilisateur est informé que certaines fonctionnalités ou pages risquent de lui être refusées.</p>
-                        <p>L’Utilisateur pourra désactiver ces cookies par l’intermédiaire des paramètres figurant au sein de son logiciel de navigation.</p>
+                        <p>L’Utilisateur pourra désactiver ces cookies par l’intermédiaire des paramètres de son navigateur web.</p>
                     </section>
 
                     {/* --- Article 8 --- */}
                     <section>
                         <H2 id="article-8" className="pt-6 mb-3" title={article8}/>
-                        <p class="mb-3">La législation française s'applique au présent contrat. En cas d'absence de résolution amiable d'un litige né entre les parties, les tribunaux français seront seuls compétents pour en connaître.</p>
-                        <p>Pour toute question relative à l’application des présentes CGU, vous pouvez joindre l’éditeur aux coordonnées inscrites à l'article 1.</p>
+                        <p class="mb-3">La législation française s'applique au présent contrat. En cas d'absence de résolution amiable d'un litige né entre les parties, les tribunaux français seront seuls compétents.</p>
+                        <p>Pour toute question relative à l’application des présentes CGU, vous pouvez joindre l’éditeur à l'adresse email {contactEmail} ou via notre <Link to="/contact">formulaire de contact</Link>.</p>
                     </section>
 
                 </Container>

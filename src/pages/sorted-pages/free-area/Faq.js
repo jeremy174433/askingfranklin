@@ -27,12 +27,13 @@ var accordionItems = [
                 key: "0",
                 question: "Quel type de terme je dois rechercher ?",
                 content: <p>Vous pouvez rechercher n’importe quel terme : <strong class="fw-600">un objet, un secteur, un marché, un concurrent, un produit, un animal... etc.</strong> <br/>
-                Pour que la recherche soit pertinente, le terme doit être en français. Ou en tout cas utilisé dans le langage français (par exemple « call » est un mot anglais, mais utilisé par de nombreux français). <blockquote class="d-block mt-3">En revanche afin d’optimiser les résultats nous vous déconseillons de taper des phrase complètes ou des ensembles de mots car il y aurait peu de résultats associés.</blockquote></p>
+                Pour que la recherche soit pertinente, le terme doit être en français. Ou en tout cas utilisé dans le langage français (par exemple « call » est un mot anglais, mais utilisé par de nombreux français).
+                <blockquote class="d-block mt-3">En revanche afin d’optimiser les résultats nous vous déconseillons de taper des phrases complètes ou des ensembles de mots car il y aurait peu de résultats associés.</blockquote></p>
             },
             {
                 key: "1",
                 question: "Combien de recherches je peux effectuer par jour ?",
-                content: <p>Vous pouvez effectuer autant de recherches que vous le souhaitez chaque jour grâce à notre offre payante. <span class="d-block mt-3">Bien sûr, vous pouvez également profiter de Asking Franklin gratuitement, vous pourrez ainsi effectuer jusqu’à 3 recherches gratuitement par jour.</span></p>
+                content: <p>Vous pouvez effectuer autant de recherches que vous le souhaitez chaque jour grâce à notre offre Pro (payante). <span class="d-block mt-3">Bien sûr, vous pouvez également profiter de Asking Franklin gratuitement, vous pourrez ainsi effectuer jusqu’à 3 recherches gratuitement par jour.</span></p>
             },
             {
                 key: "2",
@@ -46,13 +47,13 @@ var accordionItems = [
             },
             {
                 key: "4",
-                question: "Comment bien comprendre les différentes parties des branches de résultat de la roue ?",
-                content: <p>â ä à é è ù ê ë î ïöñç</p>
+                question: "Comment bien comprendre les différentes parties des branches de résultat dans le graphique ?",
+                content: <p>&nbsp;</p>
             },
             {
                 key: "5",
-                question: "Est-ce que je peux modifier les résultats de ma recherche directement dans la roue ?",
-                content: <p>Vous ne pouvez pas modifier les résultats dans la roue mais vous pouvez cependant modifier la représentation visuelle des résultats : en cliquant simplement sur le bouton « <span class="fw-600">Tableau</span> » à côté de « <span class="fw-600">Graphique</span> ». Vous aurez alors accès à un tableau regroupant l'ensemble des résultats.</p>
+                question: "Est-ce que je peux modifier les résultats de ma recherche directement dans le graphique ?",
+                content: <p>Vous ne pouvez pas modifier les résultats du graphique mais vous pouvez cependant modifier la représentation visuelle des résultats : en cliquant simplement sur le bouton « <span class="fw-600">Tableau</span> » à côté de « <span class="fw-600">Graphique</span> ». Vous aurez alors accès à un tableau regroupant l'ensemble des résultats.</p>
             },
             {
                 key: "6",
@@ -80,12 +81,21 @@ var accordionItems = [
             {
                 key: "101",
                 question: "Combien coûte Asking Franklin ?",
-                content: <p>Deux types de plans sont proposés pour la version payante du produit : <br/> <blockquote class="d-block mt-3"><span class="d-block mb-2 fw-600">Plan mensuel : <br/> 49€/mois </span> (Souscription sans engagement)</blockquote> <br/> <blockquote class="d-block mt-3"><span class="d-block mb-2 fw-600">Plan Annuel : <br/> 39€/mois </span> (468€/an au lieu de 588€ soit 20% de réduction)</blockquote> <br/> Bien sûr, vous pouvez également profiter de Asking Franklin gratuitement, vous pourrez ainsi effectuer jusqu’à 3 recherches gratuitement par jour.</p>
+                content: <p>Deux types de plans sont proposés pour la version payante du produit : <br/>
+                <blockquote class="d-block mt-3"><span class="d-block mb-2 fw-600">Plan mensuel : <br/> 49€/mois </span> (Souscription sans engagement)</blockquote> <br/>
+                <blockquote class="d-block mt-3"><span class="d-block mb-2 fw-600">Plan Annuel : <br/> 39€/mois </span> (468€/an au lieu de 588€ soit 20% de réduction)</blockquote> <br/> 
+                Bien sûr, vous pouvez également profiter de Asking Franklin gratuitement, vous pourrez ainsi effectuer jusqu’à 3 recherches gratuitement par jour.</p>
             },
             {
                 key: "102",
                 question: "Est-ce que je suis forcément engagé si je souscris à une offre ?",
-                content: <p><blockquote>Il n’y a pas d’engagement de durée quand vous souscrivez un abonnement sur Asking Franklin. Vous pouvez donc arrêter votre abonnement à tout moment, la résiliation sera effective à l’issue du mois entamé.</blockquote> <br/> Vous pourrez dès lors continuer à utiliser votre compte en offre gratuite et limitée à 3 recherches par jour.</p>
+                content: <p><span class="fw-600">Il n’y a pas d’engagement de durée quand vous souscrivez un abonnement sur Asking Franklin. Vous pouvez donc arrêter votre abonnement à tout moment.</span>
+                <blockquote class="d-block mt-3">Dans le cas où <span class="fw-600">vous avez souscrit un abonnement mensuel</span>, la résiliation sera alors effective dès l'annulation du renouvellement automatique de l'abonnement, vous resterez membre Pro jusqu'au terme de sa période de validité, celui-ci étant valable pour une durée de 30 jours. <br/>
+                <span class="fz-14">(exemple : vous souscrivez ou renouvellez un abonnement le 12 du mois, vous annulez votre abonnement le 23, celui-ci sera automatiquement interrompu le 12 du mois suivant)</span>.</blockquote>
+                <blockquote class="d-block mt-3">Dans le cas où <span class="fw-600">vous avez souscrit un abonnement annuel</span>, la résiliation sera alors effective dès l'annulation du renouvellement automatique de l'abonnement, vous resterez membre Pro jusqu'au terme de sa période de validité, celui-ci étant valable pour une durée de 1 an (365 jours). <br/>
+                <span class="fz-14">(exemple : vous souscrivez ou renouvellez un abonnement au mois de mars, vous annulez votre abonnement annuel en juillet, celui-ci sera automatiquement interrompu au mois de mars suivant)</span>.</blockquote>
+                <span class="d-block mt-3">Note : Même si vous résilisez votre abonnement, tant que celui-ci n'est pas arrivé au terme de sa période de validité, vous avez la possibilité de le réactiver en cochant la case dédiée à l'abonnement sur votre profil puis en cliquant sur sauvegarder.</span>
+                <span class="d-block mt-3"> Vous pourrez dès lors continuer à utiliser votre compte en offre gratuite et limitée à 3 recherches par jour.</span></p>
             },
             {
                 key: "103",
@@ -100,7 +110,8 @@ var accordionItems = [
             {
                 key: "105",
                 question: "Comment annuler le renouvellement automatique de mon abonnement ?",
-                content: <p>Vous pouvez annuler le renouvellement automatique de votre abonnement, une fois connecté, en cliquant sur « <span class="fw-600">Mon compte</span> » en haut à droite, puis dans « <span class="fw-600">Paramètres</span> » et enfin dans l'onglet « <span class="fw-600">Abonnement</span> » en décochant la case dédiée à l'abonnement puis en cliquant sur sauvegarder.</p>
+                content: <p>Vous pouvez annuler le renouvellement automatique de votre abonnement, une fois connecté, en cliquant sur « <span class="fw-600">Mon compte</span> » en haut à droite, puis dans « <span class="fw-600">Paramètres</span> » et enfin dans l'onglet « <span class="fw-600">Abonnement</span> » en décochant la case dédiée à l'abonnement puis en cliquant sur sauvegarder.
+                <span class="d-block mt-3">Note : Si vous résilisez votre abonnement, tant que celui-ci n'est pas arrivé au terme de sa période de validité, vous avez la possibilité de le réactiver en recochant la case dédiée à l'abonnement sur votre profil puis en cliquant sur sauvegarder.</span></p>
             }
         ]
     },
@@ -128,7 +139,6 @@ export default class Faq extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            searchTopic: '',
             toShow: [],
             selectedCategoryIndex: 0,
             useFiltered: false,
@@ -151,16 +161,17 @@ export default class Faq extends React.Component {
         );
     }
     handleSearchTopic(e) {
-        if(e.target.value.length > 2) {
+        if (e.target.value.length > 2) {
             var ret = [];
             for (var i = 0; i < accordionItems.length; i++) {
-                for(var j = 0; j < accordionItems[i].questions.length; j++) {
-                    if(typeof accordionItems[i].questions[j].content.props.children == "string"){
-                        var contentQ = accordionItems[i].questions[j].content.props.children
-                    } else {
-                        var contentQ = accordionItems[i].questions[j].content.props.children.join()
+                for (var j = 0; j < accordionItems[i].questions.length; j++) {
+                    if (typeof accordionItems[i].questions[j].content.props.children == 'string') {
+                        var contentQ = accordionItems[i].questions[j].content.props.children;
+                    } 
+                    else {
+                        var contentQ = accordionItems[i].questions[j].content.props.children.join();
                     }
-                    if ((accordionItems[i].questions[j].question.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(e.target.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")) || (contentQ.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(e.target.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))))) {
+                    if ((accordionItems[i].questions[j].question.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(e.target.value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')) || (contentQ.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(e.target.value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''))))) {
                         ret.push(accordionItems[i].questions[j]);
                     }
                 }
@@ -194,7 +205,7 @@ export default class Faq extends React.Component {
 
                     <Row className="mx-0 mb-5 w-md-100">
                         <Col sm="12" className="px-0 d-flex flex-column">
-                            <H1 className="mb-5" title="Bonjour, comment pouvons-nous vous aider ?"/>
+                            <H1 className="mb-5" title="Comment pouvons-nous vous aider ?"/>
                             <Input onChange={this.handleSearchTopic} hideLabel={true} type="search" placeholder="Rechercher un mot clé, un sujet ou posez une question..." containerStyle="w-100 mr-0 mr-sm-4 mb-4 mb-sm-0 pb-0"/>
                             {!this.state.useFiltered && 
                                 <p class="mt-5">Ou sélectionnez une catégorie pour trouver rapidement la réponse à votre question</p>

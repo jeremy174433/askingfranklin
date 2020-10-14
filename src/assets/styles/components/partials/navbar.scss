@@ -8,15 +8,9 @@
 
     > .container { margin-top: inherit; }
 
-    a {
-        transition: .2s ease-in-out;
+    .nav-link {
         @include fz-18;
-        &:hover { text-decoration: none; }
-
-        &.nav-link {
-            color: $theme-color-primary;
-            &:hover { background-color: $md-grey-35; }
-        }
+        @include menu-link-style(.5, 1, $theme-color-primary);
     }
 
     .nav-btn-cta a { height: $header-mh; }

@@ -30,9 +30,22 @@
 // Link style
 @mixin link-style {
     color: $link;
-    &:hover { 
+    &:hover, &:focus { 
         color: $link;
         text-decoration: underline;
+    }
+}
+
+@mixin menu-link-style($py, $px, $color) {
+    display: flex;
+    flex-direction: row;
+    padding: $py + rem $px + rem;
+    border-radius: .25rem;
+    color: $color;
+    transition: .2s ease-in-out;
+    &:hover, &:focus { 
+        background-color: $md-grey-35;
+        text-decoration: none;
     }
 }
 

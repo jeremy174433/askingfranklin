@@ -45,7 +45,8 @@ export default class TermsOfSales extends React.Component {
                 <Container className="px-0 mt-6">
 
                     <H1 className="mb-4" title="Conditions Générales de Vente"/>
-                    <p class="mb-5">Date de dernière mise à jour des CGV : 06/08/2020</p>
+                    <p>En vigueur depuis le : 20/10//2020</p>
+                    <p class="mb-5">Dernière mise à jour le : 20/10/2020</p>
 
                     {/* --- Préabule --- */}
                     <section>

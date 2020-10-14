@@ -2,6 +2,7 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Logo from '../../../assets/img/svg/switch/Logo';
+import MenuLink from '../../components/elements/link/MenuLink';
 import People from '../../../assets/img/svg/navigation/People';
 import Rocket from '../../../assets/img/svg/navigation/Rocket';
 import PmyBtn from '../button/PmyBtn';
@@ -60,35 +61,17 @@ export default class Navbar extends React.Component {
                     <div class="d-none d-md-block ml-auto">
                             {
                                 this.state.isConnected === true ?
-                                    <ul class="d-flex flex-row align-items-center">
-                                        {localStorage.getItem('af_is_sub') == 0 &&
-                                            <li>
-                                                <Link to="/tarifs" class="nav-link d-flex flex-row py-2 px-3 rounded">
-                                                    <Rocket width="16" fill="#2B2B2B"/>
-                                                    <span class="ml-3">Devenir Pro</span>
-                                                </Link>
-                                            </li>
-                                        }
-                                        {localStorage.getItem('af_is_sub') != 0 &&
-                                            <li>
-                                                <CrownPro width="52"/>
-                                            </li>
-                                        }
-                                        <li class="ml-5">
-                                            <ProfileAccess onClickLogOut={this.handleLogOut}/>
-                                        </li>
+                                    <ul class="d-flex flex-row align-items-center position-relative">
+                                        <MenuLink redirectTo="/faq" textLink="FAQ"/>
+                                        {localStorage.getItem('af_is_sub') == 0 && <MenuLink redirectTo="/connexion" linkHasIcon={<Rocket width="16" fill="#2B2B2B"/>} textLink="Devenir Pro" containerStyle="ml-4"/> }
+                                        {localStorage.getItem('af_is_sub') != 0 && <MenuLink customMenuItem={<CrownPro width="52"/>} containerStyle="position-absolute" style={{top: '-10px', right: '150px', zIndex: 1}}/> }
+                                        <MenuLink customMenuItem={<ProfileAccess onClickLogOut={this.handleLogOut}/>} containerStyle="ml-5"/>
                                     </ul>
                                 : this.state.isConnected === false &&
                                     <ul class="d-flex flex-row align-items-center">
-                                        <li>
-                                            <Link to="/connexion" class="nav-link d-flex flex-row py-2 px-3 rounded">
-                                                <People width="16" fill="#2B2B2B"/>
-                                                <span class="ml-3">Connexion</span>
-                                            </Link>
-                                        </li>
-                                        <li class="ml-5 nav-btn-cta">
-                                            <PmyBtn redirectTo="/tarifs" linkIsMediumPmyFull iconLinkBefore={<Rocket width="16"/>} textLink="Devenir Pro" className="rounded-0"/>
-                                        </li>
+                                        <MenuLink redirectTo="/faq" textLink="FAQ" containerStyle="mr-4"/>
+                                        <MenuLink redirectTo="/connexion" linkHasIcon={<People width="16" fill="#2B2B2B"/>} textLink="Connexion"/>
+                                        <MenuLink customMenuItem={<PmyBtn redirectTo="/tarifs" linkIsMediumPmyFull iconLinkBefore={<Rocket width="16"/>} textLink="Devenir Pro" className="rounded-0" containerStyle="ml-5 nav-btn-cta"/>}/>
                                     </ul>
                             }
                     </div>
