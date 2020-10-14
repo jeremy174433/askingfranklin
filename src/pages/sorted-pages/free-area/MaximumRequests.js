@@ -19,6 +19,7 @@ export default class MaximumRequests extends React.Component {
         return (
             <Helmet>
                 <title>Limite de recherches atteinte - Asking Franklin</title>
+                <meta name="description" content="Limite de recherches atteinte - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
             </Helmet>
         );
     }
