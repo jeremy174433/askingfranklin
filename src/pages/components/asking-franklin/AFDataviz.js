@@ -94,7 +94,7 @@ export default class AFDataviz extends React.Component {
         return (
             <Row id={this.props.idSvg} className="asking-franklin-dataviz px-3 pb-3 mx-0">
                 <Col sm="12" className="d-flex justify-content-center align-items-center p-0" style={{ minWidth: 'max-content' }}>
-                    <svg style={{ overflow: 'visible' }} height="700" width="700" ref={el => (this.svg = el)}/>
+                    <svg style={{overflow:"visible"}} height="700" width="700" ref={el => (this.svg = el)}/>
                     <Logo icon="picto" width="32" colorPrimary="#BDCCD4" colorSecondary="#FFF" className="position-absolute mt-5" style={{ opacity: '.75' }}/>
                 </Col>
             </Row>
