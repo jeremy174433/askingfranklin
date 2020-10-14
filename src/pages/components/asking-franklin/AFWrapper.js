@@ -56,8 +56,17 @@ export default class AFWrapper extends React.Component {
     }
 
     exportPng() {
-        d3ToPng('#'+'dataviz-' + this.props.data.type + " svg", "name")
-          .then((data)=>{console.log(data)});
+        var svg = document.querySelector('#'+'dataviz-' + this.props.data.type + " svg")
+        var g = document.querySelector('#'+'dataviz-' + this.props.data.type + " svg g")
+        svg.setAttribute("width","1000")
+        svg.setAttribute("height","1000")
+        g.setAttribute("transform","translate(500,500)")
+        d3ToPng('#'+'dataviz-' + this.props.data.type + " svg", "askingfranklin-" + this.props.data.type,{scale:1}).then((data)=>{
+            console.log(data)
+        })
+        svg.setAttribute("width","700")
+        svg.setAttribute("height","700")
+        g.setAttribute("transform","translate(350,350)")
     };
     
     
