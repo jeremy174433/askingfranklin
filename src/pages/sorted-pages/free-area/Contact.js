@@ -36,6 +36,7 @@ export default class Contact extends React.Component {
             <Helmet>
                 <title>Contact - Asking Franklin, votre outil SEO Français</title>
                 <meta name="description" content="Contact - Asking Franklin, l’outil français créé à Bordeaux qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes. Contactez-nous !"/>
+                <meta name="robots" content="index, follow"/>
             </Helmet>
         );
     }

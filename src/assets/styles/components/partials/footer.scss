@@ -1,7 +1,7 @@
 #footer {
     background-color: $theme-color-primary;
 
-    .container > div:last-child { border-top: 1px solid $white-50; }
+    .container > div:not(:last-child) { border-bottom: 1px solid $white-50; }
 
     p { color: $theme-color-secondary; }
 

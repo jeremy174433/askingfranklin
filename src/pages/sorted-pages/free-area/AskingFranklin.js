@@ -123,6 +123,7 @@ export default class AskingFranklin extends React.Component {
                         <Helmet>
                             <title>Chargement en cours...</title>
                             <meta name="description" content="Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
+                            <meta name="robots" content="noindex, follow"/>
                         </Helmet>
                         <Container id="askingFranklin" className="px-0">
                             <Loader loaderDisplayed content="Chargement en cours"/>
@@ -135,6 +136,7 @@ export default class AskingFranklin extends React.Component {
                         <Helmet>
                             <title>Aucun résultat trouvé - Asking Franklin</title>
                             <meta name="description" content="Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
+                            <meta name="robots" content="noindex, follow"/>
                         </Helmet>
                         <Container id="askingFranklin" className="px-0">
                             <div>{launchNewRequest}</div>
@@ -147,6 +149,7 @@ export default class AskingFranklin extends React.Component {
                         <Helmet>
                             <title>{this.state.keywordSearch.charAt(0).toUpperCase() + this.state.keywordSearch.slice(1)} - Asking Franklin</title>
                             <meta name="description" content="Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
+                            <meta name="robots" content="noindex, follow"/>
                         </Helmet>
                         <Container id="askingFranklin" className="px-0">
                             <main class="d-flex flex-column flex-xl-row">
@@ -166,6 +169,7 @@ export default class AskingFranklin extends React.Component {
                         <Helmet>
                             <title>Aucun résultat trouvé - Asking Franklin</title>
                             <meta name="description" content="Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
+                            <meta name="robots" content="noindex, follow"/>
                         </Helmet>
                         <Container id="askingFranklin" className="px-0">
                             <div>{launchNewRequest}</div>

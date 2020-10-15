@@ -53,6 +53,7 @@ export default class Home extends React.Component {
             <Helmet>
                 <title>Asking Franklin - votre outil SEO Français</title>
                 <meta name="description" content="Découvrez ce que les internautes recherchent sur Google, optimisez votre contenu et gagnez en visibilité avec Asking Franklin, votre outil SEO Français !"/>
+                <meta name="robots" content="index, follow"/>
             </Helmet>
         );
     }
@@ -87,7 +88,7 @@ export default class Home extends React.Component {
                         <Blob2 className="blob-2"/>
                         <Dots className="dots-1"/>
                         <Col md="12" lg="6" className="mt-0 mb-5 py-0 my-md-5 py-md-5 px-0">
-                            <H1 title="Asking Franklin est un outil Français de recherche de questions et mots clés basés sur les requêtes Google"/>
+                            <H1 title="Découvrez ce que recherchent les internautes sur Google"/>
                             <FormRequestFranklin 
                                 onSubmit={this.requestFanklin} 
                                 onChange={this.handleKeywordChange} 
@@ -122,7 +123,7 @@ export default class Home extends React.Component {
                             <H2 className="mb-5" title="Partez à la découverte de ce que recherche votre audience sur Google"/>
                             <p class="fz-18">Tapez le mot-clé que vous souhaitez et Asking Franklin ira chercher toutes les questions, les recherches et sujets connexes en relation avec ce dernier.</p>
                         </Col>
-                        <Col md="12" lg="6" className="d-flex justify-content-center justify-content-lg-end px-0 pl-lg-5">
+                        <Col md="12" lg="6" className="d-flex justify-content-center justify-content-lg-end px-0 pl-lg-5 mt-0 mt-sm-5 mt-lg-0">
                             <GoogleSearch/>
                             <Dots className="dots-2"/>
                         </Col>

@@ -112,6 +112,7 @@ export default class Profile extends React.Component {
             <Helmet>
                 <title>Mon compte - Asking Franklin</title>
                 <meta name="description" content="Votre compte - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
+                <meta name="robots" content="noindex, follow"/>
             </Helmet>
         );
     }

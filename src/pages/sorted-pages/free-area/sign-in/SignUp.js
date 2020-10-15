@@ -4,6 +4,7 @@ import {
     Container,
     Col 
 } from 'react-bootstrap';
+import StepperFunnel from '../../../components/form/elements/StepperFunnel';
 import { 
     Redirect, 
     Link 
@@ -23,6 +24,7 @@ export default class SignUp extends React.Component {
             email: '',
             password: '',
             privacy: '',
+            newsletter: '',
             checkboxChecked: false,
             pwdDefaultType: 'password',
             success: false,
@@ -34,6 +36,7 @@ export default class SignUp extends React.Component {
         this.handleEmail = this.handleEmail.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
         this.handlePrivacy = this.handlePrivacy.bind(this);
+        this.handleNewsletter = this.handleNewsletter.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCloseAlert = this.handleCloseAlert.bind(this);
     }
@@ -51,6 +54,7 @@ export default class SignUp extends React.Component {
             <Helmet>
                 <title>Créer un compte - Asking Franklin</title>
                 <meta name="description" content="Créer un compte - Passez à la version Pro d’Asking Franklin en créant votre compte ici !"/>
+                <meta name="robots" content="noindex, follow"/>
             </Helmet>
         );
     }
@@ -75,6 +79,10 @@ export default class SignUp extends React.Component {
         this.setState({ privacy: this.state.privacy === '' ? 'privacyChecked' : '' });
     }
 
+    handleNewsletter() {
+        this.setState({ newsletter: this.state.newsletter === '' ? 'newsletterChecked' : '' });
+    }
+
     handleSubmit(event) {
         event.preventDefault();
         this.handleCloseAlert();
@@ -83,7 +91,9 @@ export default class SignUp extends React.Component {
                 method: 'POST',
                 body: JSON.stringify({ 
                     email: this.state.email, 
-                    password: this.state.password
+                    password: this.state.password,
+                    privacy: this.state.privacy,
+                    newsletter: this.state.newsletter,
                 })
             })
             .then(res=>{
@@ -137,13 +147,12 @@ export default class SignUp extends React.Component {
                 {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre compte a bien été créé. Vous allez recevoir un email de confirmation, merci de le valider"/> }
                 {this.state.emailIsAlreadyTaken && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="L'email choisi n'est pas disponible, veuillez en choisir un différent"/> }
                 <Container className="px-0 mt-6">
-                    <H1 className="mb-5" title="Créer un compte Asking Franklin"/>
-                    <p class="mb-5">
-                        <span class="d-block mb-3">En utilisant la version gratuite vous êtes limités à 3 recherches maximum par jour</span>
-                        <ArrowTextLink redirectTo="/tarifs" textLink="Passez dès maintenant aux recherches illimitées avec Asking Franklin Pro"/>
-                    </p>
-                    <form onSubmit={this.handleSubmit} method="POST" id="signUpForm">
-                        <Col sm="12" lg="8" xl="6" className="px-0 d-flex flex-column">
+                    <StepperFunnel activeStep={1} firstStep="Choix de l'offre" secondStep="Inscription" thirdStep="Paiement et passage en Pro"/>
+                </Container>
+                <Container className="px-0">
+                    <Col sm="12" lg="8" xl="6" className="px-0 mx-auto">
+                        <H1 className="mb-5" title="Créer un compte Asking Franklin"/>
+                        <form onSubmit={this.handleSubmit} method="POST" id="signUpForm">
                             <Input 
                                 onChange={this.handleEmail} 
                                 value={this.state.email}
@@ -172,13 +181,22 @@ export default class SignUp extends React.Component {
                                 infoMsg={!this.state.password.match(/^(?=.*?[0-9])[a-zA-Z0-9âäàéèùêëîïôöñç#$%&'"()*+.°²\/:;,<=>!?§@\[\\\]^_`{|}~-]{8,}$/) && 'Le mot de passe doit contenir au moins 8 caractères dont 1 chiffre'}
                             />
                             <Checkbox 
-                                label={['J\'ai lu et j\'accepte les ', <Link to="/conditions-generales-d-utilisation" target="_blank" rel="noopener" class="fz-16">CGU</Link>]} 
+                                label={['J\'ai lu et j\'accepte les ', <Link to="/conditions-generales-d-utilisation" target="_blank" rel="noopener" class="fz-16">CGU</Link>, <em class="fz-14 ml-1">(obligatoire)</em>]} 
                                 onChange={this.handlePrivacy} 
                                 for="checkPrivacy" 
                                 name={this.for} 
                                 id={this.for} 
                                 value={this.state.privacy} 
                                 required={true}
+                                className="pb-3"
+                            />
+                            <Checkbox 
+                                label={['Je m\'inscris à la newsletter pour recevoir des astuces et conseils pour décoller en SEO, Brand content, Content marketing... ', <em class="fz-14">(pas plus de 1 fois /mois c'est promis !)</em>]} 
+                                onChange={this.handleNewsletter} 
+                                for="checkNewsletter" 
+                                name={this.for} 
+                                id={this.for} 
+                                value={this.state.newsletter} 
                                 className="mb-3 pb-3"
                             />
                             <PmyBtn 
@@ -187,13 +205,13 @@ export default class SignUp extends React.Component {
                                 isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || !this.state.password.match(/^(?=.*?[0-9])[a-zA-Z0-9âäàéèùêëîïôöñç#$%&'"()*+.°²\/:;,<=>!?§@\[\\\]^_`{|}~-]{8,}$/) || this.state.privacy === ''} 
                                 btnIsMediumPmyFull 
                                 textBtn="Créer mon compte" 
-                                className="w-md-100"
+                                className="w-sm-100"
                             />
-                        </Col>
-                    </form>
-                    <div class="d-flex flex-column mt-3 pt-3">
-                        <ArrowTextLink redirectTo="/connexion" textLink="J'ai déjà un compte Asking Franklin"/>
-                    </div>
+                        </form>
+                        <div class="d-flex flex-column mt-3 pt-3">
+                            <ArrowTextLink redirectTo="/connexion" textLink="J'ai déjà un compte Asking Franklin"/>
+                        </div>
+                    </Col>
                 </Container>
             </div>
         )

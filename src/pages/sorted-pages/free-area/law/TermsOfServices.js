@@ -17,6 +17,7 @@ export default class TermsOfServices extends React.Component {
             <Helmet>
                 <title>Conditions Générales d'Utilisation - Asking Franklin</title>
                 <meta name="description" content="Conditions Générales d'Utilisation - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
+                <meta name="robots" content="index, follow"/>
             </Helmet>
         );
     }

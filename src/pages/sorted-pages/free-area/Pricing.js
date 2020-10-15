@@ -1,12 +1,13 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import H1 from '../../components/elements/title/H1';
-import H2 from '../../components/elements/title/H2';
 import { 
     Container,
     Row, 
     Col 
 } from 'react-bootstrap';
+import StepperFunnel from '../../components/form/elements/StepperFunnel';
+import H1 from '../../components/elements/title/H1';
+import H2 from '../../components/elements/title/H2';
 import FeaturesList from '../../components/elements/FeaturesList';
 import FeaturesIcons from '../../../assets/img/svg/switch/FeaturesIcons';
 import Tick from '../../../assets/img/svg/Tick';
@@ -32,6 +33,7 @@ export default class Pricing extends React.Component {
             <Helmet>
                 <title>Passez à la version Pro - Asking Franklin, votre outil SEO français</title>
                 <meta name="description" content="Améliorez votre référencement et soyez visible en passant à la version Pro d’Asking Franklin ! Requêtes illimitées - Utilisateurs illimités en simultané - Export CSV..."/>
+                <meta name="robots" content="index, follow"/>
             </Helmet>
         );
     }
@@ -55,11 +57,12 @@ export default class Pricing extends React.Component {
             <div class="layout-style">
                 {this.customHeadElement()}
                 <Container id="pricing" className="px-0 mt-6">
-                    <H1 className="text-center" title="Découvrez un outil clés en main pour booster votre SEO et votre stratégie de contenu"/>
+                    <StepperFunnel activeStep={0} firstStep="Choix de l'offre" secondStep="Inscription" thirdStep="Paiement et passage en Pro"/>
+                    <H1 className="text-center" title="Découvrez l’outil Français pour booster votre SEO, stratégie de contenu, et plus encore..."/>
                     <Row className="col-12 d-flex justify-content-around mx-0 mt-5 pt-5 px-0">
                         <Col sm="12" lg="6" xl="5" className="block-pricing block-pricing-free mb-5 mb-lg-0 mr-0 mr-lg-5 p-4 bgc-light rounded">
                             <H2 className="mb-3" title="Gratuit"/>
-                            <p class="mb-3 pb-3">Convient pour les blogueurs et marketeurs indépendants cherchant à savoir quelles sont les requêtes des utilisateurs les plus observées par Google.</p>
+                            <p class="mb-3 pb-3">Pour celles et ceux qui veulent tester l’outil, sans trop se mouiller mais avec 3 requêtes par jour.</p>
                             <p class="price">0€</p>
                             <ul class="features-list my-5 d-flex flex-column">
                                 <li><FeaturesIcons icon="search"/><span>Nombre limité de recherches par jour <em class="fz-14">(3 maximum)</em></span></li>
@@ -68,7 +71,7 @@ export default class Pricing extends React.Component {
                         </Col>
                         <Col sm="12" lg="6" xl="5" className="block-pricing block-pricing-pro mt-5 mt-lg-0 p-4 bgc-light rounded">
                             <H2 className="color-primary mb-3" title="Pro"/>
-                            <p class="mb-3 pb-3">Convient pour les agences et entreprises travaillant sur des projets nécessitant l'intervention d'experts SEO et marketeurs spécialistes.</p>
+                            <p class="mb-3 pb-3">Pour celles et ceux qui voient l’avenir en illimité avec un grand A : <br class="d-none d-xl-block"/><span class="fw-600">Asking Franklin</span></p>
                             <div class="block-prices d-flex flex-column flex-sm-row">
                                 <div onClick={this.selectFirstPlan} class="annual-plan mb-4 mb-sm-0 mr-0 mr-sm-4 p-3 w-100 text-center rounded" title="Plan mensuel">
                                     {this.state.selectedPlan === 0 ?
@@ -102,7 +105,7 @@ export default class Pricing extends React.Component {
                             </div>
                             <p class="block-pricing-vat mt-2 fz-12">Les prix indiqués sont en €, hors TVA et sont soumis au taux en vigueur.</p>
                             <FeaturesList className="my-5"/>
-                            <PmyBtn redirectTo="/inscription" linkIsLargePmyFull textLink="Passer à la version Pro" containerStyle="mb-4" customBtnClass="w-100"/>
+                            <PmyBtn redirectTo="/inscription" linkIsLargePmyFull textLink="S'inscrire et devenir Pro" containerStyle="mb-4" customBtnClass="w-100"/>
                         </Col>
                     </Row>
                 </Container>

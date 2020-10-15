@@ -47,6 +47,7 @@ export default class ForgotPassword extends React.Component {
             <Helmet>
                 <title>Mot de passe oublié - Asking Franklin</title>
                 <meta name="description" content="Mot de passe oublié ? Changez le mot de passe de votre espace ici !"/>
+                <meta name="robots" content="index, follow"/>
             </Helmet>
         );
     }
@@ -148,9 +149,9 @@ export default class ForgotPassword extends React.Component {
                 {this.state.error && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowedLimit ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="Une erreur est survenue. La limite de requête a été atteinte, réessayez dans quelques minutes"/> }
                 {!this.state.emailSent ? 
                     <Container className="px-0 mt-6">
-                        <H1 className="mb-5" title="Mot de passe oublié"/>
-                        <form onSubmit={this.handleSubmit} method="POST">
-                            <Col sm="12" lg="8" xl="6" className="px-0 d-flex flex-column">
+                        <Col sm="12" lg="8" xl="6" className="px-0 mx-auto">
+                            <H1 className="mb-5" title="Mot de passe oublié"/>
+                            <form onSubmit={this.handleSubmit} method="POST">
                                 <Input 
                                     onChange={this.handleEmail} 
                                     type="email" 
@@ -164,19 +165,19 @@ export default class ForgotPassword extends React.Component {
                                     isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)} 
                                     btnIsMediumPmyFull 
                                     textBtn="Recevoir un email de réinitialisation" 
-                                    className="w-md-100"
+                                    className="w-sm-100"
                                 />
-                            </Col>
-                        </form>
-                        <div class="d-flex flex-column mt-3 pt-3">
-                            <ArrowTextLink redirectTo="/connexion" textLink="Se connecter à Asking Franklin"/>
-                        </div>
+                            </form>
+                            <div class="d-flex flex-column mt-3 pt-3">
+                                <ArrowTextLink redirectTo="/connexion" textLink="Se connecter à Asking Franklin"/>
+                            </div>
+                        </Col>
                     </Container>
                 :
                     <Container className="px-0 mt-6">
-                        <H1 className="mb-5" title="Mot de passe oublié"/>
-                        <form onSubmit={this.handleSubmitConfirm} method="POST">
-                            <Col sm="12" lg="8" xl="6" className="px-0 d-flex flex-column">
+                        <Col sm="12" lg="8" xl="6" className="px-0 mx-auto">
+                            <H1 className="mb-5" title="Mot de passe oublié"/>
+                            <form onSubmit={this.handleSubmitConfirm} method="POST">
                                 <Input 
                                     onChange={this.handleCode} 
                                     disabled={this.state.passwordIsChanged === true} 
@@ -213,13 +214,13 @@ export default class ForgotPassword extends React.Component {
                                     isDisabled={this.state.code.length !== 6 || !this.state.newPassword.match(/^(?=.*?[0-9])[a-zA-Z0-9âäàéèùêëîïôöñç#$%&'"()*+.°²\/:;,<=>!?§@\[\\\]^_`{|}~-]{8,}$/) || this.state.passwordIsChanged === true} 
                                     btnIsMediumPmyFull 
                                     textBtn="Réinitialiser le mot de passe" 
-                                    className="w-md-100"
+                                    className="w-sm-100"
                                 />
-                            </Col>
-                        </form>
-                        <div class="d-flex flex-column mt-3 pt-3">
-                            <ArrowTextLink redirectTo="/connexion" textLink="Se connecter à Asking Franklin"/>
-                        </div>
+                            </form>
+                            <div class="d-flex flex-column mt-3 pt-3">
+                                <ArrowTextLink redirectTo="/connexion" textLink="Se connecter à Asking Franklin"/>
+                            </div>
+                        </Col>
                     </Container>
                 }
             </div>

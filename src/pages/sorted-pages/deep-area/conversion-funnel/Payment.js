@@ -125,7 +125,8 @@ export default class Payment extends React.Component {
             <Helmet>
                 <title>Passez à la version Pro - Paiement - Asking Franklin, votre outil SEO français</title>
 				<meta name="description" content="Version Pro - Paiement - Améliorez votre référencement et soyez visible en passant à la version Pro d’Asking Franklin !"/>
-            </Helmet>
+				<meta name="robots" content="noindex, follow"/>
+			</Helmet>
         );
     }
 
@@ -166,7 +167,7 @@ export default class Payment extends React.Component {
 					</Container>
 				:
 					<Container id="payment" className="px-0 mt-6">
-						<StepperFunnel activeStep={1}/>
+						<StepperFunnel activeStep={1} firstStep="Choix de l'offre" secondStep="Paiement" thirdStep="Débuter en Pro"/>
 						<Row className="mx-0">
 							<Col lg="12" xl="8" className="block-ctn-elements block-style pt-4 mr-0 mr-xl-5 mb-5 mb-xl-0">
 								<div class="block-elements-header">

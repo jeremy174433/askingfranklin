@@ -199,10 +199,10 @@ export default function CheckoutForm(props) {
 				body: JSON.stringify({
 					paymentMethodId: paymentMethodId,
 					priceId: priceId,
-					name:name,
-					line1:line1,
-					city:city,
-					postal_code:postalCode
+					name: name,
+					line1: line1,
+					city: city,
+					postal_code: postalCode
 				}),
 			})
 			.then((response) => {
@@ -273,7 +273,7 @@ export default function CheckoutForm(props) {
 				});
 			} 
 			else {
-				createSubscription({ paymentMethodId, priceId, name, line1, city, postalCode});
+				createSubscription({ paymentMethodId, priceId, name, line1, city, postalCode });
 			}
 		}
 	};

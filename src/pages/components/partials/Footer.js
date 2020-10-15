@@ -8,13 +8,18 @@ import { Link } from 'react-router-dom';
 import MenuLink from '../../components/elements/link/MenuLink';
 import Logo from '../../../assets/img/svg/switch/Logo';
 import SocialMedia from '../../../assets/img/svg/switch/SocialMedia';
+import Input from '../form/Input';
+import PmyBtn from '../button/PmyBtn';
 
 export default class Footer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            is_sub: 0
+            is_sub: 0,
+            emailNewsletter: ''
         }
+        this.handleEmailNewsletter = this.handleEmailNewsletter.bind(this);
+        this.handleSubmitNewsletter = this.handleSubmitNewsletter.bind(this);
     }
 
     componentDidMount() {
@@ -22,6 +27,17 @@ export default class Footer extends React.Component {
         this.setState({
             is_sub: is_sub
         });
+    }
+
+    handleEmailNewsletter(e) {
+        this.setState({
+            emailNewsletter: e.target.value
+        });
+    }
+
+    handleSubmitNewsletter(event) {
+        event.preventDefault();
+        console.log('newsletter sent');
     }
 
     render() {
@@ -58,6 +74,28 @@ export default class Footer extends React.Component {
                                 <MenuLink linkHasIcon={<SocialMedia icon="twitter" width="18" fill="#FFF"/>} href="https://twitter.com/AskingFranklin" target="_blank" rel="nofollow noopener" title="Ouvrir dans un nouvel onglet : Twitter" className="icon-sm"/>
                                 <MenuLink linkHasIcon={<SocialMedia icon="linkedin" width="18" fill="#FFF"/>} href="https://www.linkedin.com/company/asking-franklin/" target="_blank" rel="nofollow noopener" title="Ouvrir dans un nouvel onglet : LinkedIn" className="icon-sm"/>
                             </ul>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col sm="12" md="8" lg="6" className="px-0 py-5 mx-auto">
+                            <p class="fz-24">Suivez nos actualités !</p>
+                            <p class="py-2">Et recevez des astuces et conseils pour décoller en SEO, Brand content, Content marketing...</p>
+                            <p class="fz-14">(pas plus de 1 fois /mois c'est promis !)</p>
+                            <form onSubmit={this.handleSubmitNewsletter} method="POST" class="d-flex flex-column flex-sm-row pt-3">
+                                <Input 
+                                    onChange={this.handleEmailNewsletter} 
+                                    type="email" 
+                                    hideLabel={true}
+                                    placeholder="Votre adresse email..."
+                                    containerStyle="mb-3 mb-sm-0 mr-0 mr-sm-4 w-100"
+                                    for="emailNewsletter" 
+                                    name={this.for} 
+                                    id={this.for} 
+                                    required={true} 
+                                    infoMsg={this.state.emailNewsletter.length < 1 ? 'Ce champ est requis' : !this.state.emailNewsletter.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
+                                />
+                                <PmyBtn type="submit" isDisabled={!this.state.emailNewsletter.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)} btnIsMediumPmyFull textBtn="S'abonner" className="w-sm-100 h-100" style={{ height: '48px' }}/>
+                            </form>
                         </Col>
                     </Row>
                     <div class="d-flex justify-content-center pb-5 pb-sm-0 pt-5">
