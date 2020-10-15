@@ -81,9 +81,9 @@ var accordionItems = [
             {
                 key: "101",
                 question: "Combien coûte Asking Franklin ?",
-                content: <p>Deux types de plans sont proposés pour la version payante du produit : <br/>
-                <blockquote class="d-block mt-3"><span class="d-block mb-2 fw-600">Plan mensuel : <br/> 49€/mois </span> (Souscription sans engagement)</blockquote> <br/>
-                <blockquote class="d-block mt-3"><span class="d-block mb-2 fw-600">Plan Annuel : <br/> 39€/mois </span> (468€/an au lieu de 588€ soit 20% de réduction)</blockquote> <br/> 
+                content: <p>Deux types d'offres sont proposés pour la version payante du produit : <br/>
+                <blockquote class="d-block mt-3"><span class="d-block mb-2 fw-600">Offre mensuel : <br/> 49€/mois </span> (Souscription sans engagement)</blockquote> <br/>
+                <blockquote class="d-block mt-3"><span class="d-block mb-2 fw-600">Offre Annuel : <br/> 39€/mois </span> (468€/an au lieu de 588€ soit 20% de réduction)</blockquote> <br/> 
                 Bien sûr, vous pouvez également profiter de Asking Franklin gratuitement, vous pourrez ainsi effectuer jusqu’à 3 recherches gratuitement par jour.</p>
             },
             {
@@ -157,6 +157,7 @@ export default class Faq extends React.Component {
             <Helmet>
                 <title>FAQ - Asking Franklin, votre outil SEO Français</title>
                 <meta name="description" content="FAQ - Combien coûte la version Pro d’Asking Franklin ? Quelles sont les fonctionnalités Pro ? Combien de recherches puis-je faire par jour ?"/>
+                <meta name="robots" content="index, follow"/>
             </Helmet>
         );
     }

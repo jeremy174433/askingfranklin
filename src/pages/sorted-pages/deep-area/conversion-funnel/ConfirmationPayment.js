@@ -20,6 +20,7 @@ export default class ConfirmationPayment extends React.Component {
             <Helmet>
                 <title>Version Pro - Asking Franklin, votre outil SEO français</title>
                 <meta name="description" content="Vous êtes désormais un membre Pro - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
+                <meta name="robots" content="noindex, follow"/>
             </Helmet>
         );
     }
@@ -29,7 +30,7 @@ export default class ConfirmationPayment extends React.Component {
             <div class="layout-style mt-6">
                 {this.customHeadElement()}
                 <Container>
-                    <StepperFunnel activeStep={2}/>
+                    <StepperFunnel activeStep={2} firstStep="Choix de l'offre" secondStep="Paiement" thirdStep="Débuter en Pro"/>
                 </Container>
                 <Container className="d-flex flex-column flex-lg-row px-4 py-5 p-md-5 block-style position-relative overflow-visible">
                     <Col md="12" lg="6" className="mt-0 mb-5 my-md-5 px-0">

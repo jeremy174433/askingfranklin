@@ -81,8 +81,9 @@ export default class ChoosePlan extends React.Component {
     customHeadElement() {
         return (
             <Helmet>
-                <title>Passez à la version Pro - Choix du plan - Asking Franklin, votre outil SEO français</title>
-                <meta name="description" content="Version Pro - Choix du plan - Améliorez votre référencement et soyez visible en passant à la version Pro d’Asking Franklin !"/>
+                <title>Passez à la version Pro - Choix de l'offre - Asking Franklin, votre outil SEO français</title>
+                <meta name="description" content="Version Pro - Choix de l'offre - Améliorez votre référencement et soyez visible en passant à la version Pro d’Asking Franklin !"/>
+                <meta name="robots" content="noindex, follow"/>
             </Helmet>
         );
     }
@@ -143,7 +144,7 @@ export default class ChoosePlan extends React.Component {
                     </Container>
                 :
                     <Container id="pricing" className="px-0 mt-6">
-                        <StepperFunnel activeStep={0}/>
+                        <StepperFunnel activeStep={0} firstStep="Choix de l'offre" secondStep="Paiement" thirdStep="Débuter en Pro"/>
                         <H1 className="text-center" title="Passez à la vitesse supérieure en choisissant l'offre mensuel ou annuel"/>
                         {this.state.selectedPlan !== 0 &&
                             <p class='text-center mt-5 fz-18'>

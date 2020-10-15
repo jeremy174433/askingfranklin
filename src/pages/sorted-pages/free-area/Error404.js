@@ -16,6 +16,7 @@ export default class Error404 extends React.Component {
             <Helmet>
                 <title>Erreur 404, page introuvable - Asking Franklin</title>
                 <meta name="description" content="Erreur 404 - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
+                <meta name="robots" content="noindex, follow"/>
             </Helmet>
         );
     }

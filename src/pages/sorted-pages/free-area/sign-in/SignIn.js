@@ -42,6 +42,7 @@ export default class SignIn extends React.Component {
             <Helmet>
                 <title>Connexion à votre espace - Asking Franklin, votre outil SEO Français</title>
                 <meta name="description" content="Connexion - Asking Franklin - Nous sommes ravis de vous revoir ! Connectez-vous à votre espace ici."/>
+                <meta name="robots" content="index, follow"/>
             </Helmet>
         );
     }
@@ -112,14 +113,14 @@ export default class SignIn extends React.Component {
                 <div id="signIn" class="layout-style">
                     {this.customHeadElement()}
                     {this.state.error && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="La combinaison « email / mot de passe » est incorrect"/> }
-                    <Container className="px-0 mt-6">
-                        <H1 className="mb-5" title="Connexion à votre compte Asking Franklin"/>
-                        <p class="mb-5">
-                            <span class="d-block mb-3">En utilisant la version gratuite vous êtes limités à 3 recherches maximum par jour</span>
-                            <ArrowTextLink redirectTo="/tarifs" textLink="Passez dès maintenant aux recherches illimitées avec Asking Franklin Pro"/>
-                        </p>
-                        <form onSubmit={this.handleSubmit} method="POST">
-                            <Col sm="12" lg="8" xl="6" className="px-0 d-flex flex-column">
+                    <Container className="px-0 mt-6 mx-auto">
+                        <Col sm="12" lg="8" xl="6" className="px-0 mx-auto">
+                            <H1 className="mb-5" title="Connexion à votre compte Asking Franklin"/>
+                            <p class="mb-5">
+                                <span class="d-block mb-3">En utilisant la version gratuite vous êtes limités à 3 recherches maximum par jour</span>
+                                <ArrowTextLink redirectTo="/tarifs" textLink="Passez dès maintenant aux recherches illimitées avec Asking Franklin Pro"/>
+                            </p>
+                            <form onSubmit={this.handleSubmit} method="POST">
                                 <Input 
                                     onChange={this.handleEmail} 
                                     type="email" 
@@ -145,14 +146,14 @@ export default class SignIn extends React.Component {
                                     isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.password.length < 8} 
                                     btnIsMediumPmyFull 
                                     textBtn="Se connecter" 
-                                    className="w-md-100"
+                                    className="w-sm-100"
                                 />
-                            </Col>
-                        </form>
-                        <div class="d-flex flex-column mt-3 pt-3">
-                            <ArrowTextLink redirectTo="/mot-de-passe-oublie" textLink="Mot de passe oublié ?" className="mb-3"/>
-                            <ArrowTextLink redirectTo="/inscription" textLink="Créer un compte et passer à la version Pro"/>
-                        </div>
+                            </form>
+                            <div class="d-flex flex-column mt-3 pt-3">
+                                <ArrowTextLink redirectTo="/mot-de-passe-oublie" textLink="Mot de passe oublié ?" className="mb-3"/>
+                                <ArrowTextLink redirectTo="/tarifs" textLink="Créer un compte et passer à la version Pro"/>
+                            </div>
+                        </Col>
                     </Container>
                 </div>
             )
