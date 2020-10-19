@@ -131,7 +131,6 @@ export default class Payment extends React.Component {
     }
 
 	handlePaymentError(reason) {
-		console.log(reason);
 		this.setState({
 			errorPayment: reason,
 			isLoadingPayment: false

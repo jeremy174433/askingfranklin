@@ -92,15 +92,14 @@ export default class SignUp extends React.Component {
                 body: JSON.stringify({ 
                     email: this.state.email, 
                     password: this.state.password,
-                    privacy: this.state.privacy,
-                    newsletter: this.state.newsletter,
+                    privacy: this.state.privacy ? 1 : 0,
+                    newsletter: this.state.newsletter ? 1 : 0
                 })
             })
             .then(res=>{
                 return res.json();
             })
             .then(res => {
-                console.log(res)
                 if(res.error) {
                     console.log(res.error);
                 } 
