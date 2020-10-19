@@ -17,6 +17,7 @@ export default class Pricing extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            isConnected: false,
             selectedPlan: 0
         }
         this.selectFirstPlan = this.selectFirstPlan.bind(this);
@@ -26,6 +27,12 @@ export default class Pricing extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0);
         this.selectFirstPlan();
+        var token = localStorage.getItem('af_token');
+        if(token) {
+            this.setState({
+                isConnected: true
+            });
+        }
     }
 
     customHeadElement() {
@@ -57,7 +64,9 @@ export default class Pricing extends React.Component {
             <div class="layout-style">
                 {this.customHeadElement()}
                 <Container id="pricing" className="px-0 mt-6">
-                    <StepperFunnel activeStep={0} firstStep="Choix de l'offre" secondStep="Inscription" thirdStep="Paiement et passage en Pro"/>
+                    {!this.state.isConnected &&
+                        <StepperFunnel activeStep={0} firstStep="Choix de l'offre" secondStep="Inscription" thirdStep="Paiement et passage en Pro"/>
+                    }
                     <H1 className="text-center" title="Découvrez l’outil Français pour booster votre SEO, stratégie de contenu, et plus encore..."/>
                     <Row className="col-12 d-flex justify-content-around mx-0 mt-5 pt-5 px-0">
                         <Col sm="12" lg="6" xl="5" className="block-pricing block-pricing-free mb-5 mb-lg-0 mr-0 mr-lg-5 p-4 bgc-light rounded">
@@ -73,7 +82,7 @@ export default class Pricing extends React.Component {
                             <H2 className="color-primary mb-3" title="Pro"/>
                             <p class="mb-3 pb-3">Pour celles et ceux qui voient l’avenir en illimité avec un grand A : <br class="d-none d-xl-block"/><span class="fw-600">Asking Franklin</span></p>
                             <div class="block-prices d-flex flex-column flex-sm-row">
-                                <div onClick={this.selectFirstPlan} class="annual-plan mb-4 mb-sm-0 mr-0 mr-sm-4 p-3 w-100 text-center rounded" title="Plan mensuel">
+                                <div onClick={this.selectFirstPlan} class="annual-plan mb-4 mb-sm-0 mr-0 mr-sm-4 p-3 w-100 text-center rounded" title="Offre mensuelle">
                                     {this.state.selectedPlan === 0 ?
                                         <div class="circle circle-checked d-flex align-items-center justify-content-center">
                                             <div class="d-flex align-items-center justify-content-center">
@@ -88,7 +97,7 @@ export default class Pricing extends React.Component {
                                     <p class="price">49€<span> /mois</span></p>
                                     <p>sans engagement</p>
                                 </div>
-                                <div onClick={this.selectSecondPlan} class="monthly-plan p-3 w-100 text-center rounded" title="Plan annuel">
+                                <div onClick={this.selectSecondPlan} class="monthly-plan p-3 w-100 text-center rounded" title="Offre annuelle">
                                 {this.state.selectedPlan === 1 ?
                                     <div class="circle circle-checked d-flex align-items-center justify-content-center">
                                         <div class="d-flex align-items-center justify-content-center">
@@ -105,7 +114,7 @@ export default class Pricing extends React.Component {
                             </div>
                             <p class="block-pricing-vat mt-2 fz-12">Les prix indiqués sont en €, hors TVA et sont soumis au taux en vigueur.</p>
                             <FeaturesList className="my-5"/>
-                            <PmyBtn redirectTo="/inscription" linkIsLargePmyFull textLink="S'inscrire et devenir Pro" containerStyle="mb-4" customBtnClass="w-100"/>
+                            <PmyBtn redirectTo="/inscription" linkIsLargePmyFull textLink={this.state.isConnected === false ? 'S\'inscrire et devenir Pro' : 'Continuer avec la version Pro'} containerStyle="mb-4" customBtnClass="w-100"/>
                         </Col>
                     </Row>
                 </Container>

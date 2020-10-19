@@ -1,6 +1,6 @@
 @keyframes alert-anim {
     from { opacity: 0; top: 0; }
-    to { opacity: 1; top: $header-mh; }
+    to { opacity: 1; top: calc(#{$header-mh} + #{$banner-promotion}); }
 }
 
 .alert-msg {
@@ -23,7 +23,7 @@
 
     &-visible { 
         opacity: 1;
-        top: $header-mh;
+        top: calc(#{$header-mh} + #{$banner-promotion});
         animation: alert-anim .6s ease-in-out;
     }
 

@@ -4,6 +4,10 @@
     @include layout-style($header-mh, 6rem, 1.5rem, 3rem);
     min-height: 100vh;
 }
+.layout-style-banner { 
+    @include layout-style($header-mh + $banner-promotion, 6rem, 1.5rem, 3rem);
+    min-height: 100vh;
+}
 
 .container {
     padding-right: 0;

@@ -1,0 +1,38 @@
+@keyframes appear {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#banner {
+    height: $banner-promotion;
+    background-color: $theme-color-primary;
+    color: $theme-color-secondary;
+    top: 0;
+    right: 0;
+    z-index: 99;
+
+    .promotion-text {
+        margin-right: 9rem;
+        animation: appear 5s infinite;
+
+        .promotion-percentage {
+            @include fz-22;
+            color: $secondary;
+        }
+    
+        .promotion-code {
+            color: $secondary;
+            text-decoration: underline;
+        }
+    } 
+
+    .promotion-timer {
+        @include fz-22;
+
+        span {
+            letter-spacing: 1rem;
+            text-transform: uppercase;
+            color: $secondary;
+        }
+    }
+}

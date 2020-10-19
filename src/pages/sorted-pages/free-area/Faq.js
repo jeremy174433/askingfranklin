@@ -48,7 +48,28 @@ var accordionItems = [
             {
                 key: "4",
                 question: "Comment bien comprendre les différentes parties des branches de résultat dans le graphique ?",
-                content: <p>&nbsp;</p>
+                content: <div>
+                    <h5 class="d-block mb-3 fz-18 fw-600">Questions</h5>
+                    <blockquote>Les questions sont généralement utilisées par les internautes en recherche de réponses ou de connaissances sur un sujet ou un thème précis.</blockquote>
+                    <p class="d-block mt-3"><span class="fw-600">« comment, pourquoi, qu’est-ce » : </span>questionnement sur un usage ou un comportement.</p>
+                    <p class="d-block mt-3"><span class="fw-600">« où, quel, quelle, lequel » : </span>comparaison sur plusieurs choix ou questionnement sur un choix défini.</p>
+                    <p class="d-block mt-3"><span class="fw-600">« qui » : </span>selon la formulation, les internautes utiliseront le qui pour connaitre une identité ou un comportement.</p>
+                    <p class="d-block mt-3"><span class="fw-600">« quoi, quand » : </span>demande de recommandations sur une utilisation.</p>
+                    <p class="d-block mt-3"><span class="fw-600">« que » : </span>généralement, les internautes l’utiliseront pour déterminer la meilleure action à prendre.</p>
+                    <h5 class="d-block mt-4 mb-3 fz-18 fw-600">Comparaisons</h5>
+                    <blockquote>Les comparaisons servent aux internautes à confronter une idée ou à savoir quel est le meilleur choix.</blockquote>
+                    <p class="d-block mt-3"><span class="fw-600">« et » : </span>il est utilisé quand l’internaute cherche à savoir si deux choses peuvent être utilisées ensemble.</p>
+                    <p class="d-block mt-3"><span class="fw-600">« comme » : </span>souvent utilisé dans le cas d’une recherche de quelque chose similaire à un objet ou une idée.</p>
+                    <p class="d-block mt-3"><span class="fw-600">« vs, contre, ou » : </span>leur utilisation est faite pour comparer ou confronter des choses.</p>
+                    <h5 class="d-block mt-4 mb-3 fz-18 fw-600">Prépositions</h5>
+                    <blockquote>Les prépositions sont utilisées pour obtenir une information plus précise à propos du sujet recherché.</blockquote>
+                    <p class="d-block mt-3"><span class="fw-600">« près, au » : </span>ces prépositions sont utilisées pour une recherche géographique, notamment pour déterminer un lieu.</p>
+                    <p class="d-block mt-3"><span class="fw-600">« pour » : </span>les internautes l’utilisent pour un besoin de connaissance d’un usage précis.</p>
+                    <p class="d-block mt-3"><span class="fw-600">« a » : </span>cette préposition sert pour plusieurs usages : recherche dans un lieu spécifique ou à propos d’une typologie précise.</p>
+                    <p class="d-block mt-3"><span class="fw-600">« avec, sans » : </span>les internautes l’utilisent pour rechercher un service, un objet ou un lieu avec ou sans une fonctionnalité spécifique.</p>
+                    <h5 class="d-block mt-4 mb-3 fz-18 fw-600">Mots relatifs</h5>
+                    <blockquote>Les mots relatifs sont utilisés pour compléter une recherche, généralement dans le cas où l’internaute cherche un résultat en rapport direct avec le sujet employé.</blockquote>
+                </div>
             },
             {
                 key: "5",
@@ -82,8 +103,8 @@ var accordionItems = [
                 key: "101",
                 question: "Combien coûte Asking Franklin ?",
                 content: <p>Deux types d'offres sont proposés pour la version payante du produit : <br/>
-                <blockquote class="d-block mt-3"><span class="d-block mb-2 fw-600">Offre mensuel : <br/> 49€/mois </span> (Souscription sans engagement)</blockquote> <br/>
-                <blockquote class="d-block mt-3"><span class="d-block mb-2 fw-600">Offre Annuel : <br/> 39€/mois </span> (468€/an au lieu de 588€ soit 20% de réduction)</blockquote> <br/> 
+                <blockquote class="d-block mt-3"><span class="d-block mb-2 fw-600">Offre Mensuelle : <br/> 49€/mois </span> (Souscription sans engagement)</blockquote> <br/>
+                <blockquote class="d-block mt-3"><span class="d-block mb-2 fw-600">Offre Annuelle : <br/> 39€/mois </span> (468€/an au lieu de 588€ soit 20% de réduction)</blockquote> <br/> 
                 Bien sûr, vous pouvez également profiter de Asking Franklin gratuitement, vous pourrez ainsi effectuer jusqu’à 3 recherches gratuitement par jour.</p>
             },
             {

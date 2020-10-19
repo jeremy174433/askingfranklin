@@ -323,6 +323,22 @@ export default function CheckoutForm(props) {
 				</Col>
 			</Row>
 			<CardElement options={CARD_ELEMENT_OPTIONS}/>
+			<Row className="mx-0 d-flex flex-column">
+				<Col sm="12" md="6" className="px-0 pt-3 mt-3 d-flex flex-column flex-sm-row">
+					<Input
+						type="text"
+						hideLabel={true}
+						placeholder="Votre code promotionnel..."
+						for="promotion_code"
+						name="promotion_code"
+						id="promotion_code"
+						containerStyle="mb-0 pb-0 w-100"
+					/>
+					<PmyBtn type="button" btnIsMediumPmyFull textBtn="Vérifier" containerStyle="ml-0 ml-sm-4 mt-4 mt-sm-0" className="h-100"/>
+				</Col>
+				<p class="color-success mt-3 fz-14">Félicitations, vous bénéficiez désormais de 20% de réduction sur l'abonnement mensuel pour une durée de 1 an</p>
+				<p class="color-danger mt-3 fz-14">Le code saisi ne correspond à aucun code promotionnel actif</p>
+			</Row>
 			<Checkbox 
 				label={['J\'ai lu et j\'accepte les ', <Link to="/conditions-generales-de-vente" target="_blank" rel="noopener" class="fz-16">CGV</Link>]} 
 				onChange={props.handleTermsOfSales} 

@@ -54,6 +54,8 @@ blockquote {
 .color-primary { color: $primary; }
 .color-dark { color: $theme-color-primary; }
 .color-light { color: $theme-color-secondary !important; }
+.color-success { color: $success !important; }
+.color-danger { color: $danger !important; }
 
 // Background
 .bgc-primary { background-color: $primary; }

@@ -10,13 +10,16 @@ import Logo from '../../../assets/img/svg/switch/Logo';
 import SocialMedia from '../../../assets/img/svg/switch/SocialMedia';
 import Input from '../form/Input';
 import PmyBtn from '../button/PmyBtn';
+import Tick from '../../../assets/img/svg/Tick';
 
 export default class Footer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             is_sub: 0,
-            emailNewsletter: ''
+            emailNewsletter: '',
+            subscribeSuccess: false,
+            subscribeError: false
         }
         this.handleEmailNewsletter = this.handleEmailNewsletter.bind(this);
         this.handleSubmitNewsletter = this.handleSubmitNewsletter.bind(this);
@@ -37,7 +40,10 @@ export default class Footer extends React.Component {
 
     handleSubmitNewsletter(event) {
         event.preventDefault();
-        console.log(this.state.emailNewsletter)
+        this.setState({
+            subscribeError: false,
+            subscribeSuccess: false
+        });
         fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/register-newsletter', {
             method: 'POST',
             body: JSON.stringify({ 
@@ -48,7 +54,17 @@ export default class Footer extends React.Component {
             return res.json();
         })
         .then(res => {
-            console.log(res)
+            if(res.error) {
+                console.log(res.error);
+            } 
+            else {
+                if(res.message === 'Contact already exist') {
+                    this.setState({ subscribeError: true });
+                }
+                else {
+                    this.setState({ subscribeSuccess: true });
+                }
+            }
         });
     }
 
@@ -104,10 +120,20 @@ export default class Footer extends React.Component {
                                     name={this.for} 
                                     id={this.for} 
                                     required={true} 
-                                    infoMsg={this.state.emailNewsletter.length < 1 ? 'Ce champ est requis' : !this.state.emailNewsletter.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
+                                    disabled={this.state.subscribeSuccess}
+                                    infoMsg={this.state.emailNewsletter.length < 1 ? 'Ce champ est requis' : !this.state.emailNewsletter.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct' || this.state.subscribeSuccess && ''}
                                 />
-                                <PmyBtn type="submit" isDisabled={!this.state.emailNewsletter.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)} btnIsMediumPmyFull textBtn="S'abonner" className="w-sm-100 h-100" style={{ height: '48px' }}/>
+                                <PmyBtn type="submit" isDisabled={!this.state.emailNewsletter.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.subscribeSuccess} btnIsMediumPmyFull textBtn="S'abonner" className="w-sm-100 h-100" style={{ height: '48px' }}/>
                             </form>
+                            {
+                                this.state.subscribeSuccess === true ? 
+                                    <div class="d-flex flex-row align-items-center mt-3 mt-sm-0">
+                                        <Tick width="16" fill="#00C851"/>
+                                        <p class="color-success fz-14 ml-2">Votre abonnement a bien été enregistré</p>
+                                    </div>
+                                : this.state.subscribeError === true &&
+                                    <p class="color-danger fz-14 mt-3">L'adresse email saisie semble être déjà abonnée à la newsletter</p>
+                            }
                         </Col>
                     </Row>
                     <div class="d-flex justify-content-center pb-5 pb-sm-0 pt-5">

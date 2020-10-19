@@ -6,10 +6,10 @@ export default class CardTestimonial extends React.Component {
 
     render() {
         return (
-            <div class="card-testimonial">
+            <div class="card-testimonial d-flex flex-column align-items-center justify-content-between">
                 <img src={this.props.img} alt={this.props.fullname}/>
                 <Quote width="32" fill="#EEE"/>
-                <p class="fz-16 mt-4 pt-2">{this.props.testimonial}</p>
+                <p class="h-100 fz-16 mt-4 pt-2">{this.props.testimonial}</p>
                 <div class="mt-4 text-center fw-600">
                     <p><strong>{this.props.fullname}</strong></p>
                     <p><strong>{this.props.jobAndCompany}</strong></p>

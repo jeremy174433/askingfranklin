@@ -5,6 +5,7 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
+import Banner from './pages/components/partials/Banner';
 import Navbar from './pages/components/partials/Navbar';
 import Footer from './pages/components/partials/Footer';
 import Home from './pages/sorted-pages/free-area/Home';
@@ -48,6 +49,7 @@ export default class App extends React.Component {
         return (
             <div id="App">
                 <Router>
+                    <Banner/>
                     <Navbar isConnected={this.state.isConnected}/>
                     <Switch>
                         <Route path='/connexion' component={(props) => <SignIn {...props} handleConnect={this.handleConnect}/>}/>
