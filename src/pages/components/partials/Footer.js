@@ -37,7 +37,19 @@ export default class Footer extends React.Component {
 
     handleSubmitNewsletter(event) {
         event.preventDefault();
-        console.log('newsletter sent');
+        console.log(this.state.emailNewsletter)
+        fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/register-newsletter', {
+            method: 'POST',
+            body: JSON.stringify({ 
+                email: this.state.emailNewsletter, 
+            })
+        })
+        .then(res => {
+            return res.json();
+        })
+        .then(res => {
+            console.log(res)
+        });
     }
 
     render() {
@@ -78,7 +90,7 @@ export default class Footer extends React.Component {
                     </Row>
                     <Row>
                         <Col sm="12" md="8" lg="6" className="px-0 py-5 mx-auto">
-                            <p class="fz-24">Suivez nos actualités !</p>
+                            <p class="fz-24">Suivez nos actualités 🚀</p>
                             <p class="py-2">Et recevez des astuces et conseils pour décoller en SEO, Brand content, Content marketing...</p>
                             <p class="fz-14">(pas plus de 1 fois /mois c'est promis !)</p>
                             <form onSubmit={this.handleSubmitNewsletter} method="POST" class="d-flex flex-column flex-sm-row pt-3">

@@ -68,7 +68,7 @@ export default class App extends React.Component {
                         <Route path="/mentions-legales" component={LegalNotices}/>
                         <Route path="/conditions-generales-d-utilisation" component={TermsOfServices}/>
                         <Route path="/conditions-generales-de-vente" component={TermsOfSales}/>
-                        <Route path="*" component={Error404}/>
+                        <Route path="*" component={Error404} status={404}/>
                     </Switch>
                     <Footer/>
                 </Router>

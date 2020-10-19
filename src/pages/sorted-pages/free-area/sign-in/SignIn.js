@@ -148,12 +148,12 @@ export default class SignIn extends React.Component {
                                     textBtn="Se connecter" 
                                     className="w-sm-100"
                                 />
-                            </Col>
-                        </form>
-                        <div class="d-flex flex-column mt-3 pt-3">
-                            <ArrowTextLink redirectTo="/mot-de-passe-oublie" textLink="Mot de passe oublié ?" className="mb-3"/>
-                            <ArrowTextLink redirectTo="/tarifs" textLink="Créer un compte et passer à la version Pro"/>
-                        </div>
+                            </form>
+                            <div class="d-flex flex-column mt-3 pt-3">
+                                <ArrowTextLink redirectTo="/mot-de-passe-oublie" textLink="Mot de passe oublié ?" className="mb-3"/>
+                                <ArrowTextLink redirectTo="/tarifs" textLink="Créer un compte et passer à la version Pro"/>
+                            </div>
+                        </Col>
                     </Container>
                 </div>
             )
