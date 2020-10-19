@@ -26,6 +26,7 @@ $input: '.input-primary';
         transition: .2s ease-in-out;
 
         &::placeholder { @include fz-14; }
+        &::-webkit-input-placeholder { line-height: normal !important; }
     
         &:focus {
             outline: none;

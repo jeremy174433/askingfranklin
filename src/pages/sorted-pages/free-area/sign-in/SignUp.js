@@ -96,7 +96,7 @@ export default class SignUp extends React.Component {
                     newsletter: this.state.newsletter ? 1 : 0
                 })
             })
-            .then(res=>{
+            .then(res => {
                 return res.json();
             })
             .then(res => {
@@ -180,7 +180,7 @@ export default class SignUp extends React.Component {
                                 infoMsg={!this.state.password.match(/^(?=.*?[0-9])[a-zA-Z0-9âäàéèùêëîïôöñç#$%&'"()*+.°²\/:;,<=>!?§@\[\\\]^_`{|}~-]{8,}$/) && 'Le mot de passe doit contenir au moins 8 caractères dont 1 chiffre'}
                             />
                             <Checkbox 
-                                label={['J\'ai lu et j\'accepte les ', <Link to="/conditions-generales-d-utilisation" target="_blank" rel="noopener" class="fz-16">CGU</Link>, <em class="fz-14 ml-1">(obligatoire)</em>]} 
+                                label={['J\'ai lu et j\'accepte les ', <Link to="/conditions-generales-d-utilisation" target="_blank" rel="noopener" class="fz-16">CGU</Link>, <em class="fz-14 ml-1">(requis)</em>]} 
                                 onChange={this.handlePrivacy} 
                                 for="checkPrivacy" 
                                 name={this.for} 

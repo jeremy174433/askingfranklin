@@ -5,14 +5,14 @@ export default class Input extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            displayTooltip: false
+            informationMsg: false
         }
         this.onBlur = this.onBlur.bind(this);
     }
 
     onBlur() {
         this.setState({
-            displayTooltip: true
+            informationMsg: true
         });
     }
 
@@ -21,7 +21,7 @@ export default class Input extends React.Component {
         const classListWrapper = ' input-primary-wrapper d-flex flex-column position-relative';
 
         return (
-            <div class={this.props.containerStyle ? this.props.containerStyle + classListWrapper : classListWrapper}>
+            <div class={this.props.containerStyle ? this.props.containerStyle + classListWrapper : classListWrapper} style={this.props.style}>
                 <label for={this.props.for} className={this.props.hideLabel ? 'input-primary-label d-none' : 'input-primary-label d-flex flex-column flex-sm-row align-items-start justify-content-start mb-2'}>
                     {this.props.label} &nbsp;
                     {this.props.labelInfo && <span class="fz-14">({this.props.labelInfo})</span>}
@@ -46,7 +46,7 @@ export default class Input extends React.Component {
                         {this.props.inputHasIcon}
                     </div>
                 }
-                {this.state.displayTooltip && <InformationInput infoMsg={this.props.infoMsg}/> }
+                {this.state.informationMsg && <InformationInput infoMsg={this.props.infoMsg}/> }
             </div>
         )
     }

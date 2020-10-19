@@ -2,11 +2,9 @@
     height: $header-mh;
     background-color: $white;
     border-bottom: 1px solid $theme-terthiary;
-    top: 0;
+    top: $banner-promotion;
     right: 0;
     z-index: 99;
-
-    > .container { margin-top: inherit; }
 
     .nav-link {
         @include fz-18;

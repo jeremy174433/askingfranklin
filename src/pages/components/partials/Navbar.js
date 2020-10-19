@@ -20,7 +20,7 @@ export default class Navbar extends React.Component {
         this.handleLogOut = this.handleLogOut.bind(this);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         var token = localStorage.getItem('af_token');
         var is_sub = localStorage.getItem('af_is_sub');
         if(token) {
@@ -29,7 +29,6 @@ export default class Navbar extends React.Component {
                 is_sub: is_sub
             });
         }
-        
     }
 
     componentWillReceiveProps(nextProps) {
@@ -63,7 +62,7 @@ export default class Navbar extends React.Component {
                                 this.state.isConnected === true ?
                                     <ul class="d-flex flex-row align-items-center position-relative">
                                         <MenuLink redirectTo="/faq" textLink="FAQ"/>
-                                        {localStorage.getItem('af_is_sub') == 0 && <MenuLink redirectTo="/connexion" linkHasIcon={<Rocket width="16" fill="#2B2B2B"/>} textLink="Devenir Pro" containerStyle="ml-4"/> }
+                                        {localStorage.getItem('af_is_sub') == 0 && <MenuLink redirectTo="/tarifs" linkHasIcon={<Rocket width="16" fill="#2B2B2B"/>} textLink="Devenir Pro" containerStyle="ml-4"/> }
                                         {localStorage.getItem('af_is_sub') != 0 && <MenuLink customMenuItem={<CrownPro width="52"/>} containerStyle="position-absolute" style={{top: '-10px', right: '150px', zIndex: 1}}/> }
                                         <MenuLink customMenuItem={<ProfileAccess onClickLogOut={this.handleLogOut}/>} containerStyle="ml-5"/>
                                     </ul>

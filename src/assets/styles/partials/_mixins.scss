@@ -7,6 +7,13 @@
         padding-left: $px-lg; 
     }
 }
+@mixin layout-style-banner($pt, $pb, $px, $px-lg) {
+    padding: $pt $px $pb $px;
+    @include min-xl-rwd {
+        padding-right: $px-lg; 
+        padding-left: $px-lg; 
+    }
+}
 
 // ---------- SCROLL BAR ---------- //
 

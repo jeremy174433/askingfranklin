@@ -145,10 +145,10 @@ export default class ChoosePlan extends React.Component {
                 :
                     <Container id="pricing" className="px-0 mt-6">
                         <StepperFunnel activeStep={0} firstStep="Choix de l'offre" secondStep="Paiement" thirdStep="Débuter en Pro"/>
-                        <H1 className="text-center" title="Passez à la vitesse supérieure en choisissant l'offre mensuel ou annuel"/>
+                        <H1 className="text-center" title="Passez à la vitesse supérieure avec la version Pro"/>
                         {this.state.selectedPlan !== 0 &&
                             <p class='text-center mt-5 fz-18'>
-                                Vous aviez sélectionné l'offre&nbsp;
+                                Vous aviez sélectionné l'abonnement&nbsp;
                                 {this.state.alreadySelected === 1 && <span class="fw-600">Mensuel</span>}
                                 {this.state.alreadySelected === 2 && <span class="fw-600">Annuel</span>}
                             </p>
@@ -163,7 +163,7 @@ export default class ChoosePlan extends React.Component {
                                     <p class="price">49€<span> /mois</span></p>
                                     <p>Payer mensuellement</p>
                                     <p>Sans engagement</p>
-                                    <PmyBtn onClick={this.handleSelectedMonthlyPlan} isDisabled={this.state.selectedPlan === 2} btnIsLargePmyFull textBtn="Choisir l'offre Pro mensuel" containerStyle="mt-5 mb-4 w-100" className="w-100"/>
+                                    <PmyBtn onClick={this.handleSelectedMonthlyPlan} isDisabled={this.state.selectedPlan === 2} btnIsLargePmyFull textBtn={this.state.alreadySelected === 1 ? "Confirmer l'abonnement Mensuel" : "Choisir l'abonnement Mensuel"} containerStyle="mt-5 mb-4 w-100" className="w-100"/>
                                 </div>
                             </Col>
                             <Col onClick={this.handleChangePlanToAnnual} sm="12" md="8" lg="6" xl="4" className={this.state.selectedPlan === 1 ? this.state.classBlur + classListCol + customColPlan2 : classListCol + customColPlan2}>
@@ -171,7 +171,7 @@ export default class ChoosePlan extends React.Component {
                                     <H2 className="mt-4 mb-3" title="Annuel"/>
                                     <p class="price">39€<span> /mois</span></p>
                                     <p>Souscrivez pour <span class="fw-600">468€/an</span>. Réglable en une fois<br/><span class="fz-14">(renouvellement automatique en fin d'abonnement)</span></p>
-                                    <PmyBtn onClick={this.handleSelectedAnnualPlan} isDisabled={this.state.selectedPlan === 1} btnIsLargePmyFull textBtn="Choisir l'offre Pro annuel" containerStyle="mt-5 mb-4 w-100" className="w-100"/>
+                                    <PmyBtn onClick={this.handleSelectedAnnualPlan} isDisabled={this.state.selectedPlan === 1} btnIsLargePmyFull textBtn={this.state.alreadySelected === 2 ? "Confirmer l'abonnement Annuel" : "Choisir l'abonnement Annuel"} containerStyle="mt-5 mb-4 w-100" className="w-100"/>
                                 </div>
                             </Col>
                         </Row>

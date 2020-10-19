@@ -9,6 +9,7 @@
 @import 'global/global';
 @import 'global/layout';
 
+@import 'components/partials/banner';
 @import 'components/partials/navbar';
 @import 'components/partials/mobile-menu';
 @import 'components/partials/footer';
@@ -27,7 +28,6 @@
 @import 'components/form/input';
 @import 'components/form/textarea';
 @import 'components/form/checkbox';
-@import 'components/form/form-request-franklin';
 @import 'components/form/stripe';
 @import 'components/form/elements/information-input';
 @import 'components/form/elements/stepper';

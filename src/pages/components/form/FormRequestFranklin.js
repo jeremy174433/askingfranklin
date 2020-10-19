@@ -14,9 +14,11 @@ export default class FormRequestFranklin extends React.Component {
                     onChange={this.props.onChange}
                     type="text"
                     value={this.props.value}
+                    style={{ height: '66px' }}
+                    inputStyle="h-100"
                     placeholder="Saisissez un mot clé, un produit, une marque..."
                 />
-                <PmyBtn type="submit" redirectTo={true} rel="nofollow" textLink="Explorer" linkIsLargePmyFull customBtnClass="w-100 h-100"/>
+                <PmyBtn type="submit" redirectTo={true} rel="nofollow" textLink="Explorer" linkIsLargePmyFull customBtnClass="w-100 h-100" className="h-100" style={{ height: '66px', maxHeight: '66px' }}/>
             </form>
         )
     }
