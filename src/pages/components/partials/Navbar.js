@@ -3,7 +3,6 @@ import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Logo from '../../../assets/img/svg/switch/Logo';
 import MenuLink from '../../components/elements/link/MenuLink';
-import People from '../../../assets/img/svg/navigation/People';
 import Rocket from '../../../assets/img/svg/navigation/Rocket';
 import PmyBtn from '../button/PmyBtn';
 import CrownPro from '../../../assets/img/svg/CrownPro';
@@ -51,8 +50,11 @@ export default class Navbar extends React.Component {
     }
 
     render() {
+
+        const navClass = ' px-4 px-xl-5 py-2 w-100 d-flex justify-content-center position-fixed ';
+
         return (
-            <nav id="navbar" class="px-4 px-xl-5 py-2 w-100 d-flex justify-content-center position-fixed">
+            <nav id="navbar" class={this.props.className ? this.props.className + navClass : navClass}>
                 <Container className="px-0 d-flex flex-lg-row align-items-center justify-content-lg-center">
                     <Link to="/" class="mr-4 mr-md-5">
                         <Logo icon="global" width="200"/>
@@ -69,7 +71,7 @@ export default class Navbar extends React.Component {
                                 : this.state.isConnected === false &&
                                     <ul class="d-flex flex-row align-items-center">
                                         <MenuLink redirectTo="/faq" textLink="FAQ" containerStyle="mr-4"/>
-                                        <MenuLink redirectTo="/connexion" linkHasIcon={<People width="16" fill="#2B2B2B"/>} textLink="Connexion"/>
+                                        <MenuLink redirectTo="/connexion" textLink="Connexion"/>
                                         <MenuLink customMenuItem={<PmyBtn redirectTo="/tarifs" linkIsMediumPmyFull iconLinkBefore={<Rocket width="16"/>} textLink="Devenir Pro" className="rounded-0" containerStyle="ml-5 nav-btn-cta"/>}/>
                                     </ul>
                             }

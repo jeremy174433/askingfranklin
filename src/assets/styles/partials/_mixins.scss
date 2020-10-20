@@ -7,12 +7,13 @@
         padding-left: $px-lg; 
     }
 }
-@mixin layout-style-banner($pt, $pb, $px, $px-lg) {
+@mixin layout-style-banner($pt, $pb, $px, $px-lg, $pt-reset) {
     padding: $pt $px $pb $px;
     @include min-xl-rwd {
         padding-right: $px-lg; 
         padding-left: $px-lg; 
     }
+    @include max-lg-rwd { padding-top: $pt-reset }
 }
 
 // ---------- SCROLL BAR ---------- //
@@ -53,6 +54,28 @@
     &:hover, &:focus { 
         background-color: $md-grey-35;
         text-decoration: none;
+    }
+}
+
+// Close item (alert, banner...)
+@mixin close-item-alert {
+    cursor: pointer;
+
+    &::before {
+        content: '';
+        display: block;
+        background-color: $md-grey-35;
+        padding: 1rem;
+        border-radius: .25rem;
+        position: absolute;
+        transform: translate(-25%, -25%);
+        opacity: 0;
+        z-index: -1;
+        transition: .2s ease-in-out;
+    }
+    &:hover::before, &:focus::before { 
+        transform: translate(-25%, -25%);
+        opacity: 1;
     }
 }
 

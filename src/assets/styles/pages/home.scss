@@ -84,8 +84,15 @@
 
     /* ----- SECTION 1 ----- */
     .home-section-1 {
-        padding-top: calc(9rem + #{$header-mh} + #{$banner-promotion});
-        @include max-custom-rwd(1440) { padding-top: calc(6rem + #{$header-mh} + #{$banner-promotion}); }
+        &.pt-hero-banner { 
+            padding-top: calc(9rem + #{$header-mh} + #{$banner-promotion});
+            @include max-custom-rwd(1440) { padding-top: calc(6rem + #{$header-mh} + #{$banner-promotion}); }
+        }
+        &.pt-hero { 
+            padding-top: calc(9rem + #{$header-mh});
+            @include max-custom-rwd(1440) { padding-top: calc(6rem + #{$header-mh}); }
+        }
+        @include max-lg-rwd { padding-top: calc(6rem + #{$header-mh}); }
         &::before {
             @include bg-img(0 0, contain, 1543px, 0, initial, initial, 0, -2);
             background-image: url(../../img/svg/decorating/waves/wave-primary.svg);

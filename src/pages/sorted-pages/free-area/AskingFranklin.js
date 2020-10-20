@@ -119,7 +119,7 @@ export default class AskingFranklin extends React.Component {
         }
 
         if (this.state.isLoading) {
-            return  <div class="layout-style"> 
+            return  <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}> 
                         <Helmet>
                             <title>Chargement en cours...</title>
                             <meta name="description" content="Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
@@ -132,7 +132,7 @@ export default class AskingFranklin extends React.Component {
         }
 
         else if (this.state.nbResults === 0) {
-            return  <div class="layout-style"> 
+            return  <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}> 
                         <Helmet>
                             <title>Aucun résultat trouvé - Asking Franklin</title>
                             <meta name="description" content="Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
@@ -145,7 +145,7 @@ export default class AskingFranklin extends React.Component {
         }
 
         else if (this.state.dataIsLoaded) {
-            return  <div class="layout-style">
+            return  <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
                         <Helmet>
                             <title>{this.state.keywordSearch.charAt(0).toUpperCase() + this.state.keywordSearch.slice(1)} - Asking Franklin</title>
                             <meta name="description" content="Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
@@ -165,7 +165,7 @@ export default class AskingFranklin extends React.Component {
         }
 
         else {
-            return  <div class="layout-style">
+            return  <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
                         <Helmet>
                             <title>Aucun résultat trouvé - Asking Franklin</title>
                             <meta name="description" content="Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>

@@ -75,14 +75,14 @@ export default class Home extends React.Component {
                 {this.customHeadElement()}
                 <div id="top"></div>
 
-                <section class="home-section-1 position-relative">
+                <section class={this.props.bannerIsActive ? 'home-section-1 pt-hero-banner position-relative' : 'home-section-1 pt-hero position-relative'}>
                     <Blob3 className="blob-3"/>
                     <Container className="d-flex flex-column flex-lg-row px-4 py-5 p-md-5 block-style position-relative overflow-visible">
                         <Blob1 className="blob-1"/>
                         <Blob2 className="blob-2"/>
                         <Dots className="dots-1"/>
                         <Col md="12" lg="6" className="mt-0 mb-5 py-0 my-md-5 py-md-5 px-0">
-                            <H1 title="Asking Franklin est un outil Français de recherche de questions et mots clés basés sur les requêtes Google"/>
+                            <H1 title="Découvrez ce que recherchent les internautes sur Google"/>
                             <FormRequestFranklin 
                                 onSubmit={this.requestFanklin} 
                                 onChange={this.handleKeywordChange} 

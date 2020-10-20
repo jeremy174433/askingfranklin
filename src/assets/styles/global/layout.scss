@@ -5,7 +5,7 @@
     min-height: 100vh;
 }
 .layout-style-banner { 
-    @include layout-style($header-mh + $banner-promotion, 6rem, 1.5rem, 3rem);
+    @include layout-style-banner($header-mh + $banner-promotion, 6rem, 1.5rem, 3rem, $header-mh);
     min-height: 100vh;
 }
 

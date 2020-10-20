@@ -179,9 +179,9 @@ export default class Payment extends React.Component {
 		const classListCol = 'block-ctn-summary block-style block-pricing pt-4 ';
 		
 		return (
-			<div class="layout-style">
+			<div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
 				{this.customHeadElement()}
-				{this.state.errorPayment && <Alert onClick={this.handleCloseAlert} className={'alert-msg-visible'} alertId="errorMessage" msg={"Erreur de paiement : " + this.state.errorPayment}/>}
+				{this.state.errorPayment && <Alert onClick={this.handleCloseAlert} className={this.state.errorPayment && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.errorPayment ? 'alert-msg-visible' : ''} alertId="errorMessage" msg={"Erreur de paiement : " + this.state.errorPayment}/>}
 				{this.state.redirect ? 
 					<Redirect to='/plans'/>
 				: this.state.isLoading ?

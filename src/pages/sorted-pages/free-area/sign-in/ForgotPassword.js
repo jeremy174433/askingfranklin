@@ -141,12 +141,12 @@ export default class ForgotPassword extends React.Component {
 
     render() {
         return (
-            <div id="forgotPassword" class="layout-style">
+            <div id="forgotPassword" class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
                 {this.customHeadElement()}
-                {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowedCodeSent ? 'alert-msg-visible' : ''} alertId="successMessage" msg={['Un code de vérification vient d\'être envoyé à l\'email : ', <span class="fw-600">{this.state.email}</span>]}/> }
-                {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg={['Votre mot de passe a bien été changé. Vous pouvez maintenant ', <Link to='/connexion'>vous connecter</Link>]}/> }
-                {this.state.error && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowedError ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="Une erreur est survenue. Vérifiez votre code et votre nouveau mot de passe"/> }
-                {this.state.error && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowedLimit ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="Une erreur est survenue. La limite de requête a été atteinte, réessayez dans quelques minutes"/> }
+                {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowedCodeSent && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowedCodeSent ? 'alert-msg-visible' : ''} alertId="successMessage" msg={['Un code de vérification vient d\'être envoyé à l\'email : ', <span class="fw-600">{this.state.email}</span>]}/> }
+                {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg={['Votre mot de passe a bien été changé. Vous pouvez maintenant ', <Link to='/connexion'>vous connecter</Link>]}/> }
+                {this.state.error && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowedError && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowedError ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="Une erreur est survenue. Vérifiez votre code et votre nouveau mot de passe"/> }
+                {this.state.error && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowedLimit && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowedLimit ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="Une erreur est survenue. La limite de requête a été atteinte, réessayez dans quelques minutes"/> }
                 {!this.state.emailSent ? 
                     <Container className="px-0 mt-6">
                         <Col sm="12" lg="8" xl="6" className="px-0 mx-auto">

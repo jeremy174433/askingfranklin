@@ -221,7 +221,7 @@ export default class Faq extends React.Component {
 
     render() {
         return (
-            <div class="layout-style">
+            <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
                 {this.customHeadElement()}
                 <Container id="faq" className="px-0 mt-6 w-100 text-center d-flex flex-column align-items-center">
 
@@ -281,7 +281,7 @@ export default class Faq extends React.Component {
                     </Row>
 
                     <Row className="faq-contact-infos mx-0 mt-5 pt-4 pb-4 pb-md-5 px-3 w-100 d-flex flex-column flex-nowrap rounded">
-                        <p class="text-left fw-600">Vous n'avez pas trouvé l'information que vous cherchez ?</p>
+                        <p class="text-left fw-600">Vous n'avez pas trouvé l'information que vous cherchez ? Vous rencontrez un problème ?</p>
                         <div class="d-flex flex-row justify-content-center flex-wrap mt-5">
                             <Col sm="12" md="4" lg="3" className="faq-contact-infos-block px-0 mr-0 mr-md-5 mb-4 mb-md-0">
                                 <Link to="/contact" class="d-flex flex-column align-items-center p-3 rounded">
@@ -294,7 +294,7 @@ export default class Faq extends React.Component {
                                 <a href="javascript:void(Tawk_API.toggle())" class="d-flex flex-column align-items-center p-3 rounded">
                                     <SpeechBubble height="20" fill="#2B2B2B"/>
                                     <span class="mt-3 mb-2 fw-600">Chattez avec nous</span>
-                                    <span>Posez-nous votre question</span>
+                                    <span>Échangeons en direct</span>
                                 </a>
                             </Col>
                         </div>

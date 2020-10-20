@@ -32,7 +32,7 @@ export default class AFTable extends React.Component {
                                                                 title="Nouvel onglet : afficher la requête sur Google" 
                                                                 target="_blank" 
                                                                 rel="noopener noreferrer"
-                                                                class="d-flex rounded-circle p-2">
+                                                                class="d-flex rounded p-2">
                                                                 <ExternalLink width="14" fill="#2B2B2B"/>
                                                             </a>
                                                         </td>

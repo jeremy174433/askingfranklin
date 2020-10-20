@@ -22,7 +22,7 @@ export default class LegalNotices extends React.Component {
 
     render() {
         return (
-            <div class="layout-style">
+            <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
                 {this.customHeadElement()}
                 <Container className="px-0 mt-6">
                     <H1 className="mb-5" title="Mentions Légales"/>

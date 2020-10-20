@@ -61,7 +61,7 @@ export default class Pricing extends React.Component {
 
     render() {
         return (
-            <div class="layout-style">
+            <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
                 {this.customHeadElement()}
                 <Container id="pricing" className="px-0 mt-6">
                     {!this.state.isConnected &&

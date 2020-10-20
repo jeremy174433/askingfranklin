@@ -14,7 +14,7 @@ import AskingFranklin from './pages/sorted-pages/free-area/AskingFranklin';
 import Pricing from './pages/sorted-pages/free-area/Pricing';
 import SignIn from './pages/sorted-pages/free-area/sign-in/SignIn';
 import SignUp from './pages/sorted-pages/free-area/sign-in/SignUp';
-import ConfirmationSignup from './pages/sorted-pages/free-area/sign-in/SignupConfirmation';
+import SignUpConfirmation from './pages/sorted-pages/free-area/sign-in/SignUpConfirmation';
 import ForgotPassword from './pages/sorted-pages/free-area/sign-in/ForgotPassword';
 import MaximumRequests from './pages/sorted-pages/free-area/MaximumRequests';
 import Faq from './pages/sorted-pages/free-area/Faq';
@@ -34,9 +34,11 @@ export default class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            isConnected: false
+            isConnected: false,
+            bannerIsShowed: true
         }
         this.handleConnect = this.handleConnect.bind(this);
+        this.handleHideBanner = this.handleHideBanner.bind(this);
     }
 
     handleConnect(e, cb) {
@@ -45,32 +47,38 @@ export default class App extends React.Component {
         });
     }
 
+    handleHideBanner() {
+        this.setState({
+            bannerIsShowed: false
+        });
+    }
+
     render() {
         return (
             <div id="App">
+                <Banner onClick={this.handleHideBanner} bannerIsActive={this.state.bannerIsShowed}/>
                 <Router>
-                    <Banner/>
-                    <Navbar isConnected={this.state.isConnected}/>
+                    <Navbar isConnected={this.state.isConnected} className={this.state.bannerIsShowed && 'banner-showed'}/>
                     <Switch>
-                        <Route path='/connexion' component={(props) => <SignIn {...props} handleConnect={this.handleConnect}/>}/>
-                        <Route exact path='/inscription/confirmation' component={ConfirmationSignup}/>
-                        <Route path='/inscription' component={SignUp}/>
-                        <Route path='/mot-de-passe-oublie' component={ForgotPassword}/>
-                        <Route path='/recherche/:keyword' component={AskingFranklin}/>
-                        <Route path="/limite-de-recherches" component={MaximumRequests}/>
-                        <Route path="/faq" component={Faq}/>
-                        <Route path="/contact" component={Contact}/>
-                        <Route exact path='/' component={Home}/>
-                        <Route exact path='/l/01' component={AngryHome}/>
-                        <Route exact path='/tarifs' component={Pricing}/>
-                        <Route exact path='/profil' component={Profile}/>
-                        <Route exact path='/plans' component={ChoosePlan}/>
-                        <Route exact path='/paiement' component={Payment}/>
-                        <Route exact path='/paiement/confirmation' component={ConfirmationPayment}/>
-                        <Route path="/mentions-legales" component={LegalNotices}/>
-                        <Route path="/conditions-generales-d-utilisation" component={TermsOfServices}/>
-                        <Route path="/conditions-generales-de-vente" component={TermsOfSales}/>
-                        <Route path="*" component={Error404} status={404}/>
+                        <Route path='/connexion' render={(props) => (<SignIn {...props} bannerIsActive={this.state.bannerIsShowed} handleConnect={this.handleConnect}/>)}/>
+                        <Route exact path='/inscription/confirmation' render={(props) => (<SignUpConfirmation {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
+                        <Route path='/inscription' render={(props) => (<SignUp {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
+                        <Route path='/mot-de-passe-oublie' render={(props) => (<ForgotPassword {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
+                        <Route path='/recherche/:keyword' render={(props) => (<AskingFranklin {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
+                        <Route path="/limite-de-recherches" render={(props) => (<MaximumRequests {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
+                        <Route path="/faq" render={(props) => (<Faq {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
+                        <Route path="/contact" render={(props) => (<Contact {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
+                        <Route exact path='/' render={(props) => (<Home {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
+                        <Route exact path='/l/01' render={(props) => (<AngryHome {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
+                        <Route exact path='/tarifs' render={(props) => (<Pricing {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
+                        <Route exact path='/profil' render={(props) => (<Profile {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
+                        <Route exact path='/plans' render={(props) => (<ChoosePlan {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
+                        <Route exact path='/paiement' render={(props) => (<Payment {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
+                        <Route exact path='/paiement/confirmation' render={(props) => (<ConfirmationPayment {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
+                        <Route path="/mentions-legales" render={(props) => (<LegalNotices {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
+                        <Route path="/conditions-generales-d-utilisation" render={(props) => (<TermsOfServices {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
+                        <Route path="/conditions-generales-de-vente" render={(props) => (<TermsOfSales {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
+                        <Route path="*" render={(props) => (<Error404 {...props} bannerIsActive={this.state.bannerIsShowed}/>)} status={404}/>
                     </Switch>
                     <Footer/>
                 </Router>

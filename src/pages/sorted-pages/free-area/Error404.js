@@ -23,7 +23,7 @@ export default class Error404 extends React.Component {
 
     render() {
         return (
-            <div class="layout-style">
+            <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
                 {this.customHeadElement()}
                 <Container className="px-0 mt-6 w-100 text-center d-flex flex-column align-items-center">
                     <H1 className="mb-5" title="Oups, la page demandée semble introuvable..."/>

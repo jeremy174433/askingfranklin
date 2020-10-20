@@ -37,7 +37,7 @@ export default class TermsOfServices extends React.Component {
         const article8 = 'Article 8 : Droit applicable et juridiction compétente';
 
         return (
-            <div class="layout-style">
+            <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
                 {this.customHeadElement()}
                 <Container className="px-0 mt-6">
 
