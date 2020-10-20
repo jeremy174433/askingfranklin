@@ -187,7 +187,7 @@ export default function CheckoutForm(props) {
 		})
 	}
 
-	const createSubscription = async ({ paymentMethodId, priceId, name, line1, city, postalCode}) => {
+	const createSubscription = async ({ paymentMethodId, priceId, name, line1, city, postalCode, coupon}) => {
 		var token = localStorage.getItem('af_token');
 		return (
 			fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/create-subscription', {
@@ -202,7 +202,8 @@ export default function CheckoutForm(props) {
 					name: name,
 					line1: line1,
 					city: city,
-					postal_code: postalCode
+					postal_code: postalCode,
+					coupon:coupon
 				}),
 			})
 			.then((response) => {
@@ -251,6 +252,7 @@ export default function CheckoutForm(props) {
 		var line1 = event.target.elements.line1.value
 		var city = event.target.elements.city.value
 		var postalCode = event.target.elements.postal_code.value
+		var coupon = props.couponStatus != "failed" && props.couponStatus.valid ? props.couponStatus.id : null
 		const cardElement = elements.getElement(CardElement);
 		const latestInvoicePaymentIntentStatus = localStorage.getItem('latestInvoicePaymentIntentStatus');
 		const priceId = localStorage.getItem('product');
@@ -273,11 +275,10 @@ export default function CheckoutForm(props) {
 				});
 			} 
 			else {
-				createSubscription({ paymentMethodId, priceId, name, line1, city, postalCode });
+				createSubscription({ paymentMethodId, priceId, name, line1, city, postalCode, coupon});
 			}
 		}
 	};
-
 	return (
 		<form onSubmit={handleSubmit}>
 			<Row className="d-flex flex-row mx-0">
@@ -323,22 +324,25 @@ export default function CheckoutForm(props) {
 				</Col>
 			</Row>
 			<CardElement options={CARD_ELEMENT_OPTIONS}/>
-			<Row className="mx-0 d-flex flex-column">
+			{props.pricing.unit_amount == 4900 && <Row className="mx-0 d-flex flex-column">
 				<Col sm="12" md="6" className="px-0 pt-3 mt-3 d-flex flex-column flex-sm-row">
-					<Input
-						type="text"
-						hideLabel={true}
-						placeholder="Votre code promotionnel..."
-						for="promotion_code"
-						name="promotion_code"
-						id="promotion_code"
-						containerStyle="mb-0 pb-0 w-100"
-					/>
-					<PmyBtn type="button" btnIsMediumPmyFull textBtn="Vérifier" containerStyle="ml-0 ml-sm-4 mt-4 mt-sm-0" className="h-100"/>
+						<Input
+							disabled={props.couponAmount != 1}
+							type="text"
+							hideLabel={true}
+							placeholder="Votre code promotionnel..."
+							for="promotion_code"
+							name="promotion_code"
+							id="promotion_code"
+							containerStyle="mb-0 pb-0 w-100"
+							onChange={props.handleCouponChange}
+						/>
+						<PmyBtn type="button" onClick={props.checkCoupon} btnIsMediumPmyFull textBtn="Vérifier" containerStyle="ml-0 ml-sm-4 mt-4 mt-sm-0" className="h-100" isDisabled={props.couponAmount != 1}/>
 				</Col>
-				<p class="color-success mt-3 fz-14">Félicitations, vous bénéficiez désormais de 20% de réduction sur l'abonnement mensuel pour une durée de 1 an</p>
-				<p class="color-danger mt-3 fz-14">Le code saisi ne correspond à aucun code promotionnel actif</p>
-			</Row>
+				{props.couponStatus != '' && (props.couponStatus != "failed" && props.couponStatus.valid ? <p class="color-success mt-3 fz-14">Félicitations, vous bénéficiez désormais de {props.couponStatus.percent_off}% de réduction sur l'abonnement mensuel pour une durée de {props.couponStatus.duration_in_months} mois</p> : <p class="color-danger mt-3 fz-14">Le code saisi ne correspond à aucun code promotionnel actif</p>)}
+
+			</Row>}
+
 			<Checkbox 
 				label={['J\'ai lu et j\'accepte les ', <Link to="/conditions-generales-de-vente" target="_blank" rel="noopener" class="fz-16">CGV</Link>]} 
 				onChange={props.handleTermsOfSales} 
@@ -351,7 +355,7 @@ export default function CheckoutForm(props) {
 			/>
 			<div class="d-flex flex-column flex-sm-row justify-content-end align-items-center">
 				<PmyBtn redirectTo="/plans" linkIsMediumPmyOutlineLight textLink="Précédent" containerStyle="w-sm-100 mr-0 mr-sm-4 mt-4" customBtnClass="w-sm-100"/>
-				<PmyBtn type="submit" isDisabled={!stripe} btnIsMediumPmyFull textBtn={props.pricing ? 'Payer ' + Math.floor(props.pricing.unit_amount / 100) + ' €' : 'Confirmer l\'achat'} containerStyle="w-sm-100 mt-4" className="w-sm-100"/>
+				<PmyBtn type="submit" isDisabled={!stripe} btnIsMediumPmyFull textBtn={props.pricing ? 'Payer ' + Math.floor((props.pricing.unit_amount / 100) * props.couponAmount) + ' €' : 'Confirmer l\'achat'} containerStyle="w-sm-100 mt-4" className="w-sm-100"/>
 			</div>
 		</form>
 	);

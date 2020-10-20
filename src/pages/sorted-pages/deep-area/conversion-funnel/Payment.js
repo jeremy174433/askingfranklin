@@ -30,11 +30,16 @@ export default class Payment extends React.Component {
 			plans: [],
 			selectedPlan: 1,
 			errorPayment: false,
-			isLoadingPayment: false
+			isLoadingPayment: false,
+			couponText:'',
+			couponStatus:'',
+			couponAmount:100
 		}
 		this.handleCloseAlert = this.handleCloseAlert.bind(this);
 		this.handlePaymentError = this.handlePaymentError.bind(this);
 		this.handleLoading = this.handleLoading.bind(this);
+		this.handleCouponChange = this.handleCouponChange.bind(this);
+		this.checkCoupon = this.checkCoupon.bind(this);
 	}
 
 	componentDidMount() {
@@ -128,8 +133,28 @@ export default class Payment extends React.Component {
 				<meta name="robots" content="noindex, follow"/>
 			</Helmet>
         );
-    }
-
+	}
+	handleCouponChange(e){
+		this.setState({
+			couponText:e.target.value
+		})
+	}
+	checkCoupon(){
+		fetch("https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/retrieve-coupon",{
+			body: JSON.stringify({
+				coupon: this.state.couponText,
+			}),
+			method: 'POST',
+		})
+		.then((res)=>res.json())
+		.then((res)=>{
+			this.setState({
+				couponStatus: res.message == "Invalid coupon" ? 'failed' : res.message,
+				couponAmount: res.message == "Invalid coupon" ? 100 : 100 - res.message.percent_off,
+			})
+		})
+		
+	}
 	handlePaymentError(reason) {
 		this.setState({
 			errorPayment: reason,
@@ -181,7 +206,7 @@ export default class Payment extends React.Component {
 								}
 								<div className={this.state.isLoadingPayment ? 'd-none' : 'block-elements-body mt-4'}>
 									<Elements stripe={stripePromise}>
-										<CheckoutForm pricing={this.state.product} handlePaymentError={this.handlePaymentError} handleLoading={this.handleLoading} />
+										<CheckoutForm couponAmount={this.state.couponAmount / 100} couponStatus={this.state.couponStatus} handleCouponChange={this.handleCouponChange} checkCoupon={this.checkCoupon} pricing={this.state.product} handlePaymentError={this.handlePaymentError} handleLoading={this.handleLoading} />
 									</Elements>
 								</div>
 							</Col>
@@ -195,17 +220,17 @@ export default class Payment extends React.Component {
 										{this.state.selectedPlan === 1 ?
 											<div>
 												<p class="fz-18 fw-600">Abonnement Mensuel</p>
-												<p class="price">{Math.floor(this.state.product.unit_amount / 100)}€<span> /mois</span></p>
+												<p class="price">{Math.floor((this.state.product.unit_amount / 100) * (this.state.couponAmount/100))}€<span> /mois</span></p>
 												<p>Payer mensuellement, sans engagement</p>
 											</div>
 										: this.state.selectedPlan === 0 &&
 											<div>
 												<p class="fz-18 fw-600">Abonnement Annuel</p>
 												<p class="price d-flex align-items-baseline">
-													{Math.floor((this.state.product.unit_amount / 100) / 12)}€<span class="d-flex"> /mois 
-													<span class="d-none d-sm-block"><span class="fw-400">&nbsp;(soit</span> {Math.floor(this.state.product.unit_amount / 100)}€ <span class="fw-400">l'année)</span></span></span>
+													{Math.floor(((this.state.product.unit_amount / 100) / 12)) * (this.state.couponAmount / 100)}€<span class="d-flex"> /mois 
+													<span class="d-none d-sm-block"><span class="fw-400">&nbsp;(soit</span> {Math.floor((this.state.product.unit_amount / 100) * (this.state.couponAmount/100))}€ <span class="fw-400">l'année)</span></span></span>
 												</p>
-												<span class="d-block d-sm-none mb-2 fw-600"><span class="fw-400">(soit</span> {Math.floor(this.state.product.unit_amount / 100)}€ <span class="fw-400">l'année)</span></span>
+												<span class="d-block d-sm-none mb-2 fw-600"><span class="fw-400">(soit</span> {Math.floor((this.state.product.unit_amount / 100) * (this.state.couponAmount/100))}€ <span class="fw-400">l'année)</span></span>
 												<p>Économisez <span class="fw-600">120€</span> par rapport à la version mensuelle</p>
 											</div>
 										}
