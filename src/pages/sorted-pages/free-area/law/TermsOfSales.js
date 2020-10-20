@@ -41,7 +41,7 @@ export default class TermsOfSales extends React.Component {
         const article12 = 'Article 12 : Collecte de données personnelles';
 
         return (
-            <div class="layout-style">
+            <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
                 {this.customHeadElement()}
                 <Container className="px-0 mt-6">
 

@@ -1,38 +1,60 @@
-@keyframes appear {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
 #banner {
-    height: $banner-promotion;
-    background-color: $theme-color-primary;
+    @include min-lg-rwd {
+        height: $banner-promotion;
+        background-color: $theme-color-primary; 
+    }
+    height: auto;
+    background-color: $primary;
     color: $theme-color-secondary;
+    z-index: 98;
+    position: fixed;
     top: 0;
     right: 0;
-    z-index: 99;
+    transition: .4s ease-in-out;
+    @include max-lg-rwd {
+        top: initial;
+        bottom: 0;
+    }
+
+    &.banner-not-showed {
+        @include min-lg-rwd {
+            opacity: 0;
+            visibility: hidden;
+            top: -$banner-promotion;
+        }
+        @include max-lg-rwd {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(500px);
+        }
+    }
 
     .promotion-text {
-        margin-right: 9rem;
-        animation: appear 5s infinite;
 
         .promotion-percentage {
-            @include fz-22;
+            @include fz-20;
             color: $secondary;
         }
     
         .promotion-code {
+            @include fz-20;
             color: $secondary;
-            text-decoration: underline;
         }
     } 
 
     .promotion-timer {
-        @include fz-22;
+        @include fz-24;
+        font-weight: 600;
+        text-align: right;
+        min-width: 235px;
+        max-width: 235px;
 
         span {
-            letter-spacing: 1rem;
             text-transform: uppercase;
             color: $secondary;
+            &:not(:last-child) { letter-spacing: 1rem; }
         }
     }
+
+    .close-banner { @include close-item-alert(); }
 }

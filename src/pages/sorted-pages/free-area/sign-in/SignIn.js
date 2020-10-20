@@ -110,9 +110,9 @@ export default class SignIn extends React.Component {
         } 
         else {
             return (
-                <div id="signIn" class="layout-style">
+                <div id="signIn" class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
                     {this.customHeadElement()}
-                    {this.state.error && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="La combinaison « email / mot de passe » est incorrect"/> }
+                    {this.state.error && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="La combinaison « email / mot de passe » est incorrect"/> }
                     <Container className="px-0 mt-6 mx-auto">
                         <Col sm="12" lg="8" xl="6" className="px-0 mx-auto">
                             <H1 className="mb-5" title="Connexion à votre compte Asking Franklin"/>

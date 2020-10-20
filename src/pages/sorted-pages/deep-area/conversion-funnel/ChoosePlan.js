@@ -135,7 +135,7 @@ export default class ChoosePlan extends React.Component {
         const customColPlan2 = ' block-pricing-choose-plan-annual ml-0 ml-lg-5';
 
         return (
-            <div class="layout-style">
+            <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
                 {this.customHeadElement()}
                 {this.state.plans.length > 0 ?
                     <Container id="pricing" className="px-0 mt-6">

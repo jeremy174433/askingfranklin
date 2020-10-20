@@ -1,6 +1,10 @@
-@keyframes alert-anim {
+@keyframes alert-anim-lg {
     from { opacity: 0; top: 0; }
-    to { opacity: 1; top: calc(#{$header-mh} + #{$banner-promotion}); }
+    to { opacity: 1; }
+}
+@keyframes alert-anim-md {
+    from { opacity: 0; top: 0; }
+    to { opacity: 1; }
 }
 
 .alert-msg {
@@ -18,14 +22,22 @@
     opacity: 0;
     @include fz-18;
     z-index: 50;
-    transition: .6s ease-in-out;
+    transition: .4s ease-in-out;
     @include min-xl-rwd { padding: 1rem 3rem; }
 
     &-visible { 
         opacity: 1;
-        top: calc(#{$header-mh} + #{$banner-promotion});
         animation: alert-anim .6s ease-in-out;
+        @include min-lg-rwd { 
+            animation: alert-anim-lg .6s ease-in-out;
+            top: calc(#{$header-mh} + #{$banner-promotion});
+        }
+        @include max-lg-rwd {
+            animation: alert-anim-md .6s ease-in-out;
+            top: $header-mh;
+        }
     }
+    &-no-banner { top: $header-mh; }
 
     &#successMessage { background-color: $success; }
     &#errorMessage { background-color: $danger; }
@@ -35,24 +47,6 @@
         text-decoration: underline;
     }
 
-    .close-alert {
-        cursor: pointer;
-
-        &::before {
-            content: '';
-            display: block;
-            background-color: $md-grey-35;
-            padding: 1rem;
-            border-radius: 50%;
-            position: absolute;
-            transform: translate(-25%, -25%);
-            opacity: 0;
-            z-index: -1;
-            transition: .2s ease-in-out;
-        }
-        &:hover::before { 
-            transform: translate(-25%, -25%);
-            opacity: 1;
-        }
-    }
+    .close-alert { @include close-item-alert(); }
+    
 }

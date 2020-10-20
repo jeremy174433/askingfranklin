@@ -2,9 +2,13 @@
     height: $header-mh;
     background-color: $white;
     border-bottom: 1px solid $theme-terthiary;
-    top: $banner-promotion;
-    right: 0;
     z-index: 99;
+    top: 0;
+    right: 0;
+    transition: .4s ease-in-out;
+    @include max-lg-rwd { top: 0 !important; }
+
+    &.banner-showed { top: $banner-promotion; }
 
     .nav-link {
         @include fz-18;

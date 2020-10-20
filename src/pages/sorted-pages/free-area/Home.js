@@ -81,7 +81,7 @@ export default class Home extends React.Component {
                 {this.customHeadElement()}
                 <div id="top"></div>
 
-                <section class="home-section-1 position-relative">
+                <section class={this.props.bannerIsActive ? 'home-section-1 pt-hero-banner position-relative' : 'home-section-1 pt-hero position-relative'}>
                     <Blob3 className="blob-3"/>
                     <Container className="d-flex flex-column flex-lg-row px-4 py-5 p-md-5 block-style position-relative overflow-visible">
                         <Blob1 className="blob-1"/>

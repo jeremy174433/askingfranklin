@@ -27,7 +27,7 @@ export default class ConfirmationPayment extends React.Component {
 
     render() {
         return (
-            <div class="layout-style mt-6">
+            <div class={this.props.bannerIsActive ? 'layout-style-banner mt-6' : 'layout-style mt-6'}>
                 {this.customHeadElement()}
                 <Container>
                     <StepperFunnel activeStep={2} firstStep="Choix de l'offre" secondStep="Paiement" thirdStep="Débuter en Pro"/>

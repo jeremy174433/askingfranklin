@@ -42,7 +42,7 @@ export default class SignUpConfirmation extends React.Component {
 
     render() {
         return (
-            <div class="layout-style">
+            <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
                 {this.customHeadElement()}
                 <Container className="d-flex flex-column flex-lg-row px-4 py-5 p-md-5 mt-6 block-style position-relative overflow-visible">
                     <Col md="12" lg="6" className="mt-0 mb-5 my-md-5 px-0">
