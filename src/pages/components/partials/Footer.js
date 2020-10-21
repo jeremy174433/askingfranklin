@@ -85,6 +85,7 @@ export default class Footer extends React.Component {
                                 {(localStorage.getItem('af_is_sub') == null || localStorage.getItem('af_is_sub') == 0) && <MenuLink redirectTo="/tarifs" textLink="Tarifs" linkLocation="footer-link"/> }
                                 <MenuLink redirectTo="/faq" textLink="FAQ" linkLocation="footer-link"/>
                                 <MenuLink redirectTo="/contact" textLink="Contact" linkLocation="footer-link"/>
+                                {localStorage.getItem('af_is_sub') == null || localStorage.getItem('af_is_sub') != 0 && <MenuLink redirectTo="/support" textLink="Support Client" linkLocation="footer-link"/> }
                             </ul>
                         </Col>
                         <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start mb-5 mb-lg-0">
@@ -125,14 +126,15 @@ export default class Footer extends React.Component {
                                 />
                                 <PmyBtn type="submit" isDisabled={!this.state.emailNewsletter.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.subscribeSuccess} btnIsMediumPmyFull textBtn="S'abonner" className="w-sm-100 h-100" style={{ height: '48px' }}/>
                             </form>
+                            <p class="fz-14 mt-3">En soumettant ce formulaire, vous acceptez les <Link to="/conditions-generales-d-utilisation" rel="noopener" target="_blank" title="Ouvrir dans un nouvel onglet : CGU Asking Franklin">CGU</Link></p>
                             {
                                 this.state.subscribeSuccess === true ? 
-                                    <div class="d-flex flex-row align-items-center mt-3 mt-sm-0">
+                                    <div class="d-flex flex-row align-items-center mt-1">
                                         <Tick width="16" fill="#00C851"/>
                                         <p class="color-success fz-14 ml-2">Votre abonnement a bien été enregistré</p>
                                     </div>
                                 : this.state.subscribeError === true &&
-                                    <p class="color-danger fz-14 mt-3">L'adresse email saisie semble être déjà abonnée à la newsletter</p>
+                                    <p class="color-danger fz-14 mt-1">L'adresse email saisie semble être déjà abonnée à la newsletter</p>
                             }
                         </Col>
                     </Row>

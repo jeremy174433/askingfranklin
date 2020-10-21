@@ -1,9 +1,7 @@
-User-agent: *
-Disallow: /
-
 # User-agent: *
 # Disallow: /mot-de-passe-oublie
 # Disallow: /recherche/*
+# Disallow: /support
 # Disallow: /mentions-legales
-# Disallow: /conditions-generales-d-utilisatio
+# Disallow: /conditions-generales-d-utilisation
 # Disallow: /conditions-generales-de-vente

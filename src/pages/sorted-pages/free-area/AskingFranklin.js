@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { refreshTokenFnc } from '../../../utils/refreshToken';
 import Loader from '../../components/elements/Loader';
 import { Redirect } from 'react-router-dom';
 import AFStickyMenu from '../../components/asking-franklin/AFStickyMenu';
@@ -9,7 +10,6 @@ import {
 } from 'react-bootstrap';
 import AFWrapper from '../../components/asking-franklin/AFWrapper';
 import FormRequestFranklin from '../../components/form/FormRequestFranklin';
-import { refreshTokenFnc } from '../../../utils/refreshToken';
 
 export default class AskingFranklin extends React.Component {
     constructor(props) {

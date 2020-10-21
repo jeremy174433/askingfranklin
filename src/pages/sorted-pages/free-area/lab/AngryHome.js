@@ -134,7 +134,7 @@ export default class Home extends React.Component {
                         <Col md="12" lg="6" className="d-flex flex-column justify-content-center order-0 order-lg-1 pt-5 pt-lg-0">
                             <H2 className="mb-5" title="Prenez les devants et proposez des produits, services et des contenus que cherchent vos consommateurs"/>
                             <p class="fz-18 mb-5">Asking Franklin vous fournit une ressource illimitée de mots-clés mais aussi d’idées pour booster votre SEO et nourrir votre stratégie de contenus.</p>
-                            <PmyBtn redirectTo="/tarifs" linkIsMediumPmyOutlineLight textLink="Essayer gratuitement" customBtnClass="w-sm-100"/>
+                            <PmyBtn redirectTo="/#top" linkIsLargePmyOutlineFull textLink="Essayer gratuitement" customBtnClass="w-sm-100"/>
                         </Col>
                     </Container>
                     <Blob6 className="blob-6 d-none d-lg-block"/>
@@ -174,7 +174,8 @@ export default class Home extends React.Component {
                     <Container className="px-0">
                         <H2 className="pt-6 text-center" title="Pourquoi payer plus cher pour la même chose ?"/>
                         <div class="mt-6 d-flex flex-column flex-md-row justify-content-center align-items-center">
-                            <PmyBtn redirectTo="/#top" linkIsLargePmyFull textLink="Essayer gratuitement" containerStyle="text-center" style={{zIndex: 1}}/>
+                            <PmyBtn redirectTo="/tarifs" linkIsLargePmyFull textLink="S'inscrire et devenir Pro" containerStyle="text-center mb-5 mb-md-0 mr-md-5" style={{zIndex: 1}}/>
+                            <PmyBtn redirectTo="/#top" linkIsLargePmyOutlineLight textLink="Essayer gratuitement" containerStyle="text-center" style={{zIndex: 1}}/>
                         </div>
                     </Container>
                     <Dots className="dots-5"/>

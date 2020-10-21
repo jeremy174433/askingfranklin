@@ -73,7 +73,7 @@ export default class SignIn extends React.Component {
             return res.json();
         })
         .then(res => {
-            console.log(res);
+            // console.log(res);
             if(res.error) {
                 this.setState({
                     error: true,
@@ -115,11 +115,7 @@ export default class SignIn extends React.Component {
                     {this.state.error && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="La combinaison « email / mot de passe » est incorrect"/> }
                     <Container className="px-0 mt-6 mx-auto">
                         <Col sm="12" lg="8" xl="6" className="px-0 mx-auto">
-                            <H1 className="mb-5" title="Connexion à votre compte Asking Franklin"/>
-                            <p class="mb-5">
-                                <span class="d-block mb-3">En utilisant la version gratuite vous êtes limités à 3 recherches maximum par jour</span>
-                                <ArrowTextLink redirectTo="/tarifs" textLink="Passez dès maintenant aux recherches illimitées avec Asking Franklin Pro"/>
-                            </p>
+                            <H1 className="mb-5" title="Se connecter à Asking Franklin"/>
                             <form onSubmit={this.handleSubmit} method="POST">
                                 <Input 
                                     onChange={this.handleEmail} 

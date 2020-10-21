@@ -12,17 +12,15 @@ import Textarea from '../../components/form/Textarea';
 import PmyBtn from '../../components/button/PmyBtn';
 import Alert from '../../components/elements/Alert';
 
-export default class Contact extends React.Component {
+export default class Support extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             alertIsShowed: false,
-            email: '',
+            priority: 'Haute',
             subject: '',
-            content: '',
-            isConnected: false
+            content: ''
         }
-        this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handleSubjectChange = this.handleSubjectChange.bind(this);
         this.handleContentChange = this.handleContentChange.bind(this);
         this.handleSubmitForm = this.handleSubmitForm.bind(this);
@@ -31,7 +29,8 @@ export default class Contact extends React.Component {
 
     loadPageData() {
         var token = localStorage.getItem('af_token');
-        if (token && token.length > 0) {
+        var is_sub = localStorage.getItem('af_is_sub');
+        if (token && token.length > 0 && is_sub == '1') {
             fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-email', {
                 headers: {
                     'Authorization': token
@@ -47,8 +46,7 @@ export default class Contact extends React.Component {
                 }
                 else {
                     this.setState({
-                        curr_email: res.message[0],
-                        isConnected: (token && token.length > 0) ? true : false
+                        curr_email: res.message[0]
                     });
                 }
             })
@@ -57,6 +55,9 @@ export default class Contact extends React.Component {
                     refreshTokenFnc(this.loadPageData, false);
                 }
             })
+        } 
+        else {
+            this.props.history.push('/plans');
         }
     }
 
@@ -68,17 +69,11 @@ export default class Contact extends React.Component {
     customHeadElement() {
         return (
             <Helmet>
-                <title>Contact - Asking Franklin, votre outil SEO Français</title>
-                <meta name="description" content="Contact - Asking Franklin, l’outil français créé à Bordeaux qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes. Contactez-nous !"/>
+                <title>Support Client - Asking Franklin, votre outil SEO Français</title>
+                <meta name="description" content="Support Client - Asking Franklin, l’outil français créé à Bordeaux qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
                 <meta name="robots" content="index, follow"/>
             </Helmet>
         );
-    }
-
-    handleEmailChange(e) {
-        this.setState({
-            email: e.target.value
-        });
     }
 
     handleSubjectChange(e) {
@@ -101,12 +96,13 @@ export default class Contact extends React.Component {
         }
         this.setState({
             alertIsShowed: false
-        });
+        }); 
         fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/send-mail-support', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify({
-                email: this.state.isConnected ? this.state.curr_email : this.state.email,
+                priority: this.state.priority,
+                email: this.state.curr_email,
                 subject: this.state.subject,
                 content: this.state.content
             })
@@ -117,7 +113,8 @@ export default class Contact extends React.Component {
             if(res.err === null) {
                 this.setState({
                     alertIsShowed: true,
-                    email: this.state.isConnected ? this.state.curr_email : ' ',
+                    priority: this.state.priority,
+                    email: this.state.curr_email,
                     subject: '',
                     content: ''
                 });
@@ -140,8 +137,9 @@ export default class Contact extends React.Component {
             <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
                 {this.customHeadElement()}
                 {this.state.alertIsShowed && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre message a bien été envoyé, nous reviendrons rapidement vers vous"/> }
-                <Container id="contact" className="px-0 mt-6 w-100 text-center d-flex flex-column align-items-center">
-                    <H1 title="Contact &amp; Assistance"/>
+                <Container id="support" className="px-0 mt-6 w-100 text-center d-flex flex-column align-items-center">
+                    <H1 title="Support Client"/>
+                    <p class="mt-4">Grâce à la version Pro de Asking Franklin, obtenez une réponse prioritaire de l'équipe support</p>
                     <form onSubmit={this.handleSubmitForm} method="POST" class="block-style d-flex flex-column w-100 mt-5">
                         <Row className="mx-0">
                             <Col sm="12" lg="6" className="px-0">
@@ -158,19 +156,24 @@ export default class Contact extends React.Component {
                                     infoMsg={this.state.subject.length < 1 && 'Ce champ est requis'}
                                 />
                             </Col>
-                            <Col sm="12" lg="6" className="px-0">
+                            <Col xs="12" sm="9" lg="4" className="px-0">
                                 <Input
                                     type="email"
                                     label="Votre adresse email"
                                     for="contactEmail"
-                                    name={this.for}
-                                    id={this.for}
-                                    onChange={this.handleEmailChange}
-                                    value={this.state.isConnected ? this.state.curr_email : this.state.email}
-                                    containerStyle="mt-3 ml-0 ml-lg-3"
-                                    required={true}
-                                    disabled={this.state.isConnected}
-                                    infoMsg={!this.state.isConnected && this.state.email.length < 1 && 'Ce champ est requis' || !this.state.isConnected && !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
+                                    value={this.state.curr_email}
+                                    containerStyle="mt-3 mx-0 mr-sm-3 mx-lg-3"
+                                    disabled={true}
+                                />
+                            </Col>
+                            <Col xs="12" sm="3" lg="2" className="px-0">
+                                <Input
+                                    type="text"
+                                    label="Priorité"
+                                    for="priority"
+                                    value={this.state.priority}
+                                    containerStyle="mt-3 ml-0 ml-sm-3 ml-lg-3"
+                                    disabled={true}
                                 />
                             </Col>
                         </Row>
@@ -188,7 +191,7 @@ export default class Contact extends React.Component {
                                 infoMsg={this.state.content.length < 1 && 'Ce champ est requis'}
                             />
                         </Col>
-                        <PmyBtn type="submit" isDisabled={!this.state.isConnected && !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.subject.length < 1 || this.state.content.length < 1} btnIsMediumPmyFull textBtn="Envoyer le message" className="w-sm-100"/>
+                        <PmyBtn type="submit" isDisabled={this.state.subject.length < 1 || this.state.content.length < 1} btnIsMediumPmyFull textBtn="Envoyer le message" className="w-sm-100"/>
                     </form>
                 </Container>
             </div>

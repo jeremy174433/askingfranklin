@@ -140,7 +140,7 @@ export default class Home extends React.Component {
                         <Col md="12" lg="6" className="d-flex flex-column justify-content-center order-0 order-lg-1 pt-5 pt-lg-0">
                             <H2 className="mb-5" title="Prenez les devants et proposez des produits, services et contenus que cherchent vos consommateurs"/>
                             <p class="fz-18 mb-5">Asking Franklin vous fournit une ressource illimitée de mots-clés mais aussi d’idées pour booster votre SEO et nourrir votre stratégie de contenus.</p>
-                            <PmyBtn redirectTo="/tarifs" linkIsMediumPmyOutlineLight textLink="Voir les avantages Pro" customBtnClass="w-sm-100"/>
+                            <PmyBtn redirectTo="/tarifs" linkIsLargePmyOutlineFull textLink="Voir les avantages Pro" customBtnClass="w-sm-100"/>
                         </Col>
                     </Container>
                     <Blob6 className="blob-6 d-none d-lg-block"/>
@@ -156,7 +156,7 @@ export default class Home extends React.Component {
                                 <p class="fz-18 fw-600">Une nouvelle tendance de consommation émerge ? <br/> Une nouvelle mode ?</p>
                             </blockquote>
                             <p class="fz-18 mt-3 mb-5 pt-3">Grâce à Asking Franklin, prenez une longueur d’avance sur vos concurrents en étant le premier au courant des nouveautés qui arrivent sur le marché.</p>
-                            <PmyBtn redirectTo="/#top" linkIsMediumPmyOutlineLight textLink="Essayer gratuitement" customBtnClass="w-sm-100"/>
+                            <PmyBtn redirectTo="/#top" linkIsLargePmyOutlineFull textLink="Essayer gratuitement" customBtnClass="w-sm-100"/>
                         </Col>
                         <Col md="12" lg="6" className="d-flex justify-content-center justify-content-lg-start px-0 pl-lg-5 mt-5 mt-lg-0">
                             <img src={Ideas} alt="Source d'idées de contenus" class="img-fluid"/>

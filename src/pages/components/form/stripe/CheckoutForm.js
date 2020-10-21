@@ -1,4 +1,5 @@
 import React from 'react';
+import { refreshTokenFnc } from '../../../../utils/refreshToken';
 import { 
 	Row,
 	Col 
@@ -12,7 +13,6 @@ import {
 import { Link } from 'react-router-dom';
 import Checkbox from '../Checkbox';
 import PmyBtn from '../../button/PmyBtn';
-import { refreshTokenFnc } from '../../../../utils/refreshToken';
 
 const CARD_ELEMENT_OPTIONS = {
 	style: {
@@ -134,7 +134,6 @@ export default function CheckoutForm(props) {
 						isRetry: true
 					};
 				}
-
 			})
 			.catch(error => {
                 if (error === 'TypeError: Failed to fetch') {
@@ -226,7 +225,6 @@ export default function CheckoutForm(props) {
 						subscription: result.message
 					};
 				}
-
 			})
 			.catch(error => {
 				if(error === 'TypeError: Failed to fetch') {
@@ -279,6 +277,7 @@ export default function CheckoutForm(props) {
 			}
 		}
 	};
+
 	return (
 		<form onSubmit={handleSubmit}>
 			<Row className="d-flex flex-row mx-0">
@@ -324,8 +323,9 @@ export default function CheckoutForm(props) {
 				</Col>
 			</Row>
 			<CardElement options={CARD_ELEMENT_OPTIONS}/>
-			{props.pricing.unit_amount == 4900 && <Row className="mx-0 d-flex flex-column">
-				<Col sm="12" md="6" className="px-0 pt-3 mt-3 d-flex flex-column flex-sm-row">
+			{props.pricing.unit_amount == 4900 &&
+				<Row className="mx-0 d-flex flex-column">
+					<Col sm="12" md="6" className="px-0 pt-3 mt-3 d-flex flex-column flex-sm-row">
 						<Input
 							disabled={props.couponAmount != 1}
 							type="text"
@@ -337,14 +337,17 @@ export default function CheckoutForm(props) {
 							containerStyle="mb-0 pb-0 w-100"
 							onChange={props.handleCouponChange}
 						/>
-						<PmyBtn type="button" onClick={props.checkCoupon} btnIsMediumPmyFull textBtn="Vérifier" containerStyle="ml-0 ml-sm-4 mt-4 mt-sm-0" className="h-100" isDisabled={props.couponAmount != 1}/>
-				</Col>
-				{props.couponStatus != '' && (props.couponStatus != "failed" && props.couponStatus.valid ? <p class="color-success mt-3 fz-14">Félicitations, vous bénéficiez désormais de {props.couponStatus.percent_off}% de réduction sur l'abonnement mensuel pour une durée de {props.couponStatus.duration_in_months} mois</p> : <p class="color-danger mt-3 fz-14">Le code saisi ne correspond à aucun code promotionnel actif</p>)}
-
-			</Row>}
-
+						<PmyBtn type="button" onClick={props.checkCoupon} isDisabled={props.couponAmount != 1} btnIsMediumPmyFull textBtn="Vérifier" containerStyle="ml-0 ml-sm-4 mt-4 mt-sm-0" className="h-100"/>
+					</Col>
+					{props.couponStatus != '' && (props.couponStatus != 'failed' && props.couponStatus.valid ? 
+						<p class="color-success mt-3 fz-14">Félicitations, vous bénéficiez désormais de {props.couponStatus.percent_off}% de réduction sur l'abonnement mensuel pour une durée de {props.couponStatus.duration_in_months} mois</p>
+					: 
+						<p class="color-danger mt-3 fz-14">Le code saisi ne correspond à aucun code promotionnel actif</p>
+					)}
+				</Row>
+			}
 			<Checkbox 
-				label={['J\'ai lu et j\'accepte les ', <Link to="/conditions-generales-de-vente" target="_blank" rel="noopener" class="fz-16">CGV</Link>]} 
+				label={['J\'ai lu et j\'accepte les ', <Link to="/conditions-generales-de-vente" target="_blank" rel="noopener" title="Ouvrir dans un nouvel onglet : CGV Asking Franklin" class="fz-16">CGV</Link>, <span class="fz-14 ml-1">(requis)</span>]} 
 				onChange={props.handleTermsOfSales} 
 				for="checkTermsOfSales" 
 				name={props.for} 

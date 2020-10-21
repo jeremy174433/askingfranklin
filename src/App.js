@@ -24,12 +24,12 @@ import TermsOfServices from './pages/sorted-pages/free-area/law/TermsOfServices'
 import TermsOfSales from './pages/sorted-pages/free-area/law/TermsOfSales';
 import Error404 from './pages/sorted-pages/free-area/Error404';
 import Profile from './pages/sorted-pages/deep-area/Profile';
+import Support from './pages/sorted-pages/deep-area/Support';
 import ChoosePlan from './pages/sorted-pages/deep-area/conversion-funnel/ChoosePlan';
 import Payment from './pages/sorted-pages/deep-area/conversion-funnel/Payment';
 import ConfirmationPayment from './pages/sorted-pages/deep-area/conversion-funnel/ConfirmationPayment';
 import BackToTop from 'react-back-to-top-button';
 import ArrowLight from './assets/img/svg/ArrowLight';
-import { local } from 'd3';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -41,20 +41,22 @@ export default class App extends React.Component {
         this.handleConnect = this.handleConnect.bind(this);
         this.handleHideBanner = this.handleHideBanner.bind(this);
     }
-    componentDidMount(){
-        var token = localStorage.getItem('af_token')
-        var is_sub = localStorage.getItem('af_is_sub')
+
+    componentDidMount() {
+        var token = localStorage.getItem('af_token');
+        var is_sub = localStorage.getItem('af_is_sub');
         this.setState({
-            isConnected:(token && token.length > 0) ? true : false
-        })
-        if (token && token.length > 0 && is_sub == '1'){
+            isConnected: (token && token.length > 0) ? true : false
+        });
+        if (token && token.length > 0 && is_sub == '1') {
             this.setState({
-                bannerIsShowed:false
-            })
+                bannerIsShowed: false
+            });
         }
     }
-    handleConnect(e, cb) {
-        var is_sub = localStorage.getItem('af_is_sub')
+
+    handleConnect() {
+        var is_sub = localStorage.getItem('af_is_sub');
         this.setState({
             isConnected: this.state.isConnected ? false : true,
             bannerIsShowed:is_sub == '1' ? false : true
@@ -74,29 +76,30 @@ export default class App extends React.Component {
                 <Router>
                     <Navbar isConnected={this.state.isConnected} className={this.state.bannerIsShowed && 'banner-showed'}/>
                     <Switch>
-                        <Route path='/connexion' render={(props) => (<SignIn {...props} bannerIsActive={this.state.bannerIsShowed} handleConnect={this.handleConnect}/>)}/>
-                        <Route exact path='/inscription/confirmation' render={(props) => (<SignUpConfirmation {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
-                        <Route path='/inscription' render={(props) => (<SignUp {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
-                        <Route path='/mot-de-passe-oublie' render={(props) => (<ForgotPassword {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
-                        <Route path='/recherche/:keyword' render={(props) => (<AskingFranklin {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
-                        <Route path="/limite-de-recherches" render={(props) => (<MaximumRequests {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
-                        <Route path="/faq" render={(props) => (<Faq {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
-                        <Route path="/contact" render={(props) => (<Contact {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
-                        <Route exact path='/' render={(props) => (<Home {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
-                        <Route exact path='/l/01' render={(props) => (<AngryHome {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
-                        <Route exact path='/tarifs' render={(props) => (<Pricing {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
-                        <Route exact path='/profil' render={(props) => (<Profile {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
-                        <Route exact path='/plans' render={(props) => (<ChoosePlan {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
-                        <Route exact path='/paiement' render={(props) => (<Payment {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
-                        <Route exact path='/paiement/confirmation' render={(props) => (<ConfirmationPayment {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
-                        <Route path="/mentions-legales" render={(props) => (<LegalNotices {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
-                        <Route path="/conditions-generales-d-utilisation" render={(props) => (<TermsOfServices {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
-                        <Route path="/conditions-generales-de-vente" render={(props) => (<TermsOfSales {...props} bannerIsActive={this.state.bannerIsShowed}/>)}/>
-                        <Route path="*" render={(props) => (<Error404 {...props} bannerIsActive={this.state.bannerIsShowed}/>)} status={404}/>
+                        <Route path='/connexion' render={(props) => <SignIn {...props} bannerIsActive={this.state.bannerIsShowed} handleConnect={this.handleConnect}/>}/>
+                        <Route exact path='/inscription/confirmation' render={(props) => <SignUpConfirmation {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path='/inscription' render={(props) => <SignUp {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path='/mot-de-passe-oublie' render={(props) => <ForgotPassword {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path='/recherche/:keyword' render={(props) => <AskingFranklin {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path="/limite-de-recherches" render={(props) => <MaximumRequests {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path="/faq" render={(props) => <Faq {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path="/contact" render={(props) => <Contact {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path="/support" render={(props) => <Support {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route exact path='/' render={(props) => <Home {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route exact path='/l/01' render={(props) => <AngryHome {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route exact path='/tarifs' render={(props) => <Pricing {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route exact path='/profil' render={(props) => <Profile {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route exact path='/plans' render={(props) => <ChoosePlan {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route exact path='/paiement' render={(props) => <Payment {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route exact path='/paiement/confirmation' render={(props) => <ConfirmationPayment {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path="/mentions-legales" render={(props) => <LegalNotices {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path="/conditions-generales-d-utilisation" render={(props) => <TermsOfServices {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path="/conditions-generales-de-vente" render={(props) => <TermsOfSales {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path="*" render={(props) => <Error404 {...props} bannerIsActive={this.state.bannerIsShowed}/>} status={404}/>
                     </Switch>
                     <Footer/>
                 </Router>
-                <BackToTop showAt={2500} speed={1000} easing="easeOutSine">
+                <BackToTop showAt={2500} speed={500} easing="easeInOutQuint">
                     <ArrowLight width="22" fill="#FFF"/>
                 </BackToTop>
                 <CookieConsent location="bottom" acceptOnScroll={true} buttonText="Accepter" cookieName="user-has-accepted-cookies" expires={182}>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { refreshTokenFnc } from '../../../../utils/refreshToken';
 import { Redirect } from 'react-router-dom';
 import Loader from '../../../components/elements/Loader';
 import { 
@@ -16,7 +17,6 @@ import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from '../../../components/form/stripe/CheckoutForm';
 import FeaturesList from '../../../components/elements/FeaturesList';
 import Alert from '../../../components/elements/Alert';
-import { refreshTokenFnc } from '../../../../utils/refreshToken'
 
 const stripePromise = loadStripe('pk_test_IHTunL8Iumhmuvbs095NhSyP00F3UiY2Hd');
 
@@ -31,9 +31,9 @@ export default class Payment extends React.Component {
 			selectedPlan: 1,
 			errorPayment: false,
 			isLoadingPayment: false,
-			couponText:'',
-			couponStatus:'',
-			couponAmount:100
+			couponText: '',
+			couponStatus: '',
+			couponAmount: 100
 		}
 		this.handleCloseAlert = this.handleCloseAlert.bind(this);
 		this.handlePaymentError = this.handlePaymentError.bind(this);
@@ -77,7 +77,7 @@ export default class Payment extends React.Component {
 						countClick: this.state.countClick + 1
 					});
 				}
-			}).catch(error=>{
+			}).catch(error => {
                 if(error == "TypeError: Failed to fetch") {
                     refreshTokenFnc(this.componentDidMount, false);
                 }
@@ -134,13 +134,15 @@ export default class Payment extends React.Component {
 			</Helmet>
         );
 	}
-	handleCouponChange(e){
+
+	handleCouponChange(e) {
 		this.setState({
-			couponText:e.target.value
-		})
+			couponText: e.target.value
+		});
 	}
-	checkCoupon(){
-		fetch("https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/retrieve-coupon",{
+
+	checkCoupon() {
+		fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/retrieve-coupon', {
 			body: JSON.stringify({
 				coupon: this.state.couponText,
 			}),
@@ -149,12 +151,12 @@ export default class Payment extends React.Component {
 		.then((res)=>res.json())
 		.then((res)=>{
 			this.setState({
-				couponStatus: res.message == "Invalid coupon" ? 'failed' : res.message,
-				couponAmount: res.message == "Invalid coupon" ? 100 : 100 - res.message.percent_off,
-			})
+				couponStatus: res.message == 'Invalid coupon' ? 'failed' : res.message,
+				couponAmount: res.message == 'Invalid coupon' ? 100 : 100 - res.message.percent_off
+			});
 		})
-		
 	}
+
 	handlePaymentError(reason) {
 		this.setState({
 			errorPayment: reason,
@@ -206,7 +208,15 @@ export default class Payment extends React.Component {
 								}
 								<div className={this.state.isLoadingPayment ? 'd-none' : 'block-elements-body mt-4'}>
 									<Elements stripe={stripePromise}>
-										<CheckoutForm couponAmount={this.state.couponAmount / 100} couponStatus={this.state.couponStatus} handleCouponChange={this.handleCouponChange} checkCoupon={this.checkCoupon} pricing={this.state.product} handlePaymentError={this.handlePaymentError} handleLoading={this.handleLoading} />
+										<CheckoutForm 
+											couponAmount={this.state.couponAmount / 100} 
+											couponStatus={this.state.couponStatus} 
+											handleCouponChange={this.handleCouponChange} 
+											checkCoupon={this.checkCoupon} 
+											pricing={this.state.product} 
+											handlePaymentError={this.handlePaymentError} 
+											handleLoading={this.handleLoading}
+										/>
 									</Elements>
 								</div>
 							</Col>

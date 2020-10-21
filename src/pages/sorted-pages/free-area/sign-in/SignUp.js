@@ -146,7 +146,7 @@ export default class SignUp extends React.Component {
                 {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre compte a bien été créé. Vous allez recevoir un email de confirmation, merci de le valider"/> }
                 {this.state.emailIsAlreadyTaken && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="L'email choisi n'est pas disponible, veuillez en choisir un différent"/> }
                 <Container className="px-0 mt-6">
-                    <StepperFunnel activeStep={1} firstStep="Choix de l'offre" secondStep="Inscription" thirdStep="Paiement et passage en Pro"/>
+                    <StepperFunnel activeStep={1} firstStep="Choix de l'offre" secondStep="Inscription" thirdStep="Abonnement et passage en Pro"/>
                 </Container>
                 <Container className="px-0">
                     <Col sm="12" lg="8" xl="6" className="px-0 mx-auto">
@@ -180,7 +180,7 @@ export default class SignUp extends React.Component {
                                 infoMsg={!this.state.password.match(/^(?=.*?[0-9])[a-zA-Z0-9âäàéèùêëîïôöñç#$%&'"()*+.°²\/:;,<=>!?§@\[\\\]^_`{|}~-]{8,}$/) && 'Le mot de passe doit contenir au moins 8 caractères dont 1 chiffre'}
                             />
                             <Checkbox 
-                                label={['J\'ai lu et j\'accepte les ', <Link to="/conditions-generales-d-utilisation" target="_blank" rel="noopener" class="fz-16">CGU</Link>, <em class="fz-14 ml-1">(requis)</em>]} 
+                                label={['J\'ai lu et j\'accepte les ', <Link to="/conditions-generales-d-utilisation" target="_blank" rel="noopener" title="Ouvrir dans un nouvel onglet : CGU Asking Franklin" class="fz-16">CGU</Link>, <em class="fz-14 ml-1">(requis)</em>]} 
                                 onChange={this.handlePrivacy} 
                                 for="checkPrivacy" 
                                 name={this.for} 

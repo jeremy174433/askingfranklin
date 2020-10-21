@@ -163,7 +163,8 @@ export default class Faq extends React.Component {
             toShow: [],
             selectedCategoryIndex: 0,
             useFiltered: false,
-            noResult: false
+            noResult: false,
+            is_sub: 0
         }
         this.handleSearchTopic = this.handleSearchTopic.bind(this);
         this.changeCategory = this.changeCategory.bind(this);
@@ -171,6 +172,13 @@ export default class Faq extends React.Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
+        var token = localStorage.getItem('af_token');
+        var is_sub = localStorage.getItem('af_is_sub');
+        if(token) {
+            this.setState({
+                is_sub: is_sub
+            });
+        }
     }
     
     customHeadElement() {
@@ -284,7 +292,7 @@ export default class Faq extends React.Component {
                         <p class="text-left fw-600">Vous n'avez pas trouvé l'information que vous cherchez ? Vous rencontrez un problème ?</p>
                         <div class="d-flex flex-row justify-content-center flex-wrap mt-5">
                             <Col sm="12" md="4" lg="3" className="faq-contact-infos-block px-0 mr-0 mr-md-5 mb-4 mb-md-0">
-                                <Link to="/contact" class="d-flex flex-column align-items-center p-3 rounded">
+                                <Link to={this.state.is_sub != 0 ? '/support' : '/contact'} class="d-flex flex-column align-items-center p-3 rounded">
                                     <PaperPlane height="20" fill="#2B2B2B"/>
                                     <span class="mt-3 mb-2 fw-600">Contactez-nous</span>
                                     <span>Laissez-nous un message</span>
