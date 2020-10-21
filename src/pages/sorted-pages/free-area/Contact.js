@@ -102,7 +102,7 @@ export default class Contact extends React.Component {
         this.setState({
             alertIsShowed: false
         });
-        fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/send-mail-support', {
+        fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/send-mail-contact', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify({
