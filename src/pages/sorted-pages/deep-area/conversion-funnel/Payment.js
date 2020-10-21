@@ -113,7 +113,6 @@ export default class Payment extends React.Component {
                     refreshTokenFnc(this.componentDidMount, false);
                 }
 			})
-			
 			setTimeout(
 				function() {
 					this.setState({ 
@@ -211,6 +210,7 @@ export default class Payment extends React.Component {
 										<CheckoutForm 
 											couponAmount={this.state.couponAmount / 100} 
 											couponStatus={this.state.couponStatus} 
+											couponText={this.state.couponText}
 											handleCouponChange={this.handleCouponChange} 
 											checkCoupon={this.checkCoupon} 
 											pricing={this.state.product} 
