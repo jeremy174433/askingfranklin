@@ -29,6 +29,7 @@ import Payment from './pages/sorted-pages/deep-area/conversion-funnel/Payment';
 import ConfirmationPayment from './pages/sorted-pages/deep-area/conversion-funnel/ConfirmationPayment';
 import BackToTop from 'react-back-to-top-button';
 import ArrowLight from './assets/img/svg/ArrowLight';
+import { local } from 'd3';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -40,10 +41,23 @@ export default class App extends React.Component {
         this.handleConnect = this.handleConnect.bind(this);
         this.handleHideBanner = this.handleHideBanner.bind(this);
     }
-
-    handleConnect(e, cb) {
+    componentDidMount(){
+        var token = localStorage.getItem('af_token')
+        var is_sub = localStorage.getItem('af_is_sub')
         this.setState({
-            isConnected: this.state.isConnected ? false : true
+            isConnected:(token && token.length > 0) ? true : false
+        })
+        if (token && token.length > 0 && is_sub == '1'){
+            this.setState({
+                bannerIsShowed:false
+            })
+        }
+    }
+    handleConnect(e, cb) {
+        var is_sub = localStorage.getItem('af_is_sub')
+        this.setState({
+            isConnected: this.state.isConnected ? false : true,
+            bannerIsShowed:is_sub == '1' ? false : true
         });
     }
 

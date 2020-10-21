@@ -73,7 +73,7 @@ export default class SignIn extends React.Component {
             return res.json();
         })
         .then(res => {
-            // console.log(res);
+            console.log(res);
             if(res.error) {
                 this.setState({
                     error: true,
@@ -85,11 +85,11 @@ export default class SignIn extends React.Component {
                 localStorage.setItem('af_token', res.token);
                 localStorage.setItem('af_refresh_token', res.refresh_token);
                 localStorage.setItem('af_username', res.username);
-                localStorage.setItem('af_is_sub', (res.is_sub === null || res.is_sub[0] === null) ? 0 : 1);
+                localStorage.setItem('af_is_sub', (res.is_sub == null || res.is_sub[0] == null) ? 0 : 1);
                 // console.log(res);
                 this.setState({
                     redirect: true,
-                    toPlan: (res.is_sub === null || res.is_sub[0] === null) ? true : false
+                    toPlan: (res.is_sub == null || res.is_sub[0] == null) ? true : false
                 });
                 this.props.handleConnect(event);
             }

@@ -28,7 +28,8 @@ export default class Profile extends React.Component {
             noSubscription: true,
             passwordChanged: false,
             emailChanged: false,
-            countClickCheckbox: 0
+            countClickCheckbox: 0,
+            currentPeriodEnd:0
         }
         this.loadPageData = this.loadPageData.bind(this);
         this.handleSelectAccount = this.handleSelectAccount.bind(this);
@@ -62,7 +63,8 @@ export default class Profile extends React.Component {
                 }
                 this.setState({
                     subscriptionInProgress: res.message.length > 0  && !res.message[0].cancel_at_period_end ? true : false,
-                    noSubscription: res.message.length === 0 ? true : false
+                    noSubscription: res.message.length === 0 ? true : false,
+                    currentPeriodEnd: res.message.length === 0 ? false : new Date(res.message[0].current_period_end*1000).toLocaleDateString(),
                 });
                 if(res.message[0] && res.message[0].cancel_at_period_end) {
                     var s = new Date(res.message[0].cancel_at * 1000).toLocaleDateString('fr-FR');
@@ -409,7 +411,7 @@ export default class Profile extends React.Component {
                                 <form onSubmit={this.handleSubmitCheckbox} class="block-style d-flex flex-column mt-6">
                                     <H4 className="mb-3 pb-3 fw-600" title="Votre abonnement"/>
                                     <Checkbox
-                                        label={this.state.subscriptionEnd ? ['Vous avez désactivé votre abonnement, il prendra automatiquement fin le ', <span class="fw-600">{this.state.subscriptionEnd}</span>] : 'Abonné(e) à Asking Franklin Pro'}
+                                        label={this.state.subscriptionEnd ? ['Vous avez désactivé le renouvellement automatique de votre abonnement, il prendra fin le ', <span class="fw-600">{this.state.subscriptionEnd}</span>] : ['Abonné(e) à Asking Franklin Pro, prochain renouvellement le ', <span class="fw-600">{this.state.currentPeriodEnd}</span>]}
                                         for="subscription"
                                         value="subscription"
                                         checked={this.state.subscriptionInProgress}

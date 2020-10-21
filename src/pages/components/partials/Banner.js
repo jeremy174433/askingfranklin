@@ -30,7 +30,7 @@ export default class Banner extends React.Component {
                             <span class="fz-18">sur l'abonnement Mensuel avec le code :</span>
                             <span class="promotion-code ml-2 fw-600">ASKING20</span>
                         </p>
-                        <Countdown date={Date.now() + 1296000000 } renderer={renderer}/>
+                        <Countdown date={Date.now() + ( Date.parse('30 Oct 2020 00:12:00 GMT') - Date.now()) } renderer={renderer}/>
                     </div>
                     <div onClick={this.props.onClick} class="close-banner position-absolute d-flex d-lg-none" style={{ top: '-24px', right: '0' }} title="Masquer">
                         <Close width="16" height="16" fill="#FFF"/>
