@@ -20,13 +20,13 @@
     left: $left;
     z-index: $index;
 }
-@mixin waveSeparator($top, $bottom, $rotate) {
+@mixin waveSeparator($top, $right, $bottom, $left, $rotate) {
     position: absolute;
     top: $top;
-    right: 0;
+    right: $right;
     bottom: $bottom;
-    left: 0;
-    width: fit-content;
+    left: $left;
+    width: 100%;
     height: fit-content;
     z-index: 1;
     overflow: visible;
@@ -109,7 +109,7 @@
             opacity: .5;
             pointer-events: none;
             &:not(:last-child) { @include min-lg-rwd { margin-right: 3rem; } }
-            &:not(:last-child) { @include max-lg-rwd { margin-bottom: 1.5rem; } }
+            @include max-lg-rwd { margin: 1rem; }
         }
     }
 
@@ -121,8 +121,8 @@
         margin-top: 18rem;
         background-color: $theme-secondary;
 
-        .wave-top-4 { @include waveSeparator(-149px, initial, 0); }
-        .wave-bottom-4 { @include waveSeparator(initial, -149px, 180); }
+        .wave-top-4 { @include waveSeparator(-149px, 0, initial, initial, 0); }
+        .wave-bottom-4 { @include waveSeparator(initial, initial, -149px, 0, 180); }
     }
 
     /* ----- SECTION 5 ----- */

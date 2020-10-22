@@ -9,6 +9,17 @@
 @import 'global/global';
 @import 'global/layout';
 
+@import 'components/form/input';
+@import 'components/form/textarea';
+@import 'components/form/checkbox';
+@import 'components/form/stripe';
+@import 'components/form/elements/information-input';
+@import 'components/form/elements/stepper';
+
+@import 'components/button/pmy-btn';
+@import 'components/button/btn-profile';
+@import 'components/button/tabs';
+
 @import 'components/partials/banner';
 @import 'components/partials/navbar';
 @import 'components/partials/mobile-menu';
@@ -20,17 +31,6 @@
 @import 'components/elements/alert';
 @import 'components/elements/title';
 @import 'components/elements/card-testimonial';
-
-@import 'components/button/pmy-btn';
-@import 'components/button/btn-profile';
-@import 'components/button/tabs';
-
-@import 'components/form/input';
-@import 'components/form/textarea';
-@import 'components/form/checkbox';
-@import 'components/form/stripe';
-@import 'components/form/elements/information-input';
-@import 'components/form/elements/stepper';
 
 @import 'components/table/asking-franklin';
 

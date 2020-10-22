@@ -106,7 +106,7 @@ export default class Home extends React.Component {
 
                 <section class="home-section-2">
                     <Container>
-                        <Col md="12" lg="6" className="px-0 ml-auto d-flex flex-column flex-lg-row align-items-center justify-content-end">
+                        <Col md="12" lg="6" className="px-0 ml-auto d-flex flex-lg-row align-items-center justify-content-center justify-content-lg-end flex-wrap flex-lg-nowrap">
                             <img src={LogoFrenchTech} alt="Logo French Tech"/>
                             <img src={Logo1Kubator} alt="Logo 1Kubator"/>
                             <img src={LogoDigitalCampus} alt="Logo Digital Campus"/>

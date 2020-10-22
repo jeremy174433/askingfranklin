@@ -183,7 +183,7 @@ export default class ForgotPassword extends React.Component {
                                     disabled={this.state.passwordIsChanged === true} 
                                     type="text" 
                                     value={this.state.code} 
-                                    label={'Le code envoyé par email à ' + this.state.email} 
+                                    label={'Renseignez le code envoyé par email à ' + this.state.email} 
                                     for="codeToken" 
                                     name={this.for} 
                                     id={this.for} 

@@ -103,7 +103,7 @@ export default class App extends React.Component {
                     <ArrowLight width="22" fill="#FFF"/>
                 </BackToTop>
                 <CookieConsent location="bottom" acceptOnScroll={true} buttonText="Accepter" cookieName="user-has-accepted-cookies" expires={182}>
-                    Ce site web utilise des cookies afin d'améliorer votre expérience de navigation. &nbsp;<a href="conditions-generales-d-utilisation">En savoir plus</a>
+                    Ce site web utilise des cookies afin d'améliorer votre expérience de navigation. &nbsp;<a href="conditions-generales-d-utilisation" target="_blank" rel="noopener" title="Ouvrir dans un nouvel onglet : CGU Asking Franklin">En savoir plus</a>
                 </CookieConsent>
             </div>
         )

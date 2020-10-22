@@ -67,7 +67,7 @@ export default class Pricing extends React.Component {
                     {!this.state.isConnected &&
                         <StepperFunnel activeStep={0} firstStep="Choix de l'offre" secondStep="Inscription" thirdStep="Abonnement et passage en Pro"/>
                     }
-                    <H1 className="text-center" title="Découvrez l’outil Français pour booster votre SEO, stratégie de contenu, et plus encore..."/>
+                    <H1 className="text-center" title="Découvrez l’outil français pour booster votre SEO, stratégie de contenus, et plus encore..."/>
                     <Row className="col-12 d-flex justify-content-around mx-0 mt-5 pt-5 px-0">
                         <Col sm="12" lg="6" xl="5" className="block-pricing block-pricing-free mb-5 mb-lg-0 mr-0 mr-lg-5 p-4 bgc-light rounded">
                             <H2 className="mb-3" title="Gratuit"/>
@@ -89,8 +89,7 @@ export default class Pricing extends React.Component {
                                                 <Tick width="20" fill="#FFF"/>
                                             </div>
                                         </div>
-                                    :                            
-                                                        
+                                    :                  
                                         <div class="circle"></div>
                                     }
                                     <h3>Mensuel</h3>

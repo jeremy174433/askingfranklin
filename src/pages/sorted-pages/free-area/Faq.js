@@ -190,6 +190,7 @@ export default class Faq extends React.Component {
             </Helmet>
         );
     }
+    
     handleSearchTopic(e) {
         if (e.target.value.length > 2) {
             var ret = [];
@@ -291,14 +292,14 @@ export default class Faq extends React.Component {
                     <Row className="faq-contact-infos mx-0 mt-5 pt-4 pb-4 pb-md-5 px-3 w-100 d-flex flex-column flex-nowrap rounded">
                         <p class="text-left fw-600">Vous n'avez pas trouvé l'information que vous cherchez ? Vous rencontrez un problème ?</p>
                         <div class="d-flex flex-row justify-content-center flex-wrap mt-5">
-                            <Col sm="12" md="4" lg="3" className="faq-contact-infos-block px-0 mr-0 mr-md-5 mb-4 mb-md-0">
+                            <Col sm="12" md="4" lg="3" className="faq-contact-infos-block px-0">
                                 <Link to={this.state.is_sub != 0 ? '/support' : '/contact'} class="d-flex flex-column align-items-center p-3 rounded">
                                     <PaperPlane height="20" fill="#2B2B2B"/>
                                     <span class="mt-3 mb-2 fw-600">Contactez-nous</span>
                                     <span>Laissez-nous un message</span>
                                 </Link>
                             </Col>
-                            <Col sm="12" md="4" lg="3" className="faq-contact-infos-block px-0">
+                            <Col sm="12" md="4" lg="3" className="faq-contact-infos-block px-0 ml-0 ml-md-5 mt-4 mt-md-0">
                                 <a href="javascript:void(Tawk_API.toggle())" class="d-flex flex-column align-items-center p-3 rounded">
                                     <SpeechBubble height="20" fill="#2B2B2B"/>
                                     <span class="mt-3 mb-2 fw-600">Chattez avec nous</span>
