@@ -283,20 +283,21 @@ export default function CheckoutForm(props) {
 			<Row className="d-flex flex-row mx-0">
 				<Col sm="12" md="6" className="px-0 pl-md-0 pr-md-3">
 					<Input
+						type="text"
 						label="Nom complet ou raison sociale"
 						for="name"
 						name="name"
 						id="name"
-						type="text"
 						required={true}
 					/>
 				</Col>
 				<Col sm="12" md="6" className="px-0 pr-md-0 pl-md-3">
 					<Input
+						type="text"
 						label="Adresse de facturation"
 						for="line1"
 						name="line1"
-						type="text"
+						id="line1"
 						required={true}
 					/>
 				</Col>
@@ -304,24 +305,26 @@ export default function CheckoutForm(props) {
 			<Row className="d-flex flex-row mx-0">
 				<Col sm="12" md="6" className="px-0 pl-md-0 pr-md-3">
 					<Input
+						type="text"
 						label="Ville"
 						for="city"
 						name="city"
-						type="text"
+						id="city"
 						required={true}
 					/>
 				</Col>
 				<Col sm="12" md="6" className="px-0 pr-md-0 pl-md-3">
 					<Input
+						type="text"
 						label="Code postal"
 						for="postal_code"
 						name="postal_code"
 						id="postal_code"
-						type="text"
 						required={true}
 					/>
 				</Col>
 			</Row>
+			<label for="cardnumber" class="mb-2">Carte de paiement</label>
 			<CardElement options={CARD_ELEMENT_OPTIONS}/>
 			{props.pricing.unit_amount == 4900 &&
 				<Row className="mx-0 d-flex flex-column">
@@ -337,7 +340,7 @@ export default function CheckoutForm(props) {
 							containerStyle="mb-0 pb-0 w-100"
 							onChange={props.handleCouponChange}
 						/>
-						<PmyBtn type="button" onClick={props.checkCoupon} isDisabled={props.couponAmount != 1} btnIsMediumPmyFull textBtn="Vérifier" containerStyle="ml-0 ml-sm-4 mt-4 mt-sm-0" className="h-100"/>
+						<PmyBtn type="button" onClick={props.checkCoupon} isDisabled={props.couponText.length < 1 || props.couponAmount != 1} btnIsMediumPmyFull textBtn="Vérifier" containerStyle="ml-0 ml-sm-4 mt-4 mt-sm-0" className="h-100"/>
 					</Col>
 					{props.couponStatus != '' && (props.couponStatus != 'failed' && props.couponStatus.valid ? 
 						<p class="color-success mt-3 fz-14">Félicitations, vous bénéficiez désormais de {props.couponStatus.percent_off}% de réduction sur l'abonnement mensuel pour une durée de {props.couponStatus.duration_in_months} mois</p>
@@ -358,7 +361,7 @@ export default function CheckoutForm(props) {
 			/>
 			<div class="d-flex flex-column flex-sm-row justify-content-end align-items-center">
 				<PmyBtn redirectTo="/plans" linkIsMediumPmyOutlineLight textLink="Précédent" containerStyle="w-sm-100 mr-0 mr-sm-4 mt-4" customBtnClass="w-sm-100"/>
-				<PmyBtn type="submit" isDisabled={!stripe} btnIsMediumPmyFull textBtn={props.pricing ? 'Payer ' + Math.floor((props.pricing.unit_amount / 100) * props.couponAmount) + ' €' : 'Confirmer l\'achat'} containerStyle="w-sm-100 mt-4" className="w-sm-100"/>
+				<PmyBtn type="submit" isDisabled={!stripe} btnIsMediumPmyFull textBtn={props.pricing ? 'Payer ' + Math.floor((props.pricing.unit_amount / 100) * props.couponAmount) + ' € HT' : 'Confirmer l\'achat'} containerStyle="w-sm-100 mt-4" className="w-sm-100"/>
 			</div>
 		</form>
 	);
