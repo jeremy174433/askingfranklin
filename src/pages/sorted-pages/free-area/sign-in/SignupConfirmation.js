@@ -19,7 +19,8 @@ export default class SignUpConfirmation extends React.Component {
             method: 'POST',
             body: JSON.stringify({ 
                 code: parsed.code, 
-                username: parsed.username
+                username: parsed.username,
+                newsletter:parsed.newsletter
             })
         })
         .then(res => {

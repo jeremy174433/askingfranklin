@@ -116,6 +116,7 @@ export default class SignUp extends React.Component {
                         });
                     }
                     else {
+                        console.log(res.message)
                         this.setState({
                             success: true,
                             alertIsShowed: true
