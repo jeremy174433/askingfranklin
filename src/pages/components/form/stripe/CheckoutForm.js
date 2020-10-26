@@ -89,6 +89,7 @@ export default function CheckoutForm(props) {
 				}
 			})
 			.catch((error) => {
+				console.log(error)
 				props.handlePaymentError(error);
 			});
 		} 
@@ -97,58 +98,8 @@ export default function CheckoutForm(props) {
 		}
 	}
 
-	const retryInvoiceWithNewPaymentMethod = async ({
-		paymentMethodId,
-		invoiceId,
-		priceId
-	}) => {
-    	return (
-      		fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/retry-invoice', {
-				method: 'post',
-				headers: {
-					'Content-type': 'application/json'
-				},
-				body: JSON.stringify({
-					paymentMethodId: paymentMethodId,
-					invoiceId: invoiceId
-				}),
-			})
-			.then((response) => {
-				return response.json();
-			})
-			.then((result) => {
-				if (result.error) {
-					throw result;
-				}
-				return result.message;
-			})
-			.then((result) => {
-				if (result.message === 'The incoming token has expired') {
-                    refreshTokenFnc(this.componentDidMount());
-				}
-				else {
-					return {
-						invoice: result,
-						paymentMethodId: paymentMethodId,
-						priceId: priceId,
-						isRetry: true
-					};
-				}
-			})
-			.catch(error => {
-                if (error === 'TypeError: Failed to fetch') {
-                    refreshTokenFnc(this.componentDidMount, false);
-                }
-            })
-			.then(handlePaymentThatRequiresCustomerAction)
-			.then(onSubscriptionComplete)
-			.catch((error) => {
-				props.handlePaymentError()
-			})
-    	);
-	}
-
 	const onSubscriptionComplete = async (result) => {
+		console.log(result)
 		var token = localStorage.getItem('af_token');
 		fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/register-db-subscription', {
 			method: 'post',
@@ -163,7 +114,6 @@ export default function CheckoutForm(props) {
 		})
 		.then((res) => res.json())
 		.then((res) => {
-			console.log(res)
 			if(res.message === "User registered"){
 				localStorage.setItem('af_is_sub', 1);
 				window.location.replace('/paiement/confirmation');
@@ -219,23 +169,27 @@ export default function CheckoutForm(props) {
 					refreshTokenFnc(this.componentDidMount, false);
 				} 
 				else {
-					return {
-						paymentMethodId: paymentMethodId,
-						priceId: priceId,
-						subscription: result.message
-					};
-				}
-			})
-			.catch(error => {
-				if(error === 'TypeError: Failed to fetch') {
-					refreshTokenFnc(this.componentDidMount, false);
+					if (typeof result.message == "string"){
+						throw result.message
+					} else {
+						return {
+							paymentMethodId: paymentMethodId,
+							priceId: priceId,
+							subscription: result.message
+						}
+					}
 				}
 			})
 			.then(handlePaymentThatRequiresCustomerAction)
 			.then(handleRequiresPaymentMethod)
 			.then(onSubscriptionComplete)
-			.catch((error) => {
-				props.handlePaymentError(error);
+			.catch(error => {
+				if(error === 'TypeError: Failed to fetch') {
+					refreshTokenFnc(this.componentDidMount, false);
+				} else {
+					console.log(error)
+					props.handlePaymentError(error)
+				}
 			})
 		);
 	}
@@ -260,21 +214,12 @@ export default function CheckoutForm(props) {
 		});
 
 		if (error) {
-			console.log('[createPaymentMethod error]', error);
+			props.handlePaymentError(error.message)
 		} 
 		else {
 			const paymentMethodId = paymentMethod.id;
-			if (latestInvoicePaymentIntentStatus === 'requires_payment_method') {
-				const invoiceId = localStorage.getItem('latestInvoiceId');
-				retryInvoiceWithNewPaymentMethod({
-					paymentMethodId,
-					invoiceId,
-					priceId
-				});
-			} 
-			else {
-				createSubscription({ paymentMethodId, priceId, name, line1, city, postalCode, coupon});
-			}
+			createSubscription({ paymentMethodId, priceId, name, line1, city, postalCode, coupon});
+			
 		}
 	};
 

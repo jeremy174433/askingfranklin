@@ -64,8 +64,8 @@ export default class ChoosePlan extends React.Component {
                 else {
                     this.setState({
                         plans: res.message,
-                        alreadySelected: product !== null ? product === 'price_1HEaGeLB03GdYRbhWsbdlFcx' ? 1 : 2 : 0,
-                        selectedPlan: product !== null ? product === 'price_1HEaGeLB03GdYRbhWsbdlFcx' ? 1 : 2 : 0,
+                        alreadySelected: product !== null ? product === 'price_1HduRyLB03GdYRbhXrwR1kvW' ? 1 : 2 : 0,
+                        selectedPlan: product !== null ? product === 'price_1HduRyLB03GdYRbhXrwR1kvW' ? 1 : 2 : 0,
                         countClick: this.state.countClick + 1
                     });
                 }
@@ -89,14 +89,14 @@ export default class ChoosePlan extends React.Component {
     }
     
     handleSelectedMonthlyPlan() {
-        localStorage.setItem('product', 'price_1HEaGeLB03GdYRbhWsbdlFcx')
+        localStorage.setItem('product', 'price_1HduRyLB03GdYRbhXrwR1kvW')
         this.setState({ 
             redirectSelectedMonthly: true
         });
     }
 
     handleSelectedAnnualPlan() {
-        localStorage.setItem('product', 'price_1HAYTSLB03GdYRbhIt2Rqm9G')
+        localStorage.setItem('product', 'price_1HduS4LB03GdYRbhVjfrRi7i')
         this.setState({ 
             redirectSelectedAnnual: true
         });

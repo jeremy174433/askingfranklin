@@ -28,9 +28,9 @@ export default class Banner extends React.Component {
                             <span class="fz-18 fw-600">Offre de lancement :&nbsp;</span>
                             <span class="promotion-percentage fw-600">-20%&nbsp;</span>
                             <span class="fz-18">sur l'abonnement Mensuel avec le code</span>
-                            <span class="promotion-code ml-2 fw-600">ASKING20</span>
+                            <span class="promotion-code ml-2 fw-600">20DEBORDEAUX</span>
                         </p>
-                        <Countdown date={Date.now() + ( Date.parse('30 Oct 2020 00:12:00 GMT') - Date.now()) } renderer={renderer}/>
+                        <Countdown date={Date.now() + ( Date.parse('4 Nov 2020 21:59:59 GMT') - Date.now()) } renderer={renderer}/>
                     </div>
                     <div onClick={this.props.onClick} class="close-banner position-absolute d-flex d-lg-none" style={{ top: '-24px', right: '0' }} title="Masquer">
                         <Close width="16" height="16" fill="#FFF"/>

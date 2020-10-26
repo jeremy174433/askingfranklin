@@ -46,14 +46,14 @@ export default class Pricing extends React.Component {
     }
 
     selectFirstPlan() {
-        localStorage.setItem('product', 'price_1HEaGeLB03GdYRbhWsbdlFcx');
+        localStorage.setItem('product', 'price_1HduRyLB03GdYRbhXrwR1kvW');
         this.setState({
             selectedPlan: 0,
         });
     }
 
     selectSecondPlan() {
-        localStorage.setItem('product', 'price_1HAYTSLB03GdYRbhIt2Rqm9G');
+        localStorage.setItem('product', 'price_1HduS4LB03GdYRbhVjfrRi7i');
         this.setState({
             selectedPlan: 1
         });
