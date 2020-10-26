@@ -10,6 +10,7 @@ import Logo from '../../../assets/img/svg/switch/Logo';
 import SocialMedia from '../../../assets/img/svg/switch/SocialMedia';
 import Input from '../form/Input';
 import PmyBtn from '../button/PmyBtn';
+import Checkbox from '../form/Checkbox';
 import Tick from '../../../assets/img/svg/Tick';
 
 export default class Footer extends React.Component {
@@ -18,10 +19,12 @@ export default class Footer extends React.Component {
         this.state = {
             is_sub: 0,
             emailNewsletter: '',
+            checkCgu: '',
             subscribeSuccess: false,
             subscribeError: false
         }
         this.handleEmailNewsletter = this.handleEmailNewsletter.bind(this);
+        this.handlePrivacy = this.handlePrivacy.bind(this);
         this.handleSubmitNewsletter = this.handleSubmitNewsletter.bind(this);
     }
 
@@ -38,6 +41,10 @@ export default class Footer extends React.Component {
         });
     }
 
+    handlePrivacy() {
+        this.setState({ checkCgu: this.state.checkCgu === '' ? 'newsletterChecked' : '' });
+    }
+
     handleSubmitNewsletter(event) {
         event.preventDefault();
         this.setState({
@@ -48,6 +55,7 @@ export default class Footer extends React.Component {
             method: 'POST',
             body: JSON.stringify({ 
                 email: this.state.emailNewsletter, 
+                checkCgu : this.state.checkCgu
             })
         })
         .then(res => {
@@ -110,36 +118,47 @@ export default class Footer extends React.Component {
                             <p class="fz-24">Suivez nos actualités 🚀</p>
                             <p class="py-2">Et recevez des astuces et conseils pour décoller en SEO, Brand content, Content marketing...</p>
                             <p class="fz-14">(pas plus de 1 fois /mois c'est promis !)</p>
-                            <form onSubmit={this.handleSubmitNewsletter} method="POST" class="d-flex flex-column flex-sm-row pt-3">
-                                <Input 
-                                    onChange={this.handleEmailNewsletter} 
-                                    type="email" 
-                                    hideLabel={true}
-                                    placeholder="Votre adresse email..."
-                                    containerStyle="mb-3 mb-sm-0 mr-0 mr-sm-4 w-100"
-                                    for="emailNewsletter" 
+                            <form onSubmit={this.handleSubmitNewsletter} method="POST" class="form-newsletter pt-3">
+                                <div class="d-flex flex-column flex-sm-row mb-3 mb-sm-0">
+                                    <Input 
+                                        onChange={this.handleEmailNewsletter} 
+                                        type="email" 
+                                        hideLabel={true}
+                                        placeholder="Votre adresse email..."
+                                        containerStyle="mb-3 mr-0 mr-sm-4 w-100"
+                                        for="emailNewsletter" 
+                                        name={this.for} 
+                                        id={this.for} 
+                                        required={true} 
+                                        disabled={this.state.subscribeSuccess}
+                                        infoMsg={this.state.emailNewsletter.length < 1 ? 'Ce champ est requis' : !this.state.emailNewsletter.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct' || this.state.subscribeSuccess && ''}
+                                    />
+                                    <PmyBtn type="submit" isDisabled={!this.state.emailNewsletter.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.checkCgu === '' || this.state.subscribeSuccess} btnIsMediumPmyFull textBtn="S'abonner" title={this.state.emailNewsletter.length < 1 && 'Ce champ est requis' || !this.state.emailNewsletter.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct' || this.state.checkCgu === '' && 'Il est nécessaire d\'accepter les CGU'} className="w-sm-100 h-100" style={{ height: '48px' }}/>
+                                </div>
+                                <Checkbox 
+                                    label={['J\'ai lu et j\'accepte les ', <Link to="/conditions-generales-d-utilisation" target="_blank" rel="noopener" title="Ouvrir dans un nouvel onglet : CGU Asking Franklin" class="fz-16">CGU</Link>, <em class="fz-14 ml-1">(requis)</em>]} 
+                                    onChange={this.handlePrivacy} 
+                                    for="checkNewsletter" 
                                     name={this.for} 
                                     id={this.for} 
-                                    required={true} 
-                                    disabled={this.state.subscribeSuccess}
-                                    infoMsg={this.state.emailNewsletter.length < 1 ? 'Ce champ est requis' : !this.state.emailNewsletter.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct' || this.state.subscribeSuccess && ''}
+                                    value={this.state.checkCgu} 
+                                    required={true}
+                                    className="color-light"
                                 />
-                                <PmyBtn type="submit" isDisabled={!this.state.emailNewsletter.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.subscribeSuccess} btnIsMediumPmyFull textBtn="S'abonner" className="w-sm-100 h-100" style={{ height: '48px' }}/>
                             </form>
-                            <p class="fz-14 mt-3">En soumettant ce formulaire, vous acceptez les <Link to="/conditions-generales-d-utilisation" rel="noopener" target="_blank" title="Ouvrir dans un nouvel onglet : CGU Asking Franklin">CGU</Link></p>
                             {
                                 this.state.subscribeSuccess === true ? 
-                                    <div class="d-flex flex-row align-items-center mt-1">
+                                    <div class="d-flex flex-row align-items-center mt-2">
                                         <Tick width="16" fill="#00C851"/>
                                         <p class="color-success fz-14 ml-2">Votre abonnement a bien été enregistré</p>
                                     </div>
                                 : this.state.subscribeError === true &&
-                                    <p class="color-danger fz-14 mt-1">L'adresse email saisie semble être déjà abonnée à la newsletter</p>
+                                    <p class="color-danger fz-14 mt-2">L'adresse email saisie semble être déjà abonnée à la newsletter</p>
                             }
                         </Col>
                     </Row>
                     <div class="d-flex justify-content-center pb-5 pb-sm-0 pt-5">
-                        <p class="fz-14">Asking Franklin {(new Date().getFullYear())}, par <a href="https://sortvoices.fr" target="_blank" title="Ouvrir dans un nouvel onglet : sortvoices.fr">Sortvoices</a>. Tous droits réservés.</p>
+                        <p class="fz-14">Asking Franklin {(new Date().getFullYear())}, par <a href="https://sortvoices.fr" target="_blank" title="Ouvrir dans un nouvel onglet : www.sortvoices.fr">Sortvoices</a>. Tous droits réservés.</p>
                     </div>
                 </Container>
             </footer>

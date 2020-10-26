@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://www.askingfranklin.com</loc>
@@ -34,6 +36,10 @@
     <url>
         <loc>https://www.askingfranklin.com/conditions-generales-de-vente</loc>
         <priority>0.50</priority>
+    </url>
+    <url>
+        <loc>https://www.askingfranklin.com/inscription</loc>
+        <priority>0.20</priority>
     </url>
     <url>
         <loc>https://www.askingfranklin.com/limite-de-recherches</loc>

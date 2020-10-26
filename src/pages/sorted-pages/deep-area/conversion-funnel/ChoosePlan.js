@@ -161,8 +161,8 @@ export default class ChoosePlan extends React.Component {
                                 <div class="block-prices">
                                     <H2 className="mt-4 mb-3" title="Mensuel"/>
                                     <p class="price">49€<span> /mois</span></p>
-                                    <p>Payer mensuellement</p>
-                                    <p>Sans engagement</p>
+                                    <p>Payez mensuellement, sans engagement</p>
+                                    <p>(renouvellement automatique en fin d'abonnement)</p>
                                     <PmyBtn onClick={this.handleSelectedMonthlyPlan} isDisabled={this.state.selectedPlan === 2} btnIsLargePmyFull textBtn={this.state.alreadySelected === 1 ? "Confirmer l'abonnement Mensuel" : "Choisir l'abonnement Mensuel"} containerStyle="mt-5 mb-4 w-100" className="w-100"/>
                                 </div>
                             </Col>
@@ -170,7 +170,7 @@ export default class ChoosePlan extends React.Component {
                                 <div class="block-prices">
                                     <H2 className="mt-4 mb-3" title="Annuel"/>
                                     <p class="price">39€<span> /mois</span></p>
-                                    <p>Souscrivez pour <span class="fw-600">468€/an</span>. Réglable en une fois<br/><span class="fz-14">(renouvellement automatique en fin d'abonnement)</span></p>
+                                    <p>Soit <span class="fw-600">468€/an</span>, économisez 120€. Réglable en une fois<br/><span class="fz-14">(renouvellement automatique en fin d'abonnement)</span></p>
                                     <PmyBtn onClick={this.handleSelectedAnnualPlan} isDisabled={this.state.selectedPlan === 1} btnIsLargePmyFull textBtn={this.state.alreadySelected === 2 ? "Confirmer l'abonnement Annuel" : "Choisir l'abonnement Annuel"} containerStyle="mt-5 mb-4 w-100" className="w-100"/>
                                 </div>
                             </Col>

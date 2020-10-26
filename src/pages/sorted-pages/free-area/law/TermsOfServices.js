@@ -30,11 +30,12 @@ export default class TermsOfServices extends React.Component {
         const article1 = 'Article 1 : Les mentions légales';
         const article2 = 'Article 2 : Accès au site';
         const article3 = 'Article 3 : Collecte des données';
-        const article4 = 'Article 4 : Propriété intellectuelle';
-        const article5 = 'Article 5 : Responsabilité';
-        const article6 = 'Article 6 : Liens hypertextes';
-        const article7 = 'Article 7 : Cookies';
-        const article8 = 'Article 8 : Droit applicable et juridiction compétente';
+        const article4 = 'Article 4 : Abonnement à la newsletter';
+        const article5 = 'Article 5 : Propriété intellectuelle';
+        const article6 = 'Article 6 : Responsabilité';
+        const article7 = 'Article 7 : Liens hypertextes';
+        const article8 = 'Article 8 : Cookies';
+        const article9 = 'Article 9 : Droit applicable et juridiction compétente';
 
         return (
             <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
@@ -64,7 +65,8 @@ export default class TermsOfServices extends React.Component {
                         <li class="mb-3"><AnchorLink href="#article-5">{article5}</AnchorLink></li>
                         <li class="mb-3"><AnchorLink href="#article-6">{article6}</AnchorLink></li>
                         <li class="mb-3"><AnchorLink href="#article-7">{article7}</AnchorLink></li>
-                        <li><AnchorLink href="#article-8">{article8}</AnchorLink></li>
+                        <li class="mb-3"><AnchorLink href="#article-8">{article8}</AnchorLink></li>
+                        <li><AnchorLink href="#article-9">{article9}</AnchorLink></li>
                     </ul>
 
                     {/* --- Article 1 --- */}
@@ -101,6 +103,20 @@ export default class TermsOfServices extends React.Component {
                     {/* --- Article 4 --- */}
                     <section>
                         <H2 id="article-4" className="pt-6 mb-3" title={article4}/>
+                        <p class="mb-3">Procédure d'abonnement :</p>
+                        <p class="mb-3">Le service de newsletter est entièrement gratuit. La procédure d’abonnement consiste en la simple inscription d’une adresse email valide, qui deviendra l’adresse de référence à laquelle sera envoyée la newsletter. La validation du formulaire d’abonnement entraîne l’acceptation pleine et entière par l’utilisateur des Conditions Générales d’Utilisation.<br/> 
+                        Pour vous inscrire à la newsletter, indiquez votre adresse email valide, puis cocher la case « J'ai lu et j'accepte les CGU », enfin, cliquez sur « S'abonner ».</p>
+                        <p class="mb-3">Service offert :</p>
+                        <p class="mb-3">Les newsletters sont envoyées de manière automatique aux abonnés. La fréquence d’envoi est fixée à une fois par mois, toutefois dans le cas d'un cadre particulier, une newsletter supplémentaire pourra être envoyée. L'envoi de celle-ci s’effectuera par le biais de l’adresse email de référence fournie par l’abonné. Le contenu des newsletters est fourni exclusivement par Asking Franklin.<br/> 
+                        Asking Franklin ne saurait être tenu pour responsable des conséquences directes ou indirectes liées à l’utilisation des newsletters par les abonnés.</p>
+                        <p class="mb-3">Procédure de désabonnement :</p>
+                        <p>Chaque abonné à la newsletter dispose d’une faculté de désabonnement ainsi que d’un droit d’accès et de modification quant aux informations nominatives le concernant. Les informations recueillies bénéficient de la protection de la loi Informatiques et Libertés n°78-17 du 6 janvier 1978. Conformément aux articles 34 de la loi n°78-17 du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés, toute personne peut obtenir communication et, le cas échéant, rectification ou suppression des informations la concernant. Vous pouvez exercer ce droit d’accès en envoyant un email à l'adresse {contactEmail} ou via notre <Link to="/contact">formulaire de contact</Link>.<br/> 
+                        Vous pouvez vous désabonner à tout moment en cliquant sur le lien qui figure à la fin de l’email de la newsletter.</p>
+                    </section>
+
+                    {/* --- Article 5 --- */}
+                    <section>
+                        <H2 id="article-5" className="pt-6 mb-3" title={article5}/>
                         <p class="mb-3">Les marques, logos, signes ainsi que tous les contenus du site (textes, images, son...) font l'objet d'une protection par le Code de la propriété intellectuelle et plus particulièrement par le droit d'auteur.</p>
                         <p class="mb-3">La marque Asking Franklin est une marque déposée par Sortvoices. Toute représentation et/ou reproduction et/ou exploitation partielle ou totale de cette marque, de quelque nature que ce soit, est totalement prohibée.</p>
                         <p class="mb-3">L'Utilisateur doit solliciter l'autorisation préalable du site pour toute reproduction, publication, copie des différents contenus. Il s'engage à une utilisation des contenus du site dans un cadre strictement privé, toute utilisation à des fins commerciales et publicitaires est strictement interdite.</p>
@@ -108,9 +124,9 @@ export default class TermsOfServices extends React.Component {
                         <p>Il est rappelé conformément à l’article L122-5 du Code de propriété intellectuelle que l’Utilisateur qui reproduit, copie ou publie le contenu protégé doit citer l’auteur et sa source.</p>
                     </section>
 
-                    {/* --- Article 5 --- */}
+                    {/* --- Article 6 --- */}
                     <section>
-                        <H2 id="article-5" className="pt-6 mb-3" title={article5}/>
+                        <H2 id="article-6" className="pt-6 mb-3" title={article6}/>
                         <p class="mb-3">Les sources des informations diffusées sur le site {siteURL} sont réputées fiables mais le site ne garantit pas qu’il soit exempt de défauts, d’erreurs ou d’omissions.</p>
                         <p class="mb-3">Les informations communiquées sont présentées à titre indicatif et général sans valeur contractuelle. Malgré des mises à jour régulières, le site {siteURL} ne peut être tenu responsable de la modification des dispositions administratives et juridiques survenant après la publication. De même, le site ne peut être tenu responsable de l’utilisation et de l’interprétation de l’information contenue dans ce site.</p>
                         <p class="mb-3">L'Utilisateur s'assure de garder son mot de passe secret. Toute divulgation du mot de passe, quelle que soit sa forme, est interdite. Il assume les risques liés à l'utilisation de son identifiant et mot de passe. Le site décline toute responsabilité.</p>
@@ -118,15 +134,15 @@ export default class TermsOfServices extends React.Component {
                         <p>La responsabilité du site ne peut être engagée en cas de force majeure ou du fait imprévisible et insurmontable d'un tiers.</p>
                     </section>
 
-                    {/* --- Article 6 --- */}
-                    <section>
-                        <H2 id="article-6" className="pt-6 mb-3" title={article6}/>
-                        <p>Des liens hypertextes peuvent être présents sur le site. L’Utilisateur est informé qu’en cliquant sur ces liens, il sortira du site {siteURL}. Ce dernier n’a pas de contrôle sur les pages web sur lesquelles aboutissent ces liens et ne saurait, en aucun cas, être responsable de leur contenu.</p>
-                    </section>
-
                     {/* --- Article 7 --- */}
                     <section>
                         <H2 id="article-7" className="pt-6 mb-3" title={article7}/>
+                        <p>Des liens hypertextes peuvent être présents sur le site. L’Utilisateur est informé qu’en cliquant sur ces liens, il sortira du site {siteURL}. Ce dernier n’a pas de contrôle sur les pages web sur lesquelles aboutissent ces liens et ne saurait, en aucun cas, être responsable de leur contenu.</p>
+                    </section>
+
+                    {/* --- Article 8 --- */}
+                    <section>
+                        <H2 id="article-8" className="pt-6 mb-3" title={article8}/>
                         <p class="mb-3">L’Utilisateur est informé que lors de ses visites sur le site, un cookie peut s’installer automatiquement sur son navigateur web.</p>
                         <p class="mb-3">Les cookies sont de petits fichiers stockés temporairement sur le disque dur de l’ordinateur de l’Utilisateur par votre navigateur et qui sont nécessaires à l’utilisation du site {siteURL}. Les cookies ne contiennent pas d’information personnelle et ne peuvent pas être utilisés pour identifier quelqu’un. Un cookie contient un identifiant unique, généré aléatoirement et donc anonyme. Certains cookies expirent à la fin de la visite de l’Utilisateur, d’autres restent.</p>
                         <p class="mb-3">L’information contenue dans les cookies est utilisée afin de contribuer à l'amélioration du site {siteURL}.</p>
@@ -136,9 +152,9 @@ export default class TermsOfServices extends React.Component {
                         <p>L’Utilisateur pourra désactiver ces cookies par l’intermédiaire des paramètres de son navigateur web.</p>
                     </section>
 
-                    {/* --- Article 8 --- */}
+                    {/* --- Article 9 --- */}
                     <section>
-                        <H2 id="article-8" className="pt-6 mb-3" title={article8}/>
+                        <H2 id="article-9" className="pt-6 mb-3" title={article9}/>
                         <p class="mb-3">La législation française s'applique au présent contrat. En cas d'absence de résolution amiable d'un litige né entre les parties, les tribunaux français seront seuls compétents.</p>
                         <p>Pour toute question relative à l’application des présentes CGU, vous pouvez joindre l’éditeur à l'adresse email {contactEmail} ou via notre <Link to="/contact">formulaire de contact</Link>.</p>
                     </section>

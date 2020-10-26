@@ -48,4 +48,8 @@
             }
         }
     }
+
+    .form-newsletter {
+        .checkbox-primary:not(:checked) + label::before { border-color: $theme-color-secondary; }
+    }
 }
