@@ -51,7 +51,7 @@ export default class Home extends React.Component {
     customHeadElement() {
         return (
             <Helmet>
-                <title>Asking Franklin - votre outil SEO Français</title>
+                <title>Asking Franklin - Découvrez ce que recherchent les internautes</title>
                 <meta name="description" content="Découvrez ce que les internautes recherchent sur Google, optimisez votre contenu et gagnez en visibilité avec Asking Franklin, votre outil SEO Français !"/>
                 <meta name="robots" content="index, follow"/>
             </Helmet>
