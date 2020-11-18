@@ -170,7 +170,7 @@ export default class Contact extends React.Component {
                                     containerStyle="mt-3 ml-0 ml-lg-3"
                                     required={true}
                                     disabled={this.state.isConnected}
-                                    infoMsg={!this.state.isConnected && this.state.email.length < 1 && 'Ce champ est requis' || !this.state.isConnected && !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
+                                    infoMsg={!this.state.isConnected && this.state.email.length < 1 && 'Ce champ est requis' || !this.state.isConnected && !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
                                 />
                             </Col>
                         </Row>
@@ -188,7 +188,7 @@ export default class Contact extends React.Component {
                                 infoMsg={this.state.content.length < 1 && 'Ce champ est requis'}
                             />
                         </Col>
-                        <PmyBtn type="submit" isDisabled={!this.state.isConnected && !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.subject.length < 1 || this.state.content.length < 1} btnIsMediumPmyFull textBtn="Envoyer le message" className="w-sm-100"/>
+                        <PmyBtn type="submit" isDisabled={!this.state.isConnected && !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) || this.state.subject.length < 1 || this.state.content.length < 1} btnIsMediumPmyFull textBtn="Envoyer le message" className="w-sm-100"/>
                     </form>
                 </Container>
             </div>

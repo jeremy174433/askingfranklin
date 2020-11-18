@@ -158,11 +158,11 @@ export default class ForgotPassword extends React.Component {
                                     label="Votre email" 
                                     for="email" 
                                     required={true} 
-                                    infoMsg={this.state.email.length < 1 ? 'Ce champ est requis' : !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
+                                    infoMsg={this.state.email.length < 1 ? 'Ce champ est requis' : !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
                                 />
                                 <PmyBtn 
                                     type="submit" 
-                                    isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)} 
+                                    isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/)} 
                                     btnIsMediumPmyFull 
                                     textBtn="Recevoir un email de réinitialisation" 
                                     className="w-sm-100"
@@ -207,11 +207,11 @@ export default class ForgotPassword extends React.Component {
                                     onClick={this.handleInputType} 
                                     inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>} 
                                     required={true} 
-                                    infoMsg={!this.state.newPassword.match(/^(?=.*?[0-9])[a-zA-Z0-9âäàéèùêëîïôöñç#$%&'"()*+.°²\/:;,<=>!?§@\[\\\]^_`{|}~-]{8,}$/) && 'Le mot de passe doit contenir au moins 8 caractères dont 1 chiffre'}
+                                    infoMsg={!this.state.newPassword.match(/^(?=.*\d)(?=.*?[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/) && 'Le mot de passe doit contenir au moins 8 caractères dont 1 chiffre'}
                                 />
                                 <PmyBtn 
                                     type="submit" 
-                                    isDisabled={this.state.code.length !== 6 || !this.state.newPassword.match(/^(?=.*?[0-9])[a-zA-Z0-9âäàéèùêëîïôöñç#$%&'"()*+.°²\/:;,<=>!?§@\[\\\]^_`{|}~-]{8,}$/) || this.state.passwordIsChanged === true} 
+                                    isDisabled={this.state.code.length !== 6 || !this.state.newPassword.match(/^(?=.*\d)(?=.*?[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/) || this.state.passwordIsChanged === true} 
                                     btnIsMediumPmyFull 
                                     textBtn="Réinitialiser le mot de passe" 
                                     className="w-sm-100"

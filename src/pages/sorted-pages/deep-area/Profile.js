@@ -371,9 +371,9 @@ export default class Profile extends React.Component {
                                             type="email"
                                             required={true}
                                             onChange={this.handleNewEmail}
-                                            infoMsg={this.state.newEmail.length < 1 ? 'Ce champ est requis' : !this.state.newEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct' || this.state.newEmail === this.state.curr_email && 'L\'email ne peut pas être identique au précédent utilisé'}
+                                            infoMsg={this.state.newEmail.length < 1 ? 'Ce champ est requis' : !this.state.newEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) && 'Le format de l\'adresse email n\'est pas correct' || this.state.newEmail === this.state.curr_email && 'L\'email ne peut pas être identique au précédent utilisé'}
                                         />
-                                        <PmyBtn type="submit" isDisabled={!this.state.newEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.newEmail === this.state.curr_email} btnIsMediumPmyFull className="w-sm-100" textBtn="Sauvegarder" title="Sauvegarder"/>
+                                        <PmyBtn type="submit" isDisabled={!this.state.newEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) || this.state.newEmail === this.state.curr_email} btnIsMediumPmyFull className="w-sm-100" textBtn="Sauvegarder" title="Sauvegarder"/>
                                     </form>
                                     <form onSubmit={this.handleSubmitPassword} method="POST" class="block-style d-flex flex-column mt-6">
                                         <H4 className="mb-3 pb-3 fw-600" title="Votre mot de passe"/>
@@ -389,7 +389,7 @@ export default class Profile extends React.Component {
                                             inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>}
                                             required={true}
                                             onChange={this.handleNewPassword}
-                                            infoMsg={!this.state.newPassword.match(/^(?=.*?[0-9])[a-zA-Z0-9âäàéèùêëîïôöñç#$%&'"()*+.°²\/:;,<=>!?§@\[\\\]^_`{|}~-]{8,}$/) && 'Le mot de passe doit contenir au moins 8 caractères dont 1 chiffre'}
+                                            infoMsg={!this.state.newPassword.match(/^(?=.*\d)(?=.*?[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/) && 'Le mot de passe doit contenir au moins 8 caractères dont 1 chiffre'}
                                         />
                                         <Input
                                             label="Confirmation de votre nouveau mot de passe"
@@ -403,7 +403,7 @@ export default class Profile extends React.Component {
                                             onChange={this.handleNewPasswordConfirmation}
                                             infoMsg={this.state.newPassword !== this.state.newPasswordConfirmation && 'Les deux mots de passe ne correspondent pas'}
                                         />                        
-                                        <PmyBtn type="submit" isDisabled={(this.state.newPasswordConfirmation !== this.state.newPassword) || !this.state.newPassword.match(/^(?=.*?[0-9])[a-zA-Z0-9âäàéèùêëîïôöñç#$%&'"()*+.°²\/:;,<=>!?§@\[\\\]^_`{|}~-]{8,}$/)} btnIsMediumPmyFull className="w-sm-100" textBtn="Sauvegarder" title="Sauvegarder"/>
+                                        <PmyBtn type="submit" isDisabled={(this.state.newPasswordConfirmation !== this.state.newPassword) || !this.state.newPassword.match(/^(?=.*\d)(?=.*?[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)} btnIsMediumPmyFull className="w-sm-100" textBtn="Sauvegarder" title="Sauvegarder"/>
                                     </form>
                                 </section>
                             : this.state.tabActive === 1 && true && !this.state.noSubscription ?

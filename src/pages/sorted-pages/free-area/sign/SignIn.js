@@ -125,7 +125,7 @@ export default class SignIn extends React.Component {
                                     name={this.for} 
                                     id={this.for} 
                                     required={true} 
-                                    infoMsg={this.state.email.length < 1 ? 'Ce champ est requis' : !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
+                                    infoMsg={this.state.email.length < 1 ? 'Ce champ est requis' : !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
                                 />
                                 <Input 
                                     onChange={this.handlePassword} 
@@ -139,7 +139,7 @@ export default class SignIn extends React.Component {
                                 />
                                 <PmyBtn 
                                     type="submit" 
-                                    isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || this.state.password.length < 8} 
+                                    isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) || this.state.password.length < 8} 
                                     btnIsMediumPmyFull 
                                     textBtn="Se connecter" 
                                     className="w-sm-100"
