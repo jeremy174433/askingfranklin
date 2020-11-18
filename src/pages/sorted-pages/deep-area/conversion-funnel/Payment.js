@@ -18,7 +18,7 @@ import CheckoutForm from '../../../components/form/stripe/CheckoutForm';
 import FeaturesList from '../../../components/elements/FeaturesList';
 import Alert from '../../../components/elements/Alert';
 
-const stripePromise = loadStripe('pk_test_IHTunL8Iumhmuvbs095NhSyP00F3UiY2Hd');
+const stripePromise = loadStripe('pk_live_WgN7E438RIWhbBUughEppG0S00G1SQfY87');
 
 export default class Payment extends React.Component {
 		constructor(props) {
@@ -73,7 +73,7 @@ export default class Payment extends React.Component {
 				else {
 					this.setState({
 						plans: res.message,
-						selectedPlan: product === 'price_1HEaGeLB03GdYRbhWsbdlFcx' ? 1 : 0,
+						selectedPlan: product === 'price_1HduRyLB03GdYRbhXrwR1kvW' ? 1 : 0,
 						countClick: this.state.countClick + 1
 					});
 				}
@@ -157,6 +157,7 @@ export default class Payment extends React.Component {
 	}
 
 	handlePaymentError(reason) {
+		console.log(reason)
 		this.setState({
 			errorPayment: reason,
 			isLoadingPayment: false

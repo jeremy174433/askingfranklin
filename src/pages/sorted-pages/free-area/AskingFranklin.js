@@ -47,7 +47,6 @@ export default class AskingFranklin extends React.Component {
                     this.setState({
                         redirectBlocked: true
                     });
-                    localStorage.removeItem('af_token');
                 }
                 else if (res.invalid_token) {
                     refreshTokenFnc(this.fetchFranklin, keyword);
