@@ -207,11 +207,11 @@ export default class ForgotPassword extends React.Component {
                                     onClick={this.handleInputType} 
                                     inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>} 
                                     required={true} 
-                                    infoMsg={!this.state.newPassword.match(/^(?=.*\d)(?=.*?[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/) && 'Le mot de passe doit contenir au moins 8 caractères dont 1 chiffre'}
+                                    infoMsg={!this.state.newPassword.match(/^(?=.*\d)(?=.*[a-zA-Z0-9]).{8,}$/) && 'Le mot de passe doit contenir au moins 8 caractères dont 1 chiffre'}
                                 />
                                 <PmyBtn 
                                     type="submit" 
-                                    isDisabled={this.state.code.length !== 6 || !this.state.newPassword.match(/^(?=.*\d)(?=.*?[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/) || this.state.passwordIsChanged === true} 
+                                    isDisabled={this.state.code.length !== 6 || !this.state.newPassword.match(/^(?=.*\d)(?=.*[a-zA-Z0-9]).{8,}$/) || this.state.passwordIsChanged === true} 
                                     btnIsMediumPmyFull 
                                     textBtn="Réinitialiser le mot de passe" 
                                     className="w-sm-100"
