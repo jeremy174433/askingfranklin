@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import Countdown from 'react-countdown';
 import Close from '../../../assets/img/svg/Close';
 
-const Completionist = () => <p class="promotion-timer">Promotion terminé ⏱</p>;
+const Completionist = () => <p class="promotion-timer">Promotion terminée ⏱</p>;
 
 const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {

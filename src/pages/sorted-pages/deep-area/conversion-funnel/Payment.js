@@ -149,15 +149,21 @@ export default class Payment extends React.Component {
 		})
 		.then((res)=>res.json())
 		.then((res)=>{
-			this.setState({
-				couponStatus: res.message == 'Invalid coupon' ? 'failed' : res.message,
-				couponAmount: res.message == 'Invalid coupon' ? 100 : 100 - res.message.percent_off
-			});
+			if(res.message == 'Invalid coupon'){
+				this.setState({
+					couponStatus:'failed',
+					couponAmount:100
+				});
+			} else {
+				this.setState({
+					couponStatus: !res.message.valid ? 'failed' : res.message,
+					couponAmount: !res.message.valid ? 100 : 100 - res.message.percent_off
+				});
+			}
 		})
 	}
 
 	handlePaymentError(reason) {
-		console.log(reason)
 		this.setState({
 			errorPayment: reason,
 			isLoadingPayment: false

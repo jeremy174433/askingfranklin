@@ -271,7 +271,6 @@ export default function CheckoutForm(props) {
 			</Row>
 			<label for="cardnumber" class="mb-2">Carte de paiement</label>
 			<CardElement options={CARD_ELEMENT_OPTIONS}/>
-			{props.pricing.unit_amount == 4900 &&
 				<Row className="mx-0 d-flex flex-column">
 					<Col sm="12" md="6" className="px-0 pt-3 mt-3 d-flex flex-column flex-sm-row">
 						<Input
@@ -293,7 +292,6 @@ export default function CheckoutForm(props) {
 						<p class="color-danger mt-3 fz-14">Le code saisi ne correspond à aucun code promotionnel actif</p>
 					)}
 				</Row>
-			}
 			<Checkbox 
 				label={['J\'ai lu et j\'accepte les ', <Link to="/conditions-generales-de-vente" target="_blank" rel="noopener" title="Ouvrir dans un nouvel onglet : CGV Asking Franklin" class="fz-16">CGV</Link>, <span class="fz-14 ml-1">(requis)</span>]} 
 				onChange={props.handleTermsOfSales} 
