@@ -135,11 +135,11 @@ export default class SignIn extends React.Component {
                                     name={this.for} 
                                     id={this.for} 
                                     required={true} 
-                                    infoMsg={this.state.password.length < 8 && 'Le mot de passe doit contenir au moins 8 caractères'}
+                                    infoMsg={!this.state.password.match(/^(?=.*\d)(?=.*[a-zA-Z0-9]).{8,}$/) && 'Le mot de passe doit contenir au moins 8 caractères dont 1 chiffre'}
                                 />
                                 <PmyBtn 
                                     type="submit" 
-                                    isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) || this.state.password.length < 8} 
+                                    isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) || !this.state.password.match(/^(?=.*\d)(?=.*[a-zA-Z0-9]).{8,}$/)} 
                                     btnIsMediumPmyFull 
                                     textBtn="Se connecter" 
                                     className="w-sm-100"

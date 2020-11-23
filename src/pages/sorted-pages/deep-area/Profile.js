@@ -389,7 +389,7 @@ export default class Profile extends React.Component {
                                             inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>}
                                             required={true}
                                             onChange={this.handleNewPassword}
-                                            infoMsg={!this.state.newPassword.match(/^(?=.*\d)(?=.*?[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/) && 'Le mot de passe doit contenir au moins 8 caractères dont 1 chiffre'}
+                                            infoMsg={!this.state.newPassword.match(/^(?=.*\d)(?=.*[a-zA-Z0-9]).{8,}$/) && 'Le mot de passe doit contenir au moins 8 caractères dont 1 chiffre'}
                                         />
                                         <Input
                                             label="Confirmation de votre nouveau mot de passe"
@@ -403,7 +403,7 @@ export default class Profile extends React.Component {
                                             onChange={this.handleNewPasswordConfirmation}
                                             infoMsg={this.state.newPassword !== this.state.newPasswordConfirmation && 'Les deux mots de passe ne correspondent pas'}
                                         />                        
-                                        <PmyBtn type="submit" isDisabled={(this.state.newPasswordConfirmation !== this.state.newPassword) || !this.state.newPassword.match(/^(?=.*\d)(?=.*?[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)} btnIsMediumPmyFull className="w-sm-100" textBtn="Sauvegarder" title="Sauvegarder"/>
+                                        <PmyBtn type="submit" isDisabled={(this.state.newPasswordConfirmation !== this.state.newPassword) || !this.state.newPassword.match(/^(?=.*\d)(?=.*[a-zA-Z0-9]).{8,}$/)} btnIsMediumPmyFull className="w-sm-100" textBtn="Sauvegarder" title="Sauvegarder"/>
                                     </form>
                                 </section>
                             : this.state.tabActive === 1 && true && !this.state.noSubscription ?
