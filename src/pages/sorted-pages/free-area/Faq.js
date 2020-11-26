@@ -150,7 +150,7 @@ var accordionItems = [
             {
                 key: "201",
                 question: "Est-ce que je peux modifier le mot de passe de mon compte ?",
-                content: <p>Vous pouvez changer votre adresse email, une fois connecté, en cliquant sur « <span class="fw-600">Mon compte</span> » en haut à droite, puis dans « <span class="fw-600">Paramètres</span> » et enfin dans l'onglet « <span class="fw-600">Compte</span> » vous pourrez modifier votre mot de passe.</p>
+                content: <p>Vous pouvez changer votre mot de passe, une fois connecté, en cliquant sur « <span class="fw-600">Mon compte</span> » en haut à droite, puis dans « <span class="fw-600">Paramètres</span> » et enfin dans l'onglet « <span class="fw-600">Compte</span> » vous pourrez modifier votre mot de passe.</p>
             }
         ]
     }

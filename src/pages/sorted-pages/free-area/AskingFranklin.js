@@ -152,7 +152,7 @@ export default class AskingFranklin extends React.Component {
                         </Helmet>
                         <Container id="askingFranklin" className="px-0">
                             <main class="d-flex flex-column flex-xl-row">
-                                <AFStickyMenu searchContent={this.state.keywordSearch} dataNumber={this.state.dataKw} handleNoData={this.handleNoData}/>
+                                <AFStickyMenu searchContent={this.state.keywordSearch} dataNumber={this.state.dataKw} handleNoData={this.handleNoData} className={this.props.bannerIsActive && 'banner-showed'}/>
                                 <Col className="col-12 col-xl-9 px-0 mb-5 w-100">
                                     {this.state.dataKw.data.map((x) => {
                                         return <AFWrapper keywordSearch={this.state.keywordSearch} data={x}/>

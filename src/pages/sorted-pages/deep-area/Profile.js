@@ -177,7 +177,6 @@ export default class Profile extends React.Component {
             return res.json();
         })
         .then(res => {
-            console.log(res)
             if (res.message === 'The incoming token has expired') {
                 refreshTokenFnc(this.handleSubmitEmail, event);
             }

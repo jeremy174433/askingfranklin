@@ -43,11 +43,14 @@
     } 
 
     .promotion-timer {
-        @include fz-24;
         font-weight: 600;
-        text-align: right;
-        min-width: 235px;
-        max-width: 235px;
+
+        &-count {
+            text-align: right;
+            @include fz-24;
+            @include min-lg-rwd { width: 235px; }
+        }
+        &-ended { @include fz-20; }
 
         span {
             text-transform: uppercase;

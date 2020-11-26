@@ -3,14 +3,14 @@ import { Container } from 'react-bootstrap';
 import Countdown from 'react-countdown';
 import Close from '../../../assets/img/svg/Close';
 
-const Completionist = () => <p class="promotion-timer">Promotion terminé ⏱</p>;
+const Completionist = () => <p class="promotion-timer promotion-timer-ended">Promotion terminé ⏱</p>;
 
 const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
         return <Completionist/>;
     } 
     else {
-        return <p class="promotion-timer">{days}<span>j</span> {hours}<span>h</span> {minutes}<span>m</span> {seconds}<span>s</span></p>;
+        return <p class="promotion-timer promotion-timer-count">{days}<span>j</span> {hours}<span>h</span> {minutes}<span>m</span> {seconds}<span>s</span></p>;
     }
 };
 
@@ -30,7 +30,7 @@ export default class Banner extends React.Component {
                             <span class="fz-18">sur l'abonnement Mensuel avec le code</span>
                             <span class="promotion-code ml-2 fw-600">20DEBORDEAUX</span>
                         </p>
-                        <Countdown date={Date.now() + ( Date.parse('7 Nov 2020 21:59:59 GMT') - Date.now()) } renderer={renderer}/>
+                        <Countdown date={Date.now() + ( Date.parse('7 Nov 2020 21:59:59 GMT') - Date.now() ) } renderer={renderer}/>
                     </div>
                     <div onClick={this.props.onClick} class="close-banner position-absolute d-flex d-lg-none" style={{ top: '-24px', right: '0' }} title="Masquer">
                         <Close width="16" height="16" fill="#FFF"/>

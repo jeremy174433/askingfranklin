@@ -10,6 +10,9 @@
         height: min-content;
         top: 6rem;
         margin-top: 6rem;
+
+        &.banner-showed { top: calc(6rem + #{$banner-promotion}); }
+
         @include min-xl-rwd { 
             flex-basis: calc(25% - 48px) !important;
             margin-bottom: 3rem;

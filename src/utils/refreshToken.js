@@ -9,8 +9,6 @@ export function refreshTokenFnc(cb, param) {
         return res.json();
     })
     .then(res => {
-        console.log('refreshed');
-        console.log(res);
         localStorage.setItem('af_token', res.token);
         if(param !== false) {
             cb(param);
