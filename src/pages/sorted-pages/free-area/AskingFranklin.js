@@ -22,8 +22,7 @@ export default class AskingFranklin extends React.Component {
             nbResults: 0,
             keywordSearch: '',
             newKeywordSearch: '',
-            redirectBlocked: false,
-            redirectLogin: false
+            redirectBlocked: false
         }
         this.switchSelectedPanel = this.switchSelectedPanel.bind(this);
         this.handleKeywordChange = this.handleKeywordChange.bind(this);
@@ -97,83 +96,83 @@ export default class AskingFranklin extends React.Component {
 
     render() {
 
-        const launchNewRequest = <Container className="d-flex flex-column px-0">
-                                    <Loader imgNoDataDisplayed content="Aucun résultat trouvé, tentez de lancer une nouvelle recherche avec un mot clé différent"/>
-                                    <Col md="12" lg="8" className="mx-auto px-0">
-                                        <FormRequestFranklin 
-                                            onSubmit={this.requestFanklin} 
-                                            onChange={this.handleKeywordChange}
-                                            value={this.state.newKeywordSearch} 
-                                            keyword={this.state.newKeywordSearch}
-                                        />
-                                    </Col>
-                                </Container>;
+        const launchNewRequest = 
+            <Container className="d-flex flex-column px-0">
+                <Loader imgNoDataDisplayed content="Aucun résultat trouvé, tentez de lancer une nouvelle recherche avec un mot clé différent"/>
+                <Col md="12" lg="8" className="mx-auto px-0">
+                    <FormRequestFranklin onSubmit={this.requestFanklin} onChange={this.handleKeywordChange} value={this.state.newKeywordSearch} keyword={this.state.newKeywordSearch}/>
+                </Col>
+            </Container>;
 
         if (this.state.redirectBlocked) {
             return <Redirect to="/limite-de-recherches"/>
         }
 
-        if (this.state.redirectLogin) {
-            return <Redirect to="/connexion"/>
-        }
-
         if (this.state.isLoading) {
-            return  <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}> 
-                        <Helmet>
-                            <title>Chargement en cours...</title>
-                            <meta name="description" content="Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
-                            <meta name="robots" content="noindex, follow"/>
-                        </Helmet>
-                        <Container id="askingFranklin" className="px-0">
-                            <Loader loaderDisplayed content="Chargement en cours"/>
-                        </Container>
-                    </div>
+            return (
+                <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}> 
+                    <Helmet>
+                        <title>{this.state.keywordSearch.charAt(0).toUpperCase() + this.state.keywordSearch.slice(1)} - Asking Franklin</title>
+                        <meta name="description" content="Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
+                        <meta name="robots" content="noindex, follow"/>
+                    </Helmet>
+                    <Container id="askingFranklin" className="px-0">
+                        <Loader loaderDisplayed content="Chargement en cours"/>
+                    </Container>
+                </div>
+            )
         }
 
         else if (this.state.nbResults === 0) {
-            return  <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}> 
-                        <Helmet>
-                            <title>Aucun résultat trouvé - Asking Franklin</title>
-                            <meta name="description" content="Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
-                            <meta name="robots" content="noindex, follow"/>
-                        </Helmet>
-                        <Container id="askingFranklin" className="px-0">
-                            <div>{launchNewRequest}</div>
-                        </Container>
-                    </div>
+            return (
+                <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}> 
+                    <Helmet>
+                        <title>Aucun résultat trouvé - Asking Franklin</title>
+                        <meta name="description" content="Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
+                        <meta name="robots" content="noindex, follow"/>
+                    </Helmet>
+                    <Container id="askingFranklin" className="px-0">
+                        <div>{launchNewRequest}</div>
+                    </Container>
+                </div>
+            )
         }
 
         else if (this.state.dataIsLoaded) {
-            return  <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
-                        <Helmet>
-                            <title>{this.state.keywordSearch.charAt(0).toUpperCase() + this.state.keywordSearch.slice(1)} - Asking Franklin</title>
-                            <meta name="description" content="Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
-                            <meta name="robots" content="noindex, follow"/>
-                        </Helmet>
-                        <Container id="askingFranklin" className="px-0">
-                            <main class="d-flex flex-column flex-xl-row">
-                                <AFStickyMenu searchContent={this.state.keywordSearch} dataNumber={this.state.dataKw} handleNoData={this.handleNoData} className={this.props.bannerIsActive && 'banner-showed'}/>
-                                <Col className="col-12 col-xl-9 px-0 mb-5 w-100">
-                                    {this.state.dataKw.data.map((x) => {
-                                        return <AFWrapper keywordSearch={this.state.keywordSearch} data={x}/>
-                                    })}
-                                </Col>
-                            </main>
-                        </Container>
-                    </div>
+            return (
+                <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
+                    <Helmet>
+                        <title>{this.state.keywordSearch.charAt(0).toUpperCase() + this.state.keywordSearch.slice(1)} - Asking Franklin</title>
+                        <meta name="description" content="Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
+                        <meta name="robots" content="noindex, follow"/>
+                    </Helmet>
+                    <Container id="askingFranklin" className="px-0">
+                        <main class="d-flex flex-column flex-xl-row">
+                            <AFStickyMenu searchContent={this.state.keywordSearch} dataNumber={this.state.dataKw} handleNoData={this.handleNoData} className={this.props.bannerIsActive && 'banner-showed'}/>
+                            <Col className="col-12 col-xl-9 px-0 mb-5 w-100">
+                                {this.state.dataKw.data.map((x) => {
+                                    return <AFWrapper keywordSearch={this.state.keywordSearch} data={x}/>
+                                })}
+                            </Col>
+                        </main>
+                    </Container>
+                </div>
+            )
         }
 
         else {
-            return  <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
-                        <Helmet>
-                            <title>Aucun résultat trouvé - Asking Franklin</title>
-                            <meta name="description" content="Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
-                            <meta name="robots" content="noindex, follow"/>
-                        </Helmet>
-                        <Container id="askingFranklin" className="px-0">
-                            <div>{launchNewRequest}</div>
-                        </Container>
-                    </div>
+            return (
+                <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
+                    <Helmet>
+                        <title>Aucun résultat trouvé - Asking Franklin</title>
+                        <meta name="description" content="Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
+                        <meta name="robots" content="noindex, follow"/>
+                    </Helmet>
+                    <Container id="askingFranklin" className="px-0">
+                        <div>{launchNewRequest}</div>
+                    </Container>
+                </div>
+            )
         }
     }
 }
