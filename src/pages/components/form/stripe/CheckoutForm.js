@@ -218,13 +218,13 @@ export default function CheckoutForm(props) {
 		} 
 		else {
 			const paymentMethodId = paymentMethod.id;
-			createSubscription({ paymentMethodId, priceId, name, line1, city, postalCode, coupon});
+			createSubscription({ paymentMethodId, priceId, name, line1, city, postalCode, coupon });
 			
 		}
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form onSubmit={handleSubmit} id="paymentForm">
 			<Row className="d-flex flex-row mx-0">
 				<Col sm="12" md="6" className="px-0 pl-md-0 pr-md-3">
 					<Input

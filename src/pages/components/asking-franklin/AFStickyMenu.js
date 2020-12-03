@@ -29,9 +29,10 @@ export default class AFStickyMenu extends React.Component {
     render() {
 
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
+        const classStickyMenu = ' col-12 col-xl-3 position-sticky p-0 mr-xl-5 block-style';
 
         return ( 
-            <Col id="stickyMenu" className="col-12 col-xl-3 position-sticky p-0 mr-xl-5 block-style">
+            <Col id="stickyMenu" className={this.props.className ? this.props.className + classStickyMenu : classStickyMenu}>
                 <div class="sticky-menu-header d-flex align-items-center p-3 bgc-primary">
                     <h1 class="color-light fz-18 fw-600">{this.props.searchContent}</h1>
                 </div>

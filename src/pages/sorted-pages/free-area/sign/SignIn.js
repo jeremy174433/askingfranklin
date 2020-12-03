@@ -73,7 +73,6 @@ export default class SignIn extends React.Component {
             return res.json();
         })
         .then(res => {
-            // console.log(res);
             if(res.error) {
                 this.setState({
                     error: true,
@@ -81,12 +80,10 @@ export default class SignIn extends React.Component {
                 });
             } 
             else {
-                // console.log(res.is_sub)
                 localStorage.setItem('af_token', res.token);
                 localStorage.setItem('af_refresh_token', res.refresh_token);
                 localStorage.setItem('af_username', res.username);
                 localStorage.setItem('af_is_sub', (res.is_sub == null || res.is_sub[0] == null) ? 0 : 1);
-                // console.log(res);
                 this.setState({
                     redirect: true,
                     toPlan: (res.is_sub == null || res.is_sub[0] == null) ? true : false
@@ -116,7 +113,7 @@ export default class SignIn extends React.Component {
                     <Container className="px-0 mt-6 mx-auto">
                         <Col sm="12" lg="8" xl="6" className="px-0 mx-auto">
                             <H1 className="mb-5" title="Se connecter à Asking Franklin"/>
-                            <form onSubmit={this.handleSubmit} method="POST">
+                            <form onSubmit={this.handleSubmit} method="POST" id="signInForm">
                                 <Input 
                                     onChange={this.handleEmail} 
                                     type="email" 

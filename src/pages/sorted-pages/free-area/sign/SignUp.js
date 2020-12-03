@@ -116,7 +116,6 @@ export default class SignUp extends React.Component {
                         });
                     }
                     else {
-                        console.log(res.message)
                         this.setState({
                             success: true,
                             alertIsShowed: true
@@ -193,7 +192,7 @@ export default class SignUp extends React.Component {
                             <Checkbox 
                                 label={['Je m\'inscris à la newsletter pour recevoir des astuces et conseils pour décoller en SEO, Brand content, Content marketing... ', <em class="fz-14">(pas plus de 1 fois /mois c'est promis !)</em>]} 
                                 onChange={this.handleNewsletter} 
-                                for="checkNewsletter" 
+                                for="checkNewsletterSignUp" 
                                 name={this.for} 
                                 id={this.for} 
                                 value={this.state.newsletter} 

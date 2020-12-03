@@ -26,9 +26,6 @@ export default class SignUpConfirmation extends React.Component {
         .then(res => {
             return res.json();
         })
-        .then(res => {
-            console.log(res);
-        })
     }
 
     customHeadElement() {
