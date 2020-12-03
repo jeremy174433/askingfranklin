@@ -36,7 +36,7 @@ export default class App extends React.Component {
         super(props)
         this.state = {
             isConnected: false,
-            bannerIsShowed: false
+            bannerIsShowed: true
         }
         this.handleConnect = this.handleConnect.bind(this);
         this.handleHideBanner = this.handleHideBanner.bind(this);
@@ -72,7 +72,7 @@ export default class App extends React.Component {
     render() {
         return (
             <div id="App">
-                <Banner onClick={this.handleHideBanner} bannerIsActive={this.state.bannerIsShowed}/>
+                {this.state.bannerIsShowed && <Banner onClick={this.handleHideBanner} bannerIsActive={this.state.bannerIsShowed}/> }
                 <Router>
                     <Navbar isConnected={this.state.isConnected} className={this.state.bannerIsShowed && 'banner-showed'}/>
                     <Switch>
