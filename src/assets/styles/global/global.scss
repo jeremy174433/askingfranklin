@@ -6,7 +6,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: $ff-primary, sans-serif;
+    font-family: $ff-primary, 'Calibri', 'Arial', sans-serif;
     color: $theme-color-primary;
     @include fz-16; 
     background-color: $theme-primary;
