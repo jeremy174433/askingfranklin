@@ -7,7 +7,8 @@
             r: 3;
         }
         text {
-            font: 13px $ff-primary;
+            font-size: 13px;
+            font-family: $ff-primary, 'Calibri', 'Arial', sans-serif;
             fill: $theme-color-primary;
             cursor: pointer;
 
