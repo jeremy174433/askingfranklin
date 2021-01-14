@@ -237,14 +237,14 @@ export default class Payment extends React.Component {
 										{this.state.selectedPlan === 1 ?
 											<div>
 												<p class="fz-18 fw-600">Abonnement Mensuel</p>
-												<p class="price">{Math.floor((this.state.product.unit_amount / 100) * (this.state.couponAmount/100))}€<span> /mois</span></p>
+												<p class="price">{(Math.floor((this.state.product.unit_amount / 100) * (this.state.couponAmount/100))).toFixed(0)}€<span> /mois</span></p>
 												<p>Payer mensuellement, sans engagement</p>
 											</div>
 										: this.state.selectedPlan === 0 &&
 											<div>
 												<p class="fz-18 fw-600">Abonnement Annuel</p>
 												<p class="price d-flex align-items-baseline">
-													{Math.floor(((this.state.product.unit_amount / 100) / 12)) * (this.state.couponAmount / 100)}€<span class="d-flex"> /mois 
+													{(Math.floor(((this.state.product.unit_amount / 100) / 12)) * (this.state.couponAmount / 100)).toFixed(0)}€<span class="d-flex"> /mois 
 													<span class="d-none d-sm-block"><span class="fw-400">&nbsp;(soit</span> {Math.floor((this.state.product.unit_amount / 100) * (this.state.couponAmount/100))}€ <span class="fw-400">l'année)</span></span></span>
 												</p>
 												<span class="d-block d-sm-none mb-2 fw-600"><span class="fw-400">(soit</span> {Math.floor((this.state.product.unit_amount / 100) * (this.state.couponAmount/100))}€ <span class="fw-400">l'année)</span></span>

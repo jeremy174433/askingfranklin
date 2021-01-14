@@ -287,7 +287,7 @@ export default function CheckoutForm(props) {
 						<PmyBtn type="button" onClick={props.checkCoupon} isDisabled={props.couponText.length < 1 || props.couponAmount != 1} btnIsMediumPmyFull textBtn="Vérifier" containerStyle="ml-0 ml-sm-4 mt-4 mt-sm-0" className="h-100"/>
 					</Col>
 					{props.couponStatus != '' && (props.couponStatus != 'failed' && props.couponStatus.valid ? 
-						<p class="color-success mt-3 fz-14">Félicitations, vous bénéficiez désormais de {props.couponStatus.percent_off}% de réduction sur l'abonnement mensuel pour une durée de {props.couponStatus.duration_in_months} mois</p>
+						<p class="color-success mt-3 fz-14">Félicitations, vous bénéficiez désormais de {props.couponStatus.percent_off}% de réduction sur l'abonnement pour une durée de {props.couponStatus.duration_in_months} mois</p>
 					: 
 						<p class="color-danger mt-3 fz-14">Le code saisi ne correspond à aucun code promotionnel actif</p>
 					)}

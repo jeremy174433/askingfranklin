@@ -36,7 +36,7 @@ export default class App extends React.Component {
         super(props)
         this.state = {
             isConnected: false,
-            bannerIsShowed: true
+            bannerIsShowed: false
         }
         this.handleConnect = this.handleConnect.bind(this);
         this.handleHideBanner = this.handleHideBanner.bind(this);

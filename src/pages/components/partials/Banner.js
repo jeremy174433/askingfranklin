@@ -27,7 +27,7 @@ export default class Banner extends React.Component {
                         <p class="promotion-text mb-5 mb-lg-0 pr-0 pr-lg-4 pr-xl-5 mr-0 mr-lg-4 mr-xl-5 text-center text-lg-left">
                             <span class="fz-18 fw-600">Offre Black Week : </span>
                             <span class="promotion-percentage fw-600">-20% </span>
-                            <span class="fz-18">sur l'abonnement Mensuel avec le code</span>
+                            <span class="fz-18">avec le code</span>
                             <span class="promotion-code ml-2 fw-600">BFRANKLIN20</span>
                         </p>
                         <Countdown date={Date.now() + ( Date.parse('11 Dec 2020 23:59:59 GMT') - Date.now() ) } renderer={renderer}/>
