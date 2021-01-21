@@ -38,7 +38,8 @@ export default class Home extends React.Component {
         super(props)
         this.state = {
             keywordSearch: '',
-            redirect: false
+            redirect: false,
+            lastArticles:[]
         }
         this.handleKeywordChange = this.handleKeywordChange.bind(this);
         this.requestFanklin = this.requestFanklin.bind(this);
@@ -46,6 +47,14 @@ export default class Home extends React.Component {
     
     componentDidMount() {
         window.scrollTo(0, 0);
+        fetch("https://cors-anywhere.herokuapp.com/http://blog.askingfranklin.com/wp-json/wp/v2/posts?per_page=3&_embed")
+        .then((res)=>res.json())
+        .then((res)=>{
+            console.log(res)
+            this.setState({
+                lastArticles:res
+            })
+        })
     }
 
     customHeadElement() {
@@ -226,30 +235,18 @@ export default class Home extends React.Component {
                         <H2 className="mb-5" title="Ne passez pas à côté de nos derniers articles"/>
                         <Dots className="dots-5"/>
                         <Row className="d-flex flex-column flex-lg-row align-items-center align-items-lg-start justify-content-lg-around">
-                            <Col xs="12" sm="8" md="6" lg="4" className="blog-post-item px-0 mt-5">
-                                <CardBlog
-                                    redirectTo="#"
-                                    img={SofianeTazdait} imgAlt=""
-                                    title="Rédiger un article de blog en 2021"
-                                    date="15 janvier 2021"
-                                />
-                            </Col>
-                            <Col xs="12" sm="8" md="6" lg="4" className="blog-post-item px-0 mt-5">
-                                <CardBlog
-                                    redirectTo="#"
-                                    img={MargauxMaziere} imgAlt=""
-                                    title="En 2021 le SXO sera de mise"
-                                    date="04 janvier 2021"
-                                />
-                            </Col>
-                            <Col xs="12" sm="8" md="6" lg="4" className="blog-post-item px-0 mt-5">
-                                <CardBlog
-                                    redirectTo="#"
-                                    img={PierreHusson} imgAlt=""
-                                    title="Franklin propose une surprise pour fêter la nouvelle année !"
-                                    date="18 décembre 2020"
-                                />
-                            </Col>
+                            {this.state.lastArticles.map((article)=>{
+                                return(
+                                    <Col xs="12" sm="8" md="6" lg="4" className="blog-post-item px-0 mt-5">
+                                        <CardBlog
+                                            redirectTo={article.link}
+                                            img={article._embedded['wp:featuredmedia'][0].source_url} imgAlt={article._embedded['wp:featuredmedia'][0].alt_text}
+                                            title={article.title.rendered}
+                                            date={new Date(article.date).toLocaleDateString('fr-FR',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                                        />
+                                    </Col>
+                                )
+                            })}
                         </Row>
                         <Dots className="dots-6"/>
                     </Container>
