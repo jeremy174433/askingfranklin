@@ -100,7 +100,13 @@ export default class AskingFranklin extends React.Component {
             <Container className="d-flex flex-column px-0">
                 <Loader imgNoDataDisplayed content="Aucun résultat trouvé, tentez de lancer une nouvelle recherche avec un mot clé différent"/>
                 <Col md="12" lg="8" className="mx-auto px-0">
-                    <FormRequestFranklin onSubmit={this.requestFanklin} onChange={this.handleKeywordChange} value={this.state.newKeywordSearch} keyword={this.state.newKeywordSearch}/>
+                    <FormRequestFranklin 
+                        onSubmit={this.requestFanklin} 
+                        onChange={this.handleKeywordChange} 
+                        value={this.state.newKeywordSearch} 
+                        keyword={this.state.newKeywordSearch}
+                        isDisabled={this.state.newKeywordSearch.length === 0}
+                    />
                 </Col>
             </Container>;
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { 
     Container,
+    Row,
     Col
 } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom'; 
@@ -10,12 +11,9 @@ import H1 from '../../components/elements/title/H1';
 import H2 from '../../components/elements/title/H2';
 import PmyBtn from '../../components/button/PmyBtn';
 import FormRequestFranklin from '../../components/form/FormRequestFranklin';
+import ArrowTextLink from '../../components/elements/link/ArrowTextLink';
 import CardTestimonial from '../../components/elements/CardTestimonial';
-import LogoFrenchTech from '../../../assets/img/png/partners/french-tech-logo.png';
-import Logo1Kubator from '../../../assets/img/png/partners/1kubator-logo.png';
-import LogoDigitalCampus from '../../../assets/img/png/partners/digital-campus-logo.png';
-import LogoReunionIsland from '../../../assets/img/png/partners/ile-de-la-reunion-logo.png';
-import LogoGRDF from '../../../assets/img/png/partners/grdf-logo.png';
+import CardBlog from '../../components/elements/CardBlog';
 import GoogleSearch from '../../../assets/img/svg/illustrations/GoogleSearch';
 import Control from '../../../assets/img/png/illustrations/illustration-control.png';
 import Ideas from '../../../assets/img/png/illustrations/illustration-ideas.png';
@@ -24,6 +22,7 @@ import MargauxMaziere from '../../../assets/img/png/testimonials/margaux-maziere
 import SofianeTazdait from '../../../assets/img/png/testimonials/sofiane-tazdait.jpg';
 import Dots from '../../../assets/img/svg/decorating/Dots';
 import WaveSectionSeparator from '../../../assets/img/svg/decorating/waves/WaveSectionSeparator';
+import WaveEndingTop from '../../../assets/img/svg/decorating/waves/WaveEndingTop';
 import Blob1 from '../../../assets/img/svg/decorating/blob/Blob1';
 import Blob2 from '../../../assets/img/svg/decorating/blob/Blob2';
 import Blob3 from '../../../assets/img/svg/decorating/blob/Blob3';
@@ -32,6 +31,7 @@ import Blob5 from '../../../assets/img/svg/decorating/blob/Blob5';
 import Blob6 from '../../../assets/img/svg/decorating/blob/Blob6';
 import Blob7 from '../../../assets/img/svg/decorating/blob/Blob7';
 import Blob8 from '../../../assets/img/svg/decorating/blob/Blob8';
+import Blob9 from '../../../assets/img/svg/decorating/blob/Blob9';
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -94,6 +94,7 @@ export default class Home extends React.Component {
                                 onChange={this.handleKeywordChange} 
                                 value={this.state.keywordSearch} 
                                 keyword={this.state.keywordSearch}
+                                isDisabled={this.state.keywordSearch.length === 0}
                             />
                         </Col>
                         <Col md="12" lg="6" className="px-0 d-flex align-items-center justify-content-center">
@@ -106,13 +107,29 @@ export default class Home extends React.Component {
 
                 <section class="home-section-2">
                     <Container>
-                        <Col md="12" lg="6" className="px-0 ml-auto d-flex flex-lg-row align-items-center justify-content-center justify-content-lg-end flex-wrap flex-lg-nowrap">
-                            <img src={LogoFrenchTech} alt="Logo French Tech"/>
-                            <img src={Logo1Kubator} alt="Logo 1Kubator"/>
-                            <img src={LogoDigitalCampus} alt="Logo Digital Campus"/>
-                            <img src={LogoReunionIsland} alt="Logo Ile de la Réunion"/>
-                            <img src={LogoGRDF} alt="Logo GRDF"/>
-                        </Col>
+                        <H2 className="mb-5 text-center text-lg-right" title="Ils vous parlent de Asking Franklin"/>
+                        <div className="d-flex flex-row justify-content-center justify-content-lg-end flex-wrap">
+                            <div class="card-review p-3">
+                                <p class="fw-600">Audrey Tips</p>
+                                <p class="my-3 fz-14">Coach virtuel. <br/> Experte en astuce marketing digital</p>
+                                <ArrowTextLink href="https://audreytips.com/trouver-sujets-contenu-asking-franklin/" textLink="Lire l'article" target="_blank" rel="noopener noreferrer"/>
+                            </div>
+                            <div class="card-review p-3">
+                                <p class="fw-600">Josselin Leydier</p>
+                                <p class="my-3 fz-14">Consultant en acquisition de trafic</p>
+                                <ArrowTextLink href="https://josselinleydier.com/seo/avis-asking-franklin/" textLink="Lire l'article" target="_blank" rel="noopener noreferrer"/>
+                            </div>
+                            <div class="card-review p-3">
+                                <p class="fw-600">IUT de Mulhouse</p>
+                                <p class="my-3 fz-14">Licence professionnelle de Référenceur &amp; Rédacteur Web</p>
+                                <ArrowTextLink href="https://www.licence-referencement.fr/2020/12/08/utiliser-asking-franklin-pour-booster-son-referencement/" textLink="Lire l'article" target="_blank" rel="noopener noreferrer"/>
+                            </div>
+                            <div class="card-review p-3">
+                                <p class="fw-600">Thomas Cubel</p>
+                                <p class="my-3 fz-14">Consultant SEO</p>
+                                <ArrowTextLink href="https://www.thomascubel.com/asking-franklin/" textLink="Lire l'article" target="_blank" rel="noopener noreferrer"/>
+                            </div>
+                        </div>
                     </Container>
                 </section>
 
@@ -193,15 +210,49 @@ export default class Home extends React.Component {
                     </Container>
                 </section>
 
-                <section class="home-section-7 position-relative">
+                <section class="home-section-7 position-relative pt-5">
                     <Container className="px-0">
-                        <H2 className="pt-6 text-center" title="Découvrez un outil clés en main et répondez au mieux aux attentes de votre audience"/>
-                        <div class="mt-6 d-flex flex-column flex-md-row justify-content-center align-items-center">
+                        <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
                             <PmyBtn redirectTo="/#top" linkIsLargePmyFull textLink="Essayer gratuitement" containerStyle="text-center mb-5 mb-md-0 mr-md-5" style={{zIndex: 1}}/>
                             <PmyBtn redirectTo="/tarifs" linkIsLargePmyOutlineLight textLink="Voir les avantages Pro" containerStyle="text-center" style={{zIndex: 1}}/>
                         </div>
                     </Container>
-                    <Dots className="dots-5"/>
+                    <Blob9 className="blob-9"/>
+                </section>
+
+                <section class="home-section-8 position-relative overflow-hidden pt-6">
+                    <WaveEndingTop className="wave-top-5"/>
+                    <Container className="px-0 position-relative">
+                        <H2 className="mb-5" title="Ne passez pas à côté de nos derniers articles"/>
+                        <Dots className="dots-5"/>
+                        <Row className="d-flex flex-column flex-lg-row align-items-center align-items-lg-start justify-content-lg-around">
+                            <Col xs="12" sm="8" md="6" lg="4" className="blog-post-item px-0 mt-5">
+                                <CardBlog
+                                    redirectTo="#"
+                                    img={SofianeTazdait} imgAlt=""
+                                    title="Rédiger un article de blog en 2021"
+                                    date="15 janvier 2021"
+                                />
+                            </Col>
+                            <Col xs="12" sm="8" md="6" lg="4" className="blog-post-item px-0 mt-5">
+                                <CardBlog
+                                    redirectTo="#"
+                                    img={MargauxMaziere} imgAlt=""
+                                    title="En 2021 le SXO sera de mise"
+                                    date="04 janvier 2021"
+                                />
+                            </Col>
+                            <Col xs="12" sm="8" md="6" lg="4" className="blog-post-item px-0 mt-5">
+                                <CardBlog
+                                    redirectTo="#"
+                                    img={PierreHusson} imgAlt=""
+                                    title="Franklin propose une surprise pour fêter la nouvelle année !"
+                                    date="18 décembre 2020"
+                                />
+                            </Col>
+                        </Row>
+                        <Dots className="dots-6"/>
+                    </Container>
                 </section>
 
             </div>

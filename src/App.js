@@ -9,7 +9,6 @@ import Banner from './pages/components/partials/Banner';
 import Navbar from './pages/components/partials/Navbar';
 import Footer from './pages/components/partials/Footer';
 import Home from './pages/sorted-pages/free-area/Home';
-import AngryHome from './pages/sorted-pages/free-area/lab/AngryHome';
 import AskingFranklin from './pages/sorted-pages/free-area/AskingFranklin';
 import Pricing from './pages/sorted-pages/free-area/Pricing';
 import SignIn from './pages/sorted-pages/free-area/sign/SignIn';
@@ -86,7 +85,6 @@ export default class App extends React.Component {
                         <Route path="/contact" render={(props) => <Contact {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route path="/support" render={(props) => <Support {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route exact path='/' render={(props) => <Home {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
-                        <Route exact path='/l/01' render={(props) => <AngryHome {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route exact path='/tarifs' render={(props) => <Pricing {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route exact path='/profil' render={(props) => <Profile {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route exact path='/plans' render={(props) => <ChoosePlan {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>

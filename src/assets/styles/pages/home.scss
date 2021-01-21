@@ -20,15 +20,15 @@
     left: $left;
     z-index: $index;
 }
-@mixin waveSeparator($top, $right, $bottom, $left, $rotate) {
+@mixin waveSeparator($height, $top, $right, $bottom, $left, $index, $rotate) {
+    width: 100%;
+    height: $height;
     position: absolute;
     top: $top;
     right: $right;
     bottom: $bottom;
     left: $left;
-    width: 100%;
-    height: fit-content;
-    z-index: 1;
+    z-index: $index;
     overflow: visible;
     transform: rotate($rotate + deg);
 }
@@ -49,13 +49,20 @@
         @include decoration(initial, initial, initial, -75px, -1);
         @include max-sm-rwd { bottom: 0; }
     }
-    .blob-2 { @include decoration(-150px, 75px, initial, initial, -3); }
-    .blob-3 { @include decoration(initial, initial, -50%, -75px, 0); }
+    .blob-2 { @include decoration(-150px, 50px, initial, initial, -3); }
+    .blob-3 { @include decoration(initial, initial, -50%, -75px, -1); }
     .blob-4 { @include decoration(-45px, initial, initial, -75px, -1); }
     .blob-5 { @include decoration(-175px, 0, initial, initial, 1); }
     .blob-6 { @include decoration(initial, 33%, -115px, initial, 2); }
     .blob-7 { @include decoration(-125px, initial, initial, -85px, -1); }
     .blob-8 { @include decoration(initial, -15px, -85px, initial, -1); }
+    .blob-9 { 
+        @include decoration(initial, initial, -85px, 37%, 0);
+        @include max-sm-rwd { 
+            bottom: -130px;
+            left: 50px;
+        }
+    }
 
     /* ----- DOTS ----- */
     .dots-1 { 
@@ -74,11 +81,13 @@
         @include decoration(initial, initial, 100px, 55%, -1);
         @include max-xl-rwd { bottom: -50px; }
     }
-    .dots-5 {
-        @include decoration(initial, initial, 75px, -75px, 0);
-        @include max-sm-rwd { 
-            bottom: 0;
-            left: -150px;
+    .dots-5 { @include decoration(0, initial, initial, -50px, -2); }
+    .dots-6 { 
+        @include decoration(55px, -25px, initial, initial, -1);
+        @include max-lg-rwd { 
+            top: initial;
+            right: 20%;
+            bottom: -200px;
         }
     }
 
@@ -104,12 +113,33 @@
     .home-section-2 {
         @include min-lg-rwd { margin-top: 15rem; }
         @include max-lg-rwd { margin-top: 9rem; }
-        img {
-            max-width: 100px;
-            opacity: .5;
-            pointer-events: none;
-            &:not(:last-child) { @include min-lg-rwd { margin-right: 3rem; } }
-            @include max-lg-rwd { margin: 1rem; }
+
+        .card-review {
+            width: 160px;
+            height: fit-content;
+            background-color: $theme-secondary;
+            box-shadow: 0 0 8px rgba($black, .04);
+            border: 1px solid $theme-terthiary;
+            border-top: none;
+            border-bottom-right-radius: 8px;
+            border-bottom-left-radius: 8px;
+
+            @include max-lg-rwd { 
+                width: 33.33333%;
+                &:nth-child(2) { margin-right: 0 !important; }
+            }
+            @include max-sm-rwd { 
+                width: 100%;
+                &:nth-last-child(2) { margin-top: 3rem; }
+                &:nth-child(even) { margin-left: 3rem; }
+            }
+
+            &:first-child { border-top: 8px solid $purple; }
+            &:nth-child(2) { border-top: 8px solid $blue; }
+            &:nth-last-child(2) { border-top: 8px solid $coral; }
+            &:last-child { border-top: 8px solid $yellow; }
+            &:nth-child(even) { margin-top: 3rem; }
+            &:not(:last-child) { margin-right: 3rem; } 
         }
     }
 
@@ -121,8 +151,8 @@
         margin-top: 18rem;
         background-color: $theme-secondary;
 
-        .wave-top-4 { @include waveSeparator(-149px, 0, initial, initial, 0); }
-        .wave-bottom-4 { @include waveSeparator(initial, initial, -149px, 0, 180); }
+        .wave-top-4 { @include waveSeparator(149px, -149px, 0, initial, initial, 1, 0); }
+        .wave-bottom-4 { @include waveSeparator(149px, initial, initial, -149px, 0, 1, 180); }
     }
 
     /* ----- SECTION 5 ----- */
@@ -156,12 +186,53 @@
 
     /* ----- SECTION 7 ----- */
     .home-section-7 { 
-        padding-bottom: 9rem;
+        padding-bottom: 12rem;
         margin-top: 9rem;
         background-color: $theme-secondary;
         &::before {
-            background-image: url(../../img/svg/decorating/waves/wave-ending.svg);
+            background-image: url(../../img/svg/decorating/waves/wave-pre-ending.svg);
             @include bg-img(100% 100%, contain, 736px, -736px, 0, initial, initial, -2);
+        }
+    }
+
+    /* ----- SECTION 8 ----- */
+    .home-section-8 {
+        padding-bottom: 9rem;
+
+        .wave-top-5 { @include waveSeparator(399px, 0, initial, initial, 0, -1, 0); }
+
+        > .container {
+            margin-top: -6rem;
+
+            .blog-post-item {
+                @include min-lg-rwd { max-width: calc(33.33333% - 3rem); }
+    
+                &-header {
+                    border: 1px solid $theme-terthiary;
+                    border-radius: 8px;
+                    height: 225px;
+                    &:hover img, &:focus img { transform: scale(1.1); }
+    
+                    img {
+                        background-color: $theme-secondary;
+                        max-width: 100%;
+                        min-width: 100%;
+                        min-height: 225px;
+                        max-height: 225px;
+                        transition: .4s ease-in-out;
+                    }
+                }
+                &-body {
+                    color: $theme-color-primary;
+                    h3 {
+                        $fz-title-blog: $fz-20;
+                        font-size: $fz-title-blog;
+                        line-height: calc(#{$fz-title-blog} + #{$lh-default});
+                    }
+                }
+
+            }
+           
         }
     }
 

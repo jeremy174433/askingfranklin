@@ -1,11 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="50 225 1732.355 1543.147" width="1732.355" height="1543.147" fill="#FFF" >
     <defs>
         <filter id="3fy7MB6G5Wzw" x="0" y="0" width="1732.355" height="1543.147" filterUnits="userSpaceOnUse">
-            <feOffset dx="99" dy="99" input="SourceAlpha"/>
-            <feGaussianBlur stdDeviation="49.5" result="b"/>
-            <feFlood flood-opacity="0.039"/>
-            <feComposite operator="in" in2="b"/>
-            <feComposite in="SourceGraphic"/>
+            <feOffset result="offOut" in="SourceGraphic" dx="20" dy="20"/>
+            <feColorMatrix result="matrixOut" in="offOut" type="matrix" values="0.9 0 0 0 0 0 0.9 0 0 0 0 0 0.9 0 0 0 0 0 9 0"/>
+            <feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="50"/>
+            <feBlend in="SourceGraphic" in2="blurOut" mode="normal"/>
         </filter>
     </defs>
     <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#3fy7MB6G5Wzw)">

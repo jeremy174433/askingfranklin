@@ -42,6 +42,7 @@ export default class MobileMenu extends React.Component {
                             <ul class="d-flex flex-column align-items-center">
                                 <MenuLink redirectTo="/" onClick={this.handleMobileMenuClicked} textLink="Accueil"/>
                                 {localStorage.getItem('af_is_sub') == 0 && <MenuLink redirectTo="/tarifs" onClick={this.handleMobileMenuClicked} textLink="Tarifs"/> }
+                                <MenuLink href="https://blog.askingfranklin.com" textLink="Blog"/>
                                 <MenuLink redirectTo="/faq" onClick={this.handleMobileMenuClicked} textLink="FAQ"/>
                                 <MenuLink redirectTo="/profil" onClick={this.handleMobileMenuClicked} textLink="Paramètres"/>
                                 <MenuLink redirectTo="/" onClick={this.props.onClickLogOut} textLink="Déconnexion"/>
@@ -50,6 +51,7 @@ export default class MobileMenu extends React.Component {
                             <ul class="d-flex flex-column align-items-center">
                                 <MenuLink redirectTo="/" onClick={this.handleMobileMenuClicked} textLink="Accueil"/>
                                 <MenuLink redirectTo="/tarifs" onClick={this.handleMobileMenuClicked} textLink="Tarifs"/>
+                                <MenuLink href="https://blog.askingfranklin.com" textLink="Blog"/>
                                 <MenuLink redirectTo="/faq" onClick={this.handleMobileMenuClicked} textLink="FAQ"/>
                                 <MenuLink redirectTo="/connexion" onClick={this.handleMobileMenuClicked} textLink="Connexion"/>
                             </ul>
