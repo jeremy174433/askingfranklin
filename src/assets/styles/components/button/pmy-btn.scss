@@ -27,6 +27,7 @@ button[disabled] .pmy-btn {
         }
         &:focus { 
             background-color: $primary-25;
+            color: $primary;
             box-shadow: none !important;
             outline: none;
         }
@@ -38,7 +39,7 @@ button[disabled] .pmy-btn {
 
         svg { fill: $primary; }
 
-        &:hover, &:active { 
+        &:hover, &:focus, &:active { 
             background-color: rgba($primary, .9);
             color: $theme-color-secondary;
             box-shadow: 0 0 8px $black-25;
@@ -54,7 +55,7 @@ button[disabled] .pmy-btn {
 
         svg { fill: $theme-color-secondary; }
 
-        &:hover, &:active { 
+        &:hover, &:focus, &:active { 
             background-color: rgba($primary, .9);
             color: $theme-color-secondary;
             box-shadow: 0 0 8px $black-25; 

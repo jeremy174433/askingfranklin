@@ -92,6 +92,9 @@ export default class AskingFranklin extends React.Component {
     requestFanklin = (e) => {
         e.preventDefault();
         this.props.history.push('/recherche/' + this.state.newKeywordSearch.replace(/ /g, '-'));
+        this.setState({
+            newKeywordSearch: ''
+        });
     }
 
     render() {
@@ -105,6 +108,7 @@ export default class AskingFranklin extends React.Component {
                         onChange={this.handleKeywordChange} 
                         value={this.state.newKeywordSearch} 
                         keyword={this.state.newKeywordSearch}
+                        hideLabel={true}
                         isDisabled={this.state.newKeywordSearch.length === 0}
                     />
                 </Col>
@@ -154,7 +158,17 @@ export default class AskingFranklin extends React.Component {
                     </Helmet>
                     <Container id="askingFranklin" className="px-0">
                         <main class="d-flex flex-column flex-xl-row">
-                            <AFStickyMenu searchContent={this.state.keywordSearch} dataNumber={this.state.dataKw} handleNoData={this.handleNoData} className={this.props.bannerIsActive && 'banner-showed'}/>
+                            <AFStickyMenu 
+                                className={this.props.bannerIsActive && 'banner-showed'}
+                                searchContent={this.state.keywordSearch} 
+                                dataNumber={this.state.dataKw} 
+                                handleNoData={this.handleNoData}
+                                onSubmit={this.requestFanklin} 
+                                onChange={this.handleKeywordChange} 
+                                value={this.state.newKeywordSearch} 
+                                keyword={this.state.newKeywordSearch}
+                                isDisabled={this.state.newKeywordSearch.length === 0}
+                            />
                             <Col className="col-12 col-xl-9 px-0 mb-5 w-100">
                                 {this.state.dataKw.data.map((x) => {
                                     return <AFWrapper keywordSearch={this.state.keywordSearch} data={x}/>

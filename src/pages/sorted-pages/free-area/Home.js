@@ -94,6 +94,7 @@ export default class Home extends React.Component {
                                 onChange={this.handleKeywordChange} 
                                 value={this.state.keywordSearch} 
                                 keyword={this.state.keywordSearch}
+                                hideLabel={true}
                                 isDisabled={this.state.keywordSearch.length === 0}
                             />
                         </Col>

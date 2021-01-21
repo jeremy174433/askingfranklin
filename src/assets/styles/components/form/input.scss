@@ -17,8 +17,8 @@ $input: '.input-primary';
     #{$input}-label.d-none + #{$input} + #{$input}-icon { top: 10px; }
 
     #{$input} {
-        min-height: 48px;
-        height: 48px;
+        min-height: $input-height;
+        height: $input-height;
         padding: 12px;
         border: 1px solid $theme-terthiary;
         background-color: $theme-secondary;

@@ -1,6 +1,6 @@
 .StripeElement {
-    min-height: 48px;
-    height: 48px;
+    min-height: $input-height;
+    height: $input-height;
     padding: 12px;
     width: 100%;
     color: $theme-color-primary;

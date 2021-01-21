@@ -14,11 +14,12 @@
         &.banner-showed { top: calc(6rem + #{$banner-promotion}); }
 
         @include min-xl-rwd { 
-            flex-basis: calc(25% - 48px) !important;
+            flex-basis: calc(25% - 3rem) !important;
             margin-bottom: 3rem;
         }
         @include max-xl-rwd { position: initial !important; }
 
+        /* ----- INFORMATIONS ----- */
         h1 {
             word-break: break-all;
             &::first-letter { text-transform: uppercase; }
@@ -48,6 +49,34 @@
                 }
             }
         }
+
+        /* ----- FORM NEW SEARCH ----- */
+        .sticky-menu-new-search {
+            @include min-xl-rwd { flex-direction: column !important; }
+            @include max-xl-rwd { flex-direction: row !important; }
+            @include max-sm-rwd { flex-direction: column !important; }
+
+            .input-primary-wrapper { 
+                @include min-xl-rwd {
+                    margin-right: 0 !important;
+                    margin-bottom: 1rem !important;
+                }
+                @include max-xl-rwd {
+                    margin-right: 1.5rem !important;
+                    margin-bottom: 0 !important;
+                }
+                @include max-sm-rwd {
+                    margin-right: 0 !important;
+                    margin-bottom: 1rem !important;
+                }
+            }
+
+            .submit-form-new-search {
+                button { height: $input-height !important; }
+            }
+
+        }
+
     }
 
     .block-wrapper { 

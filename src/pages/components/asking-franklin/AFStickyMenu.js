@@ -5,12 +5,9 @@ import AFStickyMenuList from './AFStickyMenuList';
 import { CSVLink } from 'react-csv';
 import PmyBtn from '../button/PmyBtn';
 import FeaturesIcons from '../../../assets/img/svg/switch/FeaturesIcons';
+import FormRequestFranklin from '../../components/form/FormRequestFranklin'
 
 export default class AFStickyMenu extends React.Component {
-
-    shouldComponentUpdate() {
-        return false;
-    }
 
     exportCSV() {
         var data = [["Type","Prepositions","Suggestions"]];
@@ -29,26 +26,37 @@ export default class AFStickyMenu extends React.Component {
     render() {
 
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
-        const classStickyMenu = ' col-12 col-xl-3 position-sticky p-0 mr-xl-5 block-style';
+        const classStickyMenu = ' col-12 col-xl-3 position-sticky p-0 mr-xl-5';
 
         return ( 
             <Col id="stickyMenu" className={this.props.className ? this.props.className + classStickyMenu : classStickyMenu}>
-                <div class="sticky-menu-header d-flex align-items-center p-3 bgc-primary">
-                    <h1 class="color-light fz-18 fw-600">{this.props.searchContent}</h1>
-                </div>
-                <div class="sticky-menu-body bg-white d-flex flex-column py-4">
-                    <Scrollspy items={['questions', 'comparaisons', 'prepositions', 'related']} currentClassName="nav-link-style-active">
-                        {this.props.dataNumber.data.map((x, index) => {
-                            var volume = x.data.map((x) => x.suggestions.length).reduce(reducer);
-                            return <AFStickyMenuList volume={volume} text={x.type}/>
-                        })}
-                    </Scrollspy>
-                </div>
-                <div class="sticky-menu-footer pb-3 px-3">
-                    <CSVLink data={this.exportCSV()} filename={this.props.searchContent + "_AskingFranklin.csv"} className="text-decoration-none">
-                        <PmyBtn type="button" btnIsMediumPmyOutlineFull textBtn="Exporter en CSV" title="Exporter en CSV" iconBtnBefore={<FeaturesIcons icon="file"/>}/>
-                    </CSVLink>
-                </div>
+                <section class="block-style p-0">
+                    <div class="sticky-menu-header d-flex align-items-center p-3 bgc-primary">
+                        <h1 class="color-light fz-18 fw-600">{this.props.searchContent}</h1>
+                    </div>
+                    <div class="sticky-menu-body bg-white d-flex flex-column py-4">
+                        <Scrollspy items={['questions', 'comparaisons', 'prepositions', 'related']} currentClassName="nav-link-style-active">
+                            {this.props.dataNumber.data.map((x, index) => {
+                                var volume = x.data.map((x) => x.suggestions.length).reduce(reducer);
+                                return <AFStickyMenuList volume={volume} text={x.type}/>
+                            })}
+                        </Scrollspy>
+                    </div>
+                    <div class="sticky-menu-footer pb-3 px-3">
+                        <CSVLink data={this.exportCSV()} filename={this.props.searchContent + "_AskingFranklin.csv"} className="text-decoration-none">
+                            <PmyBtn type="button" btnIsMediumPmyOutlineFull textBtn="Exporter en CSV" title="Exporter en CSV" iconBtnBefore={<FeaturesIcons icon="file"/>}/>
+                        </CSVLink>
+                    </div>
+                </section>
+                <FormRequestFranklin
+                    onSubmit={this.props.onSubmit} 
+                    onChange={this.props.onChange} 
+                    value={this.props.value}
+                    label="Nouvelle recherche"
+                    isDisabled={this.props.isDisabled}
+                    containerStyle="submit-form-new-search d-flex align-items-end"
+                    className="sticky-menu-new-search block-style p-3"
+                />
             </Col>
         )
     }
