@@ -17,7 +17,7 @@ import CardBlog from '../../components/elements/CardBlog';
 import GoogleSearch from '../../../assets/img/svg/illustrations/GoogleSearch';
 import Control from '../../../assets/img/png/illustrations/illustration-control.png';
 import Ideas from '../../../assets/img/png/illustrations/illustration-ideas.png';
-import PierreHusson from '../../../assets/img/png/testimonials/pierre-husson.jpg';
+import ThomasCubel from '../../../assets/img/png/testimonials/thomas-cubel.jpg';
 import MargauxMaziere from '../../../assets/img/png/testimonials/margaux-maziere.jpg';
 import SofianeTazdait from '../../../assets/img/png/testimonials/sofiane-tazdait.jpg';
 import Dots from '../../../assets/img/svg/decorating/Dots';
@@ -39,7 +39,7 @@ export default class Home extends React.Component {
         this.state = {
             keywordSearch: '',
             redirect: false,
-            lastArticles:[]
+            lastArticles: []
         }
         this.handleKeywordChange = this.handleKeywordChange.bind(this);
         this.requestFanklin = this.requestFanklin.bind(this);
@@ -47,14 +47,15 @@ export default class Home extends React.Component {
     
     componentDidMount() {
         window.scrollTo(0, 0);
-        fetch("https://cors-anywhere.herokuapp.com/http://blog.askingfranklin.com/wp-json/wp/v2/posts?per_page=3&_embed")
-        .then((res)=>res.json())
-        .then((res)=>{
-            console.log(res)
+        /*
+        fetch('https://cors-anywhere.herokuapp.com/https://blog.askingfranklin.com/wp-json/wp/v2/posts?per_page=3&_embed')
+        .then((res) => res.json())
+        .then((res) => {
             this.setState({
-                lastArticles:res
-            })
+                lastArticles: res
+            });
         })
+        */
     }
 
     customHeadElement() {
@@ -117,7 +118,7 @@ export default class Home extends React.Component {
 
                 <section class="home-section-2">
                     <Container>
-                        <H2 className="mb-5 text-center text-lg-right" title="Ils vous parlent de Asking Franklin"/>
+                        <H2 className="mb-5 text-center text-lg-right" title="Ils parlent de Asking Franklin"/>
                         <div className="d-flex flex-row justify-content-center justify-content-lg-end flex-wrap">
                             <div class="card-review p-3">
                                 <p class="fw-600">Audrey Tips</p>
@@ -196,9 +197,9 @@ export default class Home extends React.Component {
                     <Container className="slider-container position-relative d-flex flex-row justify-content-xl-around pb-3 pb-lg-0 px-0 px-xl-0">
                         <Col md="12" lg="4" xl="3" className="slider-item px-0">
                             <CardTestimonial
-                                img={PierreHusson}
-                                testimonial="Grâce à Asking Franklin, je peux suivre simplement les tendances du marché de Rematch : le sport amateur ! News, concurrents, événements... tout y est !"
-                                fullname="Pierre Husson" jobAndCompany="CEO - Rematch"
+                                img={ThomasCubel}
+                                testimonial="Contrairement à d’autres outils du marché, l’outil est beaucoup plus rapide à l’utilisation. La recherche des suggests est quasi instantanée. Le support de la langue française est meilleure, donc nous sommes plus efficace au travail."
+                                fullname="Thomas Cubel" jobAndCompany="Consultant SEO"
                             />
                         </Col>
                         <Col md="12" lg="4" xl="3" className="slider-item px-0 mt-5">
@@ -227,31 +228,35 @@ export default class Home extends React.Component {
                             <PmyBtn redirectTo="/tarifs" linkIsLargePmyOutlineLight textLink="Voir les avantages Pro" containerStyle="text-center" style={{zIndex: 1}}/>
                         </div>
                     </Container>
-                    <Blob9 className="blob-9"/>
+                    {/*}{!this.state.lastArticles.length < 1 &&  <Blob9 className="blob-9"/> }*/}
                 </section>
 
-                <section class="home-section-8 position-relative overflow-hidden pt-6">
-                    <WaveEndingTop className="wave-top-5"/>
-                    <Container className="px-0 position-relative">
-                        <H2 className="mb-5" title="Ne passez pas à côté de nos derniers articles"/>
-                        <Dots className="dots-5"/>
-                        <Row className="d-flex flex-column flex-lg-row align-items-center align-items-lg-start justify-content-lg-around">
-                            {this.state.lastArticles.map((article)=>{
-                                return(
-                                    <Col xs="12" sm="8" md="6" lg="4" className="blog-post-item px-0 mt-5">
-                                        <CardBlog
-                                            redirectTo={article.link}
-                                            img={article._embedded['wp:featuredmedia'][0].source_url} imgAlt={article._embedded['wp:featuredmedia'][0].alt_text}
-                                            title={article.title.rendered}
-                                            date={new Date(article.date).toLocaleDateString('fr-FR',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
-                                        />
-                                    </Col>
-                                )
-                            })}
-                        </Row>
-                        <Dots className="dots-6"/>
-                    </Container>
-                </section>
+                {/*}
+                {!this.state.lastArticles.length < 1 && 
+                    <section class="home-section-8 position-relative overflow-hidden pt-6">
+                        <WaveEndingTop className="wave-top-5"/>
+                        <Container className="px-0 position-relative">
+                            <H2 className="mb-5" title="Ne passez pas à côté de nos derniers articles"/>
+                            <Dots className="dots-5"/>
+                            <Row className="d-flex flex-column flex-lg-row align-items-center align-items-lg-start justify-content-lg-around">
+                                {this.state.lastArticles.map((article) => {
+                                    return (
+                                        <Col xs="12" sm="8" md="6" lg="4" className="blog-post-item px-0 mt-5">
+                                            <CardBlog
+                                                redirectTo={article.link}
+                                                img={article._embedded['wp:featuredmedia'][0].source_url} imgAlt={article._embedded['wp:featuredmedia'][0].alt_text}
+                                                title={article.title.rendered}
+                                                date={new Date(article.date).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                            />
+                                        </Col>
+                                    )
+                                })}
+                            </Row>
+                            <Dots className="dots-6"/>
+                        </Container>
+                    </section>
+                }
+                */}
 
             </div>
         )

@@ -63,7 +63,7 @@ export default class Navbar extends React.Component {
                             {
                                 this.state.isConnected === true ?
                                     <ul class="d-flex flex-row align-items-center position-relative">
-                                        <MenuLink href="https://blog.askingfranklin.com" textLink="Blog" containerStyle="mr-3"/>
+                                        {/*<MenuLink href="https://blog.askingfranklin.com" textLink="Blog" containerStyle="mr-3"/>*/}
                                         <MenuLink redirectTo="/faq" textLink="FAQ"/>
                                         {localStorage.getItem('af_is_sub') == 0 && <MenuLink redirectTo="/tarifs" textLink="Tarifs" containerStyle="ml-3"/> }
                                         {localStorage.getItem('af_is_sub') != 0 && <MenuLink customMenuItem={<CrownPro width="52"/>} containerStyle="position-absolute" style={{top: '-10px', right: '150px', zIndex: 1}}/> }
@@ -71,7 +71,7 @@ export default class Navbar extends React.Component {
                                     </ul>
                                 : this.state.isConnected === false &&
                                     <ul class="d-flex flex-row align-items-center">
-                                        <MenuLink href="https://blog.askingfranklin.com" textLink="Blog" containerStyle="mr-3"/>
+                                        {/*<MenuLink href="https://blog.askingfranklin.com" textLink="Blog" containerStyle="mr-3"/>*/}
                                         <MenuLink redirectTo="/faq" textLink="FAQ" containerStyle="mr-3"/>
                                         <MenuLink redirectTo="/connexion" textLink="Connexion"/>
                                         <MenuLink customMenuItem={<PmyBtn redirectTo="/tarifs" linkIsMediumPmyFull iconLinkBefore={<Rocket width="16"/>} textLink="Devenir Pro" className="rounded-0" containerStyle="ml-5 nav-btn-cta"/>}/>
