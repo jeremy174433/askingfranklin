@@ -1,6 +1,6 @@
 import React from 'react';
-import Quote from '../../../assets/img/svg/Quote';
-import SocialMedia from '../../../assets/img/svg/switch/SocialMedia';
+import Quote from '../../../../assets/img/svg/Quote';
+import SocialMedia from '../../../../assets/img/svg/switch/SocialMedia';
 
 export default class CardTestimonial extends React.Component {
 

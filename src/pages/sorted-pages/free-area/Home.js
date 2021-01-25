@@ -9,11 +9,13 @@ import { Redirect } from 'react-router-dom';
 import VideoHome from '../../../assets/video/VideoHome.mp4';
 import H1 from '../../components/elements/title/H1';
 import H2 from '../../components/elements/title/H2';
+import H3 from '../../components/elements/title/H3';
 import PmyBtn from '../../components/button/PmyBtn';
 import FormRequestFranklin from '../../components/form/FormRequestFranklin';
 import ArrowTextLink from '../../components/elements/link/ArrowTextLink';
-import CardTestimonial from '../../components/elements/CardTestimonial';
-import CardBlog from '../../components/elements/CardBlog';
+import CardReview from '../../components/elements/cards/CardReview';
+import CardTestimonial from '../../components/elements/cards/CardTestimonial';
+import CardBlog from '../../components/elements/cards/CardBlog';
 import GoogleSearch from '../../../assets/img/svg/illustrations/GoogleSearch';
 import Control from '../../../assets/img/png/illustrations/illustration-control.png';
 import Ideas from '../../../assets/img/png/illustrations/illustration-ideas.png';
@@ -118,28 +120,32 @@ export default class Home extends React.Component {
 
                 <section class="home-section-2">
                     <Container>
-                        <H2 className="mb-5 text-center text-lg-right" title="Ils parlent de Asking Franklin"/>
-                        <div className="d-flex flex-row justify-content-center justify-content-lg-end flex-wrap">
-                            <div class="card-review p-3">
-                                <p class="fw-600">Audrey Tips</p>
-                                <p class="my-3 fz-14">Coach virtuel. <br/> Experte en astuce marketing digital</p>
-                                <ArrowTextLink href="https://audreytips.com/trouver-sujets-contenu-asking-franklin/" textLink="Lire l'article" target="_blank" rel="noopener noreferrer"/>
-                            </div>
-                            <div class="card-review p-3">
-                                <p class="fw-600">Josselin Leydier</p>
-                                <p class="my-3 fz-14">Consultant en acquisition de trafic</p>
-                                <ArrowTextLink href="https://josselinleydier.com/seo/avis-asking-franklin/" textLink="Lire l'article" target="_blank" rel="noopener noreferrer"/>
-                            </div>
-                            <div class="card-review p-3">
-                                <p class="fw-600">IUT de Mulhouse</p>
-                                <p class="my-3 fz-14">Licence professionnelle de Référenceur &amp; Rédacteur Web</p>
-                                <ArrowTextLink href="https://www.licence-referencement.fr/2020/12/08/utiliser-asking-franklin-pour-booster-son-referencement/" textLink="Lire l'article" target="_blank" rel="noopener noreferrer"/>
-                            </div>
-                            <div class="card-review p-3">
-                                <p class="fw-600">Thomas Cubel</p>
-                                <p class="my-3 fz-14">Consultant SEO</p>
-                                <ArrowTextLink href="https://www.thomascubel.com/asking-franklin/" textLink="Lire l'article" target="_blank" rel="noopener noreferrer"/>
-                            </div>
+                        <H2 className="mb-5" title="Ils parlent de Asking Franklin"/>
+                        <div className="d-flex flex-row justify-content-center flex-wrap">
+                            <CardReview
+                                title="Comment trouver des sujets de contenu qui engagent et fidélisent avec Asking Franklin ?"
+                                authorName="Audrey Tips"
+                                authorProfession="Coach virtuel. Experte en astuce marketing digital"
+                                postLink="https://audreytips.com/trouver-sujets-contenu-asking-franklin/"
+                            />
+                            <CardReview
+                                title="Mon test et mon avis sur Asking Franklin"
+                                authorName="Josselin Leydier"
+                                authorProfession="Consultant en acquisition de trafic"
+                                postLink="https://josselinleydier.com/seo/avis-asking-franklin/"
+                            />
+                            <CardReview
+                                title="Comment utiliser Asking Franklin pour booster son référencement ?"
+                                authorName="IUT de Mulhouse"
+                                authorProfession="Licence professionnelle de Référenceur &amp; Rédacteur Web"
+                                postLink="https://www.licence-referencement.fr/2020/12/08/utiliser-asking-franklin-pour-booster-son-referencement/"
+                            />
+                            <CardReview
+                                title="Asking Franklin – Avis et Test"
+                                authorName="Thomas Cubel"
+                                authorProfession="Consultant SEO"
+                                postLink="https://www.thomascubel.com/asking-franklin/"
+                            />
                         </div>
                     </Container>
                 </section>

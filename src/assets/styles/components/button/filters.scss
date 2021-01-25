@@ -1,0 +1,136 @@
+#btnCountry {
+    position: relative; // Cover item under filters
+    overflow: visible;
+
+    // ---------- INPUT STYLE ---------- //
+    
+    &.btn-filter {
+        min-height: $input-height;
+        height: fit-content;
+        width: 100%;
+        position: relative;
+        cursor: pointer;
+        border: 1px solid $primary;
+        border-radius: .5rem;
+
+        &-header {
+            height: $input-height; 
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+
+            .data-header {
+                background-color: $theme-secondary;
+                position: absolute;
+                top: -11px;
+                left: 8px;
+                padding: 0 .5rem;
+                @include fz-14;
+                @include fw-600;
+    
+                + .data-placeholder {
+                    color: $primary;
+                    overflow: hidden;
+                    max-width: calc(100% - 1.5rem);
+                    max-height: 22px;
+                    word-break: break-all;
+                    &::first-letter { text-transform: uppercase; }
+                }
+            }
+            svg { transition: .2s ease-in-out; }
+        }
+
+        // ---------- FILTER IS OPEN ---------- //
+
+        &.filters-dropdown-open {
+            box-shadow: 0 0 4px $black-25;
+
+            @include min-xl-rwd { 
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+
+            svg { transform: rotate(-180deg); }
+
+            .filters-dropdown-container {
+                display: block;
+                overflow: visible; // Calendars overflow
+                box-shadow: 0 4px 4px $black-25; 
+
+                &::before {
+                    content: '';
+                    display: block;
+                    margin: 0 1rem;
+                    border-bottom: 1px solid $theme-terthiary;
+                }
+
+                @include min-xl-rwd { 
+                    width: calc(100% + 2px); // Fix
+                    margin-left: -1px; // Fix
+                    position: absolute;
+                    border: 1px solid $primary;
+                    border-top: none;
+                }
+            }
+            
+            .filters-container {
+                max-height: 265px;
+                padding-top: 1rem;
+                overflow-x: hidden;
+                @include scroll-y(auto);
+
+                &-multiple {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    padding-right: 1rem;
+                    padding-left: 1rem;
+                }
+            }
+        }
+
+        &.filters-input-disabled {
+            background-color: $bg-disabled;
+            cursor: not-allowed;
+
+            .data-header {
+                background: linear-gradient($theme-color-secondary, $bg-disabled);
+                border-radius: 50% 50% 0 0;
+
+                + .data-placeholder { color: $theme-color-primary; }
+            }
+        }
+    }
+
+    // ---------- DROPDOWN STYLE ---------- //
+
+    .filters-dropdown-container {
+        display: none;
+        background-color: $theme-secondary;
+        border-bottom-right-radius: .5rem;
+        border-bottom-left-radius: .5rem;
+        overflow: hidden; // Fix
+        cursor: default;
+    
+        .filters-input-container {
+            padding: .5rem 1rem;
+            position: relative;
+            cursor: pointer;
+    
+            &:hover { @include bg-hover-light; }
+
+            &.filter-active { 
+                @include bg-active-light-index;
+                label { color: $primary; }
+            }
+
+            input[type=radio] + label, 
+            input[type=checkbox] + label {
+                pointer-events: none; // Fix when input is clicked
+                white-space: nowrap; // Fix
+            }
+        }
+    }
+}

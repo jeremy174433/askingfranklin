@@ -1,6 +1,7 @@
 button[disabled] .pmy-btn {
     cursor: not-allowed;
     background-color: $primary-75;
+    border-color: $primary-75;
     &:hover, &:focus { box-shadow: none; }
 }
 

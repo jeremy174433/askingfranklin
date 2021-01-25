@@ -422,7 +422,7 @@ export default class Profile extends React.Component {
                                     />
                                     <p class="mt-1 mb-3 pb-3 pl-1 ml-4 fz-14">
                                         {!this.state.subscriptionEnd ? 
-                                            ['Décocher la case puis sauvegarder pour annuler le renouvellement automatique de votre abonnement (celui-ci prendra fin au terme de sa période de validité)', <br/>, 'Vous pourrez réactiver simplement votre abonnement en cochant de nouveau la case tant que celui-ci n\'est pas arrivé à son terme'] 
+                                            ['Décochez la case puis sauvegardez pour annuler le renouvellement automatique de votre abonnement (celui-ci prendra fin au terme de sa période de validité)', <br/>, 'Vous pourrez réactiver simplement votre abonnement en cochant de nouveau la case tant que celui-ci n\'est pas arrivé à son terme'] 
                                         : 
                                             'Vous pouvez réactiver simplement votre abonnement tant que celui-ci n\'est pas arrivé à son terme en cochant la case puis en cliquant sur sauvegarder'
                                         }

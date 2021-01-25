@@ -16,6 +16,17 @@
     @include max-lg-rwd { padding-top: $pt-reset }
 }
 
+// ---------- UTLITIES ---------- //
+
+// Background
+@mixin bg-hover-light { background-color: $md-grey-35; }
+@mixin bg-active-light { background-color: $md-grey-75 ; }
+@mixin bg-active-light-index { background-color: $md-grey-75 !important; }
+
+// Font-weight
+@mixin fw-400 { font-weight: 400; }
+@mixin fw-600 { font-weight: 600; }
+
 // ---------- SCROLL BAR ---------- //
 
 @mixin scroll-x($scroll-type) {
@@ -77,15 +88,6 @@
         transform: translate(-25%, -25%);
         opacity: 1;
     }
-}
-
-// Fill full layout
-@mixin FourDirectionsPositionFullSpace() {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
 }
 
 // Features list

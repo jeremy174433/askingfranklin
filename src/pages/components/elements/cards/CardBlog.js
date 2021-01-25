@@ -1,7 +1,7 @@
 import React from 'react';
-import H3 from '../../components/elements/title/H3';
-import Clock from '../../../assets/img/svg/Clock';
-import ArrowTextLink from '../../components/elements/link/ArrowTextLink';
+import H3 from '../title/H3';
+import Clock from '../../../../assets/img/svg/Clock';
+import ArrowTextLink from '../link/ArrowTextLink';
 
 export default class CardBlog extends React.Component {
 
