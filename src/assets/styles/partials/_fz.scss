@@ -26,6 +26,10 @@ $lh-default: 6px;
     font-size: $fz-16;
     line-height: calc(#{$fz-16} + #{$lh-default});
 }
+@mixin fz-16-index {
+    font-size: $fz-16 !important;
+    line-height: calc(#{$fz-16} + #{$lh-default}) !important;
+}
 @mixin fz-18 {
     font-size: $fz-18;
     line-height: calc(#{$fz-18} + #{$lh-default});

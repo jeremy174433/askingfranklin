@@ -26,37 +26,40 @@ export default class AFStickyMenu extends React.Component {
     render() {
 
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
-        const classStickyMenu = ' col-12 col-xl-3 position-sticky p-0 mr-xl-5';
 
         return ( 
-            <Col id="stickyMenu" className={this.props.className ? this.props.className + classStickyMenu : classStickyMenu}>
-                <section class="block-style p-0">
-                    <div class="sticky-menu-header d-flex align-items-center p-3 bgc-primary">
-                        <h1 class="color-light fz-18 fw-600">{this.props.searchContent}</h1>
+            <Col sm="12" xl="3" className="d-flex d-xl-block flex-column p-0 mr-xl-5 mt-6">
+                <CSVLink data={this.exportCSV()} filename={this.props.searchContent + "_AskingFranklin.csv"} className="d-flex d-xl-block order-2 order-xl-1 mt-4 mt-xl-0 text-decoration-none">
+                    <PmyBtn type="button" btnIsMediumPmyOutlineFull textBtn="Exporter en CSV" title="Exporter les résultats en CSV" iconBtnBefore={<FeaturesIcons icon="file"/>} className="w-100"/>
+                </CSVLink>
+                <section id="stickyMenu" class={this.props.className ? this.props.className + ' mt-0 mt-xl-4 position-sticky' : 'mt-0 mt-xl-4 position-sticky'}>
+                    <div class="block-style p-0">
+                        <div class="sticky-menu-header p-3 bgc-primary color-light">
+                            <h1 class="mb-2 fz-18 fw-600" title={this.props.searchContent}>{this.props.searchContent}</h1>
+                            <p class="fz-14">Pays : <span class="fw-600">France</span></p>
+                            <p class="fz-14">Langue : <span class="fw-600">Français</span></p>
+                        </div>
+                        <div class="sticky-menu-body bg-white d-flex flex-column py-3">
+                            <Scrollspy items={['questions', 'comparaisons', 'prepositions', 'related']} currentClassName="nav-link-style-active">
+                                {this.props.dataNumber.data.map((x, index) => {
+                                    var volume = x.data.map((x) => x.suggestions.length).reduce(reducer);
+                                    return <AFStickyMenuList volume={volume} text={x.type}/>
+                                })}
+                            </Scrollspy>
+                        </div>
                     </div>
-                    <div class="sticky-menu-body bg-white d-flex flex-column py-4">
-                        <Scrollspy items={['questions', 'comparaisons', 'prepositions', 'related']} currentClassName="nav-link-style-active">
-                            {this.props.dataNumber.data.map((x, index) => {
-                                var volume = x.data.map((x) => x.suggestions.length).reduce(reducer);
-                                return <AFStickyMenuList volume={volume} text={x.type}/>
-                            })}
-                        </Scrollspy>
-                    </div>
-                    <div class="sticky-menu-footer pb-3 px-3">
-                        <CSVLink data={this.exportCSV()} filename={this.props.searchContent + "_AskingFranklin.csv"} className="text-decoration-none">
-                            <PmyBtn type="button" btnIsMediumPmyOutlineFull textBtn="Exporter en CSV" title="Exporter en CSV" iconBtnBefore={<FeaturesIcons icon="file"/>}/>
-                        </CSVLink>
-                    </div>
+                    <FormRequestFranklin
+                        onSubmit={this.props.onSubmit} 
+                        onChange={this.props.onChange} 
+                        formOptionsResultsPage={true}
+                        value={this.props.value}
+                        label="Nouvelle recherche"
+                        isDisabled={this.props.isDisabled}
+                        containerStyle="submit-form-new-search d-flex align-items-end"
+                        containerFormStyle="overflow-visible block-style bgc-light p-3 mt-4"
+                        className="sticky-menu-new-search"
+                    />
                 </section>
-                <FormRequestFranklin
-                    onSubmit={this.props.onSubmit} 
-                    onChange={this.props.onChange} 
-                    value={this.props.value}
-                    label="Nouvelle recherche"
-                    isDisabled={this.props.isDisabled}
-                    containerStyle="submit-form-new-search d-flex align-items-end"
-                    className="sticky-menu-new-search block-style p-3"
-                />
             </Col>
         )
     }

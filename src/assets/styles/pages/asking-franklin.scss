@@ -9,7 +9,6 @@
     #stickyMenu {
         height: min-content;
         top: 6rem;
-        margin-top: 6rem;
 
         &.banner-showed { top: calc(6rem + #{$banner-promotion}); }
 
@@ -52,6 +51,7 @@
 
         /* ----- FORM NEW SEARCH ----- */
         .sticky-menu-new-search {
+            margin-top: 0 !important;
             @include min-xl-rwd { flex-direction: column !important; }
             @include max-xl-rwd { flex-direction: row !important; }
             @include max-sm-rwd { flex-direction: column !important; }
@@ -75,21 +75,53 @@
                 button { height: $input-height !important; }
             }
 
+            p { 
+                max-width: fit-content;
+                color: $link;
+                cursor: pointer;
+            }
+        }
+
+        @include min-xl-rwd {
+            .filters-options-research {
+                display: none !important;
+
+                &-visible {
+                    display: flex !important;
+                    flex-direction: column !important;
+                    position: absolute;
+                    bottom: 0;
+                    left: 100%;
+                    width: 100%;
+                    background: $theme-secondary;
+                    border: 1px solid $theme-terthiary;
+                    padding: 1rem;
+                    padding-top: 0;
+                    margin-left: .5rem;
+                    border-radius: .5rem;
+                }
+            }
         }
 
     }
 
-    .block-wrapper { 
-        padding-top: 6rem;
-
-        
-        .asking-franklin-header {
-            .btn-export-to-png { @include min-md-rwd { top: -56px; } }
+    .block-results {
+        @include min-xl-rwd { 
+            max-width: calc(75% - 3rem);
+            z-index: -1;
         }
-        .asking-franklin-body { @include scroll-x(auto); }
-        .asking-franklin-dataviz {
-            min-height: 1000px;
-            > div { @include max-custom-rwd(1366) { padding: 0 6rem !important; } } 
+
+        .block-wrapper { 
+            padding-top: 6rem;
+    
+            .asking-franklin-header {
+                .btn-export-to-png { @include min-md-rwd { top: -56px; } }
+            }
+            .asking-franklin-body { @include scroll-x(auto); }
+            .asking-franklin-dataviz {
+                min-height: 1000px;
+                > div { @include max-custom-rwd(1366) { padding: 0 6rem !important; } } 
+            }
         }
     }
 

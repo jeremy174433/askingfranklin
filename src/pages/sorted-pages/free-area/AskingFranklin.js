@@ -169,7 +169,7 @@ export default class AskingFranklin extends React.Component {
                                 keyword={this.state.newKeywordSearch}
                                 isDisabled={this.state.newKeywordSearch.length === 0}
                             />
-                            <Col className="col-12 col-xl-9 px-0 mb-5 w-100">
+                            <Col className="block-results col-12 col-xl-9 px-0 mb-5 w-100">
                                 {this.state.dataKw.data.map((x) => {
                                     return <AFWrapper keywordSearch={this.state.keywordSearch} data={x}/>
                                 })}

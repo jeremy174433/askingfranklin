@@ -1,135 +1,165 @@
-#btnCountry {
-    position: relative; // Cover item under filters
+// ---------- INPUT STYLE ---------- //
+.btn-filter {
+    min-height: $input-height;
+    height: fit-content;
+    width: 100%;
     overflow: visible;
+    position: relative;
+    cursor: pointer;
+    background-color: $theme-secondary;
+    border: 1px solid $theme-terthiary;
+    border-radius: .5rem;
+    z-index: 5;
 
-    // ---------- INPUT STYLE ---------- //
-    
-    &.btn-filter {
-        min-height: $input-height;
-        height: fit-content;
-        width: 100%;
-        position: relative;
-        cursor: pointer;
-        border: 1px solid $primary;
-        border-radius: .5rem;
+    .btn-filter-header {
+        height: $input-height; 
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1rem;
 
-        &-header {
-            height: $input-height; 
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 1rem;
+        .data-header {
+            background-color: $theme-secondary;
+            position: absolute;
+            top: -11px;
+            left: 8px;
+            padding: 0 .5rem;
+            @include fz-14;
+            @include fw-600;
 
-            .data-header {
-                background-color: $theme-secondary;
-                position: absolute;
-                top: -11px;
-                left: 8px;
-                padding: 0 .5rem;
-                @include fz-14;
-                @include fw-600;
-    
-                + .data-placeholder {
-                    color: $primary;
-                    overflow: hidden;
-                    max-width: calc(100% - 1.5rem);
-                    max-height: 22px;
-                    word-break: break-all;
-                    &::first-letter { text-transform: uppercase; }
-                }
+            + .data-placeholder {
+                color: $primary;
+                overflow: hidden;
+                max-width: calc(100% - 1.5rem);
+                max-height: 22px;
+                word-break: break-all;
+                text-transform: capitalize;
             }
-            svg { transition: .2s ease-in-out; }
+        }
+        svg { transition: .2s ease-in-out; }
+    }
+
+    // ---------- FILTER IS OPEN ---------- //
+
+    &.filters-dropdown-open {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        box-shadow: 0 0 4px $black-25;
+
+        @include min-xl-rwd { 
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
         }
 
-        // ---------- FILTER IS OPEN ---------- //
+        svg { transform: rotate(-180deg); }
 
-        &.filters-dropdown-open {
-            box-shadow: 0 0 4px $black-25;
+        .filters-dropdown-container {
+            display: block;
+            width: calc(100% + 2px); // Fix
+            margin-left: -1px; // Fix
+            position: absolute;
+            border: 1px solid $theme-terthiary;
+            border-top: none;
+            box-shadow: 0 4px 4px $black-25; 
 
-            @include min-xl-rwd { 
-                border-bottom-right-radius: 0;
-                border-bottom-left-radius: 0;
-            }
-
-            svg { transform: rotate(-180deg); }
-
-            .filters-dropdown-container {
+            &::before {
+                content: '';
                 display: block;
-                overflow: visible; // Calendars overflow
-                box-shadow: 0 4px 4px $black-25; 
-
-                &::before {
-                    content: '';
-                    display: block;
-                    margin: 0 1rem;
-                    border-bottom: 1px solid $theme-terthiary;
-                }
-
-                @include min-xl-rwd { 
-                    width: calc(100% + 2px); // Fix
-                    margin-left: -1px; // Fix
-                    position: absolute;
-                    border: 1px solid $primary;
-                    border-top: none;
-                }
-            }
-            
-            .filters-container {
-                max-height: 265px;
-                padding-top: 1rem;
-                overflow-x: hidden;
-                @include scroll-y(auto);
-
-                &-multiple {
-                    display: flex;
-                    flex-direction: row;
-                    flex-wrap: wrap;
-                    padding-right: 1rem;
-                    padding-left: 1rem;
-                }
+                margin: 0 1rem;
+                border-bottom: 1px solid $theme-terthiary;
             }
         }
+        
+        .filters-container {
+            max-height: 265px;
+            padding-top: 1rem;
+            overflow-x: hidden;
+            @include scroll-y(auto);
 
-        &.filters-input-disabled {
-            background-color: $bg-disabled;
-            cursor: not-allowed;
-
-            .data-header {
-                background: linear-gradient($theme-color-secondary, $bg-disabled);
-                border-radius: 50% 50% 0 0;
-
-                + .data-placeholder { color: $theme-color-primary; }
+            &-multiple {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                padding-right: 1rem;
+                padding-left: 1rem;
             }
         }
     }
 
-    // ---------- DROPDOWN STYLE ---------- //
+    &.filters-input-disabled {
+        background-color: $bg-disabled;
+        cursor: not-allowed;
 
-    .filters-dropdown-container {
-        display: none;
-        background-color: $theme-secondary;
-        border-bottom-right-radius: .5rem;
-        border-bottom-left-radius: .5rem;
-        overflow: hidden; // Fix
-        cursor: default;
-    
-        .filters-input-container {
-            padding: .5rem 1rem;
-            position: relative;
-            cursor: pointer;
-    
-            &:hover { @include bg-hover-light; }
+        .data-header {
+            background: linear-gradient($theme-color-secondary, $bg-disabled);
+            border-radius: 50% 50% 0 0;
 
-            &.filter-active { 
-                @include bg-active-light-index;
-                label { color: $primary; }
+            + .data-placeholder { color: $theme-color-primary; }
+        }
+    }
+}
+
+// ---------- DROPDOWN STYLE ---------- //
+
+.filters-dropdown-container {
+    display: none;
+    background-color: $theme-secondary;
+    border-bottom-right-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+    overflow: hidden; // Fix
+    cursor: default;
+
+    .filters-input-container {
+        padding: .5rem 1rem;
+        position: relative;
+        cursor: pointer;
+
+        &:hover { @include bg-hover-light; }
+
+        &.filter-active { 
+            @include bg-active-light-index;
+            label { color: $primary; }
+        }
+
+        input[type=radio] + label {
+            pointer-events: none; // Fix when input is clicked
+            white-space: nowrap; // Fix
+
+            span:first-of-type { display: none; }
+            p { 
+                display: inline;
+                svg { 
+                    transform: rotate(0);
+                    margin-right: .5rem;
+                }
             }
+        }
+    }
+}
 
-            input[type=radio] + label, 
-            input[type=checkbox] + label {
-                pointer-events: none; // Fix when input is clicked
-                white-space: nowrap; // Fix
+// ---------- OVERRIDE ---------- //
+#btnCountries { 
+    @include min-md-rwd { margin-right: 1.5rem; }
+    @include max-md-rwd { z-index: 6; }
+}
+
+#askingFranklin {
+    @include min-xl-rwd {
+        .filters-options-research {
+
+            .btn-filter {
+                &#btnCountries { margin: 0 !important; }
+                &.filters-dropdown-open {
+                    border-radius: .5rem;
+                    
+                    .filters-dropdown-container {
+                        &::before { border: none; }
+                        bottom: 70px;
+                        border-radius: .5rem;
+                        box-shadow: 0 0 4px $black-25;
+                    }
+                }
             }
         }
     }
