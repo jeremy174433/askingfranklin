@@ -15,6 +15,7 @@
         @include min-xl-rwd { 
             flex-basis: calc(25% - 3rem) !important;
             margin-bottom: 3rem;
+            z-index: 1;
         }
         @include max-xl-rwd { position: initial !important; }
 
@@ -106,10 +107,7 @@
     }
 
     .block-results {
-        @include min-xl-rwd { 
-            max-width: calc(75% - 3rem);
-            z-index: -1;
-        }
+        @include min-xl-rwd { max-width: calc(75% - 3rem); }
 
         .block-wrapper { 
             padding-top: 6rem;
