@@ -24,7 +24,6 @@ export default class FormRequestFranklin extends React.Component {
     }
 
     toggleOptions() {
-        console.log('toggle')
         this.setState({
             optsDropdown: !this.state.optsDropdown ? true : false
         });
