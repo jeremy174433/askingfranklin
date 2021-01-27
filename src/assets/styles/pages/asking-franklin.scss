@@ -80,6 +80,7 @@
                 max-width: fit-content;
                 color: $link;
                 cursor: pointer;
+                &:hover, &:focus { text-decoration: underline; }
             }
         }
 
@@ -113,7 +114,19 @@
             padding-top: 6rem;
     
             .asking-franklin-header {
-                .btn-export-to-png { @include min-md-rwd { top: -56px; } }
+                .btn-export-to-png { 
+                    @include min-md-rwd { 
+                        top: -56px;
+                        min-width: fit-content;
+                    }
+                }
+                .tabs-container { 
+                    @include scroll-x(auto);
+                    @include max-md-rwd {
+                        min-width: calc(100% + 32px);
+                        right: 16px;
+                    }
+                }
             }
             .asking-franklin-body { @include scroll-x(auto); }
             .asking-franklin-dataviz {

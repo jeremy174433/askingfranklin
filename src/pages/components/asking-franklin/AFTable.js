@@ -18,7 +18,7 @@ export default class AFTable extends React.Component {
                                         <thead>
                                             <tr>
                                                 <th class="align-middle px-2 w-100 fz-18 fw-400">{x.word}</th>
-                                                <th></th>
+                                                <th class="align-middle px-2 w-100 fz-18 fw-400"></th>
                                             </tr>
                                         </thead>
                                         <tbody>

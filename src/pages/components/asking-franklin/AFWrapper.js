@@ -5,6 +5,7 @@ import FeaturesIcons from '../../../assets/img/svg/switch/FeaturesIcons';
 import H4 from '../elements/title/H4';
 import AFDataviz from './AFDataviz';
 import AFTable from './AFTable';
+import AFTableTendancies from './AFTableTendancies';
 import * as d3ToPng from 'd3-svg-to-png'
 
 export default class AFWrapper extends React.Component {
@@ -16,6 +17,7 @@ export default class AFWrapper extends React.Component {
         }
         this.selectFirst = this.selectFirst.bind(this);
         this.selectSecond = this.selectSecond.bind(this);
+        this.selectThird = this.selectThird.bind(this);
         this.handleExportPng = this.handleExportPng.bind(this);
     }
 
@@ -54,6 +56,12 @@ export default class AFWrapper extends React.Component {
         });
     }
 
+    selectThird() {
+        this.setState({
+            selectedPanel: 2
+        });
+    }
+
     handleExportPng() {
         var svg = document.querySelector('#' + 'dataviz-' + this.props.data.type + ' svg');
         var g = document.querySelector('#' + 'dataviz-' + this.props.data.type + ' svg g');
@@ -80,9 +88,10 @@ export default class AFWrapper extends React.Component {
                                 <span class="d-block d-lg-none ml-2 mb-3 pb-3 fz-14">({this.props.data.data.map((x) => x.suggestions.length).reduce(reducer)})</span>
                             </div>
                             <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between">
-                                <div class="d-flex flex-row flex-wrap">
+                                <div class="tabs-container d-flex flex-row position-relative w-100">
                                     <Tabs onClick={this.selectFirst} isDisabled={this.state.selectedPanel === 0} textTab="Graphique" title="Graphique" className={this.state.selectedPanel === 0 && 'pmy-tab-selected'}/>
                                     <Tabs onClick={this.selectSecond} isDisabled={this.state.selectedPanel === 1} textTab="Tableau" title="Tableau" className={this.state.selectedPanel === 1 && 'pmy-tab-selected'}/>
+                                    <Tabs onClick={this.selectThird} isDisabled={this.state.selectedPanel === 2} textTab="Tendances" title="Tendances" badgeTitle="New" className={this.state.selectedPanel === 2 && 'pmy-tab-selected'}/>
                                 </div>
                                 {this.state.selectedPanel === 0 && <PmyBtn onClick={this.handleExportPng} type="button" btnIsMediumPmyOutlineFull textBtn="Exporter en PNG" title="Exporter le graphique en PNG" iconBtnBefore={<FeaturesIcons icon="image"/>} containerStyle="btn-export-to-png position-relative mt-5 mt-md-0"/> }
                             </div>
@@ -91,8 +100,12 @@ export default class AFWrapper extends React.Component {
                             {
                                 this.state.selectedPanel === 0 ?
                                     <AFDataviz ref={this.componentRef} idSvg={'dataviz-' + this.props.data.type} related={this.props.data.type === 'related' ? true : false} keywordSearch={this.props.keywordSearch} data={this.props.data.data}/>
-                                :
+                                
+                                : this.state.selectedPanel === 1 ?
                                     <AFTable data={this.props.data.data}/>
+
+                                : this.state.selectedPanel === 2 &&
+                                    <AFTableTendancies data={this.props.data.data}/>
                             }
                         </div>
                     </div>

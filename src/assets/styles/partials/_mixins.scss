@@ -31,14 +31,14 @@
 
 @mixin scroll-x($scroll-type) {
     overflow-x: $scroll-type;
-    &::-webkit-scrollbar { height: 5px; }
+    &::-webkit-scrollbar { height: 6px; }
     &::-webkit-scrollbar-track { background-color: $md-grey-35; }
     &::-webkit-scrollbar-thumb { background-color: $theme-terthiary; }
     &::-webkit-scrollbar-thumb:hover { background-color: $md-grey; }
 }
 @mixin scroll-y($scroll-type) {
-    overflow-x: $scroll-type;
-    &::-webkit-scrollbar { width: 4px; }
+    overflow-y: $scroll-type;
+    &::-webkit-scrollbar { width: 6px; }
     &::-webkit-scrollbar-track { background-color: $md-grey-35; }
     &::-webkit-scrollbar-thumb { background-color: $theme-terthiary; }
     &::-webkit-scrollbar-thumb:hover { background-color: $md-grey; }
