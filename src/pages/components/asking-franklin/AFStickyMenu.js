@@ -5,7 +5,7 @@ import AFStickyMenuList from './AFStickyMenuList';
 import { CSVLink } from 'react-csv';
 import PmyBtn from '../button/PmyBtn';
 import FeaturesIcons from '../../../assets/img/svg/switch/FeaturesIcons';
-import FormRequestFranklin from '../../components/form/FormRequestFranklin'
+import FormRequestFranklin from '../../components/form/FormRequestFranklin';
 
 export default class AFStickyMenu extends React.Component {
 
@@ -43,7 +43,9 @@ export default class AFStickyMenu extends React.Component {
                             <Scrollspy items={['questions', 'comparaisons', 'prepositions', 'related']} currentClassName="nav-link-style-active">
                                 {this.props.dataNumber.data.map((x, index) => {
                                     var volume = x.data.map((x) => x.suggestions.length).reduce(reducer);
-                                    return <AFStickyMenuList volume={volume} text={x.type}/>
+                                    return <li>
+                                                <AFStickyMenuList volume={volume} text={x.type}/>
+                                           </li>
                                 })}
                             </Scrollspy>
                         </div>

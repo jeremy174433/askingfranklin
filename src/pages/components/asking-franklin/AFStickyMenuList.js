@@ -34,12 +34,10 @@ export default class AFStickyMenuList extends React.Component {
 
     render() {
         return (
-            <li>
-                <AnchorLink href={'#' + this.props.text} class="nav-link-style">
-                    {this.state.text} &nbsp;
-                    <span>({this.props.volume})</span>
-                </AnchorLink>
-            </li>
+            <AnchorLink href={'#' + this.props.text} class="nav-link-style">
+                {this.state.text} &nbsp;
+                <span>({this.props.volume})</span>
+            </AnchorLink>
         )
     }
 }

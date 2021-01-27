@@ -9,8 +9,23 @@ var countries = [
         items: [
             {
                 name: "filterCountry",
+                label: <p><Flag icon="ca"/>Canada</p>,
+                value: "Canada"
+            },
+            {
+                name: "filterCountry",
+                label: <p><Flag icon="de"/>Germany</p>,
+                value: "Germany"
+            },
+            {
+                name: "filterCountry",
                 label: <p><Flag icon="fr"/>France</p>,
                 value: "France"
+            },
+            {
+                name: "filterCountry",
+                label: <p><Flag icon="it"/>Italy</p>,
+                value: "Italy"
             },
             {
                 name: "filterCountry",
@@ -21,6 +36,11 @@ var countries = [
                 name: "filterCountry",
                 label: <p><Flag icon="gb"/>United Kingdom</p>,
                 value: "United Kingdom"
+            },
+            {
+                name: "filterCountry",
+                label: <p><Flag icon="us"/>United States</p>,
+                value: "United States"
             }
         ]
     }
@@ -29,6 +49,11 @@ var countries = [
 var languages = [
     {
         items: [
+            {
+                name: "filterCountry",
+                label: <p><Flag icon="de"/>Deutsch</p>,
+                value: "Deutsch"
+            },
             {
                 name: "filterCountry",
                 label: <p><Flag icon="gb"/>English</p>,
@@ -43,6 +68,11 @@ var languages = [
                 name: "filterLanguage",
                 label: <p><Flag icon="fr"/>Français</p>,
                 value: "Français"
+            },
+            {
+                name: "filterCountry",
+                label: <p><Flag icon="it"/>Italiano</p>,
+                value: "Italiano"
             }
         ]
     }
