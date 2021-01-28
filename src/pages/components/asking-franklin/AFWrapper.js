@@ -91,9 +91,9 @@ export default class AFWrapper extends React.Component {
                                 <div class="tabs-container d-flex flex-row position-relative w-100">
                                     <Tabs onClick={this.selectFirst} isDisabled={this.state.selectedPanel === 0} textTab="Graphique" title="Graphique" className={this.state.selectedPanel === 0 && 'pmy-tab-selected'}/>
                                     <Tabs onClick={this.selectSecond} isDisabled={this.state.selectedPanel === 1} textTab="Tableau" title="Tableau" className={this.state.selectedPanel === 1 && 'pmy-tab-selected'}/>
-                                    <Tabs onClick={this.selectThird} isDisabled={this.state.selectedPanel === 2} textTab="Tendances" title="Tendances" badgeTitle="New" className={this.state.selectedPanel === 2 && 'pmy-tab-selected'}/>
+                                    {/*<Tabs onClick={this.selectThird} isDisabled={this.state.selectedPanel === 2} textTab="Tendances" title="Tendances" badgeTitle="New" className={this.state.selectedPanel === 2 && 'pmy-tab-selected'}/>*/}
                                 </div>
-                                {this.state.selectedPanel === 0 && <PmyBtn onClick={this.handleExportPng} type="button" btnIsMediumPmyOutlineFull textBtn="Exporter en PNG" title="Exporter le graphique en PNG" iconBtnBefore={<FeaturesIcons icon="image"/>} containerStyle="btn-export-to-png position-relative mt-5 mt-md-0"/> }
+                                {this.state.selectedPanel === 0 && <PmyBtn onClick={this.handleExportPng} type="button" btnIsMediumPmyOutlineFull textBtn="Exporter en PNG" title="Exporter le graphique en PNG" iconBtnBefore={<FeaturesIcons icon="download"/>} containerStyle="btn-export-to-png position-relative mt-5 mt-md-0" className="fz-16-index"/> }
                             </div>
                         </div>
                         <div class="asking-franklin-body">

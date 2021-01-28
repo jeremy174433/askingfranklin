@@ -30,7 +30,7 @@ export default class AFStickyMenu extends React.Component {
         return ( 
             <Col sm="12" xl="3" className="d-flex d-xl-block flex-column p-0 mr-xl-5 mt-6">
                 <CSVLink data={this.exportCSV()} filename={this.props.searchContent + "_AskingFranklin.csv"} className="d-flex d-xl-block order-2 order-xl-1 mt-4 mt-xl-0 text-decoration-none">
-                    <PmyBtn type="button" btnIsMediumPmyOutlineFull textBtn="Exporter en CSV" title="Exporter les résultats en CSV" iconBtnBefore={<FeaturesIcons icon="file"/>} className="w-100"/>
+                    <PmyBtn type="button" btnIsMediumPmyOutlineFull textBtn="Exporter en CSV" title="Exporter les résultats en CSV" iconBtnBefore={<FeaturesIcons icon="download"/>} className="w-100 fz-16-index"/>
                 </CSVLink>
                 <section id="stickyMenu" class={this.props.className ? this.props.className + ' mt-0 mt-xl-4 position-sticky' : 'mt-0 mt-xl-4 position-sticky'}>
                     <div class="block-style p-0">

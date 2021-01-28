@@ -7,41 +7,13 @@ import Flag from '../../../assets/img/svg/switch/Flag';
 var countries = [
     {
         items: [
-            {
-                name: "filterCountry",
-                label: <p><Flag icon="ca"/>Canada</p>,
-                value: "Canada"
-            },
-            {
-                name: "filterCountry",
-                label: <p><Flag icon="de"/>Germany</p>,
-                value: "Germany"
-            },
-            {
-                name: "filterCountry",
-                label: <p><Flag icon="fr"/>France</p>,
-                value: "France"
-            },
-            {
-                name: "filterCountry",
-                label: <p><Flag icon="it"/>Italy</p>,
-                value: "Italy"
-            },
-            {
-                name: "filterCountry",
-                label: <p><Flag icon="es"/>Spain</p>,
-                value: "Spain"
-            },
-            {
-                name: "filterCountry",
-                label: <p><Flag icon="gb"/>United Kingdom</p>,
-                value: "United Kingdom"
-            },
-            {
-                name: "filterCountry",
-                label: <p><Flag icon="us"/>United States</p>,
-                value: "United States"
-            }
+            { label: <p><Flag icon="de"/>Allemagne</p>, value: "Allemagne" },
+            { label: <p><Flag icon="ca"/>Canada</p>, value: "Canada" },
+            { label: <p><Flag icon="es"/>Espagne</p>, value: "Espagne" },
+            { label: <p><Flag icon="us"/>États-Unis</p>, value: "États-Unis" },
+            { label: <p><Flag icon="fr"/>France</p>, value: "France" },
+            { label: <p><Flag icon="it"/>Italie</p>, value: "Italie" },
+            { label: <p><Flag icon="gb"/>Royaume-Uni</p>, value: "Royaume-Uni" }
         ]
     }
 ]
@@ -49,31 +21,11 @@ var countries = [
 var languages = [
     {
         items: [
-            {
-                name: "filterCountry",
-                label: <p><Flag icon="de"/>Deutsch</p>,
-                value: "Deutsch"
-            },
-            {
-                name: "filterCountry",
-                label: <p><Flag icon="gb"/>English</p>,
-                value: "English"
-            },
-            {
-                name: "filterCountry",
-                label: <p><Flag icon="es"/>Español</p>,
-                value: "Español"
-            },
-            {
-                name: "filterLanguage",
-                label: <p><Flag icon="fr"/>Français</p>,
-                value: "Français"
-            },
-            {
-                name: "filterCountry",
-                label: <p><Flag icon="it"/>Italiano</p>,
-                value: "Italiano"
-            }
+            { label: <p><Flag icon="de"/>Allemand</p>, value: "Allemand" },
+            { label: <p><Flag icon="gb"/>Anglais</p>, value: "Anglais" },
+            { label: <p><Flag icon="es"/>Espagnol</p>, value: "Espagnol" },
+            { label: <p><Flag icon="fr"/>Français</p>, value: "Français" },
+            { label: <p><Flag icon="it"/>Italien</p>, value: "Italien" }
         ]
     }
 ]
@@ -127,12 +79,12 @@ export default class Filters extends React.Component {
                         {
                             this.props.isPreselectedCountry ?
                                 countries[0].items.map((country) =>
-                                    <Radio handleSelect={this.handleSelect} name={country.name} label={country.label} value={country.value} isChecked={this.state.selectedValue === country.value ? true : false}/>
+                                    <Radio handleSelect={this.handleSelect} name="filterCountries" label={country.label} value={country.value} isChecked={this.state.selectedValue === country.value ? true : false}/>
                                 )
 
                             : this.props.isPreselectedLanguage &&
                                 languages[0].items.map((language) =>
-                                    <Radio handleSelect={this.handleSelect} name={language.name} label={language.label} value={language.value} isChecked={this.state.selectedValue ===  language.value ? true : false}/>
+                                    <Radio handleSelect={this.handleSelect} name="filterLanguages" label={language.label} value={language.value} isChecked={this.state.selectedValue ===  language.value ? true : false}/>
                                 )
                         }
                     </div>
