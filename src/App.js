@@ -57,7 +57,7 @@ export default class App extends React.Component {
         var is_sub = localStorage.getItem('af_is_sub');
         this.setState({
             isConnected: this.state.isConnected ? false : true,
-            bannerIsShowed: is_sub <= '0' ? false : true || is_sub == '1' ? false : true
+            bannerIsShowed: is_sub <= '0' && this.state.bannerIsShowed ? true : false || is_sub == '1' && false
         });
     }
 

@@ -63,8 +63,8 @@ export default class Navbar extends React.Component {
                         <ul class="d-flex flex-row align-items-center position-relative">
                             <MenuLink href="https://blog.askingfranklin.com" textLink="Blog" containerStyle="mr-3"/>
                             <MenuLink redirectTo="/faq" textLink="FAQ"/>
-                            {localStorage.getItem('af_is_sub') <= 0 && <MenuLink redirectTo="/tarifs" textLink="Tarifs" containerStyle={this.state.isConnected ? 'ml-3' : 'mx-3'}/> }
-                            {!this.state.isConnected && <MenuLink redirectTo="/connexion" textLink="Connexion"/> }
+                            {localStorage.getItem('af_is_sub') == 0 && <MenuLink redirectTo="/tarifs" textLink="Tarifs" containerStyle="ml-3"/> }
+                            {!this.state.isConnected && <MenuLink redirectTo="/connexion" textLink="Connexion" containerStyle="ml-3"/> }
                             {this.state.isConnected && localStorage.getItem('af_is_sub') != 0 && <MenuLink customMenuItem={<CrownPro width="52"/>} containerStyle="position-absolute" style={{top: '-10px', right: '150px', zIndex: 1}}/> }
                             {this.state.isConnected && <MenuLink customMenuItem={<ProfileAccess onClickLogOut={this.handleLogOut}/>} containerStyle="ml-5"/> }
                             {!this.state.isConnected && <MenuLink customMenuItem={<PmyBtn redirectTo="/tarifs" linkIsMediumPmyFull iconLinkBefore={<Rocket width="16"/>} textLink="Devenir Pro" className="rounded-0" containerStyle="ml-5 nav-btn-cta"/>}/> }
