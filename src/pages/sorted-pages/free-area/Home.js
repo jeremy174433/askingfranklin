@@ -169,7 +169,7 @@ export default class Home extends React.Component {
                         <Col md="12" lg="6" className="d-flex justify-content-center justify-content-lg-start order-1 order-lg-0 px-0 pr-lg-5 mt-5 mt-lg-0">
                             <img src={Control} alt="Prenez les devants" class="img-fluid"/>
                         </Col>
-                        <Col md="12" lg="6" className="d-flex flex-column justify-content-center order-0 order-lg-1 pt-5 pt-lg-0">
+                        <Col md="12" lg="6" className="d-flex flex-column justify-content-center order-0 order-lg-1 px-0 pt-5 pt-lg-0">
                             <H2 className="mb-5" title="Prenez les devants et proposez des produits, services et contenus que cherchent vos consommateurs"/>
                             <p class="fz-18 mb-5">Asking Franklin vous fournit une ressource illimitée de mots-clés mais aussi d’idées pour booster votre SEO et nourrir votre stratégie de contenus.</p>
                             <PmyBtn redirectTo="/tarifs" linkIsLargePmyOutlineFull textLink="Voir les avantages Pro" customBtnClass="w-sm-100"/>
@@ -182,7 +182,7 @@ export default class Home extends React.Component {
 
                 <section class="home-section-5">
                     <Container className="d-flex flex-column flex-lg-row">
-                        <Col md="12" lg="6" className="d-flex flex-column justify-content-center">
+                        <Col md="12" lg="6" className="d-flex flex-column justify-content-center px-0">
                             <H2 className="mb-5" title="En un clic, vous avez accès à une source d’idées de contenus venant directement des recherches de votre audience"/>
                             <blockquote>
                                 <p class="fz-18 fw-600">Une nouvelle tendance de consommation émerge ? <br/> Une nouvelle mode ?</p>

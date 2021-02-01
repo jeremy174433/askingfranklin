@@ -90,7 +90,7 @@ export default class Footer extends React.Component {
                             <p class="footer-title">Liens utiles</p>
                             <ul class="d-flex flex-column">
                                 <MenuLink redirectTo="/" textLink="Accueil" linkLocation="footer-link"/>
-                                <MenuLink redirectTo="/tarifs" textLink="Tarifs" linkLocation="footer-link"/>
+                                {localStorage.getItem('af_is_sub') <= 0 && <MenuLink redirectTo="/tarifs" textLink="Tarifs" linkLocation="footer-link"/> }
                                 <MenuLink href="https://blog.askingfranklin.com" textLink="Blog" linkLocation="footer-link"/>
                                 <MenuLink redirectTo="/faq" textLink="FAQ" linkLocation="footer-link"/>
                                 <MenuLink redirectTo="/contact" textLink="Contact" linkLocation="footer-link"/>
@@ -99,7 +99,7 @@ export default class Footer extends React.Component {
                         <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start mb-5 mb-lg-0">
                             <p class="footer-title">Informations</p>
                             <ul class="d-flex flex-column">
-                                <MenuLink redirectTo="/mentions-legales" textLink="Mentions légales"rel="nofollow"  linkLocation="footer-link"/>
+                                <MenuLink redirectTo="/mentions-legales" textLink="Mentions légales"rel="nofollow" linkLocation="footer-link"/>
                                 <MenuLink redirectTo="/conditions-generales-d-utilisation" textLink="CGU" rel="nofollow" linkLocation="footer-link"/>
                                 <MenuLink redirectTo="/conditions-generales-de-vente" textLink="CGV" rel="nofollow" linkLocation="footer-link"/>
                             </ul>
