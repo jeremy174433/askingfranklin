@@ -16,11 +16,11 @@ export default class FormRequestFranklin extends React.Component {
     }
 
     handleCountryChange(value) {
-        console.log('country changed to : ', value);
+        this.props.handleCountryChange(value)
     }
 
     handleLanguageChange(value) {
-        console.log('language changed to : ', value);
+        this.props.handleLanguageChange(value)
     }
 
     toggleOptions() {

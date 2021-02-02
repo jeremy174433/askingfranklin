@@ -10,17 +10,17 @@ var countries = [
             {
                 name: "filterCountry",
                 label: <p><Flag icon="fr"/>France</p>,
-                value: "France"
+                value: "fr"
             },
             {
                 name: "filterCountry",
                 label: <p><Flag icon="es"/>Spain</p>,
-                value: "Spain"
+                value: "es"
             },
             {
                 name: "filterCountry",
                 label: <p><Flag icon="gb"/>United Kingdom</p>,
-                value: "United Kingdom"
+                value: "uk"
             }
         ]
     }
@@ -32,17 +32,17 @@ var languages = [
             {
                 name: "filterCountry",
                 label: <p><Flag icon="gb"/>English</p>,
-                value: "English"
+                value: "uk"
             },
             {
                 name: "filterCountry",
                 label: <p><Flag icon="es"/>Español</p>,
-                value: "Español"
+                value: "es"
             },
             {
                 name: "filterLanguage",
                 label: <p><Flag icon="fr"/>Français</p>,
-                value: "Français"
+                value: "fr"
             }
         ]
     }
@@ -76,9 +76,9 @@ export default class Filters extends React.Component {
     handleSave() {
         var saved = this.state.selectedValue;
         this.setState({
-            selectedSaved: saved
+            selectedSaved: saved.label
         }, () => {
-            this.props.handleFunc(this.state.selectedValue);
+            this.props.handleFunc(saved.value);
             this.toggleDropdown();
         });
     }
@@ -97,12 +97,12 @@ export default class Filters extends React.Component {
                         {
                             this.props.isPreselectedCountry ?
                                 countries[0].items.map((country) =>
-                                    <Radio handleSelect={this.handleSelect} name={country.name} label={country.label} value={country.value} isChecked={this.state.selectedValue === country.value ? true : false}/>
+                                    <Radio handleSelect={this.handleSelect} name={country.name} label={country.label} value={{value:country.value, label: country.label.props.children[1]}} isChecked={this.state.selectedValue.value === country.value ? true : false}/>
                                 )
 
                             : this.props.isPreselectedLanguage &&
                                 languages[0].items.map((language) =>
-                                    <Radio handleSelect={this.handleSelect} name={language.name} label={language.label} value={language.value} isChecked={this.state.selectedValue ===  language.value ? true : false}/>
+                                    <Radio handleSelect={this.handleSelect} name={language.name} label={language.label} value={{value:language.value, label: language.label.props.children[1]}} isChecked={this.state.selectedValue.value ===  language.value ? true : false}/>
                                 )
                         }
                     </div>

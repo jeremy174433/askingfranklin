@@ -51,6 +51,8 @@ export default class AFStickyMenu extends React.Component {
                     <FormRequestFranklin
                         onSubmit={this.props.onSubmit} 
                         onChange={this.props.onChange} 
+                        handleLanguageChange={this.props.handleLanguageChange}
+                        handleCountryChange={this.props.handleCountryChange}
                         formOptionsResultsPage={true}
                         value={this.props.value}
                         label="Nouvelle recherche"
