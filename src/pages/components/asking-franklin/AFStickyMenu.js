@@ -36,8 +36,8 @@ export default class AFStickyMenu extends React.Component {
                     <div class="block-style p-0">
                         <div class="sticky-menu-header p-3 bgc-primary color-light">
                             <h1 class="mb-2 fz-18 fw-600" title={this.props.searchContent}>{this.props.searchContent}</h1>
-                            <p class="fz-14">Pays : <span class="fw-600">France</span></p>
-                            <p class="fz-14">Langue : <span class="fw-600">Français</span></p>
+                            <p class="fz-14">Pays : <span class="fw-600">{this.props.currCountry}</span></p>
+                            <p class="fz-14">Langue : <span class="fw-600">{this.props.currLanguage}</span></p>
                         </div>
                         <div class="sticky-menu-body bg-white d-flex flex-column py-3">
                             <Scrollspy items={['questions', 'comparaisons', 'prepositions', 'related']} currentClassName="nav-link-style-active">
@@ -53,6 +53,8 @@ export default class AFStickyMenu extends React.Component {
                     <FormRequestFranklin
                         onSubmit={this.props.onSubmit} 
                         onChange={this.props.onChange} 
+                        handleLanguageChange={this.props.handleLanguageChange}
+                        handleCountryChange={this.props.handleCountryChange}
                         formOptionsResultsPage={true}
                         value={this.props.value}
                         label="Nouvelle recherche"

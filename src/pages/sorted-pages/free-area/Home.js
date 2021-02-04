@@ -38,11 +38,15 @@ export default class Home extends React.Component {
         super(props)
         this.state = {
             keywordSearch: '',
+            languageSearch:'fr',
+            countrySearch:'fr',
             redirect: false,
             lastArticles: []
         }
         this.handleKeywordChange = this.handleKeywordChange.bind(this);
         this.requestFanklin = this.requestFanklin.bind(this);
+        this.handleCountryChange = this.handleCountryChange.bind(this);
+        this.handleLanguageChange = this.handleLanguageChange.bind(this);
     }
     
     componentDidMount() {
@@ -71,7 +75,16 @@ export default class Home extends React.Component {
             keywordSearch: e.target.value
         });
     }
-
+    handleCountryChange(value){
+        this.setState({
+            countrySearch:value
+        })
+    }
+    handleLanguageChange(value){
+        this.setState({
+            languageSearch:value
+        })
+    }
     requestFanklin = () => {
         this.setState({
             redirect: true
@@ -81,7 +94,7 @@ export default class Home extends React.Component {
     render() {
 
         if(this.state.redirect) {
-            return <Redirect to={'/recherche/' + this.state.keywordSearch.replace(/ /g, '-')}/>
+            return <Redirect to={'/recherche/' + this.state.keywordSearch.replace(/ /g, '-') + '?lang=' + this.state.languageSearch + '&country=' + this.state.countrySearch}/>
         }
 
         const cardRowBlog = 'd-flex flex-column flex-lg-row align-items-center align-items-lg-start ';
@@ -106,6 +119,8 @@ export default class Home extends React.Component {
                                 keyword={this.state.keywordSearch}
                                 hideLabel={true}
                                 isDisabled={this.state.keywordSearch.length === 0}
+                                handleLanguageChange={this.handleLanguageChange}
+                                handleCountryChange={this.handleCountryChange}
                             />
                         </Col>
                         <Col md="12" lg="6" className="px-0 d-flex align-items-center justify-content-center">

@@ -16,11 +16,11 @@ export default class FormRequestFranklin extends React.Component {
     }
 
     handleCountryChange(value) {
-        console.log('country changed to : ', value);
+        this.props.handleCountryChange(value)
     }
 
     handleLanguageChange(value) {
-        console.log('language changed to : ', value);
+        this.props.handleLanguageChange(value)
     }
 
     toggleOptions() {
@@ -50,9 +50,9 @@ export default class FormRequestFranklin extends React.Component {
                         placeholder="Saisissez un mot clé, un produit, une marque..."
                     />
                     <PmyBtn type="submit" redirectTo={true} isDisabled={this.props.isDisabled} rel="nofollow" textLink="Explorer" linkIsLargePmyFull containerStyle={this.props.containerStyle} customBtnClass="w-100 h-100" className="h-100" style={ this.props.hideLabel && { height: '66px', maxHeight: '66px' } }/>
-                     {/*{this.props.formOptionsResultsPage && <p onClick={this.toggleOptions} class="mt-3 ml-auto d-none d-xl-block">Plus d'options</p> }*/}
+                     {this.props.formOptionsResultsPage && <p onClick={this.toggleOptions} class="mt-3 ml-auto d-none d-xl-block">Plus d'options</p> }
                 </form>
-                {/*<div class={this.state.optsDropdown ? 'filters-options-research-visible' + optsItems : optsItems}>
+                <div class={this.state.optsDropdown ? 'filters-options-research-visible' + optsItems : optsItems}>
                     {this.props.formOptionsResultsPage &&
                         <div onClick={this.toggleOptions} class="ml-auto my-2 d-none d-xl-flex state-interaction-element" title="Fermer">
                             <Close width="12" fill="#2B2B2B"/>
@@ -60,7 +60,7 @@ export default class FormRequestFranklin extends React.Component {
                     }
                     <Filters handleFunc={this.handleCountryChange} isPreselectedCountry={true} id="btnCountries" label="Pays de recherche"/>
                     <Filters handleFunc={this.handleLanguageChange} isPreselectedLanguage={true} id="btnLanguages" label="Langue de recherche"/>
-                </div>*/}
+                </div>
             </div>
         )
     }

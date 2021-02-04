@@ -7,13 +7,13 @@ import Flag from '../../../assets/img/svg/switch/Flag';
 var countries = [
     {
         items: [
-            { label: <p><Flag icon="de"/>Allemagne</p>, value: "Allemagne" },
-            { label: <p><Flag icon="ca"/>Canada</p>, value: "Canada" },
-            { label: <p><Flag icon="es"/>Espagne</p>, value: "Espagne" },
-            { label: <p><Flag icon="us"/>États-Unis</p>, value: "États-Unis" },
-            { label: <p><Flag icon="fr"/>France</p>, value: "France" },
-            { label: <p><Flag icon="it"/>Italie</p>, value: "Italie" },
-            { label: <p><Flag icon="gb"/>Royaume-Uni</p>, value: "Royaume-Uni" }
+            { label: <p><Flag icon="de"/>Allemagne</p>, value: "de" },
+            { label: <p><Flag icon="ca"/>Canada</p>, value: "ca" },
+            { label: <p><Flag icon="es"/>Espagne</p>, value: "es" },
+            { label: <p><Flag icon="us"/>États-Unis</p>, value: "us" },
+            { label: <p><Flag icon="fr"/>France</p>, value: "fr" },
+            { label: <p><Flag icon="it"/>Italie</p>, value: "it" },
+            { label: <p><Flag icon="gb"/>Royaume-Uni</p>, value: "uk" }
         ]
     }
 ]
@@ -21,11 +21,11 @@ var countries = [
 var languages = [
     {
         items: [
-            { label: <p><Flag icon="de"/>Allemand</p>, value: "Allemand" },
-            { label: <p><Flag icon="gb"/>Anglais</p>, value: "Anglais" },
-            { label: <p><Flag icon="es"/>Espagnol</p>, value: "Espagnol" },
-            { label: <p><Flag icon="fr"/>Français</p>, value: "Français" },
-            { label: <p><Flag icon="it"/>Italien</p>, value: "Italien" }
+            { label: <p><Flag icon="de"/>Allemand</p>, value: "de" },
+            { label: <p><Flag icon="gb"/>Anglais</p>, value: "uk" },
+            { label: <p><Flag icon="es"/>Espagnol</p>, value: "es" },
+            { label: <p><Flag icon="fr"/>Français</p>, value: "fr" },
+            { label: <p><Flag icon="it"/>Italien</p>, value: "it" }
         ]
     }
 ]
@@ -58,9 +58,9 @@ export default class Filters extends React.Component {
     handleSave() {
         var saved = this.state.selectedValue;
         this.setState({
-            selectedSaved: saved
+            selectedSaved: saved.label
         }, () => {
-            this.props.handleFunc(this.state.selectedValue);
+            this.props.handleFunc(saved.value);
             this.toggleDropdown();
         });
     }
@@ -79,12 +79,12 @@ export default class Filters extends React.Component {
                         {
                             this.props.isPreselectedCountry ?
                                 countries[0].items.map((country) =>
-                                    <Radio handleSelect={this.handleSelect} name="filterCountries" label={country.label} value={country.value} isChecked={this.state.selectedValue === country.value ? true : false}/>
+                                    <Radio handleSelect={this.handleSelect} name="filterCountries" label={country.label} value={{value:country.value, label: country.label.props.children[1]}} isChecked={this.state.selectedValue.value === country.value ? true : false}/>
                                 )
 
                             : this.props.isPreselectedLanguage &&
                                 languages[0].items.map((language) =>
-                                    <Radio handleSelect={this.handleSelect} name="filterLanguages" label={language.label} value={language.value} isChecked={this.state.selectedValue ===  language.value ? true : false}/>
+                                    <Radio handleSelect={this.handleSelect} name="filterLanguages" label={language.label} value={{value:language.value, label: language.label.props.children[1]}} isChecked={this.state.selectedValue.value ===  language.value ? true : false}/>
                                 )
                         }
                     </div>
