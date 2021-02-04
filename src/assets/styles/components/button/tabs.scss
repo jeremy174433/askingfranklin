@@ -14,7 +14,14 @@
         color: $primary;
         border-bottom-color: $primary;
     }
-    &[disabled] { cursor: not-allowed; }
+
+    &[disabled] { 
+        cursor: not-allowed;
+        &:hover, &:focus {
+            color: $theme-color-primary;
+            border-bottom-color: $theme-terthiary;
+        }
+    }
 
     svg { fill: $theme-color-primary; }
 
@@ -25,4 +32,12 @@
 
         svg { fill: $primary !important; }
     }
+}
+
+.pmy-tab-badge {
+    background-color: $secondary;
+    color: $theme-color-secondary;
+    right: -8px;
+    pointer-events: none;
+    @include max-sm-rwd { right: -24px; }
 }

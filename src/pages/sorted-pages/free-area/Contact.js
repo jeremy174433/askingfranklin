@@ -19,8 +19,7 @@ export default class Contact extends React.Component {
             alertIsShowed: false,
             email: '',
             subject: '',
-            content: '',
-            isConnected: false
+            content: ''
         }
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handleSubjectChange = this.handleSubjectChange.bind(this);
@@ -29,39 +28,7 @@ export default class Contact extends React.Component {
         this.handleCloseAlert = this.handleCloseAlert.bind(this);
     }
 
-    loadPageData() {
-        var token = localStorage.getItem('af_token');
-        if (token && token.length > 0) {
-            fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/get-email', {
-                headers: {
-                    'Authorization': token
-                },
-                method: 'GET',
-            })
-            .then(res => {
-                return res.json();
-            })
-            .then(res => {
-                if (res.message === 'The incoming token has expired') {
-                    refreshTokenFnc(this.loadPageData, false);
-                }
-                else {
-                    this.setState({
-                        curr_email: res.message[0],
-                        isConnected: (token && token.length > 0) ? true : false
-                    });
-                }
-            })
-            .catch(error => {
-                if(error == 'TypeError: Failed to fetch') {
-                    refreshTokenFnc(this.loadPageData, false);
-                }
-            })
-        }
-    }
-
     componentDidMount() {
-        this.loadPageData();
         window.scrollTo(0, 0);
     }
 
@@ -106,7 +73,7 @@ export default class Contact extends React.Component {
             method: 'POST',
             headers: headers,
             body: JSON.stringify({
-                email: this.state.isConnected ? this.state.curr_email : this.state.email,
+                email: this.state.email,
                 subject: this.state.subject,
                 content: this.state.content
             })
@@ -116,7 +83,7 @@ export default class Contact extends React.Component {
             if(res.err === null) {
                 this.setState({
                     alertIsShowed: true,
-                    email: this.state.isConnected ? this.state.curr_email : '',
+                    email: '',
                     subject: '',
                     content: ''
                 });
@@ -165,11 +132,10 @@ export default class Contact extends React.Component {
                                     name={this.for}
                                     id={this.for}
                                     onChange={this.handleEmailChange}
-                                    value={this.state.isConnected ? this.state.curr_email : this.state.email}
+                                    value={this.state.email}
                                     containerStyle="mt-3 ml-0 ml-lg-3"
                                     required={true}
-                                    disabled={this.state.isConnected}
-                                    infoMsg={!this.state.isConnected && this.state.email.length < 1 && 'Ce champ est requis' || !this.state.isConnected && !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
+                                    infoMsg={this.state.email.length < 1 && 'Ce champ est requis' || !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
                                 />
                             </Col>
                         </Row>
@@ -187,7 +153,7 @@ export default class Contact extends React.Component {
                                 infoMsg={this.state.content.length < 1 && 'Ce champ est requis'}
                             />
                         </Col>
-                        <PmyBtn type="submit" isDisabled={!this.state.isConnected && !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) || this.state.subject.length < 1 || this.state.content.length < 1} btnIsMediumPmyFull textBtn="Envoyer le message" className="w-sm-100"/>
+                        <PmyBtn type="submit" isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) || this.state.subject.length < 1 || this.state.content.length < 1} btnIsMediumPmyFull textBtn="Envoyer le message" className="w-sm-100"/>
                     </form>
                 </Container>
             </div>

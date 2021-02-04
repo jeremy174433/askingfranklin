@@ -9,10 +9,8 @@ import { Redirect } from 'react-router-dom';
 import VideoHome from '../../../assets/video/VideoHome.mp4';
 import H1 from '../../components/elements/title/H1';
 import H2 from '../../components/elements/title/H2';
-import H3 from '../../components/elements/title/H3';
 import PmyBtn from '../../components/button/PmyBtn';
 import FormRequestFranklin from '../../components/form/FormRequestFranklin';
-import ArrowTextLink from '../../components/elements/link/ArrowTextLink';
 import CardReview from '../../components/elements/cards/CardReview';
 import CardTestimonial from '../../components/elements/cards/CardTestimonial';
 import CardBlog from '../../components/elements/cards/CardBlog';
@@ -53,7 +51,6 @@ export default class Home extends React.Component {
     
     componentDidMount() {
         window.scrollTo(0, 0);
-        /*
         fetch('https://cors-anywhere.herokuapp.com/https://blog.askingfranklin.com/wp-json/wp/v2/posts?per_page=3&_embed')
         .then((res) => res.json())
         .then((res) => {
@@ -61,7 +58,6 @@ export default class Home extends React.Component {
                 lastArticles: res
             });
         })
-        */
     }
 
     customHeadElement() {
@@ -100,6 +96,8 @@ export default class Home extends React.Component {
         if(this.state.redirect) {
             return <Redirect to={'/recherche/' + this.state.keywordSearch.replace(/ /g, '-') + '?lang=' + this.state.languageSearch + '&country=' + this.state.countrySearch}/>
         }
+
+        const cardRowBlog = 'd-flex flex-column flex-lg-row align-items-center align-items-lg-start ';
 
         return (
             <div id="home">
@@ -186,7 +184,7 @@ export default class Home extends React.Component {
                         <Col md="12" lg="6" className="d-flex justify-content-center justify-content-lg-start order-1 order-lg-0 px-0 pr-lg-5 mt-5 mt-lg-0">
                             <img src={Control} alt="Prenez les devants" class="img-fluid"/>
                         </Col>
-                        <Col md="12" lg="6" className="d-flex flex-column justify-content-center order-0 order-lg-1 pt-5 pt-lg-0">
+                        <Col md="12" lg="6" className="d-flex flex-column justify-content-center order-0 order-lg-1 px-0 pt-5 pt-lg-0">
                             <H2 className="mb-5" title="Prenez les devants et proposez des produits, services et contenus que cherchent vos consommateurs"/>
                             <p class="fz-18 mb-5">Asking Franklin vous fournit une ressource illimitée de mots-clés mais aussi d’idées pour booster votre SEO et nourrir votre stratégie de contenus.</p>
                             <PmyBtn redirectTo="/tarifs" linkIsLargePmyOutlineFull textLink="Voir les avantages Pro" customBtnClass="w-sm-100"/>
@@ -199,7 +197,7 @@ export default class Home extends React.Component {
 
                 <section class="home-section-5">
                     <Container className="d-flex flex-column flex-lg-row">
-                        <Col md="12" lg="6" className="d-flex flex-column justify-content-center">
+                        <Col md="12" lg="6" className="d-flex flex-column justify-content-center px-0">
                             <H2 className="mb-5" title="En un clic, vous avez accès à une source d’idées de contenus venant directement des recherches de votre audience"/>
                             <blockquote>
                                 <p class="fz-18 fw-600">Une nouvelle tendance de consommation émerge ? <br/> Une nouvelle mode ?</p>
@@ -220,7 +218,7 @@ export default class Home extends React.Component {
                             <CardTestimonial
                                 img={ThomasCubel}
                                 testimonial="Contrairement à d’autres outils du marché, l’outil est beaucoup plus rapide à l’utilisation. La recherche des suggests est quasi instantanée. Le support de la langue française est meilleure, donc nous sommes plus efficace au travail."
-                                fullname="Thomas Cubel" jobAndCompany="Consultant SEO"
+                                fullname="Thomas Cubel" jobAndCompany="Consultant SEO - Freelance"
                             />
                         </Col>
                         <Col md="12" lg="4" xl="3" className="slider-item px-0 mt-5">
@@ -249,20 +247,19 @@ export default class Home extends React.Component {
                             <PmyBtn redirectTo="/tarifs" linkIsLargePmyOutlineLight textLink="Voir les avantages Pro" containerStyle="text-center" style={{zIndex: 1}}/>
                         </div>
                     </Container>
-                    {/*}{!this.state.lastArticles.length < 1 &&  <Blob9 className="blob-9"/> }*/}
+                    {!this.state.lastArticles.length < 1 &&  <Blob9 className="blob-9"/> }
                 </section>
 
-                {/*}
-                {!this.state.lastArticles.length < 1 && 
+                {!this.state.lastArticles.length < 1 &&
                     <section class="home-section-8 position-relative overflow-hidden pt-6">
                         <WaveEndingTop className="wave-top-5"/>
                         <Container className="px-0 position-relative">
                             <H2 className="mb-5" title="Ne passez pas à côté de nos derniers articles"/>
                             <Dots className="dots-5"/>
-                            <Row className="d-flex flex-column flex-lg-row align-items-center align-items-lg-start justify-content-lg-around">
+                            <Row className={this.state.lastArticles.length < 3 ? cardRowBlog + 'justify-content-lg-start' : cardRowBlog + 'justify-content-lg-around'}>
                                 {this.state.lastArticles.map((article) => {
                                     return (
-                                        <Col xs="12" sm="8" md="6" lg="4" className="blog-post-item px-0 mt-5">
+                                        <Col xs="12" sm="8" md="6" lg="4" className={this.state.lastArticles.length < 3 ? 'blog-post-item px-0 mt-5 mr-5' : 'blog-post-item px-0 mt-5'}>
                                             <CardBlog
                                                 redirectTo={article.link}
                                                 img={article._embedded['wp:featuredmedia'][0].source_url} imgAlt={article._embedded['wp:featuredmedia'][0].alt_text}
@@ -277,7 +274,6 @@ export default class Home extends React.Component {
                         </Container>
                     </section>
                 }
-                */}
 
             </div>
         )

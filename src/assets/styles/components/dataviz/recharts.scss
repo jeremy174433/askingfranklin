@@ -1,0 +1,13 @@
+// ---------- RECHARTS : GLOBAL ---------- //
+.recharts-default-tooltip {
+    color: $theme-color-primary !important;
+    padding: .25rem .75rem !important;
+    background-color: $theme-primary !important;
+    border: 1px solid $theme-terthiary !important;
+    box-shadow: 0 0 4px $black-25;
+    white-space: nowrap;
+    border-radius: .25rem;
+    li { color: $theme-color-primary !important; }
+}
+
+.recharts-tooltip-cursor { stroke: $primary-25; }

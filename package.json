@@ -27,6 +27,7 @@
     "react-scripts": "^3.4.3",
     "react-scrollspy": "^3.4.3",
     "react-stepper-horizontal": "^1.0.11",
+    "recharts": "^2.0.4",
     "save-svg-as-png": "^1.4.17"
   },
   "scripts": {

@@ -50,7 +50,7 @@ export default class FormRequestFranklin extends React.Component {
                         placeholder="Saisissez un mot clé, un produit, une marque..."
                     />
                     <PmyBtn type="submit" redirectTo={true} isDisabled={this.props.isDisabled} rel="nofollow" textLink="Explorer" linkIsLargePmyFull containerStyle={this.props.containerStyle} customBtnClass="w-100 h-100" className="h-100" style={ this.props.hideLabel && { height: '66px', maxHeight: '66px' } }/>
-                    {this.props.formOptionsResultsPage && <p onClick={this.toggleOptions} class="mt-3 ml-auto d-none d-xl-block">Plus d'options</p> }
+                     {this.props.formOptionsResultsPage && <p onClick={this.toggleOptions} class="mt-3 ml-auto d-none d-xl-block">Plus d'options</p> }
                 </form>
                 <div class={this.state.optsDropdown ? 'filters-options-research-visible' + optsItems : optsItems}>
                     {this.props.formOptionsResultsPage &&

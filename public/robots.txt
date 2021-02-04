@@ -1,7 +1,12 @@
 User-agent: *
+Disallow: /inscription/confirmation
 Disallow: /mot-de-passe-oublie
 Disallow: /recherche/*
-Disallow: /support
+Disallow: /limite-de-recherches
 Disallow: /mentions-legales
 Disallow: /conditions-generales-d-utilisation
 Disallow: /conditions-generales-de-vente
+Disallow: /profil
+Disallow: /plans
+Disallow: /paiement
+Disallow: /paiement/confirmation

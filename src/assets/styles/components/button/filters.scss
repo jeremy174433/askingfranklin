@@ -146,10 +146,12 @@
 
 #askingFranklin {
     @include min-xl-rwd {
+
+        #stickyMenu #btnCountries { margin: 0 !important; }
+
         .filters-options-research {
 
             .btn-filter {
-                &#btnCountries { margin: 0 !important; }
                 &.filters-dropdown-open {
                     border-radius: .5rem;
                     

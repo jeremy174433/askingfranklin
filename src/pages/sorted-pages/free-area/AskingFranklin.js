@@ -11,6 +11,21 @@ import {
 import AFWrapper from '../../components/asking-franklin/AFWrapper';
 import FormRequestFranklin from '../../components/form/FormRequestFranklin';
 import qs from 'qs'
+const minToMaxLanguage = {
+    "fr":"Français",
+    "uk":"Anglais",
+    "de":"Allemand",
+    "es":"Espagnol",
+    "it":"Italien"
+}
+const minToMaxCountry = {
+    "fr":"France",
+    "ca":"Canada",
+    "uk":"Royaume-Uni",
+    "it":"Italie",
+    "de":"Allemagne",
+    "us":"États-unis"
+}
 export default class AskingFranklin extends React.Component {
     constructor(props) {
         super(props)
@@ -24,7 +39,9 @@ export default class AskingFranklin extends React.Component {
             languageSearch:'fr',
             countrySearch:'fr',
             newKeywordSearch: '',
-            redirectBlocked: false
+            redirectBlocked: false,
+            currLanguage:'Français',
+            currCountry:'France'
         }
         this.switchSelectedPanel = this.switchSelectedPanel.bind(this);
         this.handleKeywordChange = this.handleKeywordChange.bind(this);
@@ -43,7 +60,7 @@ export default class AskingFranklin extends React.Component {
             dataIsLoaded: false,
             keywordSearch: keyword.replace(/-/g, ' ')
         }, () => {
-            fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/suggestions?keyword=' + keyword, headers)
+            fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/suggestions?keyword=' + keyword + '&lang=' + lang + '&country=' + country, headers)
             .then((res) => res.json())
             .then((res) => {
                 if (res.blocked) {
@@ -72,6 +89,10 @@ export default class AskingFranklin extends React.Component {
 
     componentDidMount() {
         var params = qs.parse(this.props.location.search, { ignoreQueryPrefix: true })
+        this.setState({
+            currCountry:minToMaxCountry[params.country],
+            currLanguage:minToMaxLanguage[params.lang]
+        })
         this.fetchFranklin(this.props.match.params.keyword, params.lang, params.country);
         window.scrollTo(0, 0);
     }
@@ -187,6 +208,8 @@ export default class AskingFranklin extends React.Component {
                                 isDisabled={this.state.newKeywordSearch.length === 0}
                                 handleCountryChange={this.handleCountryChange}
                                 handleLanguageChange={this.handleLanguageChange}
+                                currCountry={this.state.currCountry}
+                                currLanguage={this.state.currLanguage}
 
                             />
                             <Col className="block-results col-12 col-xl-9 px-0 mb-5 w-100">

@@ -23,7 +23,6 @@ import TermsOfServices from './pages/sorted-pages/free-area/law/TermsOfServices'
 import TermsOfSales from './pages/sorted-pages/free-area/law/TermsOfSales';
 import Error404 from './pages/sorted-pages/free-area/Error404';
 import Profile from './pages/sorted-pages/deep-area/Profile';
-import Support from './pages/sorted-pages/deep-area/Support';
 import ChoosePlan from './pages/sorted-pages/deep-area/conversion-funnel/ChoosePlan';
 import Payment from './pages/sorted-pages/deep-area/conversion-funnel/Payment';
 import ConfirmationPayment from './pages/sorted-pages/deep-area/conversion-funnel/ConfirmationPayment';
@@ -58,7 +57,7 @@ export default class App extends React.Component {
         var is_sub = localStorage.getItem('af_is_sub');
         this.setState({
             isConnected: this.state.isConnected ? false : true,
-            bannerIsShowed: is_sub == '1' ? false : true
+            bannerIsShowed: is_sub <= '0' && this.state.bannerIsShowed ? true : false || is_sub == '1' && false
         });
     }
 
@@ -83,7 +82,6 @@ export default class App extends React.Component {
                         <Route path="/limite-de-recherches" render={(props) => <MaximumRequests {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route path="/faq" render={(props) => <Faq {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route path="/contact" render={(props) => <Contact {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
-                        <Route path="/support" render={(props) => <Support {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route exact path='/' render={(props) => <Home {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route exact path='/tarifs' render={(props) => <Pricing {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route exact path='/profil' render={(props) => <Profile {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>

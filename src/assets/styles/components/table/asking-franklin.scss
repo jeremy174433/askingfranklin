@@ -8,6 +8,7 @@
                 background-color: $theme-color-primary;
                 height: 48px;
                 padding: 0 .5rem !important;
+                border: none;
                 &::first-letter { text-transform: capitalize; }
                 &:first-child { border-radius:  4px 0 0 4px; }
                 &:last-child { border-radius: 0 4px 4px 0; }
@@ -28,6 +29,51 @@
                 }
             }
         }
+    }
+
+}
+
+.asking-franklin-table-tendancies {
+
+    @include max-md-rwd {
+
+        thead {
+            th:not(:first-child) { display: none; }
+        }
+
+        tbody {
+            tr {
+                display: grid;
+                border-bottom: none !important;
+
+                td:first-child {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+
+                .td-area-chart { 
+                    border-top: none;
+
+                    .recharts-wrapper {
+
+                        @include max-sm-rwd {
+                            width: 207px !important;
+                            height: auto !important;
+                            top: 7px !important;
+                            svg { 
+                                width: 207px !important;
+                                height: auto !important;
+                            }
+                        }
+                    }
+                }
+
+                td:last-child { display: none; }
+            }
+        } 
+
     }
 
 }

@@ -56,29 +56,21 @@ export default class Navbar extends React.Component {
         return (
             <nav id="navbar" class={this.props.className ? this.props.className + navClass : navClass}>
                 <Container className="px-0 d-flex flex-lg-row align-items-center justify-content-lg-center">
-                    <Link to="/" class="mr-4 mr-md-2">
+                    <Link to="/" class="mr-2">
                         <Logo icon="global" width="200"/>
                     </Link>
                     <div class="d-none d-md-block ml-auto">
-                            {
-                                this.state.isConnected === true ?
-                                    <ul class="d-flex flex-row align-items-center position-relative">
-                                        {/*<MenuLink href="https://blog.askingfranklin.com" textLink="Blog" containerStyle="mr-3"/>*/}
-                                        <MenuLink redirectTo="/faq" textLink="FAQ"/>
-                                        {localStorage.getItem('af_is_sub') == 0 && <MenuLink redirectTo="/tarifs" textLink="Tarifs" containerStyle="ml-3"/> }
-                                        {localStorage.getItem('af_is_sub') != 0 && <MenuLink customMenuItem={<CrownPro width="52"/>} containerStyle="position-absolute" style={{top: '-10px', right: '150px', zIndex: 1}}/> }
-                                        <MenuLink customMenuItem={<ProfileAccess onClickLogOut={this.handleLogOut}/>} containerStyle="ml-5"/>
-                                    </ul>
-                                : this.state.isConnected === false &&
-                                    <ul class="d-flex flex-row align-items-center">
-                                        {/*<MenuLink href="https://blog.askingfranklin.com" textLink="Blog" containerStyle="mr-3"/>*/}
-                                        <MenuLink redirectTo="/faq" textLink="FAQ" containerStyle="mr-3"/>
-                                        <MenuLink redirectTo="/connexion" textLink="Connexion"/>
-                                        <MenuLink customMenuItem={<PmyBtn redirectTo="/tarifs" linkIsMediumPmyFull iconLinkBefore={<Rocket width="16"/>} textLink="Devenir Pro" className="rounded-0" containerStyle="ml-5 nav-btn-cta"/>}/>
-                                    </ul>
-                            }
+                        <ul class="d-flex flex-row align-items-center position-relative">
+                            <MenuLink href="https://blog.askingfranklin.com" textLink="Blog" containerStyle="mr-3"/>
+                            <MenuLink redirectTo="/faq" textLink="FAQ"/>
+                            {localStorage.getItem('af_is_sub') == 0 && <MenuLink redirectTo="/tarifs" textLink="Tarifs" containerStyle="ml-3"/> }
+                            {!this.state.isConnected && <MenuLink redirectTo="/connexion" textLink="Connexion" containerStyle="ml-3"/> }
+                            {this.state.isConnected && localStorage.getItem('af_is_sub') != 0 && <MenuLink customMenuItem={<CrownPro width="52"/>} containerStyle="position-absolute" style={{top: '-10px', right: '150px', zIndex: 1}}/> }
+                            {this.state.isConnected && <MenuLink customMenuItem={<ProfileAccess onClickLogOut={this.handleLogOut}/>} containerStyle="ml-5"/> }
+                            {!this.state.isConnected && <MenuLink customMenuItem={<PmyBtn redirectTo="/tarifs" linkIsMediumPmyFull iconLinkBefore={<Rocket width="16"/>} textLink="Devenir Pro" className="rounded-0" containerStyle="ml-5 nav-btn-cta"/>}/> }
+                        </ul>
                     </div>
-                    <MobileMenu userConnected={this.state.isConnected} onClickLogOut={this.handleLogOut}/>
+                    <MobileMenu isConnected={this.state.isConnected} onClickLogOut={this.handleLogOut}/>
                 </Container>
             </nav>
         )

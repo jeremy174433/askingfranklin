@@ -3,70 +3,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://www.askingfranklin.com</loc>
-        <priority>1.00</priority>
     </url>
     <url>
         <loc>https://www.askingfranklin.com/tarifs</loc>
-        <priority>0.80</priority>
     </url>
     <url>
         <loc>https://www.askingfranklin.com/faq</loc>
-        <priority>0.80</priority>
     </url>
     <url>
         <loc>https://www.askingfranklin.com/contact</loc>
-        <priority>0.80</priority>
     </url>
     <url>
         <loc>https://www.askingfranklin.com/connexion</loc>
-        <priority>0.80</priority>
     </url>
     <url>
         <loc>https://www.askingfranklin.com/inscription</loc>
-        <priority>0.50</priority>
-    </url>
-    <url>
-        <loc>https://www.askingfranklin.com/mentions-legales</loc>
-        <priority>0.50</priority>
-    </url>
-    <url>
-        <loc>https://www.askingfranklin.com/conditions-generales-d-utilisation</loc>
-        <priority>0.50</priority>
-    </url>
-    <url>
-        <loc>https://www.askingfranklin.com/conditions-generales-de-vente</loc>
-        <priority>0.50</priority>
-    </url>
-    <url>
-        <loc>https://www.askingfranklin.com/inscription</loc>
-        <priority>0.20</priority>
-    </url>
-    <url>
-        <loc>https://www.askingfranklin.com/limite-de-recherches</loc>
-        <priority>0.00</priority>
-    </url>
-    <url>
-        <loc>https://www.askingfranklin.com/inscription/confirmation</loc>
-        <priority>0.00</priority>
-    </url>
-    <url>
-        <loc>https://www.askingfranklin.com/support</loc>
-        <priority>0.00</priority>
-    </url>
-    <url>
-        <loc>https://www.askingfranklin.com/profil</loc>
-        <priority>0.00</priority>
-    </url>
-    <url>
-        <loc>https://www.askingfranklin.com/plans</loc>
-        <priority>0.00</priority>
-    </url>
-    <url>
-        <loc>https://www.askingfranklin.com/paiement</loc>
-        <priority>0.00</priority>
-    </url>
-    <url>
-        <loc>https://www.askingfranklin.com/mot-de-passe-oublie</loc>
-        <priority>0.00</priority>
     </url>
 </urlset>
