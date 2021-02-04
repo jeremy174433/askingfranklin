@@ -148,7 +148,7 @@ export default class ChoosePlan extends React.Component {
                         <H1 className="text-center" title="Passez à la vitesse supérieure avec la version Pro"/>
                         {this.state.selectedPlan !== 0 &&
                             <p class='text-center mt-5 fz-18'>
-                                Vous aviez sélectionné l'abonnement&nbsp;
+                                Vous avez sélectionné l'abonnement&nbsp;
                                 {this.state.alreadySelected === 1 && <span class="fw-600">Mensuel</span>}
                                 {this.state.alreadySelected === 2 && <span class="fw-600">Annuel</span>}
                             </p>

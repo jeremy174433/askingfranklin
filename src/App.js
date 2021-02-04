@@ -5,6 +5,8 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
+import i18n from 'i18next';
+import { withTranslation } from 'react-i18next';
 import Banner from './pages/components/partials/Banner';
 import Navbar from './pages/components/partials/Navbar';
 import Footer from './pages/components/partials/Footer';
@@ -29,13 +31,14 @@ import ConfirmationPayment from './pages/sorted-pages/deep-area/conversion-funne
 import BackToTop from 'react-back-to-top-button';
 import ArrowLight from './assets/img/svg/ArrowLight';
 
-export default class App extends React.Component {
+class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             isConnected: false,
             bannerIsShowed: false
         }
+        this.handleLanguage = this.handleLanguage.bind(this);
         this.handleConnect = this.handleConnect.bind(this);
         this.handleHideBanner = this.handleHideBanner.bind(this);
     }
@@ -53,6 +56,11 @@ export default class App extends React.Component {
         }
     }
 
+    handleLanguage(e) {
+        var lang = e.target.dataset.lang;
+        i18n.changeLanguage(lang);
+    }
+
     handleConnect() {
         var is_sub = localStorage.getItem('af_is_sub');
         this.setState({
@@ -68,11 +76,18 @@ export default class App extends React.Component {
     }
 
     render() {
+
+        const { t } = this.props;
+
         return (
             <div id="App">
                 {this.state.bannerIsShowed && <Banner onClick={this.handleHideBanner} bannerIsActive={this.state.bannerIsShowed}/> }
                 <Router>
                     <Navbar isConnected={this.state.isConnected} className={this.state.bannerIsShowed && 'banner-showed'}/>
+                    {/*<div class="d-flex flex-row position-fixed bgc-primary color-light w-100 pl-5" style={{ marginTop: '66px', zIndex: 150 }}>
+                        <p onClick={this.handleLanguage} data-lang="en" class="mr-4">English</p>
+                        <p onClick={this.handleLanguage} data-lang="fr">Français</p>
+                    </div>*/}
                     <Switch>
                         <Route path='/connexion' render={(props) => <SignIn {...props} bannerIsActive={this.state.bannerIsShowed} handleConnect={this.handleConnect}/>}/>
                         <Route exact path='/inscription/confirmation' render={(props) => <SignUpConfirmation {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
@@ -93,7 +108,7 @@ export default class App extends React.Component {
                         <Route path="/conditions-generales-de-vente" render={(props) => <TermsOfSales {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route path="*" render={(props) => <Error404 {...props} bannerIsActive={this.state.bannerIsShowed}/>} status={404}/>
                     </Switch>
-                    <Footer/>
+                    <Footer onClickLanguage={this.handleLanguage}/>
                 </Router>
                 <BackToTop showAt={2500} speed={500} easing="easeInOutQuint">
                     <ArrowLight width="22" fill="#FFF"/>
@@ -105,3 +120,5 @@ export default class App extends React.Component {
         )
     }
 }
+
+export default withTranslation()(App);

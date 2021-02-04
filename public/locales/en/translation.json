@@ -1,0 +1,48 @@
+{
+
+    "title": {
+        "1": "a",
+        "2": "b",
+        "3": "c"
+    },
+    "description": {
+        "1": "a",
+        "2": "b",
+        "3": "c"
+    },
+    "navbar": {
+        "blog": "Blog",
+        "faq": "FAQ",
+        "pricing": "Pricing",
+        "signin": "Sign In",
+        "cta": "Become Pro",
+        "account": {
+            "btn": "My account",
+            "settings": "Settings",
+            "logout": "Log Out"
+        }
+    },
+    "footer": {
+        "1": "a",
+        "2": "b",
+        "3": "c"
+    },
+    "alert": {
+        "1": "a",
+        "2": "b",
+        "3": "c"
+    },
+
+
+    "homepage": {
+        "test": "home"
+    },
+
+
+    "text": {
+        "primary": "read this :"
+    },
+    "Why": {
+        "1": "This is a cookie bar"
+    }
+}

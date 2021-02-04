@@ -47,7 +47,7 @@ export default class SignUpConfirmation extends React.Component {
                         <H1 className="mb-5" title="Votre compte est maintenant validé 🚀"/>
                         <p class="mb-5 d-flex flex-column fw-600">
                             <span class="mb-2">Vous avez désormais la possibilité de souscrire à la version Pro.</span>
-                            <span>Profiter ainsi de toute la puissance de Asking Franklin :</span>
+                            <span>Profitez ainsi de toute la puissance de Asking Franklin :</span>
                         </p>
                         <FeaturesList className="mt-4 mb-5"/>
                         <PmyBtn redirectTo="/connexion" linkIsLargePmyFull textLink="Se connecter et devenir Pro" customBtnClass="w-md-100"/>

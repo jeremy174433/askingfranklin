@@ -254,7 +254,7 @@ export default class Payment extends React.Component {
 									</div>
 									<p class="block-summary-vat mt-2 mb-4 fz-12">Les prix indiqués sont en €, hors TVA et sont soumis au taux en vigueur.</p>
 									<div class="block-summary-footer">
-										<p class="my-4 fw-600">Profiter de toute la puissance de Asking Franklin :</p>
+										<p class="my-4 fw-600">Profitez de toute la puissance de Asking Franklin :</p>
 										<FeaturesList/>
 									</div>
 								</div>

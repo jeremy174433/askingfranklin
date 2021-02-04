@@ -34,7 +34,7 @@ export default class MaximumRequests extends React.Component {
                         <H1 className="mb-5" title="Vous avez atteint le nombre maximum de recherches gratuites pour aujourd'hui..."/>
                         <p class="mb-5 d-flex flex-column fw-600">
                             <span class="mb-2">Pour plus de recherches, il est nécessaire de passer à la version Pro.</span>
-                            <span>Profiter ainsi de toute la puissance de Asking Franklin :</span>
+                            <span>Profitez ainsi de toute la puissance de Asking Franklin :</span>
                         </p>
                         <FeaturesList className="mt-4 mb-5"/>
                         <PmyBtn redirectTo="/tarifs" linkIsLargePmyFull textLink="Passer à la version Pro" customBtnClass="w-md-100"/>

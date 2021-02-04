@@ -81,10 +81,12 @@ export default class Footer extends React.Component {
             <footer id="footer" class="px-4 px-xl-5 py-5">
                 <Container className="px-0 pt-5">
                     <Row className="mx-0 pb-5 d-flex flex-column flex-lg-row">
-                        <Col lg="3" className="d-flex align-items-center align-items-lg-start pl-lg-0 mb-5 mb-lg-0 pb-5 pb-lg-0">
-                            <Link to="/" class="mx-auto mx-lg-0">
+                        <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start pl-lg-0 mb-5 mb-lg-0 pb-5 pb-lg-0">
+                            <Link to="/" class="mx-auto mx-lg-0 mb-4">
                                 <Logo icon="white" width="200"/>
                             </Link>
+                            <p onClick={this.props.onClickLanguage} data-lang="en" class="mb-3">English</p>
+                            <p onClick={this.props.onClickLanguage} data-lang="fr">Français</p>
                         </Col>
                         <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start mb-5 mb-lg-0">
                             <p class="footer-title">Liens utiles</p>
