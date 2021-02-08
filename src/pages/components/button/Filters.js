@@ -35,12 +35,11 @@ export default class Filters extends React.Component {
         super(props)
         this.state = {
             isSelected: this.props.alreadySelected ? true : false,
-            selectedSaved: this.props.isPreselectedCountry ? ['France'] : this.props.isPreselectedLanguage && ['Français'],
-            selectedValue: []
+            selectedValue: this.props.isPreselectedCountry ? {value:'fr'} : this.props.isPreselectedLanguage && {value:'fr'},
+            selectedSaved: this.props.isPreselectedCountry ? 'France' : this.props.isPreselectedLanguage && 'Français'
         }
         this.toggleDropdown = this.toggleDropdown.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
-        this.handleSave = this.handleSave.bind(this);
     }
 
     toggleDropdown() {
@@ -51,19 +50,14 @@ export default class Filters extends React.Component {
 
     handleSelect(value) {
         this.setState({
-            selectedValue: value
-        });
-    }
-
-    handleSave() {
-        var saved = this.state.selectedValue;
-        this.setState({
-            selectedSaved: saved.label
+            selectedValue: value,
+            selectedSaved:value.label
         }, () => {
-            this.props.handleFunc(saved.value);
+            this.props.handleFunc(value.value);
             this.toggleDropdown();
         });
     }
+
 
     render() {
 
@@ -88,7 +82,6 @@ export default class Filters extends React.Component {
                                 )
                         }
                     </div>
-                    <PmyBtn onClick={this.handleSave} type="button" btnIsSmallPmyFull textBtn="Appliquer" containerStyle="p-3" className="fz-16-index"/>
                 </div>
             </div>
         )
