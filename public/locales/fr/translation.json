@@ -5,11 +5,30 @@
         "2": "b",
         "3": "c"
     },
+
     "description": {
         "1": "a",
         "2": "b",
         "3": "c"
     },
+
+    "titleElementBrowser": {
+        "footer": {
+            "fb": "Ouvrir dans un nouvel onglet : Facebook",
+            "lk": "Ouvrir dans un nouvel onglet : LinkedIn",
+            "tw": "Ouvrir dans un nouvel onglet : Twitter"
+        },
+        "tcs": "Ouvrir dans un nouvel onglet : CGU Asking Franklin",
+        "linkOwner": "Ouvrir dans un nouvel onglet : www.sortvoices.fr"
+    },
+
+    "altImg": {
+        "homepage": {
+            "1": "Prenez les devants",
+            "2": "Source d'idées de contenus"
+        }
+    },
+
     "navbar": {
         "blog": "Blog",
         "faq": "FAQ",
@@ -22,27 +41,142 @@
             "logout": "Déconnexion"
         }
     },
+
     "footer": {
-        "1": "a",
-        "2": "b",
-        "3": "c"
+        "language": {
+            "en": "English",
+            "fr": "Français"
+        },
+        "title": {
+            "1": "Liens utiles",
+            "2": "Informations",
+            "3": "Nos réseaux"
+        },
+        "homepage": "Accueil",
+        "blog": "Blog",
+        "faq": "FAQ",
+        "pricing": "Tarifs",
+        "contact": "Contact",
+        "legal": {
+            "notice": "Mentions légales",
+            "gtcs": "CGU",
+            "tcs": "CGV"
+        },
+        "newsletter": {
+            "title": "Suivez nos actualités 🚀",
+            "subtitle": "Et recevez des astuces et conseils pour décoller en SEO, Brand content, Content marketing...",
+            "rhythm": "(pas plus de 1 fois /mois c'est promis !)"
+        },
+        "subfooter": {
+            "intro": "Asking Franklin {{actualYear}}, par ",
+            "owner": "Sortvoices",
+            "rights": ". Tous droits réservés."
+        }
     },
-    "alert": {
-        "1": "a",
-        "2": "b",
-        "3": "c"
+    
+    "cookiesBar": {
+        "text": "Ce site web utilise des cookies afin d'améliorer votre expérience de navigation.",
+        "information": "En savoir plus",
+        "btn": "Accepter"
     },
 
+    "alert": {
+        "form": {
+            "fieldRequired": "Ce champ est requis",
+            "patternEmail": "Le format de l'adresse email n'est pas correct",
+            "acceptanceTcs": "Il est nécessaire d'accepter les CGU",
+            "subscribeNewsletter": {
+                "success": "Votre abonnement a bien été enregistré",
+                "error": "L'adresse email saisie semble être déjà abonnée à la newsletter"
+            }
+        }
+    },
+
+    "actions": {
+        "cross": "Fermer",
+        "optionsFormAF": "Plus d'options"
+    },
+
+    "form": {
+        "input": {
+            "placeholderFormAF": "Saisissez un mot clé, un produit, une marque...",
+            "placeholderEmail": "Votre adresse email..."
+        },
+        "filters": {
+            "countries": {
+                "label": "Pays de recherche"
+            },
+            "languages": {
+                "label": "Langue de recherche"
+            }
+        },
+        "checkbox": {
+            "labelTcs-1": "J'ai lu et j'accepte les ",
+            "labelTcs-2": "CGU",
+            "labelTcs-3": "(requis)"
+        },
+        "submit": {
+            "formAF": "Explorer",
+            "newsletter": "S'abonner"
+        }
+    },
 
     "homepage": {
-        "test": "home"
-    },
-
-
-    "text": {
-        "primary": "read this :"
-    },
-    "Why": {
-        "1": "This is a cookie bar"
+        "h1": "Découvrez ce que recherchent les internautes sur Google",
+        "h2a": "Ils parlent de Asking Franklin",
+        "h2b": "Partez à la découverte de ce que recherche votre audience sur Google",
+        "h2c": "Prenez les devants et proposez des produits, services et contenus que cherchent vos consommateurs",
+        "h2d": "En un clic, vous avez accès à une source d’idées de contenus venant directement des recherches de votre audience",
+        "h2e": "Ne passez pas à côté de nos derniers articles",
+        "p1": "Tapez le mot-clé que vous souhaitez et Asking Franklin ira chercher toutes les questions, les recherches et sujets connexes en relation avec ce dernier.",
+        "p2": "Asking Franklin vous fournit une ressource illimitée de mots-clés mais aussi d’idées pour booster votre SEO et nourrir votre stratégie de contenus.",
+        "p3-1": "Une nouvelle tendance de consommation émerge ?",
+        "p3-2": "Une nouvelle mode ?",
+        "p4": "Grâce à Asking Franklin, prenez une longueur d’avance sur vos concurrents en étant le premier au courant des nouveautés qui arrivent sur le marché.",
+        "cta": {
+            "1": "Voir les avantages Pro",
+            "2": "Essayer gratuitement"
+        },
+        "reviews": {
+            "1": {
+                "title": "Comment trouver des sujets de contenu qui engagent et fidélisent avec Asking Franklin ?",
+                "author": "Audrey Tips",
+                "about": "Coach virtuel. Experte en astuce marketing digital"
+            },
+            "2": {
+                "title": "Mon test et mon avis sur Asking Franklin",
+                "author": "Josselin Leydier",
+                "about": "Consultant en acquisition de trafic"
+            },
+            "3": {
+                "title": "Comment utiliser Asking Franklin pour booster son référencement ?",
+                "author": "IUT de Mulhouse",
+                "about": "Licence professionnelle de Référenceur & Rédacteur Web"
+            },
+            "4": {
+                "title": "Asking Franklin - Avis et Test",
+                "author": "Thomas Cubel",
+                "about": "Consultant SEO"
+            },
+            "linkReview": "Lire l'article"
+        },
+        "testimonials": {
+            "1": {
+                "text": "Contrairement à d’autres outils du marché, l’outil est beaucoup plus rapide à l’utilisation. La recherche des suggests est quasi instantanée. Le support de la langue française est meilleure, donc nous sommes plus efficace au travail.",
+                "author": "Thomas Cubel",
+                "about": "Consultant SEO - Freelance"
+            },
+            "2": {
+                "text": "En tant que chef de projet, la plateforme Asking Franklin a été un réel atout pour répondre à mon besoin de création d’audits de l’image de marque. Je le recommande à toute personne active dans le marketing, le brand content, la conception de contenus.",
+                "author": "Margaux Mazière",
+                "about": "Chef de projet - Journal Sud Ouest"
+            },
+            "3": {
+                "text": "Avant je tentais d'améliorer mon SEO via des suppositions. Désormais, Asking Franklin me permet de savoir quelles sont les requêtes tapées par les internautes pour mon secteur d’activité, ce qui m'aide beaucoup.",
+                "author": "Sofiane Tazdaït",
+                "about": "Product Manager - Freelance"
+            }
+        }
     }
+
 }

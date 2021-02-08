@@ -5,11 +5,30 @@
         "2": "b",
         "3": "c"
     },
+    
     "description": {
         "1": "a",
         "2": "b",
         "3": "c"
     },
+
+    "titleElementBrowser": {
+        "footer": {
+            "fb": "Open in a new tab : Facebook",
+            "lk": "Open in a new tab : LinkedIn",
+            "tw": "Open in a new tab : Twitter"
+        },
+        "tcs": "Open in a new tab : Asking Franklin T&Cs",
+        "linkOwner": "Open in a new tab : www.sortvoices.fr"
+    },
+
+    "altImg": {
+        "homepage": {
+            "1": "Take the lead",
+            "2": "Source of content ideas"
+        }
+    },
+    
     "navbar": {
         "blog": "Blog",
         "faq": "FAQ",
@@ -19,30 +38,145 @@
         "account": {
             "btn": "My account",
             "settings": "Settings",
-            "logout": "Log Out"
+            "logout": "Log out"
         }
     },
+
     "footer": {
-        "1": "a",
-        "2": "b",
-        "3": "c"
+        "language": {
+            "en": "English",
+            "fr": "Français"
+        },
+        "title": {
+            "1": "Useful links",
+            "2": "Information",
+            "3": "Networks"
+        },
+        "homepage": "Home",
+        "blog": "Blog",
+        "faq": "FAQ",
+        "pricing": "Pricing",
+        "contact": "Contact us",
+        "legal": {
+            "notice": "Legal notices",
+            "gtcs": "GTCS",
+            "tcs": "T&Cs"
+        },
+        "newsletter": {
+            "title": "Follow our news 🚀 (in french)",
+            "subtitle": "And get tips to take off in SEO, Brand content, Content marketing...",
+            "rhythm": "(no more than once a month, that's a promise!)"
+        },
+        "subfooter": {
+            "intro": "Asking Franklin {{actualYear}}, by ",
+            "owner": "Sortvoices",
+            "rights": ". All rights reserved."
+        }
     },
-    "alert": {
-        "1": "a",
-        "2": "b",
-        "3": "c"
+    
+    "cookiesBar": {
+        "text": "This website uses cookies to improve your browsing experience.",
+        "information": "Know more",
+        "btn": "Accept"
     },
 
+    "alert": {
+        "form": {
+            "fieldRequired": "This field is required",
+            "patternEmail": "The email address format is not correct",
+            "acceptanceTcs": "It's necessary to accept the T&Cs",
+            "subscribeNewsletter": {
+                "success": "Your subscription has been registered",
+                "error": "The email address seems to be already subscribed to the newsletter"
+            }
+        }
+    },
+
+    "actions": {
+        "cross": "Close",
+        "optionsFormAF": "More options"
+    },
+
+    "form": {
+        "input": {
+            "placeholderFormAF": "Enter a keyword, a product, a brand...",
+            "placeholderEmail": "Your email..."
+        },
+        "filters": {
+            "countries": {
+                "label": "Country of research"
+            },
+            "languages": {
+                "label": "Search language"
+            }
+        },
+        "checkbox": {
+            "labelTcs-1": "I have read and accept the ",
+            "labelTcs-2": "T&Cs",
+            "labelTcs-3": "(required)"
+        },
+        "submit": {
+            "formAF": "Explore",
+            "newsletter": "Subscribe"
+        }
+    },
 
     "homepage": {
-        "test": "home"
-    },
-
-
-    "text": {
-        "primary": "read this :"
-    },
-    "Why": {
-        "1": "This is a cookie bar"
+        "h1": "Discover what people are searching on Google",
+        "h2a": "They are talking about Asking Franklin",
+        "h2b": "Explore what your audience is looking for on Google",
+        "h2c": "Take the initiative and deliver products, services and content your consumers are looking for",
+        "h2d": "With one click, get an access for an inspiration’s source directly from your audience's research",
+        "h2e": "Don't miss our latest articles (in french)",
+        "p1": "Type the keyword you want and Asking Franklin will search for allquestions, research and related topics related to it",
+        "p2": "Asking Franklin provides you an unlimited resource of keywords and ideas to boost your SEO and fuel your content strategy.",
+        "p3-1": "Is a new consumption trend emerging ?",
+        "p3-2": "A new mode ?",
+        "p4": "Thanks to Asking Franklin, stay ahead of your competitors by being the first to know about novelty coming on your market.",
+        "cta": {
+            "1": "See Pro benefits",
+            "2": "Try for free"
+        },
+        "reviews": {
+            "1": {
+                "title": "How to find content topics that engage and retain with Asking Franklin ?",
+                "author": "Audrey Tips",
+                "about": "Virtual coach. Digital marketing tips’ expert"
+            },
+            "2": {
+                "title": "My test & opinion about Asking Franklin",
+                "author": "Josselin Leydier",
+                "about": "Traffic acquisition consultant"
+            },
+            "3": {
+                "title": "How to use Asking Franklin to boost SEO ?",
+                "author": "Mulhouse’s UIT",
+                "about": "Bachelor’s degree, SEO specialists and Web Writers"
+            },
+            "4": {
+                "title": "Asking Franklin – Test & Opinion",
+                "author": "Thomas Cubel",
+                "about": "SEO consultant"
+            },
+            "linkReview": "Read article (in french)"
+        },
+        "testimonials": {
+            "1": {
+                "text": "Contrary to other tools, this one is faster to use. Suggests’s search is almost instantaneous. The language’s support is better, so we are more efficient at work.",
+                "author": "Thomas Cubel",
+                "about": "SEO consultant - Freelance"
+            },
+            "2": {
+                "text": "As a project manager, Asking Franklin has been a real asset for creating branding audits. I recommend it for anyone active in marketing, brand content, content design.",
+                "author": "Margaux Mazière",
+                "about": "Project Manager - Sud Ouest Journal"
+            },
+            "3": {
+                "text": "I used to try to improve my SEO through guesswork. Now, Asking Franklin allows me to know what queries people are typing for concerning my industry, which helps me a lot",
+                "author": "Sofiane Tazdaït",
+                "about": "Product Manager – Freelance"
+            }
+        }
     }
+
 }
