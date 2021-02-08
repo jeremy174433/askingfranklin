@@ -52,7 +52,7 @@ class Home extends React.Component {
     
     componentDidMount() {
         window.scrollTo(0, 0);
-        fetch('https://cors-anywhere.herokuapp.com/https://blog.askingfranklin.com/wp-json/wp/v2/posts?per_page=3&_embed')
+        fetch('https://blog.askingfranklin.com/wp-json/wp/v2/posts?per_page=3&_embed')
         .then((res) => res.json())
         .then((res) => {
             this.setState({

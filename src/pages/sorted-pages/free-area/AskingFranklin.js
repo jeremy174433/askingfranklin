@@ -24,7 +24,9 @@ const minToMaxCountry = {
     "uk":"Royaume-Uni",
     "it":"Italie",
     "de":"Allemagne",
-    "us":"États-unis"
+    "us":"États-unis",
+    "es":"Espagne"
+
 }
 export default class AskingFranklin extends React.Component {
     constructor(props) {
@@ -99,7 +101,11 @@ export default class AskingFranklin extends React.Component {
 
     componentDidUpdate(prevProps) {
         var params = qs.parse(this.props.location.search, { ignoreQueryPrefix: true })
-        if (prevProps.match.params.keyword !== this.props.match.params.keyword) {
+        if ((prevProps.match.params.keyword !== this.props.match.params.keyword) || (prevProps.match.params.country !== this.props.match.params.country) || (prevProps.match.params.lang !== this.props.match.params.lang)) {
+            this.setState({
+                currCountry:minToMaxCountry[params.country],
+                currLanguage:minToMaxLanguage[params.lang]
+            })
           this.fetchFranklin(this.props.match.params.keyword, params.lang, params.country);
         }
     }
@@ -131,6 +137,7 @@ export default class AskingFranklin extends React.Component {
         this.setState({
             newKeywordSearch: ''
         });
+        window.location.reload()
     }
 
     render() {

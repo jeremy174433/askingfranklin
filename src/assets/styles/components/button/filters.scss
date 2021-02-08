@@ -73,7 +73,7 @@
         
         .filters-container {
             max-height: 265px;
-            padding-top: 1rem;
+            padding: 1rem 0;
             overflow-x: hidden;
             @include scroll-y(auto);
 

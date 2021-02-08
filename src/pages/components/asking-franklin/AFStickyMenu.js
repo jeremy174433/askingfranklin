@@ -24,9 +24,7 @@ export default class AFStickyMenu extends React.Component {
     }
 
     render() {
-
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
-
         return ( 
             <Col sm="12" xl="3" className="d-flex d-xl-block flex-column p-0 mr-xl-5 mt-6">
                 <CSVLink data={this.exportCSV()} filename={this.props.searchContent + "_AskingFranklin.csv"} className="d-flex d-xl-block order-2 order-xl-1 mt-4 mt-xl-0 text-decoration-none">
