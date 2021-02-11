@@ -94,12 +94,12 @@ class Home extends React.Component {
 
     render() {
 
-        if(this.state.redirect) {
-            return <Redirect to={'/recherche/' + this.state.keywordSearch.replace(/ /g, '-') + '?lang=' + this.state.languageSearch + '&country=' + this.state.countrySearch}/>
-        }
-
         const { t } = this.props;
         const cardRowBlog = 'd-flex flex-column flex-lg-row align-items-center align-items-lg-start ';
+
+        if(this.state.redirect) {
+            return <Redirect to={ t('url.resultAF') + this.state.keywordSearch.replace(/ /g, '-') + '?lang=' + this.state.languageSearch + '&country=' + this.state.countrySearch}/>
+        }
 
         return (
             <div id="home">
@@ -141,25 +141,25 @@ class Home extends React.Component {
                                 title={t('homepage.reviews.1.title')}
                                 authorName={t('homepage.reviews.1.author')}
                                 authorProfession={t('homepage.reviews.1.about')}
-                                postLink="https://audreytips.com/trouver-sujets-contenu-asking-franklin/"
+                                postLink={t('url.external.reviews.1')}
                             />
                             <CardReview
                                 title={t('homepage.reviews.2.title')}
                                 authorName={t('homepage.reviews.2.author')}
                                 authorProfession={t('homepage.reviews.2.about')}
-                                postLink="https://josselinleydier.com/seo/avis-asking-franklin/"
+                                postLink={t('url.external.reviews.2')}
                             />
                             <CardReview
                                 title={t('homepage.reviews.3.title')}
                                 authorName={t('homepage.reviews.3.author')}
                                 authorProfession={t('homepage.reviews.3.about')}
-                                postLink="https://www.licence-referencement.fr/2020/12/08/utiliser-asking-franklin-pour-booster-son-referencement/"
+                                postLink={t('url.external.reviews.3')}
                             />
                             <CardReview
                                 title={t('homepage.reviews.4.title')}
                                 authorName={t('homepage.reviews.4.author')}
                                 authorProfession={t('homepage.reviews.4.about')}
-                                postLink="https://www.thomascubel.com/asking-franklin/"
+                                postLink={t('url.external.reviews.4')}
                             />
                         </div>
                     </Container>

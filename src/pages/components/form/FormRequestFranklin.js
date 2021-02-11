@@ -68,4 +68,4 @@ class FormRequestFranklin extends React.Component {
     }
 }
 
-export default withTranslation()(FormRequestFranklin)
+export default withTranslation()(FormRequestFranklin);

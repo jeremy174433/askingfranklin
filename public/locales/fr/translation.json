@@ -1,24 +1,115 @@
 {
 
+    "projectName": "Asking Franklin",
+
+    "url": {
+        "signIn": "/connexion",
+        "signUp": "/inscription",
+        "signUpConfirm": "/inscription/confirmation",
+        "forgotPassword": "/mot-de-passe-oublie",
+        "resultAF": "/recherche/",
+        "resultPageAF": "/recherche/:keyword",
+        "searchLimit": "/limite-de-recherches",
+        "blog": "https://blog.askingfranklin.com",
+        "faq": "/faq",
+        "contact": "/contact",
+        "pricing": "/tarifs",
+        "profile": "/profil",
+        "offers": "/plans",
+        "payment": "/paiement",
+        "paymentConfirm": "/paiement/confirmation",
+        "notice": "/mentions-legales",
+        "tcs": "/conditions-generales-d-utilisation",
+        "gtcs": "/conditions-generales-de-vente",
+        "smFacebook": "https://www.facebook.com/askingfranklin/",
+        "smTwitter": "https://twitter.com/AskingFranklin",
+        "smLinkedIn": "https://www.linkedin.com/company/asking-franklin/",
+        "external": {
+            "owner": "https://www.sortvoices.fr",
+            "reviews": {
+                "1": "https://audreytips.com/trouver-sujets-contenu-asking-franklin/",
+                "2": "https://josselinleydier.com/seo/avis-asking-franklin/",
+                "3": "https://www.licence-referencement.fr/2020/12/08/utiliser-asking-franklin-pour-booster-son-referencement/",
+                "4": "https://www.thomascubel.com/asking-franklin/"
+            }
+        }
+    },
+
+    "link": {
+        "homepage": "Accueil",
+        "blog": "Blog",
+        "faq": "FAQ",
+        "pricing": "Tarifs",
+        "contact": "Contact",
+        "signIn": "Connexion",
+        "ctaNotConnected": "Devenir Pro",
+        "account": {
+            "btn": "Mon compte",
+            "settings": "Paramètres",
+            "logout": "Déconnexion"
+        },
+        "legal": {
+            "notice": "Mentions légales",
+            "tcs": "CGU",
+            "gtcs": "CGV"
+        }
+    },
+
     "title": {
-        "1": "a",
-        "2": "b",
-        "3": "c"
+        "homepage": "",
+        "pricing": "",
+        "faq": "",
+        "resultAF": "",
+        "requestLimit": "",
+        "signIn": "",
+        "signUp": "",
+        "signUpConfirm": "",
+        "forgotPassword": "",
+        "profile": "",
+        "offers": "",
+        "payment": "",
+        "paymentConfirm": "",
+        "contact": "",
+        "notice": "",
+        "tcs": "",
+        "gtcs": "",
+        "404": ""
     },
 
     "description": {
-        "1": "a",
-        "2": "b",
-        "3": "c"
+        "homepage": "",
+        "pricing": "",
+        "faq": "",
+        "resultAF": "",
+        "requestLimit": "",
+        "signIn": "",
+        "signUp": "",
+        "signUpConfirm": "",
+        "forgotPassword": "",
+        "profile": "",
+        "offers": "",
+        "payment": "",
+        "paymentConfirm": "",
+        "contact": "",
+        "notice": "",
+        "tcs": "",
+        "gtcs": "",
+        "404": ""
     },
 
     "titleElementBrowser": {
+        "form": {
+            "registerError": "Il est nécessaire de renseigner tous les champs et d'accepter les CGU pour s'inscrire"
+        },
         "footer": {
             "fb": "Ouvrir dans un nouvel onglet : Facebook",
             "lk": "Ouvrir dans un nouvel onglet : LinkedIn",
             "tw": "Ouvrir dans un nouvel onglet : Twitter"
         },
+        "monthlyPlan": "Offre mensuelle",
+        "annualPlan": "Offre annuelle",
         "tcs": "Ouvrir dans un nouvel onglet : CGU Asking Franklin",
+        "gtcs": "Ouvrir dans un nouvel onglet : CGV Asking Franklin",
         "linkOwner": "Ouvrir dans un nouvel onglet : www.sortvoices.fr"
     },
 
@@ -29,17 +120,8 @@
         }
     },
 
-    "navbar": {
-        "blog": "Blog",
-        "faq": "FAQ",
-        "pricing": "Tarifs",
-        "signin": "Connexion",
-        "cta": "Devenir Pro",
-        "account": {
-            "btn": "Mon compte",
-            "settings": "Paramètres",
-            "logout": "Déconnexion"
-        }
+    "banner": {
+        "text": "lorem ipsum"
     },
 
     "footer": {
@@ -51,16 +133,6 @@
             "1": "Liens utiles",
             "2": "Informations",
             "3": "Nos réseaux"
-        },
-        "homepage": "Accueil",
-        "blog": "Blog",
-        "faq": "FAQ",
-        "pricing": "Tarifs",
-        "contact": "Contact",
-        "legal": {
-            "notice": "Mentions légales",
-            "gtcs": "CGU",
-            "tcs": "CGV"
         },
         "newsletter": {
             "title": "Suivez nos actualités 🚀",
@@ -81,10 +153,44 @@
     },
 
     "alert": {
+        "signUp": {
+            "success": "Votre compte a bien été créé. Vous allez recevoir un email de confirmation, merci de le valider",
+            "emailAlreadyTaken": "L'email choisi n'est pas disponible, veuillez en choisir un différent"
+        },
+        "signIn": {
+            "noMatch": "La combinaison « email / mot de passe » est incorrect"
+        },
+        "forgotPassword": {
+            "sendVerifCode": "Un code de vérification vient d'être envoyé à l'email : ",
+            "success": "Votre mot de passe a bien été changé. Vous pouvez maintenant ",
+            "successLink": "vous connecter",
+            "error": "Une erreur est survenue. Vérifiez votre code et votre nouveau mot de passe",
+            "errorLimit": "Une erreur est survenue. La limite de requête a été atteinte, réessayez dans quelques minutes"
+        },
+        "payment": {
+            "error": "Erreur de paiement : "
+        },
+        "profile": {
+            "emailAlreadyTaken": "L'email choisi n'est pas disponible, veuillez en choisir un différent",
+            "successEmail": "La modification de votre email a été effectuée avec succès",
+            "successPassword": "La modification de votre mot de passe a été effectuée avec succès",
+            "successStateSubscription": "La modification de votre abonnement a été effectuée avec succès"
+        },
+        "contact": {
+            "success": "Votre message a bien été envoyé, nous reviendrons rapidement vers vous"
+        },
         "form": {
             "fieldRequired": "Ce champ est requis",
             "patternEmail": "Le format de l'adresse email n'est pas correct",
+            "patternIdenticEmail": "L'email ne peut pas être identique au précédent utilisé",
+            "patternPassword": "Le mot de passe doit contenir au moins 8 caractères dont 1 chiffre",
+            "patternIdenticPassword": "Les deux mots de passe ne correspondent pas",
+            "codePattern": "Le code doit contenir 6 caractères",
             "acceptanceTcs": "Il est nécessaire d'accepter les CGU",
+            "reducCoupon": {
+                "error": "Le code saisi ne correspond à aucun code promotionnel actif",
+                "success": "Félicitations, vous bénéficiez désormais de {{percent}}% de réduction sur votre abonnement pour une durée de {{duration}} mois"
+            },
             "subscribeNewsletter": {
                 "success": "Votre abonnement a bien été enregistré",
                 "error": "L'adresse email saisie semble être déjà abonnée à la newsletter"
@@ -93,27 +199,81 @@
     },
 
     "actions": {
+        "loading": "Chargement en cours",
+        "save": "Sauvegarder",
         "cross": "Fermer",
-        "optionsFormAF": "Plus d'options"
+        "optionsFormAF": "Plus d'options",
+        "show": "Afficher",
+        "hide": "Masquer"
     },
 
     "form": {
+        "label": {
+            "email": "Votre email",
+            "password": "Votre mot de passe",
+            "newPassword": "Votre nouveau mot de passe",
+            "passwordPattern1": "8 caractères minimum, ",
+            "passwordPattern2": "dont au moins 1 chiffre",
+            "codeSentByEmail": "Renseignez le code envoyé par email à ",
+            "subject": "Sujet",
+            "message": "Votre message",
+            "payment": {
+                "nameOrCompany": "Nom complet ou raison sociale",
+                "address": "Adresse de facturation",
+                "city": "Ville",
+                "zip": "Code postal",
+                "card": "Carte de paiement"
+            },
+            "profile": {
+                "currentEmail": "Adresse email actuelle",
+                "newEmail": "Votre nouvelle adresse email",
+                "newPassword": "Votre nouveau mot de passe",
+                "newPasswordConfirm": "Confirmation de votre nouveau mot de passe"
+            }
+        },
         "input": {
             "placeholderFormAF": "Saisissez un mot clé, un produit, une marque...",
-            "placeholderEmail": "Votre adresse email..."
+            "placeholderEmail": "Votre adresse email...",
+            "reducCoupon": "Votre code promotionnel...",
+            "placeholderContact": "Une demande, une question, laissez nous votre message..."
         },
         "filters": {
+            "code": {
+                "ca": "ca",
+                "ch": "ch",
+                "es": "es",
+                "de": "de",
+                "fr": "fr",
+                "it": "it",
+                "uk": "uk",
+                "us": "us"
+            },
             "countries": {
-                "label": "Pays de recherche"
+                "label": "Pays de recherche",
+                "ca": "Canada",
+                "ch": "Suisse",
+                "es": "Espagne",
+                "de": "Allemagne",
+                "fr": "France",
+                "it": "Italie",
+                "uk": "Royaume-Uni",
+                "us": "États-unis"
             },
             "languages": {
-                "label": "Langue de recherche"
+                "label": "Langue de recherche",
+                "de": "Allemand",
+                "es": "Espagnol",
+                "fr": "Français",
+                "it": "Italien",
+                "uk": "Anglais"
             }
         },
         "checkbox": {
             "labelTcs-1": "J'ai lu et j'accepte les ",
             "labelTcs-2": "CGU",
-            "labelTcs-3": "(requis)"
+            "labelTcs-3": "(requis)",
+            "labelGtcs": "CGV",
+            "labelNewsletter": "Je m'inscris à la newsletter pour recevoir des astuces et conseils pour décoller en SEO, Brand content, Content marketing..."
         },
         "submit": {
             "formAF": "Explorer",
@@ -177,6 +337,180 @@
                 "about": "Product Manager - Freelance"
             }
         }
+    },
+
+    "askingFranklin": {
+
+    },
+
+    "funnel": {
+        "stepper": {
+            "1": "Choix de l'offre",
+            "2": "Inscription",
+            "3": "Abonnement et passage en Pro"
+        },
+        "stepperPayment": {
+            "1": "Choix de l'offre",
+            "2": "Paiement",
+            "3": "Débuter en Pro"
+        },
+        "features": {
+            "0": "Nombre limité de recherches par jour ",
+            "0a": "(3 maximum)",
+            "1": "Nombre illimité de recherches",
+            "2": "Requêtes filtrées par pays et langues",
+            "3": "Tendances des volumes de recherche",
+            "4": "Utilisateurs illimités en simultané",
+            "5": "Export en PNG et CSV illimité",
+            "6": "Réponse prioritaire de l'équipe"
+        },
+        "pricing": {
+            "h1": "Découvrez l’outil français pour booster votre SEO, stratégie de contenus, et plus encore...",
+            "subtitle-1": "Gratuit",
+            "subtitle-2": "Pro",
+            "desc-1": "Pour celles et ceux qui veulent tester l’outil, sans trop se mouiller mais avec 3 requêtes par jour.",
+            "desc-2": "Pour celles et ceux qui voient l’avenir en illimité avec un grand A : ",
+            "planProType1": "Mensuel",
+            "planProType2": "Annuel",
+            "moneyType1": "€",
+            "moneyType2": null,
+            "price-0": "0€",
+            "price-1": "49€",
+            "price-2": "39€",
+            "priceEconomy": "120€",
+            "priceTotalNow": "468€/an",
+            "priceTotalBefore": "588€/an",
+            "priceRhythm": " /mois",
+            "priceInfos": "sans engagement",
+            "infosVAT": "Les prix indiqués sont en €, hors TVA et sont soumis au taux en vigueur.",
+            "cta-1": "Continuer gratuitement",
+            "cta-2a": "S'inscrire et devenir Pro",
+            "cta-2b": "Continuer et devenir Pro"
+        },
+        "offers": {
+            "h1a": "Vous avez déja un abonnement Asking Franklin Pro actif",
+            "h1b": "Passez à la vitesse supérieure avec la version Pro",
+            "linkToHome": "Retourner à l'accueil",
+            "precedentSelected": "Vous avez sélectionné l'abonnement ",
+            "automaticRenewal": "(renouvellement automatique en fin d'abonnement)",
+            "monthly": {
+                "p1": "Payez mensuellement, sans engagement",
+                "cta1": "Confirmer l'abonnement Mensuel",
+                "cta2": "Choisir l'abonnement Mensuel"
+            },
+            "annual": {
+                "p1-a": "Soit ",
+                "p1-b": ", économisez 120€. Réglable en une fois",
+                "cta1": "Confirmer l'offre Annuel",
+                "cta2": "Choisir l'offre Annuel"
+            }
+        },
+        "payment": {
+            "form": {
+                "title": "Abonnement Pro",
+                "ctaCoupon": "Vérifier",
+                "ctaPrevious": "Précedent",
+                "ctaPayment1a": "Payer ",
+                "ctaPayment1b": " € HT",
+                "ctaPayment2": "Confirmer l'achat"
+            },
+            "summary": {
+                "title": "Récapitulatif",
+                "proOffer": "Asking Franklin Pro",
+                "subscriptionDuration1": "Abonnement mensuel",
+                "subscriptionDuration2": "Abonnement annuel",
+                "p1a": "(soit ",
+                "p1b": " l'année)",
+                "p2a": "Économisez ",
+                "p2b": " par rapport à la version mensuelle",
+                "introFeatures": "Profitez de toute la puissance de Asking Franklin :"
+            }
+        },
+        "paymentConfirmation": {
+            "h1": "Votre paiement a été accepté",
+            "p": "Vous pouvez à présent accéder aux avantages Pro de Asking Franklin, en illimité.",
+            "cta": "Utiliser Asking Franklin"
+        }
+    },
+
+    "sign": {
+        "register": {
+            "h1": "Créer un compte Asking Franklin",
+            "cta": "Créer mon compte",
+            "linkSignIn": "J’ai déjà un compte Asking Franklin"
+        },
+        "registerConfirmation": {
+            "h1": "Votre compte est maintenant validé 🚀",
+            "p1": "Vous avez désormais la possibilité de souscrire à la version Pro.",
+            "linkSignIn": "Se connecter et devenir Pro"
+        },
+        "signIn": {
+            "h1": "Se connecter à Asking Franklin",
+            "cta": "Se connecter",
+            "linkForgotPassword": "Mot de passe oublié ?",
+            "linkRegister": "Créer un compte et passer à la version Pro"
+        },
+        "forgotPassword": {
+            "h1": "Mot de passe oublié",
+            "cta1": "Recevoir un email de réinitialisation",
+            "cta2": "Réinitialiser le mot de passe",
+            "linkSignIn": "Se connecter à Asking Franklin"
+        }
+    },
+
+    "faq": {
+
+    },
+
+    "profile": {
+        "h1": "Paramètres",
+        "tabs": {
+            "account": "Compte",
+            "subscription": "Abonnement"
+        },
+        "sectionTitle": {
+            "email": "Votre email",
+            "password": "Votre mot de passe",
+            "subscription": "Votre abonnement"
+        },
+        "subscriptionOn": "Abonné(e) à Asking Franklin Pro, prochain renouvellement le ",
+        "subscriptionOff": "Vous avez désactivé le renouvellement automatique de votre abonnement, il prendra fin le ",
+        "p1a": "Décochez la case puis sauvegardez pour annuler le renouvellement automatique de votre abonnement (celui-ci prendra fin au terme de sa période de validité)",
+        "p1b": "Vous pourrez réactiver simplement votre abonnement en cochant de nouveau la case tant que celui-ci n'est pas arrivé à son terme",
+        "p2": "Vous pouvez réactiver simplement votre abonnement tant que celui-ci n'est pas arrivé à son terme en cochant la case puis en cliquant sur sauvegarder",
+        "fallback": {
+            "p1": "Vous n'avez pas d'abonnement en cours.",
+            "p2": "Devenez Pro et profitez ainsi de toute la puissance de Asking Franklin :",
+            "cta": "Passer à la version Pro"
+        }
+    },
+
+    "requestLimit": {
+        "h1": "Vous avez atteint le nombre maximum de recherches gratuites pour aujourd'hui...",
+        "p": "Pour plus de recherches, il est nécessaire de passer à la version Pro.",
+        "cta": "Passer à la version Pro"
+    },
+
+    "contact": {
+        "h1": "Contact & Assistance",
+        "cta": "Envoyer le message"
+    },
+
+    "notice": {
+
+    },
+
+    "tcs": {
+
+    },
+
+    "gtcs": {
+
+    },
+
+    "404": {
+        "h1": "Oups, la page demandée semble introuvable...",
+        "cta": "Retourner à l'accueil"
     }
 
 }

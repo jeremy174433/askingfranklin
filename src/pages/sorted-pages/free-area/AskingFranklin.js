@@ -1,34 +1,38 @@
 import React from 'react';
+import i18n from '../../../i18n';
+import { withTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
 import { refreshTokenFnc } from '../../../utils/refreshToken';
 import Loader from '../../components/elements/Loader';
 import { Redirect } from 'react-router-dom';
 import AFStickyMenu from '../../components/asking-franklin/AFStickyMenu';
+import qs from 'qs';
 import { 
     Container, 
     Col 
 } from 'react-bootstrap';
 import AFWrapper from '../../components/asking-franklin/AFWrapper';
 import FormRequestFranklin from '../../components/form/FormRequestFranklin';
-import qs from 'qs'
-const minToMaxLanguage = {
-    "fr":"Français",
-    "uk":"Anglais",
-    "de":"Allemand",
-    "es":"Espagnol",
-    "it":"Italien"
-}
-const minToMaxCountry = {
-    "fr":"France",
-    "ca":"Canada",
-    "uk":"Royaume-Uni",
-    "it":"Italie",
-    "de":"Allemagne",
-    "us":"États-unis",
-    "es":"Espagne"
 
+const minToMaxLanguage = {
+    "fr": "Français",
+    "uk": "Anglais",
+    "de": "Allemand",
+    "es": "Espagnol",
+    "it": "Italien"
 }
-export default class AskingFranklin extends React.Component {
+
+const minToMaxCountry = {
+    "fr": "France",
+    "ca": "Canada",
+    "uk": "Royaume-Uni",
+    "it": "Italie",
+    "de": "Allemagne",
+    "us": "États-unis",
+    "es": "Espagne"
+}
+
+class AskingFranklin extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -38,19 +42,19 @@ export default class AskingFranklin extends React.Component {
             selectedPanel: 0,
             nbResults: 0,
             keywordSearch: '',
-            languageSearch:'fr',
-            countrySearch:'fr',
+            languageSearch: 'fr',
+            countrySearch: 'fr',
             newKeywordSearch: '',
             redirectBlocked: false,
-            currLanguage:'Français',
-            currCountry:'France'
+            currLanguage: 'Français',
+            currCountry: 'France'
         }
         this.switchSelectedPanel = this.switchSelectedPanel.bind(this);
         this.handleKeywordChange = this.handleKeywordChange.bind(this);
-        this.requestFanklin = this.requestFanklin.bind(this);
-        this.fetchFranklin = this.fetchFranklin.bind(this);
         this.handleCountryChange = this.handleCountryChange.bind(this);
         this.handleLanguageChange = this.handleLanguageChange.bind(this);
+        this.requestFanklin = this.requestFanklin.bind(this);
+        this.fetchFranklin = this.fetchFranklin.bind(this);
     }
 
     fetchFranklin(keyword, lang, country) {
@@ -121,19 +125,22 @@ export default class AskingFranklin extends React.Component {
             newKeywordSearch: e.target.value.replace(/-/g, ' ')
         });
     }
-    handleCountryChange(value){
+
+    handleCountryChange(value) {
         this.setState({
-            countrySearch:value
-        })
+            countrySearch: value
+        });
     }
-    handleLanguageChange(value){
+
+    handleLanguageChange(value) {
         this.setState({
-            languageSearch:value
-        })
+            languageSearch: value
+        });
     }
+
     requestFanklin = (e) => {
         e.preventDefault();
-        this.props.history.push('/recherche/' + this.state.newKeywordSearch.replace(/ /g, '-') + '?lang=' + this.state.languageSearch + '&country=' + this.state.countrySearch);
+        this.props.history.push( i18n.t('url.resultAF') + this.state.newKeywordSearch.replace(/ /g, '-') + '?lang=' + this.state.languageSearch + '&country=' + this.state.countrySearch);
         this.setState({
             newKeywordSearch: ''
         });
@@ -141,6 +148,8 @@ export default class AskingFranklin extends React.Component {
     }
 
     render() {
+
+        const { t } = this.props;
 
         const launchNewRequest = 
             <Container className="d-flex flex-column px-0">
@@ -160,7 +169,7 @@ export default class AskingFranklin extends React.Component {
             </Container>;
 
         if (this.state.redirectBlocked) {
-            return <Redirect to="/limite-de-recherches"/>
+            return <Redirect to={t('url.searchLimit')}/>
         }
 
         if (this.state.isLoading) {
@@ -246,3 +255,5 @@ export default class AskingFranklin extends React.Component {
         }
     }
 }
+
+export default withTranslation()(AskingFranklin);

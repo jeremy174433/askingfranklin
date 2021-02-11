@@ -15,7 +15,7 @@ class CardReview extends React.Component {
                 <H3 className="mb-3 fw-600" title={this.props.title}/>
                 <p class="fz-14 fw-600">{this.props.authorName}</p>
                 <p class="mb-3 fz-14">{this.props.authorProfession}</p>
-                <ArrowTextLink href={this.props.postLink} textLink=  {t('homepage.reviews.linkReview')} target="_blank" rel="noopener noreferrer"/>
+                <ArrowTextLink href={this.props.postLink} textLink={t('homepage.reviews.linkReview')} target="_blank" rel="noopener noreferrer"/>
             </Col>
         )
     }

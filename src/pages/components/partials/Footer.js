@@ -96,27 +96,27 @@ class Footer extends React.Component {
                         <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start mb-5 mb-lg-0">
                             <p class="footer-title">{t('footer.title.1')}</p>
                             <ul class="d-flex flex-column">
-                                <MenuLink redirectTo="/" textLink={t('footer.homepage')} linkLocation="footer-link"/>
-                                {localStorage.getItem('af_is_sub') <= 0 && <MenuLink redirectTo="/tarifs" textLink={t('footer.pricing')} linkLocation="footer-link"/> }
-                                <MenuLink href="https://blog.askingfranklin.com" textLink={t('footer.blog')} linkLocation="footer-link"/>
-                                <MenuLink redirectTo="/faq" textLink={t('footer.faq')}linkLocation="footer-link"/>
-                                <MenuLink redirectTo="/contact" textLink={t('footer.contact')} linkLocation="footer-link"/>
+                                <MenuLink redirectTo="/" textLink={t('link.homepage')} linkLocation="footer-link"/>
+                                {localStorage.getItem('af_is_sub') <= 0 && <MenuLink redirectTo={t('url.pricing')} textLink={t('link.pricing')} linkLocation="footer-link"/> }
+                                <MenuLink href={t('url.blog')} textLink={t('link.blog')} linkLocation="footer-link"/>
+                                <MenuLink redirectTo={t('url.faq')} textLink={t('link.faq')}linkLocation="footer-link"/>
+                                <MenuLink redirectTo={t('url.contact')} textLink={t('link.contact')} linkLocation="footer-link"/>
                             </ul>
                         </Col>
                         <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start mb-5 mb-lg-0">
                             <p class="footer-title">{t('footer.title.2')}</p>
                             <ul class="d-flex flex-column">
-                                <MenuLink redirectTo="/mentions-legales" textLink={t('footer.legal.notice')} rel="nofollow" linkLocation="footer-link"/>
-                                <MenuLink redirectTo="/conditions-generales-d-utilisation" textLink={t('footer.legal.tcs')} rel="nofollow" linkLocation="footer-link"/>
-                                <MenuLink redirectTo="/conditions-generales-de-vente" textLink={t('footer.legal.gtcs')} rel="nofollow" linkLocation="footer-link"/>
+                                <MenuLink redirectTo={t('url.notice')} textLink={t('link.legal.notice')} rel="nofollow" linkLocation="footer-link"/>
+                                <MenuLink redirectTo={t('url.tcs')} textLink={t('link.legal.tcs')} rel="nofollow" linkLocation="footer-link"/>
+                                <MenuLink redirectTo={t('url.gtcs')} textLink={t('link.legal.gtcs')} rel="nofollow" linkLocation="footer-link"/>
                             </ul>
                         </Col>
                         <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start">
                             <p class="footer-title">{t('footer.title.3')}</p>
                             <ul class="social-media-wrapper d-flex flex-row">
-                                <MenuLink linkHasIcon={<SocialMedia icon="facebook" height="18" fill="#FFF"/>} href="https://www.facebook.com/askingfranklin/" target="_blank" rel="nofollow noopener" title={t('titleElementBrowser.footer.fb')} className="icon-sm"/>
-                                <MenuLink linkHasIcon={<SocialMedia icon="twitter" width="18" fill="#FFF"/>} href="https://twitter.com/AskingFranklin" target="_blank" rel="nofollow noopener" title={t('titleElementBrowser.footer.tw')} className="icon-sm"/>
-                                <MenuLink linkHasIcon={<SocialMedia icon="linkedin" width="18" fill="#FFF"/>} href="https://www.linkedin.com/company/asking-franklin/" target="_blank" rel="nofollow noopener" title={t('titleElementBrowser.footer.lk')} className="icon-sm"/>
+                                <MenuLink linkHasIcon={<SocialMedia icon="facebook" height="18" fill="#FFF"/>} href={t('url.smFacebook')} target="_blank" rel="nofollow noopener" title={t('titleElementBrowser.footer.fb')} className="icon-sm"/>
+                                <MenuLink linkHasIcon={<SocialMedia icon="twitter" width="18" fill="#FFF"/>} href={t('url.smTwitter')} target="_blank" rel="nofollow noopener" title={t('titleElementBrowser.footer.tw')} className="icon-sm"/>
+                                <MenuLink linkHasIcon={<SocialMedia icon="linkedin" width="18" fill="#FFF"/>} href={t('url.smLinkedIn')} target="_blank" rel="nofollow noopener" title={t('titleElementBrowser.footer.lk')} className="icon-sm"/>
                             </ul>
                         </Col>
                     </Row>
@@ -143,7 +143,7 @@ class Footer extends React.Component {
                                     <PmyBtn type="submit" isDisabled={!this.state.emailNewsletter.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) || this.state.checkCgu === '' || this.state.subscribeSuccess} btnIsMediumPmyFull textBtn={t('form.submit.newsletter')} title={!this.state.emailNewsletter.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) && t('alert.form.patternEmail') || this.state.checkCgu === '' && t('alert.form.acceptanceTcs')} className="w-sm-100 h-100" style={{ height: '48px' }}/>
                                 </div>
                                 <Checkbox 
-                                    label={[t('form.checkbox.labelTcs-1'), <Link to="/conditions-generales-d-utilisation" target="_blank" rel="noopener" title={t('titleElementBrowser.tcs')} class="fz-16">{t('form.checkbox.labelTcs-2')}</Link>, <em class="fz-14 ml-1">{t('form.checkbox.labelTcs-3')}</em>]} 
+                                    label={[t('form.checkbox.labelTcs-1'), <Link to={t('url.tcs')} target="_blank" rel="noopener" title={t('titleElementBrowser.tcs')} class="fz-16">{t('form.checkbox.labelTcs-2')}</Link>, <em class="fz-14 ml-1">{t('form.checkbox.labelTcs-3')}</em>]} 
                                     onChange={this.handlePrivacy} 
                                     for="checkNewsletter" 
                                     name={this.for} 
@@ -165,7 +165,7 @@ class Footer extends React.Component {
                         </Col>
                     </Row>
                     <div class="d-flex justify-content-center pb-5 pb-sm-0 pt-5">
-                        <p class="fz-14">{t('footer.subfooter.intro', { actualYear } )}<a href="https://sortvoices.fr" target="_blank" title={t('titleElementBrowser.linkOwner')}>{t('footer.subfooter.owner')}</a>{t('footer.subfooter.rights')}</p>
+                        <p class="fz-14">{t('footer.subfooter.intro', { actualYear } )}<a href={t('url.external.owner')} target="_blank" title={t('titleElementBrowser.linkOwner')}>{t('footer.subfooter.owner')}</a>{t('footer.subfooter.rights')}</p>
                     </div>
                 </Container>
             </footer>

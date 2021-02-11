@@ -1,6 +1,8 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { refreshTokenFnc } from '../../../utils/refreshToken';
+import i18n from '../../../i18n';
+import { withTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet';
 import { Container } from 'react-bootstrap';
 import H1 from '../../components/elements/title/H1';
 import H4 from '../../components/elements/title/H4';
@@ -12,7 +14,7 @@ import Checkbox from '../../components/form/Checkbox';
 import Alert from '../../components/elements/Alert';
 import FeaturesList from '../../components/elements/FeaturesList';
 
-export default class Profile extends React.Component {
+class Profile extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -93,13 +95,13 @@ export default class Profile extends React.Component {
                 }
             })
             .catch(error => {
-                if(error == 'TypeError: Failed to fetch') {
+                if(error === 'TypeError: Failed to fetch') {
                     refreshTokenFnc(this.loadPageData, false);
                 }
             })
         } 
         else {
-            this.props.history.push('/plans');
+            this.props.history.push(i18n.t('url.offers'));
         }
     }
 
@@ -212,14 +214,14 @@ export default class Profile extends React.Component {
                     }
                 })
                 .catch(error => {
-                    if(error == 'TypeError: Failed to fetch') {
+                    if(error === 'TypeError: Failed to fetch') {
                         refreshTokenFnc(this.componentDidMount, false);
                     }
                 })
             }
         })
         .catch(error => {
-            if(error == 'TypeError: Failed to fetch') {
+            if(error === 'TypeError: Failed to fetch') {
                 refreshTokenFnc(this.componentDidMount, false);
             }
         })
@@ -254,7 +256,7 @@ export default class Profile extends React.Component {
             }
         })
         .catch(error => {
-            if(error == 'TypeError: Failed to fetch') {
+            if(error === 'TypeError: Failed to fetch') {
                 refreshTokenFnc(this.componentDidMount, false);
             }
         })
@@ -289,7 +291,7 @@ export default class Profile extends React.Component {
                 }
             })
             .catch(error => {
-                if(error == 'TypeError: Failed to fetch') {
+                if(error === 'TypeError: Failed to fetch') {
                     refreshTokenFnc(this.componentDidMount, false);
                 }
             })
@@ -319,7 +321,7 @@ export default class Profile extends React.Component {
                 }
             })
             .catch(error => {
-                if(error == 'TypeError: Failed to fetch') {
+                if(error === 'TypeError: Failed to fetch') {
                     refreshTokenFnc(this.componentDidMount, false);
                 }
             })
@@ -337,49 +339,52 @@ export default class Profile extends React.Component {
     }
 
     render() {
+
+        const { t } = this.props;
+
         return (
             <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
                 {this.customHeadElement()}
                 <Container id="profilePage" className="px-0 mt-6">
-                    {this.state.emailIsAlreadyTaken && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="L'email choisi n'est pas disponible, veuillez en choisir un différent"/> }
-                    {this.state.emailChanged && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="La modification de votre email a été effectuée avec succès"/> }
-                    {this.state.passwordChanged && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="La modification de votre mot de passe a été effectuée avec succès"/> }
-                    {this.state.subscriptionState && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="La modification de votre abonnement a été effectuée avec succès"/> }
+                    {this.state.emailIsAlreadyTaken && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg={t('alert.profile.emailAlreadyTaken')}/> }
+                    {this.state.emailChanged && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg={t('alert.profile.successEmail')}/> }
+                    {this.state.passwordChanged && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg={t('alert.profile.successPassword')}/> }
+                    {this.state.subscriptionState && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg={t('alert.profile.successStateSubscription')}/> }
                     <div class="block-style">
-                        <H1 className="mb-3" title="Paramètres"/>
+                        <H1 className="mb-3" title={t('profile.h1')}/>
                         <div class="d-flex flex-row flex-wrap mt-5">
-                            <Tabs onClick={this.handleSelectAccount} isDisabled={this.state.tabActive === 0} textTab="Compte" title="Compte" className={this.state.tabActive === 0 ? 'pmy-tab-selected' : ''}/>
-                            <Tabs onClick={this.handleSelectSubscription} isDisabled={this.state.tabActive === 1} textTab="Abonnement" title="Abonnement" className={this.state.tabActive === 1 ? 'pmy-tab-selected' : ''}/>
+                            <Tabs onClick={this.handleSelectAccount} isDisabled={this.state.tabActive === 0} textTab={t('profile.tabs.account')} title={t('profile.tabs.account')} className={this.state.tabActive === 0 ? 'pmy-tab-selected' : ''}/>
+                            <Tabs onClick={this.handleSelectSubscription} isDisabled={this.state.tabActive === 1} textTab={t('profile.tabs.subscription')} title={t('profile.tabs.subscription')} className={this.state.tabActive === 1 ? 'pmy-tab-selected' : ''}/>
                         </div>
                         <main class="px-md-3 mx-md-3 mb-3">
                             {this.state.tabActive === 0 ?
                                 <section class="mt-6">
                                     <form onSubmit={this.handleSubmitEmail} method="POST" class="block-style d-flex flex-column">
-                                        <H4 className="mb-3 pb-3 fw-600" title="Votre email"/>
+                                        <H4 className="mb-3 pb-3 fw-600" title={t('profile.sectionTitle.email')}/>
                                         <Input
-                                            label="Adresse email actuelle"
+                                            label={t('form.label.profile.currentEmail')}
                                             for="actualEmail"
                                             type="email"
                                             value={this.state.curr_email}
                                             disabled={true}
                                         />
                                         <Input
-                                            label="Votre nouvelle adresse email"
+                                            label={t('form.label.profile.newEmail')}
                                             for="newEmail"
                                             value={this.state.newEmail}
                                             type="email"
                                             required={true}
                                             onChange={this.handleNewEmail}
-                                            infoMsg={this.state.newEmail.length < 1 ? 'Ce champ est requis' : !this.state.newEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) && 'Le format de l\'adresse email n\'est pas correct' || this.state.newEmail === this.state.curr_email && 'L\'email ne peut pas être identique au précédent utilisé'}
+                                            infoMsg={this.state.newEmail.length < 1 ? t('alert.form.fieldRequired') : !this.state.newEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) && t('alert.form.patternEmail') || this.state.newEmail === this.state.curr_email && t('alert.form.patternIdenticEmail')}
                                         />
-                                        <PmyBtn type="submit" isDisabled={!this.state.newEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) || this.state.newEmail === this.state.curr_email} btnIsMediumPmyFull className="w-sm-100" textBtn="Sauvegarder" title="Sauvegarder"/>
+                                        <PmyBtn type="submit" isDisabled={!this.state.newEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) || this.state.newEmail === this.state.curr_email} btnIsMediumPmyFull className="w-sm-100" textBtn={t('actions.save')} title={t('actions.save')}/>
                                     </form>
                                     <form onSubmit={this.handleSubmitPassword} method="POST" class="block-style d-flex flex-column mt-6">
-                                        <H4 className="mb-3 pb-3 fw-600" title="Votre mot de passe"/>
+                                        <H4 className="mb-3 pb-3 fw-600" title={t('profile.sectionTitle.password')}/>
                                         <Input
                                             containerStyle="input-password-column"
-                                            label="Votre nouveau mot de passe"
-                                            labelInfo={['8 caractères minimum, ', <br class="d-block d-sm-none"/>, 'dont au moins 1 chiffre']}
+                                            label={t('form.label.profile.newPassword')}
+                                            labelInfo={[ t('form.label.passwordPattern1'), <br class="d-block d-sm-none"/>, t('form.label.passwordPattern2')]}
                                             for="newPassword"
                                             minLength={8}
                                             value={this.state.newPassword}
@@ -388,10 +393,10 @@ export default class Profile extends React.Component {
                                             inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>}
                                             required={true}
                                             onChange={this.handleNewPassword}
-                                            infoMsg={!this.state.newPassword.match(/^(?=.*\d)(?=.*[a-zA-Z0-9]).{8,}$/) && 'Le mot de passe doit contenir au moins 8 caractères dont 1 chiffre'}
+                                            infoMsg={!this.state.newPassword.match(/^(?=.*\d)(?=.*[a-zA-Z0-9]).{8,}$/) && t('alert.form.patternPassword')}
                                         />
                                         <Input
-                                            label="Confirmation de votre nouveau mot de passe"
+                                            label={t('form.label.profile.newPasswordConfirm')}
                                             for="newPasswordConfirmation"
                                             minLength={8}
                                             value={this.state.newPasswordConfirmation}
@@ -400,20 +405,20 @@ export default class Profile extends React.Component {
                                             inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>}
                                             required={true}
                                             onChange={this.handleNewPasswordConfirmation}
-                                            infoMsg={this.state.newPassword !== this.state.newPasswordConfirmation && 'Les deux mots de passe ne correspondent pas'}
+                                            infoMsg={this.state.newPassword !== this.state.newPasswordConfirmation && t('alert.form.patternIdenticPassword')}
                                         />                        
-                                        <PmyBtn type="submit" isDisabled={(this.state.newPasswordConfirmation !== this.state.newPassword) || !this.state.newPassword.match(/^(?=.*\d)(?=.*[a-zA-Z0-9]).{8,}$/)} btnIsMediumPmyFull className="w-sm-100" textBtn="Sauvegarder" title="Sauvegarder"/>
+                                        <PmyBtn type="submit" isDisabled={(this.state.newPasswordConfirmation !== this.state.newPassword) || !this.state.newPassword.match(/^(?=.*\d)(?=.*[a-zA-Z0-9]).{8,}$/)} btnIsMediumPmyFull className="w-sm-100" textBtn={t('actions.save')} title={t('actions.save')}/>
                                     </form>
                                 </section>
                             : this.state.tabActive === 1 && true && !this.state.noSubscription ?
                                 <form onSubmit={this.handleSubmitCheckbox} class="block-style d-flex flex-column mt-6">
-                                    <H4 className="mb-3 pb-3 fw-600" title="Votre abonnement"/>
+                                    <H4 className="mb-3 pb-3 fw-600" title={t('profile.sectionTitle.subscription')}/>
                                     <Checkbox
                                         label={
                                             this.state.subscriptionEnd ? 
-                                                ['Vous avez désactivé le renouvellement automatique de votre abonnement, il prendra fin le ', <span class="fw-600">{this.state.subscriptionEnd}</span>] 
+                                                [t('profile.subscriptionOff'), <span class="fw-600">{this.state.subscriptionEnd}</span>] 
                                             : 
-                                                ['Abonné(e) à Asking Franklin Pro, prochain renouvellement le ', <span class="fw-600">{this.state.currentPeriodEnd}</span>]
+                                                [t('profile.subscriptionOn'), <span class="fw-600">{this.state.currentPeriodEnd}</span>]
                                         }
                                         for="subscription"
                                         value="subscription"
@@ -422,19 +427,19 @@ export default class Profile extends React.Component {
                                     />
                                     <p class="mt-1 mb-3 pb-3 pl-1 ml-4 fz-14">
                                         {!this.state.subscriptionEnd ? 
-                                            ['Décochez la case puis sauvegardez pour annuler le renouvellement automatique de votre abonnement (celui-ci prendra fin au terme de sa période de validité)', <br/>, 'Vous pourrez réactiver simplement votre abonnement en cochant de nouveau la case tant que celui-ci n\'est pas arrivé à son terme'] 
+                                            [t('profile.p1a'), <br/>, t('profile.p1b')] 
                                         : 
-                                            'Vous pouvez réactiver simplement votre abonnement tant que celui-ci n\'est pas arrivé à son terme en cochant la case puis en cliquant sur sauvegarder'
+                                            t('profile.p2')
                                         }
                                     </p>
-                                    <PmyBtn type="submit" isDisabled={this.state.countClickCheckbox === 0} btnIsMediumPmyFull className="w-sm-100" textBtn="Sauvegarder" title="Sauvegarder"/>
+                                    <PmyBtn type="submit" isDisabled={this.state.countClickCheckbox === 0} btnIsMediumPmyFull className="w-sm-100" textBtn={t('actions.save')} title={t('actions.save')}/>
                                 </form>
                             : 
                                 <div class="block-style d-flex flex-column mt-6">
-                                    <p class="mt-3 mb-2 fw-600">Vous n'avez pas d'abonnement en cours.</p>
-                                    <p class="fw-600">Devenez Pro et profitez ainsi de toute la puissance de Asking Franklin :</p>
+                                    <p class="mt-3 mb-2 fw-600">{t('profile.fallback.p1')}</p>
+                                    <p class="fw-600">{t('profile.fallback.p2')}</p>
                                     <FeaturesList className="my-3 py-3"/>
-                                    <PmyBtn redirectTo="/plans" linkIsMediumPmyFull textLink="Passer à la version Pro" customBtnClass="w-md-100"/>
+                                    <PmyBtn redirectTo={t('url.offers')} linkIsMediumPmyFull textLink={t('profile.fallback.cta')} customBtnClass="w-md-100"/>
                                 </div> 
                             }
                         </main>
@@ -444,3 +449,5 @@ export default class Profile extends React.Component {
         )
     }
 }
+
+export default withTranslation()(Profile);
