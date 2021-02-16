@@ -25,7 +25,8 @@ const minToMaxCountry = {
     "it":"Italie",
     "de":"Allemagne",
     "us":"États-unis",
-    "es":"Espagne"
+    "es":"Espagne",
+    "ch":"Suisse"
 
 }
 export default class AskingFranklin extends React.Component {
@@ -141,7 +142,6 @@ export default class AskingFranklin extends React.Component {
     }
 
     render() {
-
         const launchNewRequest = 
             <Container className="d-flex flex-column px-0">
                 <Loader imgNoDataDisplayed content="Aucun résultat trouvé, tentez de lancer une nouvelle recherche avec un mot clé différent"/>

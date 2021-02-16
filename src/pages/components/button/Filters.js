@@ -13,7 +13,8 @@ var countries = [
             { label: <p><Flag icon="us"/>États-Unis</p>, value: "us" },
             { label: <p><Flag icon="fr"/>France</p>, value: "fr" },
             { label: <p><Flag icon="it"/>Italie</p>, value: "it" },
-            { label: <p><Flag icon="gb"/>Royaume-Uni</p>, value: "uk" }
+            { label: <p><Flag icon="gb"/>Royaume-Uni</p>, value: "uk" },
+            { label: <p><Flag icon="ch"/>Suisse</p>, value: "ch" }
         ]
     }
 ]
