@@ -1,11 +1,12 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import PmyBtn from '../button/PmyBtn';
 import ArrowDropdown from '../../../assets/img/svg/ArrowDropdown';
 import { Link } from 'react-router-dom';
 import Settings from '../../../assets/img/svg/navigation/Settings';
 import LogOut from '../../../assets/img/svg/navigation/LogOut';
 
-export default class ProfileAccess extends React.Component {
+class ProfileAccess extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -21,20 +22,23 @@ export default class ProfileAccess extends React.Component {
     }
 
     render() {
+
+        const { t } = this.props;
+
         return (
             <div class="btn-profile-ctn position-relative">
-                <PmyBtn onClick={this.toggleProfileOptions} textBtn="Mon compte" btnIsMediumPmyOutlineFull iconBtnAfter={<ArrowDropdown/>} containerStyle={this.state.isOpen ? 'btn-profile-open btn-profile' : 'btn-profile' } />
+                <PmyBtn onClick={this.toggleProfileOptions} textBtn={t('link.account.btn')} btnIsMediumPmyOutlineFull iconBtnAfter={<ArrowDropdown/>} containerStyle={this.state.isOpen ? 'btn-profile-open btn-profile' : 'btn-profile' } />
                 <ul class="btn-profile-dropwdown mt-1 py-2 rounded">
                     <li>
                         <Link to="/profil" onClick={this.toggleProfileOptions} class="d-flex flex-row py-2 px-3">
                             <Settings width="16" fill="#2B2B2B"/>
-                            <span class="ml-3">Paramètres</span>
+                            <span class="ml-3">{t('link.account.settings')}</span>
                         </Link>
                     </li>
                     <li>
                         <Link onClick={this.props.onClickLogOut} class="d-flex flex-row py-2 px-3">
                             <LogOut width="16" fill="#2B2B2B"/>
-                            <span class="ml-3">Déconnexion</span>
+                            <span class="ml-3">{t('link.account.logout')}</span>
                         </Link>
                     </li>
                 </ul>
@@ -42,3 +46,5 @@ export default class ProfileAccess extends React.Component {
         )
     }
 }
+
+export default withTranslation()(ProfileAccess);

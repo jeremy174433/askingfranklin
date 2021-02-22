@@ -5,7 +5,6 @@ export default class CrownPro extends React.Component {
     render() {
         return (
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 139.815 63.841" width={this.props.width} height={this.props.height}>
-                <title>Vous êtes membre Pro</title>
                 <g transform="translate(33 -191.455)">
                     <g transform="translate(-6.397 198.426)">
                         <path d="M114.193,133.252c-1.1-16.229-53.365-15.125-56.931-15.031-44.533.523-54.018-10.942-56-15.239L8.5,125.28.981,129.7c1.1,16.231,53.367,15.125,56.931,15.032,44.146-.519,53.846,10.739,55.946,15.121l-7.174-21.371Z" transform="translate(-0.981 -102.982)" fill="#e94969" />

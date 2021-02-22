@@ -1,4 +1,5 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
 import { refreshTokenFnc } from '../../../../utils/refreshToken';
 import { 
@@ -13,7 +14,7 @@ import H2 from '../../../components/elements/title/H2';
 import PmyBtn from '../../../components/button/PmyBtn';
 import { Redirect } from 'react-router-dom';
 
-export default class ChoosePlan extends React.Component {
+class ChoosePlan extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -52,7 +53,6 @@ export default class ChoosePlan extends React.Component {
                 return res.json();
             })
             .then(res => {
-                
                 if (res.message === 'The incoming token has expired') {
                     refreshTokenFnc(this.componentDidMount, false);
                 }
@@ -122,11 +122,14 @@ export default class ChoosePlan extends React.Component {
 
     render() {
 
+        const { t } = this.props;
+
         if (this.state.redirectSelectedMonthly || this.state.redirectSelectedAnnual) { 
-            return <Redirect to='/paiement'/>
+            return <Redirect to={t('url.payment')}/>
         }
+
         if (this.state.redirectToLogin) { 
-            return <Redirect to='/connexion'/>
+            return <Redirect to={t('url.signIn')}/>
         }
 
         const classListRow = ' col-12 d-flex flex-row justify-content-center mx-0 mt-5 pt-5 px-0';
@@ -139,18 +142,18 @@ export default class ChoosePlan extends React.Component {
                 {this.customHeadElement()}
                 {this.state.plans.length > 0 ?
                     <Container id="pricing" className="px-0 mt-6">
-                        <H1 className="text-center" title="Vous avez déja un abonnement Asking Franklin Pro actif"/>
-                        <PmyBtn redirectTo="/" linkIsLargePmyFull textLink="Retourner à l'accueil" containerStyle="pt-5 mt-5 text-center"/>
+                        <H1 className="text-center" title={t('funnel.offers.h1a')}/>
+                        <PmyBtn redirectTo="/" linkIsLargePmyFull textLink={t('funnel.offers.linkToHome')} containerStyle="pt-5 mt-5 text-center"/>
                     </Container>
                 :
                     <Container id="pricing" className="px-0 mt-6">
-                        <StepperFunnel activeStep={0} firstStep="Choix de l'offre" secondStep="Paiement" thirdStep="Débuter en Pro"/>
-                        <H1 className="text-center" title="Passez à la vitesse supérieure avec la version Pro"/>
+                        <StepperFunnel activeStep={0} firstStep={t('funnel.stepperPayment.1')} secondStep={t('funnel.stepperPayment.2')} thirdStep={t('funnel.stepperPayment.3')}/>
+                        <H1 className="text-center" title={t('funnel.offers.h1b')}/>
                         {this.state.selectedPlan !== 0 &&
                             <p class='text-center mt-5 fz-18'>
-                                Vous aviez sélectionné l'abonnement&nbsp;
-                                {this.state.alreadySelected === 1 && <span class="fw-600">Mensuel</span>}
-                                {this.state.alreadySelected === 2 && <span class="fw-600">Annuel</span>}
+                                {t('funnel.offers.precedentSelected')}
+                                {this.state.alreadySelected === 1 && <span class="fw-600">{t('funnel.pricing.planProType1')}</span>}
+                                {this.state.alreadySelected === 2 && <span class="fw-600">{t('funnel.pricing.planProType2')}</span>}
                             </p>
                         }
                         <Row className={this.state.selectedPlan === 0 ? classListRow
@@ -159,20 +162,20 @@ export default class ChoosePlan extends React.Component {
                         }>
                             <Col onClick={this.handleChangePlanToMonthly} sm="12" md="8" lg="6" xl="4" className={this.state.selectedPlan === 2 ? this.state.classBlur + classListCol + customColPlan1 : classListCol + customColPlan1}>
                                 <div class="block-prices">
-                                    <H2 className="mt-4 mb-3" title="Mensuel"/>
-                                    <p class="price">49€<span> /mois</span></p>
-                                    <p>Payez mensuellement, sans engagement</p>
-                                    <p class="fz-14">(renouvellement automatique en fin d'abonnement)</p>
-                                    <PmyBtn onClick={this.handleSelectedMonthlyPlan} isDisabled={this.state.selectedPlan === 2} btnIsLargePmyFull textBtn={this.state.alreadySelected === 1 ? "Confirmer l'abonnement Mensuel" : "Choisir l'abonnement Mensuel"} containerStyle="mt-5 mb-4 w-100" className="w-100"/>
+                                    <H2 className="mt-4 mb-3" title={t('funnel.pricing.planProType1')}/>
+                                    <p class="price">{t('funnel.pricing.price-1')}<span>{t('funnel.pricing.priceRhythm')}</span></p>
+                                    <p>{t('funnel.offers.monthly.p1')}</p>
+                                    <p class="fz-14">{t('funnel.offers.automaticRenewal')}</p>
+                                    <PmyBtn onClick={this.handleSelectedMonthlyPlan} isDisabled={this.state.selectedPlan === 2} btnIsLargePmyFull textBtn={this.state.alreadySelected === 1 ? t('funnel.offers.monthly.cta1') : t('funnel.offers.monthly.cta2')} containerStyle="mt-5 mb-4 w-100" className="w-100"/>
                                 </div>
                             </Col>
                             <Col onClick={this.handleChangePlanToAnnual} sm="12" md="8" lg="6" xl="4" className={this.state.selectedPlan === 1 ? this.state.classBlur + classListCol + customColPlan2 : classListCol + customColPlan2}>
                                 <div class="block-prices">
-                                    <H2 className="mt-4 mb-3" title="Annuel"/>
-                                    <p class="price">39€<span> /mois</span></p>
-                                    <p>Soit <span class="fw-600">468€/an</span>, économisez 120€. Réglable en une fois</p>
-                                    <p class="fz-14">(renouvellement automatique en fin d'abonnement)</p>
-                                    <PmyBtn onClick={this.handleSelectedAnnualPlan} isDisabled={this.state.selectedPlan === 1} btnIsLargePmyFull textBtn={this.state.alreadySelected === 2 ? "Confirmer l'abonnement Annuel" : "Choisir l'abonnement Annuel"} containerStyle="mt-5 mb-4 w-100" className="w-100"/>
+                                    <H2 className="mt-4 mb-3" title={t('funnel.pricing.planProType2')}/>
+                                    <p class="price">{t('funnel.pricing.price-2')}<span>{t('funnel.pricing.priceRhythm')}</span></p>
+                                    <p>{t('funnel.offers.annual.p1-a')}<span class="fw-600">{t('funnel.pricing.priceTotalNow')}</span>{t('funnel.offers.annual.p1-b')}</p>
+                                    <p class="fz-14">{t('funnel.offers.automaticRenewal')}</p>
+                                    <PmyBtn onClick={this.handleSelectedAnnualPlan} isDisabled={this.state.selectedPlan === 1} btnIsLargePmyFull textBtn={this.state.alreadySelected === 2 ? t('funnel.offers.annual.cta1') : t('funnel.offers.annual.cta2')} containerStyle="mt-5 mb-4 w-100" className="w-100"/>
                                 </div>
                             </Col>
                         </Row>
@@ -182,3 +185,5 @@ export default class ChoosePlan extends React.Component {
         )
     }
 }
+
+export default withTranslation()(ChoosePlan);

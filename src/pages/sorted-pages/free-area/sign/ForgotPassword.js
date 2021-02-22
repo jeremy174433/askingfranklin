@@ -1,4 +1,5 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
 import { 
     Container,
@@ -12,7 +13,7 @@ import ArrowTextLink from '../../../components/elements/link/ArrowTextLink';
 import EyeShowHide from '../../../../assets/img/svg/switch/EyeShowHide';
 import Alert from '../../../components/elements/Alert';
 
-export default class ForgotPassword extends React.Component {
+class ForgotPassword extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -140,57 +141,58 @@ export default class ForgotPassword extends React.Component {
     }
 
     render() {
+
+        const { t } = this.props;
+
         return (
             <div id="forgotPassword" class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
                 {this.customHeadElement()}
-                {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowedCodeSent && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowedCodeSent ? 'alert-msg-visible' : ''} alertId="successMessage" msg={['Un code de vérification vient d\'être envoyé à l\'email : ', <span class="fw-600">{this.state.email}</span>]}/> }
-                {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg={['Votre mot de passe a bien été changé. Vous pouvez maintenant ', <Link to='/connexion'>vous connecter</Link>]}/> }
-                {this.state.error && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowedError && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowedError ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="Une erreur est survenue. Vérifiez votre code et votre nouveau mot de passe"/> }
-                {this.state.error && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowedLimit && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowedLimit ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="Une erreur est survenue. La limite de requête a été atteinte, réessayez dans quelques minutes"/> }
+                {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowedCodeSent && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowedCodeSent ? 'alert-msg-visible' : ''} alertId="successMessage" msg={[ t('alert.forgotPassword.sendVerifCode'), <span class="fw-600">{this.state.email}</span>]}/> }
+                {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg={[ t('alert.forgotPassword.success'), <Link to={t('url.signIn')}>{t('alert.forgotPassword.successLink')}</Link>]}/> }
+                {this.state.error && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowedError && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowedError ? 'alert-msg-visible' : ''} alertId="errorMessage" msg={t('alert.forgotPassword.error')}/> }
+                {this.state.error && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowedLimit && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowedLimit ? 'alert-msg-visible' : ''} alertId="errorMessage" msg={t('alert.forgotPassword.errorLimit')}/> }
                 {!this.state.emailSent ? 
                     <Container className="px-0 mt-6">
                         <Col sm="12" lg="8" xl="6" className="px-0 mx-auto">
-                            <H1 className="mb-5" title="Mot de passe oublié"/>
+                            <H1 className="mb-5" title={t('sign.forgotPassword.h1')}/>
                             <form onSubmit={this.handleSubmit} method="POST">
                                 <Input 
                                     onChange={this.handleEmail} 
                                     type="email" 
-                                    label="Votre email" 
+                                    label={t('form.label.email')}
                                     for="email" 
                                     required={true} 
-                                    infoMsg={this.state.email.length < 1 ? 'Ce champ est requis' : !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
+                                    infoMsg={this.state.email.length < 1 ? t('alert.form.fieldRequired') : !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) && t('alert.form.patternEmail')}
                                 />
                                 <PmyBtn 
                                     type="submit" 
                                     isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/)} 
                                     btnIsMediumPmyFull 
-                                    textBtn="Recevoir un email de réinitialisation" 
+                                    textBtn={t('sign.forgotPassword.cta1')} 
                                     className="w-sm-100"
                                 />
                             </form>
                             <div class="d-flex flex-column mt-3 pt-3">
-                                <ArrowTextLink redirectTo="/connexion" textLink="Se connecter à Asking Franklin"/>
+                                <ArrowTextLink redirectTo={t('url.signIn')} textLink={t('sign.forgotPassword.linkSignIn')}/>
                             </div>
                         </Col>
                     </Container>
                 :
                     <Container className="px-0 mt-6">
                         <Col sm="12" lg="8" xl="6" className="px-0 mx-auto">
-                            <H1 className="mb-5" title="Mot de passe oublié"/>
+                            <H1 className="mb-5" title={t('sign.forgotPassword.h1')}/>
                             <form onSubmit={this.handleSubmitConfirm} method="POST">
                                 <Input 
                                     onChange={this.handleCode} 
                                     disabled={this.state.passwordIsChanged === true} 
                                     type="text" 
                                     value={this.state.code} 
-                                    label={'Renseignez le code envoyé par email à ' + this.state.email} 
-                                    for="codeToken" 
-                                    name={this.for} 
-                                    id={this.for} 
+                                    label={t('form.label.codeSentByEmail') + this.state.email} 
+                                    for="codeToken"
                                     maxlength={6} 
                                     minlength={6} 
                                     required={true} 
-                                    infoMsg={this.state.code.length !== 6 && 'Le code doit contenir 6 caractères'}
+                                    infoMsg={this.state.code.length !== 6 && t('alert.form.codePattern')}
                                 />
                                 <Input 
                                     containerStyle="input-password-column"
@@ -198,27 +200,25 @@ export default class ForgotPassword extends React.Component {
                                     disabled={this.state.passwordIsChanged === true} 
                                     type={this.state.pwdDefaultType} 
                                     value={this.state.newPassword} 
-                                    label="Votre nouveau mot de passe" 
-                                    labelInfo={['8 caractères minimum, ', <br class="d-block d-sm-none"/>, 'dont au moins 1 chiffre']}
+                                    label={t('form.label.newPassword')}
+                                    labelInfo={[ t('form.label.passwordPattern1'), <br class="d-block d-sm-none"/>, t('form.label.passwordPattern2')]}
                                     minLength={8} 
-                                    for="newPassword" 
-                                    name={this.for} 
-                                    id={this.for} 
+                                    for="newPassword"
                                     onClick={this.handleInputType} 
                                     inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>} 
                                     required={true} 
-                                    infoMsg={!this.state.newPassword.match(/^(?=.*\d)(?=.*[a-zA-Z0-9]).{8,}$/) && 'Le mot de passe doit contenir au moins 8 caractères dont 1 chiffre'}
+                                    infoMsg={!this.state.newPassword.match(/^(?=.*\d)(?=.*[a-zA-Z0-9]).{8,}$/) && t('alert.form.patternPassword')}
                                 />
                                 <PmyBtn 
                                     type="submit" 
                                     isDisabled={this.state.code.length !== 6 || !this.state.newPassword.match(/^(?=.*\d)(?=.*[a-zA-Z0-9]).{8,}$/) || this.state.passwordIsChanged === true} 
                                     btnIsMediumPmyFull 
-                                    textBtn="Réinitialiser le mot de passe" 
+                                    textBtn={t('sign.forgotPassword.cta2')}  
                                     className="w-sm-100"
                                 />
                             </form>
                             <div class="d-flex flex-column mt-3 pt-3">
-                                <ArrowTextLink redirectTo="/connexion" textLink="Se connecter à Asking Franklin"/>
+                                <ArrowTextLink redirectTo={t('url.signIn')} textLink={t('sign.forgotPassword.linkSignIn')}/>
                             </div>
                         </Col>
                     </Container>
@@ -227,3 +227,5 @@ export default class ForgotPassword extends React.Component {
         )
     }
 }
+
+export default withTranslation()(ForgotPassword);

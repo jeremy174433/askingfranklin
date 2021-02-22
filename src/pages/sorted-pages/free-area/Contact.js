@@ -1,6 +1,6 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
-import { refreshTokenFnc } from '../../../utils/refreshToken';
 import { 
     Container,
     Row,
@@ -12,7 +12,7 @@ import Textarea from '../../components/form/Textarea';
 import PmyBtn from '../../components/button/PmyBtn';
 import Alert from '../../components/elements/Alert';
 
-export default class Contact extends React.Component {
+class Contact extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -102,61 +102,60 @@ export default class Contact extends React.Component {
     }
 
     render() {
+
+        const { t } = this.props;
+
         return (
             <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
                 {this.customHeadElement()}
-                {this.state.alertIsShowed && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre message a bien été envoyé, nous reviendrons rapidement vers vous"/> }
+                {this.state.alertIsShowed && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg={t('alert.contact.success')}/> }
                 <Container id="contact" className="px-0 mt-6 w-100 text-center d-flex flex-column align-items-center">
-                    <H1 title="Contact &amp; Assistance"/>
-                    <form onSubmit={this.handleSubmitForm} method="POST" id="test" class="block-style d-flex flex-column w-100 mt-5">
+                    <H1 title={t('contact.h1')}/>
+                    <form onSubmit={this.handleSubmitForm} method="POST" class="block-style d-flex flex-column w-100 mt-5">
                         <Row className="mx-0">
                             <Col sm="12" lg="6" className="px-0">
                                 <Input
                                     type="text"
-                                    label="Sujet"
+                                    label={t('form.label.subject')}
                                     for="contactSubject"
-                                    name={this.for}
-                                    id={this.for}
                                     onChange={this.handleSubjectChange}
                                     value={this.state.subject}
                                     containerStyle="mt-3 mr-0 mr-lg-3"
                                     required={true}
-                                    infoMsg={this.state.subject.length < 1 && 'Ce champ est requis'}
+                                    infoMsg={this.state.subject.length < 1 && t('alert.form.fieldRequired')}
                                 />
                             </Col>
                             <Col sm="12" lg="6" className="px-0">
                                 <Input
                                     type="email"
-                                    label="Votre adresse email"
+                                    label={t('form.label.email')}
                                     for="contactEmail"
-                                    name={this.for}
-                                    id={this.for}
                                     onChange={this.handleEmailChange}
                                     value={this.state.email}
                                     containerStyle="mt-3 ml-0 ml-lg-3"
                                     required={true}
-                                    infoMsg={this.state.email.length < 1 && 'Ce champ est requis' || !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
+                                    infoMsg={this.state.email.length < 1 && t('alert.form.fieldRequired') || !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) && t('alert.form.patternEmail')}
                                 />
                             </Col>
                         </Row>
                         <Col sm="12" className="px-0">
                             <Textarea
-                                label="Votre message"
-                                placeholder="Une demande, une question, laissez nous votre message..."
+                                label={t('form.label.message')}
+                                placeholder={t('form.input.placeholderContact')}
                                 for="contactMessage"
-                                name={this.for}
-                                id={this.for}
                                 onChange={this.handleContentChange}
                                 value={this.state.content}
                                 containerStyle="mb-3 pb-3"
                                 required={true}
-                                infoMsg={this.state.content.length < 1 && 'Ce champ est requis'}
+                                infoMsg={this.state.content.length < 1 && t('alert.form.fieldRequired')}
                             />
                         </Col>
-                        <PmyBtn type="submit" isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) || this.state.subject.length < 1 || this.state.content.length < 1} btnIsMediumPmyFull textBtn="Envoyer le message" className="w-sm-100"/>
+                        <PmyBtn type="submit" isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) || this.state.subject.length < 1 || this.state.content.length < 1} btnIsMediumPmyFull textBtn={t('contact.cta')} className="w-sm-100"/>
                     </form>
                 </Container>
             </div>
         )
     }
 }
+
+export default withTranslation()(Contact);

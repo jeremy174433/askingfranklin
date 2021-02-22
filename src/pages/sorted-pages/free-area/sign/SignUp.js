@@ -1,4 +1,6 @@
 import React from 'react';
+import i18n from '../../../../i18n';
+import { withTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
 import { 
     Container,
@@ -17,7 +19,7 @@ import EyeShowHide from '../../../../assets/img/svg/switch/EyeShowHide';
 import ArrowTextLink from '../../../components/elements/link/ArrowTextLink';
 import Alert from '../../../components/elements/Alert';
 
-export default class SignUp extends React.Component {
+class SignUp extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -45,7 +47,7 @@ export default class SignUp extends React.Component {
         window.scrollTo(0, 0);
         var token = localStorage.getItem('af_token');
         if(token) {
-            this.props.history.push('/plans');
+            this.props.history.push(i18n.t('url.offers'));
         }
     }
 
@@ -136,79 +138,74 @@ export default class SignUp extends React.Component {
 
     render() {
         
+        const { t } = this.props;
+        const ctx = '?ctx=buy';
+
         if(this.state.redirect) { 
-            return <Redirect to={this.props.location.search !== '?ctx=buy' ? '/connexion' : '/connexion?ctx=buy'}/>
+            return <Redirect to={this.props.location.search !== ctx ? t('url.signIn') : t('url.signIn') + ctx}/>
         }
 
         return (
             <div id="signUp" class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
                 {this.customHeadElement()}
-                {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg="Votre compte a bien été créé. Vous allez recevoir un email de confirmation, merci de le valider"/> }
-                {this.state.emailIsAlreadyTaken && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg="L'email choisi n'est pas disponible, veuillez en choisir un différent"/> }
+                {this.state.success && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="successMessage" msg={t('alert.signUp.success')}/> }
+                {this.state.emailIsAlreadyTaken && <Alert onClick={this.handleCloseAlert} className={this.state.alertIsShowed && !this.props.bannerIsActive ? 'alert-msg-visible alert-msg-no-banner' : this.state.alertIsShowed ? 'alert-msg-visible' : ''} alertId="errorMessage" msg={t('alert.signUp.emailAlreadyTaken')}/> }
                 <Container className="px-0 mt-6">
-                    <StepperFunnel activeStep={1} firstStep="Choix de l'offre" secondStep="Inscription" thirdStep="Abonnement et passage en Pro"/>
+                    <StepperFunnel activeStep={1} firstStep={t('funnel.stepper.1')} secondStep={t('funnel.stepper.2')} thirdStep={t('funnel.stepper.3')}/>
                 </Container>
                 <Container className="px-0">
                     <Col sm="12" lg="8" xl="6" className="px-0 mx-auto">
-                        <H1 className="mb-5" title="Créer un compte Asking Franklin"/>
+                        <H1 className="mb-5" title={t('sign.register.h1')}/>
                         <form onSubmit={this.handleSubmit} method="POST" id="signUpForm">
                             <Input 
                                 onChange={this.handleEmail} 
                                 value={this.state.email}
                                 type="email" 
-                                label="Votre email" 
-                                for="email" 
-                                name={this.for} 
-                                id={this.for}
+                                label={t('form.label.email')}
+                                for="email"
                                 required={true}
-                                infoMsg={this.state.email.length < 1 ? 'Ce champ est requis' : !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) && 'Le format de l\'adresse email n\'est pas correct'}
+                                infoMsg={this.state.email.length < 1 ? t('alert.form.fieldRequired') : !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) && t('alert.form.patternEmail')}
                             />
                             <Input 
                                 containerStyle="input-password-column"
                                 onChange={this.handlePassword} 
                                 value={this.state.password}
                                 type={this.state.pwdDefaultType} 
-                                label="Votre mot de passe" 
-                                labelInfo={['8 caractères minimum, ', <br class="d-block d-sm-none"/>, 'dont au moins 1 chiffre']}
+                                label={t('form.label.password')}
+                                labelInfo={[t('form.label.passwordPattern1'), <br class="d-block d-sm-none"/>, t('form.label.passwordPattern2')]}
                                 minLength={8} 
-                                for="password" 
-                                name={this.for} 
-                                id={this.for} 
+                                for="password"
                                 onClick={this.handleInputType}
                                 inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>} 
                                 required={true}
-                                infoMsg={!this.state.password.match(/^(?=.*\d)(?=.*[a-zA-Z0-9]).{8,}$/) && 'Le mot de passe doit contenir au moins 8 caractères dont 1 chiffre'}
+                                infoMsg={!this.state.password.match(/^(?=.*\d)(?=.*[a-zA-Z0-9]).{8,}$/) && t('alert.form.patternPassword')}
                             />
                             <Checkbox 
-                                label={['J\'ai lu et j\'accepte les ', <Link to="/conditions-generales-d-utilisation" target="_blank" rel="noopener" title="Ouvrir dans un nouvel onglet : CGU Asking Franklin" class="fz-16">CGU</Link>, <em class="fz-14 ml-1">(requis)</em>]} 
+                                label={[ t('form.checkbox.labelTcs-1'), <Link to={t('url.tcs')} target="_blank" rel="noopener" title={t('titleElementBrowser.tcs')} class="fz-16">{t('form.checkbox.labelTcs-2')}</Link>, <em class="fz-14 ml-1">{t('form.checkbox.labelTcs-3')}</em>]} 
                                 onChange={this.handlePrivacy} 
-                                for="checkPrivacy" 
-                                name={this.for} 
-                                id={this.for} 
+                                for="checkPrivacy"
                                 value={this.state.privacy} 
                                 required={true}
                                 className="pb-3"
                             />
                             <Checkbox 
-                                label={['Je m\'inscris à la newsletter pour recevoir des astuces et conseils pour décoller en SEO, Brand content, Content marketing... ', <em class="fz-14">(pas plus de 1 fois /mois c'est promis !)</em>]} 
+                                label={[ t('form.checkbox.labelNewsletter'), <em class="fz-14">{t('footer.newsletter.rhythm')}</em>]} 
                                 onChange={this.handleNewsletter} 
-                                for="checkNewsletterSignUp" 
-                                name={this.for} 
-                                id={this.for} 
+                                for="checkNewsletterSignUp"
                                 value={this.state.newsletter} 
                                 className="mb-3 pb-3"
                             />
                             <PmyBtn 
                                 type="submit" 
-                                title={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) || !this.state.password.match(/^(?=.*\d)(?=.*[a-zA-Z0-9]).{8,}$/) || this.state.privacy === '' ? 'Il est nécessaire de renseigner tous les champs et d\'accepter les CGU pour s\'inscrire' : 'Créer mon compte'}
+                                title={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) || !this.state.password.match(/^(?=.*\d)(?=.*[a-zA-Z0-9]).{8,}$/) || this.state.privacy === '' ? t('titleElementBrowser.form.registerError') : t('sign.register.cta')}
                                 isDisabled={!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) || !this.state.password.match(/^(?=.*\d)(?=.*[a-zA-Z0-9]).{8,}$/) || this.state.privacy === ''} 
                                 btnIsMediumPmyFull 
-                                textBtn="Créer mon compte" 
+                                textBtn={t('sign.register.cta')} 
                                 className="w-sm-100"
                             />
                         </form>
                         <div class="d-flex flex-column mt-3 pt-3">
-                            <ArrowTextLink redirectTo="/connexion" textLink="J'ai déjà un compte Asking Franklin"/>
+                            <ArrowTextLink redirectTo={t('link.signIn')} textLink={t('sign.register.linkSignIn')}/>
                         </div>
                     </Col>
                 </Container>
@@ -216,3 +213,5 @@ export default class SignUp extends React.Component {
         )
     }
 }
+
+export default withTranslation()(SignUp);

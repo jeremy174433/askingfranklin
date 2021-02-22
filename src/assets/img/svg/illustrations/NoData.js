@@ -17,7 +17,6 @@ export default class NoData extends React.Component {
                     <linearGradient id="img-no-data-gradient-4" x1="476.94" y1="156.13" x2="476.94" y2="106.68" gradientTransform="matrix(1, 0, 0, 1, 0, 0)"/>
                     <linearGradient id="img-no-data-gradient-5" x1="666.86" y1="176.39" x2="666.86" y2="117.95" gradientTransform="matrix(1, 0, 0, 1, 0, 0)"/>
                 </defs>
-                <title>Aucun résultat</title>
                 <rect x="317.5" y="142.55" width="437.02" height="603.82" transform="translate(-271.22 62.72) rotate(-12.11)" fill="#e0e0e0" />
                 <g opacity="0.5">
                     <rect x="324.89" y="152.76" width="422.25" height="583.41" transform="translate(-271.22 62.72) rotate(-12.11)" fill="url(#img-no-data-gradient-0)" />

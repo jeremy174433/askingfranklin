@@ -5,7 +5,6 @@ export default class ErrorImg extends React.Component {
     render() {
         return (
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1119.60911 699" width="500" class="img-fluid">
-                <title>Page introuvable</title>
                 <path d="M31.39089,151.64237c0,77.49789,48.6181,140.20819,108.70073,140.20819" transform="translate(-31.39089 -100.5)" fill="#2f2e41" />
                 <path d="M140.09162,291.85056c0-78.36865,54.255-141.78356,121.30372-141.78356" transform="translate(-31.39089 -100.5)" fill="#673ab7" />
                 <path d="M70.77521,158.66768c0,73.61476,31.00285,133.18288,69.31641,133.18288" transform="translate(-31.39089 -100.5)" fill="#673ab7" />

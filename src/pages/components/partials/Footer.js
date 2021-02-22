@@ -1,4 +1,5 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import { 
     Container,
     Row,
@@ -13,7 +14,7 @@ import PmyBtn from '../button/PmyBtn';
 import Checkbox from '../form/Checkbox';
 import Tick from '../../../assets/img/svg/Tick';
 
-export default class Footer extends React.Component {
+class Footer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -77,66 +78,72 @@ export default class Footer extends React.Component {
     }
 
     render() {
+
+        const { t } = this.props;
+        const actualYear = (new Date().getFullYear());
+
         return (
             <footer id="footer" class="px-4 px-xl-5 py-5">
                 <Container className="px-0 pt-5">
                     <Row className="mx-0 pb-5 d-flex flex-column flex-lg-row">
-                        <Col lg="3" className="d-flex align-items-center align-items-lg-start pl-lg-0 mb-5 mb-lg-0 pb-5 pb-lg-0">
-                            <Link to="/" class="mx-auto mx-lg-0">
+                        <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start pl-lg-0 mb-5 mb-lg-0 pb-5 pb-lg-0">
+                            <Link to="/" class="mx-auto mx-lg-0 mb-4">
                                 <Logo icon="white" width="200"/>
                             </Link>
+                            <p onClick={this.props.onClickLanguage} data-lang="en" class="mb-3">{t('footer.language.en')}</p>
+                            <p onClick={this.props.onClickLanguage} data-lang="fr">{t('footer.language.fr')}</p>
                         </Col>
                         <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start mb-5 mb-lg-0">
-                            <p class="footer-title">Liens utiles</p>
+                            <p class="footer-title">{t('footer.title.1')}</p>
                             <ul class="d-flex flex-column">
-                                <MenuLink redirectTo="/" textLink="Accueil" linkLocation="footer-link"/>
-                                {localStorage.getItem('af_is_sub') <= 0 && <MenuLink redirectTo="/tarifs" textLink="Tarifs" linkLocation="footer-link"/> }
-                                <MenuLink href="https://blog.askingfranklin.com" textLink="Blog" linkLocation="footer-link"/>
-                                <MenuLink redirectTo="/faq" textLink="FAQ" linkLocation="footer-link"/>
-                                <MenuLink redirectTo="/contact" textLink="Contact" linkLocation="footer-link"/>
+                                <MenuLink redirectTo="/" textLink={t('link.homepage')} linkLocation="footer-link"/>
+                                {localStorage.getItem('af_is_sub') <= 0 && <MenuLink redirectTo={t('url.pricing')} textLink={t('link.pricing')} linkLocation="footer-link"/> }
+                                <MenuLink href={t('url.blog')} textLink={t('link.blog')} linkLocation="footer-link"/>
+                                <MenuLink redirectTo={t('url.faq')} textLink={t('link.faq')}linkLocation="footer-link"/>
+                                <MenuLink redirectTo={t('url.contact')} textLink={t('link.contact')} linkLocation="footer-link"/>
                             </ul>
                         </Col>
                         <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start mb-5 mb-lg-0">
-                            <p class="footer-title">Informations</p>
+                            <p class="footer-title">{t('footer.title.2')}</p>
                             <ul class="d-flex flex-column">
-                                <MenuLink redirectTo="/mentions-legales" textLink="Mentions légales"rel="nofollow" linkLocation="footer-link"/>
-                                <MenuLink redirectTo="/conditions-generales-d-utilisation" textLink="CGU" rel="nofollow" linkLocation="footer-link"/>
-                                <MenuLink redirectTo="/conditions-generales-de-vente" textLink="CGV" rel="nofollow" linkLocation="footer-link"/>
+                                <MenuLink redirectTo={t('url.notice')} textLink={t('link.legal.notice')} rel="nofollow" linkLocation="footer-link"/>
+                                <MenuLink redirectTo={t('url.tcs')} textLink={t('link.legal.tcs')} rel="nofollow" linkLocation="footer-link"/>
+                                <MenuLink redirectTo={t('url.gtcs')} textLink={t('link.legal.gtcs')} rel="nofollow" linkLocation="footer-link"/>
                             </ul>
                         </Col>
                         <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start">
-                            <p class="footer-title">Nos réseaux</p>
+                            <p class="footer-title">{t('footer.title.3')}</p>
                             <ul class="social-media-wrapper d-flex flex-row">
-                                <MenuLink linkHasIcon={<SocialMedia icon="facebook" height="18" fill="#FFF"/>} href="https://www.facebook.com/askingfranklin/" target="_blank" rel="nofollow noopener" title="Ouvrir dans un nouvel onglet : Facebook" className="icon-sm"/>
-                                <MenuLink linkHasIcon={<SocialMedia icon="twitter" width="18" fill="#FFF"/>} href="https://twitter.com/AskingFranklin" target="_blank" rel="nofollow noopener" title="Ouvrir dans un nouvel onglet : Twitter" className="icon-sm"/>
-                                <MenuLink linkHasIcon={<SocialMedia icon="linkedin" width="18" fill="#FFF"/>} href="https://www.linkedin.com/company/asking-franklin/" target="_blank" rel="nofollow noopener" title="Ouvrir dans un nouvel onglet : LinkedIn" className="icon-sm"/>
+                                <MenuLink linkHasIcon={<SocialMedia icon="facebook" height="18" fill="#FFF"/>} href={t('url.smFacebook')} target="_blank" rel="nofollow noopener" title={t('titleElementBrowser.footer.fb')} className="icon-sm"/>
+                                <MenuLink linkHasIcon={<SocialMedia icon="twitter" width="18" fill="#FFF"/>} href={t('url.smTwitter')} target="_blank" rel="nofollow noopener" title={t('titleElementBrowser.footer.tw')} className="icon-sm"/>
+                                <MenuLink linkHasIcon={<SocialMedia icon="linkedin" width="18" fill="#FFF"/>} href={t('url.smLinkedIn')} target="_blank" rel="nofollow noopener" title={t('titleElementBrowser.footer.lk')} className="icon-sm"/>
                             </ul>
                         </Col>
                     </Row>
                     <Row>
                         <Col sm="12" md="8" lg="6" className="px-0 py-5 mx-auto">
-                            <p class="fz-24">Suivez nos actualités 🚀</p>
-                            <p class="py-2">Et recevez des astuces et conseils pour décoller en SEO, Brand content, Content marketing...</p>
-                            <p class="fz-14">(pas plus de 1 fois /mois c'est promis !)</p>
+                            <p class="fz-24">{t('footer.newsletter.title')}</p>
+                            <p class="py-2">{t('footer.newsletter.subtitle')}</p>
+                            <p class="fz-14">{t('footer.newsletter.rhythm')}</p>
                             <form onSubmit={this.handleSubmitNewsletter} method="POST" class="form-newsletter pt-3">
                                 <div class="d-flex flex-column flex-sm-row mb-3 mb-sm-0">
                                     <Input 
                                         onChange={this.handleEmailNewsletter} 
                                         type="email" 
                                         hideLabel={true}
-                                        placeholder="Votre adresse email..."
+                                        placeholder={t('form.input.placeholderEmail')}
                                         containerStyle="mb-3 mr-0 mr-sm-4 w-100"
                                         for="emailNewsletter" 
                                         name={this.for} 
                                         id={this.for} 
                                         required={true} 
                                         disabled={this.state.subscribeSuccess}
-                                        infoMsg={this.state.emailNewsletter.length < 1 ? 'Ce champ est requis' : !this.state.emailNewsletter.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) && 'Le format de l\'adresse email n\'est pas correct' || this.state.subscribeSuccess && ''}
+                                        infoMsg={this.state.emailNewsletter.length < 1 ? t('alert.form.fieldRequired') : !this.state.emailNewsletter.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) && t('alert.form.patternEmail') || this.state.subscribeSuccess && ''}
                                     />
-                                    <PmyBtn type="submit" isDisabled={!this.state.emailNewsletter.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) || this.state.checkCgu === '' || this.state.subscribeSuccess} btnIsMediumPmyFull textBtn="S'abonner" title={this.state.emailNewsletter.length < 1 && 'Ce champ est requis' || !this.state.emailNewsletter.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) && 'Le format de l\'adresse email n\'est pas correct' || this.state.checkCgu === '' && 'Il est nécessaire d\'accepter les CGU'} className="w-sm-100 h-100" style={{ height: '48px' }}/>
+                                    <PmyBtn type="submit" isDisabled={!this.state.emailNewsletter.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) || this.state.checkCgu === '' || this.state.subscribeSuccess} btnIsMediumPmyFull textBtn={t('form.submit.newsletter')} title={!this.state.emailNewsletter.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) && t('alert.form.patternEmail') || this.state.checkCgu === '' && t('alert.form.acceptanceTcs')} className="w-sm-100 h-100" style={{ height: '48px' }}/>
                                 </div>
                                 <Checkbox 
-                                    label={['J\'ai lu et j\'accepte les ', <Link to="/conditions-generales-d-utilisation" target="_blank" rel="noopener" title="Ouvrir dans un nouvel onglet : CGU Asking Franklin" class="fz-16">CGU</Link>, <em class="fz-14 ml-1">(requis)</em>]} 
+                                    label={[t('form.checkbox.labelTcs-1'), <Link to={t('url.tcs')} target="_blank" rel="noopener" title={t('titleElementBrowser.tcs')} class="fz-16">{t('form.checkbox.labelTcs-2')}</Link>, <em class="fz-14 ml-1">{t('form.checkbox.labelTcs-3')}</em>]} 
                                     onChange={this.handlePrivacy} 
                                     for="checkNewsletter" 
                                     name={this.for} 
@@ -150,18 +157,20 @@ export default class Footer extends React.Component {
                                 this.state.subscribeSuccess === true ? 
                                     <div class="d-flex flex-row align-items-center mt-2">
                                         <Tick width="16" fill="#00C851"/>
-                                        <p class="color-success fz-14 ml-2">Votre abonnement a bien été enregistré</p>
+                                        <p class="color-success fz-14 ml-2">{t('alert.form.subscribeNewsletter.success')}</p>
                                     </div>
                                 : this.state.subscribeError === true &&
-                                    <p class="color-danger fz-14 mt-2">L'adresse email saisie semble être déjà abonnée à la newsletter</p>
+                                    <p class="color-danger fz-14 mt-2">{t('alert.form.subscribeNewsletter.error')}</p>
                             }
                         </Col>
                     </Row>
                     <div class="d-flex justify-content-center pb-5 pb-sm-0 pt-5">
-                        <p class="fz-14">Asking Franklin {(new Date().getFullYear())}, par <a href="https://sortvoices.fr" target="_blank" title="Ouvrir dans un nouvel onglet : www.sortvoices.fr">Sortvoices</a>. Tous droits réservés.</p>
+                        <p class="fz-14">{t('footer.subfooter.intro', { actualYear } )}<a href={t('url.external.owner')} target="_blank" title={t('titleElementBrowser.linkOwner')}>{t('footer.subfooter.owner')}</a>{t('footer.subfooter.rights')}</p>
                     </div>
                 </Container>
             </footer>
         )
     }
 }
+
+export default withTranslation()(Footer);

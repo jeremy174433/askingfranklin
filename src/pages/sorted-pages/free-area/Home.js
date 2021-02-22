@@ -1,4 +1,5 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
 import { 
     Container,
@@ -33,13 +34,13 @@ import Blob7 from '../../../assets/img/svg/decorating/blob/Blob7';
 import Blob8 from '../../../assets/img/svg/decorating/blob/Blob8';
 import Blob9 from '../../../assets/img/svg/decorating/blob/Blob9';
 
-export default class Home extends React.Component {
+class Home extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             keywordSearch: '',
-            languageSearch:'fr',
-            countrySearch:'fr',
+            languageSearch: 'fr',
+            countrySearch: 'fr',
             redirect: false,
             lastArticles: []
         }
@@ -93,11 +94,12 @@ export default class Home extends React.Component {
 
     render() {
 
-        if(this.state.redirect) {
-            return <Redirect to={'/recherche/' + this.state.keywordSearch.replace(/ /g, '-') + '?lang=' + this.state.languageSearch + '&country=' + this.state.countrySearch}/>
-        }
-
+        const { t } = this.props;
         const cardRowBlog = 'd-flex flex-column flex-lg-row align-items-center align-items-lg-start ';
+
+        if(this.state.redirect) {
+            return <Redirect to={ t('url.resultAF') + this.state.keywordSearch.replace(/ /g, '-') + '?lang=' + this.state.languageSearch + '&country=' + this.state.countrySearch}/>
+        }
 
         return (
             <div id="home">
@@ -111,7 +113,7 @@ export default class Home extends React.Component {
                         <Blob2 className="blob-2"/>
                         <Dots className="dots-1"/>
                         <Col md="12" lg="6" className="mt-0 mb-5 py-0 my-md-5 py-md-5 px-0">
-                            <H1 title="Découvrez ce que recherchent les internautes sur Google"/>
+                            <H1 title={t('homepage.h1')}/>
                             <FormRequestFranklin 
                                 onSubmit={this.requestFanklin} 
                                 onChange={this.handleKeywordChange} 
@@ -133,31 +135,31 @@ export default class Home extends React.Component {
 
                 <section class="home-section-2">
                     <Container>
-                        <H2 className="mb-5" title="Ils parlent de Asking Franklin"/>
+                        <H2 className="mb-5" title={t('homepage.h2a')}/>
                         <div className="d-flex flex-row justify-content-center flex-wrap">
                             <CardReview
-                                title="Comment trouver des sujets de contenu qui engagent et fidélisent avec Asking Franklin ?"
-                                authorName="Audrey Tips"
-                                authorProfession="Coach virtuel. Experte en astuce marketing digital"
-                                postLink="https://audreytips.com/trouver-sujets-contenu-asking-franklin/"
+                                title={t('homepage.reviews.1.title')}
+                                authorName={t('homepage.reviews.1.author')}
+                                authorProfession={t('homepage.reviews.1.about')}
+                                postLink={t('url.external.reviews.1')}
                             />
                             <CardReview
-                                title="Mon test et mon avis sur Asking Franklin"
-                                authorName="Josselin Leydier"
-                                authorProfession="Consultant en acquisition de trafic"
-                                postLink="https://josselinleydier.com/seo/avis-asking-franklin/"
+                                title={t('homepage.reviews.2.title')}
+                                authorName={t('homepage.reviews.2.author')}
+                                authorProfession={t('homepage.reviews.2.about')}
+                                postLink={t('url.external.reviews.2')}
                             />
                             <CardReview
-                                title="Comment utiliser Asking Franklin pour booster son référencement ?"
-                                authorName="IUT de Mulhouse"
-                                authorProfession="Licence professionnelle de Référenceur &amp; Rédacteur Web"
-                                postLink="https://www.licence-referencement.fr/2020/12/08/utiliser-asking-franklin-pour-booster-son-referencement/"
+                                title={t('homepage.reviews.3.title')}
+                                authorName={t('homepage.reviews.3.author')}
+                                authorProfession={t('homepage.reviews.3.about')}
+                                postLink={t('url.external.reviews.3')}
                             />
                             <CardReview
-                                title="Asking Franklin – Avis et Test"
-                                authorName="Thomas Cubel"
-                                authorProfession="Consultant SEO"
-                                postLink="https://www.thomascubel.com/asking-franklin/"
+                                title={t('homepage.reviews.4.title')}
+                                authorName={t('homepage.reviews.4.author')}
+                                authorProfession={t('homepage.reviews.4.about')}
+                                postLink={t('url.external.reviews.4')}
                             />
                         </div>
                     </Container>
@@ -167,8 +169,8 @@ export default class Home extends React.Component {
                     <Container className="d-flex flex-column flex-lg-row pt-0 pt-lg-5">
                         <Col md="12" lg="6" className="px-0">
                             <Blob4 className="blob-4 d-none d-xl-block"/>
-                            <H2 className="mb-5" title="Partez à la découverte de ce que recherche votre audience sur Google"/>
-                            <p class="fz-18">Tapez le mot-clé que vous souhaitez et Asking Franklin ira chercher toutes les questions, les recherches et sujets connexes en relation avec ce dernier.</p>
+                            <H2 className="mb-5" title={t('homepage.h2b')}/>
+                            <p class="fz-18">{t('homepage.p1')}</p>
                         </Col>
                         <Col md="12" lg="6" className="d-flex justify-content-center justify-content-lg-end px-0 pl-lg-5 mt-0 mt-sm-5 mt-lg-0">
                             <GoogleSearch/>
@@ -182,12 +184,12 @@ export default class Home extends React.Component {
                     <Blob5 className="blob-5"/>
                     <Container className="d-flex flex-column flex-lg-row">
                         <Col md="12" lg="6" className="d-flex justify-content-center justify-content-lg-start order-1 order-lg-0 px-0 pr-lg-5 mt-5 mt-lg-0">
-                            <img src={Control} alt="Prenez les devants" class="img-fluid"/>
+                            <img src={Control} alt={t('altImg.homepage.1')} class="img-fluid"/>
                         </Col>
                         <Col md="12" lg="6" className="d-flex flex-column justify-content-center order-0 order-lg-1 px-0 pt-5 pt-lg-0">
-                            <H2 className="mb-5" title="Prenez les devants et proposez des produits, services et contenus que cherchent vos consommateurs"/>
-                            <p class="fz-18 mb-5">Asking Franklin vous fournit une ressource illimitée de mots-clés mais aussi d’idées pour booster votre SEO et nourrir votre stratégie de contenus.</p>
-                            <PmyBtn redirectTo="/tarifs" linkIsLargePmyOutlineFull textLink="Voir les avantages Pro" customBtnClass="w-sm-100"/>
+                            <H2 className="mb-5" title={t('homepage.h2c')}/>
+                            <p class="fz-18 mb-5">{t('homepage.p2')}</p>
+                            <PmyBtn redirectTo="/tarifs" linkIsLargePmyOutlineFull textLink={t('homepage.cta.1')}customBtnClass="w-sm-100"/>
                         </Col>
                     </Container>
                     <Blob6 className="blob-6 d-none d-lg-block"/>
@@ -198,15 +200,15 @@ export default class Home extends React.Component {
                 <section class="home-section-5">
                     <Container className="d-flex flex-column flex-lg-row">
                         <Col md="12" lg="6" className="d-flex flex-column justify-content-center px-0">
-                            <H2 className="mb-5" title="En un clic, vous avez accès à une source d’idées de contenus venant directement des recherches de votre audience"/>
+                            <H2 className="mb-5" title={t('homepage.h2d')}/>
                             <blockquote>
-                                <p class="fz-18 fw-600">Une nouvelle tendance de consommation émerge ? <br/> Une nouvelle mode ?</p>
+                                <p class="fz-18 fw-600">{t('homepage.p3-1')} <br/> {t('homepage.p3-2')}</p>
                             </blockquote>
-                            <p class="fz-18 mt-3 mb-5 pt-3">Grâce à Asking Franklin, prenez une longueur d’avance sur vos concurrents en étant le premier au courant des nouveautés qui arrivent sur le marché.</p>
-                            <PmyBtn redirectTo="/#top" linkIsLargePmyOutlineFull textLink="Essayer gratuitement" customBtnClass="w-sm-100"/>
+                            <p class="fz-18 mt-3 mb-5 pt-3">{t('homepage.p4')}</p>
+                            <PmyBtn redirectTo="/#top" linkIsLargePmyOutlineFull textLink={t('homepage.cta.2')} customBtnClass="w-sm-100"/>
                         </Col>
                         <Col md="12" lg="6" className="d-flex justify-content-center justify-content-lg-start px-0 pl-lg-5 mt-5 mt-lg-0">
-                            <img src={Ideas} alt="Source d'idées de contenus" class="img-fluid"/>
+                            <img src={Ideas} alt={t('altImg.homepage.2')} class="img-fluid"/>
                         </Col>
                     </Container>
                 </section>
@@ -217,22 +219,25 @@ export default class Home extends React.Component {
                         <Col md="12" lg="4" xl="3" className="slider-item px-0">
                             <CardTestimonial
                                 img={ThomasCubel}
-                                testimonial="Contrairement à d’autres outils du marché, l’outil est beaucoup plus rapide à l’utilisation. La recherche des suggests est quasi instantanée. Le support de la langue française est meilleure, donc nous sommes plus efficace au travail."
-                                fullname="Thomas Cubel" jobAndCompany="Consultant SEO - Freelance"
+                                testimonial={t('homepage.testimonials.1.text')}
+                                fullname={t('homepage.testimonials.1.author')}
+                                jobAndCompany={t('homepage.testimonials.1.about')}
                             />
                         </Col>
                         <Col md="12" lg="4" xl="3" className="slider-item px-0 mt-5">
                             <CardTestimonial   
                                 img={MargauxMaziere}
-                                testimonial="En tant que chef de projet, la plateforme Asking Franklin a été un réel atout pour répondre à mon besoin de création d’audits de l’image de marque. Je le recommande à toute personne active dans le marketing, le brand content, la conception de contenus."
-                                fullname="Margaux Mazière" jobAndCompany="Chef de projet - Journal Sud Ouest"
+                                testimonial={t('homepage.testimonials.2.text')}
+                                fullname={t('homepage.testimonials.2.author')}
+                                jobAndCompany={t('homepage.testimonials.2.about')}
                             />
                         </Col>
                         <Col md="12" lg="4" xl="3" className="slider-item px-0 mt-6">
                             <CardTestimonial 
                                 img={SofianeTazdait}
-                                testimonial="Avant je tentais d'améliorer mon SEO via des suppositions. Désormais, Asking Franklin me permet de savoir quelles sont les requêtes tapées par les internautes pour mon secteur d’activité, ce qui m'aide beaucoup."
-                                fullname="Sofiane Tazdaït" jobAndCompany="Product Manager - Freelance"
+                                testimonial={t('homepage.testimonials.3.text')}
+                                fullname={t('homepage.testimonials.3.author')}
+                                jobAndCompany={t('homepage.testimonials.3.about')}
                             />  
                         </Col>
                         <Dots className="dots-4"/>
@@ -243,8 +248,8 @@ export default class Home extends React.Component {
                 <section class="home-section-7 position-relative pt-5">
                     <Container className="px-0">
                         <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
-                            <PmyBtn redirectTo="/#top" linkIsLargePmyFull textLink="Essayer gratuitement" containerStyle="text-center mb-5 mb-md-0 mr-md-5" style={{zIndex: 1}}/>
-                            <PmyBtn redirectTo="/tarifs" linkIsLargePmyOutlineLight textLink="Voir les avantages Pro" containerStyle="text-center" style={{zIndex: 1}}/>
+                            <PmyBtn redirectTo="/#top" linkIsLargePmyFull textLink={t('homepage.cta.2')} containerStyle="text-center mb-5 mb-md-0 mr-md-5" style={{zIndex: 1}}/>
+                            <PmyBtn redirectTo="/tarifs" linkIsLargePmyOutlineLight textLink={t('homepage.cta.1')} containerStyle="text-center" style={{zIndex: 1}}/>
                         </div>
                     </Container>
                     {!this.state.lastArticles.length < 1 &&  <Blob9 className="blob-9"/> }
@@ -254,7 +259,7 @@ export default class Home extends React.Component {
                     <section class="home-section-8 position-relative overflow-hidden pt-6">
                         <WaveEndingTop className="wave-top-5"/>
                         <Container className="px-0 position-relative">
-                            <H2 className="mb-5" title="Ne passez pas à côté de nos derniers articles"/>
+                            <H2 className="mb-5" title={t('homepage.h2e')}/>
                             <Dots className="dots-5"/>
                             <Row className={this.state.lastArticles.length < 3 ? cardRowBlog + 'justify-content-lg-start' : cardRowBlog + 'justify-content-lg-around'}>
                                 {this.state.lastArticles.map((article) => {
@@ -279,3 +284,5 @@ export default class Home extends React.Component {
         )
     }    
 }
+
+export default withTranslation()(Home);

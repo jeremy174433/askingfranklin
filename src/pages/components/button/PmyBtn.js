@@ -13,7 +13,7 @@ export default class PmyBtn extends React.Component {
 
         const sizeSmall = ' py-1 px-2 ';
         const sizeMedium = ' py-2 px-4 ';
-        const sizeLarge = ' py-3 px-5 ';
+        const sizeLarge = ' py-3 px-4 px-sm-5 ';
 
         const smallOutlineFull = sizeSmall + defaultPmyOutlineFull + defaultClass;
         const smallOutlineLight = sizeSmall + defaultPmyOutlineLight + defaultClass;

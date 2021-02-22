@@ -1,4 +1,6 @@
 import React from 'react';
+import i18n from 'i18next';
+import { withTranslation } from 'react-i18next';
 import CookieConsent from 'react-cookie-consent';
 import {
   BrowserRouter as Router,
@@ -29,13 +31,14 @@ import ConfirmationPayment from './pages/sorted-pages/deep-area/conversion-funne
 import BackToTop from 'react-back-to-top-button';
 import ArrowLight from './assets/img/svg/ArrowLight';
 
-export default class App extends React.Component {
+class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             isConnected: false,
             bannerIsShowed: false
         }
+        this.handleLanguage = this.handleLanguage.bind(this);
         this.handleConnect = this.handleConnect.bind(this);
         this.handleHideBanner = this.handleHideBanner.bind(this);
     }
@@ -53,6 +56,12 @@ export default class App extends React.Component {
         }
     }
 
+    handleLanguage(e) {
+        window.location.href = '/';
+        var lang = e.target.dataset.lang;
+        i18n.changeLanguage(lang);
+    }
+
     handleConnect() {
         var is_sub = localStorage.getItem('af_is_sub');
         this.setState({
@@ -68,40 +77,49 @@ export default class App extends React.Component {
     }
 
     render() {
+
+        const { t } = this.props;
+
         return (
             <div id="App">
                 {this.state.bannerIsShowed && <Banner onClick={this.handleHideBanner} bannerIsActive={this.state.bannerIsShowed}/> }
                 <Router>
                     <Navbar isConnected={this.state.isConnected} className={this.state.bannerIsShowed && 'banner-showed'}/>
+                    <div class="d-flex flex-row position-fixed bgc-primary color-light w-100 pl-5" style={{ marginTop: '66px', zIndex: 150 }}>
+                        <p onClick={this.handleLanguage} data-lang="en" class="mr-4">English</p>
+                        <p onClick={this.handleLanguage} data-lang="fr">Français</p>
+                    </div>
                     <Switch>
-                        <Route path='/connexion' render={(props) => <SignIn {...props} bannerIsActive={this.state.bannerIsShowed} handleConnect={this.handleConnect}/>}/>
-                        <Route exact path='/inscription/confirmation' render={(props) => <SignUpConfirmation {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
-                        <Route path='/inscription' render={(props) => <SignUp {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
-                        <Route path='/mot-de-passe-oublie' render={(props) => <ForgotPassword {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
-                        <Route path='/recherche/:keyword' render={(props) => <AskingFranklin {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
-                        <Route path="/limite-de-recherches" render={(props) => <MaximumRequests {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
-                        <Route path="/faq" render={(props) => <Faq {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
-                        <Route path="/contact" render={(props) => <Contact {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path={t('url.signIn')} render={(props) => <SignIn {...props} bannerIsActive={this.state.bannerIsShowed} handleConnect={this.handleConnect}/>}/>
+                        <Route exact path={t('url.signUpConfirm')} render={(props) => <SignUpConfirmation {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path={t('url.signUp')} render={(props) => <SignUp {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path={t('url.forgotPassword')}  render={(props) => <ForgotPassword {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path={t('url.resultPageAF')}  render={(props) => <AskingFranklin {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path={t('url.searchLimit')} render={(props) => <MaximumRequests {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path={t('url.faq')} render={(props) => <Faq {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path={t('url.contact')} render={(props) => <Contact {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route exact path='/' render={(props) => <Home {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
-                        <Route exact path='/tarifs' render={(props) => <Pricing {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
-                        <Route exact path='/profil' render={(props) => <Profile {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
-                        <Route exact path='/plans' render={(props) => <ChoosePlan {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
-                        <Route exact path='/paiement' render={(props) => <Payment {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
-                        <Route exact path='/paiement/confirmation' render={(props) => <ConfirmationPayment {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
-                        <Route path="/mentions-legales" render={(props) => <LegalNotices {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
-                        <Route path="/conditions-generales-d-utilisation" render={(props) => <TermsOfServices {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
-                        <Route path="/conditions-generales-de-vente" render={(props) => <TermsOfSales {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route exact path={t('url.pricing')} render={(props) => <Pricing {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route exact path={t('url.profile')} render={(props) => <Profile {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route exact path={t('url.offers')} render={(props) => <ChoosePlan {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route exact path={t('url.payment')} render={(props) => <Payment {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route exact path={t('url.paymentConfirm')} render={(props) => <ConfirmationPayment {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path={t('url.notice')} render={(props) => <LegalNotices {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path={t('url.tcs')} render={(props) => <TermsOfServices {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path={t('url.gtcs')} render={(props) => <TermsOfSales {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route path="*" render={(props) => <Error404 {...props} bannerIsActive={this.state.bannerIsShowed}/>} status={404}/>
                     </Switch>
-                    <Footer/>
+                    <Footer onClickLanguage={this.handleLanguage}/>
                 </Router>
                 <BackToTop showAt={2500} speed={500} easing="easeInOutQuint">
                     <ArrowLight width="22" fill="#FFF"/>
                 </BackToTop>
-                <CookieConsent location="bottom" acceptOnScroll={true} buttonText="Accepter" cookieName="user-has-accepted-cookies" expires={182}>
-                    Ce site web utilise des cookies afin d'améliorer votre expérience de navigation. &nbsp;<a href="conditions-generales-d-utilisation" target="_blank" rel="noopener" title="Ouvrir dans un nouvel onglet : CGU Asking Franklin">En savoir plus</a>
+                <CookieConsent location="bottom" acceptOnScroll={true} buttonText={t('cookiesBar.btn')} cookieName="user-has-accepted-cookies" expires={182}>
+                    {t('cookiesBar.text')} &nbsp;<a href={t('url.gtcs')} target="_blank" rel="noopener" title={t('titleElementBrowser.tcs')}>{t('cookiesBar.information')}</a>
                 </CookieConsent>
             </div>
         )
     }
 }
+
+export default withTranslation()(App);

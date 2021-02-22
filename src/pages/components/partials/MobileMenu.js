@@ -1,7 +1,8 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import MenuLink from '../../components/elements/link/MenuLink';
 
-export default class MobileMenu extends React.Component {
+class MobileMenu extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -25,6 +26,7 @@ export default class MobileMenu extends React.Component {
 
     render() {
 
+        const { t } = this.props;
         const classListMobileMenu = ' mobile-menu-wrapper d-block d-md-none ml-auto';
 
         return (
@@ -37,16 +39,18 @@ export default class MobileMenu extends React.Component {
                 </div>
                 <div class="mobile-menu-items d-flex flex-column align-items-center justify-content-center px-5 py-5 w-100 h-100">
                     <ul class="d-flex flex-column align-items-center">
-                        <MenuLink redirectTo="/" onClick={this.handleMobileMenuClicked} textLink="Accueil"/>
-                        {localStorage.getItem('af_is_sub') <= 0 && <MenuLink redirectTo="/tarifs" onClick={this.handleMobileMenuClicked} textLink="Tarifs"/> }
-                        <MenuLink href="https://blog.askingfranklin.com" textLink="Blog"/>
-                        <MenuLink redirectTo="/faq" onClick={this.handleMobileMenuClicked} textLink="FAQ"/>
-                        {!this.props.isConnected && <MenuLink redirectTo="/connexion" onClick={this.handleMobileMenuClicked} textLink="Connexion"/> }
-                        {this.props.isConnected && <MenuLink redirectTo="/profil" onClick={this.handleMobileMenuClicked} textLink="Paramètres"/> }
-                        {this.props.isConnected && <MenuLink redirectTo="/" onClick={this.props.onClickLogOut} textLink="Déconnexion"/> }
+                        <MenuLink redirectTo="/" onClick={this.handleMobileMenuClicked} textLink={t('link.homepage')}/>
+                        {localStorage.getItem('af_is_sub') <= 0 && <MenuLink redirectTo={t('url.pricing')}  onClick={this.handleMobileMenuClicked} textLink={t('link.pricing')}/> }
+                        <MenuLink href={t('url.blog')} textLink={t('link.blog')}/>
+                        <MenuLink redirectTo={t('url.faq')} onClick={this.handleMobileMenuClicked} textLink={t('link.faq')}/>
+                        {!this.props.isConnected && <MenuLink redirectTo={t('url.signIn')} onClick={this.handleMobileMenuClicked} textLink={t('link.signIn')}/> }
+                        {this.props.isConnected && <MenuLink redirectTo={t('url.profile')} onClick={this.handleMobileMenuClicked} textLink={t('link.account.settings')}/> }
+                        {this.props.isConnected && <MenuLink redirectTo="/" onClick={this.props.onClickLogOut} textLink={t('link.account.logout')}/> }
                     </ul>
                 </div>
             </div>
         )
     }
 }
+
+export default withTranslation()(MobileMenu);

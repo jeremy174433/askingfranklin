@@ -1,4 +1,5 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Logo from '../../../assets/img/svg/switch/Logo';
@@ -9,7 +10,7 @@ import CrownPro from '../../../assets/img/svg/CrownPro';
 import ProfileAccess from '../elements/ProfileAccess';
 import MobileMenu from './MobileMenu';
 
-export default class Navbar extends React.Component {
+class Navbar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -51,6 +52,7 @@ export default class Navbar extends React.Component {
 
     render() {
 
+        const { t } = this.props;
         const navClass = ' px-4 px-xl-5 py-2 w-100 d-flex justify-content-center position-fixed ';
 
         return (
@@ -61,13 +63,13 @@ export default class Navbar extends React.Component {
                     </Link>
                     <div class="d-none d-md-block ml-auto">
                         <ul class="d-flex flex-row align-items-center position-relative">
-                            <MenuLink href="https://blog.askingfranklin.com" textLink="Blog" containerStyle="mr-3"/>
-                            <MenuLink redirectTo="/faq" textLink="FAQ"/>
-                            {localStorage.getItem('af_is_sub') == 0 && <MenuLink redirectTo="/tarifs" textLink="Tarifs" containerStyle="ml-3"/> }
-                            {!this.state.isConnected && <MenuLink redirectTo="/connexion" textLink="Connexion" containerStyle="ml-3"/> }
+                            <MenuLink href={t('url.blog')} textLink={t('link.blog')} containerStyle="mr-3"/>
+                            <MenuLink redirectTo={t('url.faq')} textLink={t('link.faq')}/>
+                            {localStorage.getItem('af_is_sub') == 0 && <MenuLink redirectTo={t('url.pricing')} textLink={t('link.pricing')} containerStyle="ml-3"/> }
+                            {!this.state.isConnected && <MenuLink redirectTo={t('url.signIn')} textLink={t('link.signIn')} containerStyle="ml-3"/> }
                             {this.state.isConnected && localStorage.getItem('af_is_sub') != 0 && <MenuLink customMenuItem={<CrownPro width="52"/>} containerStyle="position-absolute" style={{top: '-10px', right: '150px', zIndex: 1}}/> }
                             {this.state.isConnected && <MenuLink customMenuItem={<ProfileAccess onClickLogOut={this.handleLogOut}/>} containerStyle="ml-5"/> }
-                            {!this.state.isConnected && <MenuLink customMenuItem={<PmyBtn redirectTo="/tarifs" linkIsMediumPmyFull iconLinkBefore={<Rocket width="16"/>} textLink="Devenir Pro" className="rounded-0" containerStyle="ml-5 nav-btn-cta"/>}/> }
+                            {!this.state.isConnected && <MenuLink customMenuItem={<PmyBtn redirectTo={t('url.pricing')} linkIsMediumPmyFull iconLinkBefore={<Rocket width="16"/>} textLink={t('link.ctaNotConnected')} className="rounded-0" containerStyle="ml-5 nav-btn-cta"/>}/> }
                         </ul>
                     </div>
                     <MobileMenu isConnected={this.state.isConnected} onClickLogOut={this.handleLogOut}/>
@@ -76,3 +78,5 @@ export default class Navbar extends React.Component {
         )
     }
 }
+
+export default withTranslation()(Navbar);

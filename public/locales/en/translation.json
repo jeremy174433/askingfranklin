@@ -1,0 +1,516 @@
+{
+
+    "projectName": "Asking Franklin",
+
+    "url": {
+        "signIn": "/sign-in",
+        "signUp": "/register",
+        "signUpConfirm": "/register/confirmation",
+        "forgotPassword": "/forgot-password",
+        "resultAF": "/search/",
+        "resultPageAF": "/search/:keyword",
+        "searchLimit": "/search-limit",
+        "blog": "https://blog.askingfranklin.com",
+        "faq": "/faq",
+        "contact": "/contact-us",
+        "pricing": "/pricing",
+        "profile": "/profile",
+        "offers": "/offers",
+        "payment": "/payment",
+        "paymentConfirm": "/payment/confirmation",
+        "notice": "/legal-notices",
+        "tcs": "/terms-and-conditions-of-use",
+        "gtcs": "/terms-and-conditions-of-sale",
+        "smFacebook": "https://www.facebook.com/askingfranklin/",
+        "smTwitter": "https://twitter.com/AskingFranklin",
+        "smLinkedIn": "https://www.linkedin.com/company/asking-franklin/",
+        "external": {
+            "owner": "https://www.sortvoices.fr",
+            "reviews": {
+                "1": "https://audreytips.com/trouver-sujets-contenu-asking-franklin/",
+                "2": "https://josselinleydier.com/seo/avis-asking-franklin/",
+                "3": "https://www.licence-referencement.fr/2020/12/08/utiliser-asking-franklin-pour-booster-son-referencement/",
+                "4": "https://www.thomascubel.com/asking-franklin/"
+            }
+        }
+    },
+
+    "link": {
+        "homepage": "Home",
+        "blog": "Blog",
+        "faq": "FAQ",
+        "pricing": "Pricing",
+        "contact": "Contact us",
+        "signIn": "Sign in",
+        "ctaNotConnected": "Become Pro",
+        "account": {
+            "btn": "My account",
+            "settings": "Settings",
+            "logout": "Log out"
+        },
+        "legal": {
+            "notice": "Legal notices",
+            "tcs": "T&Cs",
+            "gtcs": "GTCS"
+        }
+    },
+
+    "title": {
+        "homepage": "",
+        "pricing": "",
+        "faq": "",
+        "resultAF": "",
+        "requestLimit": "",
+        "signIn": "",
+        "signUp": "",
+        "signUpConfirm": "",
+        "forgotPassword": "",
+        "profile": "",
+        "offers": "",
+        "payment": "",
+        "paymentConfirm": "",
+        "contact": "",
+        "notice": "",
+        "tcs": "",
+        "gtcs": "",
+        "404": ""
+    },
+
+    "description": {
+        "homepage": "",
+        "pricing": "",
+        "faq": "",
+        "resultAF": "",
+        "requestLimit": "",
+        "signIn": "",
+        "signUp": "",
+        "signUpConfirm": "",
+        "forgotPassword": "",
+        "profile": "",
+        "offers": "",
+        "payment": "",
+        "paymentConfirm": "",
+        "contact": "",
+        "notice": "",
+        "tcs": "",
+        "gtcs": "",
+        "404": ""
+    },
+
+    "titleElementBrowser": {
+        "form": {
+            "registerError": "It's necessary to fill in all the fields and accept the T&Cs to register"
+        },
+        "footer": {
+            "fb": "Open in a new tab : Facebook",
+            "lk": "Open in a new tab : LinkedIn",
+            "tw": "Open in a new tab : Twitter"
+        },
+        "monthlyPlan": "Monthly offer",
+        "annualPlan": "Annual offer",
+        "tcs": "Open in a new tab : Asking Franklin T&Cs",
+        "gtcs": "Open in a new tab : Asking Franklin GTCS",
+        "linkOwner": "Open in a new tab : www.sortvoices.fr"
+    },
+
+    "altImg": {
+        "homepage": {
+            "1": "Take the lead",
+            "2": "Source of content ideas"
+        }
+    },
+
+    "banner": {
+        "text": "lorem ipsum"
+    },
+
+    "footer": {
+        "language": {
+            "en": "English",
+            "fr": "Français"
+        },
+        "title": {
+            "1": "Useful links",
+            "2": "Information",
+            "3": "Networks"
+        },
+        "newsletter": {
+            "title": "Follow our news 🚀 (in french)",
+            "subtitle": "And get tips to take off in SEO, Brand content, Content marketing...",
+            "rhythm": "(no more than once a month, that's a promise!)"
+        },
+        "subfooter": {
+            "intro": "Asking Franklin {{actualYear}}, by ",
+            "owner": "Sortvoices",
+            "rights": ". All rights reserved."
+        }
+    },
+    
+    "cookiesBar": {
+        "text": "This website uses cookies to improve your browsing experience.",
+        "information": "Know more",
+        "btn": "Accept"
+    },
+
+    "alert": {
+        "signUp": {
+            "success": "Your account has been created. You will receive a confirmation email, please validate it",
+            "emailAlreadyTaken": "This email is not available, please choose a different one"
+        },
+        "signIn": {
+            "noMatch": "The combination « email / password » is incorrect"
+        },
+        "forgotPassword": {
+            "sendVerifCode": "A verification code has just been sent to the email : ",
+            "success": "Your password has been changed. You can now",
+            "successLink": "login",
+            "error": "An error has occurred. Check your code and your new password",
+            "errorLimit": "An error has occurred. The query limit has been reached, try again in a few minutes."
+        },
+        "payment": {
+            "error": "Payment error : "
+        },
+        "profile": {
+            "emailAlreadyTaken": "This email is not available, please choose a different one",
+            "successEmail": "Your email has been modified",
+            "successPassword": "Your password has been modified",
+            "successStateSubscription": "Your subscription has been modified"
+        },
+        "contact": {
+            "success": "Your message has been sent successfully, we will contact you soon"
+        },
+        "form": {
+            "fieldRequired": "This field is required",
+            "patternEmail": "The email address format is not correct",
+            "patternIdenticEmail": "The email cannot be identical to the current one used",
+            "patternPassword": "The password must contain at least 8 characters including 1 number",
+            "patternIdenticPassword": "Passwords do not match",
+            "codePattern": "The code must contain 6 characters",
+            "acceptanceTcs": "It's necessary to accept the T&Cs",
+            "reducCoupon": {
+                "error": "Code does not match any active promotional code",
+                "success": "Congratulations, you are now entitled to a {{percent}}% discount on your subscription for {{duration}} months"
+            },
+            "subscribeNewsletter": {
+                "success": "Your subscription has been registered",
+                "error": "The email address seems to be already subscribed to the newsletter"
+            }
+        }
+    },
+
+    "actions": {
+        "loading": "Loading",
+        "save": "Save",
+        "cross": "Close",
+        "optionsFormAF": "More options",
+        "show": "Show",
+        "hide": "Hide"
+    },
+
+    "form": {
+        "label": {
+            "email": "Your email address",
+            "password": "Your password",
+            "newPassword": "Your new password",
+            "passwordPattern1": "8 characters minimum, ",
+            "passwordPattern2": "including at least 1 number",
+            "codeSentByEmail": "Write in the code sent by email to ",
+            "subject": "Subject",
+            "message": "Your message",
+            "payment": {
+                "nameOrCompany": "Full name or company name",
+                "address": "Billing address",
+                "city": "City",
+                "zip": "ZIP code",
+                "card": "Payment card"
+            },
+            "profile": {
+                "currentEmail": "Current email",
+                "newEmail": "New email",
+                "newPassword": "Your new password",
+                "newPasswordConfirm": "Confirm your new password"
+            }
+        },
+        "input": {
+            "placeholderFormAF": "Enter a keyword, a product, a brand...",
+            "placeholderEmail": "Your email...",
+            "reducCoupon": "Your promotional code...",
+            "placeholderContact": "A request or a question, leave us your message..."
+        },
+        "filters": {
+            "code": {
+                "ca": "ca",
+                "ch": "ch",
+                "es": "es",
+                "de": "de",
+                "fr": "fr",
+                "it": "it",
+                "uk": "uk",
+                "us": "us"
+            },
+            "countries": {
+                "label": "Country of research",
+                "ca": "Canada",
+                "ch": "Switzerland",
+                "de": "Germany",
+                "es": "Spain",
+                "fr": "France",
+                "it": "Italy",
+                "uk": "United Kingdom",
+                "us": "United States"
+            },
+            "languages": {
+                "label": "Search language",
+                "de": "German",
+                "es": "Spanish",
+                "fr": "French",
+                "it": "Italian",
+                "uk": "English"
+            }
+        },
+        "checkbox": {
+            "labelTcs-1": "I have read and accept the ",
+            "labelTcs-2": "T&Cs",
+            "labelTcs-3": "(required)",
+            "labelGtcs": "GTCS",
+            "labelNewsletter": "I subscribe to the newsletter and accept to receive tips to take off in SEO, Brand content, Content marketing..."
+        },
+        "submit": {
+            "formAF": "Explore",
+            "newsletter": "Subscribe"
+        }
+    },
+
+    "homepage": {
+        "h1": "Discover what people are searching on Google",
+        "h2a": "They are talking about Asking Franklin",
+        "h2b": "Explore what your audience is looking for on Google",
+        "h2c": "Take the initiative and deliver products, services and content your consumers are looking for",
+        "h2d": "With one click, get an access for an inspiration’s source directly from your audience's research",
+        "h2e": "Don't miss our latest articles (in french)",
+        "p1": "Type the keyword you want and Asking Franklin will search for allquestions, research and related topics related to it",
+        "p2": "Asking Franklin provides you an unlimited resource of keywords and ideas to boost your SEO and fuel your content strategy.",
+        "p3-1": "Is a new consumption trend emerging ?",
+        "p3-2": "A new mode ?",
+        "p4": "Thanks to Asking Franklin, stay ahead of your competitors by being the first to know about novelty coming on your market.",
+        "cta": {
+            "1": "See Pro benefits",
+            "2": "Try for free"
+        },
+        "reviews": {
+            "1": {
+                "title": "How to find content topics that engage and retain with Asking Franklin ?",
+                "author": "Audrey Tips",
+                "about": "Virtual coach. Digital marketing tips’ expert"
+            },
+            "2": {
+                "title": "My test & opinion about Asking Franklin",
+                "author": "Josselin Leydier",
+                "about": "Traffic acquisition consultant"
+            },
+            "3": {
+                "title": "How to use Asking Franklin to boost SEO ?",
+                "author": "Mulhouse’s UIT",
+                "about": "Bachelor’s degree, SEO specialists and Web Writers"
+            },
+            "4": {
+                "title": "Asking Franklin – Test & Opinion",
+                "author": "Thomas Cubel",
+                "about": "SEO consultant"
+            },
+            "linkReview": "Read article (in french)"
+        },
+        "testimonials": {
+            "1": {
+                "text": "Contrary to other tools, this one is faster to use. Suggests’s search is almost instantaneous. The language’s support is better, so we are more efficient at work.",
+                "author": "Thomas Cubel",
+                "about": "SEO consultant - Freelance"
+            },
+            "2": {
+                "text": "As a project manager, Asking Franklin has been a real asset for creating branding audits. I recommend it for anyone active in marketing, brand content, content design.",
+                "author": "Margaux Mazière",
+                "about": "Project Manager - Sud Ouest Journal"
+            },
+            "3": {
+                "text": "I used to try to improve my SEO through guesswork. Now, Asking Franklin allows me to know what queries people are typing for concerning my industry, which helps me a lot",
+                "author": "Sofiane Tazdaït",
+                "about": "Product Manager – Freelance"
+            }
+        }
+    },
+
+    "askingFranklin": {
+
+    },
+
+    "funnel": {
+        "stepper": {
+            "1": "Offer",
+            "2": "Registration",
+            "3": "Subscription and switch to Pro"
+        },
+        "stepperPayment": {
+            "1": "Choose your offer",
+            "2": "Payment",
+            "3": "Start as Pro"
+        },
+        "features": {
+            "0": "Limited numbers of requests a day ",
+            "0a": "(3 maximum)",
+            "1": "Unlimited number of requests",
+            "2": "Filtered queries by country and language",
+            "3": "Trends in research volumes",
+            "4": "Unlimited simultaneous users",
+            "5": "Unlimited PNG and CSV export",
+            "6": "Priority response from the team"
+        },
+        "pricing": {
+            "h1": "Discover a tool to boost your SEO and content strategy, and even more...",
+            "subtitle-1": "Free",
+            "subtitle-2": "Pro",
+            "desc-1": "For those who want to test for free the tool, with 3 request a day.",
+            "desc-2": "For those who see the future with a big A : Asking Franklin",
+            "planProType1": "Monthly",
+            "planProType2": "Annual",
+            "moneyType1": null,
+            "moneyType2": "$",
+            "price-0": "$0",
+            "price-1": "$59",
+            "price-2": "$49",
+            "priceEconomy": "$120",
+            "priceTotalNow": "$588/year",
+            "priceTotalBefore": "$708/year",
+            "priceRhythm": " /month",
+            "priceInfos": "without engagement",
+            "infosVAT": "Prices are in $, excluding VAT and subject to the current rate.",
+            "cta-1": "Continue for free",
+            "cta-2a": "Subscribe and become Pro",
+            "cta-2b": "Continue and become Pro"
+        },
+        "offers": {
+            "h1a": "You already have an active Asking Franklin Pro subscription",
+            "h1b": "Take it to the next level with the Pro version",
+            "linkToHome": "Back to homepage",
+            "precedentSelected": "You have selected the subscription : ",
+            "automaticRenewal": "(automatic renewal at the end of the subscription)",
+            "monthly": {
+                "p1": "Pay monthly, without obligation",
+                "cta1": "Confirm the monthly subscription",
+                "cta2": "Choose the monthly subscription"
+            },
+            "annual": {
+                "p1-a": null,
+                "p1-b": ", save $120. Adjustable in one go",
+                "cta1": "Confirm the annual subscription",
+                "cta2": "Choose the annual subscription"
+            }
+        },
+        "payment": {
+            "form": {
+                "title": "Pro subscription",
+                "ctaCoupon": "Check",
+                "ctaPrevious": "Previous",
+                "ctaPayment1a": "Pay $",
+                "ctaPayment1b": " (excl. Tax)",
+                "ctaPayment2": "Confirm purchase"
+            },
+            "summary": {
+                "title": "Summary",
+                "proOffer": "Asking Franklin Pro",
+                "subscriptionDuration1": "Monthly subscription",
+                "subscriptionDuration2": "Annual subscription",
+                "p1a": " (",
+                "p1b": " per year)",
+                "p2a": "Save ",
+                "p2b": " compared to the monthly version",
+                "introFeatures": "Take advantage of the whole power of Asking Franklin :"
+            }
+        },
+        "paymentConfirmation": {
+            "h1": "Your payment has been accepted",
+            "p": "You can now access Asking Franklin's Pro benefits. Unlimited.",
+            "cta": "Access to Asking Franklin"
+        }
+    },
+
+    "sign": {
+        "register": {
+            "h1": "Create an Asking Franklin account",
+            "cta": "Create my account",
+            "linkSignIn": "I have already and Asking Franklin account"
+        },
+        "registerConfirmation": {
+            "h1": "Your account is now validated 🚀",
+            "p1": "You can now subscribe to the Pro version.",
+            "linkSignIn": "Log in and become Pro"
+        },
+        "signIn": {
+            "h1": "Log in to Asking Franklin",
+            "cta": "Login",
+            "linkForgotPassword": "Password forgotten ?",
+            "linkRegister": "Register to become Pro"
+        },
+        "forgotPassword": {
+            "h1": "Forgot password",
+            "cta1": "Receive a reset email",
+            "cta2": "Reset password",
+            "linkSignIn": "Log in to Asking Franklin"
+        }
+    },
+
+    "faq": {
+
+    },
+
+    "profile": {
+        "h1": "Settings",
+        "tabs": {
+            "account": "Account",
+            "subscription": "Subscription"
+        },
+        "sectionTitle": {
+            "email": "Your email",
+            "password": "Your password",
+            "subscription": "Your subscription"
+        },
+        "subscriptionOn": "Subscriber to Asking Franklin Pro, next renewal on ",
+        "subscriptionOff": "You have disabled the automatic renewal of your subscription, it will expire on ",
+        "p1a": "Uncheck the box and save to cancel the automatic renewal of your subscription (it will stop at the end of its validity period)",
+        "p1b": "You can simply reactivate your subscription by checking the box again as long as it has not expired",
+        "p2": "You can simply reactivate your subscription as long as it has not been expired by checking the box and then clicking on save.",
+        "fallback": {
+            "p1": "You do not have a current subscription.",
+            "p2": "Become Pro and take advantage of the whole power of Asking Franklin :",
+            "cta": "Upgrade to Pro"
+        }
+    },
+
+    "requestLimit": {
+        "h1": "You have reached the maximum number of free search for today...",
+        "p": "For more research, it's necessary to upgrade to the Pro version.",
+        "cta": "Upgrade to Pro"
+    },
+
+    "contact": {
+        "h1": "Contact & Support",
+        "cta": "Send the message"
+    },
+
+    "notice": {
+
+    },
+
+    "tcs": {
+
+    },
+
+    "gtcs": {
+
+    },
+    
+    "404": {
+        "h1": "Oops, the requested page seems not found...",
+        "cta": "Back to homepage"
+    }
+
+}
