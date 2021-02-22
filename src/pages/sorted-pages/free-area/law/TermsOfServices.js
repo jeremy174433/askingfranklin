@@ -23,7 +23,7 @@ export default class TermsOfServices extends React.Component {
     }
 
     render() {
-
+        
         const siteURL = <Link to="/">www.askingfranklin.com</Link>;
         const contactEmail = <a href="mailto:contact@askingfranklin.com">contact@askingfranklin.com</a>;
 
@@ -36,6 +36,7 @@ export default class TermsOfServices extends React.Component {
         const article7 = 'Article 7 : Liens hypertextes';
         const article8 = 'Article 8 : Cookies';
         const article9 = 'Article 9 : Droit applicable et juridiction compétente';
+
 
         return (
             <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>

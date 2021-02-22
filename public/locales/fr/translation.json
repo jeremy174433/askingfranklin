@@ -340,7 +340,23 @@
     },
 
     "askingFranklin": {
+        "results":{
+            "csvexport":"Exporter en CSV",
+            "pngexport":"Exporter en PNG",
+            "graph":"Graphique",
+            "arr":"Tableau",
+            "trends":"Tendances",
+            "prepo":"Prépositions",
+            "questions":"Questions",
+            "comparaisons":"Comparaisons",
+            "related":"Mots relatifs",
+            "country":"Pays",
+            "lang":"Langue",
+            "newSearch":"Nouvelle recherche",
+            "trendsIntro":"Les tendances de recherches sont basées sur les 12 derniers mois",
+            "evo":"Évolutions"
 
+        }
     },
 
     "funnel": {
@@ -459,7 +475,17 @@
     },
 
     "faq": {
-
+        "h1":"Comment pouvons-nous vous aider ?",
+        "searchPlaceholder":"Rechercher un mot clé, un sujet ou posez une question...",
+        "selectCategory":"Ou sélectionnez une catégorie pour trouver rapidement la réponse à votre question",
+        "foundResult":"résultat a été trouvé",
+        "foundResultsMulti":"résultats ont étés trouvés",
+        "foundNoResult":"Aucun résultat n'a pu être trouvé, essayer avec un autre terme",
+        "haveNotFound":"Vous n'avez pas trouvé l'information que vous cherchez ? Vous rencontrez un problème ?",
+        "contactUs":"Contactez-nous",
+        "leaveUsMessage":"Laissez-nous un message",
+        "chatWithUs":"Chattez avec nous",
+        "exchangeUs":"Échangeons en direct"
     },
 
     "profile": {

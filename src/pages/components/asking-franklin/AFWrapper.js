@@ -7,8 +7,9 @@ import AFDataviz from './AFDataviz';
 import AFTable from './AFTable';
 import AFTableTendancies from './AFTableTendancies';
 import * as d3ToPng from 'd3-svg-to-png'
+import { withTranslation } from 'react-i18next';
 
-export default class AFWrapper extends React.Component {
+class AFWrapper extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -77,6 +78,7 @@ export default class AFWrapper extends React.Component {
     render() {
 
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
+        const { t } = this.props;
 
         return (
             this.props.data.data.map((x) => x.suggestions.length).reduce(reducer) !== 0 &&
@@ -89,11 +91,11 @@ export default class AFWrapper extends React.Component {
                             </div>
                             <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between">
                                 <div class="tabs-container d-flex flex-row position-relative w-100">
-                                    <Tabs onClick={this.selectFirst} isDisabled={this.state.selectedPanel === 0} textTab="Graphique" title="Graphique" className={this.state.selectedPanel === 0 && 'pmy-tab-selected'}/>
-                                    <Tabs onClick={this.selectSecond} isDisabled={this.state.selectedPanel === 1} textTab="Tableau" title="Tableau" className={this.state.selectedPanel === 1 && 'pmy-tab-selected'}/>
-                                    <Tabs onClick={this.selectThird} isDisabled={this.state.selectedPanel === 2} textTab="Tendances" title="Tendances" badgeTitle="New" className={this.state.selectedPanel === 2 && 'pmy-tab-selected'}/>
+                                    <Tabs onClick={this.selectFirst} isDisabled={this.state.selectedPanel === 0} textTab={t('askingFranklin.results.graph')} title="Graphique" className={this.state.selectedPanel === 0 && 'pmy-tab-selected'}/>
+                                    <Tabs onClick={this.selectSecond} isDisabled={this.state.selectedPanel === 1} textTab={t('askingFranklin.results.arr')} title="Tableau" className={this.state.selectedPanel === 1 && 'pmy-tab-selected'}/>
+                                    <Tabs onClick={this.selectThird} isDisabled={this.state.selectedPanel === 2} textTab={t('askingFranklin.results.trends')} title="Tendances" badgeTitle="New" className={this.state.selectedPanel === 2 && 'pmy-tab-selected'}/>
                                 </div>
-                                {this.state.selectedPanel === 0 && <PmyBtn onClick={this.handleExportPng} type="button" btnIsMediumPmyOutlineFull textBtn="Exporter en PNG" title="Exporter le graphique en PNG" iconBtnBefore={<FeaturesIcons icon="download"/>} containerStyle="btn-export-to-png position-relative mt-5 mt-md-0" className="fz-16-index"/> }
+                                {this.state.selectedPanel === 0 && <PmyBtn onClick={this.handleExportPng} type="button" btnIsMediumPmyOutlineFull textBtn={t('askingFranklin.results.pngexport')} title="Exporter le graphique en PNG" iconBtnBefore={<FeaturesIcons icon="download"/>} containerStyle="btn-export-to-png position-relative mt-5 mt-md-0" className="fz-16-index"/> }
                             </div>
                         </div>
                         <div class="asking-franklin-body">
@@ -113,3 +115,5 @@ export default class AFWrapper extends React.Component {
         )
     }
 }
+
+export default withTranslation()(AFWrapper)

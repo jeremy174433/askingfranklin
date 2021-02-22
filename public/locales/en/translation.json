@@ -340,7 +340,23 @@
     },
 
     "askingFranklin": {
+        "results":{
+            "csvexport":"CSV export",
+            "pngexport":"PNG export",
+            "graph":"Visual",
+            "arr":"Array",
+            "trends":"Trends",
+            "prepo":"Prepositions",
+            "questions":"Questions",
+            "comparaisons":"Comparisons",
+            "related":"Related",
+            "country":"Country",
+            "lang":"Language",
+            "newSearch":"New search",
+            "trendsIntro":"Search trends are based on the last 12 months.",
+            "evo":"Evolutions"
 
+        }
     },
 
     "funnel": {
@@ -454,12 +470,22 @@
             "h1": "Forgot password",
             "cta1": "Receive a reset email",
             "cta2": "Reset password",
-            "linkSignIn": "Log in to Asking Franklin"
+            "linkSignIn": "Log in to Asking  Franklin"
         }
     },
 
     "faq": {
-
+        "h1":"How can we help you ?",
+        "searchPlaceholder":"Search a keyword, subject or ask a question....",
+        "selectCategory":"Or you can select a category to quickly find an answer to your question.",
+        "foundResult":"result found",
+        "foundResultsMulti":"results were found",
+        "foundNoResult":"No result found, try another keyword",
+        "haveNotFound":"Didn't find the information you were looking for ? Are you encountering a problem ?",
+        "contactUs":"Contact-us",
+        "leaveUsMessage":"Leave us a message",
+        "chatWithUs":"Chat with us",
+        "exchangeUs":"Let's exchange"
     },
 
     "profile": {

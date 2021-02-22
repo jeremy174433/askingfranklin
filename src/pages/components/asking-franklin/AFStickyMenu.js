@@ -6,8 +6,9 @@ import { CSVLink } from 'react-csv';
 import PmyBtn from '../button/PmyBtn';
 import FeaturesIcons from '../../../assets/img/svg/switch/FeaturesIcons';
 import FormRequestFranklin from '../../components/form/FormRequestFranklin';
+import { withTranslation } from 'react-i18next';
 
-export default class AFStickyMenu extends React.Component {
+class AFStickyMenu extends React.Component {
 
     exportCSV() {
         var data = [["Type","Prepositions","Suggestions"]];
@@ -24,18 +25,19 @@ export default class AFStickyMenu extends React.Component {
     }
 
     render() {
+        const { t } = this.props;
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
         return ( 
             <Col sm="12" xl="3" className="d-flex d-xl-block flex-column p-0 mr-xl-5 mt-6">
                 <CSVLink data={this.exportCSV()} filename={this.props.searchContent + "_AskingFranklin.csv"} className="d-flex d-xl-block order-2 order-xl-1 mt-4 mt-xl-0 text-decoration-none">
-                    <PmyBtn type="button" btnIsMediumPmyOutlineFull textBtn="Exporter en CSV" title="Exporter les résultats en CSV" iconBtnBefore={<FeaturesIcons icon="download"/>} className="w-100 fz-16-index"/>
+                    <PmyBtn type="button" btnIsMediumPmyOutlineFull textBtn={t('askingFranklin.results.csvexport')} title="Exporter les résultats en CSV" iconBtnBefore={<FeaturesIcons icon="download"/>} className="w-100 fz-16-index"/>
                 </CSVLink>
                 <section id="stickyMenu" class={this.props.className ? this.props.className + ' mt-0 mt-xl-4 position-sticky' : 'mt-0 mt-xl-4 position-sticky'}>
                     <div class="block-style p-0">
                         <div class="sticky-menu-header p-3 bgc-primary color-light">
                             <h1 class="mb-2 fz-18 fw-600" title={this.props.searchContent}>{this.props.searchContent}</h1>
-                            <p class="fz-14">Pays : <span class="fw-600">{this.props.currCountry}</span></p>
-                            <p class="fz-14">Langue : <span class="fw-600">{this.props.currLanguage}</span></p>
+                            <p class="fz-14">{t('askingFranklin.results.country')} : <span class="fw-600">{this.props.currCountry}</span></p>
+                            <p class="fz-14">{t('askingFranklin.results.lang')} : <span class="fw-600">{this.props.currLanguage}</span></p>
                         </div>
                         <div class="sticky-menu-body bg-white d-flex flex-column py-3">
                             <Scrollspy items={['questions', 'comparaisons', 'prepositions', 'related']} currentClassName="nav-link-style-active">
@@ -55,7 +57,7 @@ export default class AFStickyMenu extends React.Component {
                         handleCountryChange={this.props.handleCountryChange}
                         formOptionsResultsPage={true}
                         value={this.props.value}
-                        label="Nouvelle recherche"
+                        label={t('askingFranklin.results.newSearch')}
                         isDisabled={this.props.isDisabled}
                         containerStyle="submit-form-new-search d-flex align-items-end"
                         containerFormStyle="overflow-visible block-style bgc-light p-3 mt-4"
@@ -66,3 +68,4 @@ export default class AFStickyMenu extends React.Component {
         )
     }
 }
+export default withTranslation()(AFStickyMenu)

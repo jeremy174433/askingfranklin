@@ -15,8 +15,10 @@ import FeaturesList from '../../components/elements/FeaturesList';
 import PaperPlane from '../../../assets/img/svg/PaperPlane';
 import SpeechBubble from '../../../assets/img/svg//SpeechBubble';
 import { Link } from 'react-router-dom'; 
+import { withTranslation } from 'react-i18next';
+import i18n from 'i18next';
 
-var accordionItems = [
+var accordionItems = {"fr":[
     {
         category: "Fonctionnement général",
         categoryIcon: "guides",
@@ -154,9 +156,147 @@ var accordionItems = [
             }
         ]
     }
-]
+],
+"en":[
+    {
+        category: "Overall functionning / how it works",
+        categoryIcon: "guides",
+        categoryTitle: "Overall functionning / how it works",
+        categorySubtitle: <span>If you're looking for some new contents or keywords for your audience and your website's SEO, <br class="d-none d-lg-block"/> you will find here the most asked questions about how to use Asking Franklin.</span>,
+        questions: [
+            {
+                key: "0",
+                question: "What kind of word should I look for ?",
+                content: <p>You can search every word you want or need for you content : <strong class="fw-600">an object, a secteur, a market, a competitor, a product, an animal...etc </strong> <br/>
+                To make your search pertinent, your word have to be in french or in english.
+                <blockquote class="d-block mt-3">On the other hand, we don't recommend you to search for a complete sentence or a group of words or you will have a poor number of results.</blockquote></p>
+            },
+            {
+                key: "1",
+                question: "How many research can I do per day ?",
+                content: <p>You can do as many researches as you want everyday with our premium offer (charged). <span class="d-block mt-3">Also, you can enjoy Asking Franklin for free with only 3 searches per day.</span></p>
+            },
+            {
+                key: "2",
+                question: "Which period did those results come from ?",
+                content: <p>Those results are displayed on real time because we are sending a request when you're searching for a keyword. It means the results can be different depend the day or the hour.</p>
+            },
+            {
+                key: "3",
+                question: "How do you find the results displayed for each request ?",
+                content: <p>We are directly connected to Google's <abbr title="Application Programming Interface">API</abbr> so the results are displayed with a 100% absolute certainty.</p>
+            },
+            {
+                key: "4",
+                question: "How fully understand the different parts of the results in the graph ?",
+                content: <div>
+                    <h5 class="d-block mb-3 fz-18 fw-600">Questions</h5>
+                    <blockquote>Questions are usually used by internet users to find a answer or some knowledge about a specific subject.</blockquote>
+                    <p class="d-block mt-3"><span class="fw-600">« how, why, what is.. » : </span>question about the use or the behavior.</p>
+                    <p class="d-block mt-3"><span class="fw-600">« where, what, which » : </span>it's a comparison of several choices or questions on a specific subject.</p>
+                    <p class="d-block mt-3"><span class="fw-600">« who » : </span>according to the wording, internet users will use the "who" to know an identity or a behaviour.</p>
+                    <p class="d-block mt-3"><span class="fw-600">« what, when » : </span>it's a request for recommandations on using something.</p>
+                    <p class="d-block mt-3"><span class="fw-600">« what » : </span>usually, internet users use this to determine the best action to do.</p>
+                    <h5 class="d-block mt-4 mb-3 fz-18 fw-600">Comparisons</h5>
+                    <blockquote>Comparisons are used to internet users to compare an idea or to know what is the better choice.</blockquote>
+                    <p class="d-block mt-3"><span class="fw-600">« and » : </span>it's used when internet user wants to know if two things can be used together.</p>
+                    <p class="d-block mt-3"><span class="fw-600">« like » : </span>usually used if the research is similar to an object or an idea.</p>
+                    <p class="d-block mt-3"><span class="fw-600">« vs, against, or » : </span>it's used to compare several things.</p>
+                    <h5 class="d-block mt-4 mb-3 fz-18 fw-600">Prepositions</h5>
+                    <blockquote>Prepositions are used to get very specific information on a subject.</blockquote>
+                    <p class="d-block mt-3"><span class="fw-600">« near, at » : </span>thoses prepositions are used for a geographic research to determine a location.</p>
+                    <p class="d-block mt-3"><span class="fw-600">« for » : </span>internet users are using it to know a specific use.</p>
+                    <p class="d-block mt-3"><span class="fw-600">« with, without » : </span>it's used to search for a service, an object, a location with or without a specific functionality.</p>
+                    <h5 class="d-block mt-4 mb-3 fz-18 fw-600">Relateds</h5>
+                    <blockquote>Related words are used to complete a research, usually if the user is looking for a result related to the chosen subject.</blockquote>
+                </div>
+            },
+            {
+                key: "5",
+                question: "Can I change the results of my research directly in the graph ?",
+                content: <p>You can't change the graph's results but you can change the visual representation of results : just click on « <span class="fw-600">Tab</span> » next to « <span class="fw-600">Graph</span> ». You will have an access to the tab results.</p>
+            },
+            {
+                key: "6",
+                question: "How to export results of my research with CSV format ?",
+                content: <p>To export in CSV format, it's very simple ! You just have to click on the « <span class="fw-600">Export in CSV</span> » button on the results page. All the data collected of your search will be exported in CSV.</p>
+            },
+            {
+                key: "7",
+                question: "How to export results of my research with PNG format ?",
+                content: <p>To export in PNG format, it's very simple ! You just have to click on the « <span class="fw-600">Export in PNG</span> » button on the results page. Each button on each category of results allow to export a specific category.</p>
+            }
+        ]
+    },
+    {
+        category: "Payment and subscription",
+        categoryIcon: "pricing",
+        categoryTitle: "Payment and subscription",
+        categorySubtitle: <span>Whether you use Asking Franklin for free or switch to the Pro version, <br class="d-none d-lg-block"/> here are all the answers regarding the commitment and payment system of the service.</span>,
+        questions: [
+            {
+                key: "100",
+                question: "What additional features do I have access to with premium version ?",
+                content: <p>With premium version, you will have access to many features like : <FeaturesList className="mt-3 pt-3"/></p>
+            },
+            {
+                key: "101",
+                question: "How much does Asking Franklin cost ?",
+                content: <p>There is two premium offers : <br/>
+                <blockquote class="d-block mt-3"><span class="d-block mb-2 fw-600">Monthly supply :  <br/> 49€/month </span> (subscription without commitment)</blockquote> <br/>
+                <blockquote class="d-block mt-3"><span class="d-block mb-2 fw-600">Annual supply : <br/> 39€/month </span> (468€/years for 1 year (120$ saving)</blockquote> <br/> 
+                Of course, you can use Asking Franklin for free and make 3 searches only per day.</p>
+            },
+            {
+                key: "102",
+                question: "Am I necessarily committed if I subscribe to an offer ?",
+                content: <p><span class="fw-600">There is no commitment of time when you subscripe to an offer with Asking Franklin. You can stop your subscription anytime you want.</span>
+                <blockquote class="d-block mt-3">If you have subscribed to a monthly supply, the cancellation will then be effective as soon as the automatic renewal of the subscription is cancelled, you will remain a Pro member until the end of its validity period, which is valid for 30 days.<br/>
+                <span class="fz-14">(Example : you subscribe or renew a subscription on the 12th of the month, you cancel your subscription on the 23rd, it will be automatically interrupted on the 12th of the followind month).</span>.</blockquote>
+                <blockquote class="d-block mt-3">If you have subscribed to a annual supply, the cancellation will then be effective as soon as the automatic renewal of the subscription is cancelled, you will remain a Pro member until the end of its validity period, which is valid for 1 year or 365 days.<br/>
+                <span class="fz-14">(Example : you subscribe or renew a subscription in March, you cancel your annual subscription in July, it will be automatically interrupted in the following March).</span>.</blockquote>
+                <span class="d-block mt-3">Note : Even if you cancel your subscription, as long as it has not reached the end of its validity period, you can reactivate it by ticking the box dedicated to the subscription on your profile and then, cliking on save.</span>
+                <span class="d-block mt-3"> You can therefore continue to use your account in a free offer limited to 3 searches per day.</span></p>
+            },
+            {
+                key: "103",
+                question: "Is online payment secure ?",
+                content: <p>Online payment with credit card is entirely secure and encrypted thanks to Stripe.</p>
+            },
+            {
+                key: "104",
+                question: "What are the different payment methods available ?",
+                content: <p>You can pay with your credit card : <span class="fw-600">CB, MasterCard, Visa, American Express... etc.</span> All the credit card ot the world are available.</p>
+            },
+            {
+                key: "105",
+                question: "How do I cancel the automatic renewal of my subscription ?",
+                content: <p>You can cancel the automatic renewal of your subscription when you're connected. Just click on  « <span class="fw-600">My account</span> » at the top right, then click on  « <span class="fw-600">Parameters</span> » and then on « <span class="fw-600">Subscription</span> » by unchecking the box dedicated to the subscription and clicking on save.
+                <span class="d-block mt-3">Note : if you cancel your subscription as long as it has not reached the end of its period of validity, you can reactivate it by checking the box dedicated to the subscription on your profile and then clicking on save.</span></p>
+            }
+        ]
+    },
+    {
+        category: "My account",
+        categoryIcon: "account",
+        categoryTitle: "My account",
+        categorySubtitle: "All questions regarding to your account.",
+        questions: [
+            {
+                key: "200",
+                question: "Can I change the email adress of my account ?",
+                content: <p>Yes, you can change your email adress by clicking on « <span class="fw-600">My account</span> » at top right, then on « <span class="fw-600">Parameters</span> » and then on « <span class="fw-600">Account</span> » to change it.</p>
+            },
+            {
+                key: "201",
+                question: "Can I change my passeword ?",
+                content: <p>Yes, you can change your passeword by clicking on « <span class="fw-600">My account</span> » at top right, then on « <span class="fw-600">Parameters</span> » and then on « <span class="fw-600">Account</span> » to change it.</p>
+            }
+        ]
+    }
+]}
 
-export default class Faq extends React.Component {
+class Faq extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -194,16 +334,16 @@ export default class Faq extends React.Component {
     handleSearchTopic(e) {
         if (e.target.value.length > 2) {
             var ret = [];
-            for (var i = 0; i < accordionItems.length; i++) {
-                for (var j = 0; j < accordionItems[i].questions.length; j++) {
-                    if (typeof accordionItems[i].questions[j].content.props.children == 'string') {
-                        var contentQ = accordionItems[i].questions[j].content.props.children;
+            for (var i = 0; i < accordionItems[i18n.languages[0]].length; i++) {
+                for (var j = 0; j < accordionItems[i18n.languages[0]][i].questions.length; j++) {
+                    if (typeof accordionItems[i18n.languages[0]][i].questions[j].content.props.children == 'string') {
+                        var contentQ = accordionItems[i18n.languages[0]][i].questions[j].content.props.children;
                     } 
                     else {
-                        var contentQ = accordionItems[i].questions[j].content.props.children.join();
+                        var contentQ = accordionItems[i18n.languages[0]][i].questions[j].content.props.children.join();
                     }
-                    if ((accordionItems[i].questions[j].question.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(e.target.value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')) || (contentQ.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(e.target.value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''))))) {
-                        ret.push(accordionItems[i].questions[j]);
+                    if ((accordionItems[i18n.languages[0]][i].questions[j].question.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(e.target.value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')) || (contentQ.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(e.target.value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''))))) {
+                        ret.push(accordionItems[i18n.languages[0]][i].questions[j]);
                     }
                 }
             }
@@ -229,6 +369,7 @@ export default class Faq extends React.Component {
     }
 
     render() {
+        const { t } = this.props;
         return (
             <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
                 {this.customHeadElement()}
@@ -236,17 +377,17 @@ export default class Faq extends React.Component {
 
                     <Row className="mx-0 mb-5 w-md-100">
                         <Col sm="12" className="px-0 d-flex flex-column">
-                            <H1 className="mb-5" title="Comment pouvons-nous vous aider ?"/>
-                            <Input onChange={this.handleSearchTopic} hideLabel={true} type="search" placeholder="Rechercher un mot clé, un sujet ou posez une question..." containerStyle="w-100 mr-0 mr-sm-4 mb-4 mb-sm-0 pb-0"/>
+                            <H1 className="mb-5" title={t('faq.h1')}/>
+                            <Input onChange={this.handleSearchTopic} hideLabel={true} type="search" placeholder={t('faq.searchPlaceholder')} containerStyle="w-100 mr-0 mr-sm-4 mb-4 mb-sm-0 pb-0"/>
                             {!this.state.useFiltered && 
-                                <p class="mt-5">Ou sélectionnez une catégorie pour trouver rapidement la réponse à votre question</p>
+                                <p class="mt-5">{t('faq.selectCategory')}</p>
                             }
                         </Col>
                     </Row>
 
                     {!this.state.useFiltered && 
                         <Row className="mx-0 mb-5 w-100 d-flex flex-row">
-                            {accordionItems.map((accordionItem,idx) =>
+                            {accordionItems[i18n.languages[0]].map((accordionItem,idx) =>
                                 <Col onClick={this.changeCategory} num={idx} sm="12" md="4" className={idx === this.state.selectedCategoryIndex ? 'categorie-list-faq categorie-list-faq-selected' : 'categorie-list-faq'}>
                                     <FaqIcons icon={accordionItem.categoryIcon} height="24"/>
                                     <p class="mt-4">{accordionItem.category}</p>
@@ -257,28 +398,28 @@ export default class Faq extends React.Component {
 
                     {!this.state.useFiltered &&
                         <Col sm="12" className="px-0 mb-5">
-                            <H2 className="mb-4" title={accordionItems[this.state.selectedCategoryIndex].categoryTitle}/>
-                            <p>{accordionItems[this.state.selectedCategoryIndex].categorySubtitle}</p>
+                            <H2 className="mb-4" title={accordionItems[i18n.languages[0]][this.state.selectedCategoryIndex].categoryTitle}/>
+                            <p>{accordionItems[i18n.languages[0]][this.state.selectedCategoryIndex].categorySubtitle}</p>
                         </Col>
                     }
                     {(!this.state.noResult && this.state.useFiltered) &&  
                         <p class="fz-24 fw-600">
                             {this.state.toShow.length === 1 ? 
-                                [this.state.toShow.length, <span class="pl-1 fz-20 fw-400"> résultat a été trouvé</span>] 
+                                [this.state.toShow.length, <span class="pl-1 fz-20 fw-400"> {t('faq.foundResult')}</span>] 
                             :
-                                [this.state.toShow.length, <span class="pl-1 fz-20 fw-400"> résultats ont étés trouvés</span>]
+                                [this.state.toShow.length, <span class="pl-1 fz-20 fw-400"> {t('faq.foundResultMulti')}</span>]
                             }
                         </p>
                     }
                     {this.state.noResult &&  
-                        <p class="fz-20">Aucun résultat n'a pu être trouvé, essayer avec un autre terme</p>
+                        <p class="fz-20">{t('faq.foundNoResult')}</p>
                     }
 
                     <Row className="mx-0 my-5 w-100 d-flex flex-column">
                         <Col sm="12" className="question-faq d-flex flex-column text-left px-0">
                             <Accordion defaultActiveKey="-1">
                                 {
-                                    !this.state.useFiltered ? accordionItems[this.state.selectedCategoryIndex].questions.map((accordionItem) =>
+                                    !this.state.useFiltered ? accordionItems[i18n.languages[0]][this.state.selectedCategoryIndex].questions.map((accordionItem) =>
                                         <AccordionItem eventKey={accordionItem.key} title={accordionItem.question} content={accordionItem.content}></AccordionItem>
                                     )
                                     : this.state.toShow.map((accordionItem) =>
@@ -290,20 +431,20 @@ export default class Faq extends React.Component {
                     </Row>
 
                     <Row className="faq-contact-infos mx-0 mt-5 pt-4 pb-4 pb-md-5 px-3 w-100 d-flex flex-column flex-nowrap rounded">
-                        <p class="text-left fw-600">Vous n'avez pas trouvé l'information que vous cherchez ? Vous rencontrez un problème ?</p>
+                        <p class="text-left fw-600">{t('faq.haveNotFound')}</p>
                         <div class="d-flex flex-row justify-content-center flex-wrap mt-5">
                             <Col sm="12" md="4" lg="3" className="faq-contact-infos-block px-0">
                                 <Link to="/contact" class="d-flex flex-column align-items-center p-3 rounded">
                                     <PaperPlane height="20" fill="#2B2B2B"/>
-                                    <span class="mt-3 mb-2 fw-600">Contactez-nous</span>
-                                    <span>Laissez-nous un message</span>
+                                    <span class="mt-3 mb-2 fw-600">{t('faq.contactUs')}</span>
+                                    <span>{t('faq.leaveUsMessage')}</span>
                                 </Link>
                             </Col>
                             <Col sm="12" md="4" lg="3" className="faq-contact-infos-block px-0 ml-0 ml-md-5 mt-4 mt-md-0">
                                 <a href="javascript:void(Tawk_API.toggle())" class="d-flex flex-column align-items-center p-3 rounded">
                                     <SpeechBubble height="20" fill="#2B2B2B"/>
-                                    <span class="mt-3 mb-2 fw-600">Chattez avec nous</span>
-                                    <span>Échangeons en direct</span>
+                                    <span class="mt-3 mb-2 fw-600">{t('faq.chatWithUs')}</span>
+                                    <span>{t('faq.exchangeUs')}</span>
                                 </a>
                             </Col>
                         </div>
@@ -314,3 +455,6 @@ export default class Faq extends React.Component {
         )
     }
 }
+
+
+export default withTranslation()(Faq)

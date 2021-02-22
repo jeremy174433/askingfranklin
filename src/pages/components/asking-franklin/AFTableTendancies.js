@@ -10,6 +10,7 @@ import {
     Tooltip, 
     Area 
 } from 'recharts';
+import { withTranslation } from 'react-i18next';
 
 const data = [
     { name: 'A', uv: 4000, pv: 2400, amt: 2400 },
@@ -26,7 +27,7 @@ const data = [
     { name: 'L', uv: 1890, pv: 4800, amt: 2181 }
 ];
 
-export default class AFTableTendancies extends React.Component {
+class AFTableTendancies extends React.Component {
 
     externalLink = (y, d) => (
         <a 
@@ -41,9 +42,11 @@ export default class AFTableTendancies extends React.Component {
     );
 
     render() {
+        const { t } = this.props;
+
         return (
             <>
-                <p class="px-3 mb-3">Les tendances de recherches sont basées sur les 12 derniers mois</p>
+                <p class="px-3 mb-3">{t('askingFranklin.results.trendsIntro')}</p>
                 <Row className="asking-franklin-table asking-franklin-table-tendancies mx-0 px-0 d-flex flex-column flex-md-row">
                     {this.props.data.map((x) => {
                         if (x.suggestions.length > 0) {
@@ -52,7 +55,7 @@ export default class AFTableTendancies extends React.Component {
                                             <thead>
                                                 <tr>
                                                     <th class="align-middle px-2 w-100 fz-18 fw-400">{x.word}</th>
-                                                    <th class="align-middle px-2 w-100 fz-18 fw-400">Évolution</th>
+                                                    <th class="align-middle px-2 w-100 fz-18 fw-400">{t('askingFranklin.results.evo')}</th>
                                                     <th class="align-middle px-2 w-100 fz-18 fw-400"></th>
                                                 </tr>
                                             </thead>
@@ -96,3 +99,5 @@ export default class AFTableTendancies extends React.Component {
         )
     }
 }
+
+export default withTranslation()(AFTableTendancies)
