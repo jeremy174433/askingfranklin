@@ -3,39 +3,35 @@ import ArrowDropdown from '../../../assets/img/svg/ArrowDropdown';
 import Radio from '../form/Radio';
 import Flag from '../../../assets/img/svg/switch/Flag';
 
-const countries = [
-    {
-        items: [
-            { label: <p><Flag icon="de"/>Allemagne</p>, value: "de" },
-            { label: <p><Flag icon="ca"/>Canada</p>, value: "ca" },
-            { label: <p><Flag icon="es"/>Espagne</p>, value: "es" },
-            { label: <p><Flag icon="us"/>États-Unis</p>, value: "us" },
-            { label: <p><Flag icon="fr"/>France</p>, value: "fr" },
-            { label: <p><Flag icon="it"/>Italie</p>, value: "it" },
-            { label: <p><Flag icon="gb"/>Royaume-Uni</p>, value: "uk" },
-            { label: <p><Flag icon="ch"/>Suisse</p>, value: "ch" }
-        ]
-    }
-]
+const countries = [{
+    items: [
+        { label: <p><Flag icon="de"/>Allemagne</p>, value: "de" },
+        { label: <p><Flag icon="ca"/>Canada</p>, value: "ca" },
+        { label: <p><Flag icon="es"/>Espagne</p>, value: "es" },
+        { label: <p><Flag icon="us"/>États-Unis</p>, value: "us" },
+        { label: <p><Flag icon="fr"/>France</p>, value: "fr" },
+        { label: <p><Flag icon="it"/>Italie</p>, value: "it" },
+        { label: <p><Flag icon="gb"/>Royaume-Uni</p>, value: "uk" },
+        { label: <p><Flag icon="ch"/>Suisse</p>, value: "ch" }
+    ]
+}];
 
-const languages = [
-    {
-        items: [
-            { label: <p><Flag icon="de"/>Allemand</p>, value: "de" },
-            { label: <p><Flag icon="gb"/>Anglais</p>, value: "uk" },
-            { label: <p><Flag icon="es"/>Espagnol</p>, value: "es" },
-            { label: <p><Flag icon="fr"/>Français</p>, value: "fr" },
-            { label: <p><Flag icon="it"/>Italien</p>, value: "it" }
-        ]
-    }
-]
+const languages = [{
+    items: [
+        { label: <p><Flag icon="de"/>Allemand</p>, value: "de" },
+        { label: <p><Flag icon="gb"/>Anglais</p>, value: "uk" },
+        { label: <p><Flag icon="es"/>Espagnol</p>, value: "es" },
+        { label: <p><Flag icon="fr"/>Français</p>, value: "fr" },
+        { label: <p><Flag icon="it"/>Italien</p>, value: "it" }
+    ]
+}];
 
 export default class Filters extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             isSelected: this.props.alreadySelected ? true : false,
-            selectedValue: this.props.isPreselectedCountry ? { value:'fr' } : this.props.isPreselectedLanguage && { value:'fr' },
+            selectedValue: this.props.isPreselectedCountry ? { value: 'fr' } : this.props.isPreselectedLanguage && { value: 'fr' },
             selectedSaved: this.props.isPreselectedCountry ? 'France' : this.props.isPreselectedLanguage && 'Français'
         }
         this.toggleDropdown = this.toggleDropdown.bind(this);
@@ -57,7 +53,6 @@ export default class Filters extends React.Component {
             this.toggleDropdown();
         });
     }
-
 
     render() {
         return (

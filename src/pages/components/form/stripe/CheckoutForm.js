@@ -209,7 +209,10 @@ function CheckoutForm(props) {
 		var city = event.target.elements.city.value
 		var postalCode = event.target.elements.postal_code.value
 		var coupon = props.couponStatus !== 'failed' && props.couponStatus.valid ? props.couponStatus.id : null
-		const cardElement = elements.getElement(CardElement);
+		const cardElement = elements.getElement(CardElement, {
+			style: CARD_ELEMENT_OPTIONS,
+			placeholder: 'Custom card number placeholder',
+		});
 		const latestInvoicePaymentIntentStatus = localStorage.getItem('latestInvoicePaymentIntentStatus');
 		const priceId = localStorage.getItem('product');
 		const { error, paymentMethod } = await stripe.createPaymentMethod({
@@ -276,7 +279,7 @@ function CheckoutForm(props) {
 							disabled={props.couponAmount !== 1}
 							type="text"
 							hideLabel={true}
-							placeholder={t('form.input.reducCoupon')}
+							placeholder={t('form.input.placeholderReducCoupon')}
 							for="promotion_code"
 							containerStyle="mb-0 pb-0 w-100"
 							onChange={props.handleCouponChange}

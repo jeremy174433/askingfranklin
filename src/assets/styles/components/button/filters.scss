@@ -29,7 +29,6 @@
             @include fw-600;
 
             + .data-placeholder {
-                color: $primary;
                 overflow: hidden;
                 max-width: calc(100% - 1.5rem);
                 max-height: 22px;

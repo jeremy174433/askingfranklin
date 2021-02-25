@@ -19,8 +19,8 @@ class ConfirmationPayment extends React.Component {
     customHeadElement() {
         return (
             <Helmet>
-                <title>Version Pro - Asking Franklin, votre outil SEO français</title>
-                <meta name="description" content="Vous êtes désormais un membre Pro - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
+                <title>{this.props.t('title.paymentConfirm')}</title>
+                <meta name="description" content={this.props.t('description.paymentConfirm')}/>
                 <meta name="robots" content="noindex, follow"/>
             </Helmet>
         );

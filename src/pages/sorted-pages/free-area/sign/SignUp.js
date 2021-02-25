@@ -54,8 +54,8 @@ class SignUp extends React.Component {
     customHeadElement() {
         return (
             <Helmet>
-                <title>Créer un compte - Asking Franklin</title>
-                <meta name="description" content="Créer un compte - Passez à la version Pro d’Asking Franklin en créant votre compte ici !"/>
+                <title>{this.props.t('title.signUp')}</title>
+                <meta name="description" content={this.props.t('description.signUp')}/>
                 <meta name="robots" content="noindex, follow"/>
             </Helmet>
         );

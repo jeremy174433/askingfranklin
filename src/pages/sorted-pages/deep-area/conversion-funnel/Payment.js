@@ -123,8 +123,8 @@ class Payment extends React.Component {
 	customHeadElement() {
         return (
             <Helmet>
-                <title>Passez à la version Pro - Paiement - Asking Franklin, votre outil SEO français</title>
-				<meta name="description" content="Version Pro - Paiement - Améliorez votre référencement et soyez visible en passant à la version Pro d’Asking Franklin !"/>
+                <title>{this.props.t('title.payment')}</title>
+                <meta name="description" content={this.props.t('description.payment')}/>
 				<meta name="robots" content="noindex, follow"/>
 			</Helmet>
         );

@@ -35,8 +35,8 @@ class Contact extends React.Component {
     customHeadElement() {
         return (
             <Helmet>
-                <title>Contact - Asking Franklin, votre outil SEO Français</title>
-                <meta name="description" content="Contact - Asking Franklin, l’outil français créé à Bordeaux qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes. Contactez-nous !"/>
+                <title>{this.props.t('title.contact')}</title>
+                <meta name="description" content={this.props.t('description.contact')}/>
                 <meta name="robots" content="index, follow"/>
             </Helmet>
         );

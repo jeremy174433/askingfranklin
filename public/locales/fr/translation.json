@@ -1,6 +1,7 @@
 {
 
     "projectName": "Asking Franklin",
+    "contactEmail": "contact@askingfranklin.com",
 
     "url": {
         "signIn": "/connexion",
@@ -21,9 +22,15 @@
         "notice": "/mentions-legales",
         "tcs": "/conditions-generales-d-utilisation",
         "gtcs": "/conditions-generales-de-vente",
-        "smFacebook": "https://www.facebook.com/askingfranklin/",
-        "smTwitter": "https://twitter.com/AskingFranklin",
-        "smLinkedIn": "https://www.linkedin.com/company/asking-franklin/",
+        "domain": {
+            "website": "www.askingfranklin.com"
+        },
+        "networks": {
+            "smFacebook": "https://www.facebook.com/askingfranklin/",
+            "smTwitter": "https://twitter.com/AskingFranklin",
+            "smLinkedIn": "https://www.linkedin.com/company/asking-franklin/",
+            "smYouTube": "https://www.youtube.com/channel/UC3ZL1ozv0C0ip8T3VHrp2qw"
+        },
         "external": {
             "owner": "https://www.sortvoices.fr",
             "reviews": {
@@ -56,55 +63,60 @@
     },
 
     "title": {
-        "homepage": "",
-        "pricing": "",
-        "faq": "",
-        "resultAF": "",
-        "requestLimit": "",
-        "signIn": "",
-        "signUp": "",
-        "signUpConfirm": "",
-        "forgotPassword": "",
-        "profile": "",
-        "offers": "",
-        "payment": "",
-        "paymentConfirm": "",
-        "contact": "",
-        "notice": "",
-        "tcs": "",
-        "gtcs": "",
-        "404": ""
+        "homepage": "Asking Franklin - Découvrez ce que recherchent les internautes",
+        "pricing": "Passez à la version Pro - Asking Franklin, découvrez ce que recherchent les internautes",
+        "faq": "FAQ - Asking Franklin, découvrez ce que recherchent les internautes",
+        "requestLimit": "Limite de recherches atteinte - Asking Franklin",
+        "signIn": "Connexion à votre espace - Asking Franklin, découvrez ce que recherchent les internautes",
+        "signUp": "Créer un compte - Asking Franklin",
+        "signUpConfirm": "Inscription confirmée - Asking Franklin",
+        "forgotPassword": "Mot de passe oublié - Asking Franklin",
+        "profile": "Mon compte - Asking Franklin",
+        "offers": "Passez à la version Pro - Choix de l'offre - Asking Franklin, découvrez ce que recherchent les internautes",
+        "payment": "Passez à la version Pro - Paiement - Asking Franklin, découvrez ce que recherchent les internautes",
+        "paymentConfirm": "Version Pro - Asking Franklin, découvrez ce que recherchent les internautes",
+        "contact": "Contact - Asking Franklin, découvrez ce que recherchent les internautes",
+        "legalNotice": "Mentions Légales - Asking Franklin",
+        "tcs": "Conditions Générales d'Utilisation - Asking Franklin",
+        "gtcs": "Conditions Générales de Vente - Asking Franklin",
+        "404": "Erreur 404, page introuvable - Asking Franklin"
     },
 
     "description": {
-        "homepage": "",
-        "pricing": "",
-        "faq": "",
-        "resultAF": "",
-        "requestLimit": "",
-        "signIn": "",
-        "signUp": "",
-        "signUpConfirm": "",
-        "forgotPassword": "",
-        "profile": "",
-        "offers": "",
-        "payment": "",
-        "paymentConfirm": "",
-        "contact": "",
-        "notice": "",
-        "tcs": "",
-        "gtcs": "",
-        "404": ""
+        "homepage": "Découvrez ce que les internautes recherchent sur Google, optimisez votre contenu et gagnez en visibilité avec Asking Franklin",
+        "pricing": "Améliorez votre référencement et soyez visible en passant à la version Pro d’Asking Franklin ! Requêtes illimitées - Utilisateurs illimités en simultané - Export CSV - Recherches multilingue...",
+        "faq": "FAQ - Combien coûte la version Pro d’Asking Franklin ? Quelles sont les fonctionnalités Pro ? Combien de recherches puis-je faire par jour ?",
+        "resultAF": "Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes",
+        "requestLimit": "Limite de recherches atteinte - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes",
+        "signIn": "Connexion - Asking Franklin - Nous sommes ravis de vous revoir ! Connectez-vous à votre espace ici",
+        "signUp": "Créer un compte - Passez à la version Pro d’Asking Franklin en créant votre compte ici !",
+        "signUpConfirm": "Inscription confirmée - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes",
+        "forgotPassword": "Mot de passe oublié ? Changez le mot de passe de votre espace ici !",
+        "profile": "Votre compte - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes",
+        "offers": "Version Pro - Choix de l'offre - Améliorez votre référencement et soyez visible en passant à la version Pro d’Asking Franklin !",
+        "payment": "Version Pro - Paiement - Améliorez votre référencement et soyez visible en passant à la version Pro d’Asking Franklin !",
+        "paymentConfirm": "Vous êtes désormais un membre Pro - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes",
+        "contact": "Contact - Asking Franklin, l’outil SEO qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes. Contactez-nous !",
+        "legalNotice": "Mentions légales - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes",
+        "tcs": "Conditions Générales d'Utilisation - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes",
+        "gtcs": "Conditions Générales de Vente - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes",
+        "404": "Erreur 404 - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes"
     },
 
     "titleElementBrowser": {
+        "askingFranklin": {
+            "csvExport": "Exporter les résultats en CSV",
+            "pngExport": "Exporter le graphique en PNG",
+            "openInGoogle": "Nouvel onglet : afficher la requête sur Google"
+        },
         "form": {
             "registerError": "Il est nécessaire de renseigner tous les champs et d'accepter les CGU pour s'inscrire"
         },
         "footer": {
             "fb": "Ouvrir dans un nouvel onglet : Facebook",
             "lk": "Ouvrir dans un nouvel onglet : LinkedIn",
-            "tw": "Ouvrir dans un nouvel onglet : Twitter"
+            "tw": "Ouvrir dans un nouvel onglet : Twitter",
+            "yt": "Ouvrir dans un nouvel onglet : YouTube"
         },
         "monthlyPlan": "Offre mensuelle",
         "annualPlan": "Offre annuelle",
@@ -121,7 +133,17 @@
     },
 
     "banner": {
-        "text": "lorem ipsum"
+        "date": {
+            "d": "j",
+            "h": "h",
+            "m": "m",
+            "s": "s"
+        },
+        "end": "Promotion terminée ",
+        "promo": {
+            "title": "Offre Black Week : ",
+            "withCode": "avec le code"
+        }
     },
 
     "footer": {
@@ -217,6 +239,7 @@
             "codeSentByEmail": "Renseignez le code envoyé par email à ",
             "subject": "Sujet",
             "message": "Votre message",
+            "newSearch": "Nouvelle recherche",
             "payment": {
                 "nameOrCompany": "Nom complet ou raison sociale",
                 "address": "Adresse de facturation",
@@ -234,20 +257,11 @@
         "input": {
             "placeholderFormAF": "Saisissez un mot clé, un produit, une marque...",
             "placeholderEmail": "Votre adresse email...",
-            "reducCoupon": "Votre code promotionnel...",
+            "placeholderReducCoupon": "Votre code promotionnel...",
+            "placeholderFaq":"Rechercher un mot clé, un sujet ou posez une question...",
             "placeholderContact": "Une demande, une question, laissez nous votre message..."
         },
         "filters": {
-            "code": {
-                "ca": "ca",
-                "ch": "ch",
-                "es": "es",
-                "de": "de",
-                "fr": "fr",
-                "it": "it",
-                "uk": "uk",
-                "us": "us"
-            },
             "countries": {
                 "label": "Pays de recherche",
                 "ca": "Canada",
@@ -340,22 +354,30 @@
     },
 
     "askingFranklin": {
-        "results":{
-            "csvexport":"Exporter en CSV",
-            "pngexport":"Exporter en PNG",
-            "graph":"Graphique",
-            "arr":"Tableau",
-            "trends":"Tendances",
-            "prepo":"Prépositions",
-            "questions":"Questions",
-            "comparaisons":"Comparaisons",
-            "related":"Mots relatifs",
-            "country":"Pays",
-            "lang":"Langue",
-            "newSearch":"Nouvelle recherche",
-            "trendsIntro":"Les tendances de recherches sont basées sur les 12 derniers mois",
-            "evo":"Évolutions"
-
+        "menu": {
+            "csvExport": "Exporter en CSV",
+            "infosResearch": {
+                "country": "Pays",
+                "lang": "Langue"
+            },
+            "categories": {
+                "prepo": "Prépositions",
+                "questions": "Questions",
+                "comparaisons": "Comparaisons",
+                "related": "Mots relatifs",
+                "error": "Erreur"
+            }
+        },
+        "tabs": {
+            "graph": "Graphique",
+            "table": "Tableau",
+            "trends": "Tendances"
+        },
+        "data": {
+            "noResult": "Aucun résultat trouvé, tentez de lancer une nouvelle recherche avec un mot clé différent",
+            "pngExport": "Exporter en PNG",
+            "trendsPeriod": "Les tendances de recherches sont basées sur les 12 derniers mois",
+            "evolution": "Évolution"
         }
     },
 
@@ -475,17 +497,20 @@
     },
 
     "faq": {
-        "h1":"Comment pouvons-nous vous aider ?",
-        "searchPlaceholder":"Rechercher un mot clé, un sujet ou posez une question...",
-        "selectCategory":"Ou sélectionnez une catégorie pour trouver rapidement la réponse à votre question",
-        "foundResult":"résultat a été trouvé",
-        "foundResultsMulti":"résultats ont étés trouvés",
-        "foundNoResult":"Aucun résultat n'a pu être trouvé, essayer avec un autre terme",
-        "haveNotFound":"Vous n'avez pas trouvé l'information que vous cherchez ? Vous rencontrez un problème ?",
-        "contactUs":"Contactez-nous",
-        "leaveUsMessage":"Laissez-nous un message",
-        "chatWithUs":"Chattez avec nous",
-        "exchangeUs":"Échangeons en direct"
+        "h1": "Comment pouvons-nous vous aider ?",
+        "infoCategory": "Ou sélectionnez une catégorie pour trouver rapidement la réponse à votre question",
+        "searchResult": {
+            "foundOneResult": "résultat a été trouvé",
+            "foundManyResults": "résultats ont étés trouvés",
+            "foundNoResult": "Aucun résultat n'a pu être trouvé, essayer avec un autre terme"
+        },
+        "footer": {
+            "title": "Vous n'avez pas trouvé l'information que vous cherchez ? Vous rencontrez un problème ?",
+            "contactUs": "Contactez-nous",
+            "leaveUsMessage": "Laissez-nous un message",
+            "chatWithUs": "Chattez avec nous",
+            "liveExchange": "Échangeons en direct"
+        }
     },
 
     "profile": {
@@ -522,16 +547,230 @@
         "cta": "Envoyer le message"
     },
 
-    "notice": {
-
+    "legalNotice": {
+        "h1": "Mentions Légales",
+        "applicability": "Mentions légales en application de la loi n°2000-719 du 1er août 2000",
+        "p1": {
+            "s1": "Nom du site : ",
+            "s2": "URL complète du site : "
+        },
+        "p2": {
+            "s1": "Propriétaire du site :",
+            "s2": "Capital social",
+            "s3": "Numéro TVA"
+        },
+        "p3": {
+            "s1": "Directeur de publication : ",
+            "s2": "Hébergeur : ",
+            "s2a": "Ce site est hébergé par la société Amazon Web Services LLC, dont le siège social est situé au P.O. Box 81226 Seattle, WA 98108-1226"
+        }
     },
 
     "tcs": {
-
+        "h1": "Conditions Générales d'Utilisation",
+        "dateEffect": "En vigueur depuis le : 22/10/2020",
+        "dateUpdate": "Dernière mise à jour le : 22/10/2020",
+        "introduction": {
+            "title": "Préambule",
+            "p1": "Les présentes Conditions Générales d'Utilisation (dites « CGU ») ont pour objet l'encadrement juridique des modalités de mise à disposition du site et des services par Asking Franklin et de définir les conditions d’accès et d’utilisation des services par « l'utilisateur ».",
+            "p2": "Les présentes CGU sont accessibles sur le site à la rubrique « CGU »",
+            "p3": "Toute inscription ou utilisation du site implique l'acceptation sans aucune réserve ni restriction des présentes CGU par l’utilisateur. Lors de l'inscription sur le site via le formulaire d’inscription, chaque utilisateur accepte expressément les présentes CGU en cochant la case précédant le texte suivant : « J'ai lu et j'accepte les CGU ».",
+            "p4": "En cas de non-acceptation des CGU stipulées dans le présent contrat, l'utilisateur se doit de renoncer à l'accès des services proposés par le site.",
+            "p5b": " se réserve le droit de modifier unilatéralement et à tout moment le contenu des présentes CGU."
+        },
+        "summary": {
+            "title": "Sommaire :",
+            "article1": "Article 1 : Accès au site",
+            "article2": "Article 2 : Collecte des données",
+            "article3": "Article 3 : Abonnement à la newsletter",
+            "article4": "Article 4 : Propriété intellectuelle",
+            "article5": "Article 5 : Responsabilité",
+            "article6": "Article 6 : Liens hypertextes",
+            "article7": "Article 7 : Cookies",
+            "article8": "Article 8 : Droit applicable et juridiction compétente"
+        },
+        "1": {
+            "p1a": "Le site ",
+            "p1b": " permet à l'utilisateur un accès gratuit aux services suivants :",
+            "ul": {
+                "1": "SaaS d'optimisation SEO",
+                "2": "Le site est accessible gratuitement en tout lieu à tout utilisateur ayant un accès à internet. Tous les frais supportés par l'utilisateur pour accéder au service (matériel informatique, logiciels, connexion internet, etc.) sont à sa charge.",
+                "3": "L’utilisateur non membre n'a pas accès aux services réservés. Pour cela, il doit s’inscrire en remplissant le formulaire d'inscription puis souscrire aux services en validant son paiement. En acceptant de souscrire aux services réservés, l’utilisateur membre s’engage à fournir des informations sincères et exactes concernant son état civil et ses coordonnées, notamment son adresse email.",
+                "4": "Pour accéder aux services, l’utilisateur doit ensuite s'identifier à l'aide de son adresse email et de son mot de passe qui auront été préalablement choisi par lui-même au moment de son inscription.",
+                "5a": "Tout événement dû à un cas de force majeure ayant pour conséquence un dysfonctionnement du site ou serveur et sous réserve de toute interruption ou modification en cas de maintenance, n'engage pas la responsabilité de ",
+                "5b": ". Dans ces cas, l’utilisateur accepte ainsi ne pas tenir rigueur à l’éditeur de toute interruption ou suspension de service, même sans préavis.",
+                "6": "L'utilisateur a la possibilité de contacter le site par messagerie électronique à l’adresse email "
+            }
+        },
+        "2": {
+            "p1": "Le site assure à l'utilisateur une collecte et un traitement d'informations personnelles dans le respect de la vie privée conformément à la loi n°78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers et aux libertés.",
+            "p2": "En vertu de la loi informatique et libertés, en date du 6 janvier 1978, l'utilisateur dispose d'un droit d'accès, de rectification, de suppression et d'opposition de ses données personnelles. L'utilisateur peut exercer ce droit par email à l'adresse "
+        },
+        "3": {
+            "p1": "Procédure d'abonnement :",
+            "p1a": "Le service de newsletter est entièrement gratuit. La procédure d’abonnement consiste en la simple inscription d’une adresse email valide, qui deviendra l’adresse de référence à laquelle sera envoyée la newsletter. La validation du formulaire d’abonnement entraîne l’acceptation pleine et entière par l’utilisateur des Conditions Générales d’Utilisation.",
+            "p1b": "Pour vous inscrire à la newsletter, indiquez votre adresse email valide, puis cocher la case « J'ai lu et j'accepte les CGU », enfin, cliquez sur « S'abonner ».",
+            "p2": "Service offert :",
+            "p2a": "Les newsletters sont envoyées de manière automatique aux abonnés. La fréquence d’envoi est fixée à une fois par mois, toutefois dans le cas d'un cadre particulier, une newsletter supplémentaire pourra être envoyée. L'envoi de celle-ci s’effectuera par le biais de l’adresse email de référence fournie par l’abonné. Le contenu des newsletters est fourni exclusivement par Asking Franklin.",
+            "p2b": "Asking Franklin ne saurait être tenu pour responsable des conséquences directes ou indirectes liées à l’utilisation des newsletters par les abonnés.",
+            "p3": "Procédure de désabonnement :",
+            "p3a": "Chaque abonné à la newsletter dispose d’une faculté de désabonnement ainsi que d’un droit d’accès et de modification quant aux informations nominatives le concernant. Les informations recueillies bénéficient de la protection de la loi informatiques et libertés n°78-17 du 6 janvier 1978. Conformément aux articles 34 de la loi n°78-17 du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés, toute personne peut obtenir communication et, le cas échéant, rectification ou suppression des informations la concernant. Vous pouvez exercer ce droit d’accès en envoyant un email à l'adresse ",
+            "p3b": "Vous pouvez vous désabonner à tout moment en cliquant sur le lien qui figure à la fin de l’email de la newsletter."
+        },
+        "4": {
+            "p1": "Les marques, logos, signes ainsi que tous les contenus du site (textes, images, son...) font l'objet d'une protection par le code de la propriété intellectuelle et plus particulièrement par le droit d'auteur.",
+            "p2": "La marque Asking Franklin est une marque déposée par Sortvoices. Toute représentation et/ou reproduction et/ou exploitation partielle ou totale de cette marque, de quelque nature que ce soit, est totalement prohibée.",
+            "p3": "L'utilisateur doit solliciter l'autorisation préalable du site pour toute reproduction, publication, copie des différents contenus. Il s'engage à une utilisation des contenus du site dans un cadre strictement privé, toute utilisation à des fins commerciales et publicitaires est strictement interdite.",
+            "p4": "Toute représentation totale ou partielle de ce site par quelque procédé que ce soit, sans l’autorisation expresse de l’exploitant du site internet constituerait une contrefaçon sanctionnée par l’article L 335-2 et suivants du code de la propriété intellectuelle.",
+            "p5": "Il est rappelé conformément à l’article L122-5 du code de propriété intellectuelle que l’utilisateur qui reproduit, copie ou publie le contenu protégé doit citer l’auteur et sa source."
+        },
+        "5": {
+            "p1a": "Les sources des informations diffusées sur le site ",
+            "p1b": " sont réputées fiables mais le site ne garantit pas qu’il soit exempt de défauts, d’erreurs ou d’omissions.",
+            "p2a": "Les informations communiquées sont présentées à titre indicatif et général sans valeur contractuelle. Malgré des mises à jour régulières, le site ",
+            "p2b": " ne peut être tenu responsable de la modification des dispositions administratives et juridiques survenant après la publication. De même, le site ne peut être tenu responsable de l’utilisation et de l’interprétation de l’information contenue dans ce site.",
+            "p3": "L'utilisateur s'assure de garder son mot de passe secret. Toute divulgation du mot de passe, quelle que soit sa forme, est interdite. Il assume les risques liés à l'utilisation de son identifiant et mot de passe. Le site décline toute responsabilité.",
+            "p4a": "Le site ",
+            "p4b": " ne peut être tenu pour responsable d’éventuels virus qui pourraient infecter l’ordinateur ou tout matériel informatique de l’Internaute, suite à une utilisation, à l’accès, ou au téléchargement provenant de ce site.",
+            "p5": "La responsabilité du site ne peut être engagée en cas de force majeure ou du fait imprévisible et insurmontable d'un tiers."
+        },
+        "6": {
+            "p1a": "Des liens hypertextes peuvent être présents sur le site. L’utilisateur est informé qu’en cliquant sur ces liens, il sortira du site ",
+            "p1b": ". Ce dernier n’a pas de contrôle sur les pages web sur lesquelles aboutissent ces liens et ne saurait, en aucun cas, être responsable de leur contenu."
+        },
+        "7": {
+            "p1": "L’utilisateur est informé que lors de ses visites sur le site, un cookie peut s’installer automatiquement sur son navigateur web.",
+            "p2a": "Les cookies sont de petits fichiers stockés temporairement sur le disque dur de l’ordinateur de l’utilisateur par votre navigateur et qui sont nécessaires à l’utilisation du site ",
+            "p2b": ". Les cookies ne contiennent pas d’information personnelle et ne peuvent pas être utilisés pour identifier quelqu’un. Un cookie contient un identifiant unique, généré aléatoirement et donc anonyme. Certains cookies expirent à la fin de la visite de l’utilisateur, d’autres restent.",
+            "p3a": "L’information contenue dans les cookies est utilisée afin de contribuer à l'amélioration du site ",
+            "p3b": null,
+            "p4": "En naviguant sur le site, L’utilisateur les acceptent.",
+            "p5": "L’utilisateur doit toutefois donner son consentement quant à l’utilisation de certains cookies.",
+            "p6": "À défaut d’acceptation, l’utilisateur est informé que certaines fonctionnalités ou pages risquent de lui être refusées.",
+            "p7": "L’utilisateur pourra désactiver ces cookies par l’intermédiaire des paramètres de son navigateur web."
+        },
+        "8": {
+            "p1": "La législation française s'applique au présent contrat. En cas d'absence de résolution amiable d'un litige né entre les parties, les tribunaux français seront seuls compétents.",
+            "p2": "Pour toute question relative à l’application des présentes CGU, vous pouvez joindre l’éditeur à l'adresse email "
+        }
     },
 
     "gtcs": {
-
+        "h1": "Conditions Générales de Vente",
+        "dateEffect": "En vigueur depuis le : 22/10/2020",
+        "dateUpdate": "Dernière mise à jour le : 22/10/2020",
+        "introduction": {
+            "title": "Préambule",
+            "p1": "Les présentes Conditions Générales de Vente s’appliquent à toutes les ventes conclues sur le site internet",
+            "p2a": "Le site internet ",
+            "p2b": " est un service édité par la SAS Sortvoices et commercialise des abonnements à son logiciel SaaS (Software as a Service / Logiciel en tant que service) d’optimisation SEO.",
+            "p3": "Le client déclare avoir pris connaissance et avoir accepté les Conditions Générales de Vente antérieurement à la passation de sa commande, la validation de la commande vaut donc acceptation des Conditions Générales de Vente."
+        },
+        "summary": {
+            "title": "Sommaire :",
+            "article1": "Article 1 : Définitions",
+            "article2": "Article 2 : Abonnement",
+            "article3": "Article 3 : Signature électronique",
+            "article4": "Article 4 : Confirmation de commande",
+            "article5": "Article 5 : Durée de l’offre et résiliation",
+            "article6": "Article 6 : Prix",
+            "article7": "Article 7 : Mode de paiement",
+            "article8": "Article 8 : Accès aux services",
+            "article9": "Article 9 : Droit de propriété intellectuelle",
+            "article10": "Article 10 : Loi applicable",
+            "article11": "Article 11 : Protection des données & RGPD",
+            "article12": "Article 12 : Collecte de données personnelles"
+        },
+        "1": {
+            "p1": "Le terme « prestataire » désigne la SAS Sortvoices.",
+            "p2": "Le terme « client » désigne l’utilisateur qui accède aux services payants de tout ou partie des services développés par la SAS Sortvoices sur le site ",
+            "p3": "Le terme « abonnement » désigne le fait, pour un client, de s’abonner aux services proposés sur le site ",
+            "p4": "Le terme « commande » désigne le fait qu’un client adhère aux services proposés.",
+            "p5": "Le terme « offre » désigne les solutions et services développés par la SAS Sortvoices.",
+            "p6": "Le terme « contrat » désigne la relation existante entre le prestataire et le client dès lors que ce dernier ait passé commande."
+        },
+        "2": {
+            "p1": "Le client passe sa commande en ligne au moyen du formulaire qui figure sur le site.",
+            "p2": "Pour que l’abonnement soit validé, le client devra accepter, en cliquant à l’endroit indiqué sur le site, les présentes Conditions Générales de Vente.",
+            "p3": "Son acceptation entrainera l’envoi d’un email de confirmation d’abonnement de la part du prestataire.",
+            "p4": "Tout abonnement vaut acceptation du prix et descriptions des offres.",
+            "p5": "Le paiement se fait par carte bancaire, l’abonnement sera prélevé chaque mois ou chaque année, selon l’offre, conformément aux présentes Conditions Générales de Vente.",
+            "p6": "L’abonnement est conclu pour un mois ou douze mois au minimum selon l’offre choisie.",
+            "p7": "Pour toute question relative à son abonnement, le client peut nous contacter via l'adresse email "
+        },
+        "3": {
+            "p1": "La fourniture en ligne des numéros de carte bancaire du client et la validation finale de la commande vaudront preuve de l’accord du client.",
+            "p2": "Cela permettra au prestataire d’obtenir l’exigibilité des sommes dues au titre de l’abonnement et cela vaudra signature et acceptation expresse de toutes les opérations effectuées."
+        },
+        "4": {
+            "p1": "Les informations contractuelles feront l’objet d’une confirmation par voie d’email, à l’adresse email utilisée par l’acheteur lors du passage de la commande."
+        },
+        "5": {
+            "p1a": "L'offre est régie par les présentes Conditions Générales de Vente. L'abonnement est mensuel pour l’offre mensuelle ou annuel pour l’offre annuelle et fait l'objet d'une tacite reconduction. Le client peut, via l'adresse email ",
+            "p1b": ", demander à résilier son abonnement. Il peut également à partir du profil de son compte annuler le renouvellement automatique de son abonnement dans la section dédiée en décochant la case à cocher puis en cliquant sur sauvegarder.",
+            "p2": "La résiliation prendra effet au terme de la période de validité du mois en cours ou des douze mois (en se basant sur la date de passage de la commande).",
+            "p3": "Tout mois commencé est dû en intégralité.",
+            "p4": "En cas de résiliation de l'abonnement, Sortvoices s'engage soit à effacer et supprimer de son système les données appartenant au client, soit à restituer les données au format fichier texte, par envoi d’email sous 15 jours ouvrés, en fonction de la demande du client. Dans l'hypothèse où aucune demande expresse du client n'est formulée à la date de la résiliation, Sortvoices s'engage à effacer les données à l'expiration d'une période de 15 jours à compter de cette date."
+        },
+        "6": {
+            "p1": "Les prix sont fixés par les présentes Conditions Générales de Vente.",
+            "p2a": "Si le client souscrit l’offre mensuelle, l’abonnement lui sera facturé ",
+            "p2b": " par mois et sera prélevé chaque mois, par tacite reconduction.",
+            "p3a": "Si le client souscrit l’offre annuelle, l’abonnement lui sera facturé ",
+            "p3b": " par mois et sera payé en une fois par carte bancaire, soit ",
+            "p3c": ", lors de la commande. Il sera ensuite prélevé chaque année par tacite reconduction.",
+            "p4": "Le montant de l’abonnement s'entend hors taxes, telles que ces taxes sont fixées en fonction des taux en vigueur à la date de l'acceptation de l'offre par l'adhérent.",
+            "p5": "Le prestataire se réserve le droit de modifier ses prix à tout moment mais s’engage à appliquer les tarifs en vigueur indiqués au moment de la commande.",
+            "p6": "Si une ou plusieurs taxes ou contributions venaient à être créées ou modifiées, en hausse comme en baisse, ce changement pourra être répercuté sur le prix de vente des produits."
+        },
+        "7": {
+            "p1": "Il s’agit d’une commande avec obligation de paiement, ce qui signifie que la passation de commande implique un règlement de l’acheteur.",
+            "p2": "Le règlement de la commande se fait exclusivement par carte bancaire. Le client doit rentrer ses codes de carte bancaire à l’endroit prévu et confirmer cette saisie par un clic sur le bouton de validation de paiement.",
+            "p3": "Le prestataire se réserve le droit de suspendre tout abonnement en cas de refus d’autorisation de paiement de la part des organismes officiellement accrédités ou en cas de non-paiement."
+        },
+        "8": {
+            "p1": "Sortvoices s’engage à rendre disponible le service proposé, mais ne pourra être rendue responsable des éventuels dommages subis par l'adhérent suite à l'indisponibilité des services.",
+            "p2": "Le client peut accéder au service en se connectant, avec ses identifiants, sur le site ",
+            "p3": "Ces identifiants sont strictement personnels et confidentiels, ils ne peuvent en aucun cas être communiqués à un tiers. Le client est seul responsable de l’utilisation de ses identifiants.",
+            "p4": "Le prestataire se réserve le droit de procéder à la fermeture immédiate du compte du client si ce dernier venait à faire une utilisation frauduleuse de ses identifiants.",
+            "p5": "En cas de difficulté pour accéder aux services, le client peut contacter Sortvoices sur l’adresse email "
+        },
+        "9": {
+            "p1": "L’offre est mise à la disposition du client sous forme d'abonnement, cet abonnement ne confère au client qu'un seul droit d'usage privé personnel."
+        },
+        "10": {
+            "p1": "Les présentes conditions sont soumises à l’application du droit français.",
+            "p2": "Les parties s’engagent à rechercher une solution amiable à tout différend qui pourrait naitre de l’interprétation ou de l’exécution du contrat. Si elles n’y parviennent pas, les parties soumettront le litige au tribunal de commerce de Bordeaux (Gironde)."
+        },
+        "11": {
+            "p1": "Le prestataire s'engage à respecter l'ensemble des dispositions qui lui sont applicables au titre de la réglementation relative à la protection des données à caractère personnel, notamment les dispositions de la loi n° 78-17 modifiée relative à l'informatique, aux fichiers et aux libertés et celles du règlement (UE) 2016/679 du parlement européen et du conseil du 27 avril 2016 relatif à la protection des personnes physiques à l'égard du traitement des données à caractère personnel et à la libre circulation de ces données.",
+            "p2": "Le Client dispose d'un droit d'accès, de modification, de rectification et de suppression des données qui le concerne (art. 34 de la loi « informatique et libertés »). Les données appartenant au client gérées par Sortvoices sont et demeurent la propriété du client. Sortvoices s'engage à garder ces données confidentielles.",
+            "p3": "Les données récoltées par Sortvoices servent notamment à facturer le client et à lui fournir des identifiants afin de lui permettre de se connecter sur le site "
+        },
+        "12": {
+            "p1": "Les données à caractère personnel qui sont collectées sur ce site sont les suivantes :",
+            "p2": "Ouverture de compte : lors de la création du compte du client, ses nom(s), prénom(s), adresse email, numéro de téléphone, adresse postale.",
+            "p3a": "Connexion : lors de la connexion de l’utilisateur au site ",
+            "p3b": ", celui-ci enregistre notamment ses nom(s), prénom(s), données de connexion et d’utilisation, données relatives au paiement.",
+            "p4": "Cookies : les cookies sont utilisés, dans le cadre de l’utilisation du site ",
+            "p5": "Le client a la possibilité de désactiver les cookies à partir des paramètres de son navigateur, ce qui peut empêcher le client d’accéder à certaines pages du site ",
+            "p6": "Les données personnelles collectées auprès des utilisateurs ont pour objectif la mise à disposition des services du site web, leur amélioration et le maintien d’un environnement sécurisé. Plus précisément, les utilisations sont les suivantes :",
+            "ul1": {
+                "1a": "Accès et utilisation du site ",
+                "1b": " par le client",
+                "2": "Gestion du fonctionnement et optimisation du site ",
+                "3": "Organisation des conditions d’utilisation des services de paiement",
+                "4": "Vérification, identification et authentification des données transmises par l’utilisateur",
+                "5": "Gestion des éventuels litiges avec les clients."
+            },
+            "p7": "Si le client a donné son accord lors de son inscription, ses informations personnelles peuvent également servir à la constitution d’un fichier destiné à des fins de prospection commerciale.",
+            "p8": "Les données personnelles peuvent être partagées avec des sociétés tierces, dans les cas suivants :",
+            "ul2": {
+                "1": "Quand le client utilise les services de paiement, pour la mise en œuvre de ces services, le prestataire est en relation avec des sociétés bancaires et financières tierces avec lesquelles il a passé des contrats",
+                "2": "Si la loi l’exige, le prestataire peut effectuer la transmission de données pour donner suite aux réclamations présentées contre la SAS Sortvoices et se conformer aux procédures administratives et judiciaires",
+                "3": "Si le prestataire est impliqué dans une opération de fusion, acquisition, cession d’actifs ou procédure de redressement judiciaire, il pourra être amené à céder ou partager tout ou partie de ses actifs, y compris les données à caractère personnel. Dans ce cas, les clients seraient informés, avant que les données à caractère personnel ne soient transférées à une tierce partie."
+            }
+        }
     },
 
     "404": {

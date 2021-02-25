@@ -113,8 +113,8 @@ class Profile extends React.Component {
     customHeadElement() {
         return (
             <Helmet>
-                <title>Mon compte - Asking Franklin</title>
-                <meta name="description" content="Votre compte - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
+                <title>{this.props.t('title.profile')}</title>
+                <meta name="description" content={this.props.t('description.profile')}/>
                 <meta name="robots" content="noindex, follow"/>
             </Helmet>
         );

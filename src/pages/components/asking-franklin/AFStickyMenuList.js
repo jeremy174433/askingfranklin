@@ -1,6 +1,6 @@
 import React from 'react';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { withTranslation } from 'react-i18next';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 class AFStickyMenuList extends React.Component {
     constructor(props) {
@@ -11,19 +11,19 @@ class AFStickyMenuList extends React.Component {
     }
 
     componentDidMount() {
-        var ret = 'erreur';
+        var ret = this.props.t('askingFranklin.menu.categories.error');
         switch (this.props.text) {
             case 'questions':
-                ret = this.props.t('askingFranklin.results.questions');
+                ret = this.props.t('askingFranklin.menu.categories.questions');
                 break;
             case 'comparaisons':
-                ret = this.props.t('askingFranklin.results.comparaisons');
+                ret = this.props.t('askingFranklin.menu.categories.comparaisons');
                 break;
             case 'prepositions':
-                ret = this.props.t('askingFranklin.results.prepo');
+                ret = this.props.t('askingFranklin.menu.categories.prepo');
                 break;
             case 'related':
-                ret = this.props.t('askingFranklin.results.related');
+                ret = this.props.t('askingFranklin.menu.categories.related');
                 break;
             default:
                 ret = ret;
@@ -43,4 +43,4 @@ class AFStickyMenuList extends React.Component {
     }
 }
 
-export default withTranslation()(AFStickyMenuList)
+export default withTranslation()(AFStickyMenuList);

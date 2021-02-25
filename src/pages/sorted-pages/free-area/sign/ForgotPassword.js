@@ -46,8 +46,8 @@ class ForgotPassword extends React.Component {
     customHeadElement() {
         return (
             <Helmet>
-                <title>Mot de passe oublié - Asking Franklin</title>
-                <meta name="description" content="Mot de passe oublié ? Changez le mot de passe de votre espace ici !"/>
+                <title>{this.props.t('title.forgotPassword')}</title>
+                <meta name="description" content={this.props.t('description.forgotPassword')}/>
                 <meta name="robots" content="index, follow"/>
             </Helmet>
         );

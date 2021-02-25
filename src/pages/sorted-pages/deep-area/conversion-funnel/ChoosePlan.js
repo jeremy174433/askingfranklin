@@ -81,8 +81,8 @@ class ChoosePlan extends React.Component {
     customHeadElement() {
         return (
             <Helmet>
-                <title>Passez à la version Pro - Choix de l'offre - Asking Franklin, votre outil SEO français</title>
-                <meta name="description" content="Version Pro - Choix de l'offre - Améliorez votre référencement et soyez visible en passant à la version Pro d’Asking Franklin !"/>
+                <title>{this.props.t('title.offers')}</title>
+                <meta name="description" content={this.props.t('description.offers')}/>
                 <meta name="robots" content="noindex, follow"/>
             </Helmet>
         );

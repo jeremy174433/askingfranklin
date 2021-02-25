@@ -41,8 +41,8 @@ class SignIn extends React.Component {
     customHeadElement() {
         return (
             <Helmet>
-                <title>Connexion à votre espace - Asking Franklin, votre outil SEO Français</title>
-                <meta name="description" content="Connexion - Asking Franklin - Nous sommes ravis de vous revoir ! Connectez-vous à votre espace ici."/>
+                <title>{this.props.t('title.signIn')}</title>
+                <meta name="description" content={this.props.t('description.signIn')}/>
                 <meta name="robots" content="index, follow"/>
             </Helmet>
         );
