@@ -14,23 +14,44 @@ import AFWrapper from '../../components/asking-franklin/AFWrapper';
 import FormRequestFranklin from '../../components/form/FormRequestFranklin';
 import qs from 'qs';
 
-const minToMaxLanguage = {
-    "fr": "Français",
-    "uk": "Anglais",
-    "de": "Allemand",
-    "es": "Espagnol",
-    "it": "Italien"
+const dictionnaryCountry = {
+    "fr": {
+        "de": "Allemagne",
+        "ca": "Canada",
+        "es": "Espagne",
+        "us": "États-unis",
+        "fr": "France",
+        "it": "Italie",
+        "uk": "Royaume-Uni",
+        "ch": "Suisse"
+    },
+    "en": {
+        "ca": "Canada",
+        "fr": "France",
+        "de": "Germany",
+        "it": "Italy",
+        "es": "Spain",
+        "ch": "Switzerland",
+        "uk": "United Kingdom",
+        "us": "Unites States"
+    }
 };
 
-const minToMaxCountry = {
-    "fr": "France",
-    "ca": "Canada",
-    "uk": "Royaume-Uni",
-    "it": "Italie",
-    "de": "Allemagne",
-    "us": "États-unis",
-    "es": "Espagne",
-    "ch": "Suisse"
+const dictionnaryLanguage = {
+    "fr": {
+        "de": "Allemand",
+        "uk": "Anglais",
+        "es": "Espagnol",
+        "fr": "Français",
+        "it": "Italien"
+    },
+    "en": {
+        "uk": "English",
+        "fr": "French",
+        "de": "German",
+        "it": "Italian",
+        "es": "Spanish"
+    }
 };
 
 class AskingFranklin extends React.Component {
@@ -45,10 +66,10 @@ class AskingFranklin extends React.Component {
             nbResults: 0,
             keywordSearch: '',
             newKeywordSearch: '',
-            languageSearch: 'fr',
-            countrySearch: 'fr',
-            currLanguage: 'Français',
-            currCountry: 'France'
+            currCountry: i18n.t('form.filters.countries.selected'),
+            currLanguage: i18n.t('form.filters.languages.selected'),
+            countrySearchCode: i18n.t('form.filters.countries.selectedCode'),
+            languageSearchCode: i18n.t('form.filters.languages.selectedCode')
         }
         this.fetchFranklin = this.fetchFranklin.bind(this);
         this.switchSelectedPanel = this.switchSelectedPanel.bind(this);
@@ -91,15 +112,15 @@ class AskingFranklin extends React.Component {
                     });
                 }
             });
-        })
+        });
     }
 
     componentDidMount() {
-        var params = qs.parse(this.props.location.search, { ignoreQueryPrefix: true })
+        var params = qs.parse(this.props.location.search, { ignoreQueryPrefix: true });
         this.setState({
-            currCountry:minToMaxCountry[params.country],
-            currLanguage:minToMaxLanguage[params.lang]
-        })
+            currCountry: dictionnaryCountry[i18n.languages[0]][params.country],
+            currLanguage: dictionnaryLanguage[i18n.languages[0]][params.lang]
+        });
         this.fetchFranklin(this.props.match.params.keyword, params.lang, params.country);
         window.scrollTo(0, 0);
     }
@@ -108,10 +129,10 @@ class AskingFranklin extends React.Component {
         var params = qs.parse(this.props.location.search, { ignoreQueryPrefix: true })
         if ((prevProps.match.params.keyword !== this.props.match.params.keyword) || (prevProps.match.params.country !== this.props.match.params.country) || (prevProps.match.params.lang !== this.props.match.params.lang)) {
             this.setState({
-                currCountry: minToMaxCountry[params.country],
-                currLanguage: minToMaxLanguage[params.lang]
-            })
-          this.fetchFranklin(this.props.match.params.keyword, params.lang, params.country);
+                currCountry: dictionnaryCountry[i18n.languages[0]][params.country],
+                currLanguage: dictionnaryLanguage[i18n.languages[0]][params.lang]
+            });
+            this.fetchFranklin(this.props.match.params.keyword, params.lang, params.country);
         }
     }
 
@@ -139,23 +160,23 @@ class AskingFranklin extends React.Component {
 
     handleCountryChange(value) {
         this.setState({
-            countrySearch: value
+            countrySearchCode: value
         });
     }
 
     handleLanguageChange(value) {
         this.setState({
-            languageSearch: value
+            languageSearchCode: value
         });
     }
 
     requestFanklin = (e) => {
         e.preventDefault();
-        this.props.history.push(i18n.t('url.resultAF') + this.state.newKeywordSearch.replace(/ /g, '-') + '?lang=' + this.state.languageSearch + '&country=' + this.state.countrySearch);
+        this.props.history.push(i18n.t('url.resultAF') + this.state.newKeywordSearch.replace(/ /g, '-') + '?lang=' + this.state.languageSearchCode + '&country=' + this.state.countrySearchCode);
         this.setState({
             newKeywordSearch: ''
         });
-        window.location.reload()
+        window.location.reload();
     }
 
     render() {
@@ -166,7 +187,9 @@ class AskingFranklin extends React.Component {
             <Container className="d-flex flex-column px-0">
                 <Loader imgNoDataDisplayed content={t('askingFranklin.data.noResult')}/>
                 <Col md="12" lg="8" className="mx-auto px-0">
-                    <FormRequestFranklin 
+                    <FormRequestFranklin
+                        selectedSavedCountry={this.state.currCountry}
+                        selectedSavedLanguage={this.state.currLanguage}
                         onSubmit={this.requestFanklin} 
                         onChange={this.handleKeywordChange} 
                         value={this.state.newKeywordSearch} 
@@ -193,7 +216,7 @@ class AskingFranklin extends React.Component {
                         </Container>
                     </div>
                 </>
-            )
+            );
         }
 
         else if (this.state.nbResults === 0) {
@@ -206,7 +229,7 @@ class AskingFranklin extends React.Component {
                         </Container>
                     </div>
                 </>
-            )
+            );
         }
 
         else if (this.state.dataIsLoaded) {
@@ -230,7 +253,8 @@ class AskingFranklin extends React.Component {
                                     handleLanguageChange={this.handleLanguageChange}
                                     currCountry={this.state.currCountry}
                                     currLanguage={this.state.currLanguage}
-
+                                    selectedSavedCountry={this.state.currCountry}
+                                    selectedSavedLanguage={this.state.currLanguage}
                                 />
                                 <Col className="block-results col-12 col-xl-9 px-0 mb-5 w-100">
                                     {this.state.dataKw.data.map((x) => {
@@ -241,7 +265,7 @@ class AskingFranklin extends React.Component {
                         </Container>
                     </div>
                 </>
-            )
+            );
         }
 
         else {
@@ -254,7 +278,7 @@ class AskingFranklin extends React.Component {
                         </Container>
                     </div> 
                 </>
-            )
+            );
         }
     }
 }

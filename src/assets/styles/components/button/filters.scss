@@ -51,7 +51,7 @@
             border-bottom-left-radius: 0;
         }
 
-        svg { transform: rotate(-180deg); }
+        .btn-filter-header svg { transform: rotate(-180deg); }
 
         .filters-dropdown-container {
             display: block;
@@ -126,13 +126,7 @@
             white-space: nowrap; // Fix
 
             span:first-of-type { display: none; }
-            p { 
-                display: inline;
-                svg { 
-                    transform: rotate(0);
-                    margin-right: .5rem;
-                }
-            }
+            .radio-label svg { margin-right: .5rem; }
         }
     }
 }

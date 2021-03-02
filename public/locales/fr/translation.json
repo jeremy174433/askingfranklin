@@ -1,6 +1,7 @@
 {
 
     "projectName": "Asking Franklin",
+    "dateFormat": "fr-FR",
     "contactEmail": "contact@askingfranklin.com",
 
     "url": {
@@ -264,6 +265,8 @@
         "filters": {
             "countries": {
                 "label": "Pays de recherche",
+                "selectedCode": "fr",
+                "selected": "France",
                 "ca": "Canada",
                 "ch": "Suisse",
                 "es": "Espagne",
@@ -275,6 +278,8 @@
             },
             "languages": {
                 "label": "Langue de recherche",
+                "selectedCode": "fr",
+                "selected": "Français",
                 "de": "Allemand",
                 "es": "Espagnol",
                 "fr": "Français",

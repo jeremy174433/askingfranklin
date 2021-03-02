@@ -10,7 +10,7 @@ export default class Dots extends React.Component {
                         <rect width="202" height="202" fill="none"/>
                     </clipPath>
                 </defs>
-                <g opacity="0.75" clip-path="url(#7wQy7Np54UvK)" fill="#D3DDEF">
+                <g opacity="0.75" clipPath="url(#7wQy7Np54UvK)" fill="#D3DDEF">
                     <g transform="translate(-994 -1380)">
                         <circle cx="3" cy="3" r="3" transform="translate(994 1380)"/>
                     </g>

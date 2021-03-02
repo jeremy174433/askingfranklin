@@ -296,7 +296,7 @@ const accordionItems = {
             ]
         }
     ]
-}
+};
 
 class Faq extends React.Component {
     constructor(props) {
@@ -390,7 +390,7 @@ class Faq extends React.Component {
 
                     {!this.state.useFiltered && 
                         <Row className="mx-0 mb-5 w-100 d-flex flex-row">
-                            {accordionItems[i18n.languages[0]].map((accordionItem,idx) =>
+                            {accordionItems[i18n.languages[0]].map((accordionItem, idx) =>
                                 <Col onClick={this.changeCategory} num={idx} sm="12" md="4" className={idx === this.state.selectedCategoryIndex ? 'categorie-list-faq categorie-list-faq-selected' : 'categorie-list-faq'}>
                                     <FaqIcons icon={accordionItem.categoryIcon} height="24"/>
                                     <p class="mt-4">{accordionItem.category}</p>

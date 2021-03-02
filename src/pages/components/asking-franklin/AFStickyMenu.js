@@ -46,14 +46,18 @@ class AFStickyMenu extends React.Component {
                             <Scrollspy items={['questions', 'comparaisons', 'prepositions', 'related']} currentClassName="nav-link-style-active">
                                 {this.props.dataNumber.data.map((x, index) => {
                                     var volume = x.data.map((x) => x.suggestions.length).reduce(reducer);
-                                    return <li>
-                                                <AFStickyMenuList volume={volume} text={x.type}/>
-                                           </li>
+                                    return (
+                                        <li>
+                                            <AFStickyMenuList volume={volume} text={x.type}/>
+                                        </li>
+                                    );
                                 })}
                             </Scrollspy>
                         </div>
                     </div>
                     <FormRequestFranklin
+                        selectedSavedCountry={this.props.selectedSavedCountry}
+                        selectedSavedLanguage={this.props.selectedSavedLanguage}
                         onSubmit={this.props.onSubmit} 
                         onChange={this.props.onChange} 
                         handleLanguageChange={this.props.handleLanguageChange}

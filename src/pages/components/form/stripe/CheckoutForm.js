@@ -50,7 +50,6 @@ function CheckoutForm(props) {
 		} 
 		else if (subscription.latest_invoice.payment_intent.status === 'requires_payment_method') {
 			localStorage.setItem('latestInvoiceId', subscription.latest_invoice.id);
-			localStorage.setItem('latestInvoicePaymentIntentStatus', subscription.latest_invoice.payment_intent.status);
 			throw { error: { message: 'Your card was declined.' } };
 		} 
 		else {
@@ -140,7 +139,7 @@ function CheckoutForm(props) {
 		})
 	}
 
-	const createSubscription = async ({ paymentMethodId, priceId, name, line1, city, postalCode, coupon}) => {
+	const createSubscription = async ({ paymentMethodId, priceId, name, line1, city, postalCode, coupon }) => {
 		var token = localStorage.getItem('af_token');
 		return (
 			fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/create-subscription', {
@@ -213,7 +212,6 @@ function CheckoutForm(props) {
 			style: CARD_ELEMENT_OPTIONS,
 			placeholder: 'Custom card number placeholder',
 		});
-		const latestInvoicePaymentIntentStatus = localStorage.getItem('latestInvoicePaymentIntentStatus');
 		const priceId = localStorage.getItem('product');
 		const { error, paymentMethod } = await stripe.createPaymentMethod({
 			type: 'card',
