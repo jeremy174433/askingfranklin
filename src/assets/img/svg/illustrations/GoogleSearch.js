@@ -30,7 +30,7 @@ export default class GoogleSearch extends React.Component {
                         <text transform="translate(29.5)" fill="#2b2b2b" fontSize="16" fontFamily="Assistant-Regular, Assistant">
                             <tspan x="0" y="16">covid</tspan>
                         </text>
-                        <path d="M13.458,12,19,17.543,17.543,19,12,13.457,6.458,19,5,17.544,10.544,12,5,6.458,6.457,5,12,10.543,17.544,5,19,6.458Z" transform="translate(523.75 0)" fill="#9a9a9a" opacity="0.75" />
+                        {/* <path d="M13.458,12,19,17.543,17.543,19,12,13.457,6.458,19,5,17.544,10.544,12,5,6.458,6.457,5,12,10.543,17.544,5,19,6.458Z" transform="translate(523.75 0)" fill="#9a9a9a" opacity="0.75" /> */}
                     </g>
                     <g transform="translate(2192.25 1467.5)" clip-path="url(#5UYD7rtv5T8m)">
                         <g transform="translate(-2196.25 -1459)">

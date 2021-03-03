@@ -1,6 +1,7 @@
 import React from 'react';
 import i18n from '../../../i18n';
 import { withTranslation } from 'react-i18next';
+import qs from 'qs';
 import { Helmet } from 'react-helmet';
 import { refreshTokenFnc } from '../../../utils/refreshToken';
 import Loader from '../../components/elements/Loader';
@@ -12,7 +13,6 @@ import {
 } from 'react-bootstrap';
 import AFWrapper from '../../components/asking-franklin/AFWrapper';
 import FormRequestFranklin from '../../components/form/FormRequestFranklin';
-import qs from 'qs';
 
 const dictionnaryCountry = {
     "fr": {
@@ -184,7 +184,7 @@ class AskingFranklin extends React.Component {
         const { t } = this.props;
 
         const launchNewRequest = 
-            <Container className="d-flex flex-column px-0">
+            <Container id="askingFranklin" className="d-flex flex-column px-0">
                 <Loader imgNoDataDisplayed content={t('askingFranklin.data.noResult')}/>
                 <Col md="12" lg="8" className="mx-auto px-0">
                     <FormRequestFranklin
@@ -224,9 +224,7 @@ class AskingFranklin extends React.Component {
                 <>
                     {this.customHeadElement()}
                     <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
-                        <Container id="askingFranklin" className="px-0">
-                            <div>{launchNewRequest}</div>
-                        </Container>
+                        {launchNewRequest}
                     </div>
                 </>
             );
@@ -273,9 +271,7 @@ class AskingFranklin extends React.Component {
                 <>
                     {this.customHeadElement()}
                     <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
-                        <Container id="askingFranklin" className="px-0">
-                            <div>{launchNewRequest}</div>
-                        </Container>
+                        {launchNewRequest}
                     </div> 
                 </>
             );

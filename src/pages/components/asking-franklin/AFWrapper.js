@@ -14,7 +14,8 @@ class AFWrapper extends React.Component {
         super(props)
         this.state = {
             selectedPanel: 0,
-            title: ''
+            title: '',
+            tendanciesIsLoading: true
         }
         this.selectFirst = this.selectFirst.bind(this);
         this.selectSecond = this.selectSecond.bind(this);
@@ -93,7 +94,7 @@ class AFWrapper extends React.Component {
                                 <div class="tabs-container d-flex flex-row position-relative w-100">
                                     <Tabs onClick={this.selectFirst} isDisabled={this.state.selectedPanel === 0} textTab={t('askingFranklin.tabs.graph')} title={t('askingFranklin.tabs.graph')} className={this.state.selectedPanel === 0 && 'pmy-tab-selected'}/>
                                     <Tabs onClick={this.selectSecond} isDisabled={this.state.selectedPanel === 1} textTab={t('askingFranklin.tabs.table')} title={t('askingFranklin.tabs.table')} className={this.state.selectedPanel === 1 && 'pmy-tab-selected'}/>
-                                    <Tabs onClick={this.selectThird} isDisabled={this.state.selectedPanel === 2} textTab={t('askingFranklin.tabs.trends')} title={t('askingFranklin.tabs.trends')} badgeTitle="New" className={this.state.selectedPanel === 2 && 'pmy-tab-selected'}/>
+                                    <Tabs onClick={this.selectThird} isDisabled={this.state.selectedPanel === 2 || this.state.tendanciesIsLoading} textTab={t('askingFranklin.tabs.trends')} title={this.state.tendanciesIsLoading ? t('actions.loading') : t('askingFranklin.tabs.trends')} iconTabBefore={this.state.tendanciesIsLoading && <div class="spinner"></div>} badgeTitle="New" className={this.state.selectedPanel === 2 && 'pmy-tab-selected'}/>
                                 </div>
                                 {this.state.selectedPanel === 0 && <PmyBtn onClick={this.handleExportPng} type="button" btnIsMediumPmyOutlineFull textBtn={t('askingFranklin.data.pngExport')} title={t('titleElementBrowser.askingFranklin.pngExport')} iconBtnBefore={<FeaturesIcons icon="download"/>} containerStyle="btn-export-to-png position-relative mt-5 mt-md-0" className="fz-16-index"/> }
                             </div>
