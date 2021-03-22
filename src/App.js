@@ -5,7 +5,8 @@ import CookieConsent from 'react-cookie-consent';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from 'react-router-dom';
 import Banner from './pages/components/partials/Banner';
 import Navbar from './pages/components/partials/Navbar';
@@ -36,7 +37,8 @@ class App extends React.Component {
         super(props)
         this.state = {
             isConnected: false,
-            bannerIsShowed: false
+            bannerIsShowed: false,
+            redirect:false
         }
         this.handleLanguage = this.handleLanguage.bind(this);
         this.handleConnect = this.handleConnect.bind(this);
@@ -55,21 +57,15 @@ class App extends React.Component {
             });
         }
     }
-
     handleLanguage(e) {
         const lang = e.target.dataset.lang;
-        fetch(lang)
-        .then(() => {
-            window.location.href = '/';
-        })
-        .then(() => {
-            i18n.changeLanguage(lang);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+        this.setState({ redirect: true },
+            ()=>i18n.changeLanguage(lang,()=>{
+                this.setState({
+                    redirect:false
+                })
+            }));
     }
-
     handleConnect() {
         var is_sub = localStorage.getItem('af_is_sub');
         this.setState({
@@ -77,7 +73,6 @@ class App extends React.Component {
             bannerIsShowed: is_sub <= '0' && this.state.bannerIsShowed ? true : false || is_sub == '1' && false
         });
     }
-
     handleHideBanner() {
         this.setState({
             bannerIsShowed: false
@@ -87,12 +82,13 @@ class App extends React.Component {
     render() {
 
         const { t } = this.props;
-
+        const { redirect } = this.state;
         return (
             <div id="App">
                 {this.state.bannerIsShowed && <Banner onClick={this.handleHideBanner} bannerIsActive={this.state.bannerIsShowed}/> }
                 <Router>
                     <Navbar isConnected={this.state.isConnected} className={this.state.bannerIsShowed && 'banner-showed'}/>
+                    {redirect && <Redirect to='/'/>}
                     <Switch>
                         <Route path={t('url.signIn')} render={(props) => <SignIn {...props} bannerIsActive={this.state.bannerIsShowed} handleConnect={this.handleConnect}/>}/>
                         <Route exact path={t('url.signUpConfirm')} render={(props) => <SignUpConfirmation {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>

@@ -15,7 +15,6 @@ class FormRequestFranklin extends React.Component {
         this.handleLanguageChange = this.handleLanguageChange.bind(this);
         this.toggleOptions = this.toggleOptions.bind(this);
     }
-
     handleCountryChange(value) {
         this.props.handleCountryChange(value)
     }

@@ -29,7 +29,6 @@ class AFStickyMenu extends React.Component {
 
         const { t } = this.props;
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
-
         return ( 
             <Col sm="12" xl="3" className="d-flex d-xl-block flex-column p-0 mr-xl-5 mt-6">
                 <CSVLink data={this.exportCSV()} filename={this.props.searchContent + "_AskingFranklin.csv"} className="d-flex d-xl-block order-2 order-xl-1 mt-4 mt-xl-0 text-decoration-none">
@@ -56,8 +55,8 @@ class AFStickyMenu extends React.Component {
                         </div>
                     </div>
                     <FormRequestFranklin
-                        selectedSavedCountry={this.props.selectedSavedCountry}
-                        selectedSavedLanguage={this.props.selectedSavedLanguage}
+                        selectedSavedCountry={this.props.currCountry}
+                        selectedSavedLanguage={this.props.currLanguage}
                         onSubmit={this.props.onSubmit} 
                         onChange={this.props.onChange} 
                         handleLanguageChange={this.props.handleLanguageChange}

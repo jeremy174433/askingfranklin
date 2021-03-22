@@ -74,7 +74,7 @@ class Payment extends React.Component {
 				else {
 					this.setState({
 						plans: res.message,
-						selectedPlan: product === 'price_1HduRyLB03GdYRbhXrwR1kvW' ? 1 : 0,
+						selectedPlan: product === this.props.t('funnel.pricing.pricing-code-month') ? 1 : 0,
 						countClick: this.state.countClick + 1
 					});
 				}

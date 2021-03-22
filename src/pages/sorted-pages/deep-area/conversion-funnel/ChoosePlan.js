@@ -64,8 +64,8 @@ class ChoosePlan extends React.Component {
                 else {
                     this.setState({
                         plans: res.message,
-                        alreadySelected: product !== null ? product === 'price_1HduRyLB03GdYRbhXrwR1kvW' ? 1 : 2 : 0,
-                        selectedPlan: product !== null ? product === 'price_1HduRyLB03GdYRbhXrwR1kvW' ? 1 : 2 : 0,
+                        alreadySelected: product !== null ? product === this.props.t('funnel.pricing.pricing-code-month') ? 1 : 2 : 0,
+                        selectedPlan: product !== null ? product === this.props.t('funnel.pricing.pricing-code-month') ? 1 : 2 : 0,
                         countClick: this.state.countClick + 1
                     });
                 }
@@ -89,14 +89,14 @@ class ChoosePlan extends React.Component {
     }
     
     handleSelectedMonthlyPlan() {
-        localStorage.setItem('product', 'price_1HduRyLB03GdYRbhXrwR1kvW')
+        localStorage.setItem('product', this.props.t('funnel.pricing.pricing-code-month'))
         this.setState({ 
             redirectSelectedMonthly: true
         });
     }
 
     handleSelectedAnnualPlan() {
-        localStorage.setItem('product', 'price_1HduS4LB03GdYRbhVjfrRi7i')
+        localStorage.setItem('product', this.props.t('funnel.pricing.pricing-code-annual'))
         this.setState({ 
             redirectSelectedAnnual: true
         });

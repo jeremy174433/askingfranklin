@@ -14,8 +14,7 @@ class AFWrapper extends React.Component {
         super(props)
         this.state = {
             selectedPanel: 0,
-            title: '',
-            tendanciesIsLoading: true
+            title: ''
         }
         this.selectFirst = this.selectFirst.bind(this);
         this.selectSecond = this.selectSecond.bind(this);
@@ -80,7 +79,6 @@ class AFWrapper extends React.Component {
 
         const { t } = this.props;
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
-
         return (
             this.props.data.data.map((x) => x.suggestions.length).reduce(reducer) !== 0 &&
                 <div id={this.props.data.type} class="block-wrapper">
@@ -94,7 +92,7 @@ class AFWrapper extends React.Component {
                                 <div class="tabs-container d-flex flex-row position-relative w-100">
                                     <Tabs onClick={this.selectFirst} isDisabled={this.state.selectedPanel === 0} textTab={t('askingFranklin.tabs.graph')} title={t('askingFranklin.tabs.graph')} className={this.state.selectedPanel === 0 && 'pmy-tab-selected'}/>
                                     <Tabs onClick={this.selectSecond} isDisabled={this.state.selectedPanel === 1} textTab={t('askingFranklin.tabs.table')} title={t('askingFranklin.tabs.table')} className={this.state.selectedPanel === 1 && 'pmy-tab-selected'}/>
-                                    <Tabs onClick={this.selectThird} isDisabled={this.state.selectedPanel === 2 || this.state.tendanciesIsLoading} textTab={t('askingFranklin.tabs.trends')} title={this.state.tendanciesIsLoading ? t('actions.loading') : t('askingFranklin.tabs.trends')} iconTabBefore={this.state.tendanciesIsLoading && <div class="spinner"></div>} badgeTitle="New" className={this.state.selectedPanel === 2 && 'pmy-tab-selected'}/>
+                                    <Tabs onClick={this.selectThird} isDisabled={this.state.selectedPanel === 2 || this.props.trendsIsLoading} textTab={t('askingFranklin.tabs.trends')} title={!this.props.trendsIsLoading ? t('actions.loading') : t('askingFranklin.tabs.trends')} iconTabBefore={this.props.trendsIsLoading && <div class="spinner"></div>} badgeTitle="New" className={this.state.selectedPanel === 2 && 'pmy-tab-selected'}/>
                                 </div>
                                 {this.state.selectedPanel === 0 && <PmyBtn onClick={this.handleExportPng} type="button" btnIsMediumPmyOutlineFull textBtn={t('askingFranklin.data.pngExport')} title={t('titleElementBrowser.askingFranklin.pngExport')} iconBtnBefore={<FeaturesIcons icon="download"/>} containerStyle="btn-export-to-png position-relative mt-5 mt-md-0" className="fz-16-index"/> }
                             </div>
@@ -102,13 +100,13 @@ class AFWrapper extends React.Component {
                         <div class="asking-franklin-body">
                             {
                                 this.state.selectedPanel === 0 ?
-                                    <AFDataviz ref={this.componentRef} idSvg={'dataviz-' + this.props.data.type} related={this.props.data.type === 'related' ? true : false} keywordSearch={this.props.keywordSearch} data={this.props.data.data}/>
+                                    <AFDataviz ref={this.componentRef} idSvg={'dataviz-' + this.props.data.type} related={this.props.data.type === 'related' ? true : false} keywordSearch={this.props.keywordSearch} data={this.props.data.data} dataTendencies={this.props.dataTrends[this.props.idx]}/>
                                 
                                 : this.state.selectedPanel === 1 ?
                                     <AFTable data={this.props.data.data}/>
 
                                 : this.state.selectedPanel === 2 &&
-                                    <AFTableTendancies data={this.props.data.data}/>
+                                    <AFTableTendancies data={this.props.dataTrends[this.props.idx]}/>
                             }
                         </div>
                     </div>

@@ -47,14 +47,14 @@ class Pricing extends React.Component {
     }
 
     selectFirstPlan() {
-        localStorage.setItem('product', 'price_1HduRyLB03GdYRbhXrwR1kvW');
+        localStorage.setItem('product', this.props.t('funnel.pricing.pricing-code-month'));
         this.setState({
             selectedPlan: 0,
         });
     }
 
     selectSecondPlan() {
-        localStorage.setItem('product', 'price_1HduS4LB03GdYRbhVjfrRi7i');
+        localStorage.setItem('product', this.props.t('funnel.pricing.pricing-code-annual'));
         this.setState({
             selectedPlan: 1
         });

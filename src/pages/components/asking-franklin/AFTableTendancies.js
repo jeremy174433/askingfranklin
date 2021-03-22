@@ -1,7 +1,7 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next';
-import { 
-    Row, 
+import {
+    Row,
     Col,
     Table
 } from 'react-bootstrap';
@@ -12,23 +12,8 @@ import {
     Area 
 } from 'recharts';
 
-const data = [
-    { name: 'A', uv: 4000, pv: 2400, amt: 2400 },
-    { name: 'B', uv: 3000, pv: 1398, amt: 2210 },
-    { name: 'C', uv: 2000, pv: 9800, amt: 2290 },
-    { name: 'D', uv: 2780, pv: 3908, amt: 2000 },
-    { name: 'E', uv: 1890, pv: 4800, amt: 2181 },
-    { name: 'F', uv: 2390, pv: 3800, amt: 2500 },
-    { name: 'G', uv: 3490, pv: 4300, amt: 2100 },
-    { name: 'H', uv: 4000, pv: 2400, amt: 2400 },
-    { name: 'I', uv: 3000, pv: 1398, amt: 2210 },
-    { name: 'J', uv: 2000, pv: 9800, amt: 2290 },
-    { name: 'K', uv: 2780, pv: 3908, amt: 2000 },
-    { name: 'L', uv: 1890, pv: 4800, amt: 2181 }
-];
 
 class AFTableTendancies extends React.Component {
-
     externalLink = (y, d) => (
         <a 
             href={"https://www.google.fr/search?q=" + y}  
@@ -43,12 +28,11 @@ class AFTableTendancies extends React.Component {
 
     render() {
         const { t } = this.props;
-
         return (
             <>
                 <p class="px-3 mb-3">{t('askingFranklin.data.trendsPeriod')}</p>
                 <Row className="asking-franklin-table asking-franklin-table-tendancies mx-0 px-0 d-flex flex-column flex-md-row">
-                    {this.props.data.map((x) => {
+                    {this.props.data.data.map((x) => {
                         if (x.suggestions.length > 0) {
                             return (
                                 <Col sm="12" className="mb-3 pb-3 px-3">
@@ -62,11 +46,13 @@ class AFTableTendancies extends React.Component {
                                         </thead>
                                         <tbody>
                                             {x.suggestions.map((y) => {
+                                                var hasData = y.gtrend.reduce((prev,next) => prev + next.data,0)
+                                                console.log(hasData)
                                                 return (
-                                                    <tr>
-                                                        <td class="align-middle py-1 px-2"><span class="mr-2 mr-md-0">{y}</span>{this.externalLink(y, 'd-md-none')}</td>
+                                                    hasData > 0  && <tr>
+                                                        <td class="align-middle py-1 px-2"><span class="mr-2 mr-md-0">{y.text}</span>{this.externalLink(y, 'd-md-none')}</td>
                                                         <td class="td-area-chart px-0 align-middle">
-                                                            <AreaChart data={data} width={400} height={48} style={{ top: '9px' }}>
+                                                            <AreaChart data={y.gtrend} width={400} height={48} style={{ top: '9px' }}>
                                                                 <Tooltip contentStyle={{ color: '#673AB7' }}/>
                                                                 <defs>
                                                                     <linearGradient id="volumetryGradientPrimary" x1="0" y1="0" x2="0" y2="1">
@@ -78,7 +64,7 @@ class AFTableTendancies extends React.Component {
                                                                     name={t('askingFranklin.data.evolution')}
                                                                     type="monotone" 
                                                                     fill="url(#volumetryGradientPrimary)"
-                                                                    dataKey="uv" 
+                                                                    dataKey="data" 
                                                                     stroke="#673AB7" 
                                                                     strokeWidth={2}
                                                                     dot={{ fill: '#673AB7', stroke: '#673AB7', strokeWidth: 1, fillOpacity: 1}}

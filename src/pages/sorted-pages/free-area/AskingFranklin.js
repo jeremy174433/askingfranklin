@@ -67,10 +67,12 @@ class AskingFranklin extends React.Component {
             redirectBlocked: false,
             isLoading: true,
             dataKw: [],
+            dataTrends:{data:[]},
             dataIsLoaded: false,
             selectedPanel: 0,
             nbResults: 0,
             keywordSearch: '',
+            trendsIsLoading:true,
             newKeywordSearch: '',
             currCountry: i18n.t('form.filters.countries.selected'),
             currLanguage: i18n.t('form.filters.languages.selected'),
@@ -120,14 +122,27 @@ class AskingFranklin extends React.Component {
             });
         });
     }
+    fetchFranklinTrends(keyword, lang, country) {
+        fetch('https://europe-west1-sortvoices-test-1530802956312.cloudfunctions.net/g-trends?keyword=' + keyword + '&lang=' + lang + '&country=' + country)
+        .then((res) => res.json())
+        .then((res) => {
+            this.setState({
+                dataTrends:res,
+                trendsIsLoading:false
+            })
+        });
+    }
 
     componentDidMount() {
         var params = qs.parse(this.props.location.search, { ignoreQueryPrefix: true });
         this.setState({
             currCountry: dictionnaryCountry[i18n.languages[0]][params.country],
-            currLanguage: dictionnaryLanguage[i18n.languages[0]][params.lang]
+            currLanguage: dictionnaryLanguage[i18n.languages[0]][params.lang],
+            languageSearchCode:params.lang,
+            countrySearchCode:params.country
         });
         this.fetchFranklin(this.props.match.params.keyword, params.lang, params.country);
+        this.fetchFranklinTrends(this.props.match.params.keyword, params.lang, params.country);
         window.scrollTo(0, 0);
     }
 
@@ -139,6 +154,8 @@ class AskingFranklin extends React.Component {
                 currLanguage: dictionnaryLanguage[i18n.languages[0]][params.lang]
             });
             this.fetchFranklin(this.props.match.params.keyword, params.lang, params.country);
+            this.fetchFranklinTrends(this.props.match.params.keyword, params.lang, params.country);
+
         }
     }
 
@@ -261,8 +278,8 @@ class AskingFranklin extends React.Component {
                                     selectedSavedLanguage={this.state.currLanguage}
                                 />
                                 <Col className="block-results col-12 col-xl-9 px-0 mb-5 w-100">
-                                    {this.state.dataKw.data.map((x) => {
-                                        return <AFWrapper keywordSearch={this.state.keywordSearch} data={x}/>
+                                    {this.state.dataKw.data.map((x,idx) => {
+                                        return <AFWrapper keywordSearch={this.state.keywordSearch} data={x} trendsIsLoading={this.state.trendsIsLoading} dataTrends={this.state.dataTrends.data} idx={idx}/>
                                     })}
                                 </Col>
                             </main>

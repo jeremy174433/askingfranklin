@@ -428,7 +428,9 @@
             "infosVAT": "Prices are in $, excluding VAT and subject to the current rate.",
             "cta-1": "Continue for free",
             "cta-2a": "Subscribe and become Pro",
-            "cta-2b": "Continue and become Pro"
+            "cta-2b": "Continue and become Pro",
+            "pricing-code-annual": "price_1IQwFGLB03GdYRbhyS0R7BKr",
+            "pricing-code-month":"price_1IQwERLB03GdYRbhr8C6RTgc"
         },
         "offers": {
             "h1a": "You already have an active Asking Franklin Pro subscription",
