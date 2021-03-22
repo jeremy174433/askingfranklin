@@ -10,6 +10,12 @@
 
     &.banner-showed { top: $banner-promotion; }
 
+    .logo-asking-franklin {
+        width: 200px;
+        transition: .4s ease-in-out;
+        @include max-sm-rwd { width: 150px; }
+    }
+
     .nav-link {
         @include fz-18;
         @include menu-link-style(.5, 1, $theme-color-primary);

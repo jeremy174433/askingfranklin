@@ -1,6 +1,7 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
+import { Redirect } from 'react-router-dom';
 import { 
     Container,
     Col 
@@ -11,9 +12,20 @@ import H1 from '../../../components/elements/title/H1';
 import PmyBtn from '../../../components/button/PmyBtn';
 
 class ConfirmationPayment extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            redirect: false
+        }
+    }
 
     componentDidMount() {
         window.scrollTo(0, 0);
+        if(localStorage.getItem('af_is_sub') <= '0') {
+            this.setState({
+                redirect: true
+            });
+        }
     }
 
     customHeadElement() {
@@ -30,11 +42,15 @@ class ConfirmationPayment extends React.Component {
 
         const { t } = this.props;
 
+        if (this.state.redirect) { 
+            return <Redirect to="/"/>
+        }
+
         return (
             <div class={this.props.bannerIsActive ? 'layout-style-banner mt-6' : 'layout-style mt-6'}>
                 {this.customHeadElement()}
                 <Container>
-                    <StepperFunnel activeStep={2} firstStep={t('funnel.stepperPayment.1')} secondStep={('funnel.stepperPayment.2')} thirdStep={('funnel.stepperPayment.3')}/>
+                    <StepperFunnel activeStep={2} firstStep={t('funnel.stepperPayment.1')} secondStep={t('funnel.stepperPayment.2')} thirdStep={t('funnel.stepperPayment.3')}/>
                 </Container>
                 <Container className="d-flex flex-column flex-lg-row px-4 py-5 p-md-5 block-style position-relative overflow-visible">
                     <Col md="12" lg="6" className="mt-0 mb-5 my-md-5 px-0">

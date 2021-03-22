@@ -16,9 +16,17 @@
         right: 0;
     }
 
+    .pro-member {
+        position: absolute;
+        top: 0;
+        right: 8px;
+        transform: rotate(12deg);
+        z-index: 1;
+    }
+
     &.btn-profile-open {
 
-        svg { transform: rotate(-180deg); }
+        @include min-md-rwd { svg { transform: rotate(-180deg); } }
 
         + .btn-profile-dropwdown {
             background-color: $theme-secondary;

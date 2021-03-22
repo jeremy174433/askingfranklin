@@ -5,7 +5,7 @@ export default class Logo extends React.Component {
     render() {
         switch(this.props.icon) {
             case 'global':
-                return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 51.521" width={this.props.width} height={this.props.height}>
+                return <svg class="logo-asking-franklin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 51.521" width={this.props.width} height={this.props.height}>
                             <g transform="translate(-0.359 -1.922)">
                                 <g transform="translate(0.359 4.7)">
                                     <g transform="translate(0 2.474)">

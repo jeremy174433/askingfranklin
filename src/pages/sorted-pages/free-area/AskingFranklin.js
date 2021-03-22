@@ -16,20 +16,24 @@ import FormRequestFranklin from '../../components/form/FormRequestFranklin';
 
 const dictionnaryCountry = {
     "fr": {
+        "be": "Belgique",
         "de": "Allemagne",
         "ca": "Canada",
         "es": "Espagne",
         "us": "États-unis",
         "fr": "France",
         "it": "Italie",
+        "nl": "Pays-Bas",
         "uk": "Royaume-Uni",
         "ch": "Suisse"
     },
     "en": {
+        "be": "Belgium",
         "ca": "Canada",
         "fr": "France",
         "de": "Germany",
         "it": "Italy",
+        "nl": "Netherlands",
         "es": "Spain",
         "ch": "Switzerland",
         "uk": "United Kingdom",
@@ -43,11 +47,13 @@ const dictionnaryLanguage = {
         "uk": "Anglais",
         "es": "Espagnol",
         "fr": "Français",
-        "it": "Italien"
+        "it": "Italien",
+        "nl": "Néerlandais"
     },
     "en": {
         "uk": "English",
         "fr": "French",
+        "nl": "Dutch",
         "de": "German",
         "it": "Italian",
         "es": "Spanish"
@@ -176,7 +182,7 @@ class AskingFranklin extends React.Component {
         this.setState({
             newKeywordSearch: ''
         });
-        window.location.reload();
+        window.scrollTo(0, 0);
     }
 
     render() {

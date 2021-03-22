@@ -27,7 +27,7 @@ class MobileMenu extends React.Component {
     render() {
 
         const { t } = this.props;
-        const classListMobileMenu = ' mobile-menu-wrapper d-block d-md-none ml-auto';
+        const classListMobileMenu = ' mobile-menu-wrapper d-block d-md-none';
 
         return (
             <div className={this.state.isOpen ? 'mobile-menu-open' + classListMobileMenu : classListMobileMenu}>
@@ -43,9 +43,6 @@ class MobileMenu extends React.Component {
                         {localStorage.getItem('af_is_sub') <= 0 && <MenuLink redirectTo={t('url.pricing')}  onClick={this.handleMobileMenuClicked} textLink={t('link.pricing')}/> }
                         <MenuLink href={t('url.blog')} textLink={t('link.blog')}/>
                         <MenuLink redirectTo={t('url.faq')} onClick={this.handleMobileMenuClicked} textLink={t('link.faq')}/>
-                        {!this.props.isConnected && <MenuLink redirectTo={t('url.signIn')} onClick={this.handleMobileMenuClicked} textLink={t('link.signIn')}/> }
-                        {this.props.isConnected && <MenuLink redirectTo={t('url.profile')} onClick={this.handleMobileMenuClicked} textLink={t('link.account.settings')}/> }
-                        {this.props.isConnected && <MenuLink redirectTo="/" onClick={this.props.onClickLogOut} textLink={t('link.account.logout')}/> }
                     </ul>
                 </div>
             </div>

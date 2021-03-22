@@ -2,6 +2,7 @@ import React from 'react';
 import { withTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
 import { refreshTokenFnc } from '../../../../utils/refreshToken';
+import { Redirect } from 'react-router-dom';
 import { 
     Container,
     Row, 
@@ -12,7 +13,6 @@ import StepperFunnel from '../../../components/form/elements/StepperFunnel';
 import H1 from '../../../components/elements/title/H1';
 import H2 from '../../../components/elements/title/H2';
 import PmyBtn from '../../../components/button/PmyBtn';
-import { Redirect } from 'react-router-dom';
 
 class ChoosePlan extends React.Component {
     constructor(props) {

@@ -205,7 +205,7 @@ class SignUp extends React.Component {
                             />
                         </form>
                         <div class="d-flex flex-column mt-3 pt-3">
-                            <ArrowTextLink redirectTo={t('link.signIn')} textLink={t('sign.register.linkSignIn')}/>
+                            <ArrowTextLink redirectTo={t('url.signIn')} textLink={t('sign.register.linkSignIn')}/>
                         </div>
                     </Col>
                 </Container>

@@ -7,22 +7,26 @@ import Flag from '../../../assets/img/svg/switch/Flag';
 const countries = {
     "fr": {
         items: [
+            { label: <><Flag icon="be"/>Belgique</>, value: "be" },
             { label: <><Flag icon="de"/>Allemagne</>, value: "de" },
             { label: <><Flag icon="ca"/>Canada</>, value: "ca" },
             { label: <><Flag icon="es"/>Espagne</>, value: "es" },
             { label: <><Flag icon="us"/>États-Unis</>, value: "us" },
             { label: <><Flag icon="fr"/>France</>, value: "fr" },
             { label: <><Flag icon="it"/>Italie</>, value: "it" },
+            { label: <><Flag icon="nl"/>Pays-Bas</>, value: "nl" },
             { label: <><Flag icon="uk"/>Royaume-Uni</>, value: "uk" },
             { label: <><Flag icon="ch"/>Suisse</>, value: "ch" }
         ]
     },
     "en": {
         items: [
+            { label: <><Flag icon="be"/>Belgium</>, value: "be" },
             { label: <><Flag icon="ca"/>Canada</>, value: "ca" },
             { label: <><Flag icon="fr"/>France</>, value: "fr" },
             { label: <><Flag icon="de"/>Germany</>, value: "de" },
             { label: <><Flag icon="it"/>Italy</>, value: "it" },
+            { label: <><Flag icon="nl"/>Netherlands</>, value: "nl" },
             { label: <><Flag icon="es"/>Spain</>, value: "es" },
             { label: <><Flag icon="ch"/>Switzerland</>, value: "ch" },
             { label: <><Flag icon="uk"/>United Kingdom</>, value: "uk" },
@@ -38,6 +42,7 @@ const languages = {
             { label: <><Flag icon="uk"/>Anglais</>, value: "uk" },
             { label: <><Flag icon="es"/>Espagnol</>, value: "es" },
             { label: <><Flag icon="fr"/>Français</>, value: "fr" },
+            { label: <><Flag icon="nl"/>Néerlandais</>, value: "nl" },
             { label: <><Flag icon="it"/>Italien</>, value: "it" }
         ]
     },
@@ -45,6 +50,7 @@ const languages = {
         items: [
             { label: <><Flag icon="uk"/>English</>, value: "uk" },
             { label: <><Flag icon="fr"/>French</>, value: "fr" },
+            { label: <><Flag icon="nl"/>Dutch</>, value: "nl" },
             { label: <><Flag icon="de"/>German</>, value: "de" },
             { label: <><Flag icon="it"/>Italian</>, value: "it" },
             { label: <><Flag icon="es"/>Spanish</>, value: "es" }

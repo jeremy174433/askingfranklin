@@ -56,7 +56,7 @@ const accordionItems = {
                         <blockquote>Les questions sont généralement utilisées par les internautes en recherche de réponses ou de connaissances sur un sujet ou un thème précis.</blockquote>
                         <p class="d-block mt-3"><span class="fw-600">« comment, pourquoi, qu’est-ce » : </span>questionnement sur un usage ou un comportement.</p>
                         <p class="d-block mt-3"><span class="fw-600">« où, quel, quelle, lequel » : </span>comparaison sur plusieurs choix ou questionnement sur un choix défini.</p>
-                        <p class="d-block mt-3"><span class="fw-600">« qui » : </span>selon la formulation, les internautes utiliseront le qui pour connaitre une identité ou un comportement.</p>
+                        <p class="d-block mt-3"><span class="fw-600">« qui » : </span>selon la formulation, les internautes utiliseront le "qui" pour connaitre une identité ou un comportement.</p>
                         <p class="d-block mt-3"><span class="fw-600">« quoi, quand » : </span>demande de recommandations sur une utilisation.</p>
                         <p class="d-block mt-3"><span class="fw-600">« que » : </span>généralement, les internautes l’utiliseront pour déterminer la meilleure action à prendre.</p>
                         <h5 class="d-block mt-4 mb-3 fz-18 fw-600">Comparaisons</h5>
@@ -77,7 +77,11 @@ const accordionItems = {
                 {
                     key: "5",
                     question: "Est-ce que je peux modifier les résultats de ma recherche directement dans le graphique ?",
-                    content: <p>Vous ne pouvez pas modifier les résultats du graphique mais vous pouvez cependant modifier la représentation visuelle des résultats : en cliquant simplement sur le bouton « <span class="fw-600">Tableau</span> » à côté de « <span class="fw-600">Graphique</span> ». Vous aurez alors accès à un tableau regroupant l'ensemble des résultats.</p>
+                    content: <div>
+                        <p>Vous ne pouvez pas modifier les résultats du graphique mais vous pouvez cependant modifier la représentation visuelle des résultats :</p>
+                        <p class="mt-3">En cliquant simplement sur le bouton « <span class="fw-600">Tableau</span> » vous aurez alors accès à un tableau regroupant l'ensemble des résultats.</p>
+                        <p class="mt-3">En cliquant sur le bouton « <span class="fw-600">Tendances</span> » vous aurez accès à une vue tableau couplée à un graphique. Ce graphique contient le volume de recherche pour certains résultats liés aux requêtes des internautes <span class="fz-14">(les tendances sont basées sur les requêtes effectuées sur Google depuis les 12 derniers mois)</span>.</p>
+                    </div>
                 },
                 {
                     key: "6",
@@ -160,22 +164,22 @@ const accordionItems = {
     ],
     "en": [
         {
-            category: "Overall functionning / how it works",
+            category: "Overall functionning / How it works",
             categoryIcon: "guides",
-            categoryTitle: "Overall functionning / how it works",
+            categoryTitle: "Overall functionning / How it works",
             categorySubtitle: <span>If you're looking for some new contents or keywords for your audience and your website's SEO, <br class="d-none d-lg-block"/> you will find here the most asked questions about how to use Asking Franklin.</span>,
             questions: [
                 {
                     key: "0",
                     question: "What kind of word should I look for ?",
-                    content: <p>You can search every word you want or need for you content : <strong class="fw-600">an object, a secteur, a market, a competitor, a product, an animal...etc </strong> <br/>
+                    content: <p>You can search every word you want or need for you content : <strong class="fw-600">an object, a sector, a market, a competitor, a product, an animal...etc </strong> <br/>
                     To make your search pertinent, your word have to be in french or in english.
                     <blockquote class="d-block mt-3">On the other hand, we don't recommend you to search for a complete sentence or a group of words or you will have a poor number of results.</blockquote></p>
                 },
                 {
                     key: "1",
                     question: "How many research can I do per day ?",
-                    content: <p>You can do as many researches as you want everyday with our premium offer (charged). <span class="d-block mt-3">Also, you can enjoy Asking Franklin for free with only 3 searches per day.</span></p>
+                    content: <p>You can do as many researches as you want everyday with our premium offer (charged). <span class="d-block mt-3">Also, you can enjoy Asking Franklin for free with 3 searches per day.</span></p>
                 },
                 {
                     key: "2",
@@ -193,13 +197,13 @@ const accordionItems = {
                     content: <div>
                         <h5 class="d-block mb-3 fz-18 fw-600">Questions</h5>
                         <blockquote>Questions are usually used by internet users to find a answer or some knowledge about a specific subject.</blockquote>
-                        <p class="d-block mt-3"><span class="fw-600">« how, why, what is.. » : </span>question about the use or the behavior.</p>
+                        <p class="d-block mt-3"><span class="fw-600">« how, why, what is » : </span>question about the use or the behavior.</p>
                         <p class="d-block mt-3"><span class="fw-600">« where, what, which » : </span>it's a comparison of several choices or questions on a specific subject.</p>
                         <p class="d-block mt-3"><span class="fw-600">« who » : </span>according to the wording, internet users will use the "who" to know an identity or a behaviour.</p>
                         <p class="d-block mt-3"><span class="fw-600">« what, when » : </span>it's a request for recommandations on using something.</p>
                         <p class="d-block mt-3"><span class="fw-600">« what » : </span>usually, internet users use this to determine the best action to do.</p>
                         <h5 class="d-block mt-4 mb-3 fz-18 fw-600">Comparisons</h5>
-                        <blockquote>Comparisons are used to internet users to compare an idea or to know what is the better choice.</blockquote>
+                        <blockquote>Comparisons are used by internet users to compare an idea or to know what is the better choice.</blockquote>
                         <p class="d-block mt-3"><span class="fw-600">« and » : </span>it's used when internet user wants to know if two things can be used together.</p>
                         <p class="d-block mt-3"><span class="fw-600">« like » : </span>usually used if the research is similar to an object or an idea.</p>
                         <p class="d-block mt-3"><span class="fw-600">« vs, against, or » : </span>it's used to compare several things.</p>
@@ -215,7 +219,11 @@ const accordionItems = {
                 {
                     key: "5",
                     question: "Can I change the results of my research directly in the graph ?",
-                    content: <p>You can't change the graph's results but you can change the visual representation of results : just click on « <span class="fw-600">Tab</span> » next to « <span class="fw-600">Graph</span> ». You will have an access to the tab results.</p>
+                    content: <div>
+                        <p>You can't change the graph's results but you can change the visual representation of results :</p>
+                        <p class="mt-3">Just click on « <span class="fw-600">Table</span> » button, you will have an access to the table results.</p>
+                        <p class="mt-3">Just click on « <span class="fw-600">Trends</span> » button, you will have access to a table view linked to a graph. This graph contains the search volume for some results related users queries <span class="fz-14">(trends are based on queries made on Google over the last 12 months)</span>.</p>
+                    </div>
                 },
                 {
                     key: "6",
@@ -244,18 +252,18 @@ const accordionItems = {
                     key: "101",
                     question: "How much does Asking Franklin cost ?",
                     content: <p>There is two premium offers : <br/>
-                    <blockquote class="d-block mt-3"><span class="d-block mb-2 fw-600">Monthly supply :  <br/> 49€/month </span> (subscription without commitment)</blockquote> <br/>
-                    <blockquote class="d-block mt-3"><span class="d-block mb-2 fw-600">Annual supply : <br/> 39€/month </span> (468€/years for 1 year (120$ saving)</blockquote> <br/> 
+                    <blockquote class="d-block mt-3"><span class="d-block mb-2 fw-600">Monthly supply :  <br/> $59/month </span> (subscription without commitment)</blockquote> <br/>
+                    <blockquote class="d-block mt-3"><span class="d-block mb-2 fw-600">Annual supply : <br/> $49/month </span> ($588/years for 1 year ($120 saving)</blockquote> <br/> 
                     Of course, you can use Asking Franklin for free and make 3 searches only per day.</p>
                 },
                 {
                     key: "102",
                     question: "Am I necessarily committed if I subscribe to an offer ?",
-                    content: <p><span class="fw-600">There is no commitment of time when you subscripe to an offer with Asking Franklin. You can stop your subscription anytime you want.</span>
+                    content: <p><span class="fw-600">There is no commitment of time when you subscribe to an offer with Asking Franklin. You can stop your subscription anytime you want.</span>
                     <blockquote class="d-block mt-3">If you have subscribed to a monthly supply, the cancellation will then be effective as soon as the automatic renewal of the subscription is cancelled, you will remain a Pro member until the end of its validity period, which is valid for 30 days.<br/>
-                    <span class="fz-14">(Example : you subscribe or renew a subscription on the 12th of the month, you cancel your subscription on the 23rd, it will be automatically interrupted on the 12th of the followind month).</span>.</blockquote>
+                    <span class="fz-14">(eg : you subscribe or renew a subscription on the 12th of the month, you cancel your subscription on the 23rd, it will be automatically interrupted on the 12th of the following month)</span>.</blockquote>
                     <blockquote class="d-block mt-3">If you have subscribed to a annual supply, the cancellation will then be effective as soon as the automatic renewal of the subscription is cancelled, you will remain a Pro member until the end of its validity period, which is valid for 1 year or 365 days.<br/>
-                    <span class="fz-14">(Example : you subscribe or renew a subscription in March, you cancel your annual subscription in July, it will be automatically interrupted in the following March).</span>.</blockquote>
+                    <span class="fz-14">(eg : you subscribe or renew a subscription in March, you cancel your annual subscription in July, it will be automatically interrupted in the following March)</span>.</blockquote>
                     <span class="d-block mt-3">Note : Even if you cancel your subscription, as long as it has not reached the end of its validity period, you can reactivate it by ticking the box dedicated to the subscription on your profile and then, cliking on save.</span>
                     <span class="d-block mt-3"> You can therefore continue to use your account in a free offer limited to 3 searches per day.</span></p>
                 },
@@ -267,7 +275,7 @@ const accordionItems = {
                 {
                     key: "104",
                     question: "What are the different payment methods available ?",
-                    content: <p>You can pay with your credit card : <span class="fw-600">CB, MasterCard, Visa, American Express... etc.</span> All the credit card ot the world are available.</p>
+                    content: <p>You can pay with your credit card : <span class="fw-600">CB, MasterCard, Visa, American Express... etc.</span> All credit card on the world are available.</p>
                 },
                 {
                     key: "105",
@@ -285,13 +293,13 @@ const accordionItems = {
             questions: [
                 {
                     key: "200",
-                    question: "Can I change the email adress of my account ?",
-                    content: <p>Yes, you can change your email adress by clicking on « <span class="fw-600">My account</span> » at top right, then on « <span class="fw-600">Parameters</span> » and then on « <span class="fw-600">Account</span> » to change it.</p>
+                    question: "Can I change the email address of my account ?",
+                    content: <p>Yes, you can change your email address by clicking on « <span class="fw-600">My account</span> » at top right, then on « <span class="fw-600">Parameters</span> » and then on « <span class="fw-600">Account</span> » to change it.</p>
                 },
                 {
                     key: "201",
-                    question: "Can I change my passeword ?",
-                    content: <p>Yes, you can change your passeword by clicking on « <span class="fw-600">My account</span> » at top right, then on « <span class="fw-600">Parameters</span> » and then on « <span class="fw-600">Account</span> » to change it.</p>
+                    question: "Can I change my password ?",
+                    content: <p>Yes, you can change your password by clicking on « <span class="fw-600">My account</span> » at top right, then on « <span class="fw-600">Parameters</span> » and then on « <span class="fw-600">Account</span> » to change it.</p>
                 }
             ]
         }
