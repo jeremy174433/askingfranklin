@@ -15,8 +15,8 @@ class Error404 extends React.Component {
     customHeadElement() {
         return (
             <Helmet>
-                <title>Erreur 404, page introuvable - Asking Franklin</title>
-                <meta name="description" content="Erreur 404 - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
+                <title>{this.props.t('title.404')}</title>
+                <meta name="description" content={this.props.t('description.404')}/>
                 <meta name="robots" content="noindex, follow"/>
             </Helmet>
         );

@@ -30,7 +30,7 @@ class ProfileAccess extends React.Component {
                 <PmyBtn onClick={this.toggleProfileOptions} textBtn={t('link.account.btn')} btnIsMediumPmyOutlineFull iconBtnAfter={<ArrowDropdown/>} containerStyle={this.state.isOpen ? 'btn-profile-open btn-profile' : 'btn-profile' } />
                 <ul class="btn-profile-dropwdown mt-1 py-2 rounded">
                     <li>
-                        <Link to="/profil" onClick={this.toggleProfileOptions} class="d-flex flex-row py-2 px-3">
+                        <Link to={t('url.profile')} onClick={this.toggleProfileOptions} class="d-flex flex-row py-2 px-3">
                             <Settings width="16" fill="#2B2B2B"/>
                             <span class="ml-3">{t('link.account.settings')}</span>
                         </Link>

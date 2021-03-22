@@ -64,8 +64,8 @@ class ChoosePlan extends React.Component {
                 else {
                     this.setState({
                         plans: res.message,
-                        alreadySelected: product !== null ? product === 'price_1HduRyLB03GdYRbhXrwR1kvW' ? 1 : 2 : 0,
-                        selectedPlan: product !== null ? product === 'price_1HduRyLB03GdYRbhXrwR1kvW' ? 1 : 2 : 0,
+                        alreadySelected: product !== null ? product === this.props.t('funnel.pricing.pricing-code-month') ? 1 : 2 : 0,
+                        selectedPlan: product !== null ? product === this.props.t('funnel.pricing.pricing-code-month') ? 1 : 2 : 0,
                         countClick: this.state.countClick + 1
                     });
                 }
@@ -81,22 +81,22 @@ class ChoosePlan extends React.Component {
     customHeadElement() {
         return (
             <Helmet>
-                <title>Passez à la version Pro - Choix de l'offre - Asking Franklin, votre outil SEO français</title>
-                <meta name="description" content="Version Pro - Choix de l'offre - Améliorez votre référencement et soyez visible en passant à la version Pro d’Asking Franklin !"/>
+                <title>{this.props.t('title.offers')}</title>
+                <meta name="description" content={this.props.t('description.offers')}/>
                 <meta name="robots" content="noindex, follow"/>
             </Helmet>
         );
     }
     
     handleSelectedMonthlyPlan() {
-        localStorage.setItem('product', 'price_1HduRyLB03GdYRbhXrwR1kvW')
+        localStorage.setItem('product', this.props.t('funnel.pricing.pricing-code-month'))
         this.setState({ 
             redirectSelectedMonthly: true
         });
     }
 
     handleSelectedAnnualPlan() {
-        localStorage.setItem('product', 'price_1HduS4LB03GdYRbhVjfrRi7i')
+        localStorage.setItem('product', this.props.t('funnel.pricing.pricing-code-annual'))
         this.setState({ 
             redirectSelectedAnnual: true
         });

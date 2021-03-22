@@ -15,7 +15,6 @@ class FormRequestFranklin extends React.Component {
         this.handleLanguageChange = this.handleLanguageChange.bind(this);
         this.toggleOptions = this.toggleOptions.bind(this);
     }
-
     handleCountryChange(value) {
         this.props.handleCountryChange(value)
     }
@@ -31,8 +30,9 @@ class FormRequestFranklin extends React.Component {
     }
 
     render() {
-
+        
         const { t } = this.props;
+
         var formStyle = ' d-flex flex-column flex-md-row flex-lg-column flex-xl-row mt-5';
         var optsItems = ' filters-options-research d-flex flex-column flex-md-row';
 
@@ -60,8 +60,8 @@ class FormRequestFranklin extends React.Component {
                             <Close width="12" fill="#2B2B2B"/>
                         </div>
                     }
-                    <Filters handleFunc={this.handleCountryChange} isPreselectedCountry={true} id="btnCountries" label={t('form.filters.countries.label')}/>
-                    <Filters handleFunc={this.handleLanguageChange} isPreselectedLanguage={true} id="btnLanguages" label={t('form.filters.languages.label')}/>
+                    <Filters handleFunc={this.handleCountryChange} isPreselectedCountry={true} selectedSaved={this.props.selectedSavedCountry} id="btnCountries" label={t('form.filters.countries.label')}/>
+                    <Filters handleFunc={this.handleLanguageChange} isPreselectedLanguage={true} selectedSaved={this.props.selectedSavedLanguage} id="btnLanguages" label={t('form.filters.languages.label')}/>
                 </div>
             </div>
         )

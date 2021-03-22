@@ -23,19 +23,19 @@ class AFWrapper extends React.Component {
     }
 
     componentDidMount() {
-        var ret = 'erreur';
+        var ret = this.props.t('askingFranklin.menu.categories.error');
         switch (this.props.data.type) {
             case 'questions':
-                ret = 'Questions';
+                ret = this.props.t('askingFranklin.menu.categories.questions');
                 break;
             case 'comparaisons':
-                ret = 'Comparaisons';
+                ret = this.props.t('askingFranklin.menu.categories.comparaisons');
                 break;
             case 'prepositions':
-                ret = 'Prépositions';
+                ret = this.props.t('askingFranklin.menu.categories.prepo');
                 break;
             case 'related':
-                ret = 'Mots relatifs';
+                ret = this.props.t('askingFranklin.menu.categories.related');
                 break;
             default:
                 ret = ret;
@@ -77,9 +77,8 @@ class AFWrapper extends React.Component {
     
     render() {
 
-        const reducer = (accumulator, currentValue) => accumulator + currentValue;
         const { t } = this.props;
-
+        const reducer = (accumulator, currentValue) => accumulator + currentValue;
         return (
             this.props.data.data.map((x) => x.suggestions.length).reduce(reducer) !== 0 &&
                 <div id={this.props.data.type} class="block-wrapper">
@@ -91,23 +90,23 @@ class AFWrapper extends React.Component {
                             </div>
                             <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between">
                                 <div class="tabs-container d-flex flex-row position-relative w-100">
-                                    <Tabs onClick={this.selectFirst} isDisabled={this.state.selectedPanel === 0} textTab={t('askingFranklin.results.graph')} title="Graphique" className={this.state.selectedPanel === 0 && 'pmy-tab-selected'}/>
-                                    <Tabs onClick={this.selectSecond} isDisabled={this.state.selectedPanel === 1} textTab={t('askingFranklin.results.arr')} title="Tableau" className={this.state.selectedPanel === 1 && 'pmy-tab-selected'}/>
-                                    <Tabs onClick={this.selectThird} isDisabled={this.state.selectedPanel === 2} textTab={t('askingFranklin.results.trends')} title="Tendances" badgeTitle="New" className={this.state.selectedPanel === 2 && 'pmy-tab-selected'}/>
+                                    <Tabs onClick={this.selectFirst} isDisabled={this.state.selectedPanel === 0} textTab={t('askingFranklin.tabs.graph')} title={t('askingFranklin.tabs.graph')} className={this.state.selectedPanel === 0 && 'pmy-tab-selected'}/>
+                                    <Tabs onClick={this.selectSecond} isDisabled={this.state.selectedPanel === 1} textTab={t('askingFranklin.tabs.table')} title={t('askingFranklin.tabs.table')} className={this.state.selectedPanel === 1 && 'pmy-tab-selected'}/>
+                                    <Tabs onClick={this.selectThird} isDisabled={this.state.selectedPanel === 2 || this.props.trendsIsLoading} textTab={t('askingFranklin.tabs.trends')} title={!this.props.trendsIsLoading ? t('actions.loading') : t('askingFranklin.tabs.trends')} iconTabBefore={this.props.trendsIsLoading && <div class="spinner"></div>} badgeTitle="New" className={this.state.selectedPanel === 2 && 'pmy-tab-selected'}/>
                                 </div>
-                                {this.state.selectedPanel === 0 && <PmyBtn onClick={this.handleExportPng} type="button" btnIsMediumPmyOutlineFull textBtn={t('askingFranklin.results.pngexport')} title="Exporter le graphique en PNG" iconBtnBefore={<FeaturesIcons icon="download"/>} containerStyle="btn-export-to-png position-relative mt-5 mt-md-0" className="fz-16-index"/> }
+                                {this.state.selectedPanel === 0 && <PmyBtn onClick={this.handleExportPng} type="button" btnIsMediumPmyOutlineFull textBtn={t('askingFranklin.data.pngExport')} title={t('titleElementBrowser.askingFranklin.pngExport')} iconBtnBefore={<FeaturesIcons icon="download"/>} containerStyle="btn-export-to-png position-relative mt-5 mt-md-0" className="fz-16-index"/> }
                             </div>
                         </div>
                         <div class="asking-franklin-body">
                             {
                                 this.state.selectedPanel === 0 ?
-                                    <AFDataviz ref={this.componentRef} idSvg={'dataviz-' + this.props.data.type} related={this.props.data.type === 'related' ? true : false} keywordSearch={this.props.keywordSearch} data={this.props.data.data}/>
+                                    <AFDataviz ref={this.componentRef} idSvg={'dataviz-' + this.props.data.type} related={this.props.data.type === 'related' ? true : false} keywordSearch={this.props.keywordSearch} data={this.props.data.data} dataTendencies={this.props.dataTrends[this.props.idx]}/>
                                 
                                 : this.state.selectedPanel === 1 ?
                                     <AFTable data={this.props.data.data}/>
 
                                 : this.state.selectedPanel === 2 &&
-                                    <AFTableTendancies data={this.props.data.data}/>
+                                    <AFTableTendancies data={this.props.dataTrends[this.props.idx]}/>
                             }
                         </div>
                     </div>
@@ -116,4 +115,4 @@ class AFWrapper extends React.Component {
     }
 }
 
-export default withTranslation()(AFWrapper)
+export default withTranslation()(AFWrapper);

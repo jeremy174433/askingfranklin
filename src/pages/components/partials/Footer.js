@@ -90,8 +90,10 @@ class Footer extends React.Component {
                             <Link to="/" class="mx-auto mx-lg-0 mb-4">
                                 <Logo icon="white" width="200"/>
                             </Link>
-                            <p onClick={this.props.onClickLanguage} data-lang="en" class="mb-3">{t('footer.language.en')}</p>
-                            <p onClick={this.props.onClickLanguage} data-lang="fr">{t('footer.language.fr')}</p>
+                            <ul class="languages-wrapper d-flex flex-row flex-lg-column">
+                                <li onClick={this.props.onClickLanguage} data-lang="en" class="footer-link">{t('footer.language.en')}</li>
+                                <li onClick={this.props.onClickLanguage} data-lang="fr" class="footer-link">{t('footer.language.fr')}</li>
+                            </ul>
                         </Col>
                         <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start mb-5 mb-lg-0">
                             <p class="footer-title">{t('footer.title.1')}</p>
@@ -99,7 +101,7 @@ class Footer extends React.Component {
                                 <MenuLink redirectTo="/" textLink={t('link.homepage')} linkLocation="footer-link"/>
                                 {localStorage.getItem('af_is_sub') <= 0 && <MenuLink redirectTo={t('url.pricing')} textLink={t('link.pricing')} linkLocation="footer-link"/> }
                                 <MenuLink href={t('url.blog')} textLink={t('link.blog')} linkLocation="footer-link"/>
-                                <MenuLink redirectTo={t('url.faq')} textLink={t('link.faq')}linkLocation="footer-link"/>
+                                <MenuLink redirectTo={t('url.faq')} textLink={t('link.faq')} linkLocation="footer-link"/>
                                 <MenuLink redirectTo={t('url.contact')} textLink={t('link.contact')} linkLocation="footer-link"/>
                             </ul>
                         </Col>
@@ -114,9 +116,10 @@ class Footer extends React.Component {
                         <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start">
                             <p class="footer-title">{t('footer.title.3')}</p>
                             <ul class="social-media-wrapper d-flex flex-row">
-                                <MenuLink linkHasIcon={<SocialMedia icon="facebook" height="18" fill="#FFF"/>} href={t('url.smFacebook')} target="_blank" rel="nofollow noopener" title={t('titleElementBrowser.footer.fb')} className="icon-sm"/>
-                                <MenuLink linkHasIcon={<SocialMedia icon="twitter" width="18" fill="#FFF"/>} href={t('url.smTwitter')} target="_blank" rel="nofollow noopener" title={t('titleElementBrowser.footer.tw')} className="icon-sm"/>
-                                <MenuLink linkHasIcon={<SocialMedia icon="linkedin" width="18" fill="#FFF"/>} href={t('url.smLinkedIn')} target="_blank" rel="nofollow noopener" title={t('titleElementBrowser.footer.lk')} className="icon-sm"/>
+                                <MenuLink linkHasIcon={<SocialMedia icon="facebook" height="18" fill="#FFF"/>} href={t('url.networks.smFacebook')} target="_blank" rel="nofollow noopener" title={t('titleElementBrowser.footer.fb')} className="icon-sm d-flex"/>
+                                <MenuLink linkHasIcon={<SocialMedia icon="twitter" width="18" fill="#FFF"/>} href={t('url.networks.smTwitter')} target="_blank" rel="nofollow noopener" title={t('titleElementBrowser.footer.tw')} className="icon-sm d-flex"/>
+                                <MenuLink linkHasIcon={<SocialMedia icon="linkedin" width="18" fill="#FFF"/>} href={t('url.networks.smLinkedIn')} target="_blank" rel="nofollow noopener" title={t('titleElementBrowser.footer.lk')} className="icon-sm d-flex"/>
+                                <MenuLink linkHasIcon={<SocialMedia icon="youtube" width="18" fill="#FFF"/>} href={t('url.networks.smYouTube')} target="_blank" rel="nofollow noopener" title={t('titleElementBrowser.footer.yt')} className="icon-sm d-flex"/>
                             </ul>
                         </Col>
                     </Row>

@@ -1,3 +1,20 @@
+// ---------- WEBSITE GLOBAL LOADER ---------- //
+
 .loading-icon {
     svg rect { fill: $primary; }
+}
+
+// ---------- SPINNER ---------- //
+
+@keyframes spinnerRotation {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+} 
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid $theme-color-primary;
+    border-radius: 50%;
+    animation: spinnerRotation .8s linear infinite;
 }

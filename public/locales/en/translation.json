@@ -1,6 +1,8 @@
 {
 
     "projectName": "Asking Franklin",
+    "dateFormat": "en-US",
+    "contactEmail": "contact@askingfranklin.com",
 
     "url": {
         "signIn": "/sign-in",
@@ -21,9 +23,15 @@
         "notice": "/legal-notices",
         "tcs": "/terms-and-conditions-of-use",
         "gtcs": "/terms-and-conditions-of-sale",
-        "smFacebook": "https://www.facebook.com/askingfranklin/",
-        "smTwitter": "https://twitter.com/AskingFranklin",
-        "smLinkedIn": "https://www.linkedin.com/company/asking-franklin/",
+        "domain": {
+            "website": "www.askingfranklin.com"
+        },
+        "networks": {
+            "smFacebook": "https://www.facebook.com/askingfranklin/",
+            "smTwitter": "https://twitter.com/AskingFranklin",
+            "smLinkedIn": "https://www.linkedin.com/company/asking-franklin/",
+            "smYouTube": "https://www.youtube.com/channel/UC3ZL1ozv0C0ip8T3VHrp2qw"
+        },
         "external": {
             "owner": "https://www.sortvoices.fr",
             "reviews": {
@@ -37,7 +45,7 @@
 
     "link": {
         "homepage": "Home",
-        "blog": "Blog",
+        "blog": "Blog (fr)",
         "faq": "FAQ",
         "pricing": "Pricing",
         "contact": "Contact us",
@@ -56,55 +64,60 @@
     },
 
     "title": {
-        "homepage": "",
-        "pricing": "",
-        "faq": "",
-        "resultAF": "",
-        "requestLimit": "",
-        "signIn": "",
-        "signUp": "",
-        "signUpConfirm": "",
-        "forgotPassword": "",
-        "profile": "",
-        "offers": "",
-        "payment": "",
-        "paymentConfirm": "",
-        "contact": "",
-        "notice": "",
-        "tcs": "",
-        "gtcs": "",
-        "404": ""
+        "homepage": "Discover questions people are asking Google",
+        "pricing": "Upgrade - Premium version - Asking Franklin, your SEO tool for content marketing",
+        "faq": "FAQ - Asking Franklin, your SEO tool for content marketing",
+        "requestLimit": "Search limit reached - Asking Franklin",
+        "signIn": "Connection to your personal account - Asking Franklin",
+        "signUp": "Create an account - Asking Franklin",
+        "signUpConfirm": "Your registration has been confirmed - Asking Franklin",
+        "forgotPassword": "Forgot password - Asking Franklin",
+        "profile": "My account - Asking Franklin",
+        "offers": "Upgrade to the premium version - Offer selection - Asking Franklin, your SEO tool",
+        "payment": "Upgrade to the premium version - Payment - Asking Franklin, your SEO tool",
+        "paymentConfirm": "Upgraded to the premium version - Asking Franklin, your SEO tool",
+        "contact": "Contact us - Asking Franklin",
+        "legalNotice": "Legal Notice - Asking Franklin",
+        "tcs": "General Terms and Conditions of Use - Asking Franklin",
+        "gtcs": "General Terms and Conditions of Sales - Asking Franklin",
+        "404": "404 Error, page not found - Asking Franklin"
     },
 
     "description": {
-        "homepage": "",
-        "pricing": "",
-        "faq": "",
-        "resultAF": "",
-        "requestLimit": "",
-        "signIn": "",
-        "signUp": "",
-        "signUpConfirm": "",
-        "forgotPassword": "",
-        "profile": "",
-        "offers": "",
-        "payment": "",
-        "paymentConfirm": "",
-        "contact": "",
-        "notice": "",
-        "tcs": "",
-        "gtcs": "",
-        "404": ""
+        "homepage": "Discover keywords and questions people are asking to Google and optimize your content for SEO with Asking Franklin",
+        "pricing": "Improve your natural Search Engine Optimization and your visibility on Google with the premium version. Unlimited requests - Unlimited simultaneous users - CSV export - Multilangual results",
+        "faq": "FAQ - How much the premium version cost on Asking Franklin ? What are the features of the premium version ? How many searches can I do per day ?",
+        "resultAF": "Asking Franklin, the best SEO tool to discover which keywords and questions are searched by Google users",
+        "requestLimit": "Search limit reached - Asking Franklin, the best SEO tool to discover which keywords and questions are searched by Google users",
+        "signIn": "Connection to your personal account - Asking Franklin - We're glad to see you again ! Login here !",
+        "signUp": "Create an account - Upgrade to te premium version of Asking Franklin by creating your account just here !",
+        "signUpConfirm": "Your registration has been confirmed - Asking Franklin, the best SEO tool to discover which keywords and questions are searched by Google users",
+        "forgotPassword": "Forgot your password ? Change the password of your space here !",
+        "profile": "My account - Asking Franklin, the best SEO tool to discover which keywords and questions are searched by Google users",
+        "offers": "Premium version - Offer Selection - Improve your SEO and your visibility with the premium version of Asking Franklin !",
+        "payment": "Premium version - Payment - Improve your SEO and your visibility with the premium version of Asking Franklin !",
+        "paymentConfirm": "You are now a premium member - Asking Franklin, the best SEO tool to discover which keywords and questions are searched by Google users",
+        "contact": "Contact us - Asking Franklin, the best SEO tool to discover which keywords and questions are searched by Google users",
+        "legalNotice": "Legal Notice - Asking Franklin, the best SEO tool to discover which keywords and questions are searched by Google users",
+        "tcs": "General Terms and Conditions of Use - Asking Franklin, the best SEO tool to discover which keywords and questions are searched by Google users",
+        "gtcs": "General Terms and Conditions of Sales - Asking Franklin, the best SEO tool to discover which keywords and questions are searched by Google users",
+        "404": "404 Error - Asking Franklin, the best SEO tool to discover which keywords and questions are searched by Google users"
     },
 
     "titleElementBrowser": {
+        "askingFranklin": {
+            "csvExport": "Export results to CSV",
+            "pngExport": "Export the graphic in PNG",
+            "openInGoogle": "New tab : display the query on Google"
+        },
         "form": {
             "registerError": "It's necessary to fill in all the fields and accept the T&Cs to register"
         },
         "footer": {
             "fb": "Open in a new tab : Facebook",
             "lk": "Open in a new tab : LinkedIn",
-            "tw": "Open in a new tab : Twitter"
+            "tw": "Open in a new tab : Twitter",
+            "yt": "Open in a new tab : YouTube"
         },
         "monthlyPlan": "Monthly offer",
         "annualPlan": "Annual offer",
@@ -121,7 +134,17 @@
     },
 
     "banner": {
-        "text": "lorem ipsum"
+        "date": {
+            "d": "d",
+            "h": "h",
+            "m": "m",
+            "s": "s"
+        },
+        "end": "Promotion completed ",
+        "promo": {
+            "title": "Black Week offer : ",
+            "withCode": "with the code"
+        }
     },
 
     "footer": {
@@ -217,6 +240,7 @@
             "codeSentByEmail": "Write in the code sent by email to ",
             "subject": "Subject",
             "message": "Your message",
+            "newSearch": "New search",
             "payment": {
                 "nameOrCompany": "Full name or company name",
                 "address": "Billing address",
@@ -234,22 +258,15 @@
         "input": {
             "placeholderFormAF": "Enter a keyword, a product, a brand...",
             "placeholderEmail": "Your email...",
-            "reducCoupon": "Your promotional code...",
+            "placeholderReducCoupon": "Your promotional code...",
+            "placeholderFaq": "Search a keyword, subject or ask a question...",
             "placeholderContact": "A request or a question, leave us your message..."
         },
         "filters": {
-            "code": {
-                "ca": "ca",
-                "ch": "ch",
-                "es": "es",
-                "de": "de",
-                "fr": "fr",
-                "it": "it",
-                "uk": "uk",
-                "us": "us"
-            },
             "countries": {
                 "label": "Country of research",
+                "selectedCode": "us",
+                "selected": "United States",
                 "ca": "Canada",
                 "ch": "Switzerland",
                 "de": "Germany",
@@ -261,6 +278,8 @@
             },
             "languages": {
                 "label": "Search language",
+                "selectedCode": "uk",
+                "selected": "English",
                 "de": "German",
                 "es": "Spanish",
                 "fr": "French",
@@ -340,22 +359,30 @@
     },
 
     "askingFranklin": {
-        "results":{
-            "csvexport":"CSV export",
-            "pngexport":"PNG export",
-            "graph":"Visual",
-            "arr":"Array",
-            "trends":"Trends",
-            "prepo":"Prepositions",
-            "questions":"Questions",
-            "comparaisons":"Comparisons",
-            "related":"Related",
-            "country":"Country",
-            "lang":"Language",
-            "newSearch":"New search",
-            "trendsIntro":"Search trends are based on the last 12 months.",
-            "evo":"Evolutions"
-
+        "menu": {
+            "csvExport": "CSV export",
+            "infosResearch": {
+                "country": "Country",
+                "lang": "Language"
+            },
+            "categories": {
+                "prepo": "Prepositions",
+                "questions": "Questions",
+                "comparaisons": "Comparisons",
+                "related": "Related",
+                "error": "Error"
+            }
+        },
+        "tabs": {
+            "graph": "Visual",
+            "table": "Table",
+            "trends": "Trends"
+        },
+        "data": {
+            "noResult": "No results found, try a new search with a different keyword",
+            "pngExport": "PNG export",
+            "trendsPeriod": "Search trends are based on the last 12 months",
+            "evolution": "Evolution"
         }
     },
 
@@ -401,7 +428,9 @@
             "infosVAT": "Prices are in $, excluding VAT and subject to the current rate.",
             "cta-1": "Continue for free",
             "cta-2a": "Subscribe and become Pro",
-            "cta-2b": "Continue and become Pro"
+            "cta-2b": "Continue and become Pro",
+            "pricing-code-annual": "price_1IQwFGLB03GdYRbhyS0R7BKr",
+            "pricing-code-month":"price_1IQwERLB03GdYRbhr8C6RTgc"
         },
         "offers": {
             "h1a": "You already have an active Asking Franklin Pro subscription",
@@ -470,22 +499,25 @@
             "h1": "Forgot password",
             "cta1": "Receive a reset email",
             "cta2": "Reset password",
-            "linkSignIn": "Log in to Asking  Franklin"
+            "linkSignIn": "Log in to Asking Franklin"
         }
     },
 
     "faq": {
-        "h1":"How can we help you ?",
-        "searchPlaceholder":"Search a keyword, subject or ask a question....",
-        "selectCategory":"Or you can select a category to quickly find an answer to your question.",
-        "foundResult":"result found",
-        "foundResultsMulti":"results were found",
-        "foundNoResult":"No result found, try another keyword",
-        "haveNotFound":"Didn't find the information you were looking for ? Are you encountering a problem ?",
-        "contactUs":"Contact-us",
-        "leaveUsMessage":"Leave us a message",
-        "chatWithUs":"Chat with us",
-        "exchangeUs":"Let's exchange"
+        "h1": "How can we help you ?",
+        "infoCategory": "Or you can select a category to quickly find an answer to your question",
+        "searchResult": {
+            "foundOneResult": "result found",
+            "foundManyResults": "results were found",
+            "foundNoResult": "No result found, try another keyword"
+        },
+        "footer": {
+            "title": "Didn't find the information you were looking for ? Are you encountering a problem ?",
+            "contactUs": "Contact us",
+            "leaveUsMessage": "Leave us a message",
+            "chatWithUs": "Chat with us",
+            "liveExchange": "Let's exchange"
+        }
     },
 
     "profile": {
@@ -522,16 +554,230 @@
         "cta": "Send the message"
     },
 
-    "notice": {
-
+    "legalNotice": {
+        "h1": "Legal Notice",
+        "applicability": "Legal notice in application of the law n°2000-719 of August 1st, 2000",
+        "p1": {
+            "s1": "Site name : ",
+            "s2": "Full site URL : "
+        },
+        "p2": {
+            "s1": "Site owner :",
+            "s2": "Share capital",
+            "s3": "VAT number"
+        },
+        "p3": {
+            "s1": "Publication director : ",
+            "s2": "Host : ",
+            "s2a": "This site is hosted by Amazon Web Services LLC, whose headquarters are located at P.O. Box 81226 Seattle, WA 98108-1226"
+        }
     },
 
     "tcs": {
-
+        "h1": "General Terms and Conditions of Use",
+        "dateEffect": "In effect since : 10/22/2020",
+        "dateUpdate": "Last update : 10/22/2020",
+        "introduction": {
+            "title": "Preamble",
+            "p1": "The present Terms and Conditions of Use (known as « T&Cs ») define the conditions of access and use of the services by the « user ».",
+            "p2": "The present Terms and Conditions of Use are accessible on the website under the heading « Terms and Conditions of Use ».",
+            "p3": "Any registration or use of the site implies the acceptance without any reserve or restriction of these T&Cs by the user. When registering on the site via the registration form, each user expressly accepts these T&Cs by ticking the box before the following text : « I have read and accept the T&Cs ».",
+            "p4": "In case of non-acceptance of the T&Cs, the user must renounce access to the services offered by the website.",
+            "p5b": " reserves the right to unilaterally modify at any time the content of these T&Cs."
+        },
+        "summary": {
+            "title": "Summary :",
+            "article1": "Article 1 : Access to the website",
+            "article2": "Article 2 : Collection of data",
+            "article3": "Article 3 : Newsletter subscription",
+            "article4": "Article 4 : Intellectual Property",
+            "article5": "Article 5 : Liability",
+            "article6": "Article 6 : Hypertext links",
+            "article7": "Article 7 : Cookies",
+            "article8": "Article 8 : Applicable law and jurisdiction"
+        },
+        "1": {
+            "p1a": "The website ",
+            "p1b": " allows the user a free access to the following services :",
+            "ul": {
+                "1": "SEO optimization SaaS",
+                "2": "The website is accessible for free from any location to any user with internet access. All costs incurred by the user to access the service (hardware, software, internet connection, etc.) are at his own expense.",
+                "3": "Non-member users do not have access to the reserved services. To doso, he must register by filling out the registration form and then subscribe to the services by validating his payment. By agreeing to subscribe to the reserved services, the member user undertakes to provide true and accurate information concerning his civil status and contact details, in particular his email address.",
+                "4": "To access the services, the user must identify himself using his email address and his password which will have been previously chosen by himself during his registration.",
+                "5a": "Any event due to a case of force majeure resulting in a malfunction of the site or server and subject to any interruption or modification in case of maintenance, does not engage the responsibility of ",
+                "5b": ". In these cases, the user agrees not to hold the editor responsible for any interruption or suspension of service, even without notice.",
+                "6": "The user has the possibility to contact the website by email at the email address "
+            }
+        },
+        "2": {
+            "p1": "The website provides the user that the collection and the treatment of personal information are in respect of privacy in accordance with law No. 78-17 of january 6, 1978 relating to computers, files and freedoms.",
+            "p2": "In accordance with the French data protection act of 6 january 1978, the user has the right to access, rectify, delete and oppose his personal data. The user may exercise this right by sending an email at "
+        },
+        "3": {
+            "p1": "Procédure d'abonnement :",
+            "p1a": "The newsletter service is completely free. The subscription procedure consists in the simple registration of a valid email address, which will become the reference address to where the newsletter will be sent.",
+            "p1b": "Subscription form validation implies full and complete acceptance by the user of the Terms and Conditions of Use.To subscribe to the newsletter, indicate your valid email address, then tickthe box « I have read and accept the T&Cs », finally, click on « Subscribe ».",
+            "p2": "Service offered :",
+            "p2a": "Newsletters are automatically sent to subscribers. The sending frequency is set at once a month, however in particular case, an additional newsletter may be sent. The newsletter will be sent using the email address provided by the subscriber. The content of the newsletters is provided exclusively by Asking Franklin.",
+            "p2b": "Asking Franklin cannot be held responsible for any direct or indirect consequences related to the use of newsletters by subscribers.",
+            "p3": "Procedure for unsubscribing :",
+            "p3a": "Each newsletter subscriber has a right to unsubscribe, to access and modify personal information concerning him. The collected informations benefit from the French data protection act n°78-17 of january 6, 1978. In accordance with articles 34 of the law n°78-17 of january 6, 1978 relating to data processing, files and liberties, any person can obtain communication and, if necessary, correction or suppression of information concerning him. You can exercise this right by sending an email to ",
+            "p3b": "You can unsubscribe at any time by clicking on the link at the end of the newsletter email."
+        },
+        "4": {
+            "p1": "The brands, logos, signs as well as all the contents on the website (texts, images, sound...) are protected by the intellectual property code and morespecifically by copyright.",
+            "p2": "The brand Asking Franklin is a registered trademark by Sortvoices. Any representation and/or reproduction and/or partial or total exploitation of this brand, of any kind, is totally prohibited.",
+            "p3": "The user must request prior authorization from the website for any reproduction, publication, copy of the various contents. He commits to use the contents of the site in a strictly private context. Any use for commercial and advertising purposes is strictly forbidden.",
+            "p4": "Any total or partial representation of this website by any process, without the express permission of the website operator, would constitute a counterfeit punishable by article L 335-2 and following of the Intellectual property code.",
+            "p5": "It is reminded, in accordance with article L122-5 of the intellectual property code, that the user who reproduces, copies or publishes the protected content must cite the author and its source."
+        },
+        "5": {
+            "p1a": "Sources of informations broadcasted on the website ",
+            "p1b": " are deemed reliable but the site does not guarantee that it is free of defects, errors or omissions.",
+            "p2a": "Informations provided are presented for general information only and haveno contractual value. Despite regular updates, the website ",
+            "p2b": " cannot be held responsible for administrative change and legal provisions occurring after publication. Also, the website cannot be held responsible for the use and interpretation of the information contained in this site.",
+            "p3": "The user is responsible for keeping his password secret. Any disclosure of the password, regardless of its form, is prohibited. The user assumes the risks associated with the use of his login and password. The site declines all responsibility.",
+            "p4a": "The website ",
+            "p4b": " cannot be held responsible for any viruses that may infect the computer or any IT equipment of the internet user, due to use, access, or downloading from this site.",
+            "p5": "The responsibility of the site cannot be engaged in case of force majeure or the unpredictable and insurmountable fact of a third party."
+        },
+        "6": {
+            "p1a": "Hypertext links may be present on the site. The user is informed that clicking on these links, he will leave ",
+            "p1b": ". The website has no control over the web pages to which these links lead and cannot, under any circumstances, be held responsible for their content."
+        },
+        "7": {
+            "p1": "The user is informed that during his visit on the website, a cookie may be automatically installed on his web browser.",
+            "p2a": "Cookies are small files stored temporarily on the hard disk of the user's computer by his browser and which are necessary for the use of the ",
+            "p2b": " website. Cookies do not contain personal information and cannot be used to identify anyone. A cookie contains a unique identifier, randomly generated and therefore anonymous. Some cookies expire at the end of the user's visit, others remain.",
+            "p3a": "The information contained in the cookies is used to help improve the ",
+            "p3b": " website",
+            "p4": "By browsing the website, the user accepts them.",
+            "p5": "However, the user must give his consent regarding the use of certain cookies.",
+            "p6": "In absence of acceptance, the user is informed that certain features or pages may be refused.",
+            "p7": "The user may disable these cookies through the settings of his web browser."
+        },
+        "8": {
+            "p1": "French law applies to this contract. In the absence of an amicable resolution of a dispute between the parties, the French courts shall have sole jurisdiction.",
+            "p2": "For any question relating to the application of the present T&Cs, you can contact the editor at the email address "
+        }
     },
 
     "gtcs": {
-
+        "h1": "General Terms and Conditions of Sales",
+        "dateEffect": "In effect since : 10/22/2020",
+        "dateUpdate": "Last update : 10/22/2020",
+        "introduction": {
+            "title": "Preamble",
+            "p1": "The present Terms and Conditions of Sales apply to all sales concluded on the website",
+            "p2a": "The website ",
+            "p2b": " is a service published by Sortvoices SAS and sells subscriptions to its SEO optimization software.",
+            "p3": "The customer declares that he has read and accepted the Terms and Conditions of Sales before placing his order, and the validation of the order is worth accepted the Terms and Conditions of Sales."
+        },
+        "summary": {
+            "title": "Sommaire :",
+            "article1": "Article 1 : Definitions",
+            "article2": "Article 2 : Subscription",
+            "article3": "Article 3 : Electronic signature",
+            "article4": "Article 4 : Order Confirmation",
+            "article5": "Article 5 : Offer duration and termination",
+            "article6": "Article 6 : Prices",
+            "article7": "Article 7 : Payment method",
+            "article8": "Article 8 : Access to Services",
+            "article9": "Article 9 : Intellectual property rights",
+            "article10": "Article 10 : Applicable law",
+            "article11": "Article 11 : Data Protection & DPR",
+            "article12": "Article 12 : Personal data collection"
+        },
+        "1": {
+            "p1": "The term « service provider » refers to Sortvoices SAS.",
+            "p2": "The term « customer » refers to the user who accesses the paid services of all or part of the services developed by Sortvoices SAS on the website ",
+            "p3": "The term « subscription » refers to the fact that a customer subscribes to the services offered on the website ",
+            "p4": "The term « order » refers to the fact that a customer subscribes to the services offered.",
+            "p5": "The term « offer » refers to the solutions and services developed by Sortvoices SAS.",
+            "p6": "The term « contract » refers to the relationship existing between the service provider and the customer once the latter has placed an order."
+        },
+        "2": {
+            "p1": "The customer places his order online using the form on the website.",
+            "p2": "To validate his subscription, the customer must accept, by clicking on the checkbox indicated on the website, these Terms and Conditions of Sales.",
+            "p3": "Acceptance of these Terms and Conditions of Sales will result in an email of subscription confirmation from the service provider.",
+            "p4": "All subscriptions constitute acceptance of the prices and descriptions of the offers.",
+            "p5": "Payment is made by credit card, the subscription will be charged each month or each year, depending on the offer, in accordance with these Terms and Conditions of Sales.",
+            "p6": "The subscription is concluded for a minimum of one month or twelve months, depending on the offer selected.",
+            "p7": "For any question relating to the subscription, the customer may contact us with the email address "
+        },
+        "3": {
+            "p1": "The online provision of the customer's credit card numbers and the final validation of the order shall be proof of the customer's agreement.",
+            "p2": "This will enable the service provider to obtain payment of the amounts due under the subscription and shall be deemed to be the signature and express acceptance of all operations carried out."
+        },
+        "4": {
+            "p1": "The contractual information will be confirmed by email to the email address used by the buyer when placing the order."
+        },
+        "5": {
+            "p1a": "The offer is fixed by these Terms and Conditions of Sales. The subscriptionis monthly for the monthly offer or annual for the annual offer and is subject to automatic renewal. the customer may, with the email address ",
+            "p1b": ", request to cancel his subscription. He may also, from his account profile, cancel the automatic renewal of his subscription in the dedicated section by unchecking the checkbox and then clicking on save.",
+            "p2": "Cancellation will take effect at the end of the validity period of the current month or twelve months (based on the date the order was placed).",
+            "p3": "Any month commenced is due in full.",
+            "p4": "In case of termination of the subscription, Sortvoices commits to erase and delete from its system the data belonging to the customer, or to give back the data in text file format, by sending an email within 15 working days, depending on the customer's request. In the event that no express request from the customer is made on the date of termination, Sortvoices commits to delete the data at the end of a period of 15 days from that date."
+        },
+        "6": {
+            "p1": "The prices are fixed by the present Terms and Conditions of Sales.",
+            "p2a": "If the customer subscribes to the monthly offer, the subscription will be invoiced at ",
+            "p2b": " per month and will be charged each month by automatic renewal.",
+            "p3a": "If the customer subscribes to the annual offer, the subscription will be invoiced at ",
+            "p3b": " per month and will be paid in one installment by credit card, i.e. ",
+            "p3c": ", when ordering. It will then be debited each year by automatic renewal.",
+            "p4": "The amount of the subscription shall be exclusive of taxes, such taxes being set according to the rates in force on the date of acceptance of the offer by the subscriber.",
+            "p5": "The service provider reserves itself the right to change its prices at any time, but commits to apply the rates in force at the time of the order.",
+            "p6": "If one or more taxes or contributions are created or modified, whether upwards or downwards, this change may be passed on to the sale price of the products."
+        },
+        "7": {
+            "p1": "Each order is submitted to an obligation to pay, which means that placing an order implies payment by the purchaser.",
+            "p2": "Order payment shall be made exclusively by credit card. The customer must enter his credit card codes in the space provided and confirm this entry by clicking on the payment validation button.",
+            "p3": "The service provider reserves itself the right to suspend any subscription in the event of refusal to authorize payment by officially accredited organizations or in the event of non-payment."
+        },
+        "8": {
+            "p1": "Sortvoices commits to make the proposed service available, but cannot beheld responsible for any damage suffered by the member as a result of the unavailability of the services.",
+            "p2": "The customer can access the service by logging in, with his login and password, on the website ",
+            "p3": "These identifiers are strictly personal and confidential, they can in no case be communicated to a third party. The customer is solely responsible for the use of his identifiers.",
+            "p4": "The service provider reserves itself the right to immediately close the customer's account if the customer makes fraudulent use of his identifiers.",
+            "p5": "In case of difficulty accessing the services, the customer may contact Sortvoices at the email address "
+        },
+        "9": {
+            "p1": "The offer is made available to the customer in the form of a subscription. This subscription only gives the customer a single right of personal private use."
+        },
+        "10": {
+            "p1": "The present Terms and Conditions of Sales are subject to the application of french law.",
+            "p2": "The parties commit to seek an amicable solution to any dispute that may arise from the interpretation or execution of the contract. If they fail to do so, the parties will submit the dispute to the commercial court of Bordeaux (Gironde - France)."
+        },
+        "11": {
+            "p1": "The service provider commits to comply with all the provisions applicable to it under the regulations on the protection of personal data, in particular the provisions of the amended act No. 78-17 on data processing, data files and individual liberties and those of regulation (EU) 2016/679 of the european parliament and of the council of 27 april 2016 about the protection of individuals with regard to the processing of personal data and on the free movement of such data.",
+            "p2": "The customer has the right to access, modify, rectify and delete data concerning him (art. 34 of the « informatique et libertés » law). Data belonging to the customer managed by Sortvoices are and remain the property of the customer. Sortvoices commits to keep this data confidential.",
+            "p3": "The data collected by Sortvoices is used in particular to invoice the customer and to provide him with identifiers to enable him to connect to the website "
+        },
+        "12": {
+            "p1": "The personal data collected on this website are the following :",
+            "p2": "Account opening : when the customer's account is created, his surname, first name, email address, phone number, postal address.",
+            "p3a": "Login : when the user connects to the website ",
+            "p3b": ", it records in particular his name, first name, login and usage data, data relating to payment.",
+            "p4": "Cookies : cookies are used, in the context of the use of the site ",
+            "p5": "The customer has the possibility to disable cookies from the parameters ofhis browser, which may prevent the customer from accessing certain pages of the website ",
+            "p6": "The personal data collected from users is used to provide the website's services, to improve them and to maintain a secure environment. More specifically, the uses are as follows :",
+            "ul1": {
+                "1a": "Access and use of the website ",
+                "1b": " by the customer",
+                "2": "Operation management and optimization of the website ",
+                "3": "Organization of the conditions of use of the payment services",
+                "4": "Verification, identification and authentication of the data transmittedby the user",
+                "5": "Possible disputes management with the customers."
+            },
+            "p7": "If the customer has given his consent during his registration, his personal information may also be used to create a file for commercial prospecting purposes.",
+            "p8": "Personal data may be shared with third party companies in the following cases :",
+            "ul2": {
+                "1": "When the customer uses the payment services, the service provider is in contact with third party banking and financial companies with which it has concluded contracts for the implementation of these services",
+                "2": "If required by law, the service provider may carry out the transmission of data in order to pursue claims against Sortvoices SAS and to comply with administrative and legal procedures",
+                "3": "If the service provider is involved in a merger, acquisition, disposal of assets or receivership proceedings, it may be required to sell or share all or part of its assets, including personal data. In this case, the customers would be informed before personal data is transferred to a third party."
+            }
+        }
     },
     
     "404": {

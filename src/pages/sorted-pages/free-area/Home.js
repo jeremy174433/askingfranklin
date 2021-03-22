@@ -1,4 +1,5 @@
 import React from 'react';
+import i18n from 'i18next';
 import { withTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
 import { 
@@ -39,15 +40,15 @@ class Home extends React.Component {
         super(props)
         this.state = {
             keywordSearch: '',
-            languageSearch: 'fr',
-            countrySearch: 'fr',
+            languageSearchCode: i18n.t('form.filters.languages.selectedCode'),
+            countrySearchCode: i18n.t('form.filters.countries.selectedCode'),
             redirect: false,
             lastArticles: []
         }
         this.handleKeywordChange = this.handleKeywordChange.bind(this);
-        this.requestFanklin = this.requestFanklin.bind(this);
         this.handleCountryChange = this.handleCountryChange.bind(this);
         this.handleLanguageChange = this.handleLanguageChange.bind(this);
+        this.requestFanklin = this.requestFanklin.bind(this);
     }
     
     componentDidMount() {
@@ -64,8 +65,8 @@ class Home extends React.Component {
     customHeadElement() {
         return (
             <Helmet>
-                <title>Asking Franklin - Découvrez ce que recherchent les internautes</title>
-                <meta name="description" content="Découvrez ce que les internautes recherchent sur Google, optimisez votre contenu et gagnez en visibilité avec Asking Franklin, votre outil SEO Français !"/>
+                <title>{this.props.t('title.homepage')}</title>
+                <meta name="description" content={this.props.t('description.homepage')}/>
                 <meta name="robots" content="index, follow"/>
             </Helmet>
         );
@@ -76,16 +77,19 @@ class Home extends React.Component {
             keywordSearch: e.target.value
         });
     }
-    handleCountryChange(value){
+
+    handleCountryChange(value) {
         this.setState({
-            countrySearch:value
-        })
+            countrySearchCode: value
+        });
     }
-    handleLanguageChange(value){
+    
+    handleLanguageChange(value) {
         this.setState({
-            languageSearch:value
-        })
+            languageSearchCode: value
+        });
     }
+
     requestFanklin = () => {
         this.setState({
             redirect: true
@@ -95,10 +99,11 @@ class Home extends React.Component {
     render() {
 
         const { t } = this.props;
+        
         const cardRowBlog = 'd-flex flex-column flex-lg-row align-items-center align-items-lg-start ';
 
         if(this.state.redirect) {
-            return <Redirect to={ t('url.resultAF') + this.state.keywordSearch.replace(/ /g, '-') + '?lang=' + this.state.languageSearch + '&country=' + this.state.countrySearch}/>
+            return <Redirect to={ t('url.resultAF') + this.state.keywordSearch.replace(/ /g, '-') + '?lang=' + this.state.languageSearchCode + '&country=' + this.state.countrySearchCode}/>
         }
 
         return (
@@ -114,15 +119,17 @@ class Home extends React.Component {
                         <Dots className="dots-1"/>
                         <Col md="12" lg="6" className="mt-0 mb-5 py-0 my-md-5 py-md-5 px-0">
                             <H1 title={t('homepage.h1')}/>
-                            <FormRequestFranklin 
+                            <FormRequestFranklin
+                                selectedSavedCountry={t('form.filters.countries.selected')}
+                                selectedSavedLanguage={t('form.filters.languages.selected')}
                                 onSubmit={this.requestFanklin} 
                                 onChange={this.handleKeywordChange} 
+                                handleLanguageChange={this.handleLanguageChange}
+                                handleCountryChange={this.handleCountryChange}
                                 value={this.state.keywordSearch} 
                                 keyword={this.state.keywordSearch}
                                 hideLabel={true}
                                 isDisabled={this.state.keywordSearch.length === 0}
-                                handleLanguageChange={this.handleLanguageChange}
-                                handleCountryChange={this.handleCountryChange}
                             />
                         </Col>
                         <Col md="12" lg="6" className="px-0 d-flex align-items-center justify-content-center">
@@ -189,7 +196,7 @@ class Home extends React.Component {
                         <Col md="12" lg="6" className="d-flex flex-column justify-content-center order-0 order-lg-1 px-0 pt-5 pt-lg-0">
                             <H2 className="mb-5" title={t('homepage.h2c')}/>
                             <p class="fz-18 mb-5">{t('homepage.p2')}</p>
-                            <PmyBtn redirectTo="/tarifs" linkIsLargePmyOutlineFull textLink={t('homepage.cta.1')}customBtnClass="w-sm-100"/>
+                            <PmyBtn redirectTo={t('url.pricing')} linkIsLargePmyOutlineFull textLink={t('homepage.cta.1')} customBtnClass="w-sm-100"/>
                         </Col>
                     </Container>
                     <Blob6 className="blob-6 d-none d-lg-block"/>
@@ -248,8 +255,8 @@ class Home extends React.Component {
                 <section class="home-section-7 position-relative pt-5">
                     <Container className="px-0">
                         <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
-                            <PmyBtn redirectTo="/#top" linkIsLargePmyFull textLink={t('homepage.cta.2')} containerStyle="text-center mb-5 mb-md-0 mr-md-5" style={{zIndex: 1}}/>
-                            <PmyBtn redirectTo="/tarifs" linkIsLargePmyOutlineLight textLink={t('homepage.cta.1')} containerStyle="text-center" style={{zIndex: 1}}/>
+                            <PmyBtn redirectTo="/#top" linkIsLargePmyFull textLink={t('homepage.cta.2')} containerStyle="text-center mb-5 mb-md-0 mr-md-5 w-sm-100" customBtnClass="w-sm-100" style={{zIndex: 1}}/>
+                            <PmyBtn redirectTo={t('url.pricing')} linkIsLargePmyOutlineLight textLink={t('homepage.cta.1')} containerStyle="text-center w-sm-100" customBtnClass="w-sm-100" style={{zIndex: 1}}/>
                         </div>
                     </Container>
                     {!this.state.lastArticles.length < 1 &&  <Blob9 className="blob-9"/> }
@@ -272,7 +279,7 @@ class Home extends React.Component {
                                                 date={new Date(article.date).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}
                                             />
                                         </Col>
-                                    )
+                                    );
                                 })}
                             </Row>
                             <Dots className="dots-6"/>

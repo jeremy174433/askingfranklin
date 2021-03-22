@@ -5,7 +5,8 @@ import CookieConsent from 'react-cookie-consent';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from 'react-router-dom';
 import Banner from './pages/components/partials/Banner';
 import Navbar from './pages/components/partials/Navbar';
@@ -20,7 +21,7 @@ import ForgotPassword from './pages/sorted-pages/free-area/sign/ForgotPassword';
 import MaximumRequests from './pages/sorted-pages/free-area/MaximumRequests';
 import Faq from './pages/sorted-pages/free-area/Faq';
 import Contact from './pages/sorted-pages/free-area/Contact';
-import LegalNotices from './pages/sorted-pages/free-area/law/LegalNotices';
+import LegalNotice from './pages/sorted-pages/free-area/law/LegalNotice';
 import TermsOfServices from './pages/sorted-pages/free-area/law/TermsOfServices';
 import TermsOfSales from './pages/sorted-pages/free-area/law/TermsOfSales';
 import Error404 from './pages/sorted-pages/free-area/Error404';
@@ -36,7 +37,8 @@ class App extends React.Component {
         super(props)
         this.state = {
             isConnected: false,
-            bannerIsShowed: false
+            bannerIsShowed: false,
+            redirect:false
         }
         this.handleLanguage = this.handleLanguage.bind(this);
         this.handleConnect = this.handleConnect.bind(this);
@@ -55,13 +57,15 @@ class App extends React.Component {
             });
         }
     }
-
     handleLanguage(e) {
-        window.location.href = '/';
-        var lang = e.target.dataset.lang;
-        i18n.changeLanguage(lang);
+        const lang = e.target.dataset.lang;
+        this.setState({ redirect: true },
+            ()=>i18n.changeLanguage(lang,()=>{
+                this.setState({
+                    redirect:false
+                })
+            }));
     }
-
     handleConnect() {
         var is_sub = localStorage.getItem('af_is_sub');
         this.setState({
@@ -69,7 +73,6 @@ class App extends React.Component {
             bannerIsShowed: is_sub <= '0' && this.state.bannerIsShowed ? true : false || is_sub == '1' && false
         });
     }
-
     handleHideBanner() {
         this.setState({
             bannerIsShowed: false
@@ -79,16 +82,13 @@ class App extends React.Component {
     render() {
 
         const { t } = this.props;
-
+        const { redirect } = this.state;
         return (
             <div id="App">
                 {this.state.bannerIsShowed && <Banner onClick={this.handleHideBanner} bannerIsActive={this.state.bannerIsShowed}/> }
                 <Router>
                     <Navbar isConnected={this.state.isConnected} className={this.state.bannerIsShowed && 'banner-showed'}/>
-                    <div class="d-flex flex-row position-fixed bgc-primary color-light w-100 pl-5" style={{ marginTop: '66px', zIndex: 150 }}>
-                        <p onClick={this.handleLanguage} data-lang="en" class="mr-4">English</p>
-                        <p onClick={this.handleLanguage} data-lang="fr">Français</p>
-                    </div>
+                    {redirect && <Redirect to='/'/>}
                     <Switch>
                         <Route path={t('url.signIn')} render={(props) => <SignIn {...props} bannerIsActive={this.state.bannerIsShowed} handleConnect={this.handleConnect}/>}/>
                         <Route exact path={t('url.signUpConfirm')} render={(props) => <SignUpConfirmation {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
@@ -104,7 +104,7 @@ class App extends React.Component {
                         <Route exact path={t('url.offers')} render={(props) => <ChoosePlan {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route exact path={t('url.payment')} render={(props) => <Payment {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route exact path={t('url.paymentConfirm')} render={(props) => <ConfirmationPayment {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
-                        <Route path={t('url.notice')} render={(props) => <LegalNotices {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path={t('url.notice')} render={(props) => <LegalNotice {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route path={t('url.tcs')} render={(props) => <TermsOfServices {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route path={t('url.gtcs')} render={(props) => <TermsOfSales {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route path="*" render={(props) => <Error404 {...props} bannerIsActive={this.state.bannerIsShowed}/>} status={404}/>

@@ -12,13 +12,15 @@ export default class MenuLink extends React.Component {
                             {this.props.linkHasIcon && <span class="mr-3">{this.props.linkHasIcon}</span> }
                             {this.props.textLink && <span>{this.props.textLink}</span> }
                         </Link>
+
                     : this.props.href ?
                         <a href={this.props.href} class={this.props.linkLocation ? this.props.linkLocation : 'nav-link'} target={this.props.target} rel={this.props.rel} title={this.props.title}>
                             {this.props.linkHasIcon && <span class={this.props.className ? this.props.className : 'mr-3'}>{this.props.linkHasIcon}</span> }
                             {this.props.textLink && <span>{this.props.textLink}</span> }
                         </a>
-                    :
-                        <span>{this.props.customMenuItem && <span>{this.props.customMenuItem}</span> }</span>
+
+                    : this.props.customMenuItem && 
+                        <span>{this.props.customMenuItem}</span>
                 }
             </li>
         )

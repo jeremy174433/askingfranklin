@@ -66,10 +66,10 @@ class Profile extends React.Component {
                 this.setState({
                     subscriptionInProgress: res.message.length > 0  && !res.message[0].cancel_at_period_end ? true : false,
                     noSubscription: res.message.length === 0 ? true : false,
-                    currentPeriodEnd: res.message.length === 0 ? false : new Date(res.message[0].current_period_end * 1000).toLocaleDateString(),
+                    currentPeriodEnd: res.message.length === 0 ? false : new Date(res.message[0].current_period_end * 1000).toLocaleDateString(i18n.t('dateFormat')),
                 });
                 if(res.message[0] && res.message[0].cancel_at_period_end) {
-                    var s = new Date(res.message[0].cancel_at * 1000).toLocaleDateString('fr-FR');
+                    var s = new Date(res.message[0].cancel_at * 1000).toLocaleDateString(i18n.t('dateFormat'));
                     this.setState({
                         subscriptionEnd: s
                     });
@@ -113,8 +113,8 @@ class Profile extends React.Component {
     customHeadElement() {
         return (
             <Helmet>
-                <title>Mon compte - Asking Franklin</title>
-                <meta name="description" content="Votre compte - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
+                <title>{this.props.t('title.profile')}</title>
+                <meta name="description" content={this.props.t('description.profile')}/>
                 <meta name="robots" content="noindex, follow"/>
             </Helmet>
         );
@@ -315,7 +315,7 @@ class Profile extends React.Component {
                         alertIsShowed: true,
                         subscriptionState: true,
                         subscriptionInProgress: false,
-                        subscriptionEnd: new Date(res.message.cancel_at * 1000).toLocaleDateString('fr-FR'),
+                        subscriptionEnd: new Date(res.message.cancel_at * 1000).toLocaleDateString(i18n.t('dateFormat')),
                         countClickCheckbox: 0
                     });
                 }

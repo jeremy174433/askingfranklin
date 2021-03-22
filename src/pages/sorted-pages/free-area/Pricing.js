@@ -39,22 +39,22 @@ class Pricing extends React.Component {
     customHeadElement() {
         return (
             <Helmet>
-                <title>Passez à la version Pro - Asking Franklin, votre outil SEO français</title>
-                <meta name="description" content="Améliorez votre référencement et soyez visible en passant à la version Pro d’Asking Franklin ! Requêtes illimitées - Utilisateurs illimités en simultané - Export CSV..."/>
+                <title>{this.props.t('title.pricing')}</title>
+                <meta name="description" content={this.props.t('description.pricing')}/>
                 <meta name="robots" content="index, follow"/>
             </Helmet>
         );
     }
 
     selectFirstPlan() {
-        localStorage.setItem('product', 'price_1HduRyLB03GdYRbhXrwR1kvW');
+        localStorage.setItem('product', this.props.t('funnel.pricing.pricing-code-month'));
         this.setState({
             selectedPlan: 0,
         });
     }
 
     selectSecondPlan() {
-        localStorage.setItem('product', 'price_1HduS4LB03GdYRbhVjfrRi7i');
+        localStorage.setItem('product', this.props.t('funnel.pricing.pricing-code-annual'));
         this.setState({
             selectedPlan: 1
         });

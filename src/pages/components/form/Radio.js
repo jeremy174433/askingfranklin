@@ -24,8 +24,8 @@ export default class Radio extends React.Component {
 
                 <label for={this.props.value}>
                     <span></span> {/* <span> correspond to the bullet */}
+                    <span class={this.props.labelInfo ? 'radio-label mr-2' : 'radio-label'}>{this.props.label}</span>
                     {this.props.labelInfo && <span class="fz-14">({this.props.labelInfo})</span> }
-                    <span class={this.props.labelInfo && 'ml-2'}>{this.props.label}</span>
                 </label>
 
             </div>

@@ -19,8 +19,8 @@ class MaximumRequests extends React.Component {
     customHeadElement() {
         return (
             <Helmet>
-                <title>Limite de recherches atteinte - Asking Franklin</title>
-                <meta name="description" content="Limite de recherches atteinte - Asking Franklin, l’outil qui vous permet de découvrir les questions et mots clés liés aux requêtes Google des internautes."/>
+                <title>{this.props.t('title.requestLimit')}</title>
+                <meta name="description" content={this.props.t('description.requestLimit')}/>
                 <meta name="robots" content="noindex, follow"/>
             </Helmet>
         );

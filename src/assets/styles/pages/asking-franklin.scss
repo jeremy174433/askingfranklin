@@ -22,6 +22,8 @@
         /* ----- INFORMATIONS ----- */
         h1 {
             word-break: break-all;
+            @include fz-18;
+            @include fw-600;
             &::first-letter { text-transform: uppercase; }
         }
         

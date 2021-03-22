@@ -50,7 +50,6 @@ function CheckoutForm(props) {
 		} 
 		else if (subscription.latest_invoice.payment_intent.status === 'requires_payment_method') {
 			localStorage.setItem('latestInvoiceId', subscription.latest_invoice.id);
-			localStorage.setItem('latestInvoicePaymentIntentStatus', subscription.latest_invoice.payment_intent.status);
 			throw { error: { message: 'Your card was declined.' } };
 		} 
 		else {
@@ -140,7 +139,7 @@ function CheckoutForm(props) {
 		})
 	}
 
-	const createSubscription = async ({ paymentMethodId, priceId, name, line1, city, postalCode, coupon}) => {
+	const createSubscription = async ({ paymentMethodId, priceId, name, line1, city, postalCode, coupon }) => {
 		var token = localStorage.getItem('af_token');
 		return (
 			fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/create-subscription', {
@@ -209,8 +208,10 @@ function CheckoutForm(props) {
 		var city = event.target.elements.city.value
 		var postalCode = event.target.elements.postal_code.value
 		var coupon = props.couponStatus !== 'failed' && props.couponStatus.valid ? props.couponStatus.id : null
-		const cardElement = elements.getElement(CardElement);
-		const latestInvoicePaymentIntentStatus = localStorage.getItem('latestInvoicePaymentIntentStatus');
+		const cardElement = elements.getElement(CardElement, {
+			style: CARD_ELEMENT_OPTIONS,
+			placeholder: 'Custom card number placeholder',
+		});
 		const priceId = localStorage.getItem('product');
 		const { error, paymentMethod } = await stripe.createPaymentMethod({
 			type: 'card',
@@ -276,7 +277,7 @@ function CheckoutForm(props) {
 							disabled={props.couponAmount !== 1}
 							type="text"
 							hideLabel={true}
-							placeholder={t('form.input.reducCoupon')}
+							placeholder={t('form.input.placeholderReducCoupon')}
 							for="promotion_code"
 							containerStyle="mb-0 pb-0 w-100"
 							onChange={props.handleCouponChange}
