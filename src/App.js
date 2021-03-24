@@ -38,7 +38,7 @@ class App extends React.Component {
         this.state = {
             isConnected: false,
             bannerIsShowed: false,
-            redirect:false
+            redirect: false
         }
         this.handleLanguage = this.handleLanguage.bind(this);
         this.handleConnect = this.handleConnect.bind(this);
@@ -57,15 +57,18 @@ class App extends React.Component {
             });
         }
     }
+
     handleLanguage(e) {
         const lang = e.target.dataset.lang;
         this.setState({ redirect: true },
-            ()=>i18n.changeLanguage(lang,()=>{
+            () => i18n.changeLanguage(lang, () => {
                 this.setState({
-                    redirect:false
-                })
-            }));
+                    redirect: false
+                });
+            })
+        );
     }
+
     handleConnect() {
         var is_sub = localStorage.getItem('af_is_sub');
         this.setState({
@@ -73,6 +76,7 @@ class App extends React.Component {
             bannerIsShowed: is_sub <= '0' && this.state.bannerIsShowed ? true : false || is_sub == '1' && false
         });
     }
+    
     handleHideBanner() {
         this.setState({
             bannerIsShowed: false
@@ -83,12 +87,13 @@ class App extends React.Component {
 
         const { t } = this.props;
         const { redirect } = this.state;
+
         return (
             <div id="App">
                 {this.state.bannerIsShowed && <Banner onClick={this.handleHideBanner} bannerIsActive={this.state.bannerIsShowed}/> }
                 <Router>
                     <Navbar isConnected={this.state.isConnected} className={this.state.bannerIsShowed && 'banner-showed'}/>
-                    {redirect && <Redirect to='/'/>}
+                    {redirect && <Redirect to="/"/>}
                     <Switch>
                         <Route path={t('url.signIn')} render={(props) => <SignIn {...props} bannerIsActive={this.state.bannerIsShowed} handleConnect={this.handleConnect}/>}/>
                         <Route exact path={t('url.signUpConfirm')} render={(props) => <SignUpConfirmation {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>

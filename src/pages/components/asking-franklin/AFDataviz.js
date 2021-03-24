@@ -77,7 +77,7 @@ export default class AFDataviz extends React.Component {
         .attr("x", function(d) { return d.x < 180 === !d.children ? 6 : -6; })
         .style("text-anchor", function(d) { return d.x < 180 === !d.children ? "start" : "end"; })
         .attr("transform", function(d) { return d.depth === 0 ? "rotate(0)" : "rotate(" + (d.x < 180 ? d.x - 90 : d.x + 90) + ")"; })
-        .text(function(d) { console.log(d); return d.id.substring(d.id.lastIndexOf(".") + 1) })
+        .text(function(d) { return d.id.substring(d.id.lastIndexOf(".") + 1); })
         .on("click", function() { return window.open("http://google.com/search?q=" + this.innerHTML) })
 
         function project(x, y) {

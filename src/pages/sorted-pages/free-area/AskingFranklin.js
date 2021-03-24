@@ -67,12 +67,12 @@ class AskingFranklin extends React.Component {
             redirectBlocked: false,
             isLoading: true,
             dataKw: [],
-            dataTrends:{data:[]},
+            dataTrends: { data: [] },
             dataIsLoaded: false,
             selectedPanel: 0,
             nbResults: 0,
             keywordSearch: '',
-            trendsIsLoading:true,
+            trendsIsLoading: true,
             newKeywordSearch: '',
             currCountry: i18n.t('form.filters.countries.selected'),
             currLanguage: i18n.t('form.filters.languages.selected'),
@@ -122,13 +122,14 @@ class AskingFranklin extends React.Component {
             });
         });
     }
+
     fetchFranklinTrends(keyword, lang, country) {
         fetch('https://europe-west1-sortvoices-test-1530802956312.cloudfunctions.net/g-trends?keyword=' + keyword + '&lang=' + lang + '&country=' + country)
         .then((res) => res.json())
         .then((res) => {
             this.setState({
-                dataTrends:res,
-                trendsIsLoading:false
+                dataTrends: res,
+                trendsIsLoading: false
             })
         });
     }
@@ -138,8 +139,8 @@ class AskingFranklin extends React.Component {
         this.setState({
             currCountry: dictionnaryCountry[i18n.languages[0]][params.country],
             currLanguage: dictionnaryLanguage[i18n.languages[0]][params.lang],
-            languageSearchCode:params.lang,
-            countrySearchCode:params.country
+            languageSearchCode: params.lang,
+            countrySearchCode: params.country
         });
         this.fetchFranklin(this.props.match.params.keyword, params.lang, params.country);
         this.fetchFranklinTrends(this.props.match.params.keyword, params.lang, params.country);

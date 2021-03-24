@@ -12,9 +12,9 @@
 } 
 
 .spinner {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     border-top: 2px solid $theme-color-primary;
     border-radius: 50%;
-    animation: spinnerRotation .8s linear infinite;
+    animation: spinnerRotation 1s linear infinite;
 }

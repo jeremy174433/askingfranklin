@@ -1,6 +1,7 @@
 import React from 'react';
 import Tabs from '../button/Tabs';
 import PmyBtn from '../button/PmyBtn';
+import Tick from '../../../assets/img/svg/Tick';
 import FeaturesIcons from '../../../assets/img/svg/switch/FeaturesIcons';
 import H4 from '../elements/title/H4';
 import AFDataviz from './AFDataviz';
@@ -79,6 +80,7 @@ class AFWrapper extends React.Component {
 
         const { t } = this.props;
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
         return (
             this.props.data.data.map((x) => x.suggestions.length).reduce(reducer) !== 0 &&
                 <div id={this.props.data.type} class="block-wrapper">

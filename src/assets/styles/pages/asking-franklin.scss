@@ -109,6 +109,7 @@
 
     }
 
+    /* ----- RESULTS BLOCK ----- */
     .block-results {
         @include min-xl-rwd { max-width: calc(75% - 3rem); }
 
@@ -131,10 +132,23 @@
                 }
             }
             .asking-franklin-body { @include scroll-x(auto); }
+
             .asking-franklin-dataviz {
                 min-height: 1000px;
                 > div { @include max-custom-rwd(1366) { padding: 0 6rem !important; } } 
             }
+
+            .asking-franklin-table-tendancies {
+                // Blur elements
+                .text-blur {
+                    color: transparent;
+                    text-shadow: 0 0 8px $black-75;
+                    user-select: none;
+                    -moz-user-select: none;
+                }
+                .td-area-chart-blur { filter: blur(12px); }
+            }
+
         }
     }
 
