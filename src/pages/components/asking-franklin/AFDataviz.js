@@ -70,7 +70,7 @@ export default class AFDataviz extends React.Component {
 
         node.append("circle")
         .attr("r", 3)
-        .attr("fill","rgba('#673AB7', .5)")
+        .attr("fill","rgba('#673AB7', 0.5)")
 
         node.append("text")
         .attr("dy", "0.30em")

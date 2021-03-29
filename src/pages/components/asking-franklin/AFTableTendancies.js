@@ -12,6 +12,44 @@ import {
     Area 
 } from 'recharts';
 
+var dataFake = [
+    {
+        data:12
+    },
+    {
+        data:55
+    },
+    {
+        data:100
+    },
+    {
+        data:12
+    },
+    {
+        data:55
+    },
+    {
+        data:20
+    },
+    {
+        data:5
+    },
+    {
+        data:55
+    },
+    {
+        data:85
+    },
+    {
+        data:65
+    },
+    {
+        data:55
+    },
+    {
+        data:50
+    }
+]
 
 class AFTableTendancies extends React.Component {
     
@@ -30,6 +68,7 @@ class AFTableTendancies extends React.Component {
     render() {
 
         const { t } = this.props;
+        var isPro = localStorage.getItem("af_token")
 
         return (
             <>
@@ -48,12 +87,12 @@ class AFTableTendancies extends React.Component {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {x.suggestions.map((y) => {
+                                            {isPro && x.suggestions.map((y) => {
                                                 var hasData = y.gtrend.reduce((prev,next) => prev + next.data, 0);
                                                 return (
                                                     hasData > 0 && 
                                                         <tr>
-                                                            <td class="align-middle py-1 px-2"><span class="mr-2 mr-md-0">{y.text}</span>{this.externalLink(y.text, 'd-md-none')}</td>
+                                                            <td class="align-middle py-1 px-2"><span class="mr-2 mr-md-0 ">{y.text}</span>{this.externalLink(y.text, 'd-md-none')}</td>
                                                             <td class="td-area-chart px-0 align-middle">
                                                                 <AreaChart data={y.gtrend} width={400} height={48} style={{ top: '9px' }}>
                                                                     <Tooltip contentStyle={{ color: '#673AB7' }}/>
@@ -79,6 +118,153 @@ class AFTableTendancies extends React.Component {
                                                         </tr>
                                                 )
                                             })}
+                                            {
+                                              !isPro && 
+                                                        <div><tr>
+                                                            <td class="align-middle py-1 px-2"><span class="mr-2 mr-md-0">{x.suggestions[0].text}</span>{this.externalLink(x.suggestions[0].text, 'd-md-none')}</td>
+                                                            <td class="td-area-chart  px-0 align-middle">
+                                                                <AreaChart data={x.suggestions[0].gtrend} width={400} height={48} style={{ top: '9px' }}>
+                                                                <Tooltip contentStyle={{ color: '#673AB7' }}/>
+                                                                    <defs>
+                                                                        <linearGradient id="volumetryGradientPrimary" x1="0" y1="0" x2="0" y2="1">
+                                                                            <stop offset="0%" stopColor="#673AB7" stopOpacity={0.5}/>
+                                                                            <stop offset="100%" stopColor="#673AB7" stopOpacity={0.25}/>
+                                                                        </linearGradient>
+                                                                    </defs>
+                                                                    <Area 
+                                                                        name={t('askingFranklin.data.evolution')}
+                                                                        type="monotone" 
+                                                                        fill="url(#volumetryGradientPrimary)"
+                                                                        dataKey="data" 
+                                                                        stroke="#673AB7" 
+                                                                        strokeWidth={2}
+                                                                        dot={{ fill: '#673AB7', stroke: '#673AB7', strokeWidth: 1, fillOpacity: 1}}
+                                                                        activeDot={{ stroke: '#673AB7', strokeWidth: 2 }}
+                                                                    />
+                                                                </AreaChart>
+                                                            </td>
+                                                            <td class="px-0 align-middle">{this.externalLink(x.suggestions[0].text)}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="align-middle py-1 px-2"><span class="mr-2 text-blur mr-md-0">Malheureusement, il faut payer</span>{this.externalLink(x.suggestions[0].text, 'd-md-none')}</td>
+                                                            <td class="td-area-chart td-area-chart-blur px-0 align-middle">
+                                                                <AreaChart data={dataFake} width={400} height={48} style={{ top: '9px' }}>
+                                                                    <defs>
+                                                                        <linearGradient id="volumetryGradientPrimary" x1="0" y1="0" x2="0" y2="1">
+                                                                            <stop offset="0%" stopColor="#673AB7" stopOpacity={0.5}/>
+                                                                            <stop offset="100%" stopColor="#673AB7" stopOpacity={0.25}/>
+                                                                        </linearGradient>
+                                                                    </defs>
+                                                                    <Area 
+                                                                        name={t('askingFranklin.data.evolution')}
+                                                                        type="monotone" 
+                                                                        fill="url(#volumetryGradientPrimary)"
+                                                                        dataKey="data" 
+                                                                        stroke="#673AB7" 
+                                                                        strokeWidth={2}
+                                                                        dot={{ fill: '#673AB7', stroke: '#673AB7', strokeWidth: 1, fillOpacity: 1}}
+                                                                        activeDot={{ stroke: '#673AB7', strokeWidth: 2 }}
+                                                                    />
+                                                                </AreaChart>
+                                                            </td>
+                                                            <td class="px-0 align-middle">{this.externalLink(x.suggestions[0].text)}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="align-middle py-1 px-2"><span class="mr-2 text-blur mr-md-0">Malheureusement, il faut payer</span>{this.externalLink(x.suggestions[0].text, 'd-md-none')}</td>
+                                                            <td class="td-area-chart td-area-chart-blur px-0 align-middle">
+                                                                <AreaChart data={dataFake} width={400} height={48} style={{ top: '9px' }}>
+                                                                    <defs>
+                                                                        <linearGradient id="volumetryGradientPrimary" x1="0" y1="0" x2="0" y2="1">
+                                                                            <stop offset="0%" stopColor="#673AB7" stopOpacity={0.5}/>
+                                                                            <stop offset="100%" stopColor="#673AB7" stopOpacity={0.25}/>
+                                                                        </linearGradient>
+                                                                    </defs>
+                                                                    <Area 
+                                                                        name={t('askingFranklin.data.evolution')}
+                                                                        type="monotone" 
+                                                                        fill="url(#volumetryGradientPrimary)"
+                                                                        dataKey="data" 
+                                                                        stroke="#673AB7" 
+                                                                        strokeWidth={2}
+                                                                        dot={{ fill: '#673AB7', stroke: '#673AB7', strokeWidth: 1, fillOpacity: 1}}
+                                                                        activeDot={{ stroke: '#673AB7', strokeWidth: 2 }}
+                                                                    />
+                                                                </AreaChart>
+                                                            </td>
+                                                            <td class="px-0 align-middle">{this.externalLink(x.suggestions[0].text)}</td>
+                                                        </tr>                                                        <tr>
+                                                            <td class="align-middle py-1 px-2"><span class="mr-2 text-blur mr-md-0">Malheureusement, il faut payer</span>{this.externalLink(x.suggestions[0].text, 'd-md-none')}</td>
+                                                            <td class="td-area-chart td-area-chart-blur px-0 align-middle">
+                                                                <AreaChart data={dataFake} width={400} height={48} style={{ top: '9px' }}>
+                                                                    <defs>
+                                                                        <linearGradient id="volumetryGradientPrimary" x1="0" y1="0" x2="0" y2="1">
+                                                                            <stop offset="0%" stopColor="#673AB7" stopOpacity={0.5}/>
+                                                                            <stop offset="100%" stopColor="#673AB7" stopOpacity={0.25}/>
+                                                                        </linearGradient>
+                                                                    </defs>
+                                                                    <Area 
+                                                                        name={t('askingFranklin.data.evolution')}
+                                                                        type="monotone" 
+                                                                        fill="url(#volumetryGradientPrimary)"
+                                                                        dataKey="data" 
+                                                                        stroke="#673AB7" 
+                                                                        strokeWidth={2}
+                                                                        dot={{ fill: '#673AB7', stroke: '#673AB7', strokeWidth: 1, fillOpacity: 1}}
+                                                                        activeDot={{ stroke: '#673AB7', strokeWidth: 2 }}
+                                                                    />
+                                                                </AreaChart>
+                                                            </td>
+                                                            <td class="px-0 align-middle">{this.externalLink(x.suggestions[0].text)}</td>
+                                                        </tr>                                                        <tr>
+                                                            <td class="align-middle py-1 px-2"><span class="mr-2 text-blur mr-md-0">Malheureusement, il faut payer</span>{this.externalLink(x.suggestions[0].text, 'd-md-none')}</td>
+                                                            <td class="td-area-chart td-area-chart-blur px-0 align-middle">
+                                                                <AreaChart data={dataFake} width={400} height={48} style={{ top: '9px' }}>
+                                                                    <defs>
+                                                                        <linearGradient id="volumetryGradientPrimary" x1="0" y1="0" x2="0" y2="1">
+                                                                            <stop offset="0%" stopColor="#673AB7" stopOpacity={0.5}/>
+                                                                            <stop offset="100%" stopColor="#673AB7" stopOpacity={0.25}/>
+                                                                        </linearGradient>
+                                                                    </defs>
+                                                                    <Area 
+                                                                        name={t('askingFranklin.data.evolution')}
+                                                                        type="monotone" 
+                                                                        fill="url(#volumetryGradientPrimary)"
+                                                                        dataKey="data" 
+                                                                        stroke="#673AB7" 
+                                                                        strokeWidth={2}
+                                                                        dot={{ fill: '#673AB7', stroke: '#673AB7', strokeWidth: 1, fillOpacity: 1}}
+                                                                        activeDot={{ stroke: '#673AB7', strokeWidth: 2 }}
+                                                                    />
+                                                                </AreaChart>
+                                                            </td>
+                                                            <td class="px-0 align-middle">{this.externalLink(x.suggestions[0].text)}</td>
+                                                        </tr>                                                        <tr>
+                                                            <td class="align-middle py-1 px-2"><span class="mr-2 text-blur mr-md-0">Malheureusement, il faut payer</span>{this.externalLink(x.suggestions[0].text, 'd-md-none')}</td>
+                                                            <td class="td-area-chart td-area-chart-blur px-0 align-middle">
+                                                                <AreaChart data={dataFake} width={400} height={48} style={{ top: '9px' }}>
+                                                                    <defs>
+                                                                        <linearGradient id="volumetryGradientPrimary" x1="0" y1="0" x2="0" y2="1">
+                                                                            <stop offset="0%" stopColor="#673AB7" stopOpacity={0.5}/>
+                                                                            <stop offset="100%" stopColor="#673AB7" stopOpacity={0.25}/>
+                                                                        </linearGradient>
+                                                                    </defs>
+                                                                    <Area 
+                                                                        name={t('askingFranklin.data.evolution')}
+                                                                        type="monotone" 
+                                                                        fill="url(#volumetryGradientPrimary)"
+                                                                        dataKey="data" 
+                                                                        stroke="#673AB7" 
+                                                                        strokeWidth={2}
+                                                                        dot={{ fill: '#673AB7', stroke: '#673AB7', strokeWidth: 1, fillOpacity: 1}}
+                                                                        activeDot={{ stroke: '#673AB7', strokeWidth: 2 }}
+                                                                    />
+                                                                </AreaChart>
+                                                            </td>
+                                                            <td class="px-0 align-middle">{this.externalLink(x.suggestions[0].text)}</td>
+                                                        </tr>
+                                                        </div>
+                                                        
+                                            }
                                         </tbody>
                                     </Table>
                                 </Col>

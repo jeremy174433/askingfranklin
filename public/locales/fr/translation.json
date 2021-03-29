@@ -382,7 +382,8 @@
             "noResult": "Aucun résultat trouvé, tentez de lancer une nouvelle recherche avec un mot clé différent",
             "pngExport": "Exporter en PNG",
             "trendsPeriod": "Les tendances de recherches sont basées sur les 12 derniers mois",
-            "evolution": "Évolution"
+            "evolution": "Évolution",
+            "noDataTrends": "Il n'y a malheureusement pas de données de tendances pour ce mot clé"
         }
     },
 

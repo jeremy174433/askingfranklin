@@ -124,7 +124,7 @@ class AskingFranklin extends React.Component {
     }
 
     fetchFranklinTrends(keyword, lang, country) {
-        fetch('https://europe-west1-sortvoices-test-1530802956312.cloudfunctions.net/g-trends?keyword=' + keyword + '&lang=' + lang + '&country=' + country)
+        fetch('https://europe-west1-adroit-arcana-308615.cloudfunctions.net/function-1?keyword=' + keyword + '&lang=' + lang + '&country=' + country)
         .then((res) => res.json())
         .then((res) => {
             this.setState({
