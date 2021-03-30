@@ -108,7 +108,7 @@ class AFWrapper extends React.Component {
                                     <AFTable data={this.props.data.data}/>
 
                                 : this.state.selectedPanel === 2 &&
-                                    <AFTableTendancies data={this.props.dataTrends[this.props.idx]}/>
+                                    <AFTableTendancies data={this.props.dataTrends[this.props.idx]} keywordSearch={this.props.keywordSearch}/>
                             }
                         </div>
                     </div>

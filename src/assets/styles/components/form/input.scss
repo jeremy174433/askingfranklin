@@ -22,7 +22,7 @@ $input: '.input-primary';
         padding: 12px;
         border: 1px solid $theme-terthiary;
         background-color: $theme-secondary;
-        border-radius: 4px;
+        border-radius: .25rem;
         transition: .2s ease-in-out;
 
         &::placeholder { @include fz-14; }

@@ -1,7 +1,7 @@
 .card-testimonial {
     background-color: $theme-secondary;
     border: 1px solid $theme-terthiary;
-    border-radius: 8px;
+    border-radius: .5rem;
     padding: 2rem;
     box-shadow: 0 0 8px rgba($black, .04);
     @include max-lg-rwd { height: 100%; }

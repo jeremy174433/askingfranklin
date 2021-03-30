@@ -383,7 +383,13 @@
             "pngExport": "PNG export",
             "trendsPeriod": "Search trends are based on the last 12 months",
             "evolution": "Evolution",
-            "noDataTrends": "No trends data"
+            "noDataTrends": "No trends data is available for this research,",
+            "blockCtaTrends": {
+                "p1": "Do you need this information ?",
+                "p2": "Asking Franklin Pro provides you all the search trend data for the keyword « ",
+                "p3": " ». Try it now !",
+                "cta": "Try Asking Franklin Pro"
+            }
         }
     },
 

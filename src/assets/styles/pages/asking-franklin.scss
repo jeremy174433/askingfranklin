@@ -147,6 +147,30 @@
                     -moz-user-select: none;
                 }
                 .td-area-chart-blur { filter: blur(12px); }
+                .external-link-hidden {
+                    opacity: 0;
+                    pointer-events: none;
+                }
+
+                // CTA when content is blured
+                .block-tendancies-is-blured {
+                    background-color: $theme-secondary;
+                    max-width: 75%;
+                    position: absolute;
+                    right: 0;
+                    left: 0;
+                    margin: 9rem auto 0 auto;
+                    padding: 24px;
+                    text-align: center;
+                    border-radius: .5rem;
+                    z-index: 5;
+                    box-shadow: 0 0 16px $black-25;
+
+                    .keyword-trends {
+                        display: inline-block;
+                        &::first-letter { text-transform: uppercase; }
+                    }
+                }
             }
 
         }

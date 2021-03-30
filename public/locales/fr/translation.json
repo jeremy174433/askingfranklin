@@ -383,7 +383,13 @@
             "pngExport": "Exporter en PNG",
             "trendsPeriod": "Les tendances de recherches sont basées sur les 12 derniers mois",
             "evolution": "Évolution",
-            "noDataTrends": "Il n'y a malheureusement pas de données de tendances pour ce mot clé"
+            "noDataTrends": "Aucune donnée sur les tendances n'est disponible pour cette recherche",
+            "blockCtaTrends": {
+                "p1": "Vous avez besoin de ces informations ?",
+                "p2": "Asking Franklin Pro vous fournit toutes les données sur les tendances de recherche pour le mot clé « ",
+                "p3": " ». Essayez dès maintenant !",
+                "cta": "Essayer Asking Franklin Pro"
+            }
         }
     },
 

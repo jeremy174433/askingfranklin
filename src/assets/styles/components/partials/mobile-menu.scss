@@ -62,7 +62,7 @@
             width: 24px;
             height: 1px;
             background-color: $theme-color-primary;
-            border-radius: 4px;
+            border-radius: .25rem;
             transition: all .6s;
     
             &:nth-of-type(1) { top: 8px; }

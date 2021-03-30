@@ -10,8 +10,8 @@
                 padding: 0 .5rem !important;
                 border: none;
                 &::first-letter { text-transform: capitalize; }
-                &:first-child { border-radius:  4px 0 0 4px; }
-                &:last-child { border-radius: 0 4px 4px 0; }
+                &:first-child { border-radius:  .25rem 0 0 .25rem; }
+                &:last-child { border-radius: 0 .25rem .25rem 0; }
             }
         }
 
