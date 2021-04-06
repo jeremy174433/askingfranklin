@@ -146,13 +146,14 @@ class AskingFranklin extends React.Component {
         this.fetchFranklinTrends(this.props.match.params.keyword, params.lang, params.country);
         window.scrollTo(0, 0);
     }
-
+    
     componentDidUpdate(prevProps) {
         var params = qs.parse(this.props.location.search, { ignoreQueryPrefix: true })
         if ((prevProps.match.params.keyword !== this.props.match.params.keyword) || (prevProps.match.params.country !== this.props.match.params.country) || (prevProps.match.params.lang !== this.props.match.params.lang)) {
             this.setState({
                 currCountry: dictionnaryCountry[i18n.languages[0]][params.country],
-                currLanguage: dictionnaryLanguage[i18n.languages[0]][params.lang]
+                currLanguage: dictionnaryLanguage[i18n.languages[0]][params.lang],
+                trendsIsLoading:true
             });
             this.fetchFranklin(this.props.match.params.keyword, params.lang, params.country);
             this.fetchFranklinTrends(this.props.match.params.keyword, params.lang, params.country);

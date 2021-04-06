@@ -9,7 +9,8 @@ import ExternalLink from '../../../assets/img/svg/ExternalLink';
 import { 
     AreaChart, 
     Tooltip, 
-    Area 
+    Area,
+    XAxis
 } from 'recharts';
 import PmyBtn from '../button/PmyBtn';
 
@@ -93,20 +94,20 @@ class AFTableTendancies extends React.Component {
             <>
                 <p class="px-3 mb-3">{t('askingFranklin.data.trendsPeriod')}</p>
                 <Row className="asking-franklin-table asking-franklin-table-tendancies mx-0 px-0 d-flex flex-column flex-md-row">
+                    {!isPro &&
+                        <aside class="block-tendancies-is-blured">
+                            <p class="mb-2 fz-22 fw-600">{t('askingFranklin.data.blockCtaTrends.p1')}</p>
+                            <p class="fz-18">
+                                <span>{t('askingFranklin.data.blockCtaTrends.p2')}</span>
+                                <span class="keyword-trends fw-600">{this.props.keywordSearch}</span>
+                                <span>{t('askingFranklin.data.blockCtaTrends.p3')}</span>
+                            </p>
+                            <PmyBtn redirectTo={t('url.pricing')} linkIsLargePmyFull textLink={t('askingFranklin.data.blockCtaTrends.cta')} containerStyle="mt-4"/>
+                        </aside>
+                    }
                     {this.props.data.data.map((x, index) => {
                         if (x.suggestions.length > 0) {
                             return (<>
-                                {!isPro && index === 0 &&
-                                    <aside class="block-tendancies-is-blured">
-                                        <p class="mb-2 fz-22 fw-600">{t('askingFranklin.data.blockCtaTrends.p1')}</p>
-                                        <p class="fz-18">
-                                            <span>{t('askingFranklin.data.blockCtaTrends.p2')}</span>
-                                            <span class="keyword-trends fw-600">{this.props.keywordSearch}</span>
-                                            <span>{t('askingFranklin.data.blockCtaTrends.p3')}</span>
-                                        </p>
-                                        <PmyBtn redirectTo={t('url.pricing')} linkIsLargePmyFull textLink={t('askingFranklin.data.blockCtaTrends.cta')} containerStyle="mt-4"/>
-                                    </aside>
-                                }
                                 <Col sm="12" className="mb-3 pb-3 px-3">
                                     <Table>
                                         <thead>
@@ -142,6 +143,7 @@ class AFTableTendancies extends React.Component {
                                                                         dot={{ fill: '#673AB7', stroke: '#673AB7', strokeWidth: 1, fillOpacity: 1}}
                                                                         activeDot={{ stroke: '#673AB7', strokeWidth: 2 }}
                                                                     />
+                                                                  <XAxis dataKey="date" hide={true}/>
                                                                 </AreaChart>
                                                             </td>
                                                             <td class="px-0 align-middle">{this.externalLink(y.text)}</td>
@@ -172,6 +174,7 @@ class AFTableTendancies extends React.Component {
                                                                     dot={{ fill: '#673AB7', stroke: '#673AB7', strokeWidth: 1, fillOpacity: 1}}
                                                                     activeDot={{ stroke: '#673AB7', strokeWidth: 2 }}
                                                                 />
+                                                                <XAxis dataKey="date" hide={true}/>
                                                             </AreaChart>
                                                         </td>
                                                         <td class="px-0 align-middle">{this.externalLink(x.suggestions[0].text)}</td>

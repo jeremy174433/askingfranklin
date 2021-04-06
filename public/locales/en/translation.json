@@ -381,7 +381,7 @@
         "data": {
             "noResult": "No results found, try a new search with a different keyword",
             "pngExport": "PNG export",
-            "trendsPeriod": "Search trends are based on the last 12 months",
+            "trendsPeriod": "Search trends are based on the last 3 months",
             "evolution": "Evolution",
             "noDataTrends": "No trends data is available for this research,",
             "blockCtaTrends": {

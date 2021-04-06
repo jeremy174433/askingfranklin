@@ -90,10 +90,10 @@ class Footer extends React.Component {
                             <Link to="/" class="mx-auto mx-lg-0 mb-4">
                                 <Logo icon="white" width="200"/>
                             </Link>
-                            <ul class="languages-wrapper d-flex flex-row flex-lg-column">
+                           {/**  <ul class="languages-wrapper d-flex flex-row flex-lg-column">
                                 <li onClick={this.props.onClickLanguage} data-lang="en" class="footer-link">{t('footer.language.en')}</li>
                                 <li onClick={this.props.onClickLanguage} data-lang="fr" class="footer-link">{t('footer.language.fr')}</li>
-                            </ul>
+                            </ul>*/}
                         </Col>
                         <Col lg="3" className="d-flex flex-column align-items-center align-items-lg-start mb-5 mb-lg-0">
                             <p class="footer-title">{t('footer.title.1')}</p>

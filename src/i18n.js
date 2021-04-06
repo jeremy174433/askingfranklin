@@ -6,7 +6,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 const languages = ['en', 'fr'];
 
 i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init({
-    fallbackLng: 'en',
+    fallbackLng: 'fr',
     debug: false,
     whitelist: languages,
     interpolation: {
