@@ -127,6 +127,19 @@ class AskingFranklin extends React.Component {
         fetch('https://europe-west1-adroit-arcana-308615.cloudfunctions.net/function-1?keyword=' + keyword + '&lang=' + lang + '&country=' + country)
         .then((res) => res.json())
         .then((res) => {
+            if(i18n.language == "fr"){
+                for(var i = 0; i < res.data.length; i++){
+                    for(var j = 0; j < res.data[i].data.length; j++){
+                        for(var x = 0; x < res.data[i].data[j].suggestions.length; x++){
+                            for(var z = 0; z < res.data[i].data[j].suggestions[x].gtrend.length; z++){
+                                var date_original = res.data[i].data[j].suggestions[x].gtrend[z].date
+                                var date_converted = date_original.slice(-2) +  "/" + date_original.slice(5,7) + "/" + date_original.slice(0,4)
+                                res.data[i].data[j].suggestions[x].gtrend[z].date = date_converted
+                            }
+                        }
+                    }
+                }
+            }
             this.setState({
                 dataTrends: res,
                 trendsIsLoading: false

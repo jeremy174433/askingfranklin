@@ -140,7 +140,6 @@ class AFTableTendancies extends React.Component {
                                                                         dataKey="data" 
                                                                         stroke="#673AB7" 
                                                                         strokeWidth={2}
-                                                                        dot={{ fill: '#673AB7', stroke: '#673AB7', strokeWidth: 1, fillOpacity: 1}}
                                                                         activeDot={{ stroke: '#673AB7', strokeWidth: 2 }}
                                                                     />
                                                                   <XAxis dataKey="date" hide={true}/>
@@ -171,7 +170,6 @@ class AFTableTendancies extends React.Component {
                                                                     dataKey="data" 
                                                                     stroke="#673AB7" 
                                                                     strokeWidth={2}
-                                                                    dot={{ fill: '#673AB7', stroke: '#673AB7', strokeWidth: 1, fillOpacity: 1}}
                                                                     activeDot={{ stroke: '#673AB7', strokeWidth: 2 }}
                                                                 />
                                                                 <XAxis dataKey="date" hide={true}/>
@@ -197,7 +195,6 @@ class AFTableTendancies extends React.Component {
                                                                     dataKey="data" 
                                                                     stroke="#673AB7" 
                                                                     strokeWidth={2}
-                                                                    dot={{ fill: '#673AB7', stroke: '#673AB7', strokeWidth: 1, fillOpacity: 1}}
                                                                     activeDot={{ stroke: '#673AB7', strokeWidth: 2 }}
                                                                 />
                                                             </AreaChart>
@@ -221,7 +218,6 @@ class AFTableTendancies extends React.Component {
                                                                     dataKey="data" 
                                                                     stroke="#673AB7" 
                                                                     strokeWidth={2}
-                                                                    dot={{ fill: '#673AB7', stroke: '#673AB7', strokeWidth: 1, fillOpacity: 1}}
                                                                     activeDot={{ stroke: '#673AB7', strokeWidth: 2 }}
                                                                 />
                                                             </AreaChart>
@@ -245,7 +241,6 @@ class AFTableTendancies extends React.Component {
                                                                     dataKey="data" 
                                                                     stroke="#673AB7" 
                                                                     strokeWidth={2}
-                                                                    dot={{ fill: '#673AB7', stroke: '#673AB7', strokeWidth: 1, fillOpacity: 1}}
                                                                     activeDot={{ stroke: '#673AB7', strokeWidth: 2 }}
                                                                 />
                                                             </AreaChart>
@@ -269,7 +264,6 @@ class AFTableTendancies extends React.Component {
                                                                     dataKey="data" 
                                                                     stroke="#673AB7" 
                                                                     strokeWidth={2}
-                                                                    dot={{ fill: '#673AB7', stroke: '#673AB7', strokeWidth: 1, fillOpacity: 1}}
                                                                     activeDot={{ stroke: '#673AB7', strokeWidth: 2 }}
                                                                 />
                                                             </AreaChart>
@@ -293,7 +287,6 @@ class AFTableTendancies extends React.Component {
                                                                     dataKey="data" 
                                                                     stroke="#673AB7" 
                                                                     strokeWidth={2}
-                                                                    dot={{ fill: '#673AB7', stroke: '#673AB7', strokeWidth: 1, fillOpacity: 1}}
                                                                     activeDot={{ stroke: '#673AB7', strokeWidth: 2 }}
                                                                 />
                                                             </AreaChart>

@@ -87,7 +87,6 @@ class App extends React.Component {
 
         const { t } = this.props;
         const { redirect } = this.state;
-
         return (
             <div id="App">
                 {this.state.bannerIsShowed && <Banner onClick={this.handleHideBanner} bannerIsActive={this.state.bannerIsShowed}/> }
