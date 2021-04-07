@@ -16,8 +16,8 @@ import FormRequestFranklin from '../../components/form/FormRequestFranklin';
 
 const dictionnaryCountry = {
     "fr": {
-        "be": "Belgique",
         "de": "Allemagne",
+        "be": "Belgique",
         "ca": "Canada",
         "es": "Espagne",
         "us": "États-unis",

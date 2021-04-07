@@ -7,8 +7,8 @@ import Flag from '../../../assets/img/svg/switch/Flag';
 const countries = {
     "fr": {
         items: [
-            { label: <><Flag icon="be"/>Belgique</>, value: "be" },
             { label: <><Flag icon="de"/>Allemagne</>, value: "de" },
+            { label: <><Flag icon="be"/>Belgique</>, value: "be" },
             { label: <><Flag icon="ca"/>Canada</>, value: "ca" },
             { label: <><Flag icon="es"/>Espagne</>, value: "es" },
             { label: <><Flag icon="us"/>États-Unis</>, value: "us" },

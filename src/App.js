@@ -90,7 +90,7 @@ class App extends React.Component {
 
         return (
             <div id="App">
-                {this.state.bannerIsShowed && <Banner onClick={this.handleHideBanner} bannerIsActive={this.state.bannerIsShowed}/> }
+                {this.state.bannerIsShowed && <Banner onClick={this.handleHideBanner} bannerIsActive={this.state.bannerIsShowed}/>}
                 <Router>
                     <Navbar isConnected={this.state.isConnected} className={this.state.bannerIsShowed && 'banner-showed'}/>
                     {redirect && <Redirect to="/"/>}
