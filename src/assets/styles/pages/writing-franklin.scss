@@ -3,18 +3,38 @@
     .block-writing-sidebar {
         .articles-wrapper {
             .article-item {
+                position: relative;
                 cursor: pointer;
                 transition: .2s ease-out;
 
-                &:hover, &:focus { @include bg-hover-light; }
+                &:hover, &:focus { 
+                    @include bg-hover-light;
+                    .article-menu { visibility: visible; }
+                }
                 &.article-selected { @include bg-active-light; }
                 
                 p { 
+                    width: 100%;
                     margin-right: 1rem;
                     text-overflow: ellipsis;
                     overflow: hidden;
                     white-space: nowrap;
+                    pointer-events: none;
                     &::first-letter { text-transform: uppercase; }
+                }
+
+                .article-menu {
+                    visibility: hidden;
+                    transition: none !important;
+                    outline-color: $primary;
+                    @include state-interaction-element;
+                    &:hover, &:focus { background-color: $md-grey; }
+
+                    > .article-submenu {
+                        right: 48px;
+                        top: 0;
+                        z-index: 1;
+                    }
                 }
             }
         }
