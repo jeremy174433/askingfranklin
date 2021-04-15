@@ -27,21 +27,9 @@ class Sidebar extends React.Component {
     }
 
     handleSelectArticle(e) {
-        var articleIndex = e.target.dataset.key;
-        if(this.state.currentArticle !== articleIndex) { 
-            this.setState({
-                currentArticle: articleIndex
-            }, () => {
-                console.log('if current = ', this.state.currentArticle);
-            });
-        } 
-        else {
-            this.setState({
-                currentArticle: 'NOTHING'
-            }, () => {
-                console.log('else current = ', this.state.currentArticle);
-            });
-        }
+        this.setState({
+            currentArticle: parseInt(e.target.dataset.key)
+        });
     }
 
     render() {
@@ -58,11 +46,10 @@ class Sidebar extends React.Component {
                 </div>
                 <div class="text-left articles-wrapper">
                     {articlesList.map((article, index) => {
-                        console.log(index)
                         return (
                             <div onClick={this.handleSelectArticle} data-key={index} key={index} class={this.state.currentArticle === index ? 'article-selected ' + articleClass : articleClass} title={article.title}>
-                                <p>{article.title}</p>
-                                <span>|</span>
+                                <p style={{pointerEvents:'none'}}>{article.title}</p>
+                                <span style={{pointerEvents:'none'}}>|</span>
                             </div>
                         ) 
                     })}
