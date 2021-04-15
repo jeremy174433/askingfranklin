@@ -4,6 +4,7 @@ import { Col } from 'react-bootstrap';
 import PmyBtn from '../button/PmyBtn';
 import Add from '../../../assets/img/svg/Add';
 import Input from '../form/Input';
+import KebabMenu from '../../../assets/img/svg/KebabMenu';
 
 const articlesList = [
     { id: 1, title: "comment le seo peut aider votre rédaction de contenu" },
@@ -16,10 +17,12 @@ class Sidebar extends React.Component {
         super(props)
         this.state = {
             nbrArticles: 0,
-            currentArticle: 0
+            currentArticle: 0,
+            currentOpt: false
         }
         this.handleCreateNewSubject = this.handleCreateNewSubject.bind(this);
         this.handleSelectArticle = this.handleSelectArticle.bind(this);
+        this.handleMenuSelectArticle = this.handleMenuSelectArticle.bind(this);
     }
 
     handleCreateNewSubject() {
@@ -27,27 +30,24 @@ class Sidebar extends React.Component {
     }
 
     handleSelectArticle(e) {
-        var articleIndex = e.target.dataset.key;
-        if(this.state.currentArticle !== articleIndex) { 
-            this.setState({
-                currentArticle: articleIndex
-            }, () => {
-                console.log('if current = ', this.state.currentArticle);
-            });
-        } 
-        else {
-            this.setState({
-                currentArticle: 'NOTHING'
-            }, () => {
-                console.log('else current = ', this.state.currentArticle);
-            });
-        }
+        e.stopPropagation();
+        this.setState({
+            currentArticle: parseInt(e.target.dataset.key)
+        });
+    }
+
+    handleMenuSelectArticle(e) {
+        e.stopPropagation();
+        this.setState({
+            currentOpt: parseInt(e.target.dataset.key)
+        });
     }
 
     render() {
 
         const { t } = this.props;
         const articleClass = ' article-item d-flex flex-row justify-content-between align-items-center p-3';
+        const articleOpt = ' article-submenu block-style position-absolute flex-column p-2';
 
         return (
             <Col xl="3" className="block-style block-writing-sidebar d-flex d-xl-block flex-column p-0 mr-xl-5 mb-5 mb-xl-0">
@@ -58,13 +58,19 @@ class Sidebar extends React.Component {
                 </div>
                 <div class="text-left articles-wrapper">
                     {articlesList.map((article, index) => {
-                        console.log(index)
                         return (
-                            <div onClick={this.handleSelectArticle} data-key={index} key={index} class={this.state.currentArticle === index ? 'article-selected ' + articleClass : articleClass} title={article.title}>
+                            <div onClick={this.handleSelectArticle} data-key={index} key={index} class={this.state.currentArticle === index ? 'article-selected' + articleClass : articleClass} title={article.title}>
                                 <p>{article.title}</p>
-                                <span>|</span>
+                                <div onFocus={this.handleMenuSelectArticle} tabIndex={0} data-key={index} class="article-menu">
+                                    <KebabMenu/>
+                                    <div class={this.state.currentOpt === index ? 'd-flex' + articleOpt : 'd-none' + articleOpt}>
+                                        <span>éditer</span>
+                                        <span>dupliquer</span>
+                                        <span>supprimer</span>
+                                    </div>
+                                </div>
                             </div>
-                        ) 
+                        ); 
                     })}
                 </div>
             </Col>

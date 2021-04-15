@@ -78,7 +78,7 @@
     cursor: pointer;
     transition: .2s ease-in-out;
 
-    &:hover, &:focus {  @include bg-hover-light; }
+    &:hover, &:focus { @include bg-hover-light; }
 }
 
 // Close item (alert, banner...)
