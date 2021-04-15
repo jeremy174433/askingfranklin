@@ -12,6 +12,7 @@
         "resultAF": "/recherche/",
         "resultPageAF": "/recherche/:keyword",
         "searchLimit": "/limite-de-recherches",
+        "editorWF": "/article",
         "blog": "https://blog.askingfranklin.com",
         "faq": "/faq",
         "contact": "/contact",

@@ -13,6 +13,7 @@ import Navbar from './pages/components/partials/Navbar';
 import Footer from './pages/components/partials/Footer';
 import Home from './pages/sorted-pages/free-area/Home';
 import AskingFranklin from './pages/sorted-pages/free-area/AskingFranklin';
+import WritingFranklin from './pages/sorted-pages/deep-area/WritingFranklin';
 import Pricing from './pages/sorted-pages/free-area/Pricing';
 import SignIn from './pages/sorted-pages/free-area/sign/SignIn';
 import SignUp from './pages/sorted-pages/free-area/sign/SignUp';
@@ -87,8 +88,9 @@ class App extends React.Component {
 
         const { t } = this.props;
         const { redirect } = this.state;
+
         return (
-            <div id="App">
+            <>
                 {this.state.bannerIsShowed && <Banner onClick={this.handleHideBanner} bannerIsActive={this.state.bannerIsShowed}/>}
                 <Router>
                     <Navbar isConnected={this.state.isConnected} className={this.state.bannerIsShowed && 'banner-showed'}/>
@@ -99,6 +101,7 @@ class App extends React.Component {
                         <Route path={t('url.signUp')} render={(props) => <SignUp {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route path={t('url.forgotPassword')}  render={(props) => <ForgotPassword {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route path={t('url.resultPageAF')}  render={(props) => <AskingFranklin {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path={t('url.editorWF')} render={(props) => <WritingFranklin {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route path={t('url.searchLimit')} render={(props) => <MaximumRequests {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route path={t('url.faq')} render={(props) => <Faq {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route path={t('url.contact')} render={(props) => <Contact {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
@@ -121,7 +124,7 @@ class App extends React.Component {
                 <CookieConsent location="bottom" acceptOnScroll={true} buttonText={t('cookiesBar.btn')} cookieName="user-has-accepted-cookies" expires={182}>
                     {t('cookiesBar.text')} &nbsp;<a href={t('url.gtcs')} target="_blank" rel="noopener" title={t('titleElementBrowser.tcs')}>{t('cookiesBar.information')}</a>
                 </CookieConsent>
-            </div>
+            </>
         )
     }
 }
