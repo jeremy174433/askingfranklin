@@ -201,8 +201,8 @@ class Payment extends React.Component {
 
 				: this.state.plans.length > 0 ? 
 					<Container id="payment" className="px-0 mt-6">
-						<H1 className="text-center" title={t('funnels.offers.h1a')}/>
-						<PmyBtn redirectTo="/" linkIsLargePmyFull textLink={t('funnels.offers.linkToHome')} containerStyle="pt-5 mt-5 text-center"/>
+						<H1 className="text-center" title={t('funnel.offers.h1a')}/>
+						<PmyBtn redirectTo="/" linkIsLargePmyFull textLink={t('funnel.offers.linkToHome')} containerStyle="pt-5 mt-5 text-center"/>
 					</Container>
 
 				:

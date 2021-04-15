@@ -292,7 +292,7 @@ class AskingFranklin extends React.Component {
                                     selectedSavedCountry={this.state.currCountry}
                                     selectedSavedLanguage={this.state.currLanguage}
                                 />
-                                <Col className="block-results col-12 col-xl-9 px-0 mb-5 w-100">
+                                <Col xl="9" className="block-results px-0 mb-5 w-100">
                                     {this.state.dataKw.data.map((x,idx) => {
                                         return <AFWrapper keywordSearch={this.state.keywordSearch} data={x} trendsIsLoading={this.state.trendsIsLoading} dataTrends={this.state.dataTrends.data} idx={idx}/>
                                     })}

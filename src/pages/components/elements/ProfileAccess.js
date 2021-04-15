@@ -43,7 +43,7 @@ class ProfileAccess extends React.Component {
 
         var token = localStorage.getItem('af_token');
 
-        const containerStyle = ' btn-profile-ctn position-relative ml-auto mr-3';
+        const containerStyle = ' btn-profile-ctn position-relative ml-auto mr-3 mr-md-0';
         const btnAccountMobile = ' btn-profile state-interaction-element d-flex d-md-none';
 
         return (

@@ -48,11 +48,11 @@ class FormRequestFranklin extends React.Component {
                         onChange={this.props.onChange}
                         type="text"
                         value={this.props.value}
-                        style={this.props.hideLabel && { height: '66px' } }
+                        style={this.props.hideLabel && { height: '64px' } }
                         inputStyle="h-100"
                         placeholder={t('form.input.placeholderFormAF')}
                     />
-                    <PmyBtn type="submit" redirectTo={true} isDisabled={this.props.isDisabled} rel="nofollow" textLink={t('form.submit.formAF')} linkIsLargePmyFull containerStyle={this.props.containerStyle} customBtnClass="w-100 h-100" className="h-100" style={ this.props.hideLabel && { height: '66px', maxHeight: '66px' } }/>
+                    <PmyBtn type="submit" redirectTo={true} isDisabled={this.props.isDisabled} rel="nofollow" textLink={t('form.submit.formAF')} linkIsLargePmyFull containerStyle={this.props.containerStyle} customBtnClass="w-100 h-100" className="h-100" style={ this.props.hideLabel && { height: '64px', maxHeight: '66px' } }/>
                      {this.props.formOptionsResultsPage && <p onClick={this.toggleOptions} class="mt-3 ml-auto d-none d-xl-block">{t('actions.optionsFormAF')}</p> }
                 </form>
                 <div class={this.state.optsDropdown ? 'filters-options-research-visible' + optsItems : optsItems}>
