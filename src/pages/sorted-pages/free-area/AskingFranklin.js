@@ -127,7 +127,7 @@ class AskingFranklin extends React.Component {
         fetch('https://europe-west1-adroit-arcana-308615.cloudfunctions.net/function-1?keyword=' + keyword + '&lang=' + lang + '&country=' + country)
         .then((res) => res.json())
         .then((res) => {
-            if(i18n.language == "fr"){
+            if(i18n.language === "fr"){
                 for(var i = 0; i < res.data.length; i++){
                     for(var j = 0; j < res.data[i].data.length; j++){
                         for(var x = 0; x < res.data[i].data[j].suggestions.length; x++){
@@ -144,7 +144,11 @@ class AskingFranklin extends React.Component {
                 dataTrends: res,
                 trendsIsLoading: false
             })
-        });
+        })
+        .catch((e)=>{
+            console.log(e)
+        })
+
     }
 
     componentDidMount() {
