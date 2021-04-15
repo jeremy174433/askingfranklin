@@ -15,7 +15,6 @@ class Sidebar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            nbrArticles: 0,
             currentArticle: 0
         }
         this.handleCreateNewSubject = this.handleCreateNewSubject.bind(this);
@@ -41,7 +40,7 @@ class Sidebar extends React.Component {
             <Col xl="3" className="block-style block-writing-sidebar d-flex d-xl-block flex-column p-0 mr-xl-5 mb-5 mb-xl-0">
                 <div class="m-3">
                     <PmyBtn onClick={this.handleCreateNewSubject} type="button" btnIsMediumPmyOutlineLight textBtn="Nouvel article" title="Nouvel article" iconBtnBefore={<Add width="14" fill="#673AB7"/>} className="ml-auto fz-16-index"/>
-                    <p class="my-2 text-right"><span>{this.state.nbrArticles}</span> article{this.state.nbrArticles > 1 && 's'}</p>
+                    <p class="my-2 text-right"><span>{articlesList.length}</span> article{articlesList.length > 1 && 's'}</p>
                     <Input type="search" hideLabel={true} for="filterArticles" placeholder="Rechercher un article..." containerStyle="mb-0 pb-0"/>
                 </div>
                 <div class="text-left articles-wrapper">
@@ -49,7 +48,7 @@ class Sidebar extends React.Component {
                         return (
                             <div onClick={this.handleSelectArticle} data-key={index} key={index} class={this.state.currentArticle === index ? 'article-selected ' + articleClass : articleClass} title={article.title}>
                                 <p style={{pointerEvents:'none'}}>{article.title}</p>
-                                <span style={{pointerEvents:'none'}}>|</span>
+                                <span>|</span>
                             </div>
                         ) 
                     })}
