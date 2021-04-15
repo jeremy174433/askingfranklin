@@ -30,7 +30,6 @@ class Sidebar extends React.Component {
     }
 
     handleSelectArticle(e) {
-        e.stopPropagation();
         this.setState({
             currentArticle: parseInt(e.target.dataset.key)
         });

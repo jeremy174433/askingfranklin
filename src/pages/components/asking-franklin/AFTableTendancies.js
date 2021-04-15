@@ -9,9 +9,12 @@ import ExternalLink from '../../../assets/img/svg/ExternalLink';
 import { 
     AreaChart, 
     Tooltip, 
-    Area 
+    Area,
+    XAxis
 } from 'recharts';
 import PmyBtn from '../button/PmyBtn';
+const googleTrends = require('google-trends-api');
+
 
 var dataFake = [
     {
@@ -62,6 +65,13 @@ class AFTableTendancies extends React.Component {
     }
 
     componentDidMount() {
+        googleTrends.interestOverTime({keyword: 'Women\'s march'})
+.then(function(results){
+  console.log('These results are awesome', results);
+})
+.catch(function(err){
+  console.error('Oh no there was an error', err);
+});
         var token = localStorage.getItem('af_token');
         var is_sub = localStorage.getItem('af_is_sub');
         if(token) {
@@ -88,26 +98,27 @@ class AFTableTendancies extends React.Component {
 
         const { t } = this.props;
         const isPro = this.state.isConnected && localStorage.getItem('af_is_sub') != 0;
-
+        console.log(this.props.data.data)
         return (
             <>
-                <p class="px-3 mb-3">{t('askingFranklin.data.trendsPeriod')}</p>
+                {this.props.data.data.length > 0  && <p class="px-3 mb-3">{t('askingFranklin.data.trendsPeriod')}</p>}
+                {this.props.data.data.length === 0  && <p class="px-3 mb-3">{t('askingFranklin.data.trendsPeriod')}</p>}
                 <Row className="asking-franklin-table asking-franklin-table-tendancies mx-0 px-0 d-flex flex-column flex-md-row">
-                    {this.props.data.data.map((x, index) => {
+                    {(!isPro && this.props.data.data.length > 0) &&
+                        <aside class="block-tendancies-is-blured">
+                            <p class="mb-2 fz-22 fw-600">{t('askingFranklin.data.blockCtaTrends.p1')}</p>
+                            <p class="fz-18">
+                                <span>{t('askingFranklin.data.blockCtaTrends.p2')}</span>
+                                <span class="keyword-trends fw-600">{this.props.keywordSearch}</span>
+                                <span>{t('askingFranklin.data.blockCtaTrends.p3')}</span>
+                            </p>
+                            <PmyBtn redirectTo={t('url.pricing')} linkIsLargePmyFull textLink={t('askingFranklin.data.blockCtaTrends.cta')} containerStyle="mt-4"/>
+                        </aside>
+                    }
+                    {this.props.data.data.length > 0 && this.props.data.data.map((x, index) => {
                         if (x.suggestions.length > 0) {
-                            return (
+                            return (<>
                                 <Col sm="12" className="mb-3 pb-3 px-3">
-                                    {!isPro && index === 0 &&
-                                        <aside class="block-tendancies-is-blured">
-                                            <p class="mb-2 fz-22 fw-600">{t('askingFranklin.data.blockCtaTrends.p1')}</p>
-                                            <p class="fz-18">
-                                                <span>{t('askingFranklin.data.blockCtaTrends.p2')}</span>
-                                                <span class="keyword-trends fw-600">{this.props.keywordSearch}</span>
-                                                <span>{t('askingFranklin.data.blockCtaTrends.p3')}</span>
-                                            </p>
-                                            <PmyBtn redirectTo={t('url.pricing')} linkIsLargePmyFull textLink={t('askingFranklin.data.blockCtaTrends.cta')} containerStyle="mt-4"/>
-                                        </aside>
-                                    }
                                     <Table>
                                         <thead>
                                             <tr>
@@ -133,7 +144,7 @@ class AFTableTendancies extends React.Component {
                                                                         </linearGradient>
                                                                     </defs>
                                                                     <Area 
-                                                                        name={t('askingFranklin.data.evolution')}
+                                                                        name={t('askingFranklin.data.evolutionToolTip')}
                                                                         type="monotone" 
                                                                         fill="url(#volumetryGradientPrimary)"
                                                                         dataKey="data" 
@@ -141,6 +152,7 @@ class AFTableTendancies extends React.Component {
                                                                         strokeWidth={2}
                                                                         activeDot={{ stroke: '#673AB7', strokeWidth: 2 }}
                                                                     />
+                                                                  <XAxis dataKey="date" hide={true}/>
                                                                 </AreaChart>
                                                             </td>
                                                             <td class="px-0 align-middle">{this.externalLink(y.text)}</td>
@@ -162,7 +174,7 @@ class AFTableTendancies extends React.Component {
                                                                     </linearGradient>
                                                                 </defs>
                                                                 <Area 
-                                                                    name={t('askingFranklin.data.evolution')}
+                                                                    name={t('askingFranklin.data.evolutionToolTip')}
                                                                     type="monotone" 
                                                                     fill="url(#volumetryGradientPrimary)"
                                                                     dataKey="data" 
@@ -170,6 +182,7 @@ class AFTableTendancies extends React.Component {
                                                                     strokeWidth={2}
                                                                     activeDot={{ stroke: '#673AB7', strokeWidth: 2 }}
                                                                 />
+                                                                <XAxis dataKey="date" hide={true}/>
                                                             </AreaChart>
                                                         </td>
                                                         <td class="px-0 align-middle">{this.externalLink(x.suggestions[0].text)}</td>
@@ -295,6 +308,7 @@ class AFTableTendancies extends React.Component {
                                         </tbody>
                                     </Table>
                                 </Col>
+                                </>
                             );
                         }
                     })}

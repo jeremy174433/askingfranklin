@@ -99,12 +99,12 @@ export default class Filters extends React.Component {
                         {
                             this.props.isPreselectedCountry ?
                                 countries[i18n.languages[0]].items.map((country) => {
-                                    return <Radio handleSelect={this.handleSelect} name="filterCountries" label={country.label} value={{ value: country.value, label: country.label.props.children[1] }} isChecked={this.props.selectedSaved === country.label.props.children[1] ? true : false}/>
+                                    return <Radio handleSelect={this.handleSelect} name="filterCountries" label={country.label} value={{ value: country.value, label: country.label.props.children[1] }} isChecked={this.state.selectedValue.value === country.value ? true : false}/>
                                 })
 
                             : this.props.isPreselectedLanguage &&
                                 languages[i18n.languages[0]].items.map((language) => {
-                                    return <Radio handleSelect={this.handleSelect} name="filterLanguages" label={language.label} value={{ value: language.value, label: language.label.props.children[1] }} isChecked={this.props.selectedSaved === language.label.props.children[1] ? true : false}/>
+                                    return <Radio handleSelect={this.handleSelect} name="filterLanguages" label={language.label} value={{ value: language.value, label: language.label.props.children[1] }} isChecked={this.state.selectedValue.value === language.value ? true : false}/>
                                 })
                         }
                     </div>

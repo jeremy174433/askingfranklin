@@ -383,8 +383,9 @@
             "noResult": "No results found, try a new search with a different keyword",
             "pngExport": "PNG export",
             "trendsPeriod": "Search trends are based on the last 3 months",
-            "evolution": "Evolution",
-            "noDataTrends": "No trends data is available for this research,",
+            "evolution": "Keyword's interest evolution",
+            "evolutionToolTip": "Interest",
+            "noDataTrends": "No trends data is available for this research",
             "blockCtaTrends": {
                 "p1": "Do you need this information ?",
                 "p2": "Asking Franklin Pro provides you all the search trend data for the keyword « ",
