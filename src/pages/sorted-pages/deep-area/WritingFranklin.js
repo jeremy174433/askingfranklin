@@ -1,9 +1,11 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
-import { Container } from 'react-bootstrap';
+import { Container, Col } from 'react-bootstrap';
 import Sidebar from '../../components/writing-franklin/Sidebar';
+import Heading from '../../components/writing-franklin/Heading';
 import Wysiwyg from '../../components/writing-franklin/Wysiwyg';
+import Onboarding from '../../components/writing-franklin/Onboarding';
 
 class WritingFranklin extends React.Component {
     constructor(props) {
@@ -43,13 +45,16 @@ class WritingFranklin extends React.Component {
                 {this.customHeadElement()}
                 <Container id="writingFranklin" className="px-0 mt-6 w-100 text-center d-flex flex-column flex-xl-row">
                     <Sidebar handleArticleChange={this.handleArticleChange}/>
-                    {
-                        this.state.currentArticleId ?
-                            <Wysiwyg currentArticle={this.state.currentArticleId}/> 
+                    <Col className="block-style overflow-visible mx-auto p-3 w-100">
+                        <Heading/>
+                        {
+                            this.state.currentArticleId ?
+                                <Wysiwyg currentArticle={this.state.currentArticleId}/> 
 
-                        : 
-                            <div>Onboarding</div>
-                    }
+                            : 
+                                <Onboarding/>
+                        }
+                    </Col>
                 </Container>
             </div>
         )

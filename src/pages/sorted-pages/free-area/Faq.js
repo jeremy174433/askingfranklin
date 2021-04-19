@@ -122,7 +122,7 @@ const accordionItems = {
                     <span class="fz-14">(exemple : vous souscrivez ou renouvellez un abonnement le 12 du mois, vous annulez votre abonnement le 23, celui-ci sera automatiquement interrompu le 12 du mois suivant)</span>.</blockquote>
                     <blockquote class="d-block mt-3">Dans le cas où <span class="fw-600">vous avez souscrit un abonnement annuel</span>, la résiliation sera alors effective dès l'annulation du renouvellement automatique de l'abonnement, vous resterez membre Pro jusqu'au terme de sa période de validité, celui-ci étant valable pour une durée de 1 an (365 jours). <br/>
                     <span class="fz-14">(exemple : vous souscrivez ou renouvellez un abonnement au mois de mars, vous annulez votre abonnement annuel en juillet, celui-ci sera automatiquement interrompu au mois de mars suivant)</span>.</blockquote>
-                    <span class="d-block mt-3">Note : Même si vous résilisez votre abonnement, tant que celui-ci n'est pas arrivé au terme de sa période de validité, vous avez la possibilité de le réactiver en cochant la case dédiée à l'abonnement sur votre profil puis en cliquant sur sauvegarder.</span>
+                    <span class="d-block mt-3">Note : Même si vous résiliez votre abonnement, tant que celui-ci n'est pas arrivé au terme de sa période de validité, vous avez la possibilité de le réactiver en cochant la case dédiée à l'abonnement sur votre profil puis en cliquant sur sauvegarder.</span>
                     <span class="d-block mt-3"> Vous pourrez dès lors continuer à utiliser votre compte en offre gratuite et limitée à 3 recherches par jour.</span></p>
                 },
                 {
@@ -139,7 +139,7 @@ const accordionItems = {
                     key: "105",
                     question: "Comment annuler le renouvellement automatique de mon abonnement ?",
                     content: <p>Vous pouvez annuler le renouvellement automatique de votre abonnement, une fois connecté, en cliquant sur « <span class="fw-600">Mon compte</span> » en haut à droite, puis dans « <span class="fw-600">Paramètres</span> » et enfin dans l'onglet « <span class="fw-600">Abonnement</span> » en décochant la case dédiée à l'abonnement puis en cliquant sur sauvegarder.
-                    <span class="d-block mt-3">Note : Si vous résilisez votre abonnement, tant que celui-ci n'est pas arrivé au terme de sa période de validité, vous avez la possibilité de le réactiver en recochant la case dédiée à l'abonnement sur votre profil puis en cliquant sur sauvegarder.</span></p>
+                    <span class="d-block mt-3">Note : Si vous résiliez votre abonnement, tant que celui-ci n'est pas arrivé au terme de sa période de validité, vous avez la possibilité de le réactiver en cochant de nouveau la case dédiée à l'abonnement sur votre profil puis en cliquant sur sauvegarder.</span></p>
                 }
             ]
         },

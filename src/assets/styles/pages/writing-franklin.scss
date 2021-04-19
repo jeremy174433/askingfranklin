@@ -1,5 +1,6 @@
 #writingFranklin {
 
+    /* ----- SIDEBAR ----- */
     .block-writing-sidebar {
         .articles-wrapper {
             .article-item {
@@ -19,13 +20,11 @@
                     white-space: nowrap;
                     &::first-letter { text-transform: uppercase; }
                 }
-                .title-disabled{
-                    color:$text-disabled;
-                }
+
                 .article-menu {
                     visibility: hidden;
                     transition: none !important;
-                    outline-color: $primary;
+                    outline: none;
                     @include state-interaction-element;
                     &:hover, &:focus { background-color: $md-grey; }
 
@@ -39,12 +38,25 @@
         }
     }
 
+    /* ----- HEADING ----- */
+    .writing-franklin-header {
+        &-top {
+            border-bottom: 1px solid $theme-terthiary;
+        }
+        &-bottom {
+            .writing-franklin-parameters {
+                @include state-interaction-element;
+            }
+        }
+    }
+
+
+    /* ----- WRITING MODE ----- */
     .block-writing {
         min-height: 100vh;
 
         div[contentEditable=true] {
             min-height: 56px;
-            width: 90%;
             background-color: $light-grey;
             margin: 0 auto .5rem auto;
             padding: 1rem;
