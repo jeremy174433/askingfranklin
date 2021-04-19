@@ -13,13 +13,10 @@
                 }
                 &.article-selected { @include bg-active-light; }
                 
-                p { 
-                    width: 100%;
-                    margin-right: 1rem;
+                p {
                     text-overflow: ellipsis;
                     overflow: hidden;
                     white-space: nowrap;
-                    pointer-events: none;
                     &::first-letter { text-transform: uppercase; }
                 }
                 .title-disabled{
@@ -44,26 +41,35 @@
 
     .block-writing {
         min-height: 100vh;
-        .title {
-            width: 70%;
-            font-size: xx-large;
-            line-height: 100px;
-            font-weight: bold;
-        }
+
         div[contentEditable=true] {
-            min-height: 100px;
-            background-color: $theme-terthiary;
-            margin: 0 auto 1.5rem auto;
-            padding: .5rem;
+            min-height: 56px;
+            width: 90%;
+            background-color: $light-grey;
+            margin: 0 auto .5rem auto;
+            padding: 1rem;
             border-radius: .5rem;
             text-align: left;
-        }
-        .section {
-            width: 90%;
-        }
-        div[contentEditable=true]:focus {
-            outline: none;
+        
+            &:focus { 
+                background-color: rgba($primary, .1);
+                outline: none;
+            }
 
+            &:empty::before {
+                content: attr(data-placeholder);
+                color: $text-disabled;
+                @include fw-400;
+                display: block; // Compatibility
+                pointer-events: none;
+            }
+
+            &.title {
+                min-height: 74px;
+                margin-bottom: 3rem;
+                @include fz-36;
+                @include fw-600;
+            }
         }
 
     }

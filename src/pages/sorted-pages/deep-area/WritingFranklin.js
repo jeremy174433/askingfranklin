@@ -5,23 +5,19 @@ import { Container } from 'react-bootstrap';
 import Sidebar from '../../components/writing-franklin/Sidebar';
 import Wysiwyg from '../../components/writing-franklin/Wysiwyg';
 
-class CreateArticle extends React.Component {
+class WritingFranklin extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            currentArticleId:null
+            currentArticleId: null
         }
-        this.handleArticleChange = this.handleArticleChange.bind(this)
+        this.handleArticleChange = this.handleArticleChange.bind(this);
     }
 
     componentDidMount() {
         window.scrollTo(0, 0);
     }
-    handleArticleChange(articleId){
-        this.setState({
-            currentArticleId:articleId
-        })
-    }
+   
     customHeadElement() {
         return (
             <Helmet>
@@ -30,6 +26,12 @@ class CreateArticle extends React.Component {
                 <meta name="robots" content="noindex, follow"/>
             </Helmet>
         );
+    }
+
+    handleArticleChange(articleId) {
+        this.setState({
+            currentArticleId: articleId
+        });
     }
 
     render() {
@@ -41,11 +43,17 @@ class CreateArticle extends React.Component {
                 {this.customHeadElement()}
                 <Container id="writingFranklin" className="px-0 mt-6 w-100 text-center d-flex flex-column flex-xl-row">
                     <Sidebar handleArticleChange={this.handleArticleChange}/>
-                    {this.state.currentArticleId ? <Wysiwyg currentArticle={this.state.currentArticleId}/> : <div>Onboarding</div>}
+                    {
+                        this.state.currentArticleId ?
+                            <Wysiwyg currentArticle={this.state.currentArticleId}/> 
+
+                        : 
+                            <div>Onboarding</div>
+                    }
                 </Container>
             </div>
         )
     }
 }
 
-export default withTranslation()(CreateArticle);
+export default withTranslation()(WritingFranklin);

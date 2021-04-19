@@ -13,8 +13,6 @@ import {
     XAxis
 } from 'recharts';
 import PmyBtn from '../button/PmyBtn';
-const googleTrends = require('google-trends-api');
-
 
 var dataFake = [
     {
@@ -65,13 +63,6 @@ class AFTableTendancies extends React.Component {
     }
 
     componentDidMount() {
-        googleTrends.interestOverTime({keyword: 'Women\'s march'})
-.then(function(results){
-  console.log('These results are awesome', results);
-})
-.catch(function(err){
-  console.error('Oh no there was an error', err);
-});
         var token = localStorage.getItem('af_token');
         var is_sub = localStorage.getItem('af_is_sub');
         if(token) {
