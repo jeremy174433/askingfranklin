@@ -22,7 +22,9 @@
                     pointer-events: none;
                     &::first-letter { text-transform: uppercase; }
                 }
-
+                .title-disabled{
+                    color:$text-disabled;
+                }
                 .article-menu {
                     visibility: hidden;
                     transition: none !important;
@@ -42,17 +44,28 @@
 
     .block-writing {
         min-height: 100vh;
-
+        .title {
+            width: 70%;
+            font-size: xx-large;
+            line-height: 100px;
+            font-weight: bold;
+        }
         div[contentEditable=true] {
-            width: 90%;
             min-height: 100px;
-            background-color: $theme-color-secondary;
-            border: 1px solid $theme-terthiary;
+            background-color: $theme-terthiary;
             margin: 0 auto 1.5rem auto;
             padding: .5rem;
             border-radius: .5rem;
             text-align: left;
         }
+        .section {
+            width: 90%;
+        }
+        div[contentEditable=true]:focus {
+            outline: none;
+
+        }
+
     }
 
 }

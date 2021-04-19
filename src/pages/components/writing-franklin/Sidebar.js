@@ -17,22 +17,74 @@ class Sidebar extends React.Component {
         super(props)
         this.state = {
             nbrArticles: 0,
-            currentArticle: 0,
-            currentOpt: false
+            currentArticle: null,
+            currentOpt: false,
+            articles:[]
         }
         this.handleCreateNewSubject = this.handleCreateNewSubject.bind(this);
         this.handleSelectArticle = this.handleSelectArticle.bind(this);
         this.handleMenuSelectArticle = this.handleMenuSelectArticle.bind(this);
+        this.refreshArticles = this.refreshArticles.bind(this);
+        this.deleteArticle = this.deleteArticle.bind(this);
     }
-
+    refreshArticles(){
+        var token = localStorage.getItem('af_token');
+        fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/articles', {
+            headers: {
+                'Authorization': token
+            },
+            method: 'GET',
+        })
+        .then((res)=>{
+            return res.json()
+        })
+        .then((res)=>{
+            this.setState({
+                articles:res.data
+            })
+        })       
+    }
     handleCreateNewSubject() {
-        console.log('create new subject');
+        var token = localStorage.getItem('af_token');
+        fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/articles/create', {
+            headers: {
+                'Authorization': token
+            },
+            method: 'POST',
+        })
+        .then((res)=>{
+            return res.json()
+        })
+        .then((res)=>{
+            this.refreshArticles()
+        })
     }
-
+    componentDidMount(){
+        this.refreshArticles()     
+    }
+    deleteArticle(e){
+        var token = localStorage.getItem('af_token');
+        fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/articles/' + e.target.dataset.id + '/delete', {
+            headers: {
+                'Authorization': token
+            },
+            method: 'GET',
+        })
+        .then((res)=>{
+            return res.json()
+        })
+        .then((res)=>{
+            this.refreshArticles()
+        })
+    }
     handleSelectArticle(e) {
+        var idArticle = parseInt(e.target.dataset.key)
         this.setState({
-            currentArticle: parseInt(e.target.dataset.key)
+            currentArticle: idArticle
+        },()=>{
+            this.props.handleArticleChange(idArticle)
         });
+
     }
 
     handleMenuSelectArticle(e) {
@@ -52,20 +104,19 @@ class Sidebar extends React.Component {
             <Col xl="3" className="block-style block-writing-sidebar d-flex d-xl-block flex-column p-0 mr-xl-5 mb-5 mb-xl-0">
                 <div class="m-3">
                     <PmyBtn onClick={this.handleCreateNewSubject} type="button" btnIsMediumPmyOutlineLight textBtn="Nouvel article" title="Nouvel article" iconBtnBefore={<Add width="14" fill="#673AB7"/>} className="ml-auto fz-16-index"/>
-                    <p class="my-2 text-right"><span>{articlesList.length}</span> article{articlesList.length > 1 && 's'}</p>
+                    <p class="my-2 text-right"><span>{this.state.articles.length}</span> article{this.state.articles.length > 1 && 's'}</p>
                     <Input type="search" hideLabel={true} for="filterArticles" placeholder="Rechercher un article..." containerStyle="mb-0 pb-0"/>
                 </div>
                 <div class="text-left articles-wrapper">
-                    {articlesList.map((article, index) => {
+                    {this.state.articles.map((article, index) => {
                         return (
-                            <div onClick={this.handleSelectArticle} data-key={index} key={index} class={this.state.currentArticle === index ? 'article-selected' + articleClass : articleClass} title={article.title}>
-                                <p>{article.title}</p>
-                                <div onFocus={this.handleMenuSelectArticle} tabIndex={0} data-key={index} class="article-menu">
+                            <div onClick={this.handleSelectArticle} data-key={article[0]} key={index} class={this.state.currentArticle === article[0] ? 'article-selected' + articleClass : articleClass} title={article.title}>
+                                {article.title ? <p>{article.title}</p> :
+                                <p className="title-disabled">Untitled</p>}
+                                <div onFocus={this.handleMenuSelectArticle} tabIndex={0} data-key={article[0]} class="article-menu">
                                     <KebabMenu/>
                                     <div class={this.state.currentOpt === index ? 'd-flex' + articleOpt : 'd-none' + articleOpt}>
-                                        <span>éditer</span>
-                                        <span>dupliquer</span>
-                                        <span>supprimer</span>
+                                        <span data-id={article[0]} onClick={this.deleteArticle}>supprimer</span>
                                     </div>
                                 </div>
                             </div>

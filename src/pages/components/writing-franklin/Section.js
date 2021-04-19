@@ -22,7 +22,7 @@ class Section extends React.Component {
         const { t } = this.props;
         
         return (
-            <div contentEditable="true" onInput={this.handleUpdate}></div>
+            <div className="section" contentEditable="true" onInput={this.handleUpdate}></div>
         )
     }
 }
