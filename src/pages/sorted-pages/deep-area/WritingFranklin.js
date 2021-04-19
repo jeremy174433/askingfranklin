@@ -44,7 +44,7 @@ class WritingFranklin extends React.Component {
             <div class={this.props.bannerIsActive ? 'layout-style-banner' : 'layout-style'}>
                 {this.customHeadElement()}
                 <Container id="writingFranklin" className="px-0 mt-6 w-100 text-center d-flex flex-column flex-xl-row">
-                    <Sidebar handleArticleChange={this.handleArticleChange}/>
+                    <Sidebar handleArticleChange={this.handleArticleChange} className={this.props.bannerIsActive && 'banner-showed'}/>
                     <Col className="block-style overflow-visible mx-auto p-3 w-100">
                         <Heading/>
                         {

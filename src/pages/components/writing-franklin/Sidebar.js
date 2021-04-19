@@ -99,17 +99,18 @@ class Sidebar extends React.Component {
     render() {
 
         const { t } = this.props;
+        const containerClass = ' block-style position-sticky d-flex d-xl-block flex-column h-100 p-0 mr-xl-5 mb-5 mb-xl-0';
         const articleClass = ' article-item d-flex flex-row justify-content-between align-items-center p-3';
         const articleOpt = ' article-submenu block-style position-absolute flex-column p-2';
 
         return (
-            <Col xl="3" className="block-style block-writing-sidebar d-flex d-xl-block flex-column p-0 mr-xl-5 mb-5 mb-xl-0">
+            <Col xl="3" id="stickyMenu" className={this.props.className ? this.props.className + containerClass : containerClass}>
                 <div class="m-3">
-                    <PmyBtn onClick={this.handleCreateNewSubject} type="button" btnIsMediumPmyOutlineLight textBtn="Nouvel article" title="Nouvel article" iconBtnBefore={<Add width="14" fill="#673AB7"/>} className="ml-auto fz-16-index"/>
+                    <PmyBtn onClick={this.handleCreateNewSubject} type="button" btnIsMediumPmyOutlineLight textBtn="Créer un article" title="Créer un article" iconBtnBefore={<Add width="14" fill="#673AB7"/>} className="ml-auto fz-16-index"/>
                     <p class="my-3 text-right"><span>{this.state.articles.length}</span> article{this.state.articles.length > 1 && 's'}</p>
                     <Input type="search" hideLabel={true} for="filterArticles" placeholder="Rechercher un article..." containerStyle="mb-0 pb-0"/>
                 </div>
-                <div class="text-left articles-wrapper mb-3">
+                <div class="text-left articles-wrapper">
                     {this.state.articles.map((article, index) => {
                         return (
                             <div 

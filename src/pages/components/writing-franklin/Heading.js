@@ -44,7 +44,7 @@ class Heading extends React.Component {
                 <div class="writing-franklin-header-bottom d-flex flex-column-reverse flex-sm-row align-items-center mt-3">
                     <p class="ml-auto ml-sm-0 mt-3 mt-sm-0 fz-14">Language supporté : anglais</p>
                     <div class="d-flex flex-row align-items-center ml-auto">
-                        <PmyBtn onClick={this.handleExport} type="button" btnIsSmallPmyOutlineLight textBtn="Exporter en CSV" title="Exporter en CSV" iconBtnBefore={<FeaturesIcons icon="download"/>} containerStyle="mr-3" className="fz-16-index"/>
+                        <PmyBtn onClick={this.handleExport} type="button" btnIsMediumPmyOutlineLight textBtn="Exporter en CSV" title="Exporter en CSV" iconBtnBefore={<FeaturesIcons icon="download"/>} containerStyle="mr-3" className="fz-16-index"/>
                         <div onClick={this.handleOpenSettings} class="writing-franklin-parameters">
                             <Settings width="16" fill="#2B2B2B"/>
                         </div>

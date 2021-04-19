@@ -1,8 +1,17 @@
 #writingFranklin {
 
     /* ----- SIDEBAR ----- */
-    .block-writing-sidebar {
+    #stickyMenu {
+        top: 6rem;
+
+        &.banner-showed { top: calc(6rem + #{$banner-promotion}); }
+
+        @include max-xl-rwd { position: initial !important; }
+
         .articles-wrapper {
+            max-height: 390px;
+            @include scroll-y(auto);
+
             .article-item {
                 position: relative;
                 cursor: pointer;
@@ -53,22 +62,21 @@
 
     /* ----- WRITING MODE ----- */
     .block-writing {
-        min-height: 100vh;
-
         div[contentEditable=true] {
-            min-height: 56px;
+            min-height: 54px;
             background-color: $light-grey;
             margin: 0 auto .5rem auto;
             padding: 1rem;
             border-radius: .5rem;
             text-align: left;
+            word-break: break-all;
         
             &:focus { 
                 background-color: rgba($primary, .1);
                 outline: none;
             }
 
-            &:empty::before {
+            &:empty:not(:focus)::before {
                 content: attr(data-placeholder);
                 color: $text-disabled;
                 @include fw-400;
@@ -83,7 +91,6 @@
                 @include fw-600;
             }
         }
-
     }
 
 }

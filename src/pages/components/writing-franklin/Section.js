@@ -6,7 +6,8 @@ class Section extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            content: ''
+            content: '',
+            minLength: 150
         }
         this.handleUpdate = this.handleUpdate.bind(this);
         this.generateContent = this.generateContent.bind(this);
@@ -29,7 +30,12 @@ class Section extends React.Component {
         return (
             <div class="section">
                 <div contentEditable="true" data-placeholder="Ce bloc est encore vide, pour générer du contenu il faut écrire au moins 150 caractères" onInput={this.handleUpdate}></div>
-                <PmyBtn onClick={this.generateContent} type="button" btnIsSmallPmyOutlineLight textBtn={["Générer du contenu", <br/>, <span class="fz-16-index">(ou appuyez sur tab)</span>]}/>
+                <div class="d-flex flex-row justify-content-between">
+                    <PmyBtn onClick={this.generateContent} type="button" isDisabled={this.state.content.length < this.state.minLength} btnIsSmallPmyFull textBtn={["Générer du contenu", <br/>, <span class="fz-16-index">(ou appuyez sur tab)</span>]}/>
+                    {this.state.content.length < this.state.minLength && 
+                        <p class="fz-14">Saisissez au moins {this.state.minLength - this.state.content.length} caractères</p>
+                    }
+                </div>
             </div>
         )
     }

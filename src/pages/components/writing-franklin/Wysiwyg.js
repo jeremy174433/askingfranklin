@@ -22,7 +22,7 @@ class Wysiwyg extends React.Component {
 
         return (
             <div className="block-writing mt-5">
-                <div contentEditable class="title" data-placeholder="Choisir un titre pour son article" onKeyDown={this.handleKeyDown}></div>
+                <div contentEditable class="title" data-placeholder="Choisissez un titre pour votre article" onKeyDown={this.handleKeyDown}></div>
                 <Section/>
             </div>
         )
