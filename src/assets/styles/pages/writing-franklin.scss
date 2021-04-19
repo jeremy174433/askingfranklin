@@ -9,6 +9,7 @@
         @include max-xl-rwd { position: initial !important; }
 
         .articles-wrapper {
+            min-height: 390px;
             max-height: 390px;
             @include scroll-y(auto);
 
@@ -37,10 +38,19 @@
                     @include state-interaction-element;
                     &:hover, &:focus { background-color: $md-grey; }
 
-                    > .article-submenu {
+                    > ul.article-submenu {
+                        background-color: $theme-color-secondary;
+                        border: 1px solid $theme-terthiary;
+                        box-shadow: 0 0 4px $black-25;
+                        text-align: right;
                         right: 48px;
                         top: 0;
                         z-index: 1;
+
+                        li {
+                            padding: .25rem .5rem;
+                            &:hover, &:focus { background-color: $md-grey-35; }
+                        }
                     }
                 }
             }
@@ -49,16 +59,9 @@
 
     /* ----- HEADING ----- */
     .writing-franklin-header {
-        &-top {
-            border-bottom: 1px solid $theme-terthiary;
-        }
-        &-bottom {
-            .writing-franklin-parameters {
-                @include state-interaction-element;
-            }
-        }
+        &-top { border-bottom: 1px solid $theme-terthiary; }
+        &-bottom { @include state-interaction-element; }
     }
-
 
     /* ----- WRITING MODE ----- */
     .block-writing {
@@ -89,6 +92,35 @@
                 margin-bottom: 3rem;
                 @include fz-36;
                 @include fw-600;
+            }
+
+            + .state-interaction-element {
+                outline: none;
+                ul.article-menu-tag {
+                    min-width: 70px;
+                    background-color: $theme-color-secondary;
+                    border: 1px solid $theme-terthiary;
+                    box-shadow: 0 0 4px $black-25;
+                    text-align: right;
+                    right: 36px;
+                    top: 0;
+                    z-index: 1;
+
+                    li {
+                        padding: .25rem .5rem;
+                        &:hover, &:focus { background-color: $md-grey-35; }
+                        &.tag-active { background-color: $md-grey-75; }
+                        &[data-type=h2] { 
+                            @include fz-20;
+                            @include fw-600;
+                        }
+                        &[data-type=h3] { 
+                            @include fz-18;
+                            @include fw-600;
+                        }
+                        &[data-type=text] { @include fz-16; }
+                    }
+                }
             }
         }
     }

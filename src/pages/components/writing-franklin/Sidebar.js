@@ -19,6 +19,8 @@ class Sidebar extends React.Component {
         this.handleCreateNewSubject = this.handleCreateNewSubject.bind(this);
         this.handleSelectArticle = this.handleSelectArticle.bind(this);
         this.handleMenuSelectArticle = this.handleMenuSelectArticle.bind(this);
+        this.duplicateArticle = this.duplicateArticle.bind(this);
+        this.exportArticle = this.exportArticle.bind(this);
         this.deleteArticle = this.deleteArticle.bind(this);
     }
 
@@ -76,6 +78,14 @@ class Sidebar extends React.Component {
         });
     }
 
+    duplicateArticle() {
+        console.log('duplicate article');
+    }
+
+    exportArticle() {
+        console.log('export article');
+    }
+
     deleteArticle(e) {
         var token = localStorage.getItem('af_token');
         fetch('https://te3t29re5k.execute-api.eu-west-1.amazonaws.com/dev/askingfranklin/articles/' + e.target.dataset.id + '/delete', {
@@ -92,16 +102,12 @@ class Sidebar extends React.Component {
         })
     }
 
-    duplicateArticle() {
-        console.log('duplicate article');
-    }
-
     render() {
 
         const { t } = this.props;
         const containerClass = ' block-style position-sticky d-flex d-xl-block flex-column h-100 p-0 mr-xl-5 mb-5 mb-xl-0';
         const articleClass = ' article-item d-flex flex-row justify-content-between align-items-center p-3';
-        const articleOpt = ' article-submenu block-style position-absolute flex-column p-2';
+        const articleOpt = ' article-submenu position-absolute flex-column py-2 rounded';
 
         return (
             <Col xl="3" id="stickyMenu" className={this.props.className ? this.props.className + containerClass : containerClass}>
@@ -134,10 +140,11 @@ class Sidebar extends React.Component {
                                 }
                                 <div onFocus={this.handleMenuSelectArticle} tabIndex={0} data-key={article[0]} class="article-menu">
                                     <KebabMenu/>
-                                    <div class={this.state.currentOpt === article[0] ? 'd-flex' + articleOpt : 'd-none' + articleOpt}>
-                                        <span data-id={article[0]} onClick={this.duplicateArticle}>Dupliquer</span>
-                                        <span data-id={article[0]} onClick={this.deleteArticle}>Supprimer</span>
-                                    </div>
+                                    <ul class={this.state.currentOpt === article[0] ? 'd-flex' + articleOpt : 'd-none' + articleOpt}>
+                                        <li data-id={article[0]} onClick={this.duplicateArticle}>Dupliquer</li>
+                                        <li data-id={article[0]} onClick={this.exportArticle}>Exporter</li>
+                                        <li data-id={article[0]} onClick={this.deleteArticle}>Supprimer</li>
+                                    </ul>
                                 </div>
                             </div>
                         ); 
