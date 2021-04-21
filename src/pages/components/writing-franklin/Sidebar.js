@@ -138,7 +138,7 @@ class Sidebar extends React.Component {
                                             <p class="fz-14">0 mots</p>
                                         </div>
                                 }
-                                <div onFocus={this.handleMenuSelectArticle} tabIndex={0} data-key={article[0]} class="article-menu">
+                                <div onClick={this.handleMenuSelectArticle} onBlur={this.handleMenuSelectArticle} tabIndex={0} data-key={article[0]} class="article-menu">
                                     <KebabMenu/>
                                     <ul class={this.state.currentOpt === article[0] ? 'd-flex' + articleOpt : 'd-none' + articleOpt}>
                                         <li data-id={article[0]} onClick={this.duplicateArticle}>Dupliquer</li>

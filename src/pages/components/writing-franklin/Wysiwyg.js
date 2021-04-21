@@ -8,6 +8,7 @@ class Wysiwyg extends React.Component {
         this.state = {
             title: ''
         }
+        this.handleAddSection = this.handleAddSection.bind(this);
     }
 
     handleKeyDown(e) {
@@ -16,14 +17,18 @@ class Wysiwyg extends React.Component {
         }
     }
 
+    handleAddSection() {
+        console.log('add section');
+    }
+
     render() {
 
         const { t } = this.props;
 
         return (
-            <div className="block-writing mt-5">
-                <div contentEditable class="title" data-placeholder="Choisissez un titre pour votre article" onKeyDown={this.handleKeyDown}></div>
-                <Section/>
+            <div className="block-writing mt-5 pt-3">
+                <div contentEditable class="title" data-placeholder="Choisissez un titre pour votre article" aria-label="Choisissez un titre pour votre article" onKeyDown={this.handleKeyDown}></div>
+                <Section handleAddSection={this.handleAddSection}/>
             </div>
         )
     }

@@ -34,7 +34,7 @@ function Banner(props) {
                     </p>
                     <Countdown date={Date.now() + ( Date.parse('27 Feb 2021 23:59:59 GMT') - Date.now() ) } renderer={renderer}/>
                 </div>
-                <div onClick={props.onClick} class="close-banner position-absolute d-flex d-lg-none" style={{ top: '-24px', right: '0' }} title={t('actions.hide')}>
+                <div onClick={props.onClick} class="state-interaction-element position-absolute d-flex d-lg-none" style={{ top: '-24px', right: '0' }} title={t('actions.hide')}>
                     <Close width="16" height="16" fill="#FFF"/>
                 </div>
             </Container>

@@ -21,12 +21,11 @@ class Section extends React.Component {
 
     handleUpdate(e) {
         this.setState({
-            content: e.target.innerHTML
+            content: e.target.textContent
         });
     }
 
     handleMenuSetTag() {
-        console.log('param tag');
         this.setState({
             tagParamIsOpen: !this.state.tagParamIsOpen ? true : false
         });
@@ -56,7 +55,7 @@ class Section extends React.Component {
         return (
             <div class="section">
                 <div class="d-flex flex-row">
-                    <div contentEditable="true" class="w-100 mr-2" data-placeholder="Ce bloc est encore vide, pour générer du contenu il faut écrire au moins 150 caractères" onInput={this.handleUpdate}></div>
+                    <div contentEditable="true" onInput={this.handleUpdate} class="w-100 mr-2" data-placeholder="Ce bloc est encore vide, pour générer du contenu il faut écrire au moins 150 caractères" aria-label="Ce bloc est encore vide, pour générer du contenu il faut écrire au moins 150 caractères"></div>
                     <div onFocus={this.handleMenuSetTag} onBlur={this.handleMenuSetTag} tabIndex={0} class="state-interaction-element">
                         <KebabMenu/>
                         <ul class={this.state.tagParamIsOpen ? 'd-flex' + tagOpt : 'd-none' + tagOpt}>
@@ -71,6 +70,9 @@ class Section extends React.Component {
                     {this.state.content.length < this.state.minLength && 
                         <p class="ml-3 fz-14">Saisissez au moins {this.state.minLength - this.state.content.length} caractères</p>
                     }
+                </div>
+                <div class="add-section mt-3">
+                    <div onClick={this.props.handleAddSection} class="state-interaction-element mx-auto fz-32" title="Ajouter un bloc">+</div>
                 </div>
             </div>
         )

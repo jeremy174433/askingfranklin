@@ -9,6 +9,7 @@ import {
 import StepperFunnel from '../../components/form/elements/StepperFunnel';
 import H1 from '../../components/elements/title/H1';
 import H2 from '../../components/elements/title/H2';
+import H3 from '../../components/elements/title/H3';
 import FeaturesList from '../../components/elements/FeaturesList';
 import FeaturesIcons from '../../../assets/img/svg/switch/FeaturesIcons';
 import Tick from '../../../assets/img/svg/Tick';
@@ -96,7 +97,7 @@ class Pricing extends React.Component {
                                     :                  
                                         <div class="circle"></div>
                                     }
-                                    <h3>{t('funnel.pricing.planProType1')}</h3>
+                                    <H3 title={t('funnel.pricing.planProType1')}/>
                                     <p class="price">{t('funnel.pricing.price-1')}<span>{t('funnel.pricing.priceRhythm')}</span></p>
                                     <p>{t('funnel.pricing.priceInfos')}</p>
                                 </div>
@@ -110,7 +111,7 @@ class Pricing extends React.Component {
                                 :
                                     <div class="circle"></div>
                                 }
-                                    <h3>{t('funnel.pricing.planProType2')}</h3>
+                                    <H3 title={t('funnel.pricing.planProType2')}/>
                                     <p class="price">{t('funnel.pricing.price-2')}<span>{t('funnel.pricing.priceRhythm')}</span></p>
                                     <p><span class="fz-18 fw-600">{t('funnel.pricing.priceTotalNow')}</span>&nbsp; &nbsp;<span class="price-before-reduction">{t('funnel.pricing.priceTotalBefore')}</span></p>
                                 </div>

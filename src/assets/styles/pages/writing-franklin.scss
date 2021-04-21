@@ -9,8 +9,9 @@
         @include max-xl-rwd { position: initial !important; }
 
         .articles-wrapper {
-            min-height: 390px;
+            min-height: 150px;
             max-height: 390px;
+            @include min-xl-rwd { min-height: 390px; }
             @include scroll-y(auto);
 
             .article-item {
@@ -60,14 +61,12 @@
     /* ----- HEADING ----- */
     .writing-franklin-header {
         &-top { border-bottom: 1px solid $theme-terthiary; }
-        &-bottom { @include state-interaction-element; }
     }
-
+    
     /* ----- WRITING MODE ----- */
     .block-writing {
         div[contentEditable=true] {
             min-height: 54px;
-            background-color: $light-grey;
             margin: 0 auto .5rem auto;
             padding: 1rem;
             border-radius: .5rem;
@@ -75,7 +74,7 @@
             word-break: break-all;
         
             &:focus { 
-                background-color: rgba($primary, .1);
+                background-color: $light-grey;
                 outline: none;
             }
 
@@ -122,6 +121,24 @@
                     }
                 }
             }
+        }
+
+        .add-section {
+            &::before {
+                content: '';
+                width: 100%;
+                height: 2px;
+                background: $md-grey-35;
+                display: block;
+                position: relative;
+                top: 18px;
+            }
+
+            > .state-interaction-element {
+                background-color: $md-grey-35;
+                &:hover, &:focus { background-color: $md-grey-75; }
+            }
+
         }
     }
 

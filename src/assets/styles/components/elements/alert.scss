@@ -46,7 +46,5 @@
         color: $theme-color-secondary;
         text-decoration: underline;
     }
-
-    .close-alert { @include close-item-alert(); }
     
 }

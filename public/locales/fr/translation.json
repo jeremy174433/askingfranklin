@@ -7,7 +7,7 @@
     "url": {
         "signIn": "/connexion",
         "signUp": "/inscription",
-        "signUpConfirm": "/inscription/confirmation",
+        "signUpConfirm": "/register/confirmation",
         "forgotPassword": "/mot-de-passe-oublie",
         "resultAF": "/recherche/",
         "resultPageAF": "/recherche/:keyword",

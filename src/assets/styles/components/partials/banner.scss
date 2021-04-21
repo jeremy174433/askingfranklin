@@ -58,6 +58,5 @@
             &:not(:last-child) { letter-spacing: 1rem; }
         }
     }
-
-    .close-banner { @include close-item-alert(); }
+    
 }

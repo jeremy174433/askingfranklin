@@ -31,6 +31,7 @@ export default class PmyBtn extends React.Component {
                     type={this.props.type} 
                     disabled={this.props.isDisabled} 
                     onClick={this.props.onClick}
+                    id={this.props.id}
                     title={this.props.title}
                     class={
                         this.props.btnIsSmallPmyOutlineFull ? smallOutlineFull

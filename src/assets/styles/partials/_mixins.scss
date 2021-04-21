@@ -82,28 +82,6 @@
     &:hover, &:focus { @include bg-hover-light; }
 }
 
-// Close item (alert, banner...)
-@mixin close-item-alert {
-    cursor: pointer;
-
-    &::before {
-        content: '';
-        display: block;
-        background-color: $md-grey-35;
-        padding: 1rem;
-        border-radius: .25rem;
-        position: absolute;
-        transform: translate(-25%, -25%);
-        opacity: 0;
-        z-index: -1;
-        transition: .2s ease-in-out;
-    }
-    &:hover::before, &:focus::before { 
-        transform: translate(-25%, -25%);
-        opacity: 1;
-    }
-}
-
 // Features list
 @mixin features-list {
     ul.features-list {

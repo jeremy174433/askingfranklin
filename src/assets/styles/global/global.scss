@@ -12,6 +12,12 @@ body {
     background-color: $theme-primary;
     overflow-y: auto;
     overflow-x: hidden;
+
+     // Fix Bootstrap modal
+    &.modal-open { 
+        overflow-y: scroll !important;
+        padding-right: 0 !important;
+    }
 }
 
 a { @include link-style; }
