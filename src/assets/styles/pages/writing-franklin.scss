@@ -62,6 +62,18 @@
     .writing-franklin-header {
         &-top { border-bottom: 1px solid $theme-terthiary; }
     }
+
+    /* ----- ONBOARDING ----- */
+    .onboarding-content {
+        border-top: 1px solid $theme-terthiary;
+        border-bottom: 1px solid $theme-terthiary;
+
+        ol li {
+            list-style: decimal;
+            padding-bottom: .5rem;
+            &:last-child { padding-bottom: 0; }
+        }
+    }
     
     /* ----- WRITING MODE ----- */
     .block-writing {

@@ -74,7 +74,9 @@ class App extends React.Component {
         var is_sub = localStorage.getItem('af_is_sub');
         this.setState({
             isConnected: this.state.isConnected ? false : true,
-            bannerIsShowed: is_sub <= '0' && this.state.bannerIsShowed ? true : false || is_sub == '1' && false
+            bannerIsShowed: is_sub <= '0' && this.state.bannerIsShowed ? true : false || is_sub == '1' && false,
+            redirect: true,
+            toPlan: (is_sub === null || is_sub[0] === null) ? true : false
         });
     }
     
@@ -101,7 +103,7 @@ class App extends React.Component {
                         <Route path={t('url.signUp')} render={(props) => <SignUp {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route path={t('url.forgotPassword')}  render={(props) => <ForgotPassword {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route path={t('url.resultPageAF')}  render={(props) => <AskingFranklin {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
-                        <Route path={t('url.editorWF')} render={(props) => <WritingFranklin {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
+                        <Route path={t('url.editorWF')} render={(props) => <WritingFranklin {...props} bannerIsActive={this.state.bannerIsShowed} handleConnect={this.handleConnect}/>}/>
                         <Route path={t('url.searchLimit')} render={(props) => <MaximumRequests {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route path={t('url.faq')} render={(props) => <Faq {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>
                         <Route path={t('url.contact')} render={(props) => <Contact {...props} bannerIsActive={this.state.bannerIsShowed}/>}/>

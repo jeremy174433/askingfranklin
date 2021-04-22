@@ -292,8 +292,7 @@
             "labelTcs-1": "I have read and accept the ",
             "labelTcs-2": "T&Cs",
             "labelTcs-3": "(required)",
-            "labelGtcs": "GTCS",
-            "labelNewsletter": "I subscribe to the newsletter and accept to receive tips to take off in SEO, Brand content, Content marketing..."
+            "labelGtcs": "GTCS"
         },
         "submit": {
             "formAF": "Explore",

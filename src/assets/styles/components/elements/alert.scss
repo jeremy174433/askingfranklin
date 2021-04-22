@@ -25,6 +25,13 @@
     transition: .4s ease-in-out;
     @include min-xl-rwd { padding: 1rem 3rem; }
 
+    &-no-sticky {
+        position: initial;
+        margin-top: 1.5rem;
+        padding: 1rem;
+        border-radius: .25rem;
+    }
+
     &-visible { 
         opacity: 1;
         animation: alert-anim .6s ease-in-out;

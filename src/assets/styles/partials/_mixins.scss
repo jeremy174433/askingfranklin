@@ -69,8 +69,11 @@
 }
 
 @mixin state-interaction-element {
-    width: 32px;
-    height: 32px;
+    $size-sie: 32px;
+    min-width: $size-sie;
+    width: $size-sie;
+    min-height: $size-sie;
+    height: $size-sie;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -4,6 +4,7 @@ import { Col } from 'react-bootstrap';
 import PmyBtn from '../button/PmyBtn';
 import Add from '../../../assets/img/svg/Add';
 import Input from '../form/Input';
+import NoData from '../../../assets/img/svg/illustrations/NoData';
 import KebabMenu from '../../../assets/img/svg/KebabMenu';
 
 class Sidebar extends React.Component {
@@ -149,6 +150,12 @@ class Sidebar extends React.Component {
                             </div>
                         ); 
                     })}
+                    {this.state.articles.length === 0 && 
+                        <div class="m-3 text-center">
+                            <p class="mb-4 fz-18">Aucun article trouvé</p>
+                            <NoData/>
+                        </div>
+                    }
                 </div>
             </Col>
         )

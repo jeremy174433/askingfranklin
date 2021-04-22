@@ -11,11 +11,19 @@ export default class ArrowTextLink extends React.Component {
                     <ArrowLight width="16" fill="#4285F4" style={{ transform: 'rotate(180deg)', marginRight: '1rem' }}/>
                     {this.props.textLink}
                 </Link>
-            : this.props.href &&
+
+            : this.props.href ?
                 <a href={this.props.href} target={this.props.target} rel={this.props.rel} class={this.props.className ? this.props.className + ' w-max-content' : 'w-max-content'}>
                     <ArrowLight width="16" fill="#4285F4" style={{ transform: 'rotate(180deg)', marginRight: '1rem' }}/>
                     {this.props.textLink}
                 </a>
+
+            :
+                <p onClick={this.props.onClick} class={this.props.className ? this.props.className + ' w-max-content cursor-pointer' : 'w-max-content cursor-pointer'} style={{ color: "#4285F4" }}>
+                    <ArrowLight width="16" fill="#4285F4" style={{ transform: 'rotate(180deg)', marginRight: '1rem' }}/>
+                    {this.props.text}
+                </p>
+
         )
     }
 }

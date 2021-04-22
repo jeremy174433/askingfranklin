@@ -8,10 +8,12 @@ export default class Alert extends React.Component {
         return (
             <div id={this.props.alertId} class={this.props.className ? this.props.className + ' alert-msg' : 'alert-msg'}>
                 <div class="container px-0 d-flex flex-row align-items-center">
-                    <p class="pr-3 mr-auto">{this.props.msg}</p>
-                    <div onClick={this.props.onClick} class="state-interaction-element" title={i18n.t('actions.hide')}>
-                        <Close width="16" height="16" fill="#FFF"/>
-                    </div>
+                    <p class={this.props.onClick && 'pr-3 mr-auto'}>{this.props.msg}</p>
+                    {this.props.onClick &&
+                        <div onClick={this.props.onClick} class="state-interaction-element" title={i18n.t('actions.hide')}>
+                            <Close width="16" height="16" fill="#FFF"/>
+                        </div>
+                    }
                 </div>
             </div>
         )

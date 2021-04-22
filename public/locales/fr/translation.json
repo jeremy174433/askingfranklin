@@ -292,8 +292,7 @@
             "labelTcs-1": "J'ai lu et j'accepte les ",
             "labelTcs-2": "CGU",
             "labelTcs-3": "(requis)",
-            "labelGtcs": "CGV",
-            "labelNewsletter": "Je m'inscris à la newsletter pour recevoir des astuces et conseils pour décoller en SEO, Brand content, Content marketing..."
+            "labelGtcs": "CGV"
         },
         "submit": {
             "formAF": "Explorer",
