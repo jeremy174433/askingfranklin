@@ -80,7 +80,7 @@ class SignInForm extends React.Component {
                     onChange={this.handleEmail} 
                     type="email" 
                     label={t('form.label.email')}
-                    for="email"
+                    for="si_email"
                     required={true} 
                     infoMsg={this.state.email.length < 1 ? t('alert.form.fieldRequired') : !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) && t('alert.form.patternEmail')}
                 />
@@ -88,7 +88,7 @@ class SignInForm extends React.Component {
                     onChange={this.handlePassword} 
                     type="password" 
                     label={t('form.label.password')}
-                    for="password"
+                    for="si_password"
                     required={true} 
                     infoMsg={!this.state.password.match(/^(?=.*\d)(?=.*[a-zA-Z0-9]).{8,}$/) && t('alert.form.patternPassword')}
                 />

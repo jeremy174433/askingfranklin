@@ -98,7 +98,7 @@ class ForgotPasswordForm2 extends React.Component {
                     type="text" 
                     value={this.state.code} 
                     label={t('form.label.codeSentByEmail') + this.state.email} 
-                    for="codeToken"
+                    for="fp_codeToken"
                     maxlength={6} 
                     minlength={6} 
                     required={true} 
@@ -113,7 +113,7 @@ class ForgotPasswordForm2 extends React.Component {
                     label={t('form.label.newPassword')}
                     labelInfo={[ t('form.label.passwordPattern1'), <br class="d-block d-sm-none"/>, t('form.label.passwordPattern2')]}
                     minLength={8} 
-                    for="newPassword"
+                    for="fp_newPassword"
                     onClick={this.handleInputType} 
                     inputHasIcon={<EyeShowHide width="16" icon={this.state.pwdDefaultType === 'text' ? 'hide' : null}/>} 
                     required={true} 

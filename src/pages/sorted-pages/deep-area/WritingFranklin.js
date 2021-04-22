@@ -93,14 +93,14 @@ class WritingFranklin extends React.Component {
                 <Container id="writingFranklin" className="px-0 mt-6">
                     <p class="mb-3 fz-14">Language supporté : Anglais</p>
                     <div class="w-100 d-flex flex-column flex-xl-row">
-                        <Sidebar handleArticleChange={this.handleArticleChange} className={this.props.bannerIsActive && 'banner-showed'}/>
+                        <Sidebar handleCreateNewSubject={this.props.handleCreateNewSubject} handleArticleChange={this.handleArticleChange} className={this.props.bannerIsActive && 'banner-showed'}/>
                         <Col className="block-style overflow-visible mx-auto p-3 w-100">
                             <Heading currentArticleId={this.state.currentArticleId} bannerIsActive={this.props.bannerIsActive}/>
                             {
                                 this.state.currentArticleId ?
                                     <Wysiwyg currentArticle={this.state.currentArticleId}/> 
                                 : 
-                                    <Onboarding/>
+                                    <Onboarding handleCreateNewSubject={this.props.handleCreateNewSubject}/>
                             }
                         </Col>
                     </div>
@@ -108,11 +108,11 @@ class WritingFranklin extends React.Component {
                 
                 {this.state.isConnected === false &&
                     <CustomModal modalShowed={true} bodyClassName="d-flex flex-row px-4 py-4">
-
+                        
                         <div class={this.state.showSignUp ? 'wf-sign-up-form form-tab-active' : 'wf-sign-up-form wf-sign-up-form-out'}>
                             <H2 title="Il est nécessaire de se créer un compte pour continuer" className="mb-5"/>
                             <SignUpForm/>
-                            <ArrowTextLink onClick={this.showSignInForm} text={t('sign.register.linkSignIn')} className="mt-3"/>
+                            <ArrowTextLink onClick={this.showSignInForm} text={t('sign.register.linkSignIn')} className="mt-3 pt-3"/>
                         </div>
 
                         <div class={this.state.showSignIn ? 'wf-sign-in-form form-tab-active' : this.state.showForgotPwd ? 'wf-sign-in-form wf-sign-in-form-out-pwd' : 'wf-sign-in-form wf-sign-in-form-out'}>
@@ -132,7 +132,7 @@ class WritingFranklin extends React.Component {
                                 :
                                     <ForgotPasswordForm2/>
                             }
-                            <ArrowTextLink onClick={this.showSignInForm} text={t('sign.forgotPassword.linkSignIn')} className="mt-3"/>
+                            <ArrowTextLink onClick={this.showSignInForm} text={t('sign.forgotPassword.linkSignIn')} className="mt-3 pt-3"/>
                         </div>
 
                     </CustomModal>

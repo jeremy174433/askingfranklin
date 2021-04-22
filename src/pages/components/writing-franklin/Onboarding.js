@@ -14,7 +14,7 @@ class Onboarding extends React.Component {
             <div className="block-onboarding mt-3">
                 <H1 title="Bonjour !"/>
                 <p class="mt-1 mb-3 fw-600">Aucun contenu présent pour l'instant, il est temps de commencer à écrire !</p>
-                <PmyBtn onClick={this.handleCreateNewSubject} type="button" btnIsMediumPmyOutlineLight textBtn="Créer un article" title="Créer un article" iconBtnBefore={<Add width="14" fill="#673AB7"/>} className="fz-16-index"/>
+                <PmyBtn onClick={this.props.handleCreateNewSubject} type="button" btnIsMediumPmyOutlineLight textBtn="Créer un article" title="Créer un article" iconBtnBefore={<Add width="14" fill="#673AB7"/>} className="fz-16-index"/>
                 <div class="onboarding-content mt-4 mb-3 py-3">
                     <p class="mb-3 fw-600">Quelques informations utiles pour se lancer :</p>
                     <ol class="ml-3 pl-3">

@@ -5,6 +5,7 @@ body {
 
     .modal {
         padding: 0 !important;
+        @include scroll-y(auto);
 
         &.fade {
                 
@@ -26,7 +27,6 @@ body {
                     display: block;
                     border: none;
                     border-radius: 0;
-                    @include scroll-y(auto);
         
                     .modal-header { border-bottom: 1px solid $theme-terthiary; }
         
@@ -39,16 +39,16 @@ body {
 
             /* ----- BASIC MODAL ----- */
             .modal-dialog.custom-modal {
+                width: 100%;
                 margin: 0;
                 box-shadow: 0 0 16px $black-25;
                 transition: .4s ease-in-out;
+                @include max-sm-rwd { width: 90%; }
 
                 .modal-content {
-                    width: 500px;
                     display: block;
                     border: none;
                     border-radius: .5rem;
-                    @include scroll-y(auto);
                     @include scroll-x(hidden);
 
                     .modal-header { border-bottom: 1px solid $theme-terthiary; }

@@ -64,7 +64,7 @@ class ForgotPasswordForm1 extends React.Component {
                     onChange={this.handleEmail} 
                     type="email" 
                     label={t('form.label.email')}
-                    for="email" 
+                    for="fp_email" 
                     required={true} 
                     infoMsg={this.state.email.length < 1 ? t('alert.form.fieldRequired') : !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/) && t('alert.form.patternEmail')}
                 />

@@ -43,7 +43,7 @@ class Sidebar extends React.Component {
         })       
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.refreshArticles();     
     }
 
