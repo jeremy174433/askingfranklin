@@ -39,14 +39,17 @@ body {
 
             /* ----- BASIC MODAL ----- */
             .modal-dialog.custom-modal {
+                margin: 0;
                 box-shadow: 0 0 16px $black-25;
                 transition: .4s ease-in-out;
 
                 .modal-content {
+                    width: 500px;
                     display: block;
                     border: none;
                     border-radius: .5rem;
                     @include scroll-y(auto);
+                    @include scroll-x(hidden);
 
                     .modal-header { border-bottom: 1px solid $theme-terthiary; }
         

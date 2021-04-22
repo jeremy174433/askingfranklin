@@ -1,3 +1,28 @@
+/* ----- MODAL FORM IF USER IS NOT CONNECTED ----- */
+.wf-sign-up-form,
+.wf-sign-in-form,
+.wf-forgot-pwd-form {
+    min-width: calc(500px - 3rem);
+    visibility: visible;
+    opacity: 1;
+    transition: .4s ease-in-out;
+    &:not(:last-child) { margin-right: 1.5rem; }
+}
+.wf-sign-up-form-out {
+    transform: translateX(calc(-100% - 3rem));
+    visibility: hidden;
+    opacity: 0;
+}
+.wf-sign-in-form {
+    &-out { transform: translateX(0); }
+    &-out-pwd { transform: translateX(calc(-200% - 3rem)) }
+    &.form-tab-active { transform: translateX(calc(-100% - 1.5rem)); }
+}
+.wf-forgot-pwd-form {
+    &-out { transform: translateX(calc(-100% - 1.5rem)) }
+    &.form-tab-active { transform: translateX(calc(-200% - 3rem)); }
+}
+
 #writingFranklin {
 
     /* ----- SIDEBAR ----- */

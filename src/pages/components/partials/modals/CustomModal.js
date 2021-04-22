@@ -53,7 +53,7 @@ export default class CustomModal extends React.Component {
                         </Modal.Header>
                     }
 
-                    <Modal.Body className="px-3 px-lg-4 py-4">{this.props.children}</Modal.Body>
+                    <Modal.Body className={this.props.bodyClassName ? this.props.bodyClassName : 'px-3 px-lg-4 py-4'}>{this.props.children}</Modal.Body>
                     
                     {this.props.ctaFooterPrimary && 
                         <Modal.Footer className="px-0 py-3 mx-4">
